@@ -17,8 +17,8 @@
             ]) }}
         </p> --}}
 
-        <p class="btn-outline-primary transition duration-300 ease-in-out focus:outline-none focus:shadow-outline border border-purple-700 hover:bg-purple-700 text-purple-700 hover:text-white font-normal py-2 px-4 rounded">
-            <a href="https://github.com/anomalylabs/streams" target="_blank">GitHub</a>
+        <p class="font-mono text-center">
+            <a href="https://github.com/anomalylabs/streams" target="_blank" class="btn-outline-primary transition duration-300 ease-in-out focus:outline-none focus:shadow-outline border border-purple-700 hover:bg-purple-700 text-purple-700 hover:text-white font-normal py-2 px-4 rounded">GitHub</a>
         </p>
     </div>
 </div>
