@@ -18,7 +18,7 @@
         </p> --}}
 
         <p class="font-mono text-center">
-            <a href="https://github.com/anomalylabs/streams" target="_blank"><i class="fa fa-eye"></i> GitHub</a>
+            <a href="https://github.com/anomalylabs/streams" target="_blank">GitHub</a>
         </p>
     </div>
 </div>
