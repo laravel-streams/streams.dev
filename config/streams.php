@@ -4,25 +4,47 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | System
+    | System Configuration
     |--------------------------------------------------------------------------
     |
-    | Register system level configuration.
+    | Configure core behavior.
     |
     */
+    
+    'system' => [
 
-    'installed' => env('INSTALLED', false),
+        /**
+         * Force the application
+         * to run over HTTPS.
+         */
+        'force_ssl' => false,
+    ],
 
     /*
     |--------------------------------------------------------------------------
-    | View Overrides
+    | Source Configuration
     |--------------------------------------------------------------------------
     |
-    | Define globally overridden views as 'view' => 'override' view paths.
+    | Configure Stream sources.
     |
     */
+    
+    'sources' => [
 
-    'overrides' => [],
+        /**
+         * Customize Filebase
+         */
+        'filebase' => [
+
+            'path' => 'streams/data',
+            
+            'formats' => [
+                'json' => \Filebase\Format\Json::class,
+                'yaml' => \Filebase\Format\Yaml::class,
+                'md' => \Anomaly\Streams\Platform\Criteria\Format\Markdown::class,
+            ],
+        ]
+    ],
 
     /*
     |--------------------------------------------------------------------------
@@ -37,16 +59,37 @@ return [
     'cp' => [
 
         /**
-         * This is the admin segment
-         * prefix used for routing.
+         * This is the URI  prefix
+         * for the control panel.
          */
-        'prefix' => 'admin',
+        'prefix' => env('STREAMS_CP_PREFIX', 'admin'),
 
         /**
          * Define additional CP middleware.
          */
         'middleware' => [
-            'auth',
+            //'auth',
+        ],
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Addon Customization
+    |--------------------------------------------------------------------------
+    |
+    | Here you can customize and
+    | extend the addon loader.
+    |
+    */
+
+    'addons' => [
+
+        /**
+         * An array of disabled
+         * addons by handle.
+         */
+        'disabled' => [
+            //'anomaly.module.users',
         ],
     ],
 
