@@ -6,7 +6,7 @@
     <div style="max-width: 300px;" class="flex flex-col self-center">
         
         <div>
-            {!! img('public::img/streams.png') !!}
+            {!! Images::make('public::img/streams.png') !!}
         </div>
 
         {{-- <p class="font-mono text-xs text-white text-center">
