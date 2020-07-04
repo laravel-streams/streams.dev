@@ -15,6 +15,9 @@ module.exports = {
     colors:{
       black:"var(--color-black)",
       white:"var(--color-white)",
+      dark:"var(--color-dark)",
+      light:"var(--color-light)",
+      highlight:"var(--color-highlight)",
     },
     extend: {},
   },

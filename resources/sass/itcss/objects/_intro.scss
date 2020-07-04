@@ -1,0 +1,10 @@
+.o-intro
+{
+    @apply bg-highlight p-4;
+}
+
+
+h1+.o-intro 
+{
+    @apply mb-8;
+}

@@ -1,16 +1,20 @@
 {
 	"folders": [
 		{
-			"path": "."
-		},
-		{
-			"path": "resources/views"
-		},
-		{
+			"name": "sass",
 			"path": "resources/sass"
 		},
 		{
+			"name": "views",
+			"path": "resources/views"
+		},
+		{
+			"name": "js",
 			"path": "resources/js"
+		},
+		{
+			"name": "streamsd",
+			"path": "."
 		}
 	],
 	"settings": {}
