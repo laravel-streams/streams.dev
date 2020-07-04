@@ -1,0 +1,17 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "resources/views"
+		},
+		{
+			"path": "resources/sass"
+		},
+		{
+			"path": "resources/js"
+		}
+	],
+	"settings": {}
+}

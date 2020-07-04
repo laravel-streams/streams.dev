@@ -1,4 +1,4 @@
-<!-- Modernizer JS -->
+{{-- <!-- Modernizer JS -->
 {!! Assets::script('public::assets/js/vendor/modernizr.min.js') !!}
 <!-- jQuery JS -->
 {!! Assets::script('public::assets/js/vendor/jquery.js') !!}
@@ -11,4 +11,7 @@
 {!! Assets::script('public::assets/js/vendor/contactform.js') !!}
 {!! Assets::script('public::assets/js/plugins/plugins.min.js') !!}
 <!-- Main JS -->
-{!! Assets::script('public::assets/js/main.js') !!}
+{!! Assets::script('public::assets/js/main.js') !!} --}}
+
+
+{{ mix('/js/app.js') }}
