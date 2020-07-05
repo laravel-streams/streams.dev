@@ -19,7 +19,7 @@
             </ul>
             <hr>
             <ul>
-                @foreach (Streams::make('docs')->get() as $item)
+                @foreach (Streams::entries('docs')->get() as $item)
                 <li>
                     <a href="/docs/{{ $item->id }}">{{ $item->title }}</a>
                 </li>
