@@ -624,11 +624,22 @@ video {
 /* purgecss end ignore */
 
 :root {
-  --color-black:#080808;
-  --color-white:#fff;
-  --color-dark:#080808;
-  --color-light:#fff;
-  --color-highlight:#333;
+  --color-background:#080808;
+  --color-surface:#fff;
+  --color-accent:#333;
+  --color-font:#eee;
+}
+
+html.o-theme--light {
+  --color-background:#fff;
+  --color-surface:#fff;
+  --color-accent:#333;
+  --color-font:#333;
+}
+
+html, body {
+  background-color: var(--color-background);
+  color: var(--color-font);
 }
 
 h1 {
@@ -656,27 +667,16 @@ h6 {
   font-size: 1.25rem;
 }
 
-.o-theme--dark {
-  color: var(--color-light);
-  background-color: var(--color-dark);
-}
-
-.o-theme--light {
-  color: var(--color-dark);
-  background-color: var(--color-light);
-}
-
 .o-main {
   width: clamp(320px, 100%, 60vw);
 }
 
 .o-aside {
-  background-color: var(--color-black);
-  width: 30vw;
+  background-color: var(--color-background);
 }
 
 .o-intro {
-  background-color: var(--color-highlight);
+  background-color: var(--color-accent);
   padding: 1rem;
 }
 
@@ -1206,24 +1206,20 @@ h1 + .o-intro {
   --divide-x-reverse: 1;
 }
 
-.divide-black > :not(template) ~ :not(template) {
-  border-color: var(--color-black);
+.divide-background > :not(template) ~ :not(template) {
+  border-color: var(--color-background);
 }
 
-.divide-white > :not(template) ~ :not(template) {
-  border-color: var(--color-white);
+.divide-surface > :not(template) ~ :not(template) {
+  border-color: var(--color-surface);
 }
 
-.divide-dark > :not(template) ~ :not(template) {
-  border-color: var(--color-dark);
+.divide-accent > :not(template) ~ :not(template) {
+  border-color: var(--color-accent);
 }
 
-.divide-light > :not(template) ~ :not(template) {
-  border-color: var(--color-light);
-}
-
-.divide-highlight > :not(template) ~ :not(template) {
-  border-color: var(--color-highlight);
+.divide-font > :not(template) ~ :not(template) {
+  border-color: var(--color-font);
 }
 
 .divide-opacity-0 > :not(template) ~ :not(template) {
@@ -1310,64 +1306,52 @@ h1 + .o-intro {
   background-attachment: scroll;
 }
 
-.bg-black {
-  background-color: var(--color-black);
+.bg-background {
+  background-color: var(--color-background);
 }
 
-.bg-white {
-  background-color: var(--color-white);
+.bg-surface {
+  background-color: var(--color-surface);
 }
 
-.bg-dark {
-  background-color: var(--color-dark);
+.bg-accent {
+  background-color: var(--color-accent);
 }
 
-.bg-light {
-  background-color: var(--color-light);
+.bg-font {
+  background-color: var(--color-font);
 }
 
-.bg-highlight {
-  background-color: var(--color-highlight);
+.hover\:bg-background:hover {
+  background-color: var(--color-background);
 }
 
-.hover\:bg-black:hover {
-  background-color: var(--color-black);
+.hover\:bg-surface:hover {
+  background-color: var(--color-surface);
 }
 
-.hover\:bg-white:hover {
-  background-color: var(--color-white);
+.hover\:bg-accent:hover {
+  background-color: var(--color-accent);
 }
 
-.hover\:bg-dark:hover {
-  background-color: var(--color-dark);
+.hover\:bg-font:hover {
+  background-color: var(--color-font);
 }
 
-.hover\:bg-light:hover {
-  background-color: var(--color-light);
+.focus\:bg-background:focus {
+  background-color: var(--color-background);
 }
 
-.hover\:bg-highlight:hover {
-  background-color: var(--color-highlight);
+.focus\:bg-surface:focus {
+  background-color: var(--color-surface);
 }
 
-.focus\:bg-black:focus {
-  background-color: var(--color-black);
+.focus\:bg-accent:focus {
+  background-color: var(--color-accent);
 }
 
-.focus\:bg-white:focus {
-  background-color: var(--color-white);
-}
-
-.focus\:bg-dark:focus {
-  background-color: var(--color-dark);
-}
-
-.focus\:bg-light:focus {
-  background-color: var(--color-light);
-}
-
-.focus\:bg-highlight:focus {
-  background-color: var(--color-highlight);
+.focus\:bg-font:focus {
+  background-color: var(--color-font);
 }
 
 .bg-opacity-0 {
@@ -1510,64 +1494,52 @@ h1 + .o-intro {
   border-collapse: separate;
 }
 
-.border-black {
-  border-color: var(--color-black);
+.border-background {
+  border-color: var(--color-background);
 }
 
-.border-white {
-  border-color: var(--color-white);
+.border-surface {
+  border-color: var(--color-surface);
 }
 
-.border-dark {
-  border-color: var(--color-dark);
+.border-accent {
+  border-color: var(--color-accent);
 }
 
-.border-light {
-  border-color: var(--color-light);
+.border-font {
+  border-color: var(--color-font);
 }
 
-.border-highlight {
-  border-color: var(--color-highlight);
+.hover\:border-background:hover {
+  border-color: var(--color-background);
 }
 
-.hover\:border-black:hover {
-  border-color: var(--color-black);
+.hover\:border-surface:hover {
+  border-color: var(--color-surface);
 }
 
-.hover\:border-white:hover {
-  border-color: var(--color-white);
+.hover\:border-accent:hover {
+  border-color: var(--color-accent);
 }
 
-.hover\:border-dark:hover {
-  border-color: var(--color-dark);
+.hover\:border-font:hover {
+  border-color: var(--color-font);
 }
 
-.hover\:border-light:hover {
-  border-color: var(--color-light);
+.focus\:border-background:focus {
+  border-color: var(--color-background);
 }
 
-.hover\:border-highlight:hover {
-  border-color: var(--color-highlight);
+.focus\:border-surface:focus {
+  border-color: var(--color-surface);
 }
 
-.focus\:border-black:focus {
-  border-color: var(--color-black);
+.focus\:border-accent:focus {
+  border-color: var(--color-accent);
 }
 
-.focus\:border-white:focus {
-  border-color: var(--color-white);
-}
-
-.focus\:border-dark:focus {
-  border-color: var(--color-dark);
-}
-
-.focus\:border-light:focus {
-  border-color: var(--color-light);
-}
-
-.focus\:border-highlight:focus {
-  border-color: var(--color-highlight);
+.focus\:border-font:focus {
+  border-color: var(--color-font);
 }
 
 .border-opacity-0 {
@@ -4656,164 +4628,132 @@ h1 + .o-intro {
   padding-left: 1px;
 }
 
-.placeholder-black::-moz-placeholder {
-  color: var(--color-black);
+.placeholder-background::-moz-placeholder {
+  color: var(--color-background);
 }
 
-.placeholder-black:-ms-input-placeholder {
-  color: var(--color-black);
+.placeholder-background:-ms-input-placeholder {
+  color: var(--color-background);
 }
 
-.placeholder-black::-ms-input-placeholder {
-  color: var(--color-black);
+.placeholder-background::-ms-input-placeholder {
+  color: var(--color-background);
 }
 
-.placeholder-black::placeholder {
-  color: var(--color-black);
+.placeholder-background::placeholder {
+  color: var(--color-background);
 }
 
-.placeholder-white::-moz-placeholder {
-  color: var(--color-white);
+.placeholder-surface::-moz-placeholder {
+  color: var(--color-surface);
 }
 
-.placeholder-white:-ms-input-placeholder {
-  color: var(--color-white);
+.placeholder-surface:-ms-input-placeholder {
+  color: var(--color-surface);
 }
 
-.placeholder-white::-ms-input-placeholder {
-  color: var(--color-white);
+.placeholder-surface::-ms-input-placeholder {
+  color: var(--color-surface);
 }
 
-.placeholder-white::placeholder {
-  color: var(--color-white);
+.placeholder-surface::placeholder {
+  color: var(--color-surface);
 }
 
-.placeholder-dark::-moz-placeholder {
-  color: var(--color-dark);
+.placeholder-accent::-moz-placeholder {
+  color: var(--color-accent);
 }
 
-.placeholder-dark:-ms-input-placeholder {
-  color: var(--color-dark);
+.placeholder-accent:-ms-input-placeholder {
+  color: var(--color-accent);
 }
 
-.placeholder-dark::-ms-input-placeholder {
-  color: var(--color-dark);
+.placeholder-accent::-ms-input-placeholder {
+  color: var(--color-accent);
 }
 
-.placeholder-dark::placeholder {
-  color: var(--color-dark);
+.placeholder-accent::placeholder {
+  color: var(--color-accent);
 }
 
-.placeholder-light::-moz-placeholder {
-  color: var(--color-light);
+.placeholder-font::-moz-placeholder {
+  color: var(--color-font);
 }
 
-.placeholder-light:-ms-input-placeholder {
-  color: var(--color-light);
+.placeholder-font:-ms-input-placeholder {
+  color: var(--color-font);
 }
 
-.placeholder-light::-ms-input-placeholder {
-  color: var(--color-light);
+.placeholder-font::-ms-input-placeholder {
+  color: var(--color-font);
 }
 
-.placeholder-light::placeholder {
-  color: var(--color-light);
+.placeholder-font::placeholder {
+  color: var(--color-font);
 }
 
-.placeholder-highlight::-moz-placeholder {
-  color: var(--color-highlight);
+.focus\:placeholder-background:focus::-moz-placeholder {
+  color: var(--color-background);
 }
 
-.placeholder-highlight:-ms-input-placeholder {
-  color: var(--color-highlight);
+.focus\:placeholder-background:focus:-ms-input-placeholder {
+  color: var(--color-background);
 }
 
-.placeholder-highlight::-ms-input-placeholder {
-  color: var(--color-highlight);
+.focus\:placeholder-background:focus::-ms-input-placeholder {
+  color: var(--color-background);
 }
 
-.placeholder-highlight::placeholder {
-  color: var(--color-highlight);
+.focus\:placeholder-background:focus::placeholder {
+  color: var(--color-background);
 }
 
-.focus\:placeholder-black:focus::-moz-placeholder {
-  color: var(--color-black);
+.focus\:placeholder-surface:focus::-moz-placeholder {
+  color: var(--color-surface);
 }
 
-.focus\:placeholder-black:focus:-ms-input-placeholder {
-  color: var(--color-black);
+.focus\:placeholder-surface:focus:-ms-input-placeholder {
+  color: var(--color-surface);
 }
 
-.focus\:placeholder-black:focus::-ms-input-placeholder {
-  color: var(--color-black);
+.focus\:placeholder-surface:focus::-ms-input-placeholder {
+  color: var(--color-surface);
 }
 
-.focus\:placeholder-black:focus::placeholder {
-  color: var(--color-black);
+.focus\:placeholder-surface:focus::placeholder {
+  color: var(--color-surface);
 }
 
-.focus\:placeholder-white:focus::-moz-placeholder {
-  color: var(--color-white);
+.focus\:placeholder-accent:focus::-moz-placeholder {
+  color: var(--color-accent);
 }
 
-.focus\:placeholder-white:focus:-ms-input-placeholder {
-  color: var(--color-white);
+.focus\:placeholder-accent:focus:-ms-input-placeholder {
+  color: var(--color-accent);
 }
 
-.focus\:placeholder-white:focus::-ms-input-placeholder {
-  color: var(--color-white);
+.focus\:placeholder-accent:focus::-ms-input-placeholder {
+  color: var(--color-accent);
 }
 
-.focus\:placeholder-white:focus::placeholder {
-  color: var(--color-white);
+.focus\:placeholder-accent:focus::placeholder {
+  color: var(--color-accent);
 }
 
-.focus\:placeholder-dark:focus::-moz-placeholder {
-  color: var(--color-dark);
+.focus\:placeholder-font:focus::-moz-placeholder {
+  color: var(--color-font);
 }
 
-.focus\:placeholder-dark:focus:-ms-input-placeholder {
-  color: var(--color-dark);
+.focus\:placeholder-font:focus:-ms-input-placeholder {
+  color: var(--color-font);
 }
 
-.focus\:placeholder-dark:focus::-ms-input-placeholder {
-  color: var(--color-dark);
+.focus\:placeholder-font:focus::-ms-input-placeholder {
+  color: var(--color-font);
 }
 
-.focus\:placeholder-dark:focus::placeholder {
-  color: var(--color-dark);
-}
-
-.focus\:placeholder-light:focus::-moz-placeholder {
-  color: var(--color-light);
-}
-
-.focus\:placeholder-light:focus:-ms-input-placeholder {
-  color: var(--color-light);
-}
-
-.focus\:placeholder-light:focus::-ms-input-placeholder {
-  color: var(--color-light);
-}
-
-.focus\:placeholder-light:focus::placeholder {
-  color: var(--color-light);
-}
-
-.focus\:placeholder-highlight:focus::-moz-placeholder {
-  color: var(--color-highlight);
-}
-
-.focus\:placeholder-highlight:focus:-ms-input-placeholder {
-  color: var(--color-highlight);
-}
-
-.focus\:placeholder-highlight:focus::-ms-input-placeholder {
-  color: var(--color-highlight);
-}
-
-.focus\:placeholder-highlight:focus::placeholder {
-  color: var(--color-highlight);
+.focus\:placeholder-font:focus::placeholder {
+  color: var(--color-font);
 }
 
 .placeholder-opacity-0::-moz-placeholder {
@@ -5251,64 +5191,52 @@ h1 + .o-intro {
   text-align: justify;
 }
 
-.text-black {
-  color: var(--color-black);
+.text-background {
+  color: var(--color-background);
 }
 
-.text-white {
-  color: var(--color-white);
+.text-surface {
+  color: var(--color-surface);
 }
 
-.text-dark {
-  color: var(--color-dark);
+.text-accent {
+  color: var(--color-accent);
 }
 
-.text-light {
-  color: var(--color-light);
+.text-font {
+  color: var(--color-font);
 }
 
-.text-highlight {
-  color: var(--color-highlight);
+.hover\:text-background:hover {
+  color: var(--color-background);
 }
 
-.hover\:text-black:hover {
-  color: var(--color-black);
+.hover\:text-surface:hover {
+  color: var(--color-surface);
 }
 
-.hover\:text-white:hover {
-  color: var(--color-white);
+.hover\:text-accent:hover {
+  color: var(--color-accent);
 }
 
-.hover\:text-dark:hover {
-  color: var(--color-dark);
+.hover\:text-font:hover {
+  color: var(--color-font);
 }
 
-.hover\:text-light:hover {
-  color: var(--color-light);
+.focus\:text-background:focus {
+  color: var(--color-background);
 }
 
-.hover\:text-highlight:hover {
-  color: var(--color-highlight);
+.focus\:text-surface:focus {
+  color: var(--color-surface);
 }
 
-.focus\:text-black:focus {
-  color: var(--color-black);
+.focus\:text-accent:focus {
+  color: var(--color-accent);
 }
 
-.focus\:text-white:focus {
-  color: var(--color-white);
-}
-
-.focus\:text-dark:focus {
-  color: var(--color-dark);
-}
-
-.focus\:text-light:focus {
-  color: var(--color-light);
-}
-
-.focus\:text-highlight:focus {
-  color: var(--color-highlight);
+.focus\:text-font:focus {
+  color: var(--color-font);
 }
 
 .text-opacity-0 {
@@ -8748,24 +8676,20 @@ h1 + .o-intro {
     --divide-x-reverse: 1;
   }
 
-  .sm\:divide-black > :not(template) ~ :not(template) {
-    border-color: var(--color-black);
+  .sm\:divide-background > :not(template) ~ :not(template) {
+    border-color: var(--color-background);
   }
 
-  .sm\:divide-white > :not(template) ~ :not(template) {
-    border-color: var(--color-white);
+  .sm\:divide-surface > :not(template) ~ :not(template) {
+    border-color: var(--color-surface);
   }
 
-  .sm\:divide-dark > :not(template) ~ :not(template) {
-    border-color: var(--color-dark);
+  .sm\:divide-accent > :not(template) ~ :not(template) {
+    border-color: var(--color-accent);
   }
 
-  .sm\:divide-light > :not(template) ~ :not(template) {
-    border-color: var(--color-light);
-  }
-
-  .sm\:divide-highlight > :not(template) ~ :not(template) {
-    border-color: var(--color-highlight);
+  .sm\:divide-font > :not(template) ~ :not(template) {
+    border-color: var(--color-font);
   }
 
   .sm\:divide-opacity-0 > :not(template) ~ :not(template) {
@@ -8852,64 +8776,52 @@ h1 + .o-intro {
     background-attachment: scroll;
   }
 
-  .sm\:bg-black {
-    background-color: var(--color-black);
+  .sm\:bg-background {
+    background-color: var(--color-background);
   }
 
-  .sm\:bg-white {
-    background-color: var(--color-white);
+  .sm\:bg-surface {
+    background-color: var(--color-surface);
   }
 
-  .sm\:bg-dark {
-    background-color: var(--color-dark);
+  .sm\:bg-accent {
+    background-color: var(--color-accent);
   }
 
-  .sm\:bg-light {
-    background-color: var(--color-light);
+  .sm\:bg-font {
+    background-color: var(--color-font);
   }
 
-  .sm\:bg-highlight {
-    background-color: var(--color-highlight);
+  .sm\:hover\:bg-background:hover {
+    background-color: var(--color-background);
   }
 
-  .sm\:hover\:bg-black:hover {
-    background-color: var(--color-black);
+  .sm\:hover\:bg-surface:hover {
+    background-color: var(--color-surface);
   }
 
-  .sm\:hover\:bg-white:hover {
-    background-color: var(--color-white);
+  .sm\:hover\:bg-accent:hover {
+    background-color: var(--color-accent);
   }
 
-  .sm\:hover\:bg-dark:hover {
-    background-color: var(--color-dark);
+  .sm\:hover\:bg-font:hover {
+    background-color: var(--color-font);
   }
 
-  .sm\:hover\:bg-light:hover {
-    background-color: var(--color-light);
+  .sm\:focus\:bg-background:focus {
+    background-color: var(--color-background);
   }
 
-  .sm\:hover\:bg-highlight:hover {
-    background-color: var(--color-highlight);
+  .sm\:focus\:bg-surface:focus {
+    background-color: var(--color-surface);
   }
 
-  .sm\:focus\:bg-black:focus {
-    background-color: var(--color-black);
+  .sm\:focus\:bg-accent:focus {
+    background-color: var(--color-accent);
   }
 
-  .sm\:focus\:bg-white:focus {
-    background-color: var(--color-white);
-  }
-
-  .sm\:focus\:bg-dark:focus {
-    background-color: var(--color-dark);
-  }
-
-  .sm\:focus\:bg-light:focus {
-    background-color: var(--color-light);
-  }
-
-  .sm\:focus\:bg-highlight:focus {
-    background-color: var(--color-highlight);
+  .sm\:focus\:bg-font:focus {
+    background-color: var(--color-font);
   }
 
   .sm\:bg-opacity-0 {
@@ -9052,64 +8964,52 @@ h1 + .o-intro {
     border-collapse: separate;
   }
 
-  .sm\:border-black {
-    border-color: var(--color-black);
+  .sm\:border-background {
+    border-color: var(--color-background);
   }
 
-  .sm\:border-white {
-    border-color: var(--color-white);
+  .sm\:border-surface {
+    border-color: var(--color-surface);
   }
 
-  .sm\:border-dark {
-    border-color: var(--color-dark);
+  .sm\:border-accent {
+    border-color: var(--color-accent);
   }
 
-  .sm\:border-light {
-    border-color: var(--color-light);
+  .sm\:border-font {
+    border-color: var(--color-font);
   }
 
-  .sm\:border-highlight {
-    border-color: var(--color-highlight);
+  .sm\:hover\:border-background:hover {
+    border-color: var(--color-background);
   }
 
-  .sm\:hover\:border-black:hover {
-    border-color: var(--color-black);
+  .sm\:hover\:border-surface:hover {
+    border-color: var(--color-surface);
   }
 
-  .sm\:hover\:border-white:hover {
-    border-color: var(--color-white);
+  .sm\:hover\:border-accent:hover {
+    border-color: var(--color-accent);
   }
 
-  .sm\:hover\:border-dark:hover {
-    border-color: var(--color-dark);
+  .sm\:hover\:border-font:hover {
+    border-color: var(--color-font);
   }
 
-  .sm\:hover\:border-light:hover {
-    border-color: var(--color-light);
+  .sm\:focus\:border-background:focus {
+    border-color: var(--color-background);
   }
 
-  .sm\:hover\:border-highlight:hover {
-    border-color: var(--color-highlight);
+  .sm\:focus\:border-surface:focus {
+    border-color: var(--color-surface);
   }
 
-  .sm\:focus\:border-black:focus {
-    border-color: var(--color-black);
+  .sm\:focus\:border-accent:focus {
+    border-color: var(--color-accent);
   }
 
-  .sm\:focus\:border-white:focus {
-    border-color: var(--color-white);
-  }
-
-  .sm\:focus\:border-dark:focus {
-    border-color: var(--color-dark);
-  }
-
-  .sm\:focus\:border-light:focus {
-    border-color: var(--color-light);
-  }
-
-  .sm\:focus\:border-highlight:focus {
-    border-color: var(--color-highlight);
+  .sm\:focus\:border-font:focus {
+    border-color: var(--color-font);
   }
 
   .sm\:border-opacity-0 {
@@ -12198,164 +12098,132 @@ h1 + .o-intro {
     padding-left: 1px;
   }
 
-  .sm\:placeholder-black::-moz-placeholder {
-    color: var(--color-black);
+  .sm\:placeholder-background::-moz-placeholder {
+    color: var(--color-background);
   }
 
-  .sm\:placeholder-black:-ms-input-placeholder {
-    color: var(--color-black);
+  .sm\:placeholder-background:-ms-input-placeholder {
+    color: var(--color-background);
   }
 
-  .sm\:placeholder-black::-ms-input-placeholder {
-    color: var(--color-black);
+  .sm\:placeholder-background::-ms-input-placeholder {
+    color: var(--color-background);
   }
 
-  .sm\:placeholder-black::placeholder {
-    color: var(--color-black);
+  .sm\:placeholder-background::placeholder {
+    color: var(--color-background);
   }
 
-  .sm\:placeholder-white::-moz-placeholder {
-    color: var(--color-white);
+  .sm\:placeholder-surface::-moz-placeholder {
+    color: var(--color-surface);
   }
 
-  .sm\:placeholder-white:-ms-input-placeholder {
-    color: var(--color-white);
+  .sm\:placeholder-surface:-ms-input-placeholder {
+    color: var(--color-surface);
   }
 
-  .sm\:placeholder-white::-ms-input-placeholder {
-    color: var(--color-white);
+  .sm\:placeholder-surface::-ms-input-placeholder {
+    color: var(--color-surface);
   }
 
-  .sm\:placeholder-white::placeholder {
-    color: var(--color-white);
+  .sm\:placeholder-surface::placeholder {
+    color: var(--color-surface);
   }
 
-  .sm\:placeholder-dark::-moz-placeholder {
-    color: var(--color-dark);
+  .sm\:placeholder-accent::-moz-placeholder {
+    color: var(--color-accent);
   }
 
-  .sm\:placeholder-dark:-ms-input-placeholder {
-    color: var(--color-dark);
+  .sm\:placeholder-accent:-ms-input-placeholder {
+    color: var(--color-accent);
   }
 
-  .sm\:placeholder-dark::-ms-input-placeholder {
-    color: var(--color-dark);
+  .sm\:placeholder-accent::-ms-input-placeholder {
+    color: var(--color-accent);
   }
 
-  .sm\:placeholder-dark::placeholder {
-    color: var(--color-dark);
+  .sm\:placeholder-accent::placeholder {
+    color: var(--color-accent);
   }
 
-  .sm\:placeholder-light::-moz-placeholder {
-    color: var(--color-light);
+  .sm\:placeholder-font::-moz-placeholder {
+    color: var(--color-font);
   }
 
-  .sm\:placeholder-light:-ms-input-placeholder {
-    color: var(--color-light);
+  .sm\:placeholder-font:-ms-input-placeholder {
+    color: var(--color-font);
   }
 
-  .sm\:placeholder-light::-ms-input-placeholder {
-    color: var(--color-light);
+  .sm\:placeholder-font::-ms-input-placeholder {
+    color: var(--color-font);
   }
 
-  .sm\:placeholder-light::placeholder {
-    color: var(--color-light);
+  .sm\:placeholder-font::placeholder {
+    color: var(--color-font);
   }
 
-  .sm\:placeholder-highlight::-moz-placeholder {
-    color: var(--color-highlight);
+  .sm\:focus\:placeholder-background:focus::-moz-placeholder {
+    color: var(--color-background);
   }
 
-  .sm\:placeholder-highlight:-ms-input-placeholder {
-    color: var(--color-highlight);
+  .sm\:focus\:placeholder-background:focus:-ms-input-placeholder {
+    color: var(--color-background);
   }
 
-  .sm\:placeholder-highlight::-ms-input-placeholder {
-    color: var(--color-highlight);
+  .sm\:focus\:placeholder-background:focus::-ms-input-placeholder {
+    color: var(--color-background);
   }
 
-  .sm\:placeholder-highlight::placeholder {
-    color: var(--color-highlight);
+  .sm\:focus\:placeholder-background:focus::placeholder {
+    color: var(--color-background);
   }
 
-  .sm\:focus\:placeholder-black:focus::-moz-placeholder {
-    color: var(--color-black);
+  .sm\:focus\:placeholder-surface:focus::-moz-placeholder {
+    color: var(--color-surface);
   }
 
-  .sm\:focus\:placeholder-black:focus:-ms-input-placeholder {
-    color: var(--color-black);
+  .sm\:focus\:placeholder-surface:focus:-ms-input-placeholder {
+    color: var(--color-surface);
   }
 
-  .sm\:focus\:placeholder-black:focus::-ms-input-placeholder {
-    color: var(--color-black);
+  .sm\:focus\:placeholder-surface:focus::-ms-input-placeholder {
+    color: var(--color-surface);
   }
 
-  .sm\:focus\:placeholder-black:focus::placeholder {
-    color: var(--color-black);
+  .sm\:focus\:placeholder-surface:focus::placeholder {
+    color: var(--color-surface);
   }
 
-  .sm\:focus\:placeholder-white:focus::-moz-placeholder {
-    color: var(--color-white);
+  .sm\:focus\:placeholder-accent:focus::-moz-placeholder {
+    color: var(--color-accent);
   }
 
-  .sm\:focus\:placeholder-white:focus:-ms-input-placeholder {
-    color: var(--color-white);
+  .sm\:focus\:placeholder-accent:focus:-ms-input-placeholder {
+    color: var(--color-accent);
   }
 
-  .sm\:focus\:placeholder-white:focus::-ms-input-placeholder {
-    color: var(--color-white);
+  .sm\:focus\:placeholder-accent:focus::-ms-input-placeholder {
+    color: var(--color-accent);
   }
 
-  .sm\:focus\:placeholder-white:focus::placeholder {
-    color: var(--color-white);
+  .sm\:focus\:placeholder-accent:focus::placeholder {
+    color: var(--color-accent);
   }
 
-  .sm\:focus\:placeholder-dark:focus::-moz-placeholder {
-    color: var(--color-dark);
+  .sm\:focus\:placeholder-font:focus::-moz-placeholder {
+    color: var(--color-font);
   }
 
-  .sm\:focus\:placeholder-dark:focus:-ms-input-placeholder {
-    color: var(--color-dark);
+  .sm\:focus\:placeholder-font:focus:-ms-input-placeholder {
+    color: var(--color-font);
   }
 
-  .sm\:focus\:placeholder-dark:focus::-ms-input-placeholder {
-    color: var(--color-dark);
+  .sm\:focus\:placeholder-font:focus::-ms-input-placeholder {
+    color: var(--color-font);
   }
 
-  .sm\:focus\:placeholder-dark:focus::placeholder {
-    color: var(--color-dark);
-  }
-
-  .sm\:focus\:placeholder-light:focus::-moz-placeholder {
-    color: var(--color-light);
-  }
-
-  .sm\:focus\:placeholder-light:focus:-ms-input-placeholder {
-    color: var(--color-light);
-  }
-
-  .sm\:focus\:placeholder-light:focus::-ms-input-placeholder {
-    color: var(--color-light);
-  }
-
-  .sm\:focus\:placeholder-light:focus::placeholder {
-    color: var(--color-light);
-  }
-
-  .sm\:focus\:placeholder-highlight:focus::-moz-placeholder {
-    color: var(--color-highlight);
-  }
-
-  .sm\:focus\:placeholder-highlight:focus:-ms-input-placeholder {
-    color: var(--color-highlight);
-  }
-
-  .sm\:focus\:placeholder-highlight:focus::-ms-input-placeholder {
-    color: var(--color-highlight);
-  }
-
-  .sm\:focus\:placeholder-highlight:focus::placeholder {
-    color: var(--color-highlight);
+  .sm\:focus\:placeholder-font:focus::placeholder {
+    color: var(--color-font);
   }
 
   .sm\:placeholder-opacity-0::-moz-placeholder {
@@ -12793,64 +12661,52 @@ h1 + .o-intro {
     text-align: justify;
   }
 
-  .sm\:text-black {
-    color: var(--color-black);
+  .sm\:text-background {
+    color: var(--color-background);
   }
 
-  .sm\:text-white {
-    color: var(--color-white);
+  .sm\:text-surface {
+    color: var(--color-surface);
   }
 
-  .sm\:text-dark {
-    color: var(--color-dark);
+  .sm\:text-accent {
+    color: var(--color-accent);
   }
 
-  .sm\:text-light {
-    color: var(--color-light);
+  .sm\:text-font {
+    color: var(--color-font);
   }
 
-  .sm\:text-highlight {
-    color: var(--color-highlight);
+  .sm\:hover\:text-background:hover {
+    color: var(--color-background);
   }
 
-  .sm\:hover\:text-black:hover {
-    color: var(--color-black);
+  .sm\:hover\:text-surface:hover {
+    color: var(--color-surface);
   }
 
-  .sm\:hover\:text-white:hover {
-    color: var(--color-white);
+  .sm\:hover\:text-accent:hover {
+    color: var(--color-accent);
   }
 
-  .sm\:hover\:text-dark:hover {
-    color: var(--color-dark);
+  .sm\:hover\:text-font:hover {
+    color: var(--color-font);
   }
 
-  .sm\:hover\:text-light:hover {
-    color: var(--color-light);
+  .sm\:focus\:text-background:focus {
+    color: var(--color-background);
   }
 
-  .sm\:hover\:text-highlight:hover {
-    color: var(--color-highlight);
+  .sm\:focus\:text-surface:focus {
+    color: var(--color-surface);
   }
 
-  .sm\:focus\:text-black:focus {
-    color: var(--color-black);
+  .sm\:focus\:text-accent:focus {
+    color: var(--color-accent);
   }
 
-  .sm\:focus\:text-white:focus {
-    color: var(--color-white);
-  }
-
-  .sm\:focus\:text-dark:focus {
-    color: var(--color-dark);
-  }
-
-  .sm\:focus\:text-light:focus {
-    color: var(--color-light);
-  }
-
-  .sm\:focus\:text-highlight:focus {
-    color: var(--color-highlight);
+  .sm\:focus\:text-font:focus {
+    color: var(--color-font);
   }
 
   .sm\:text-opacity-0 {
@@ -16289,24 +16145,20 @@ h1 + .o-intro {
     --divide-x-reverse: 1;
   }
 
-  .md\:divide-black > :not(template) ~ :not(template) {
-    border-color: var(--color-black);
+  .md\:divide-background > :not(template) ~ :not(template) {
+    border-color: var(--color-background);
   }
 
-  .md\:divide-white > :not(template) ~ :not(template) {
-    border-color: var(--color-white);
+  .md\:divide-surface > :not(template) ~ :not(template) {
+    border-color: var(--color-surface);
   }
 
-  .md\:divide-dark > :not(template) ~ :not(template) {
-    border-color: var(--color-dark);
+  .md\:divide-accent > :not(template) ~ :not(template) {
+    border-color: var(--color-accent);
   }
 
-  .md\:divide-light > :not(template) ~ :not(template) {
-    border-color: var(--color-light);
-  }
-
-  .md\:divide-highlight > :not(template) ~ :not(template) {
-    border-color: var(--color-highlight);
+  .md\:divide-font > :not(template) ~ :not(template) {
+    border-color: var(--color-font);
   }
 
   .md\:divide-opacity-0 > :not(template) ~ :not(template) {
@@ -16393,64 +16245,52 @@ h1 + .o-intro {
     background-attachment: scroll;
   }
 
-  .md\:bg-black {
-    background-color: var(--color-black);
+  .md\:bg-background {
+    background-color: var(--color-background);
   }
 
-  .md\:bg-white {
-    background-color: var(--color-white);
+  .md\:bg-surface {
+    background-color: var(--color-surface);
   }
 
-  .md\:bg-dark {
-    background-color: var(--color-dark);
+  .md\:bg-accent {
+    background-color: var(--color-accent);
   }
 
-  .md\:bg-light {
-    background-color: var(--color-light);
+  .md\:bg-font {
+    background-color: var(--color-font);
   }
 
-  .md\:bg-highlight {
-    background-color: var(--color-highlight);
+  .md\:hover\:bg-background:hover {
+    background-color: var(--color-background);
   }
 
-  .md\:hover\:bg-black:hover {
-    background-color: var(--color-black);
+  .md\:hover\:bg-surface:hover {
+    background-color: var(--color-surface);
   }
 
-  .md\:hover\:bg-white:hover {
-    background-color: var(--color-white);
+  .md\:hover\:bg-accent:hover {
+    background-color: var(--color-accent);
   }
 
-  .md\:hover\:bg-dark:hover {
-    background-color: var(--color-dark);
+  .md\:hover\:bg-font:hover {
+    background-color: var(--color-font);
   }
 
-  .md\:hover\:bg-light:hover {
-    background-color: var(--color-light);
+  .md\:focus\:bg-background:focus {
+    background-color: var(--color-background);
   }
 
-  .md\:hover\:bg-highlight:hover {
-    background-color: var(--color-highlight);
+  .md\:focus\:bg-surface:focus {
+    background-color: var(--color-surface);
   }
 
-  .md\:focus\:bg-black:focus {
-    background-color: var(--color-black);
+  .md\:focus\:bg-accent:focus {
+    background-color: var(--color-accent);
   }
 
-  .md\:focus\:bg-white:focus {
-    background-color: var(--color-white);
-  }
-
-  .md\:focus\:bg-dark:focus {
-    background-color: var(--color-dark);
-  }
-
-  .md\:focus\:bg-light:focus {
-    background-color: var(--color-light);
-  }
-
-  .md\:focus\:bg-highlight:focus {
-    background-color: var(--color-highlight);
+  .md\:focus\:bg-font:focus {
+    background-color: var(--color-font);
   }
 
   .md\:bg-opacity-0 {
@@ -16593,64 +16433,52 @@ h1 + .o-intro {
     border-collapse: separate;
   }
 
-  .md\:border-black {
-    border-color: var(--color-black);
+  .md\:border-background {
+    border-color: var(--color-background);
   }
 
-  .md\:border-white {
-    border-color: var(--color-white);
+  .md\:border-surface {
+    border-color: var(--color-surface);
   }
 
-  .md\:border-dark {
-    border-color: var(--color-dark);
+  .md\:border-accent {
+    border-color: var(--color-accent);
   }
 
-  .md\:border-light {
-    border-color: var(--color-light);
+  .md\:border-font {
+    border-color: var(--color-font);
   }
 
-  .md\:border-highlight {
-    border-color: var(--color-highlight);
+  .md\:hover\:border-background:hover {
+    border-color: var(--color-background);
   }
 
-  .md\:hover\:border-black:hover {
-    border-color: var(--color-black);
+  .md\:hover\:border-surface:hover {
+    border-color: var(--color-surface);
   }
 
-  .md\:hover\:border-white:hover {
-    border-color: var(--color-white);
+  .md\:hover\:border-accent:hover {
+    border-color: var(--color-accent);
   }
 
-  .md\:hover\:border-dark:hover {
-    border-color: var(--color-dark);
+  .md\:hover\:border-font:hover {
+    border-color: var(--color-font);
   }
 
-  .md\:hover\:border-light:hover {
-    border-color: var(--color-light);
+  .md\:focus\:border-background:focus {
+    border-color: var(--color-background);
   }
 
-  .md\:hover\:border-highlight:hover {
-    border-color: var(--color-highlight);
+  .md\:focus\:border-surface:focus {
+    border-color: var(--color-surface);
   }
 
-  .md\:focus\:border-black:focus {
-    border-color: var(--color-black);
+  .md\:focus\:border-accent:focus {
+    border-color: var(--color-accent);
   }
 
-  .md\:focus\:border-white:focus {
-    border-color: var(--color-white);
-  }
-
-  .md\:focus\:border-dark:focus {
-    border-color: var(--color-dark);
-  }
-
-  .md\:focus\:border-light:focus {
-    border-color: var(--color-light);
-  }
-
-  .md\:focus\:border-highlight:focus {
-    border-color: var(--color-highlight);
+  .md\:focus\:border-font:focus {
+    border-color: var(--color-font);
   }
 
   .md\:border-opacity-0 {
@@ -19739,164 +19567,132 @@ h1 + .o-intro {
     padding-left: 1px;
   }
 
-  .md\:placeholder-black::-moz-placeholder {
-    color: var(--color-black);
+  .md\:placeholder-background::-moz-placeholder {
+    color: var(--color-background);
   }
 
-  .md\:placeholder-black:-ms-input-placeholder {
-    color: var(--color-black);
+  .md\:placeholder-background:-ms-input-placeholder {
+    color: var(--color-background);
   }
 
-  .md\:placeholder-black::-ms-input-placeholder {
-    color: var(--color-black);
+  .md\:placeholder-background::-ms-input-placeholder {
+    color: var(--color-background);
   }
 
-  .md\:placeholder-black::placeholder {
-    color: var(--color-black);
+  .md\:placeholder-background::placeholder {
+    color: var(--color-background);
   }
 
-  .md\:placeholder-white::-moz-placeholder {
-    color: var(--color-white);
+  .md\:placeholder-surface::-moz-placeholder {
+    color: var(--color-surface);
   }
 
-  .md\:placeholder-white:-ms-input-placeholder {
-    color: var(--color-white);
+  .md\:placeholder-surface:-ms-input-placeholder {
+    color: var(--color-surface);
   }
 
-  .md\:placeholder-white::-ms-input-placeholder {
-    color: var(--color-white);
+  .md\:placeholder-surface::-ms-input-placeholder {
+    color: var(--color-surface);
   }
 
-  .md\:placeholder-white::placeholder {
-    color: var(--color-white);
+  .md\:placeholder-surface::placeholder {
+    color: var(--color-surface);
   }
 
-  .md\:placeholder-dark::-moz-placeholder {
-    color: var(--color-dark);
+  .md\:placeholder-accent::-moz-placeholder {
+    color: var(--color-accent);
   }
 
-  .md\:placeholder-dark:-ms-input-placeholder {
-    color: var(--color-dark);
+  .md\:placeholder-accent:-ms-input-placeholder {
+    color: var(--color-accent);
   }
 
-  .md\:placeholder-dark::-ms-input-placeholder {
-    color: var(--color-dark);
+  .md\:placeholder-accent::-ms-input-placeholder {
+    color: var(--color-accent);
   }
 
-  .md\:placeholder-dark::placeholder {
-    color: var(--color-dark);
+  .md\:placeholder-accent::placeholder {
+    color: var(--color-accent);
   }
 
-  .md\:placeholder-light::-moz-placeholder {
-    color: var(--color-light);
+  .md\:placeholder-font::-moz-placeholder {
+    color: var(--color-font);
   }
 
-  .md\:placeholder-light:-ms-input-placeholder {
-    color: var(--color-light);
+  .md\:placeholder-font:-ms-input-placeholder {
+    color: var(--color-font);
   }
 
-  .md\:placeholder-light::-ms-input-placeholder {
-    color: var(--color-light);
+  .md\:placeholder-font::-ms-input-placeholder {
+    color: var(--color-font);
   }
 
-  .md\:placeholder-light::placeholder {
-    color: var(--color-light);
+  .md\:placeholder-font::placeholder {
+    color: var(--color-font);
   }
 
-  .md\:placeholder-highlight::-moz-placeholder {
-    color: var(--color-highlight);
+  .md\:focus\:placeholder-background:focus::-moz-placeholder {
+    color: var(--color-background);
   }
 
-  .md\:placeholder-highlight:-ms-input-placeholder {
-    color: var(--color-highlight);
+  .md\:focus\:placeholder-background:focus:-ms-input-placeholder {
+    color: var(--color-background);
   }
 
-  .md\:placeholder-highlight::-ms-input-placeholder {
-    color: var(--color-highlight);
+  .md\:focus\:placeholder-background:focus::-ms-input-placeholder {
+    color: var(--color-background);
   }
 
-  .md\:placeholder-highlight::placeholder {
-    color: var(--color-highlight);
+  .md\:focus\:placeholder-background:focus::placeholder {
+    color: var(--color-background);
   }
 
-  .md\:focus\:placeholder-black:focus::-moz-placeholder {
-    color: var(--color-black);
+  .md\:focus\:placeholder-surface:focus::-moz-placeholder {
+    color: var(--color-surface);
   }
 
-  .md\:focus\:placeholder-black:focus:-ms-input-placeholder {
-    color: var(--color-black);
+  .md\:focus\:placeholder-surface:focus:-ms-input-placeholder {
+    color: var(--color-surface);
   }
 
-  .md\:focus\:placeholder-black:focus::-ms-input-placeholder {
-    color: var(--color-black);
+  .md\:focus\:placeholder-surface:focus::-ms-input-placeholder {
+    color: var(--color-surface);
   }
 
-  .md\:focus\:placeholder-black:focus::placeholder {
-    color: var(--color-black);
+  .md\:focus\:placeholder-surface:focus::placeholder {
+    color: var(--color-surface);
   }
 
-  .md\:focus\:placeholder-white:focus::-moz-placeholder {
-    color: var(--color-white);
+  .md\:focus\:placeholder-accent:focus::-moz-placeholder {
+    color: var(--color-accent);
   }
 
-  .md\:focus\:placeholder-white:focus:-ms-input-placeholder {
-    color: var(--color-white);
+  .md\:focus\:placeholder-accent:focus:-ms-input-placeholder {
+    color: var(--color-accent);
   }
 
-  .md\:focus\:placeholder-white:focus::-ms-input-placeholder {
-    color: var(--color-white);
+  .md\:focus\:placeholder-accent:focus::-ms-input-placeholder {
+    color: var(--color-accent);
   }
 
-  .md\:focus\:placeholder-white:focus::placeholder {
-    color: var(--color-white);
+  .md\:focus\:placeholder-accent:focus::placeholder {
+    color: var(--color-accent);
   }
 
-  .md\:focus\:placeholder-dark:focus::-moz-placeholder {
-    color: var(--color-dark);
+  .md\:focus\:placeholder-font:focus::-moz-placeholder {
+    color: var(--color-font);
   }
 
-  .md\:focus\:placeholder-dark:focus:-ms-input-placeholder {
-    color: var(--color-dark);
+  .md\:focus\:placeholder-font:focus:-ms-input-placeholder {
+    color: var(--color-font);
   }
 
-  .md\:focus\:placeholder-dark:focus::-ms-input-placeholder {
-    color: var(--color-dark);
+  .md\:focus\:placeholder-font:focus::-ms-input-placeholder {
+    color: var(--color-font);
   }
 
-  .md\:focus\:placeholder-dark:focus::placeholder {
-    color: var(--color-dark);
-  }
-
-  .md\:focus\:placeholder-light:focus::-moz-placeholder {
-    color: var(--color-light);
-  }
-
-  .md\:focus\:placeholder-light:focus:-ms-input-placeholder {
-    color: var(--color-light);
-  }
-
-  .md\:focus\:placeholder-light:focus::-ms-input-placeholder {
-    color: var(--color-light);
-  }
-
-  .md\:focus\:placeholder-light:focus::placeholder {
-    color: var(--color-light);
-  }
-
-  .md\:focus\:placeholder-highlight:focus::-moz-placeholder {
-    color: var(--color-highlight);
-  }
-
-  .md\:focus\:placeholder-highlight:focus:-ms-input-placeholder {
-    color: var(--color-highlight);
-  }
-
-  .md\:focus\:placeholder-highlight:focus::-ms-input-placeholder {
-    color: var(--color-highlight);
-  }
-
-  .md\:focus\:placeholder-highlight:focus::placeholder {
-    color: var(--color-highlight);
+  .md\:focus\:placeholder-font:focus::placeholder {
+    color: var(--color-font);
   }
 
   .md\:placeholder-opacity-0::-moz-placeholder {
@@ -20334,64 +20130,52 @@ h1 + .o-intro {
     text-align: justify;
   }
 
-  .md\:text-black {
-    color: var(--color-black);
+  .md\:text-background {
+    color: var(--color-background);
   }
 
-  .md\:text-white {
-    color: var(--color-white);
+  .md\:text-surface {
+    color: var(--color-surface);
   }
 
-  .md\:text-dark {
-    color: var(--color-dark);
+  .md\:text-accent {
+    color: var(--color-accent);
   }
 
-  .md\:text-light {
-    color: var(--color-light);
+  .md\:text-font {
+    color: var(--color-font);
   }
 
-  .md\:text-highlight {
-    color: var(--color-highlight);
+  .md\:hover\:text-background:hover {
+    color: var(--color-background);
   }
 
-  .md\:hover\:text-black:hover {
-    color: var(--color-black);
+  .md\:hover\:text-surface:hover {
+    color: var(--color-surface);
   }
 
-  .md\:hover\:text-white:hover {
-    color: var(--color-white);
+  .md\:hover\:text-accent:hover {
+    color: var(--color-accent);
   }
 
-  .md\:hover\:text-dark:hover {
-    color: var(--color-dark);
+  .md\:hover\:text-font:hover {
+    color: var(--color-font);
   }
 
-  .md\:hover\:text-light:hover {
-    color: var(--color-light);
+  .md\:focus\:text-background:focus {
+    color: var(--color-background);
   }
 
-  .md\:hover\:text-highlight:hover {
-    color: var(--color-highlight);
+  .md\:focus\:text-surface:focus {
+    color: var(--color-surface);
   }
 
-  .md\:focus\:text-black:focus {
-    color: var(--color-black);
+  .md\:focus\:text-accent:focus {
+    color: var(--color-accent);
   }
 
-  .md\:focus\:text-white:focus {
-    color: var(--color-white);
-  }
-
-  .md\:focus\:text-dark:focus {
-    color: var(--color-dark);
-  }
-
-  .md\:focus\:text-light:focus {
-    color: var(--color-light);
-  }
-
-  .md\:focus\:text-highlight:focus {
-    color: var(--color-highlight);
+  .md\:focus\:text-font:focus {
+    color: var(--color-font);
   }
 
   .md\:text-opacity-0 {
@@ -23830,24 +23614,20 @@ h1 + .o-intro {
     --divide-x-reverse: 1;
   }
 
-  .lg\:divide-black > :not(template) ~ :not(template) {
-    border-color: var(--color-black);
+  .lg\:divide-background > :not(template) ~ :not(template) {
+    border-color: var(--color-background);
   }
 
-  .lg\:divide-white > :not(template) ~ :not(template) {
-    border-color: var(--color-white);
+  .lg\:divide-surface > :not(template) ~ :not(template) {
+    border-color: var(--color-surface);
   }
 
-  .lg\:divide-dark > :not(template) ~ :not(template) {
-    border-color: var(--color-dark);
+  .lg\:divide-accent > :not(template) ~ :not(template) {
+    border-color: var(--color-accent);
   }
 
-  .lg\:divide-light > :not(template) ~ :not(template) {
-    border-color: var(--color-light);
-  }
-
-  .lg\:divide-highlight > :not(template) ~ :not(template) {
-    border-color: var(--color-highlight);
+  .lg\:divide-font > :not(template) ~ :not(template) {
+    border-color: var(--color-font);
   }
 
   .lg\:divide-opacity-0 > :not(template) ~ :not(template) {
@@ -23934,64 +23714,52 @@ h1 + .o-intro {
     background-attachment: scroll;
   }
 
-  .lg\:bg-black {
-    background-color: var(--color-black);
+  .lg\:bg-background {
+    background-color: var(--color-background);
   }
 
-  .lg\:bg-white {
-    background-color: var(--color-white);
+  .lg\:bg-surface {
+    background-color: var(--color-surface);
   }
 
-  .lg\:bg-dark {
-    background-color: var(--color-dark);
+  .lg\:bg-accent {
+    background-color: var(--color-accent);
   }
 
-  .lg\:bg-light {
-    background-color: var(--color-light);
+  .lg\:bg-font {
+    background-color: var(--color-font);
   }
 
-  .lg\:bg-highlight {
-    background-color: var(--color-highlight);
+  .lg\:hover\:bg-background:hover {
+    background-color: var(--color-background);
   }
 
-  .lg\:hover\:bg-black:hover {
-    background-color: var(--color-black);
+  .lg\:hover\:bg-surface:hover {
+    background-color: var(--color-surface);
   }
 
-  .lg\:hover\:bg-white:hover {
-    background-color: var(--color-white);
+  .lg\:hover\:bg-accent:hover {
+    background-color: var(--color-accent);
   }
 
-  .lg\:hover\:bg-dark:hover {
-    background-color: var(--color-dark);
+  .lg\:hover\:bg-font:hover {
+    background-color: var(--color-font);
   }
 
-  .lg\:hover\:bg-light:hover {
-    background-color: var(--color-light);
+  .lg\:focus\:bg-background:focus {
+    background-color: var(--color-background);
   }
 
-  .lg\:hover\:bg-highlight:hover {
-    background-color: var(--color-highlight);
+  .lg\:focus\:bg-surface:focus {
+    background-color: var(--color-surface);
   }
 
-  .lg\:focus\:bg-black:focus {
-    background-color: var(--color-black);
+  .lg\:focus\:bg-accent:focus {
+    background-color: var(--color-accent);
   }
 
-  .lg\:focus\:bg-white:focus {
-    background-color: var(--color-white);
-  }
-
-  .lg\:focus\:bg-dark:focus {
-    background-color: var(--color-dark);
-  }
-
-  .lg\:focus\:bg-light:focus {
-    background-color: var(--color-light);
-  }
-
-  .lg\:focus\:bg-highlight:focus {
-    background-color: var(--color-highlight);
+  .lg\:focus\:bg-font:focus {
+    background-color: var(--color-font);
   }
 
   .lg\:bg-opacity-0 {
@@ -24134,64 +23902,52 @@ h1 + .o-intro {
     border-collapse: separate;
   }
 
-  .lg\:border-black {
-    border-color: var(--color-black);
+  .lg\:border-background {
+    border-color: var(--color-background);
   }
 
-  .lg\:border-white {
-    border-color: var(--color-white);
+  .lg\:border-surface {
+    border-color: var(--color-surface);
   }
 
-  .lg\:border-dark {
-    border-color: var(--color-dark);
+  .lg\:border-accent {
+    border-color: var(--color-accent);
   }
 
-  .lg\:border-light {
-    border-color: var(--color-light);
+  .lg\:border-font {
+    border-color: var(--color-font);
   }
 
-  .lg\:border-highlight {
-    border-color: var(--color-highlight);
+  .lg\:hover\:border-background:hover {
+    border-color: var(--color-background);
   }
 
-  .lg\:hover\:border-black:hover {
-    border-color: var(--color-black);
+  .lg\:hover\:border-surface:hover {
+    border-color: var(--color-surface);
   }
 
-  .lg\:hover\:border-white:hover {
-    border-color: var(--color-white);
+  .lg\:hover\:border-accent:hover {
+    border-color: var(--color-accent);
   }
 
-  .lg\:hover\:border-dark:hover {
-    border-color: var(--color-dark);
+  .lg\:hover\:border-font:hover {
+    border-color: var(--color-font);
   }
 
-  .lg\:hover\:border-light:hover {
-    border-color: var(--color-light);
+  .lg\:focus\:border-background:focus {
+    border-color: var(--color-background);
   }
 
-  .lg\:hover\:border-highlight:hover {
-    border-color: var(--color-highlight);
+  .lg\:focus\:border-surface:focus {
+    border-color: var(--color-surface);
   }
 
-  .lg\:focus\:border-black:focus {
-    border-color: var(--color-black);
+  .lg\:focus\:border-accent:focus {
+    border-color: var(--color-accent);
   }
 
-  .lg\:focus\:border-white:focus {
-    border-color: var(--color-white);
-  }
-
-  .lg\:focus\:border-dark:focus {
-    border-color: var(--color-dark);
-  }
-
-  .lg\:focus\:border-light:focus {
-    border-color: var(--color-light);
-  }
-
-  .lg\:focus\:border-highlight:focus {
-    border-color: var(--color-highlight);
+  .lg\:focus\:border-font:focus {
+    border-color: var(--color-font);
   }
 
   .lg\:border-opacity-0 {
@@ -27280,164 +27036,132 @@ h1 + .o-intro {
     padding-left: 1px;
   }
 
-  .lg\:placeholder-black::-moz-placeholder {
-    color: var(--color-black);
+  .lg\:placeholder-background::-moz-placeholder {
+    color: var(--color-background);
   }
 
-  .lg\:placeholder-black:-ms-input-placeholder {
-    color: var(--color-black);
+  .lg\:placeholder-background:-ms-input-placeholder {
+    color: var(--color-background);
   }
 
-  .lg\:placeholder-black::-ms-input-placeholder {
-    color: var(--color-black);
+  .lg\:placeholder-background::-ms-input-placeholder {
+    color: var(--color-background);
   }
 
-  .lg\:placeholder-black::placeholder {
-    color: var(--color-black);
+  .lg\:placeholder-background::placeholder {
+    color: var(--color-background);
   }
 
-  .lg\:placeholder-white::-moz-placeholder {
-    color: var(--color-white);
+  .lg\:placeholder-surface::-moz-placeholder {
+    color: var(--color-surface);
   }
 
-  .lg\:placeholder-white:-ms-input-placeholder {
-    color: var(--color-white);
+  .lg\:placeholder-surface:-ms-input-placeholder {
+    color: var(--color-surface);
   }
 
-  .lg\:placeholder-white::-ms-input-placeholder {
-    color: var(--color-white);
+  .lg\:placeholder-surface::-ms-input-placeholder {
+    color: var(--color-surface);
   }
 
-  .lg\:placeholder-white::placeholder {
-    color: var(--color-white);
+  .lg\:placeholder-surface::placeholder {
+    color: var(--color-surface);
   }
 
-  .lg\:placeholder-dark::-moz-placeholder {
-    color: var(--color-dark);
+  .lg\:placeholder-accent::-moz-placeholder {
+    color: var(--color-accent);
   }
 
-  .lg\:placeholder-dark:-ms-input-placeholder {
-    color: var(--color-dark);
+  .lg\:placeholder-accent:-ms-input-placeholder {
+    color: var(--color-accent);
   }
 
-  .lg\:placeholder-dark::-ms-input-placeholder {
-    color: var(--color-dark);
+  .lg\:placeholder-accent::-ms-input-placeholder {
+    color: var(--color-accent);
   }
 
-  .lg\:placeholder-dark::placeholder {
-    color: var(--color-dark);
+  .lg\:placeholder-accent::placeholder {
+    color: var(--color-accent);
   }
 
-  .lg\:placeholder-light::-moz-placeholder {
-    color: var(--color-light);
+  .lg\:placeholder-font::-moz-placeholder {
+    color: var(--color-font);
   }
 
-  .lg\:placeholder-light:-ms-input-placeholder {
-    color: var(--color-light);
+  .lg\:placeholder-font:-ms-input-placeholder {
+    color: var(--color-font);
   }
 
-  .lg\:placeholder-light::-ms-input-placeholder {
-    color: var(--color-light);
+  .lg\:placeholder-font::-ms-input-placeholder {
+    color: var(--color-font);
   }
 
-  .lg\:placeholder-light::placeholder {
-    color: var(--color-light);
+  .lg\:placeholder-font::placeholder {
+    color: var(--color-font);
   }
 
-  .lg\:placeholder-highlight::-moz-placeholder {
-    color: var(--color-highlight);
+  .lg\:focus\:placeholder-background:focus::-moz-placeholder {
+    color: var(--color-background);
   }
 
-  .lg\:placeholder-highlight:-ms-input-placeholder {
-    color: var(--color-highlight);
+  .lg\:focus\:placeholder-background:focus:-ms-input-placeholder {
+    color: var(--color-background);
   }
 
-  .lg\:placeholder-highlight::-ms-input-placeholder {
-    color: var(--color-highlight);
+  .lg\:focus\:placeholder-background:focus::-ms-input-placeholder {
+    color: var(--color-background);
   }
 
-  .lg\:placeholder-highlight::placeholder {
-    color: var(--color-highlight);
+  .lg\:focus\:placeholder-background:focus::placeholder {
+    color: var(--color-background);
   }
 
-  .lg\:focus\:placeholder-black:focus::-moz-placeholder {
-    color: var(--color-black);
+  .lg\:focus\:placeholder-surface:focus::-moz-placeholder {
+    color: var(--color-surface);
   }
 
-  .lg\:focus\:placeholder-black:focus:-ms-input-placeholder {
-    color: var(--color-black);
+  .lg\:focus\:placeholder-surface:focus:-ms-input-placeholder {
+    color: var(--color-surface);
   }
 
-  .lg\:focus\:placeholder-black:focus::-ms-input-placeholder {
-    color: var(--color-black);
+  .lg\:focus\:placeholder-surface:focus::-ms-input-placeholder {
+    color: var(--color-surface);
   }
 
-  .lg\:focus\:placeholder-black:focus::placeholder {
-    color: var(--color-black);
+  .lg\:focus\:placeholder-surface:focus::placeholder {
+    color: var(--color-surface);
   }
 
-  .lg\:focus\:placeholder-white:focus::-moz-placeholder {
-    color: var(--color-white);
+  .lg\:focus\:placeholder-accent:focus::-moz-placeholder {
+    color: var(--color-accent);
   }
 
-  .lg\:focus\:placeholder-white:focus:-ms-input-placeholder {
-    color: var(--color-white);
+  .lg\:focus\:placeholder-accent:focus:-ms-input-placeholder {
+    color: var(--color-accent);
   }
 
-  .lg\:focus\:placeholder-white:focus::-ms-input-placeholder {
-    color: var(--color-white);
+  .lg\:focus\:placeholder-accent:focus::-ms-input-placeholder {
+    color: var(--color-accent);
   }
 
-  .lg\:focus\:placeholder-white:focus::placeholder {
-    color: var(--color-white);
+  .lg\:focus\:placeholder-accent:focus::placeholder {
+    color: var(--color-accent);
   }
 
-  .lg\:focus\:placeholder-dark:focus::-moz-placeholder {
-    color: var(--color-dark);
+  .lg\:focus\:placeholder-font:focus::-moz-placeholder {
+    color: var(--color-font);
   }
 
-  .lg\:focus\:placeholder-dark:focus:-ms-input-placeholder {
-    color: var(--color-dark);
+  .lg\:focus\:placeholder-font:focus:-ms-input-placeholder {
+    color: var(--color-font);
   }
 
-  .lg\:focus\:placeholder-dark:focus::-ms-input-placeholder {
-    color: var(--color-dark);
+  .lg\:focus\:placeholder-font:focus::-ms-input-placeholder {
+    color: var(--color-font);
   }
 
-  .lg\:focus\:placeholder-dark:focus::placeholder {
-    color: var(--color-dark);
-  }
-
-  .lg\:focus\:placeholder-light:focus::-moz-placeholder {
-    color: var(--color-light);
-  }
-
-  .lg\:focus\:placeholder-light:focus:-ms-input-placeholder {
-    color: var(--color-light);
-  }
-
-  .lg\:focus\:placeholder-light:focus::-ms-input-placeholder {
-    color: var(--color-light);
-  }
-
-  .lg\:focus\:placeholder-light:focus::placeholder {
-    color: var(--color-light);
-  }
-
-  .lg\:focus\:placeholder-highlight:focus::-moz-placeholder {
-    color: var(--color-highlight);
-  }
-
-  .lg\:focus\:placeholder-highlight:focus:-ms-input-placeholder {
-    color: var(--color-highlight);
-  }
-
-  .lg\:focus\:placeholder-highlight:focus::-ms-input-placeholder {
-    color: var(--color-highlight);
-  }
-
-  .lg\:focus\:placeholder-highlight:focus::placeholder {
-    color: var(--color-highlight);
+  .lg\:focus\:placeholder-font:focus::placeholder {
+    color: var(--color-font);
   }
 
   .lg\:placeholder-opacity-0::-moz-placeholder {
@@ -27875,64 +27599,52 @@ h1 + .o-intro {
     text-align: justify;
   }
 
-  .lg\:text-black {
-    color: var(--color-black);
+  .lg\:text-background {
+    color: var(--color-background);
   }
 
-  .lg\:text-white {
-    color: var(--color-white);
+  .lg\:text-surface {
+    color: var(--color-surface);
   }
 
-  .lg\:text-dark {
-    color: var(--color-dark);
+  .lg\:text-accent {
+    color: var(--color-accent);
   }
 
-  .lg\:text-light {
-    color: var(--color-light);
+  .lg\:text-font {
+    color: var(--color-font);
   }
 
-  .lg\:text-highlight {
-    color: var(--color-highlight);
+  .lg\:hover\:text-background:hover {
+    color: var(--color-background);
   }
 
-  .lg\:hover\:text-black:hover {
-    color: var(--color-black);
+  .lg\:hover\:text-surface:hover {
+    color: var(--color-surface);
   }
 
-  .lg\:hover\:text-white:hover {
-    color: var(--color-white);
+  .lg\:hover\:text-accent:hover {
+    color: var(--color-accent);
   }
 
-  .lg\:hover\:text-dark:hover {
-    color: var(--color-dark);
+  .lg\:hover\:text-font:hover {
+    color: var(--color-font);
   }
 
-  .lg\:hover\:text-light:hover {
-    color: var(--color-light);
+  .lg\:focus\:text-background:focus {
+    color: var(--color-background);
   }
 
-  .lg\:hover\:text-highlight:hover {
-    color: var(--color-highlight);
+  .lg\:focus\:text-surface:focus {
+    color: var(--color-surface);
   }
 
-  .lg\:focus\:text-black:focus {
-    color: var(--color-black);
+  .lg\:focus\:text-accent:focus {
+    color: var(--color-accent);
   }
 
-  .lg\:focus\:text-white:focus {
-    color: var(--color-white);
-  }
-
-  .lg\:focus\:text-dark:focus {
-    color: var(--color-dark);
-  }
-
-  .lg\:focus\:text-light:focus {
-    color: var(--color-light);
-  }
-
-  .lg\:focus\:text-highlight:focus {
-    color: var(--color-highlight);
+  .lg\:focus\:text-font:focus {
+    color: var(--color-font);
   }
 
   .lg\:text-opacity-0 {
@@ -31371,24 +31083,20 @@ h1 + .o-intro {
     --divide-x-reverse: 1;
   }
 
-  .xl\:divide-black > :not(template) ~ :not(template) {
-    border-color: var(--color-black);
+  .xl\:divide-background > :not(template) ~ :not(template) {
+    border-color: var(--color-background);
   }
 
-  .xl\:divide-white > :not(template) ~ :not(template) {
-    border-color: var(--color-white);
+  .xl\:divide-surface > :not(template) ~ :not(template) {
+    border-color: var(--color-surface);
   }
 
-  .xl\:divide-dark > :not(template) ~ :not(template) {
-    border-color: var(--color-dark);
+  .xl\:divide-accent > :not(template) ~ :not(template) {
+    border-color: var(--color-accent);
   }
 
-  .xl\:divide-light > :not(template) ~ :not(template) {
-    border-color: var(--color-light);
-  }
-
-  .xl\:divide-highlight > :not(template) ~ :not(template) {
-    border-color: var(--color-highlight);
+  .xl\:divide-font > :not(template) ~ :not(template) {
+    border-color: var(--color-font);
   }
 
   .xl\:divide-opacity-0 > :not(template) ~ :not(template) {
@@ -31475,64 +31183,52 @@ h1 + .o-intro {
     background-attachment: scroll;
   }
 
-  .xl\:bg-black {
-    background-color: var(--color-black);
+  .xl\:bg-background {
+    background-color: var(--color-background);
   }
 
-  .xl\:bg-white {
-    background-color: var(--color-white);
+  .xl\:bg-surface {
+    background-color: var(--color-surface);
   }
 
-  .xl\:bg-dark {
-    background-color: var(--color-dark);
+  .xl\:bg-accent {
+    background-color: var(--color-accent);
   }
 
-  .xl\:bg-light {
-    background-color: var(--color-light);
+  .xl\:bg-font {
+    background-color: var(--color-font);
   }
 
-  .xl\:bg-highlight {
-    background-color: var(--color-highlight);
+  .xl\:hover\:bg-background:hover {
+    background-color: var(--color-background);
   }
 
-  .xl\:hover\:bg-black:hover {
-    background-color: var(--color-black);
+  .xl\:hover\:bg-surface:hover {
+    background-color: var(--color-surface);
   }
 
-  .xl\:hover\:bg-white:hover {
-    background-color: var(--color-white);
+  .xl\:hover\:bg-accent:hover {
+    background-color: var(--color-accent);
   }
 
-  .xl\:hover\:bg-dark:hover {
-    background-color: var(--color-dark);
+  .xl\:hover\:bg-font:hover {
+    background-color: var(--color-font);
   }
 
-  .xl\:hover\:bg-light:hover {
-    background-color: var(--color-light);
+  .xl\:focus\:bg-background:focus {
+    background-color: var(--color-background);
   }
 
-  .xl\:hover\:bg-highlight:hover {
-    background-color: var(--color-highlight);
+  .xl\:focus\:bg-surface:focus {
+    background-color: var(--color-surface);
   }
 
-  .xl\:focus\:bg-black:focus {
-    background-color: var(--color-black);
+  .xl\:focus\:bg-accent:focus {
+    background-color: var(--color-accent);
   }
 
-  .xl\:focus\:bg-white:focus {
-    background-color: var(--color-white);
-  }
-
-  .xl\:focus\:bg-dark:focus {
-    background-color: var(--color-dark);
-  }
-
-  .xl\:focus\:bg-light:focus {
-    background-color: var(--color-light);
-  }
-
-  .xl\:focus\:bg-highlight:focus {
-    background-color: var(--color-highlight);
+  .xl\:focus\:bg-font:focus {
+    background-color: var(--color-font);
   }
 
   .xl\:bg-opacity-0 {
@@ -31675,64 +31371,52 @@ h1 + .o-intro {
     border-collapse: separate;
   }
 
-  .xl\:border-black {
-    border-color: var(--color-black);
+  .xl\:border-background {
+    border-color: var(--color-background);
   }
 
-  .xl\:border-white {
-    border-color: var(--color-white);
+  .xl\:border-surface {
+    border-color: var(--color-surface);
   }
 
-  .xl\:border-dark {
-    border-color: var(--color-dark);
+  .xl\:border-accent {
+    border-color: var(--color-accent);
   }
 
-  .xl\:border-light {
-    border-color: var(--color-light);
+  .xl\:border-font {
+    border-color: var(--color-font);
   }
 
-  .xl\:border-highlight {
-    border-color: var(--color-highlight);
+  .xl\:hover\:border-background:hover {
+    border-color: var(--color-background);
   }
 
-  .xl\:hover\:border-black:hover {
-    border-color: var(--color-black);
+  .xl\:hover\:border-surface:hover {
+    border-color: var(--color-surface);
   }
 
-  .xl\:hover\:border-white:hover {
-    border-color: var(--color-white);
+  .xl\:hover\:border-accent:hover {
+    border-color: var(--color-accent);
   }
 
-  .xl\:hover\:border-dark:hover {
-    border-color: var(--color-dark);
+  .xl\:hover\:border-font:hover {
+    border-color: var(--color-font);
   }
 
-  .xl\:hover\:border-light:hover {
-    border-color: var(--color-light);
+  .xl\:focus\:border-background:focus {
+    border-color: var(--color-background);
   }
 
-  .xl\:hover\:border-highlight:hover {
-    border-color: var(--color-highlight);
+  .xl\:focus\:border-surface:focus {
+    border-color: var(--color-surface);
   }
 
-  .xl\:focus\:border-black:focus {
-    border-color: var(--color-black);
+  .xl\:focus\:border-accent:focus {
+    border-color: var(--color-accent);
   }
 
-  .xl\:focus\:border-white:focus {
-    border-color: var(--color-white);
-  }
-
-  .xl\:focus\:border-dark:focus {
-    border-color: var(--color-dark);
-  }
-
-  .xl\:focus\:border-light:focus {
-    border-color: var(--color-light);
-  }
-
-  .xl\:focus\:border-highlight:focus {
-    border-color: var(--color-highlight);
+  .xl\:focus\:border-font:focus {
+    border-color: var(--color-font);
   }
 
   .xl\:border-opacity-0 {
@@ -34821,164 +34505,132 @@ h1 + .o-intro {
     padding-left: 1px;
   }
 
-  .xl\:placeholder-black::-moz-placeholder {
-    color: var(--color-black);
+  .xl\:placeholder-background::-moz-placeholder {
+    color: var(--color-background);
   }
 
-  .xl\:placeholder-black:-ms-input-placeholder {
-    color: var(--color-black);
+  .xl\:placeholder-background:-ms-input-placeholder {
+    color: var(--color-background);
   }
 
-  .xl\:placeholder-black::-ms-input-placeholder {
-    color: var(--color-black);
+  .xl\:placeholder-background::-ms-input-placeholder {
+    color: var(--color-background);
   }
 
-  .xl\:placeholder-black::placeholder {
-    color: var(--color-black);
+  .xl\:placeholder-background::placeholder {
+    color: var(--color-background);
   }
 
-  .xl\:placeholder-white::-moz-placeholder {
-    color: var(--color-white);
+  .xl\:placeholder-surface::-moz-placeholder {
+    color: var(--color-surface);
   }
 
-  .xl\:placeholder-white:-ms-input-placeholder {
-    color: var(--color-white);
+  .xl\:placeholder-surface:-ms-input-placeholder {
+    color: var(--color-surface);
   }
 
-  .xl\:placeholder-white::-ms-input-placeholder {
-    color: var(--color-white);
+  .xl\:placeholder-surface::-ms-input-placeholder {
+    color: var(--color-surface);
   }
 
-  .xl\:placeholder-white::placeholder {
-    color: var(--color-white);
+  .xl\:placeholder-surface::placeholder {
+    color: var(--color-surface);
   }
 
-  .xl\:placeholder-dark::-moz-placeholder {
-    color: var(--color-dark);
+  .xl\:placeholder-accent::-moz-placeholder {
+    color: var(--color-accent);
   }
 
-  .xl\:placeholder-dark:-ms-input-placeholder {
-    color: var(--color-dark);
+  .xl\:placeholder-accent:-ms-input-placeholder {
+    color: var(--color-accent);
   }
 
-  .xl\:placeholder-dark::-ms-input-placeholder {
-    color: var(--color-dark);
+  .xl\:placeholder-accent::-ms-input-placeholder {
+    color: var(--color-accent);
   }
 
-  .xl\:placeholder-dark::placeholder {
-    color: var(--color-dark);
+  .xl\:placeholder-accent::placeholder {
+    color: var(--color-accent);
   }
 
-  .xl\:placeholder-light::-moz-placeholder {
-    color: var(--color-light);
+  .xl\:placeholder-font::-moz-placeholder {
+    color: var(--color-font);
   }
 
-  .xl\:placeholder-light:-ms-input-placeholder {
-    color: var(--color-light);
+  .xl\:placeholder-font:-ms-input-placeholder {
+    color: var(--color-font);
   }
 
-  .xl\:placeholder-light::-ms-input-placeholder {
-    color: var(--color-light);
+  .xl\:placeholder-font::-ms-input-placeholder {
+    color: var(--color-font);
   }
 
-  .xl\:placeholder-light::placeholder {
-    color: var(--color-light);
+  .xl\:placeholder-font::placeholder {
+    color: var(--color-font);
   }
 
-  .xl\:placeholder-highlight::-moz-placeholder {
-    color: var(--color-highlight);
+  .xl\:focus\:placeholder-background:focus::-moz-placeholder {
+    color: var(--color-background);
   }
 
-  .xl\:placeholder-highlight:-ms-input-placeholder {
-    color: var(--color-highlight);
+  .xl\:focus\:placeholder-background:focus:-ms-input-placeholder {
+    color: var(--color-background);
   }
 
-  .xl\:placeholder-highlight::-ms-input-placeholder {
-    color: var(--color-highlight);
+  .xl\:focus\:placeholder-background:focus::-ms-input-placeholder {
+    color: var(--color-background);
   }
 
-  .xl\:placeholder-highlight::placeholder {
-    color: var(--color-highlight);
+  .xl\:focus\:placeholder-background:focus::placeholder {
+    color: var(--color-background);
   }
 
-  .xl\:focus\:placeholder-black:focus::-moz-placeholder {
-    color: var(--color-black);
+  .xl\:focus\:placeholder-surface:focus::-moz-placeholder {
+    color: var(--color-surface);
   }
 
-  .xl\:focus\:placeholder-black:focus:-ms-input-placeholder {
-    color: var(--color-black);
+  .xl\:focus\:placeholder-surface:focus:-ms-input-placeholder {
+    color: var(--color-surface);
   }
 
-  .xl\:focus\:placeholder-black:focus::-ms-input-placeholder {
-    color: var(--color-black);
+  .xl\:focus\:placeholder-surface:focus::-ms-input-placeholder {
+    color: var(--color-surface);
   }
 
-  .xl\:focus\:placeholder-black:focus::placeholder {
-    color: var(--color-black);
+  .xl\:focus\:placeholder-surface:focus::placeholder {
+    color: var(--color-surface);
   }
 
-  .xl\:focus\:placeholder-white:focus::-moz-placeholder {
-    color: var(--color-white);
+  .xl\:focus\:placeholder-accent:focus::-moz-placeholder {
+    color: var(--color-accent);
   }
 
-  .xl\:focus\:placeholder-white:focus:-ms-input-placeholder {
-    color: var(--color-white);
+  .xl\:focus\:placeholder-accent:focus:-ms-input-placeholder {
+    color: var(--color-accent);
   }
 
-  .xl\:focus\:placeholder-white:focus::-ms-input-placeholder {
-    color: var(--color-white);
+  .xl\:focus\:placeholder-accent:focus::-ms-input-placeholder {
+    color: var(--color-accent);
   }
 
-  .xl\:focus\:placeholder-white:focus::placeholder {
-    color: var(--color-white);
+  .xl\:focus\:placeholder-accent:focus::placeholder {
+    color: var(--color-accent);
   }
 
-  .xl\:focus\:placeholder-dark:focus::-moz-placeholder {
-    color: var(--color-dark);
+  .xl\:focus\:placeholder-font:focus::-moz-placeholder {
+    color: var(--color-font);
   }
 
-  .xl\:focus\:placeholder-dark:focus:-ms-input-placeholder {
-    color: var(--color-dark);
+  .xl\:focus\:placeholder-font:focus:-ms-input-placeholder {
+    color: var(--color-font);
   }
 
-  .xl\:focus\:placeholder-dark:focus::-ms-input-placeholder {
-    color: var(--color-dark);
+  .xl\:focus\:placeholder-font:focus::-ms-input-placeholder {
+    color: var(--color-font);
   }
 
-  .xl\:focus\:placeholder-dark:focus::placeholder {
-    color: var(--color-dark);
-  }
-
-  .xl\:focus\:placeholder-light:focus::-moz-placeholder {
-    color: var(--color-light);
-  }
-
-  .xl\:focus\:placeholder-light:focus:-ms-input-placeholder {
-    color: var(--color-light);
-  }
-
-  .xl\:focus\:placeholder-light:focus::-ms-input-placeholder {
-    color: var(--color-light);
-  }
-
-  .xl\:focus\:placeholder-light:focus::placeholder {
-    color: var(--color-light);
-  }
-
-  .xl\:focus\:placeholder-highlight:focus::-moz-placeholder {
-    color: var(--color-highlight);
-  }
-
-  .xl\:focus\:placeholder-highlight:focus:-ms-input-placeholder {
-    color: var(--color-highlight);
-  }
-
-  .xl\:focus\:placeholder-highlight:focus::-ms-input-placeholder {
-    color: var(--color-highlight);
-  }
-
-  .xl\:focus\:placeholder-highlight:focus::placeholder {
-    color: var(--color-highlight);
+  .xl\:focus\:placeholder-font:focus::placeholder {
+    color: var(--color-font);
   }
 
   .xl\:placeholder-opacity-0::-moz-placeholder {
@@ -35416,64 +35068,52 @@ h1 + .o-intro {
     text-align: justify;
   }
 
-  .xl\:text-black {
-    color: var(--color-black);
+  .xl\:text-background {
+    color: var(--color-background);
   }
 
-  .xl\:text-white {
-    color: var(--color-white);
+  .xl\:text-surface {
+    color: var(--color-surface);
   }
 
-  .xl\:text-dark {
-    color: var(--color-dark);
+  .xl\:text-accent {
+    color: var(--color-accent);
   }
 
-  .xl\:text-light {
-    color: var(--color-light);
+  .xl\:text-font {
+    color: var(--color-font);
   }
 
-  .xl\:text-highlight {
-    color: var(--color-highlight);
+  .xl\:hover\:text-background:hover {
+    color: var(--color-background);
   }
 
-  .xl\:hover\:text-black:hover {
-    color: var(--color-black);
+  .xl\:hover\:text-surface:hover {
+    color: var(--color-surface);
   }
 
-  .xl\:hover\:text-white:hover {
-    color: var(--color-white);
+  .xl\:hover\:text-accent:hover {
+    color: var(--color-accent);
   }
 
-  .xl\:hover\:text-dark:hover {
-    color: var(--color-dark);
+  .xl\:hover\:text-font:hover {
+    color: var(--color-font);
   }
 
-  .xl\:hover\:text-light:hover {
-    color: var(--color-light);
+  .xl\:focus\:text-background:focus {
+    color: var(--color-background);
   }
 
-  .xl\:hover\:text-highlight:hover {
-    color: var(--color-highlight);
+  .xl\:focus\:text-surface:focus {
+    color: var(--color-surface);
   }
 
-  .xl\:focus\:text-black:focus {
-    color: var(--color-black);
+  .xl\:focus\:text-accent:focus {
+    color: var(--color-accent);
   }
 
-  .xl\:focus\:text-white:focus {
-    color: var(--color-white);
-  }
-
-  .xl\:focus\:text-dark:focus {
-    color: var(--color-dark);
-  }
-
-  .xl\:focus\:text-light:focus {
-    color: var(--color-light);
-  }
-
-  .xl\:focus\:text-highlight:focus {
-    color: var(--color-highlight);
+  .xl\:focus\:text-font:focus {
+    color: var(--color-font);
   }
 
   .xl\:text-opacity-0 {
