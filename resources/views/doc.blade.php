@@ -8,13 +8,22 @@
             <p>
                 I am a sticky sidebar
             </p>
+            <hr>
             <ul x-data="theme()">
-                <li @click="onLight">
+                <li @click="onLight" class="cursor-pointer">
                     I like the lightness
                 </li>
-                <li @click="onDark">
+                <li @click="onDark" class="cursor-pointer">
                     I like the darkness
                 </li>
+            </ul>
+            <hr>
+            <ul>
+                @foreach (Streams::make('docs')->get() as $item)
+                <li>
+                    <a href="/docs/{{ $item->id }}">{{ $item->title }}</a>
+                </li>
+                @endforeach
             </ul>
         </aside>
     </div>
