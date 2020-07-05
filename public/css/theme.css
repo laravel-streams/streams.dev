@@ -633,7 +633,7 @@ video {
 html.o-theme--light {
   --color-background:#fff;
   --color-surface:#fff;
-  --color-accent:#333;
+  --color-accent:rgb(240, 240, 240);
   --color-font:#333;
 }
 
