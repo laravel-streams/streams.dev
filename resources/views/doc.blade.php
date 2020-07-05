@@ -29,9 +29,9 @@
     </div>
     <div class="col-span-9">
         <main class="o-main">
-            <h1>
+            {{-- <h1>
                 {{ $entry->title }}
-            </h1>
+            </h1> --}}
             @if ($entry->intro)
                 <div class="o-intro">
                     {!! Str::markdown($entry->intro) !!}
