@@ -811,33 +811,43 @@ html, body {
 }
 
 h1 {
-  font-size: 3rem;
+  font-size: 3.052rem;
 }
 
 h2 {
-  font-size: 2.25rem;
+  font-size: 2.441rem;
   border-bottom-width: 2px;
   border-color: var(--color-accent);
+  margin-bottom: 1.5rem;
+  margin-top: 3rem;
+}
+
+h2:first-child {
+  margin-top: 0;
+}
+
+h3 {
+  font-size: 1.953rem;
   margin-bottom: 1rem;
   margin-top: 2rem;
 }
 
-h3 {
-  font-size: 1.25rem;
-  margin-top: 1rem;
-}
-
 h4 {
-  font-size: 1.5rem;
-  margin-top: 1rem;
+  font-size: 1.563rem;
+  margin-bottom: 0.75rem;
+  margin-top: 1.5rem;
 }
 
 h5 {
   font-size: 1.25rem;
+  margin-bottom: 0.75rem;
+  margin-top: 1.5rem;
 }
 
 h6 {
   font-size: 1.25rem;
+  margin-bottom: 0.75rem;
+  margin-top: 1.5rem;
 }
 
 pre {
@@ -852,6 +862,8 @@ p + p {
 }
 
 .o-main {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
   width: clamp(320px, 100%, 60vw);
 }
 
@@ -2713,32 +2725,32 @@ h1 + .o-intro {
   font-size: 1rem;
 }
 
-.text-lg{
-  font-size: 1.125rem;
+.text-h1{
+  font-size: 3.052rem;
 }
 
-.text-xl{
+.text-h2{
+  font-size: 2.441rem;
+}
+
+.text-h3{
+  font-size: 1.953rem;
+}
+
+.text-h4{
+  font-size: 1.563rem;
+}
+
+.text-h5{
   font-size: 1.25rem;
 }
 
-.text-2xl{
-  font-size: 1.5rem;
+.text-h6{
+  font-size: 1.25rem;
 }
 
-.text-3xl{
-  font-size: 1.875rem;
-}
-
-.text-4xl{
-  font-size: 2.25rem;
-}
-
-.text-5xl{
-  font-size: 3rem;
-}
-
-.text-6xl{
-  font-size: 4rem;
+.text-h0{
+  font-size: 1rem;
 }
 
 .leading-3{
@@ -10183,32 +10195,32 @@ h1 + .o-intro {
     font-size: 1rem;
   }
 
-  .sm\:text-lg{
-    font-size: 1.125rem;
+  .sm\:text-h1{
+    font-size: 3.052rem;
   }
 
-  .sm\:text-xl{
+  .sm\:text-h2{
+    font-size: 2.441rem;
+  }
+
+  .sm\:text-h3{
+    font-size: 1.953rem;
+  }
+
+  .sm\:text-h4{
+    font-size: 1.563rem;
+  }
+
+  .sm\:text-h5{
     font-size: 1.25rem;
   }
 
-  .sm\:text-2xl{
-    font-size: 1.5rem;
+  .sm\:text-h6{
+    font-size: 1.25rem;
   }
 
-  .sm\:text-3xl{
-    font-size: 1.875rem;
-  }
-
-  .sm\:text-4xl{
-    font-size: 2.25rem;
-  }
-
-  .sm\:text-5xl{
-    font-size: 3rem;
-  }
-
-  .sm\:text-6xl{
-    font-size: 4rem;
+  .sm\:text-h0{
+    font-size: 1rem;
   }
 
   .sm\:leading-3{
@@ -17652,32 +17664,32 @@ h1 + .o-intro {
     font-size: 1rem;
   }
 
-  .md\:text-lg{
-    font-size: 1.125rem;
+  .md\:text-h1{
+    font-size: 3.052rem;
   }
 
-  .md\:text-xl{
+  .md\:text-h2{
+    font-size: 2.441rem;
+  }
+
+  .md\:text-h3{
+    font-size: 1.953rem;
+  }
+
+  .md\:text-h4{
+    font-size: 1.563rem;
+  }
+
+  .md\:text-h5{
     font-size: 1.25rem;
   }
 
-  .md\:text-2xl{
-    font-size: 1.5rem;
+  .md\:text-h6{
+    font-size: 1.25rem;
   }
 
-  .md\:text-3xl{
-    font-size: 1.875rem;
-  }
-
-  .md\:text-4xl{
-    font-size: 2.25rem;
-  }
-
-  .md\:text-5xl{
-    font-size: 3rem;
-  }
-
-  .md\:text-6xl{
-    font-size: 4rem;
+  .md\:text-h0{
+    font-size: 1rem;
   }
 
   .md\:leading-3{
@@ -25121,32 +25133,32 @@ h1 + .o-intro {
     font-size: 1rem;
   }
 
-  .lg\:text-lg{
-    font-size: 1.125rem;
+  .lg\:text-h1{
+    font-size: 3.052rem;
   }
 
-  .lg\:text-xl{
+  .lg\:text-h2{
+    font-size: 2.441rem;
+  }
+
+  .lg\:text-h3{
+    font-size: 1.953rem;
+  }
+
+  .lg\:text-h4{
+    font-size: 1.563rem;
+  }
+
+  .lg\:text-h5{
     font-size: 1.25rem;
   }
 
-  .lg\:text-2xl{
-    font-size: 1.5rem;
+  .lg\:text-h6{
+    font-size: 1.25rem;
   }
 
-  .lg\:text-3xl{
-    font-size: 1.875rem;
-  }
-
-  .lg\:text-4xl{
-    font-size: 2.25rem;
-  }
-
-  .lg\:text-5xl{
-    font-size: 3rem;
-  }
-
-  .lg\:text-6xl{
-    font-size: 4rem;
+  .lg\:text-h0{
+    font-size: 1rem;
   }
 
   .lg\:leading-3{
@@ -32590,32 +32602,32 @@ h1 + .o-intro {
     font-size: 1rem;
   }
 
-  .xl\:text-lg{
-    font-size: 1.125rem;
+  .xl\:text-h1{
+    font-size: 3.052rem;
   }
 
-  .xl\:text-xl{
+  .xl\:text-h2{
+    font-size: 2.441rem;
+  }
+
+  .xl\:text-h3{
+    font-size: 1.953rem;
+  }
+
+  .xl\:text-h4{
+    font-size: 1.563rem;
+  }
+
+  .xl\:text-h5{
     font-size: 1.25rem;
   }
 
-  .xl\:text-2xl{
-    font-size: 1.5rem;
+  .xl\:text-h6{
+    font-size: 1.25rem;
   }
 
-  .xl\:text-3xl{
-    font-size: 1.875rem;
-  }
-
-  .xl\:text-4xl{
-    font-size: 2.25rem;
-  }
-
-  .xl\:text-5xl{
-    font-size: 3rem;
-  }
-
-  .xl\:text-6xl{
-    font-size: 4rem;
+  .xl\:text-h0{
+    font-size: 1rem;
   }
 
   .xl\:leading-3{

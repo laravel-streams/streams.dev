@@ -1,25 +1,29 @@
 h1
 {
-    @apply text-5xl;
+    @apply text-h1;
 }
 h2
 {
-    @apply text-4xl border-b-2 border-accent mb-4 mt-8;
+    @apply text-h2 border-b-2 border-accent mb-6 mt-12;
+    &:first-child
+    {
+        @apply mt-0;
+    }
 }
 h3
 {
-    @apply text-xl mt-4;
+    @apply text-h3  mb-4 mt-8;
 }
 
 h4
 {
-    @apply text-2xl mt-4;
+    @apply text-h4  mb-3 mt-6;
 }
 h5
 {
-    @apply text-xl;
+    @apply text-h5 mb-3 mt-6;
 }
 h6
 {
-    @apply text-xl;
+    @apply text-h6 mb-3 mt-6;
 }
