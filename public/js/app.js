@@ -1922,10 +1922,20 @@ function addAsideContent() {
 
 window.theme = function () {
   return {
+    init: function init() {
+      if (!localStorage.getItem('theme')) {
+        this.onDark();
+      } else {
+        document.documentElement.classList.remove('o-theme--light', 'o-theme--dark');
+        document.documentElement.classList.add("o-theme--".concat(localStorage.getItem('theme')));
+      }
+    },
     onDark: function onDark() {
+      localStorage.setItem('theme', 'dark');
       document.documentElement.classList.remove('o-theme--light');
     },
     onLight: function onLight() {
+      localStorage.setItem('theme', 'light');
       document.documentElement.classList.add('o-theme--light');
     }
   };

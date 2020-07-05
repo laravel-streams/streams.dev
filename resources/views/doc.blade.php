@@ -9,7 +9,7 @@
                 I am a sticky sidebar
             </p>
          
-            <ul x-data="theme()">
+            <ul x-data="theme()" x-init="init">
                 <li @click="onLight" class="cursor-pointer">
                     I like the lightness
                 </li>
