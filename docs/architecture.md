@@ -4,13 +4,23 @@ title: Architecture
 
 # Architecture
 
-<div class="documentation__toc"></div>
-
 ## Introduction
 
-A top level summary of PyroCMS's architecture would be `PyroCMS = Laravel + Streams Platform + Addons`.
+Technically, Streams is a starter Laravel application with:
 
-## What is the Streams Platform?
+- [streams-core](core)
+- [streams-ui](ui)
+- [streams-api](api)
+
+## What is this Streams you speak of?
+
+Streams is a system for describing, managing, working with, accessing and building experiences upon application data for a variety of audiences.
+
+### Data First
+
+Data and language have brought us mastery of farm and land as well as self landing rocket ships and globally distributed experiences that shape people lives. 
+
+We are focusing a little closer to home lol. This system was originally designed to *at least* provide a CMS experience. We are narrowing the focus while *at least* maintaining capability of a CMS of data. Let your front end team handle their business. 
 
 The Streams Platform is a [Composer package](https://packagist.org/packages/anomaly/streams-platform) that serves as the foundation for PyroCMS. 
 
