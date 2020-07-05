@@ -5,7 +5,7 @@
     @include('partials/head')
 </head>
 
-<body class="o-theme--dark">
+<body>
     
     @yield('content')    
     

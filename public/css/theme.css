@@ -623,6 +623,174 @@ video {
 
 /* purgecss end ignore */
 
+html.o-theme--light {
+  /* Atelier-Savanna Comment */
+  /* Atelier-Savanna Red */
+  /* Atelier-Savanna Orange */
+  /* Atelier-Savanna Green */
+  /* Atelier-Savanna Blue */
+  /* Atelier-Savanna Purple */
+}
+
+html.o-theme--light .hljs-comment,
+html.o-theme--light .hljs-quote {
+  color: #78877d;
+}
+
+html.o-theme--light .hljs-variable,
+html.o-theme--light .hljs-template-variable,
+html.o-theme--light .hljs-attribute,
+html.o-theme--light .hljs-tag,
+html.o-theme--light .hljs-name,
+html.o-theme--light .hljs-regexp,
+html.o-theme--light .hljs-link,
+html.o-theme--light .hljs-name,
+html.o-theme--light .hljs-selector-id,
+html.o-theme--light .hljs-selector-class {
+  color: #b16139;
+}
+
+html.o-theme--light .hljs-number,
+html.o-theme--light .hljs-meta,
+html.o-theme--light .hljs-built_in,
+html.o-theme--light .hljs-builtin-name,
+html.o-theme--light .hljs-literal,
+html.o-theme--light .hljs-type,
+html.o-theme--light .hljs-params {
+  color: #9f713c;
+}
+
+html.o-theme--light .hljs-string,
+html.o-theme--light .hljs-symbol,
+html.o-theme--light .hljs-bullet {
+  color: #489963;
+}
+
+html.o-theme--light .hljs-title,
+html.o-theme--light .hljs-section {
+  color: #478c90;
+}
+
+html.o-theme--light .hljs-keyword,
+html.o-theme--light .hljs-selector-tag {
+  color: #55859b;
+}
+
+html.o-theme--light .hljs-deletion,
+html.o-theme--light .hljs-addition {
+  display: inline-block;
+  width: 100%;
+  color: #171c19;
+}
+
+html.o-theme--light .hljs-deletion {
+  background-color: #b16139;
+}
+
+html.o-theme--light .hljs-addition {
+  background-color: #489963;
+}
+
+html.o-theme--light .hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 1rem;
+  color: #87928a;
+  background: #171c19;
+}
+
+html.o-theme--light .hljs-emphasis {
+  font-style: italic;
+}
+
+html.o-theme--light .hljs-strong {
+  font-weight: bold;
+}
+
+html.o-theme--dark {
+  /*
+
+  Qt Creator light color scheme
+
+  */
+}
+
+html.o-theme--dark .hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 1rem;
+  background: #fff;
+}
+
+html.o-theme--dark .hljs,
+html.o-theme--dark .hljs-subst,
+html.o-theme--dark .hljs-tag,
+html.o-theme--dark .hljs-title {
+  color: #000;
+}
+
+html.o-theme--dark .hljs-strong,
+html.o-theme--dark .hljs-emphasis {
+  color: #000;
+}
+
+html.o-theme--dark .hljs-bullet,
+html.o-theme--dark .hljs-quote,
+html.o-theme--dark .hljs-number,
+html.o-theme--dark .hljs-regexp,
+html.o-theme--dark .hljs-literal {
+  color: #000080;
+}
+
+html.o-theme--dark .hljs-code .hljs-selector-class {
+  color: #800080;
+}
+
+html.o-theme--dark .hljs-emphasis,
+html.o-theme--dark .hljs-stronge,
+html.o-theme--dark .hljs-type {
+  font-style: italic;
+}
+
+html.o-theme--dark .hljs-keyword,
+html.o-theme--dark .hljs-selector-tag,
+html.o-theme--dark .hljs-function,
+html.o-theme--dark .hljs-section,
+html.o-theme--dark .hljs-symbol,
+html.o-theme--dark .hljs-name {
+  color: #808000;
+}
+
+html.o-theme--dark .hljs-attribute {
+  color: #800000;
+}
+
+html.o-theme--dark .hljs-variable,
+html.o-theme--dark .hljs-params,
+html.o-theme--dark .hljs-class .hljs-title {
+  color: #0055af;
+}
+
+html.o-theme--dark .hljs-string,
+html.o-theme--dark .hljs-selector-id,
+html.o-theme--dark .hljs-selector-attr,
+html.o-theme--dark .hljs-selector-pseudo,
+html.o-theme--dark .hljs-type,
+html.o-theme--dark .hljs-built_in,
+html.o-theme--dark .hljs-builtin-name,
+html.o-theme--dark .hljs-template-tag,
+html.o-theme--dark .hljs-template-variable,
+html.o-theme--dark .hljs-addition,
+html.o-theme--dark .hljs-link {
+  color: #008000;
+}
+
+html.o-theme--dark .hljs-comment,
+html.o-theme--dark .hljs-meta,
+html.o-theme--dark .hljs-deletion {
+  color: #008000;
+}
+
 :root {
   --color-background:#080808;
   --color-surface:#fff;
@@ -673,11 +841,6 @@ h6 {
 }
 
 pre {
-  background-color: var(--color-accent);
-  padding-left: 1rem;
-  padding-right: 1rem;
-  padding-top: 1rem;
-  padding-bottom: 1rem;
   margin-top: 1rem;
   margin-bottom: 1rem;
   white-space: pre-wrap;

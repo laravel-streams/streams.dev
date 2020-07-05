@@ -23,6 +23,7 @@ mix.browserSync({
     ]
 });
 
+
 // Purge css 
 if (mix.inProduction()) {
     mix.sourceMaps().version();

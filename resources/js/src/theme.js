@@ -10,10 +10,12 @@ window.theme = () => {
             }
         },
         onDark() {
+            document.documentElement.classList.remove('o-theme--light','o-theme--dark')
             localStorage.setItem('theme', 'dark');
-            document.documentElement.classList.remove('o-theme--light')
+            document.documentElement.classList.add('o-theme--dark')
         },
         onLight() {
+            document.documentElement.classList.remove('o-theme--light','o-theme--dark')
             localStorage.setItem('theme', 'light');
             document.documentElement.classList.add('o-theme--light')
         }

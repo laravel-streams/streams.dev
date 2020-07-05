@@ -11,3 +11,4 @@
 <!-- CSS -->
 {{-- {!! assets()->style('public::assets/css/style.css') !!} --}}
 <link href="{{ mix('/css/theme.css') }}" rel="stylesheet">
+
