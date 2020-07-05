@@ -39,7 +39,7 @@ You can also easily add Streams to an existing Laravel project.
 composer require anomalylabs/streams-platform
 ```
 
-After Streams is installed, you will have `streams/` and `config/streams.php` added to your project. Your app will continue to work as before and you’ll have [Streams](/getting-started) available at your fingertips.
+After Streams is installed, you will have `streams/` and `config/streams.php` added to your project. Your app will continue to work as before and you’ll have [Streams](streams) available at your fingertips.
 
 
 ## Updating
@@ -50,6 +50,11 @@ composer update anomalylabs/streams-platform --with-dependencies
 ```
 
 You can of course update your entire project, including Streams core using `composer update`.
+
+
+## Getting Started
+
+Now you have [Streams](streams) available. It all starts there I suppose.
 
 
 ```

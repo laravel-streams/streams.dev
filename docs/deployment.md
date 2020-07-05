@@ -1,10 +1,15 @@
 ---
 title: Deployment  
+statis: pending
 ---
 
-# Deployment
+I really like the current zero-downtime approach. It's copatible with flat versions (current only) too.
 
-<div class="documentation__toc"></div>
+## Let's discuss
+
+------------
+OLD STUFF
+------------
 
 ## Introduction
 

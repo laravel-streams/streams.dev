@@ -1,0 +1,7 @@
+---
+title: Templating
+---
+
+# Templating
+
+Hmm
