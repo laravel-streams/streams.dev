@@ -812,6 +812,7 @@ html, body {
 
 h1 {
   font-size: 3.052rem;
+  line-height: 1.25;
 }
 
 h2 {
@@ -862,14 +863,15 @@ p + p {
 }
 
 .o-main {
-  padding-top: 5rem;
-  padding-bottom: 5rem;
-  width: clamp(320px, 100%, 60vw);
+  padding-top: 2.5rem;
+  padding-bottom: 2.5rem;
+  width: clamp(320px, 100%, 700px);
 }
 
 .o-aside {
   background-color: var(--color-background);
   padding: 2rem;
+  padding-top: 3rem;
 }
 
 .o-intro {
