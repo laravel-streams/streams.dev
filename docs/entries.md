@@ -8,5 +8,5 @@ intro: An entry represents a Streamed data-model object.
 Stream objects pass calls through to their respository > criteria:
 
 ```php
-$entry = Streams::entries('docs')->find('introdution');
+$entry = Streams::entries('docs')->find('introduction');
 ```
