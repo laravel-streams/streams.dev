@@ -1,7 +1,12 @@
-# Directory Structure
+---
+title: Directory Structure
+---
+## Configuration
 
-Talk about streams configuration directory. And do it.
+Published Stream configuration is located in `config/streams`.
 
-Talk about the streams/data directories. 
+[Learn more about configuration](configuration)
 
-That’s it. 
+## Streams
+
+[Stream definitions](streams) and [entry data](entries) are located by default in the `streams` and `streams/data` directories respectively.

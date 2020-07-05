@@ -5,15 +5,26 @@
 <div class="grid grid-cols-12 gap-4">
     <div class="col-span-3">
         <aside class="o-aside sticky top-0">
+            <p>
+                I am a sticky sidebar
+            </p>
+         
             <ul x-data="theme()">
-                <li @click="onLight">
+                <li @click="onLight" class="cursor-pointer">
                     I like the lightness
                 </li>
-                <li @click="onDark">
+                <li @click="onDark" class="cursor-pointer">
                     I like the darkness
                 </li>
             </ul>
-            <ul class="o-aside__nav"></ul>
+          
+            <ul>
+                @foreach (Streams::entries('docs')->get() as $item)
+                <li>
+                    <a href="/docs/{{ $item->id }}">{{ $item->title }}</a>
+                </li>
+                @endforeach
+            </ul>
         </aside>
     </div>
     <div class="col-span-9">
