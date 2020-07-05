@@ -2,9 +2,15 @@
 // In this layer is common define the variables that can customize the template.
 :root 
 {
-    --color-black:#080808;
-    --color-white:#fff;
-    --color-dark:#080808;
-    --color-light:#fff;
-    --color-highlight:#333;
+    --color-background:#080808;
+    --color-surface:#fff;
+    --color-accent:#333;
+    --color-font:#333;
+}
+
+html.o-theme--light {
+    --color-background:#fff;
+    --color-surface:#fff;
+    --color-accent:#333;
+    --color-font:#333;
 }

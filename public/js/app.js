@@ -1888,15 +1888,10 @@ __webpack_require__.r(__webpack_exports__);
 window.theme = function () {
   return {
     onDark: function onDark() {
-      this.clear();
-      document.body.classList.add('o-theme--dark');
+      document.documentElement.classList.remove('o-theme--light');
     },
     onLight: function onLight() {
-      this.clear();
-      document.body.classList.add('o-theme--light');
-    },
-    clear: function clear() {
-      document.body.classList.remove("o-theme--light", "o-theme--dark");
+      document.documentElement.classList.add('o-theme--light');
     }
   };
 };
@@ -1910,7 +1905,7 @@ window.theme = function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-// removed by extract-text-webpack-plugin
+throw new Error("Module build failed (from ./node_modules/css-loader/index.js):\nModuleBuildError: Module build failed (from ./node_modules/postcss-loader/src/index.js):\nSyntaxError\n\n(48:3) `@apply` cannot be used with `.bg-black` because `.bg-black` either cannot be found, or its actual definition includes a pseudo-selector like :hover, :active, etc. If you're sure that `.bg-black` exists, make sure that any `@import` statements are being properly processed *before* Tailwind CSS sees your CSS, as `@apply` can only be used for classes in the same CSS tree.\n\n \u001b[90m 46 | \u001b[39m\n \u001b[90m 47 | \u001b[39m\u001b[33m.o-aside\u001b[39m \u001b[33m{\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 48 | \u001b[39m  \u001b[36m@apply\u001b[39m bg-black\u001b[33m;\u001b[39m\n \u001b[90m    | \u001b[39m  \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 49 | \u001b[39m  width\u001b[33m:\u001b[39m 30vw\u001b[33m;\u001b[39m\n \u001b[90m 50 | \u001b[39m\u001b[33m}\u001b[39m\n\n    at /Users/pixney/Development/Web/streamsd/node_modules/webpack/lib/NormalModule.js:316:20\n    at /Users/pixney/Development/Web/streamsd/node_modules/loader-runner/lib/LoaderRunner.js:367:11\n    at /Users/pixney/Development/Web/streamsd/node_modules/loader-runner/lib/LoaderRunner.js:233:18\n    at context.callback (/Users/pixney/Development/Web/streamsd/node_modules/loader-runner/lib/LoaderRunner.js:111:13)\n    at /Users/pixney/Development/Web/streamsd/node_modules/postcss-loader/src/index.js:207:9");
 
 /***/ }),
 

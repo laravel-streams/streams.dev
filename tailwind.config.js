@@ -13,11 +13,10 @@ module.exports = {
     
   theme: {
     colors:{
-      black:"var(--color-black)",
-      white:"var(--color-white)",
-      dark:"var(--color-dark)",
-      light:"var(--color-light)",
-      highlight:"var(--color-highlight)",
+      background:"var(--color-background)",
+      surface:"var(--color-surface)",
+      accent:"var(--color-accent)",
+      font:"var(--color-font)",
     },
     extend: {},
   },
