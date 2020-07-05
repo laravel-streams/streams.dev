@@ -1,30 +1,32 @@
 ---
 title: Release Notes
 ---
-
-# Release Notes
-
-<div class="documentation__toc"></div>
-
 ## Versioning Scheme
 
-PyroCMS, it's first-party addons, and the Streams Platform all maintain a [Semantic Versioning](https://semver.org/) convention: `MAJOR.MINOR.MATCH`
+Streams, it's first-party add-ons, and the Streams Platform all maintain a [Semantic Versioning](https://semver.org/) convention: `MAJOR.MINOR.MATCH`
 
 Patches may be released as often as every week. Patches will never contain breaking changes.
 
 Minor releases will be released as communicated (usually every 4-6 months) and will also never contain breaking changes to standard installations but may require database migrations. Minor version changes _may_ also contain small changes necessary to custom extensions or overridden configuration for example; however these changes will always be communicated through release notes.  
 
-When referencing the Streams Platform or addon packages from your `composer.json`, you should always use a version constraint such as `~1.6.*`, since patches are safe and minor versions may include migrations.
+When referencing the Streams Platform or add-on packages from your `composer.json`, you should always use a version constraint such as `~1.6.*`, since patches are safe and minor versions may include migrations.
 
 Major releases are separated by years and represent fundamental shifts in the framework's architecture and/or conventions. Currently, there are no major version changes in development.
 
 ## Support Policy
 
-For LTS releases, such as PyroCMS v3.6, bug fixes are provided for 2 years and security fixes are provided for 3 years. These releases provide the longest window of support and maintenance. For general releases, bug fixes are provided for 6 months and security fixes are provided for 1 year. For all first-party addons, only the latest two releases receive bug fixes.
+For LTS releases, such as PyroCMS v3.6, bug fixes are provided for 2 years and security fixes are provided for 3 years. These releases provide the longest window of support and maintenance. For general releases, bug fixes are provided for 6 months and security fixes are provided for 1 year. For all first-party add-ons, only the latest two releases receive bug fixes.
 
-## PyroCMS 4.0
+## Streams 2.0
 
-Version 4.0 is one of our larger updates. We've made numerous changes to increase performance, updated to Laravel 5.7, added a new UI feature, and included a brand new System management and monitoring module among other neato things. Please explore the following changes in PyroCMS v4.0 and their related release notes before proceeding to update.
+Version 2.0 is.. one of our larger updates.
+
+------------------------------
+@todo
+Below.. we've removed so much!\
+Reflect - make sure to note 
+Anything worth saving.
+------------------------------
 
 ### Deprecated Legacy Installer
 

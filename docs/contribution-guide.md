@@ -4,7 +4,14 @@ title: Contribution Guide
 
 # Contribution Guide
 
-<div class="documentation__toc"></div>
+@todo
+DO we even want this here? It should point to GitHub? What's standard on that.
+
+
+----------------------------
+REVIEW below. Old stuff.
+----------------------------
+
 
 ## Bug Reports
 

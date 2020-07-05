@@ -3,10 +3,16 @@
 @section('content')
 
 <div class="h-screen flex justify-center align-items-center bg-black">
-    <div style="max-width: 300px;" class="flex flex-col self-center">
+    <div class="flex flex-col self-center">
         
         <div>
-            {!! Images::make('public::img/streams.png') !!}
+            <pre class="brand-ascii text-center">
+   _____________  _______   __  _______
+  / __/_  __/ _ \/ __/ _ | /  |/  / __/
+ _\ \  / / / , _/ _// __ |/ /|_/ /\ \  
+/___/ /_/ /_/|_/___/_/ |_/_/  /_/___/  
+                                                     </pre>
+                                                     
         </div>
 
         {{-- <p class="font-mono text-xs text-white text-center">
