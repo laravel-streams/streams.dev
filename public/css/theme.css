@@ -643,24 +643,29 @@ html, body {
 }
 
 h1 {
-  font-size: 4rem;
-  position: relative;
-}
-
-h2 {
   font-size: 3rem;
 }
 
-h3 {
+h2 {
   font-size: 2.25rem;
+  border-bottom-width: 2px;
+  border-color: var(--color-accent);
+  margin-bottom: 1rem;
+  margin-top: 2rem;
+}
+
+h3 {
+  font-size: 1.25rem;
+  margin-top: 1rem;
 }
 
 h4 {
-  font-size: 1.875rem;
+  font-size: 1.5rem;
+  margin-top: 1rem;
 }
 
 h5 {
-  font-size: 1.5rem;
+  font-size: 1.25rem;
 }
 
 h6 {

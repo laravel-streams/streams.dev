@@ -5,9 +5,6 @@
 <div class="grid grid-cols-12 gap-4">
     <div class="col-span-3">
         <aside class="o-aside sticky top-0">
-            <p>
-                I am a sticky sidebar
-            </p>
             <ul x-data="theme()">
                 <li @click="onLight">
                     I like the lightness
@@ -16,6 +13,7 @@
                     I like the darkness
                 </li>
             </ul>
+            <ul class="o-aside__nav"></ul>
         </aside>
     </div>
     <div class="col-span-9">

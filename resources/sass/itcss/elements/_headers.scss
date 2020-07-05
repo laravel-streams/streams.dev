@@ -1,23 +1,23 @@
 h1
 {
-    @apply text-6xl relative;
+    @apply text-5xl;
 }
 h2
 {
-    @apply text-5xl;
+    @apply text-4xl border-b-2 border-accent mb-4 mt-8;
 }
 h3
 {
-    @apply text-4xl;
+    @apply text-xl mt-4;
 }
 
 h4
 {
-    @apply text-3xl;
+    @apply text-2xl mt-4;
 }
 h5
 {
-    @apply text-2xl;
+    @apply text-xl;
 }
 h6
 {
