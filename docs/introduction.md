@@ -1,10 +1,7 @@
 ---
 title: introduction
-phase: ideas
+intro: Streams is a system for describing, managing, working with, presenting, and accessing application data.
 ---
-
-Streams is a system for describing, managing, working with, and accessing application data.
-
 #### Streams Core
 
 The core is responsible for describing and managing your data.

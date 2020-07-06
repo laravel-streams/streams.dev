@@ -1,6 +1,6 @@
 ---
 title: Deployment  
-statis: pending
+intro: Streams is ready to assist in initializing, deploying, and maintaining your projects with **zero downtime**.
 ---
 
 I really like the current zero-downtime approach. It's compatible with flat variatoins (current only) too.
