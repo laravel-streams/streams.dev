@@ -9,4 +9,4 @@ Published Stream configuration is located in `config/streams`.
 
 ## Streams
 
-[Stream definitions](streams) and [entry data](entries) are located by default in the `streams` and `streams/data` directories respectively.
+[Stream definitions](streams) (terms?) and [entry data](entries) (terms?) are located by default in the `streams` and `streams/data` directories respectively.

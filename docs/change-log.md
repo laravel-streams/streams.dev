@@ -28,8 +28,14 @@ Features that are deprecated will generally be removed in the next `minor` updat
 
 ## Releases
 
-### Unreleased
-#### Changed
-#### Removed
-#### Added
 
+### Unreleased
+
+#### Changed
+- Change most everything.
+
+#### Removed
+- Removed most everything.
+
+#### Added
+- Added some small, new, fresh concepts.

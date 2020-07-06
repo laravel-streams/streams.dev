@@ -28,6 +28,11 @@ $entry = Streams::stream('docs')->repository()->find('introduction');
 ```
 
 ```php
-$entry = Streams::repository('docs')->save($entry);
-$entry = Streams::stream('docs')->repository()->save($entry);
+$entries = Streams::repository('docs')->findAllBy('status', true);
+$entries = Streams::stream('docs')->repository()->find('introduction');
+```
+
+```php
+Streams::repository('docs')->save($entry);
+Streams::stream('docs')->repository()->save($entry);
 ```
