@@ -3,7 +3,7 @@ title: Deployment
 statis: pending
 ---
 
-I really like the current zero-downtime approach. It's compatible with flat versions (current only) too.
+I really like the current zero-downtime approach. It's compatible with flat variatoins (current only) too.
 
 ## Let's discuss
 

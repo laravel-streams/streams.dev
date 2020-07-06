@@ -2,9 +2,6 @@
 title: Localization
 phase: ideas
 ---
-
-# Localization
-
 ## Introduction
 
 ### Idea Numero Uno

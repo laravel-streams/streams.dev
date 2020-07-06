@@ -2,6 +2,4 @@
 title: Templating
 ---
 
-# Templating
-
-Hmm
+What to say?
