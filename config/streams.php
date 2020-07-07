@@ -22,6 +22,19 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Applications Configuration
+    |--------------------------------------------------------------------------
+    |
+    | Configure applications like: "slug" => array $config
+    |
+    | The system will run as one "default" application if not configured.
+    |
+    */
+    
+    'applications' => [],
+
+    /*
+    |--------------------------------------------------------------------------
     | Source Configuration
     |--------------------------------------------------------------------------
     |
