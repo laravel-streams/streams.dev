@@ -2,21 +2,23 @@
 title: introduction
 intro: Streams is a system for describing, managing, working with, presenting, and accessing application data.
 ---
-#### Streams Core
+## The anatomy of Streams
 
-The core is responsible for describing and managing your data.
+### Streams Core
 
-#### Streams UI
+Streams Core is responsible for describing and managing your data.
 
-The UI package is responsible for streamlining UI around your Stream data.
+### Streams UI
 
-#### Streams API
+Streams UI is responsible for developing and refining a consistent UI around your Stream data.
 
-The API package is responsible for providing a consistent and standardized RESTful API to your Stream data.
+### Streams API
+
+Streams API is responsible for providing a consistent and standardized RESTful API to your Stream data.
 
 ## What is a Stream?
 
-A [Stream](streams) is a description of domain-model data.
+A [Stream](streams) is a schematic for individual pieces of domain-model data.
 
 > A Stream can initially serve as both description _and_ definition for your data thanks to out of the box NoSQL flat-file storage.
 
@@ -26,17 +28,17 @@ A [Stream](streams) is a description of domain-model data.
 
 ### Agility
 
-Streams is simple and easy to pick up and scaffold great ideas. It will guide you as those ideas develop and help you iterate and maintain the resulting project as well.
+Streams is simple and easy to pick up and scaffold great ideas. It will guide you as those ideas develop and help you iterate and maintain the resulting project as well. Streams allows early stage projects to cleanly and efficiently create complex data architecture with simple definitions.
 
 ### Workflow
 
-We have designed our workflow around agile development concepts from the ground up and aligned Streams with the idea of discovering the project and establishing a scope before building.
+The workflow of Streams centers around agile development concepts and standardises the approach of discovering a project and establishing a scope before building.
 
-By focusing on the data and bubbling up information from there, we can help automate a large number of proximity tasks like organizing and building out UI, validation, entry repositories, converting to Eloquent and more with minimal input needed.
+By focusing on the data schema as a single point of origin from which all other services are derived, we can help automate a large number of proximity tasks like organizing and building out UI, validation, entry repositories, converting to Eloquent and more with minimal input needed.
 
-#### Data First
+### Data First
 
-During or after the discovery phase of projects it begins to become clear that the project may need doo dads and widgets. Start first by creating stream definitions for the data that your project is to be built around. [Fields](fields) can be used to describe the data’s structure.
+The initial stages of any project involve high level description of data objects and their role within the application. Start first by creating stream definitions for the data that your project is to be built around. [Fields](fields) can be used to describe the data’s structure.
 
 ```json
 // streams/doo_dads.json
@@ -93,4 +95,13 @@ What about when your project is ready to go and you expect millions of doo dads?
 
 ```php
 Streams::schema(‘doo_dads’)->make();
+```
+
+### Simplifying existing projects
+Streams helps existing projects structure their data in a more efficient way than
+a traditional MVC approach such as with vanilla Laravel. Streams is an *enhancement* of
+your existing project - you don't need to restructure to see the benefits of its data modelling. With first-class support for Eloquent and a source-agnostic approach to data storage, you'll be able to integrate an existing application in no time.
+
+```php
+example of hooking up an existing bare Laravel model backed by standard DB to streams
 ```

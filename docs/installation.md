@@ -7,7 +7,7 @@ intro: Streams utilizes [Composer](https://getcomposer.org/) to manage its depen
 
 ### System Requirements
 
-Streams is a Laravel package
+Streams is a Laravel 7.x package. For more information on Laravel's system requirements, check the [Laravel documentation](https://laravel.com/docs/7.x/installation#server-requirements).
 
 ### Via Composer Create-Project
 
@@ -19,7 +19,9 @@ composer create-project anomalylabs/streams example.com --prefer-dist --stabilit
 
 If you have PHP installed locally and you would like to use PHP's built-in development server to serve your application, you may use the `serve` Artisan command. This command will start a development server at [http://localhost:8000](http://localhost:8000):
 
+```bash
 php artisan serve
+```
 
 
 ### Distributions
@@ -103,7 +105,7 @@ In some environments like cPanel or Virtualmin it may be difficult to use the `p
 ln -s public public_html
 ```
 
-You may also simply rename the `public` directory to `public_html`. Path hints will automatically use the correct path. 
+You may also simply rename the `public` directory to `public_html`. Path hints will automatically use the correct path.
 
 ### Directory Permissions
 
