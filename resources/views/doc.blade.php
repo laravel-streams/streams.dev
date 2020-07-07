@@ -20,7 +20,7 @@
                 </ul>
               
                 <ul>
-                    @foreach (Streams::entries('docs')->get() as $item)
+                    @foreach (Streams::entries('docs')->orderBy('sort', 'asc')->get() as $item)
                     <li>
                         <a href="/docs/{{ $item->id }}">{{ $item->title }}</a>
                     </li>

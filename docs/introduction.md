@@ -1,6 +1,7 @@
 ---
-title: introduction
+title: Introduction
 intro: Streams is a system for describing, managing, working with, presenting, and accessing application data.
+sort: 0
 ---
 #### Streams Core
 
