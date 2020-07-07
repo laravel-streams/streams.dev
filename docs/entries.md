@@ -4,6 +4,10 @@ intro: An entry represents a Streamed data-model object.
 ---
 
 ## Fetching Entries
+### Criteria and Repositories
+- Explain the difference (who/what/why would use these)
+- When you would need one over the other
+
 
 ### Criteria
 
@@ -16,6 +20,7 @@ $entry = Streams::entries('docs')->find('introduction');
 $entry = Streams::stream('docs')->entries()->find('introduction');
 $entry = Streams::stream('docs')->repository()->newCriteria()->find('introduction');
 ```
+^ we need a bit more clarity on where the criteria is in each of these examples (either here for further down)
 
 
 ### Repositories
