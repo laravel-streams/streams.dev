@@ -44,10 +44,10 @@ The initial stages of any project involve high level description of data objects
 ```json
 // streams/doo_dads.json
 {
-	“name”: “Doo Dads”,
-	“fields”: {
-		“name”: “text”,
-		“description”: “textarea”
+	"name": "Doo Dads",
+	"fields": {
+		"name": "text",
+		"description": "textarea"
 	}
 }
 ```
@@ -55,10 +55,10 @@ The initial stages of any project involve high level description of data objects
 ```json
 // streams/widgets.json
 {
-	“name”: “Widgets”,
-	“fields”: {
-		“name”: “text”,
-		“description”: “textarea”
+	"name": "Widgets",
+	"fields": {
+		"name": "text",
+		"description": "textarea"
 	}
 }
 ```
@@ -104,5 +104,13 @@ a traditional MVC approach such as with vanilla Laravel. Streams is an *enhancem
 your existing project - you don't need to restructure to see the benefits of its data modelling. With first-class support for Eloquent and a source-agnostic approach to data storage, you'll be able to integrate an existing application in no time.
 
 ```php
-example of hooking up an existing bare Laravel model backed by standard DB to streams
+// streams/widgets.json
+{
+    "name": "Widgets",
+    "source": 
+	"fields": {
+		"name": "text",
+		"description": "textarea"
+	}
+}
 ```
