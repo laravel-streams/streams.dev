@@ -13,6 +13,8 @@
 
 use Anomaly\Streams\Platform\Ui\Form\FormBuilder;
 use Anomaly\Streams\Platform\Ui\Table\TableBuilder;
+use Anomaly\Streams\Platform\Support\Facades\Application;
+use Anomaly\Streams\Platform\Application\ApplicationManager;
 
 Route::view('/', 'welcome');
 
