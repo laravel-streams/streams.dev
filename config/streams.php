@@ -31,7 +31,14 @@ return [
     |
     */
     
-    'applications' => [],
+    'applications' => [
+        // 'default' => [
+        //     'name' => config('app.name'),
+        //     'streams_path' => 'streams',
+        //     'locale' => 'en_US',
+        //     'url' => '/',
+        // ],
+    ],
 
     /*
     |--------------------------------------------------------------------------
