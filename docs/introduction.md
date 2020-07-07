@@ -2,19 +2,19 @@
 title: introduction
 intro: Streams is a system for describing, managing, working with, presenting, and accessing application data.
 ---
-## The anatomy of Streams
+## The anatomy of a Streams project
 
 ### Streams Core
 
-Streams Core is responsible for describing and managing your data.
+The Streams Core package is responsible for describing and managing your data.
 
 ### Streams UI
 
-Streams UI is responsible for developing and refining a consistent UI around your Stream data.
+The Streams UI package is responsible for developing and refining a consistent UI around your Stream data.
 
 ### Streams API
 
-Streams API is responsible for providing a consistent and standardized RESTful API to your Stream data.
+The Streams API package is responsible for providing a consistent and standardized RESTful API to your Stream data.
 
 ## What is a Stream?
 
