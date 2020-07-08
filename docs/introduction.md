@@ -107,7 +107,11 @@ your existing project - you don't need to restructure to see the benefits of its
 // streams/widgets.json
 {
     "name": "Widgets",
-    "source": 
+    "source": {
+        "type": "eloquent",
+        "table": "migrations",
+        "model": "The\\Model\\Class"
+    },
 	"fields": {
 		"name": "text",
 		"description": "textarea"
