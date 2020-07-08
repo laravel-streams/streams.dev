@@ -6,10 +6,18 @@ intro: Addons are composer packages designed to facilitate bolt-on functionality
 Addons are the core building blocks that bring additional functionality to a Streams enhanced project.
 
 ### The anatomy of an addon
+An addon is a composer package with an `AddonServiceProvider` that is automatically-detected by Laravel and registered to streamline integration and configuration of the Stream enhanced application.
 
-#### Services
+```php
+public $routes = [
+    'web' => [],
+    'cp' => [],
+];
+```
 
-#### Routes
-##### Control Panel
-
-##### Application
+```php
+public $middleware = [
+    'web' => [],
+    'cp' => [],
+];
+```
