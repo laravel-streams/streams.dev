@@ -16,10 +16,12 @@ class TestAddonServiceProvider extends AddonServiceProvider
 {
 
     /**
-     * Register the addon.
+     * The addon routes.
+     *
+     * @var array
      */
-    public function register()
-    {
-        
-    }
+    public $routes = [
+        'web' => [],
+        'cp' => [],
+    ];
 }
