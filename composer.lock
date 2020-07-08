@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9af5331aad7ed726ce41df9c461c366c",
+    "content-hash": "8b3db2f9a8c6607037603b87e62f9758",
     "packages": [
         {
             "name": "anomaly/streams-platform",
@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/anomalylabs/streams-platform.git",
-                "reference": "ac65e182881bdef8fb3d3268de2c8e7367f08458"
+                "reference": "530d001814e94983681d6181227b8705b0f87a63"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/anomalylabs/streams-platform/zipball/ac65e182881bdef8fb3d3268de2c8e7367f08458",
-                "reference": "ac65e182881bdef8fb3d3268de2c8e7367f08458",
+                "url": "https://api.github.com/repos/anomalylabs/streams-platform/zipball/530d001814e94983681d6181227b8705b0f87a63",
+                "reference": "530d001814e94983681d6181227b8705b0f87a63",
                 "shasum": ""
             },
             "require": {
@@ -61,7 +61,60 @@
                 }
             ],
             "description": "A drop-in application platform for Laravel.",
-            "time": "2020-07-07T06:20:50+00:00"
+            "time": "2020-07-08T04:34:02+00:00"
+        },
+        {
+            "name": "anomaly/test-addon",
+            "version": "dev-master",
+            "dist": {
+                "type": "path",
+                "url": "addons/default/anomaly/test-addon",
+                "reference": "5d426c05b9e3f5964f19114872c6c54c54973529"
+            },
+            "require": {
+                "anomaly/streams-platform": "^2.0"
+            },
+            "type": "streams-addon",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Anomaly\\TestAddon\\TestAddonServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Anomaly\\TestAddon\\": "src/"
+                }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "Anomaly\\TestAddonTest\\": "tests/"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ryan Thompson",
+                    "homepage": "https://ryanthepyro.com/",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A simple testing addon.",
+            "homepage": "https://streams.dev/addons/anomaly/test-addon",
+            "keywords": [
+                "addon",
+                "streams"
+            ],
+            "support": {
+                "docs": "https://pyrocms.com/documentation/test-module",
+                "forum": "https://pyrocms.com/forum/channels/test-module",
+                "slack": "https://pyrocms.com/slack",
+                "issues": "https://github.com/pyrocms/pyrocms/issues?q=is:issue is:open [test-module]",
+                "source": "https://github.com/anomalylabs/test-module"
+            }
         },
         {
             "name": "brick/math",
@@ -6723,7 +6776,8 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "anomaly/streams-platform": 20
+        "anomaly/streams-platform": 20,
+        "anomaly/test-addon": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

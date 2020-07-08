@@ -15,7 +15,8 @@
         }
     ],
     "require": {
-        "anomaly/streams-platform": "2.0.x-dev"
+        "anomaly/streams-platform": "2.0.x-dev",
+        "anomaly/test-addon": "dev-master"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.3",
@@ -37,6 +38,10 @@
         {
             "type": "composer",
             "url": "https://development.pyrocms.com"
+        },
+        {
+            "type": "path",
+            "url": "addons/default/anomaly/test-addon"
         }
     ],
     "autoload": {
@@ -65,13 +70,17 @@
         "sort-packages": true
     },
     "scripts": {
-        "pre-update-cmd":[
+        "pre-autoload-dump":[
             "rm -Rf bootstrap/cache/*.php"
         ],
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
             "@php artisan package:discover --ansi",
-            "@php artisan refresh --ansi"
+            "@php artisan assets:clear --ansi",
+            "@php artisan cache:clear --ansi",
+            "@php artisan view:clear --ansi",
+            "@php artisan vendor:publish --ansi --tag=assets",
+            "@php artisan queue:restart --ansi"
         ],
         "post-root-package-install": [
             "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
