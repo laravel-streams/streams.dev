@@ -1,5 +1,4 @@
 {
-    "handle": "docs",
     "route": "docs/{id}",
     "template": "doc",
 
