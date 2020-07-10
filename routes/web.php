@@ -20,7 +20,7 @@ Route::view('/', 'welcome');
 
 Route::any('/test', function () {
 
-    dd(Application::make()->handle);
+    
     $builder = (new TableBuilder([
         'stream' => 'plants',
         'columns' => [

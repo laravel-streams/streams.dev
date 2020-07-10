@@ -2,7 +2,7 @@
 
 namespace Anomaly\TestAddon;
 
-use Anomaly\Streams\Platform\Addon\AddonServiceProvider;
+use Anomaly\Streams\Platform\Provider\ServiceProvider;
 
 /**
  * Class AddonServiceProvider
@@ -10,7 +10,7 @@ use Anomaly\Streams\Platform\Addon\AddonServiceProvider;
  * @link   http://pyrocms.com/
  * @author Ryan Thompson <ryan@pyrocms.com>
  */
-class TestAddonServiceProvider extends AddonServiceProvider
+class TestAddonServiceProvider extends ServiceProvider
 {
 
     /**
