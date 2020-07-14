@@ -1,0 +1,10 @@
+{
+    "route": "/{slug}",
+    "template": "doc",
+
+    "fields": {
+        "title": "text",
+        "description": "textarea",
+        "content": "textarea"
+    }
+}
