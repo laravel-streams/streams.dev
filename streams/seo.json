@@ -1,0 +1,9 @@
+{
+    "source.format": "json",
+
+    "fields": {
+        "title": "text",
+        "description": "text",
+        "image": "url"
+    }
+}

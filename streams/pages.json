@@ -5,6 +5,18 @@
     "fields": {
         "title": "text",
         "description": "textarea",
-        "content": "textarea"
+        "content": "textarea",
+        "seo": {
+            "type": "entry",
+            "config": {
+                "stream": "seo"
+            }
+        },
+        "docs": {
+            "type": "entries",
+            "config": {
+                "stream": "docs"
+            }
+        }
     }
 }

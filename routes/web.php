@@ -18,6 +18,10 @@ use Anomaly\Streams\Platform\Application\ApplicationManager;
 
 Route::view('/', 'welcome');
 
+Route::any('test/seo', function() {
+    dd(Streams::entries('pages')->find('about')->expand('docs'));
+});
+
 // Route::any('docs/{handle}', [
 //     'stream' => 'docs',
 //     'uses' => '\Anomaly\Streams\Platform\Http\Controller\EntryController@view'
