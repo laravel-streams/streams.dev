@@ -806,11 +806,11 @@ html.o-theme--dark .hljs-deletion {
 html.o-theme--light {
   --color-background: #fff;
   --color-surface:#fbfbfb;
-  --color-accent: #eaf4ff;
+  --color-accent: #bee4ff;
   --color-underline: #e6e6e6;
   --color-font: #192633;
   --color-font-secondary:#7abaff;
-  --color-code: #bee4ff;
+  --color-code: var(--color-accent);
 }
 
 html.o-theme--80s {
@@ -843,10 +843,10 @@ h6 {
 }
 
 h1 {
+  font-size: clamp(42px, calc(1rem + 3vw), 74px);
   line-height: 1;
   margin-top: 0;
   margin-bottom: 3rem;
-  font-size: clamp(42px, calc(1rem + 3vw), 74px);
 }
 
 h1 + .o-intro {
@@ -854,28 +854,40 @@ h1 + .o-intro {
 }
 
 h2 {
+  font-size: clamp(28px, calc(1rem + 1.7vw), 100px);
   line-height: 1.15;
   margin-top: 4rem;
   margin-bottom: 3rem;
-  font-size: clamp(28px, calc(1rem + 1.7vw), 100px);
+  position: relative;
 }
 
 h2 + p {
   margin-top: -2rem;
 }
 
+h2:before {
+  position: absolute;
+  top: 0px;
+  left: -100px;
+  display: block;
+  width: 40px;
+  height: 5px;
+  content: "";
+  background-color: var(--color-accent);
+}
+
 h3 {
+  font-size: clamp(18px, calc(1rem + .5vw), 100px);
   line-height: 1.15;
   margin-top: 3rem;
   margin-bottom: 1rem;
-  font-size: clamp(18px, calc(1rem + .5vw), 100px);
 }
 
 h4 {
+  font-size: clamp(16px, calc(1rem + .2vw), 100px);
   line-height: 1.15;
   margin-top: 3rem;
   margin-bottom: 1rem;
-  font-size: clamp(16px, calc(1rem + .2vw), 100px);
 }
 
 code {

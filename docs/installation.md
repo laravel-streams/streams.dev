@@ -18,7 +18,7 @@ composer create-project anomalylabs/streams example.com --prefer-dist --stabilit
 
 ### Local Development Server
 
-If you have PHP installed locally and you would like to use PHP's built-in development server to serve your application, you may use the `serve` Artisan command. This command will start a development server at [http://localhost:8000](http://localhost:8000):
+If you have PHP installed locally and you would like to use PHP's built-in development server to serve your application, you may use the **serve** Artisan command. This command will start a development server at [http://localhost:8000](http://localhost:8000):
 
 ```bash
 php artisan serve
@@ -40,7 +40,7 @@ You can also easily add Streams to an existing Laravel project.
 composer require anomalylabs/streams-platform
 ```
 
-After Streams is installed, you will have `streams/` and `config/streams.php` added to your project. Your app will continue to work as before and you’ll have [Streams](streams) available at your fingertips.
+After Streams is installed, you will have **streams/** and **config/streams.php** added to your project. Your app will continue to work as before and you’ll have [Streams](streams) available at your fingertips.
 
 ## Updating
 From within your project, use Composer to update the Streams core package:
@@ -49,7 +49,7 @@ From within your project, use Composer to update the Streams core package:
 composer update anomalylabs/streams-platform --with-dependencies
 ```
 
-You can of course update your entire project, including Streams core using `composer update`.
+You can of course update your entire project, including Streams core using **composer update**.
 
 ## Getting Started
 

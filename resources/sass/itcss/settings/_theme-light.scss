@@ -1,13 +1,13 @@
 html.o-theme--light {
     --color-background: #fff;
     --color-surface:#fbfbfb;
-    --color-accent: #eaf4ff;
+    --color-accent: #bee4ff;
     --color-underline: #e6e6e6;
     --color-font: #192633;
     --color-font-secondary:#7abaff;  
 
     // Experimental
-    --color-code: #bee4ff;
+    --color-code: var(--color-accent);
     
     
 }
