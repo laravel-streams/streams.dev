@@ -1,19 +1,9 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;800&display=swap');
+
+
 // Settings used with preprocessors and contain font, colors definitions, etc.
 // In this layer is common define the variables that can customize the template.
-:root {
-    --color-background: #080808;
-    --color-surface: #fff;
-    --color-accent: #333;
-    --color-font: #eee;
-
-   
-}
-
-html.o-theme--light {
-    --color-background: #fff;
-    --color-surface: #fff;
-    --color-accent: rgb(240, 240, 240);
-    --color-font: #333;
-}
-
-@import url("https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap");
+@import "./root";
+@import "./theme-light";
+@import "./theme-dark";

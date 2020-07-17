@@ -1,0 +1,10 @@
+.c-body 
+{
+    opacity:0; // Avoid seeing the wrong color caused by the speed of Streams
+    transition: opacity 200ms ease-in-out;
+}
+
+.c-body--loaded
+{
+    opacity:1;
+}
