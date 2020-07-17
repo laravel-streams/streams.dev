@@ -1,5 +1,5 @@
-<!doctype html>
-<html class="no-js" lang="en">
+<!doctype html >
+<html class="no-js o-theme--compacts" lang="en" >
 
 <head>
     @include('partials/head')

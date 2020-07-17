@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css2?family=Inter:wght@400;800&display=swap);@import url(https://fonts.googleapis.com/css2?family=Inconsolata:wght@300;400;500&display=swap);/* purgecss start ignore */
+@import url(https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap);@import url(https://fonts.googleapis.com/css2?family=Inconsolata:wght@300;400;500&display=swap);/* purgecss start ignore */
 
 /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
 
@@ -795,12 +795,21 @@ html.o-theme--dark .hljs-deletion {
   --font-display: "Inter", "sans-serif";
   --font-body: "Inter", "sans-serif";
   --font-mono: "Inconsolata";
-  --font-size-sm:.8rem;
   --font-size-base:1rem;
-  --font-size-lg:2rem;
-  --font-size-xl:3rem;
+  --font-size-h1:2.825rem;
+  --font-size-h2:1.825rem;
+  --font-size-h3:1.125rem;
+  --font-size-h4:1.08rem;
   --font-weight-normal: 400;
+  --font-weight-semi: 700;
   --font-weight-bold: 800;
+}
+
+html.o-theme--compact {
+  --font-size-h1:2.625rem;
+  --font-size-h2:2rem;
+  --font-size-h3:1.5rem;
+  --font-size-h4:1rem;
 }
 
 html.o-theme--light {
@@ -823,8 +832,8 @@ html.o-theme--80s {
 html.o-theme--dark {
   --color-background: #222322;
   --color-surface: #2d2d2d;
-  --color-accent: #333;
-  --color-font: #eee;
+  --color-accent: #005a96;
+  --color-font: #fff;
 }
 
 html, body {
@@ -842,8 +851,12 @@ h6 {
   font-weight: var(--font-weight-bold);
 }
 
+h3, h4 {
+  font-weight: var(--font-weight-semi);
+}
+
 h1 {
-  font-size: clamp(42px, calc(1rem + 3vw), 74px);
+  font-size: clamp(var(--font-size-h1), calc(var(--font-size-h1) + 1.3vw), 72px);
   line-height: 1;
   margin-top: 0;
   margin-bottom: 3rem;
@@ -854,11 +867,11 @@ h1 + .o-intro {
 }
 
 h2 {
-  font-size: clamp(28px, calc(1rem + 1.7vw), 100px);
+  font-size: clamp(var(--font-size-h2), calc(var(--font-size-h2) + .8vw), 45px);
   line-height: 1.15;
   margin-top: 4rem;
-  margin-bottom: 3rem;
   position: relative;
+  margin-bottom: calc(var(--font-size-h2) * 1.5);
 }
 
 h2 + p {
@@ -877,17 +890,17 @@ h2:before {
 }
 
 h3 {
-  font-size: clamp(18px, calc(1rem + .5vw), 100px);
+  font-size: clamp(var(--font-size-h3), calc(var(--font-size-h3) + .3vw), 25px);
   line-height: 1.15;
   margin-top: 3rem;
-  margin-bottom: 1rem;
+  margin-bottom: calc(var(--font-size-h3) * .5);
 }
 
 h4 {
-  font-size: clamp(16px, calc(1rem + .2vw), 100px);
+  font-size: clamp(var(--font-size-h4), calc(var(--font-size-h4) + .3vw), 22px);
   line-height: 1.15;
   margin-top: 3rem;
-  margin-bottom: 1rem;
+  margin-bottom: calc(var(--font-size-h4) * .3);
 }
 
 code {
@@ -907,7 +920,7 @@ pre + * {
 }
 
 body {
-  font-size: clamp(15px, 17px, 20px);
+  font-size: clamp(0.9375rem, calc(1rem + .15vw), 20px);
 }
 
 .o-main {
@@ -2612,6 +2625,10 @@ body {
   font-weight: var(--font-weight-normal);
 }
 
+.font-semi{
+  font-weight: var(--font-weight-semi);
+}
+
 .font-bold{
   font-weight: var(--font-weight-bold);
 }
@@ -2620,12 +2637,20 @@ body {
   font-weight: var(--font-weight-normal);
 }
 
+.hover\:font-semi:hover{
+  font-weight: var(--font-weight-semi);
+}
+
 .hover\:font-bold:hover{
   font-weight: var(--font-weight-bold);
 }
 
 .focus\:font-normal:focus{
   font-weight: var(--font-weight-normal);
+}
+
+.focus\:font-semi:focus{
+  font-weight: var(--font-weight-semi);
 }
 
 .focus\:font-bold:focus{
@@ -2720,20 +2745,24 @@ body {
   height: 100vh;
 }
 
-.text-sm{
-  font-size: var(--font-size-sm);
-}
-
 .text-base{
   font-size: var(--font-size-base);
 }
 
-.text-lg{
-  font-size: var(--font-size-lg);
+.text-h1{
+  font-size: var(--font-size-h1);
 }
 
-.text-xl{
-  font-size: var(--font-size-xl);
+.text-h2{
+  font-size: var(--font-size-h2);
+}
+
+.text-h3{
+  font-size: var(--font-size-h3);
+}
+
+.text-h4{
+  font-size: var(--font-size-h4);
 }
 
 .leading-none{
@@ -10022,6 +10051,10 @@ body {
     font-weight: var(--font-weight-normal);
   }
 
+  .sm\:font-semi{
+    font-weight: var(--font-weight-semi);
+  }
+
   .sm\:font-bold{
     font-weight: var(--font-weight-bold);
   }
@@ -10030,12 +10063,20 @@ body {
     font-weight: var(--font-weight-normal);
   }
 
+  .sm\:hover\:font-semi:hover{
+    font-weight: var(--font-weight-semi);
+  }
+
   .sm\:hover\:font-bold:hover{
     font-weight: var(--font-weight-bold);
   }
 
   .sm\:focus\:font-normal:focus{
     font-weight: var(--font-weight-normal);
+  }
+
+  .sm\:focus\:font-semi:focus{
+    font-weight: var(--font-weight-semi);
   }
 
   .sm\:focus\:font-bold:focus{
@@ -10130,20 +10171,24 @@ body {
     height: 100vh;
   }
 
-  .sm\:text-sm{
-    font-size: var(--font-size-sm);
-  }
-
   .sm\:text-base{
     font-size: var(--font-size-base);
   }
 
-  .sm\:text-lg{
-    font-size: var(--font-size-lg);
+  .sm\:text-h1{
+    font-size: var(--font-size-h1);
   }
 
-  .sm\:text-xl{
-    font-size: var(--font-size-xl);
+  .sm\:text-h2{
+    font-size: var(--font-size-h2);
+  }
+
+  .sm\:text-h3{
+    font-size: var(--font-size-h3);
+  }
+
+  .sm\:text-h4{
+    font-size: var(--font-size-h4);
   }
 
   .sm\:leading-none{
@@ -17431,6 +17476,10 @@ body {
     font-weight: var(--font-weight-normal);
   }
 
+  .md\:font-semi{
+    font-weight: var(--font-weight-semi);
+  }
+
   .md\:font-bold{
     font-weight: var(--font-weight-bold);
   }
@@ -17439,12 +17488,20 @@ body {
     font-weight: var(--font-weight-normal);
   }
 
+  .md\:hover\:font-semi:hover{
+    font-weight: var(--font-weight-semi);
+  }
+
   .md\:hover\:font-bold:hover{
     font-weight: var(--font-weight-bold);
   }
 
   .md\:focus\:font-normal:focus{
     font-weight: var(--font-weight-normal);
+  }
+
+  .md\:focus\:font-semi:focus{
+    font-weight: var(--font-weight-semi);
   }
 
   .md\:focus\:font-bold:focus{
@@ -17539,20 +17596,24 @@ body {
     height: 100vh;
   }
 
-  .md\:text-sm{
-    font-size: var(--font-size-sm);
-  }
-
   .md\:text-base{
     font-size: var(--font-size-base);
   }
 
-  .md\:text-lg{
-    font-size: var(--font-size-lg);
+  .md\:text-h1{
+    font-size: var(--font-size-h1);
   }
 
-  .md\:text-xl{
-    font-size: var(--font-size-xl);
+  .md\:text-h2{
+    font-size: var(--font-size-h2);
+  }
+
+  .md\:text-h3{
+    font-size: var(--font-size-h3);
+  }
+
+  .md\:text-h4{
+    font-size: var(--font-size-h4);
   }
 
   .md\:leading-none{
@@ -24840,6 +24901,10 @@ body {
     font-weight: var(--font-weight-normal);
   }
 
+  .lg\:font-semi{
+    font-weight: var(--font-weight-semi);
+  }
+
   .lg\:font-bold{
     font-weight: var(--font-weight-bold);
   }
@@ -24848,12 +24913,20 @@ body {
     font-weight: var(--font-weight-normal);
   }
 
+  .lg\:hover\:font-semi:hover{
+    font-weight: var(--font-weight-semi);
+  }
+
   .lg\:hover\:font-bold:hover{
     font-weight: var(--font-weight-bold);
   }
 
   .lg\:focus\:font-normal:focus{
     font-weight: var(--font-weight-normal);
+  }
+
+  .lg\:focus\:font-semi:focus{
+    font-weight: var(--font-weight-semi);
   }
 
   .lg\:focus\:font-bold:focus{
@@ -24948,20 +25021,24 @@ body {
     height: 100vh;
   }
 
-  .lg\:text-sm{
-    font-size: var(--font-size-sm);
-  }
-
   .lg\:text-base{
     font-size: var(--font-size-base);
   }
 
-  .lg\:text-lg{
-    font-size: var(--font-size-lg);
+  .lg\:text-h1{
+    font-size: var(--font-size-h1);
   }
 
-  .lg\:text-xl{
-    font-size: var(--font-size-xl);
+  .lg\:text-h2{
+    font-size: var(--font-size-h2);
+  }
+
+  .lg\:text-h3{
+    font-size: var(--font-size-h3);
+  }
+
+  .lg\:text-h4{
+    font-size: var(--font-size-h4);
   }
 
   .lg\:leading-none{
@@ -32249,6 +32326,10 @@ body {
     font-weight: var(--font-weight-normal);
   }
 
+  .xl\:font-semi{
+    font-weight: var(--font-weight-semi);
+  }
+
   .xl\:font-bold{
     font-weight: var(--font-weight-bold);
   }
@@ -32257,12 +32338,20 @@ body {
     font-weight: var(--font-weight-normal);
   }
 
+  .xl\:hover\:font-semi:hover{
+    font-weight: var(--font-weight-semi);
+  }
+
   .xl\:hover\:font-bold:hover{
     font-weight: var(--font-weight-bold);
   }
 
   .xl\:focus\:font-normal:focus{
     font-weight: var(--font-weight-normal);
+  }
+
+  .xl\:focus\:font-semi:focus{
+    font-weight: var(--font-weight-semi);
   }
 
   .xl\:focus\:font-bold:focus{
@@ -32357,20 +32446,24 @@ body {
     height: 100vh;
   }
 
-  .xl\:text-sm{
-    font-size: var(--font-size-sm);
-  }
-
   .xl\:text-base{
     font-size: var(--font-size-base);
   }
 
-  .xl\:text-lg{
-    font-size: var(--font-size-lg);
+  .xl\:text-h1{
+    font-size: var(--font-size-h1);
   }
 
-  .xl\:text-xl{
-    font-size: var(--font-size-xl);
+  .xl\:text-h2{
+    font-size: var(--font-size-h2);
+  }
+
+  .xl\:text-h3{
+    font-size: var(--font-size-h3);
+  }
+
+  .xl\:text-h4{
+    font-size: var(--font-size-h4);
   }
 
   .xl\:leading-none{

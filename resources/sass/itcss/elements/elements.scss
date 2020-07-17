@@ -9,5 +9,5 @@
 
 body 
 {
-    font-size:clamp(15px, 17px, 20px);
+    font-size:clamp(0.9375rem, calc(1rem + .15vw), 20px);
 }

@@ -27,13 +27,15 @@ module.exports = {
       mono: "var(--font-mono)",
     },
     fontSize: {
-      sm: "var(--font-size-sm)",
       base: "var(--font-size-base)",
-      lg: "var(--font-size-lg)",
-      xl: "var(--font-size-xl)",
+      h1: "var(--font-size-h1)",
+      h2: "var(--font-size-h2)",
+      h3: "var(--font-size-h3)",
+      h4: "var(--font-size-h4)",
     },
     fontWeight: {
       normal: "var(--font-weight-normal)",
+      semi: "var(--font-weight-semi)",
       bold: "var(--font-weight-bold)",
     },
     lineHeight: {
