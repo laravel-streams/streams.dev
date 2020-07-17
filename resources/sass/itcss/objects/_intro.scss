@@ -6,7 +6,7 @@
 
 .o-intro
 {
-    @apply font-mono leading-snug;
+    @apply font-mono leading-normal;
     font-size: clamp(1.3rem,calc(1.3rem + 0.1vw),24px);
 }
 
