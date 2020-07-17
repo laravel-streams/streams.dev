@@ -852,14 +852,13 @@ h2 {
   line-height: 1.15;
   margin-top: 4rem;
   margin-bottom: 4rem;
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
   font-size: clamp(28px, calc(1rem + 1.7vw), 100px);
 }
 
 h3 {
   line-height: 1.15;
-  margin-top: 2rem;
-  margin-bottom: 2rem;
+  margin-top: 3rem;
   margin-bottom: 0.75rem;
   font-size: clamp(18px, calc(1rem + 0vw), 100px);
 }
@@ -867,7 +866,6 @@ h3 {
 pre {
   margin-top: 1.5rem;
   white-space: pre-wrap;
-  font-family: monospace;
 }
 
 pre + * {
@@ -894,13 +892,17 @@ body {
 .o-intro {
   font-family: var(--font-mono);
   line-height: 1.25;
-  font-size: clamp(1.15rem, calc(1.15rem + .3vw), 100px);
+  font-size: clamp(1.3rem, calc(1.3rem + 0.1vw), 24px);
 }
 
 .o-intro p {
   text-decoration: underline;
   -webkit-text-decoration-color: var(--color-underline);
           text-decoration-color: var(--color-underline);
+}
+
+.o-intro + h2 {
+  margin-top: 3rem;
 }
 
 /* Start purging... */

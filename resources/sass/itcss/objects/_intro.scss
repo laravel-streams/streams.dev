@@ -7,11 +7,16 @@
 .o-intro
 {
     @apply font-mono leading-snug;
-    font-size: clamp(1.15rem,calc(1.15rem + .3vw),100px);
+    font-size: clamp(1.3rem,calc(1.3rem + 0.1vw),24px);
 }
 
 .o-intro p 
 {
     text-decoration: underline;
     text-decoration-color:var(--color-underline);
+}
+
+.o-intro + h2 
+{
+    @apply mt-12;
 }
