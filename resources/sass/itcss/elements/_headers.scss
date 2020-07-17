@@ -34,6 +34,8 @@ h2
     {
         @apply -mt-8;
     }
+
+    // Let's do something about the h2s to stand out a little
 }
 
 //  ----------------------------------------------------------------------------
@@ -42,5 +44,14 @@ h2
 h3
 {
     @apply leading-tight mt-12 mb-4;
-    font-size: clamp(18px, calc(1rem + .3vw), 100px);
+    font-size: clamp(18px, calc(1rem + .5vw), 100px);
+}
+
+//  ----------------------------------------------------------------------------
+//  h4
+//  ----------------------------------------------------------------------------
+h4
+{
+    @apply leading-tight mt-12 mb-4;
+    font-size: clamp(16px, calc(1rem + .2vw), 100px);
 }

@@ -18,7 +18,7 @@ module.exports = {
       surface: "var(--color-surface)",
       accent: "var(--color-accent)",
       font: "var(--color-font)",
-      "font-secondary": "var(--color-font-secondary)"
+      "font-secondary": "var(--color-font-secondary)", 
     },
     fontFamily: {
       sans: "var(--font-body)",

@@ -1,4 +1,5 @@
 code 
 {
-    @apply bg-surface p-3;
+    @apply px-2 inline-block;
+    background-color:var(--color-code,#000)
 }

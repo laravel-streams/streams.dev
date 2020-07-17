@@ -695,7 +695,7 @@ html.o-theme--light .hljs {
   display: block;
   overflow-x: auto;
   padding: 1rem;
-  color: #87928a;
+  color: #fff;
   background: #171c19;
 }
 
@@ -810,6 +810,7 @@ html.o-theme--light {
   --color-underline: #e6e6e6;
   --color-font: #192633;
   --color-font-secondary:#7abaff;
+  --color-code: #bee4ff;
 }
 
 html.o-theme--80s {
@@ -867,12 +868,21 @@ h3 {
   line-height: 1.15;
   margin-top: 3rem;
   margin-bottom: 1rem;
-  font-size: clamp(18px, calc(1rem + .3vw), 100px);
+  font-size: clamp(18px, calc(1rem + .5vw), 100px);
+}
+
+h4 {
+  line-height: 1.15;
+  margin-top: 3rem;
+  margin-bottom: 1rem;
+  font-size: clamp(16px, calc(1rem + .2vw), 100px);
 }
 
 code {
-  background-color: var(--color-surface);
-  padding: 0.75rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  display: inline-block;
+  background-color: var(--color-code, #000);
 }
 
 pre {
