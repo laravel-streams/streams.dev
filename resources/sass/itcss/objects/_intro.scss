@@ -1,9 +1,7 @@
 .o-intro
 {
-    @apply bg-accent p-4;
+    @apply relative flex items-center bg-accent p-4;
+    min-height:4rem;   
 }
 
-h1+.o-intro 
-{
-    @apply mb-8;
-}
+

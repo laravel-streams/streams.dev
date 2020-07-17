@@ -13,8 +13,8 @@ h6
 //  ----------------------------------------------------------------------------
 h1
 {
-    @apply leading-none mt-0 mb-6;
-    font-size: clamp(42px, calc(1rem + 2.5vw), 64px);
+    @apply leading-none mt-0 mb-6 ;
+    font-size: clamp(42px, calc(1rem + 3vw), 74px);
 }
 
 //  ----------------------------------------------------------------------------
@@ -23,7 +23,7 @@ h1
 h2
 {
     @apply leading-tight my-16 mb-8;
-    font-size: clamp(28px, calc(1rem + 1.3vw), 100px);
+    font-size: clamp(28px, calc(1rem + 1.7vw), 100px);
 }
 
 //  ----------------------------------------------------------------------------
@@ -32,5 +32,5 @@ h2
 h3
 {
     @apply leading-tight my-8 mb-3;
-    font-size: clamp(18px, calc(1rem + .3vw), 100px);
+    font-size: clamp(18px, calc(1rem + 0vw), 100px);
 }

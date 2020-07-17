@@ -32751,9 +32751,6 @@ function _onPageLoad() {
       while (1) {
         switch (_context.prev = _context.next) {
           case 0:
-            document.body.classList.add('c-body--loaded');
-
-          case 1:
           case "end":
             return _context.stop();
         }

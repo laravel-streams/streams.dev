@@ -5,7 +5,7 @@
     @include('partials/head')
 </head>
 
-<body class="c-body">
+<body>
     
     @yield('content')    
     
