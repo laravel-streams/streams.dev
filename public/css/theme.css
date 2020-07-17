@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css2?family=Inter:wght@400;800&display=swap);/* purgecss start ignore */
+@import url(https://fonts.googleapis.com/css2?family=Inter:wght@400;800&display=swap);@import url(https://fonts.googleapis.com/css2?family=Inconsolata:wght@300;400;500&display=swap);/* purgecss start ignore */
 
 /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
 
@@ -557,7 +557,7 @@ pre,
 code,
 kbd,
 samp {
-  font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-family: var(--font-mono);
 }
 
 /**
@@ -794,6 +794,7 @@ html.o-theme--dark .hljs-deletion {
 :root {
   --font-display: "Inter", "sans-serif";
   --font-body: "Inter", "sans-serif";
+  --font-mono: "Inconsolata";
   --font-size-sm:.8rem;
   --font-size-base:1rem;
   --font-size-lg:2rem;
@@ -804,9 +805,11 @@ html.o-theme--dark .hljs-deletion {
 
 html.o-theme--light {
   --color-background: #fff;
-  --color-surface:#fd48c4;
-  --color-accent: #2bd1fc;
-  --color-font: #333;
+  --color-surface:#fbfbfb;
+  --color-accent: #eaf4ff;
+  --color-underline: #e6e6e6;
+  --color-font: #192633;
+  --color-font-secondary:#7abaff;
 }
 
 html.o-theme--80s {
@@ -817,8 +820,8 @@ html.o-theme--80s {
 }
 
 html.o-theme--dark {
-  --color-background: #080808;
-  --color-surface: #fff;
+  --color-background: #222322;
+  --color-surface: #2d2d2d;
   --color-accent: #333;
   --color-font: #eee;
 }
@@ -842,42 +845,35 @@ h1 {
   line-height: 1;
   margin-top: 0;
   margin-bottom: 1.5rem;
-  font-size: clamp(42px, calc(1rem + 2.5vw), 64px);
+  font-size: clamp(42px, calc(1rem + 3vw), 74px);
 }
 
 h2 {
   line-height: 1.15;
   margin-top: 4rem;
   margin-bottom: 4rem;
-  margin-bottom: 2rem;
-  font-size: clamp(28px, calc(1rem + 1.3vw), 100px);
+  margin-bottom: 3rem;
+  font-size: clamp(28px, calc(1rem + 1.7vw), 100px);
 }
 
 h3 {
   line-height: 1.15;
-  margin-top: 2rem;
-  margin-bottom: 2rem;
+  margin-top: 3rem;
   margin-bottom: 0.75rem;
-  font-size: clamp(18px, calc(1rem + .3vw), 100px);
+  font-size: clamp(18px, calc(1rem + 0vw), 100px);
 }
 
 pre {
   margin-top: 1.5rem;
   white-space: pre-wrap;
-  font-family: monospace;
 }
 
 pre + * {
   margin-top: 1.5rem;
 }
 
-.c-body {
-  opacity: 0;
-  transition: opacity 200ms ease-in-out;
-}
-
-.c-body--loaded {
-  opacity: 1;
+body {
+  font-size: clamp(15px, 17px, 20px);
 }
 
 .o-main {
@@ -894,12 +890,19 @@ pre + * {
 }
 
 .o-intro {
-  background-color: var(--color-accent);
-  padding: 1rem;
+  font-family: var(--font-mono);
+  line-height: 1.25;
+  font-size: clamp(1.3rem, calc(1.3rem + 0.1vw), 24px);
 }
 
-h1 + .o-intro {
-  margin-bottom: 2rem;
+.o-intro p {
+  text-decoration: underline;
+  -webkit-text-decoration-color: var(--color-underline);
+          text-decoration-color: var(--color-underline);
+}
+
+.o-intro + h2 {
+  margin-top: 3rem;
 }
 
 /* Start purging... */
@@ -1440,6 +1443,10 @@ h1 + .o-intro {
   border-color: var(--color-font);
 }
 
+.divide-font-secondary > :not(template) ~ :not(template){
+  border-color: var(--color-font-secondary);
+}
+
 .divide-opacity-0 > :not(template) ~ :not(template){
   --divide-opacity: 0;
 }
@@ -1540,6 +1547,10 @@ h1 + .o-intro {
   background-color: var(--color-font);
 }
 
+.bg-font-secondary{
+  background-color: var(--color-font-secondary);
+}
+
 .hover\:bg-background:hover{
   background-color: var(--color-background);
 }
@@ -1556,6 +1567,10 @@ h1 + .o-intro {
   background-color: var(--color-font);
 }
 
+.hover\:bg-font-secondary:hover{
+  background-color: var(--color-font-secondary);
+}
+
 .focus\:bg-background:focus{
   background-color: var(--color-background);
 }
@@ -1570,6 +1585,10 @@ h1 + .o-intro {
 
 .focus\:bg-font:focus{
   background-color: var(--color-font);
+}
+
+.focus\:bg-font-secondary:focus{
+  background-color: var(--color-font-secondary);
 }
 
 .bg-opacity-0{
@@ -1728,6 +1747,10 @@ h1 + .o-intro {
   border-color: var(--color-font);
 }
 
+.border-font-secondary{
+  border-color: var(--color-font-secondary);
+}
+
 .hover\:border-background:hover{
   border-color: var(--color-background);
 }
@@ -1744,6 +1767,10 @@ h1 + .o-intro {
   border-color: var(--color-font);
 }
 
+.hover\:border-font-secondary:hover{
+  border-color: var(--color-font-secondary);
+}
+
 .focus\:border-background:focus{
   border-color: var(--color-background);
 }
@@ -1758,6 +1785,10 @@ h1 + .o-intro {
 
 .focus\:border-font:focus{
   border-color: var(--color-font);
+}
+
+.focus\:border-font-secondary:focus{
+  border-color: var(--color-font-secondary);
 }
 
 .border-opacity-0{
@@ -2538,6 +2569,10 @@ h1 + .o-intro {
   font-family: var(--font-display);
 }
 
+.font-mono{
+  font-family: var(--font-mono);
+}
+
 .font-normal{
   font-weight: var(--font-weight-normal);
 }
@@ -2672,6 +2707,10 @@ h1 + .o-intro {
 
 .leading-tight{
   line-height: 1.15;
+}
+
+.leading-snug{
+  line-height: 1.25;
 }
 
 .leading-normal{
@@ -4762,6 +4801,22 @@ h1 + .o-intro {
   color: var(--color-font);
 }
 
+.placeholder-font-secondary::-moz-placeholder{
+  color: var(--color-font-secondary);
+}
+
+.placeholder-font-secondary:-ms-input-placeholder{
+  color: var(--color-font-secondary);
+}
+
+.placeholder-font-secondary::-ms-input-placeholder{
+  color: var(--color-font-secondary);
+}
+
+.placeholder-font-secondary::placeholder{
+  color: var(--color-font-secondary);
+}
+
 .focus\:placeholder-background:focus::-moz-placeholder{
   color: var(--color-background);
 }
@@ -4824,6 +4879,22 @@ h1 + .o-intro {
 
 .focus\:placeholder-font:focus::placeholder{
   color: var(--color-font);
+}
+
+.focus\:placeholder-font-secondary:focus::-moz-placeholder{
+  color: var(--color-font-secondary);
+}
+
+.focus\:placeholder-font-secondary:focus:-ms-input-placeholder{
+  color: var(--color-font-secondary);
+}
+
+.focus\:placeholder-font-secondary:focus::-ms-input-placeholder{
+  color: var(--color-font-secondary);
+}
+
+.focus\:placeholder-font-secondary:focus::placeholder{
+  color: var(--color-font-secondary);
 }
 
 .placeholder-opacity-0::-moz-placeholder{
@@ -5277,6 +5348,10 @@ h1 + .o-intro {
   color: var(--color-font);
 }
 
+.text-font-secondary{
+  color: var(--color-font-secondary);
+}
+
 .hover\:text-background:hover{
   color: var(--color-background);
 }
@@ -5293,6 +5368,10 @@ h1 + .o-intro {
   color: var(--color-font);
 }
 
+.hover\:text-font-secondary:hover{
+  color: var(--color-font-secondary);
+}
+
 .focus\:text-background:focus{
   color: var(--color-background);
 }
@@ -5307,6 +5386,10 @@ h1 + .o-intro {
 
 .focus\:text-font:focus{
   color: var(--color-font);
+}
+
+.focus\:text-font-secondary:focus{
+  color: var(--color-font-secondary);
 }
 
 .text-opacity-0{
@@ -8770,6 +8853,10 @@ h1 + .o-intro {
     border-color: var(--color-font);
   }
 
+  .sm\:divide-font-secondary > :not(template) ~ :not(template){
+    border-color: var(--color-font-secondary);
+  }
+
   .sm\:divide-opacity-0 > :not(template) ~ :not(template){
     --divide-opacity: 0;
   }
@@ -8870,6 +8957,10 @@ h1 + .o-intro {
     background-color: var(--color-font);
   }
 
+  .sm\:bg-font-secondary{
+    background-color: var(--color-font-secondary);
+  }
+
   .sm\:hover\:bg-background:hover{
     background-color: var(--color-background);
   }
@@ -8886,6 +8977,10 @@ h1 + .o-intro {
     background-color: var(--color-font);
   }
 
+  .sm\:hover\:bg-font-secondary:hover{
+    background-color: var(--color-font-secondary);
+  }
+
   .sm\:focus\:bg-background:focus{
     background-color: var(--color-background);
   }
@@ -8900,6 +8995,10 @@ h1 + .o-intro {
 
   .sm\:focus\:bg-font:focus{
     background-color: var(--color-font);
+  }
+
+  .sm\:focus\:bg-font-secondary:focus{
+    background-color: var(--color-font-secondary);
   }
 
   .sm\:bg-opacity-0{
@@ -9058,6 +9157,10 @@ h1 + .o-intro {
     border-color: var(--color-font);
   }
 
+  .sm\:border-font-secondary{
+    border-color: var(--color-font-secondary);
+  }
+
   .sm\:hover\:border-background:hover{
     border-color: var(--color-background);
   }
@@ -9074,6 +9177,10 @@ h1 + .o-intro {
     border-color: var(--color-font);
   }
 
+  .sm\:hover\:border-font-secondary:hover{
+    border-color: var(--color-font-secondary);
+  }
+
   .sm\:focus\:border-background:focus{
     border-color: var(--color-background);
   }
@@ -9088,6 +9195,10 @@ h1 + .o-intro {
 
   .sm\:focus\:border-font:focus{
     border-color: var(--color-font);
+  }
+
+  .sm\:focus\:border-font-secondary:focus{
+    border-color: var(--color-font-secondary);
   }
 
   .sm\:border-opacity-0{
@@ -9868,6 +9979,10 @@ h1 + .o-intro {
     font-family: var(--font-display);
   }
 
+  .sm\:font-mono{
+    font-family: var(--font-mono);
+  }
+
   .sm\:font-normal{
     font-weight: var(--font-weight-normal);
   }
@@ -10002,6 +10117,10 @@ h1 + .o-intro {
 
   .sm\:leading-tight{
     line-height: 1.15;
+  }
+
+  .sm\:leading-snug{
+    line-height: 1.25;
   }
 
   .sm\:leading-normal{
@@ -12092,6 +12211,22 @@ h1 + .o-intro {
     color: var(--color-font);
   }
 
+  .sm\:placeholder-font-secondary::-moz-placeholder{
+    color: var(--color-font-secondary);
+  }
+
+  .sm\:placeholder-font-secondary:-ms-input-placeholder{
+    color: var(--color-font-secondary);
+  }
+
+  .sm\:placeholder-font-secondary::-ms-input-placeholder{
+    color: var(--color-font-secondary);
+  }
+
+  .sm\:placeholder-font-secondary::placeholder{
+    color: var(--color-font-secondary);
+  }
+
   .sm\:focus\:placeholder-background:focus::-moz-placeholder{
     color: var(--color-background);
   }
@@ -12154,6 +12289,22 @@ h1 + .o-intro {
 
   .sm\:focus\:placeholder-font:focus::placeholder{
     color: var(--color-font);
+  }
+
+  .sm\:focus\:placeholder-font-secondary:focus::-moz-placeholder{
+    color: var(--color-font-secondary);
+  }
+
+  .sm\:focus\:placeholder-font-secondary:focus:-ms-input-placeholder{
+    color: var(--color-font-secondary);
+  }
+
+  .sm\:focus\:placeholder-font-secondary:focus::-ms-input-placeholder{
+    color: var(--color-font-secondary);
+  }
+
+  .sm\:focus\:placeholder-font-secondary:focus::placeholder{
+    color: var(--color-font-secondary);
   }
 
   .sm\:placeholder-opacity-0::-moz-placeholder{
@@ -12607,6 +12758,10 @@ h1 + .o-intro {
     color: var(--color-font);
   }
 
+  .sm\:text-font-secondary{
+    color: var(--color-font-secondary);
+  }
+
   .sm\:hover\:text-background:hover{
     color: var(--color-background);
   }
@@ -12623,6 +12778,10 @@ h1 + .o-intro {
     color: var(--color-font);
   }
 
+  .sm\:hover\:text-font-secondary:hover{
+    color: var(--color-font-secondary);
+  }
+
   .sm\:focus\:text-background:focus{
     color: var(--color-background);
   }
@@ -12637,6 +12796,10 @@ h1 + .o-intro {
 
   .sm\:focus\:text-font:focus{
     color: var(--color-font);
+  }
+
+  .sm\:focus\:text-font-secondary:focus{
+    color: var(--color-font-secondary);
   }
 
   .sm\:text-opacity-0{
@@ -16099,6 +16262,10 @@ h1 + .o-intro {
     border-color: var(--color-font);
   }
 
+  .md\:divide-font-secondary > :not(template) ~ :not(template){
+    border-color: var(--color-font-secondary);
+  }
+
   .md\:divide-opacity-0 > :not(template) ~ :not(template){
     --divide-opacity: 0;
   }
@@ -16199,6 +16366,10 @@ h1 + .o-intro {
     background-color: var(--color-font);
   }
 
+  .md\:bg-font-secondary{
+    background-color: var(--color-font-secondary);
+  }
+
   .md\:hover\:bg-background:hover{
     background-color: var(--color-background);
   }
@@ -16215,6 +16386,10 @@ h1 + .o-intro {
     background-color: var(--color-font);
   }
 
+  .md\:hover\:bg-font-secondary:hover{
+    background-color: var(--color-font-secondary);
+  }
+
   .md\:focus\:bg-background:focus{
     background-color: var(--color-background);
   }
@@ -16229,6 +16404,10 @@ h1 + .o-intro {
 
   .md\:focus\:bg-font:focus{
     background-color: var(--color-font);
+  }
+
+  .md\:focus\:bg-font-secondary:focus{
+    background-color: var(--color-font-secondary);
   }
 
   .md\:bg-opacity-0{
@@ -16387,6 +16566,10 @@ h1 + .o-intro {
     border-color: var(--color-font);
   }
 
+  .md\:border-font-secondary{
+    border-color: var(--color-font-secondary);
+  }
+
   .md\:hover\:border-background:hover{
     border-color: var(--color-background);
   }
@@ -16403,6 +16586,10 @@ h1 + .o-intro {
     border-color: var(--color-font);
   }
 
+  .md\:hover\:border-font-secondary:hover{
+    border-color: var(--color-font-secondary);
+  }
+
   .md\:focus\:border-background:focus{
     border-color: var(--color-background);
   }
@@ -16417,6 +16604,10 @@ h1 + .o-intro {
 
   .md\:focus\:border-font:focus{
     border-color: var(--color-font);
+  }
+
+  .md\:focus\:border-font-secondary:focus{
+    border-color: var(--color-font-secondary);
   }
 
   .md\:border-opacity-0{
@@ -17197,6 +17388,10 @@ h1 + .o-intro {
     font-family: var(--font-display);
   }
 
+  .md\:font-mono{
+    font-family: var(--font-mono);
+  }
+
   .md\:font-normal{
     font-weight: var(--font-weight-normal);
   }
@@ -17331,6 +17526,10 @@ h1 + .o-intro {
 
   .md\:leading-tight{
     line-height: 1.15;
+  }
+
+  .md\:leading-snug{
+    line-height: 1.25;
   }
 
   .md\:leading-normal{
@@ -19421,6 +19620,22 @@ h1 + .o-intro {
     color: var(--color-font);
   }
 
+  .md\:placeholder-font-secondary::-moz-placeholder{
+    color: var(--color-font-secondary);
+  }
+
+  .md\:placeholder-font-secondary:-ms-input-placeholder{
+    color: var(--color-font-secondary);
+  }
+
+  .md\:placeholder-font-secondary::-ms-input-placeholder{
+    color: var(--color-font-secondary);
+  }
+
+  .md\:placeholder-font-secondary::placeholder{
+    color: var(--color-font-secondary);
+  }
+
   .md\:focus\:placeholder-background:focus::-moz-placeholder{
     color: var(--color-background);
   }
@@ -19483,6 +19698,22 @@ h1 + .o-intro {
 
   .md\:focus\:placeholder-font:focus::placeholder{
     color: var(--color-font);
+  }
+
+  .md\:focus\:placeholder-font-secondary:focus::-moz-placeholder{
+    color: var(--color-font-secondary);
+  }
+
+  .md\:focus\:placeholder-font-secondary:focus:-ms-input-placeholder{
+    color: var(--color-font-secondary);
+  }
+
+  .md\:focus\:placeholder-font-secondary:focus::-ms-input-placeholder{
+    color: var(--color-font-secondary);
+  }
+
+  .md\:focus\:placeholder-font-secondary:focus::placeholder{
+    color: var(--color-font-secondary);
   }
 
   .md\:placeholder-opacity-0::-moz-placeholder{
@@ -19936,6 +20167,10 @@ h1 + .o-intro {
     color: var(--color-font);
   }
 
+  .md\:text-font-secondary{
+    color: var(--color-font-secondary);
+  }
+
   .md\:hover\:text-background:hover{
     color: var(--color-background);
   }
@@ -19952,6 +20187,10 @@ h1 + .o-intro {
     color: var(--color-font);
   }
 
+  .md\:hover\:text-font-secondary:hover{
+    color: var(--color-font-secondary);
+  }
+
   .md\:focus\:text-background:focus{
     color: var(--color-background);
   }
@@ -19966,6 +20205,10 @@ h1 + .o-intro {
 
   .md\:focus\:text-font:focus{
     color: var(--color-font);
+  }
+
+  .md\:focus\:text-font-secondary:focus{
+    color: var(--color-font-secondary);
   }
 
   .md\:text-opacity-0{
@@ -23428,6 +23671,10 @@ h1 + .o-intro {
     border-color: var(--color-font);
   }
 
+  .lg\:divide-font-secondary > :not(template) ~ :not(template){
+    border-color: var(--color-font-secondary);
+  }
+
   .lg\:divide-opacity-0 > :not(template) ~ :not(template){
     --divide-opacity: 0;
   }
@@ -23528,6 +23775,10 @@ h1 + .o-intro {
     background-color: var(--color-font);
   }
 
+  .lg\:bg-font-secondary{
+    background-color: var(--color-font-secondary);
+  }
+
   .lg\:hover\:bg-background:hover{
     background-color: var(--color-background);
   }
@@ -23544,6 +23795,10 @@ h1 + .o-intro {
     background-color: var(--color-font);
   }
 
+  .lg\:hover\:bg-font-secondary:hover{
+    background-color: var(--color-font-secondary);
+  }
+
   .lg\:focus\:bg-background:focus{
     background-color: var(--color-background);
   }
@@ -23558,6 +23813,10 @@ h1 + .o-intro {
 
   .lg\:focus\:bg-font:focus{
     background-color: var(--color-font);
+  }
+
+  .lg\:focus\:bg-font-secondary:focus{
+    background-color: var(--color-font-secondary);
   }
 
   .lg\:bg-opacity-0{
@@ -23716,6 +23975,10 @@ h1 + .o-intro {
     border-color: var(--color-font);
   }
 
+  .lg\:border-font-secondary{
+    border-color: var(--color-font-secondary);
+  }
+
   .lg\:hover\:border-background:hover{
     border-color: var(--color-background);
   }
@@ -23732,6 +23995,10 @@ h1 + .o-intro {
     border-color: var(--color-font);
   }
 
+  .lg\:hover\:border-font-secondary:hover{
+    border-color: var(--color-font-secondary);
+  }
+
   .lg\:focus\:border-background:focus{
     border-color: var(--color-background);
   }
@@ -23746,6 +24013,10 @@ h1 + .o-intro {
 
   .lg\:focus\:border-font:focus{
     border-color: var(--color-font);
+  }
+
+  .lg\:focus\:border-font-secondary:focus{
+    border-color: var(--color-font-secondary);
   }
 
   .lg\:border-opacity-0{
@@ -24526,6 +24797,10 @@ h1 + .o-intro {
     font-family: var(--font-display);
   }
 
+  .lg\:font-mono{
+    font-family: var(--font-mono);
+  }
+
   .lg\:font-normal{
     font-weight: var(--font-weight-normal);
   }
@@ -24660,6 +24935,10 @@ h1 + .o-intro {
 
   .lg\:leading-tight{
     line-height: 1.15;
+  }
+
+  .lg\:leading-snug{
+    line-height: 1.25;
   }
 
   .lg\:leading-normal{
@@ -26750,6 +27029,22 @@ h1 + .o-intro {
     color: var(--color-font);
   }
 
+  .lg\:placeholder-font-secondary::-moz-placeholder{
+    color: var(--color-font-secondary);
+  }
+
+  .lg\:placeholder-font-secondary:-ms-input-placeholder{
+    color: var(--color-font-secondary);
+  }
+
+  .lg\:placeholder-font-secondary::-ms-input-placeholder{
+    color: var(--color-font-secondary);
+  }
+
+  .lg\:placeholder-font-secondary::placeholder{
+    color: var(--color-font-secondary);
+  }
+
   .lg\:focus\:placeholder-background:focus::-moz-placeholder{
     color: var(--color-background);
   }
@@ -26812,6 +27107,22 @@ h1 + .o-intro {
 
   .lg\:focus\:placeholder-font:focus::placeholder{
     color: var(--color-font);
+  }
+
+  .lg\:focus\:placeholder-font-secondary:focus::-moz-placeholder{
+    color: var(--color-font-secondary);
+  }
+
+  .lg\:focus\:placeholder-font-secondary:focus:-ms-input-placeholder{
+    color: var(--color-font-secondary);
+  }
+
+  .lg\:focus\:placeholder-font-secondary:focus::-ms-input-placeholder{
+    color: var(--color-font-secondary);
+  }
+
+  .lg\:focus\:placeholder-font-secondary:focus::placeholder{
+    color: var(--color-font-secondary);
   }
 
   .lg\:placeholder-opacity-0::-moz-placeholder{
@@ -27265,6 +27576,10 @@ h1 + .o-intro {
     color: var(--color-font);
   }
 
+  .lg\:text-font-secondary{
+    color: var(--color-font-secondary);
+  }
+
   .lg\:hover\:text-background:hover{
     color: var(--color-background);
   }
@@ -27281,6 +27596,10 @@ h1 + .o-intro {
     color: var(--color-font);
   }
 
+  .lg\:hover\:text-font-secondary:hover{
+    color: var(--color-font-secondary);
+  }
+
   .lg\:focus\:text-background:focus{
     color: var(--color-background);
   }
@@ -27295,6 +27614,10 @@ h1 + .o-intro {
 
   .lg\:focus\:text-font:focus{
     color: var(--color-font);
+  }
+
+  .lg\:focus\:text-font-secondary:focus{
+    color: var(--color-font-secondary);
   }
 
   .lg\:text-opacity-0{
@@ -30757,6 +31080,10 @@ h1 + .o-intro {
     border-color: var(--color-font);
   }
 
+  .xl\:divide-font-secondary > :not(template) ~ :not(template){
+    border-color: var(--color-font-secondary);
+  }
+
   .xl\:divide-opacity-0 > :not(template) ~ :not(template){
     --divide-opacity: 0;
   }
@@ -30857,6 +31184,10 @@ h1 + .o-intro {
     background-color: var(--color-font);
   }
 
+  .xl\:bg-font-secondary{
+    background-color: var(--color-font-secondary);
+  }
+
   .xl\:hover\:bg-background:hover{
     background-color: var(--color-background);
   }
@@ -30873,6 +31204,10 @@ h1 + .o-intro {
     background-color: var(--color-font);
   }
 
+  .xl\:hover\:bg-font-secondary:hover{
+    background-color: var(--color-font-secondary);
+  }
+
   .xl\:focus\:bg-background:focus{
     background-color: var(--color-background);
   }
@@ -30887,6 +31222,10 @@ h1 + .o-intro {
 
   .xl\:focus\:bg-font:focus{
     background-color: var(--color-font);
+  }
+
+  .xl\:focus\:bg-font-secondary:focus{
+    background-color: var(--color-font-secondary);
   }
 
   .xl\:bg-opacity-0{
@@ -31045,6 +31384,10 @@ h1 + .o-intro {
     border-color: var(--color-font);
   }
 
+  .xl\:border-font-secondary{
+    border-color: var(--color-font-secondary);
+  }
+
   .xl\:hover\:border-background:hover{
     border-color: var(--color-background);
   }
@@ -31061,6 +31404,10 @@ h1 + .o-intro {
     border-color: var(--color-font);
   }
 
+  .xl\:hover\:border-font-secondary:hover{
+    border-color: var(--color-font-secondary);
+  }
+
   .xl\:focus\:border-background:focus{
     border-color: var(--color-background);
   }
@@ -31075,6 +31422,10 @@ h1 + .o-intro {
 
   .xl\:focus\:border-font:focus{
     border-color: var(--color-font);
+  }
+
+  .xl\:focus\:border-font-secondary:focus{
+    border-color: var(--color-font-secondary);
   }
 
   .xl\:border-opacity-0{
@@ -31855,6 +32206,10 @@ h1 + .o-intro {
     font-family: var(--font-display);
   }
 
+  .xl\:font-mono{
+    font-family: var(--font-mono);
+  }
+
   .xl\:font-normal{
     font-weight: var(--font-weight-normal);
   }
@@ -31989,6 +32344,10 @@ h1 + .o-intro {
 
   .xl\:leading-tight{
     line-height: 1.15;
+  }
+
+  .xl\:leading-snug{
+    line-height: 1.25;
   }
 
   .xl\:leading-normal{
@@ -34079,6 +34438,22 @@ h1 + .o-intro {
     color: var(--color-font);
   }
 
+  .xl\:placeholder-font-secondary::-moz-placeholder{
+    color: var(--color-font-secondary);
+  }
+
+  .xl\:placeholder-font-secondary:-ms-input-placeholder{
+    color: var(--color-font-secondary);
+  }
+
+  .xl\:placeholder-font-secondary::-ms-input-placeholder{
+    color: var(--color-font-secondary);
+  }
+
+  .xl\:placeholder-font-secondary::placeholder{
+    color: var(--color-font-secondary);
+  }
+
   .xl\:focus\:placeholder-background:focus::-moz-placeholder{
     color: var(--color-background);
   }
@@ -34141,6 +34516,22 @@ h1 + .o-intro {
 
   .xl\:focus\:placeholder-font:focus::placeholder{
     color: var(--color-font);
+  }
+
+  .xl\:focus\:placeholder-font-secondary:focus::-moz-placeholder{
+    color: var(--color-font-secondary);
+  }
+
+  .xl\:focus\:placeholder-font-secondary:focus:-ms-input-placeholder{
+    color: var(--color-font-secondary);
+  }
+
+  .xl\:focus\:placeholder-font-secondary:focus::-ms-input-placeholder{
+    color: var(--color-font-secondary);
+  }
+
+  .xl\:focus\:placeholder-font-secondary:focus::placeholder{
+    color: var(--color-font-secondary);
   }
 
   .xl\:placeholder-opacity-0::-moz-placeholder{
@@ -34594,6 +34985,10 @@ h1 + .o-intro {
     color: var(--color-font);
   }
 
+  .xl\:text-font-secondary{
+    color: var(--color-font-secondary);
+  }
+
   .xl\:hover\:text-background:hover{
     color: var(--color-background);
   }
@@ -34610,6 +35005,10 @@ h1 + .o-intro {
     color: var(--color-font);
   }
 
+  .xl\:hover\:text-font-secondary:hover{
+    color: var(--color-font-secondary);
+  }
+
   .xl\:focus\:text-background:focus{
     color: var(--color-background);
   }
@@ -34624,6 +35023,10 @@ h1 + .o-intro {
 
   .xl\:focus\:text-font:focus{
     color: var(--color-font);
+  }
+
+  .xl\:focus\:text-font-secondary:focus{
+    color: var(--color-font-secondary);
   }
 
   .xl\:text-opacity-0{

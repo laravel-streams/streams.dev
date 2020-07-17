@@ -1,9 +1,22 @@
+// .o-intro
+// {
+//     @apply relative flex items-center bg-accent p-4;
+//     min-height:4rem;   
+// }
+
 .o-intro
 {
-    @apply bg-accent p-4;
+    @apply font-mono leading-snug;
+    font-size: clamp(1.3rem,calc(1.3rem + 0.1vw),24px);
 }
 
-h1+.o-intro 
+.o-intro p 
 {
-    @apply mb-8;
+    text-decoration: underline;
+    text-decoration-color:var(--color-underline);
+}
+
+.o-intro + h2 
+{
+    @apply mt-12;
 }
