@@ -1,6 +1,6 @@
 module.exports = {
   purge: {
-    enabled:false,
+    enabled: false,
     content: [
       './resources/views/**/*.html',
       './resources/js/**/*.vue',
@@ -10,26 +10,26 @@ module.exports = {
       whitelist: [],
     }
   },
-    
+
   theme: {
-    colors:{
-      background:"var(--color-background)",
-      surface:"var(--color-surface)",
-      accent:"var(--color-accent)",
-      font:"var(--color-font)",
-      "font-secondary":"var(--color-font-secondary)"
+    colors: {
+      background: "var(--color-background)",
+      surface: "var(--color-surface)",
+      accent: "var(--color-accent)",
+      font: "var(--color-font)",
+      "font-secondary": "var(--color-font-secondary)"
     },
     fontFamily: {
       sans: "var(--font-body)",
       body: "var(--font-body)",
-      display:"var(--font-display)",
-      mono:"var(--font-mono)",
+      display: "var(--font-display)",
+      mono: "var(--font-mono)",
     },
     fontSize: {
-      sm:"var(--font-size-sm)",
-      base:"var(--font-size-base)",
-      lg:"var(--font-size-lg)",
-      xl:"var(--font-size-xl)",
+      sm: "var(--font-size-sm)",
+      base: "var(--font-size-base)",
+      lg: "var(--font-size-lg)",
+      xl: "var(--font-size-xl)",
     },
     fontWeight: {
       normal: "var(--font-weight-normal)",
@@ -38,7 +38,7 @@ module.exports = {
     lineHeight: {
       none: '1',
       tight: '1.15',
-      snug:'1.25',
+      snug: '1.25',
       normal: '1.5',
       relaxed: '1.625',
     },

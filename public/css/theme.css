@@ -851,15 +851,18 @@ h1 {
 h2 {
   line-height: 1.15;
   margin-top: 4rem;
-  margin-bottom: 4rem;
   margin-bottom: 3rem;
   font-size: clamp(28px, calc(1rem + 1.7vw), 100px);
+}
+
+h2 + p {
+  margin-top: -2rem;
 }
 
 h3 {
   line-height: 1.15;
   margin-top: 3rem;
-  margin-bottom: 0.75rem;
+  margin-bottom: 1rem;
   font-size: clamp(18px, calc(1rem + 0vw), 100px);
 }
 
@@ -879,7 +882,11 @@ body {
 .o-main {
   padding-top: 2.5rem;
   padding-bottom: 2.5rem;
-  width: clamp(320px, 100%, 700px);
+  width: 100%;
+}
+
+.o-main *:not(pre):not(code) {
+  width: clamp(320px, 100%, 850px);
 }
 
 .o-aside {

@@ -2,9 +2,9 @@
 
 @section('content')
 
-<div class="container">
+<div class="">
     <div class="grid grid-cols-12 gap-4">
-        <div class="col-span-3">
+        <div class="col-span-2">
             <aside class="o-aside sticky top-0">
     
                 <ul x-data="theme()" x-init="init">
@@ -25,7 +25,7 @@
                 </ul>
             </aside>
         </div>
-        <div class="col-span-8 col-start-5">
+        <div class="col-span-8 col-start-4">
             <main class="o-main">
                 <h1>
                     {{ $entry->title }}

@@ -1,6 +1,12 @@
 .o-main
 {
-    @apply py-10;
-    width:clamp(320px,100%,700px)
+    @apply py-10 w-full;
     
+    
+}
+
+.o-main *:not(pre):not(code)
+{
+   
+   width:clamp(320px,100%,850px)
 }
