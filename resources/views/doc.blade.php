@@ -2,12 +2,11 @@
 
 @section('content')
 
-<div class="container mx-auto">
+<div class="container">
     <div class="grid grid-cols-12 gap-4">
         <div class="col-span-3">
             <aside class="o-aside sticky top-0">
-                
-             
+    
                 <ul x-data="theme()" x-init="init">
                     <li @click="onLight" class="cursor-pointer">
                         I like the lightness
@@ -26,7 +25,7 @@
                 </ul>
             </aside>
         </div>
-        <div class="col-span-9">
+        <div class="col-span-8 col-start-5">
             <main class="o-main">
                 <h1>
                     {{ $entry->title }}

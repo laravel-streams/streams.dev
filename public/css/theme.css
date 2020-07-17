@@ -804,7 +804,14 @@ html.o-theme--dark .hljs-deletion {
 
 html.o-theme--light {
   --color-background: #fff;
-  --color-surface: #fff;
+  --color-surface:#fd48c4;
+  --color-accent: #2bd1fc;
+  --color-font: #333;
+}
+
+html.o-theme--80s {
+  --color-background: #fff;
+  --color-surface: #fd48c4;
   --color-accent: rgb(240, 240, 240);
   --color-font: #333;
 }
@@ -880,9 +887,10 @@ pre + * {
 }
 
 .o-aside {
-  background-color: var(--color-background);
+  background-color: var(--color-surface);
   padding: 2rem;
   padding-top: 3rem;
+  min-height: 100vh;
 }
 
 .o-intro {
