@@ -6,17 +6,17 @@
 
 .o-intro
 {
-    @apply font-mono leading-normal;
+    @apply font-mono leading-normal mb-12;
     font-size: clamp(1.3rem,calc(1.3rem + 0.1vw),24px);
 }
+
+
+
+
 
 .o-intro p 
 {
     text-decoration: underline;
-    text-decoration-color:var(--color-underline);
+    text-decoration-color:var(--color-surface);
 }
 
-.o-intro + h2 
-{
-    @apply mt-12;
-}

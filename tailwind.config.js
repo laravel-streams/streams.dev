@@ -3,6 +3,7 @@ module.exports = {
     enabled: false,
     content: [
       './resources/views/**/*.html',
+      './docs/**/*.md',
       './resources/js/**/*.vue',
       './resources/js/**/*.js',
     ],

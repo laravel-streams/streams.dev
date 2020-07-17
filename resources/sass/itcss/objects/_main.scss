@@ -5,8 +5,12 @@
     
 }
 
-.o-main *:not(pre):not(code):not(h2)
+.o-main *:not(pre):not(code)
 {
-   
-   width:clamp(320px,100%,850px)
+   width:clamp(320px,100%,850px);
+}
+
+.o-main h2 
+{
+   // width:clamp(320px,100%,1000px) !important;
 }

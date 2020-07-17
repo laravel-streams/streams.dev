@@ -8,7 +8,6 @@
 <body>
     
     @yield('content')    
-    
     @include('partials/assets')
 
 </body>

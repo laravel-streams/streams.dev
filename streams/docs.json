@@ -1,11 +1,9 @@
 {
     "route": "docs/{id}",
     "template": "doc",
-
     "source": {
         "path": "docs"
     },
-    
     "fields": {
         "title": "text",
         "description": "textarea",
