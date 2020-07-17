@@ -23,6 +23,7 @@ module.exports = {
       sans: "var(--font-body)",
       body: "var(--font-body)",
       display:"var(--font-display)",
+      mono:"var(--font-mono)",
     },
     fontSize: {
       sm:"var(--font-size-sm)",
@@ -37,6 +38,7 @@ module.exports = {
     lineHeight: {
       none: '1',
       tight: '1.15',
+      snug:'1.25',
       normal: '1.5',
       relaxed: '1.625',
     },

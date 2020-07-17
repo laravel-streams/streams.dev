@@ -1,7 +1,17 @@
+// .o-intro
+// {
+//     @apply relative flex items-center bg-accent p-4;
+//     min-height:4rem;   
+// }
+
 .o-intro
 {
-    @apply relative flex items-center bg-accent p-4;
-    min-height:4rem;   
+    @apply font-mono leading-snug;
+    font-size: clamp(1.15rem,calc(1.15rem + .3vw),100px);
 }
 
-
+.o-intro p 
+{
+    text-decoration: underline;
+    text-decoration-color:var(--color-underline);
+}

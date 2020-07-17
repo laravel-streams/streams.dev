@@ -6,3 +6,7 @@
 @import "./pre-code";
 
 
+body 
+{
+    font-size:clamp(15px, 17px, 20px);
+}
