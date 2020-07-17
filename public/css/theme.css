@@ -831,26 +831,37 @@ h6 {
   font-weight: var(--font-weight-bold);
 }
 
-h2 {
+h1 {
   line-height: 1;
-  margin-top: 3rem;
-  margin-bottom: 3rem;
+  margin-top: 0;
   margin-bottom: 1.5rem;
-  font-size: clamp(calc(var(--font-size-base) * 1.8), calc(1rem + 1.5vw), 42px);
+  font-size: clamp(42px, calc(1rem + 2.5vw), 64px);
+}
+
+h2 {
+  line-height: 1.15;
+  margin-top: 4rem;
+  margin-bottom: 4rem;
+  margin-bottom: 2rem;
+  font-size: clamp(28px, calc(1rem + 1.3vw), 100px);
 }
 
 h3 {
-  line-height: 1;
-  margin-top: 1.5rem;
-  margin-bottom: 1.5rem;
+  line-height: 1.15;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
   margin-bottom: 0.75rem;
-  font-size: clamp(calc(var(--font-size-base) * 1.3), calc(1rem + .3vw), 322px);
+  font-size: clamp(18px, calc(1rem + .3vw), 100px);
 }
 
 pre {
   margin-top: 1.5rem;
   white-space: pre-wrap;
   font-family: monospace;
+}
+
+pre + * {
+  margin-top: 1.5rem;
 }
 
 .c-body {
@@ -2652,7 +2663,7 @@ h1 + .o-intro {
 }
 
 .leading-tight{
-  line-height: 1.25;
+  line-height: 1.15;
 }
 
 .leading-normal{
@@ -9982,7 +9993,7 @@ h1 + .o-intro {
   }
 
   .sm\:leading-tight{
-    line-height: 1.25;
+    line-height: 1.15;
   }
 
   .sm\:leading-normal{
@@ -17311,7 +17322,7 @@ h1 + .o-intro {
   }
 
   .md\:leading-tight{
-    line-height: 1.25;
+    line-height: 1.15;
   }
 
   .md\:leading-normal{
@@ -24640,7 +24651,7 @@ h1 + .o-intro {
   }
 
   .lg\:leading-tight{
-    line-height: 1.25;
+    line-height: 1.15;
   }
 
   .lg\:leading-normal{
@@ -31969,7 +31980,7 @@ h1 + .o-intro {
   }
 
   .xl\:leading-tight{
-    line-height: 1.25;
+    line-height: 1.15;
   }
 
   .xl\:leading-normal{
