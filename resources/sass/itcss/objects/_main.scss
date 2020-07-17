@@ -5,7 +5,7 @@
     
 }
 
-.o-main *:not(pre):not(code)
+.o-main *:not(pre):not(code):not(h2)
 {
    
    width:clamp(320px,100%,850px)
