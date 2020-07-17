@@ -863,7 +863,7 @@ h3 {
   line-height: 1.15;
   margin-top: 3rem;
   margin-bottom: 1rem;
-  font-size: clamp(18px, calc(1rem + 0vw), 100px);
+  font-size: clamp(18px, calc(1rem + .3vw), 100px);
 }
 
 pre {

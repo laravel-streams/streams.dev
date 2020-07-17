@@ -37,5 +37,5 @@ h2
 h3
 {
     @apply leading-tight mt-12 mb-4;
-    font-size: clamp(18px, calc(1rem + 0vw), 100px);
+    font-size: clamp(18px, calc(1rem + .3vw), 100px);
 }
