@@ -63,7 +63,7 @@ Streams::entries('music')->create([
 
 You can now fetch entry data from the Stream:
 
-```blade
+```
 @foreach (Streams::entries('music')->get() as $song)
     <h3>{{ $song->title }} <small>{{ $song }}</small></h3>
     {!! $song->expand('url')->link('Listen', [

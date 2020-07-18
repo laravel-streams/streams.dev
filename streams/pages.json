@@ -17,6 +17,12 @@
             "config": {
                 "stream": "docs"
             }
+        },
+        "examples": {
+            "type": "entries",
+            "config": {
+                "stream": "examples"
+            }
         }
     }
 }
