@@ -11,15 +11,14 @@
 |
 */
 
-use Anomaly\Streams\Platform\Ui\Form\FormBuilder;
-use Anomaly\Streams\Platform\Ui\Table\TableBuilder;
-use Anomaly\Streams\Platform\Support\Facades\Application;
-use Anomaly\Streams\Platform\Application\ApplicationManager;
+use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Response;
+use Anomaly\Streams\Platform\Support\Facades\Streams;
 
 Route::view('/', 'welcome');
 
-Route::any('test/seo', function() {
-    dd(Streams::entries('docs')->where('slug', 'directory-structure')->first());
+Route::any('test/array', function() {
+    return Response::json(Streams::entries('docs')->find('directory-structure')->toArray());
 });
 
 // Route::any('docs/{handle}', [
