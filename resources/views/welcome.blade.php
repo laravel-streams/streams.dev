@@ -14,13 +14,14 @@
                                                      </pre>
         </div>
 
-        {{-- <p class="font-mono text-xs text-white text-center">
+        {{-- <p class="font-mono text-xs text-white text-center mb-6">
             {{ Arr::random([
                 'A Development Cult',
-                'A Development Stack',
+                'Stacked',
                 'A Development Methodology',
                 'Idoimatic Bliss',
                 'A Higher Language',
+                'Data First',
             ]) }}
         </p> --}}
 
