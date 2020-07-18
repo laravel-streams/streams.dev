@@ -23,7 +23,7 @@ h3,h4
 //  ----------------------------------------------------------------------------
 h1
 {
-    font-size: clamp(var(--font-size-h1), calc(var(--font-size-h1) + 1.3vw), 72px);
+    font-size: clamp(var(--font-size-h1), calc(var(--font-size-h1) + 1.3vw), 4.5rem);
     @apply leading-none mt-0 mb-12 ;
 
     & + .o-intro

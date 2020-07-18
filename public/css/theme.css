@@ -856,7 +856,7 @@ h3, h4 {
 }
 
 h1 {
-  font-size: clamp(var(--font-size-h1), calc(var(--font-size-h1) + 1.3vw), 72px);
+  font-size: clamp(var(--font-size-h1), calc(var(--font-size-h1) + 1.3vw), 4.5rem);
   line-height: 1;
   margin-top: 0;
   margin-bottom: 3rem;
@@ -915,7 +915,7 @@ pre {
   white-space: pre-wrap;
 }
 
-pre + * {
+pre + *:not(h2):not(h3):not(h4) {
   margin-top: 1.5rem;
 }
 

@@ -1,0 +1,14 @@
+{
+    "name": "examples",
+    "route": "examples/{id}",
+    "template": "example",
+    "source": {
+        "path": "examples"
+    },
+    "fields": {
+        "title": "text",
+        "description": "textarea",
+        "content": "textarea"
+    }
+}
+

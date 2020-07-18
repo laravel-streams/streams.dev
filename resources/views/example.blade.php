@@ -9,17 +9,16 @@
     
                 <ul x-data="theme()" x-init="init">
                     <li @click="onLight" class="cursor-pointer">
-                        I like the lightness
+                        I like the lightness s
                     </li>
                     <li @click="onDark" class="cursor-pointer">
                         I like the darkness
                     </li>
                 </ul>
-            
                 <ul>
-                    @foreach (Streams::entries(request()->segment(1))->orderBy('sort', 'asc')->get() as $item)
+                    @foreach (Streams::entries('examples')->orderBy('sort', 'asc')->get() as $item)
                     <li>
-                    <a href="/{{request()->segment(1)}}/{{ $item->id }}">{{ $item->title }}</a>
+                        <a href="/examples/{{ $item->id }}">{{ $item->title }}</a>
                     </li>
                     @endforeach
                 </ul>
