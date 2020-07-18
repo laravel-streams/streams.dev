@@ -1,0 +1,35 @@
+//  ----------------------------------------------------------------------------
+//  Global settings only — Otherwise use the theme files.
+//  ----------------------------------------------------------------------------
+:root {
+    
+    //  ------------------------------------------------------------------------
+    //  Font Settings 
+    //  ------------------------------------------------------------------------
+    
+    // Font families
+    --font-display : 'Inter', 'sans-serif';
+    --font-body : 'Inter', 'sans-serif';
+    --font-mono: 'Inconsolata';
+
+    // Font size
+    --font-size-base:1rem;
+    --font-size-h1:2.825rem;
+    --font-size-h2:1.825rem;
+    --font-size-h3:1.125rem;
+    --font-size-h4:1.08rem;
+
+    // Font Weight 
+    --font-weight-normal: 400;
+    --font-weight-semi: 700; 
+    --font-weight-bold: 800; 
+}
+
+html.o-theme--compact
+{
+    // Font size
+    --font-size-h1:2.625rem;
+    --font-size-h2:2rem;
+    --font-size-h3:1.5rem;
+    --font-size-h4:1rem;
+}

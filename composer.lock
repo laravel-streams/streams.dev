@@ -12,12 +12,21 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/anomalylabs/streams-platform.git",
+<<<<<<< HEAD
                 "reference": "7bef70b67e96fd800ce2772c58fcc4818c6f9f47"
             },
             "dist": {
                 "type": "zip",
                 "url": "https://api.github.com/repos/anomalylabs/streams-platform/zipball/7bef70b67e96fd800ce2772c58fcc4818c6f9f47",
                 "reference": "7bef70b67e96fd800ce2772c58fcc4818c6f9f47",
+=======
+                "reference": "610128d7586301bcb40937c3d2807bf82d74c494"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/anomalylabs/streams-platform/zipball/610128d7586301bcb40937c3d2807bf82d74c494",
+                "reference": "610128d7586301bcb40937c3d2807bf82d74c494",
+>>>>>>> c26956f8647ff552c094ce9c141a3e7ca02c360e
                 "shasum": ""
             },
             "require": {
@@ -61,7 +70,11 @@
                 }
             ],
             "description": "A drop-in application platform for Laravel.",
+<<<<<<< HEAD
             "time": "2020-07-16T04:44:19+00:00"
+=======
+            "time": "2020-07-16T13:29:38+00:00"
+>>>>>>> c26956f8647ff552c094ce9c141a3e7ca02c360e
         },
         {
             "name": "brick/math",

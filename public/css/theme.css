@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap);/* purgecss start ignore */
+@import url(https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap);@import url(https://fonts.googleapis.com/css2?family=Inconsolata:wght@300;400;500&display=swap);/* purgecss start ignore */
 
 /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
 
@@ -417,7 +417,7 @@ ul {
  */
 
 html {
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"; /* 1 */
+  font-family: var(--font-body); /* 1 */
   line-height: 1.5; /* 2 */
 }
 
@@ -557,7 +557,7 @@ pre,
 code,
 kbd,
 samp {
-  font-family: Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-family: var(--font-mono);
 }
 
 /**
@@ -695,7 +695,7 @@ html.o-theme--light .hljs {
   display: block;
   overflow-x: auto;
   padding: 1rem;
-  color: #87928a;
+  color: #fff;
   background: #171c19;
 }
 
@@ -792,17 +792,48 @@ html.o-theme--dark .hljs-deletion {
 }
 
 :root {
-  --color-background: #080808;
-  --color-surface: #fff;
-  --color-accent: #333;
-  --color-font: #eee;
+  --font-display: "Inter", "sans-serif";
+  --font-body: "Inter", "sans-serif";
+  --font-mono: "Inconsolata";
+  --font-size-base:1rem;
+  --font-size-h1:2.825rem;
+  --font-size-h2:1.825rem;
+  --font-size-h3:1.125rem;
+  --font-size-h4:1.08rem;
+  --font-weight-normal: 400;
+  --font-weight-semi: 700;
+  --font-weight-bold: 800;
+}
+
+html.o-theme--compact {
+  --font-size-h1:2.625rem;
+  --font-size-h2:2rem;
+  --font-size-h3:1.5rem;
+  --font-size-h4:1rem;
 }
 
 html.o-theme--light {
   --color-background: #fff;
-  --color-surface: #fff;
+  --color-surface:#fbfbfb;
+  --color-accent: #bee4ff;
+  --color-underline: #e6e6e6;
+  --color-font: #192633;
+  --color-font-secondary:#7abaff;
+  --color-code: var(--color-accent);
+}
+
+html.o-theme--80s {
+  --color-background: #fff;
+  --color-surface: #fd48c4;
   --color-accent: rgb(240, 240, 240);
   --color-font: #333;
+}
+
+html.o-theme--dark {
+  --color-background: #222322;
+  --color-surface: #2d2d2d;
+  --color-accent: #005a96;
+  --color-font: #fff;
 }
 
 html, body {
@@ -810,77 +841,116 @@ html, body {
   color: var(--color-font);
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-display);
+  font-weight: var(--font-weight-bold);
+}
+
+h3, h4 {
+  font-weight: var(--font-weight-semi);
+}
+
 h1 {
-  font-size: 3.052rem;
-  line-height: 1.25;
+  font-size: clamp(var(--font-size-h1), calc(var(--font-size-h1) + 1.3vw), 72px);
+  line-height: 1;
+  margin-top: 0;
+  margin-bottom: 3rem;
+}
+
+h1 + .o-intro {
+  margin-top: -1.5rem;
 }
 
 h2 {
-  font-size: 2.441rem;
-  border-bottom-width: 2px;
-  border-color: var(--color-accent);
-  margin-bottom: 1.5rem;
-  margin-top: 3rem;
+  font-size: clamp(var(--font-size-h2), calc(var(--font-size-h2) + .8vw), 45px);
+  line-height: 1.15;
+  margin-top: 4rem;
+  position: relative;
+  margin-bottom: calc(var(--font-size-h2) * 1.5);
 }
 
-h2:first-child {
-  margin-top: 0;
+h2 + p {
+  margin-top: -2rem;
+}
+
+h2:before {
+  position: absolute;
+  top: 22px;
+  left: -100px;
+  display: block;
+  width: 40px;
+  height: 5px;
+  content: "";
+  background-color: var(--color-accent);
 }
 
 h3 {
-  font-size: 1.953rem;
-  margin-bottom: 1rem;
-  margin-top: 2rem;
+  font-size: clamp(var(--font-size-h3), calc(var(--font-size-h3) + .3vw), 25px);
+  line-height: 1.15;
+  margin-top: 3rem;
+  margin-bottom: calc(var(--font-size-h3) * .5);
 }
 
 h4 {
-  font-size: 1.563rem;
-  margin-bottom: 0.75rem;
-  margin-top: 1.5rem;
+  font-size: clamp(var(--font-size-h4), calc(var(--font-size-h4) + .3vw), 22px);
+  line-height: 1.15;
+  margin-top: 3rem;
+  margin-bottom: calc(var(--font-size-h4) * .3);
 }
 
-h5 {
-  font-size: 1.25rem;
-  margin-bottom: 0.75rem;
-  margin-top: 1.5rem;
-}
-
-h6 {
-  font-size: 1.25rem;
-  margin-bottom: 0.75rem;
-  margin-top: 1.5rem;
+code {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  display: inline-block;
+  background-color: var(--color-code, #000);
 }
 
 pre {
-  margin-top: 1rem;
-  margin-bottom: 1rem;
+  margin-top: 1.5rem;
   white-space: pre-wrap;
-  font-family: "Source Code Pro", monospace;
 }
 
-p + p {
-  margin-top: 1rem;
+pre + * {
+  margin-top: 1.5rem;
+}
+
+body {
+  font-size: clamp(0.9375rem, calc(1rem + .15vw), 20px);
 }
 
 .o-main {
   padding-top: 2.5rem;
   padding-bottom: 2.5rem;
-  width: clamp(320px, 100%, 700px);
+  width: 100%;
+}
+
+.o-main *:not(pre):not(code) {
+  width: clamp(320px, 100%, 850px);
 }
 
 .o-aside {
-  background-color: var(--color-background);
+  background-color: var(--color-surface);
   padding: 2rem;
   padding-top: 3rem;
+  min-height: 100vh;
 }
 
 .o-intro {
-  background-color: var(--color-accent);
-  padding: 1rem;
+  font-family: var(--font-mono);
+  line-height: 1.5;
+  margin-bottom: 3rem;
+  font-size: clamp(1.3rem, calc(1.3rem + 0.1vw), 24px);
 }
 
-h1 + .o-intro {
-  margin-bottom: 2rem;
+.o-intro p {
+  text-decoration: underline;
+  -webkit-text-decoration-color: var(--color-surface);
+          text-decoration-color: var(--color-surface);
 }
 
 /* Start purging... */
@@ -1421,6 +1491,10 @@ h1 + .o-intro {
   border-color: var(--color-font);
 }
 
+.divide-font-secondary > :not(template) ~ :not(template){
+  border-color: var(--color-font-secondary);
+}
+
 .divide-opacity-0 > :not(template) ~ :not(template){
   --divide-opacity: 0;
 }
@@ -1521,6 +1595,10 @@ h1 + .o-intro {
   background-color: var(--color-font);
 }
 
+.bg-font-secondary{
+  background-color: var(--color-font-secondary);
+}
+
 .hover\:bg-background:hover{
   background-color: var(--color-background);
 }
@@ -1537,6 +1615,10 @@ h1 + .o-intro {
   background-color: var(--color-font);
 }
 
+.hover\:bg-font-secondary:hover{
+  background-color: var(--color-font-secondary);
+}
+
 .focus\:bg-background:focus{
   background-color: var(--color-background);
 }
@@ -1551,6 +1633,10 @@ h1 + .o-intro {
 
 .focus\:bg-font:focus{
   background-color: var(--color-font);
+}
+
+.focus\:bg-font-secondary:focus{
+  background-color: var(--color-font-secondary);
 }
 
 .bg-opacity-0{
@@ -1709,6 +1795,10 @@ h1 + .o-intro {
   border-color: var(--color-font);
 }
 
+.border-font-secondary{
+  border-color: var(--color-font-secondary);
+}
+
 .hover\:border-background:hover{
   border-color: var(--color-background);
 }
@@ -1725,6 +1815,10 @@ h1 + .o-intro {
   border-color: var(--color-font);
 }
 
+.hover\:border-font-secondary:hover{
+  border-color: var(--color-font-secondary);
+}
+
 .focus\:border-background:focus{
   border-color: var(--color-background);
 }
@@ -1739,6 +1833,10 @@ h1 + .o-intro {
 
 .focus\:border-font:focus{
   border-color: var(--color-font);
+}
+
+.focus\:border-font-secondary:focus{
+  border-color: var(--color-font-secondary);
 }
 
 .border-opacity-0{
@@ -2508,123 +2606,55 @@ h1 + .o-intro {
 }
 
 .font-sans{
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-family: var(--font-body);
 }
 
-.font-serif{
-  font-family: Georgia, Cambria, "Times New Roman", Times, serif;
+.font-body{
+  font-family: var(--font-body);
+}
+
+.font-display{
+  font-family: var(--font-display);
 }
 
 .font-mono{
-  font-family: Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-}
-
-.font-hairline{
-  font-weight: 100;
-}
-
-.font-thin{
-  font-weight: 200;
-}
-
-.font-light{
-  font-weight: 300;
+  font-family: var(--font-mono);
 }
 
 .font-normal{
-  font-weight: 400;
+  font-weight: var(--font-weight-normal);
 }
 
-.font-medium{
-  font-weight: 500;
-}
-
-.font-semibold{
-  font-weight: 600;
+.font-semi{
+  font-weight: var(--font-weight-semi);
 }
 
 .font-bold{
-  font-weight: 700;
-}
-
-.font-extrabold{
-  font-weight: 800;
-}
-
-.font-black{
-  font-weight: 900;
-}
-
-.hover\:font-hairline:hover{
-  font-weight: 100;
-}
-
-.hover\:font-thin:hover{
-  font-weight: 200;
-}
-
-.hover\:font-light:hover{
-  font-weight: 300;
+  font-weight: var(--font-weight-bold);
 }
 
 .hover\:font-normal:hover{
-  font-weight: 400;
+  font-weight: var(--font-weight-normal);
 }
 
-.hover\:font-medium:hover{
-  font-weight: 500;
-}
-
-.hover\:font-semibold:hover{
-  font-weight: 600;
+.hover\:font-semi:hover{
+  font-weight: var(--font-weight-semi);
 }
 
 .hover\:font-bold:hover{
-  font-weight: 700;
-}
-
-.hover\:font-extrabold:hover{
-  font-weight: 800;
-}
-
-.hover\:font-black:hover{
-  font-weight: 900;
-}
-
-.focus\:font-hairline:focus{
-  font-weight: 100;
-}
-
-.focus\:font-thin:focus{
-  font-weight: 200;
-}
-
-.focus\:font-light:focus{
-  font-weight: 300;
+  font-weight: var(--font-weight-bold);
 }
 
 .focus\:font-normal:focus{
-  font-weight: 400;
+  font-weight: var(--font-weight-normal);
 }
 
-.focus\:font-medium:focus{
-  font-weight: 500;
-}
-
-.focus\:font-semibold:focus{
-  font-weight: 600;
+.focus\:font-semi:focus{
+  font-weight: var(--font-weight-semi);
 }
 
 .focus\:font-bold:focus{
-  font-weight: 700;
-}
-
-.focus\:font-extrabold:focus{
-  font-weight: 800;
-}
-
-.focus\:font-black:focus{
-  font-weight: 900;
+  font-weight: var(--font-weight-bold);
 }
 
 .h-0{
@@ -2715,76 +2745,24 @@ h1 + .o-intro {
   height: 100vh;
 }
 
-.text-xs{
-  font-size: 0.75rem;
-}
-
-.text-sm{
-  font-size: 0.875rem;
-}
-
 .text-base{
-  font-size: 1rem;
+  font-size: var(--font-size-base);
 }
 
 .text-h1{
-  font-size: 3.052rem;
+  font-size: var(--font-size-h1);
 }
 
 .text-h2{
-  font-size: 2.441rem;
+  font-size: var(--font-size-h2);
 }
 
 .text-h3{
-  font-size: 1.953rem;
+  font-size: var(--font-size-h3);
 }
 
 .text-h4{
-  font-size: 1.563rem;
-}
-
-.text-h5{
-  font-size: 1.25rem;
-}
-
-.text-h6{
-  font-size: 1.25rem;
-}
-
-.text-h0{
-  font-size: 1rem;
-}
-
-.leading-3{
-  line-height: .75rem;
-}
-
-.leading-4{
-  line-height: 1rem;
-}
-
-.leading-5{
-  line-height: 1.25rem;
-}
-
-.leading-6{
-  line-height: 1.5rem;
-}
-
-.leading-7{
-  line-height: 1.75rem;
-}
-
-.leading-8{
-  line-height: 2rem;
-}
-
-.leading-9{
-  line-height: 2.25rem;
-}
-
-.leading-10{
-  line-height: 2.5rem;
+  font-size: var(--font-size-h4);
 }
 
 .leading-none{
@@ -2792,11 +2770,11 @@ h1 + .o-intro {
 }
 
 .leading-tight{
-  line-height: 1.25;
+  line-height: 1.15;
 }
 
 .leading-snug{
-  line-height: 1.375;
+  line-height: 1.25;
 }
 
 .leading-normal{
@@ -2805,10 +2783,6 @@ h1 + .o-intro {
 
 .leading-relaxed{
   line-height: 1.625;
-}
-
-.leading-loose{
-  line-height: 2;
 }
 
 .list-inside{
@@ -4891,6 +4865,22 @@ h1 + .o-intro {
   color: var(--color-font);
 }
 
+.placeholder-font-secondary::-moz-placeholder{
+  color: var(--color-font-secondary);
+}
+
+.placeholder-font-secondary:-ms-input-placeholder{
+  color: var(--color-font-secondary);
+}
+
+.placeholder-font-secondary::-ms-input-placeholder{
+  color: var(--color-font-secondary);
+}
+
+.placeholder-font-secondary::placeholder{
+  color: var(--color-font-secondary);
+}
+
 .focus\:placeholder-background:focus::-moz-placeholder{
   color: var(--color-background);
 }
@@ -4953,6 +4943,22 @@ h1 + .o-intro {
 
 .focus\:placeholder-font:focus::placeholder{
   color: var(--color-font);
+}
+
+.focus\:placeholder-font-secondary:focus::-moz-placeholder{
+  color: var(--color-font-secondary);
+}
+
+.focus\:placeholder-font-secondary:focus:-ms-input-placeholder{
+  color: var(--color-font-secondary);
+}
+
+.focus\:placeholder-font-secondary:focus::-ms-input-placeholder{
+  color: var(--color-font-secondary);
+}
+
+.focus\:placeholder-font-secondary:focus::placeholder{
+  color: var(--color-font-secondary);
 }
 
 .placeholder-opacity-0::-moz-placeholder{
@@ -5406,6 +5412,10 @@ h1 + .o-intro {
   color: var(--color-font);
 }
 
+.text-font-secondary{
+  color: var(--color-font-secondary);
+}
+
 .hover\:text-background:hover{
   color: var(--color-background);
 }
@@ -5422,6 +5432,10 @@ h1 + .o-intro {
   color: var(--color-font);
 }
 
+.hover\:text-font-secondary:hover{
+  color: var(--color-font-secondary);
+}
+
 .focus\:text-background:focus{
   color: var(--color-background);
 }
@@ -5436,6 +5450,10 @@ h1 + .o-intro {
 
 .focus\:text-font:focus{
   color: var(--color-font);
+}
+
+.focus\:text-font-secondary:focus{
+  color: var(--color-font-secondary);
 }
 
 .text-opacity-0{
@@ -5905,6 +5923,14 @@ h1 + .o-intro {
 
 .z-50{
   z-index: 50;
+}
+
+.z-998{
+  z-index: 998;
+}
+
+.z-999{
+  z-index: 999;
 }
 
 .z-auto{
@@ -8891,6 +8917,10 @@ h1 + .o-intro {
     border-color: var(--color-font);
   }
 
+  .sm\:divide-font-secondary > :not(template) ~ :not(template){
+    border-color: var(--color-font-secondary);
+  }
+
   .sm\:divide-opacity-0 > :not(template) ~ :not(template){
     --divide-opacity: 0;
   }
@@ -8991,6 +9021,10 @@ h1 + .o-intro {
     background-color: var(--color-font);
   }
 
+  .sm\:bg-font-secondary{
+    background-color: var(--color-font-secondary);
+  }
+
   .sm\:hover\:bg-background:hover{
     background-color: var(--color-background);
   }
@@ -9007,6 +9041,10 @@ h1 + .o-intro {
     background-color: var(--color-font);
   }
 
+  .sm\:hover\:bg-font-secondary:hover{
+    background-color: var(--color-font-secondary);
+  }
+
   .sm\:focus\:bg-background:focus{
     background-color: var(--color-background);
   }
@@ -9021,6 +9059,10 @@ h1 + .o-intro {
 
   .sm\:focus\:bg-font:focus{
     background-color: var(--color-font);
+  }
+
+  .sm\:focus\:bg-font-secondary:focus{
+    background-color: var(--color-font-secondary);
   }
 
   .sm\:bg-opacity-0{
@@ -9179,6 +9221,10 @@ h1 + .o-intro {
     border-color: var(--color-font);
   }
 
+  .sm\:border-font-secondary{
+    border-color: var(--color-font-secondary);
+  }
+
   .sm\:hover\:border-background:hover{
     border-color: var(--color-background);
   }
@@ -9195,6 +9241,10 @@ h1 + .o-intro {
     border-color: var(--color-font);
   }
 
+  .sm\:hover\:border-font-secondary:hover{
+    border-color: var(--color-font-secondary);
+  }
+
   .sm\:focus\:border-background:focus{
     border-color: var(--color-background);
   }
@@ -9209,6 +9259,10 @@ h1 + .o-intro {
 
   .sm\:focus\:border-font:focus{
     border-color: var(--color-font);
+  }
+
+  .sm\:focus\:border-font-secondary:focus{
+    border-color: var(--color-font-secondary);
   }
 
   .sm\:border-opacity-0{
@@ -9978,123 +10032,55 @@ h1 + .o-intro {
   }
 
   .sm\:font-sans{
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-family: var(--font-body);
   }
 
-  .sm\:font-serif{
-    font-family: Georgia, Cambria, "Times New Roman", Times, serif;
+  .sm\:font-body{
+    font-family: var(--font-body);
+  }
+
+  .sm\:font-display{
+    font-family: var(--font-display);
   }
 
   .sm\:font-mono{
-    font-family: Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-  }
-
-  .sm\:font-hairline{
-    font-weight: 100;
-  }
-
-  .sm\:font-thin{
-    font-weight: 200;
-  }
-
-  .sm\:font-light{
-    font-weight: 300;
+    font-family: var(--font-mono);
   }
 
   .sm\:font-normal{
-    font-weight: 400;
+    font-weight: var(--font-weight-normal);
   }
 
-  .sm\:font-medium{
-    font-weight: 500;
-  }
-
-  .sm\:font-semibold{
-    font-weight: 600;
+  .sm\:font-semi{
+    font-weight: var(--font-weight-semi);
   }
 
   .sm\:font-bold{
-    font-weight: 700;
-  }
-
-  .sm\:font-extrabold{
-    font-weight: 800;
-  }
-
-  .sm\:font-black{
-    font-weight: 900;
-  }
-
-  .sm\:hover\:font-hairline:hover{
-    font-weight: 100;
-  }
-
-  .sm\:hover\:font-thin:hover{
-    font-weight: 200;
-  }
-
-  .sm\:hover\:font-light:hover{
-    font-weight: 300;
+    font-weight: var(--font-weight-bold);
   }
 
   .sm\:hover\:font-normal:hover{
-    font-weight: 400;
+    font-weight: var(--font-weight-normal);
   }
 
-  .sm\:hover\:font-medium:hover{
-    font-weight: 500;
-  }
-
-  .sm\:hover\:font-semibold:hover{
-    font-weight: 600;
+  .sm\:hover\:font-semi:hover{
+    font-weight: var(--font-weight-semi);
   }
 
   .sm\:hover\:font-bold:hover{
-    font-weight: 700;
-  }
-
-  .sm\:hover\:font-extrabold:hover{
-    font-weight: 800;
-  }
-
-  .sm\:hover\:font-black:hover{
-    font-weight: 900;
-  }
-
-  .sm\:focus\:font-hairline:focus{
-    font-weight: 100;
-  }
-
-  .sm\:focus\:font-thin:focus{
-    font-weight: 200;
-  }
-
-  .sm\:focus\:font-light:focus{
-    font-weight: 300;
+    font-weight: var(--font-weight-bold);
   }
 
   .sm\:focus\:font-normal:focus{
-    font-weight: 400;
+    font-weight: var(--font-weight-normal);
   }
 
-  .sm\:focus\:font-medium:focus{
-    font-weight: 500;
-  }
-
-  .sm\:focus\:font-semibold:focus{
-    font-weight: 600;
+  .sm\:focus\:font-semi:focus{
+    font-weight: var(--font-weight-semi);
   }
 
   .sm\:focus\:font-bold:focus{
-    font-weight: 700;
-  }
-
-  .sm\:focus\:font-extrabold:focus{
-    font-weight: 800;
-  }
-
-  .sm\:focus\:font-black:focus{
-    font-weight: 900;
+    font-weight: var(--font-weight-bold);
   }
 
   .sm\:h-0{
@@ -10185,76 +10171,24 @@ h1 + .o-intro {
     height: 100vh;
   }
 
-  .sm\:text-xs{
-    font-size: 0.75rem;
-  }
-
-  .sm\:text-sm{
-    font-size: 0.875rem;
-  }
-
   .sm\:text-base{
-    font-size: 1rem;
+    font-size: var(--font-size-base);
   }
 
   .sm\:text-h1{
-    font-size: 3.052rem;
+    font-size: var(--font-size-h1);
   }
 
   .sm\:text-h2{
-    font-size: 2.441rem;
+    font-size: var(--font-size-h2);
   }
 
   .sm\:text-h3{
-    font-size: 1.953rem;
+    font-size: var(--font-size-h3);
   }
 
   .sm\:text-h4{
-    font-size: 1.563rem;
-  }
-
-  .sm\:text-h5{
-    font-size: 1.25rem;
-  }
-
-  .sm\:text-h6{
-    font-size: 1.25rem;
-  }
-
-  .sm\:text-h0{
-    font-size: 1rem;
-  }
-
-  .sm\:leading-3{
-    line-height: .75rem;
-  }
-
-  .sm\:leading-4{
-    line-height: 1rem;
-  }
-
-  .sm\:leading-5{
-    line-height: 1.25rem;
-  }
-
-  .sm\:leading-6{
-    line-height: 1.5rem;
-  }
-
-  .sm\:leading-7{
-    line-height: 1.75rem;
-  }
-
-  .sm\:leading-8{
-    line-height: 2rem;
-  }
-
-  .sm\:leading-9{
-    line-height: 2.25rem;
-  }
-
-  .sm\:leading-10{
-    line-height: 2.5rem;
+    font-size: var(--font-size-h4);
   }
 
   .sm\:leading-none{
@@ -10262,11 +10196,11 @@ h1 + .o-intro {
   }
 
   .sm\:leading-tight{
-    line-height: 1.25;
+    line-height: 1.15;
   }
 
   .sm\:leading-snug{
-    line-height: 1.375;
+    line-height: 1.25;
   }
 
   .sm\:leading-normal{
@@ -10275,10 +10209,6 @@ h1 + .o-intro {
 
   .sm\:leading-relaxed{
     line-height: 1.625;
-  }
-
-  .sm\:leading-loose{
-    line-height: 2;
   }
 
   .sm\:list-inside{
@@ -12361,6 +12291,22 @@ h1 + .o-intro {
     color: var(--color-font);
   }
 
+  .sm\:placeholder-font-secondary::-moz-placeholder{
+    color: var(--color-font-secondary);
+  }
+
+  .sm\:placeholder-font-secondary:-ms-input-placeholder{
+    color: var(--color-font-secondary);
+  }
+
+  .sm\:placeholder-font-secondary::-ms-input-placeholder{
+    color: var(--color-font-secondary);
+  }
+
+  .sm\:placeholder-font-secondary::placeholder{
+    color: var(--color-font-secondary);
+  }
+
   .sm\:focus\:placeholder-background:focus::-moz-placeholder{
     color: var(--color-background);
   }
@@ -12423,6 +12369,22 @@ h1 + .o-intro {
 
   .sm\:focus\:placeholder-font:focus::placeholder{
     color: var(--color-font);
+  }
+
+  .sm\:focus\:placeholder-font-secondary:focus::-moz-placeholder{
+    color: var(--color-font-secondary);
+  }
+
+  .sm\:focus\:placeholder-font-secondary:focus:-ms-input-placeholder{
+    color: var(--color-font-secondary);
+  }
+
+  .sm\:focus\:placeholder-font-secondary:focus::-ms-input-placeholder{
+    color: var(--color-font-secondary);
+  }
+
+  .sm\:focus\:placeholder-font-secondary:focus::placeholder{
+    color: var(--color-font-secondary);
   }
 
   .sm\:placeholder-opacity-0::-moz-placeholder{
@@ -12876,6 +12838,10 @@ h1 + .o-intro {
     color: var(--color-font);
   }
 
+  .sm\:text-font-secondary{
+    color: var(--color-font-secondary);
+  }
+
   .sm\:hover\:text-background:hover{
     color: var(--color-background);
   }
@@ -12892,6 +12858,10 @@ h1 + .o-intro {
     color: var(--color-font);
   }
 
+  .sm\:hover\:text-font-secondary:hover{
+    color: var(--color-font-secondary);
+  }
+
   .sm\:focus\:text-background:focus{
     color: var(--color-background);
   }
@@ -12906,6 +12876,10 @@ h1 + .o-intro {
 
   .sm\:focus\:text-font:focus{
     color: var(--color-font);
+  }
+
+  .sm\:focus\:text-font-secondary:focus{
+    color: var(--color-font-secondary);
   }
 
   .sm\:text-opacity-0{
@@ -13375,6 +13349,14 @@ h1 + .o-intro {
 
   .sm\:z-50{
     z-index: 50;
+  }
+
+  .sm\:z-998{
+    z-index: 998;
+  }
+
+  .sm\:z-999{
+    z-index: 999;
   }
 
   .sm\:z-auto{
@@ -16360,6 +16342,10 @@ h1 + .o-intro {
     border-color: var(--color-font);
   }
 
+  .md\:divide-font-secondary > :not(template) ~ :not(template){
+    border-color: var(--color-font-secondary);
+  }
+
   .md\:divide-opacity-0 > :not(template) ~ :not(template){
     --divide-opacity: 0;
   }
@@ -16460,6 +16446,10 @@ h1 + .o-intro {
     background-color: var(--color-font);
   }
 
+  .md\:bg-font-secondary{
+    background-color: var(--color-font-secondary);
+  }
+
   .md\:hover\:bg-background:hover{
     background-color: var(--color-background);
   }
@@ -16476,6 +16466,10 @@ h1 + .o-intro {
     background-color: var(--color-font);
   }
 
+  .md\:hover\:bg-font-secondary:hover{
+    background-color: var(--color-font-secondary);
+  }
+
   .md\:focus\:bg-background:focus{
     background-color: var(--color-background);
   }
@@ -16490,6 +16484,10 @@ h1 + .o-intro {
 
   .md\:focus\:bg-font:focus{
     background-color: var(--color-font);
+  }
+
+  .md\:focus\:bg-font-secondary:focus{
+    background-color: var(--color-font-secondary);
   }
 
   .md\:bg-opacity-0{
@@ -16648,6 +16646,10 @@ h1 + .o-intro {
     border-color: var(--color-font);
   }
 
+  .md\:border-font-secondary{
+    border-color: var(--color-font-secondary);
+  }
+
   .md\:hover\:border-background:hover{
     border-color: var(--color-background);
   }
@@ -16664,6 +16666,10 @@ h1 + .o-intro {
     border-color: var(--color-font);
   }
 
+  .md\:hover\:border-font-secondary:hover{
+    border-color: var(--color-font-secondary);
+  }
+
   .md\:focus\:border-background:focus{
     border-color: var(--color-background);
   }
@@ -16678,6 +16684,10 @@ h1 + .o-intro {
 
   .md\:focus\:border-font:focus{
     border-color: var(--color-font);
+  }
+
+  .md\:focus\:border-font-secondary:focus{
+    border-color: var(--color-font-secondary);
   }
 
   .md\:border-opacity-0{
@@ -17447,123 +17457,55 @@ h1 + .o-intro {
   }
 
   .md\:font-sans{
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-family: var(--font-body);
   }
 
-  .md\:font-serif{
-    font-family: Georgia, Cambria, "Times New Roman", Times, serif;
+  .md\:font-body{
+    font-family: var(--font-body);
+  }
+
+  .md\:font-display{
+    font-family: var(--font-display);
   }
 
   .md\:font-mono{
-    font-family: Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-  }
-
-  .md\:font-hairline{
-    font-weight: 100;
-  }
-
-  .md\:font-thin{
-    font-weight: 200;
-  }
-
-  .md\:font-light{
-    font-weight: 300;
+    font-family: var(--font-mono);
   }
 
   .md\:font-normal{
-    font-weight: 400;
+    font-weight: var(--font-weight-normal);
   }
 
-  .md\:font-medium{
-    font-weight: 500;
-  }
-
-  .md\:font-semibold{
-    font-weight: 600;
+  .md\:font-semi{
+    font-weight: var(--font-weight-semi);
   }
 
   .md\:font-bold{
-    font-weight: 700;
-  }
-
-  .md\:font-extrabold{
-    font-weight: 800;
-  }
-
-  .md\:font-black{
-    font-weight: 900;
-  }
-
-  .md\:hover\:font-hairline:hover{
-    font-weight: 100;
-  }
-
-  .md\:hover\:font-thin:hover{
-    font-weight: 200;
-  }
-
-  .md\:hover\:font-light:hover{
-    font-weight: 300;
+    font-weight: var(--font-weight-bold);
   }
 
   .md\:hover\:font-normal:hover{
-    font-weight: 400;
+    font-weight: var(--font-weight-normal);
   }
 
-  .md\:hover\:font-medium:hover{
-    font-weight: 500;
-  }
-
-  .md\:hover\:font-semibold:hover{
-    font-weight: 600;
+  .md\:hover\:font-semi:hover{
+    font-weight: var(--font-weight-semi);
   }
 
   .md\:hover\:font-bold:hover{
-    font-weight: 700;
-  }
-
-  .md\:hover\:font-extrabold:hover{
-    font-weight: 800;
-  }
-
-  .md\:hover\:font-black:hover{
-    font-weight: 900;
-  }
-
-  .md\:focus\:font-hairline:focus{
-    font-weight: 100;
-  }
-
-  .md\:focus\:font-thin:focus{
-    font-weight: 200;
-  }
-
-  .md\:focus\:font-light:focus{
-    font-weight: 300;
+    font-weight: var(--font-weight-bold);
   }
 
   .md\:focus\:font-normal:focus{
-    font-weight: 400;
+    font-weight: var(--font-weight-normal);
   }
 
-  .md\:focus\:font-medium:focus{
-    font-weight: 500;
-  }
-
-  .md\:focus\:font-semibold:focus{
-    font-weight: 600;
+  .md\:focus\:font-semi:focus{
+    font-weight: var(--font-weight-semi);
   }
 
   .md\:focus\:font-bold:focus{
-    font-weight: 700;
-  }
-
-  .md\:focus\:font-extrabold:focus{
-    font-weight: 800;
-  }
-
-  .md\:focus\:font-black:focus{
-    font-weight: 900;
+    font-weight: var(--font-weight-bold);
   }
 
   .md\:h-0{
@@ -17654,76 +17596,24 @@ h1 + .o-intro {
     height: 100vh;
   }
 
-  .md\:text-xs{
-    font-size: 0.75rem;
-  }
-
-  .md\:text-sm{
-    font-size: 0.875rem;
-  }
-
   .md\:text-base{
-    font-size: 1rem;
+    font-size: var(--font-size-base);
   }
 
   .md\:text-h1{
-    font-size: 3.052rem;
+    font-size: var(--font-size-h1);
   }
 
   .md\:text-h2{
-    font-size: 2.441rem;
+    font-size: var(--font-size-h2);
   }
 
   .md\:text-h3{
-    font-size: 1.953rem;
+    font-size: var(--font-size-h3);
   }
 
   .md\:text-h4{
-    font-size: 1.563rem;
-  }
-
-  .md\:text-h5{
-    font-size: 1.25rem;
-  }
-
-  .md\:text-h6{
-    font-size: 1.25rem;
-  }
-
-  .md\:text-h0{
-    font-size: 1rem;
-  }
-
-  .md\:leading-3{
-    line-height: .75rem;
-  }
-
-  .md\:leading-4{
-    line-height: 1rem;
-  }
-
-  .md\:leading-5{
-    line-height: 1.25rem;
-  }
-
-  .md\:leading-6{
-    line-height: 1.5rem;
-  }
-
-  .md\:leading-7{
-    line-height: 1.75rem;
-  }
-
-  .md\:leading-8{
-    line-height: 2rem;
-  }
-
-  .md\:leading-9{
-    line-height: 2.25rem;
-  }
-
-  .md\:leading-10{
-    line-height: 2.5rem;
+    font-size: var(--font-size-h4);
   }
 
   .md\:leading-none{
@@ -17731,11 +17621,11 @@ h1 + .o-intro {
   }
 
   .md\:leading-tight{
-    line-height: 1.25;
+    line-height: 1.15;
   }
 
   .md\:leading-snug{
-    line-height: 1.375;
+    line-height: 1.25;
   }
 
   .md\:leading-normal{
@@ -17744,10 +17634,6 @@ h1 + .o-intro {
 
   .md\:leading-relaxed{
     line-height: 1.625;
-  }
-
-  .md\:leading-loose{
-    line-height: 2;
   }
 
   .md\:list-inside{
@@ -19830,6 +19716,22 @@ h1 + .o-intro {
     color: var(--color-font);
   }
 
+  .md\:placeholder-font-secondary::-moz-placeholder{
+    color: var(--color-font-secondary);
+  }
+
+  .md\:placeholder-font-secondary:-ms-input-placeholder{
+    color: var(--color-font-secondary);
+  }
+
+  .md\:placeholder-font-secondary::-ms-input-placeholder{
+    color: var(--color-font-secondary);
+  }
+
+  .md\:placeholder-font-secondary::placeholder{
+    color: var(--color-font-secondary);
+  }
+
   .md\:focus\:placeholder-background:focus::-moz-placeholder{
     color: var(--color-background);
   }
@@ -19892,6 +19794,22 @@ h1 + .o-intro {
 
   .md\:focus\:placeholder-font:focus::placeholder{
     color: var(--color-font);
+  }
+
+  .md\:focus\:placeholder-font-secondary:focus::-moz-placeholder{
+    color: var(--color-font-secondary);
+  }
+
+  .md\:focus\:placeholder-font-secondary:focus:-ms-input-placeholder{
+    color: var(--color-font-secondary);
+  }
+
+  .md\:focus\:placeholder-font-secondary:focus::-ms-input-placeholder{
+    color: var(--color-font-secondary);
+  }
+
+  .md\:focus\:placeholder-font-secondary:focus::placeholder{
+    color: var(--color-font-secondary);
   }
 
   .md\:placeholder-opacity-0::-moz-placeholder{
@@ -20345,6 +20263,10 @@ h1 + .o-intro {
     color: var(--color-font);
   }
 
+  .md\:text-font-secondary{
+    color: var(--color-font-secondary);
+  }
+
   .md\:hover\:text-background:hover{
     color: var(--color-background);
   }
@@ -20361,6 +20283,10 @@ h1 + .o-intro {
     color: var(--color-font);
   }
 
+  .md\:hover\:text-font-secondary:hover{
+    color: var(--color-font-secondary);
+  }
+
   .md\:focus\:text-background:focus{
     color: var(--color-background);
   }
@@ -20375,6 +20301,10 @@ h1 + .o-intro {
 
   .md\:focus\:text-font:focus{
     color: var(--color-font);
+  }
+
+  .md\:focus\:text-font-secondary:focus{
+    color: var(--color-font-secondary);
   }
 
   .md\:text-opacity-0{
@@ -20844,6 +20774,14 @@ h1 + .o-intro {
 
   .md\:z-50{
     z-index: 50;
+  }
+
+  .md\:z-998{
+    z-index: 998;
+  }
+
+  .md\:z-999{
+    z-index: 999;
   }
 
   .md\:z-auto{
@@ -23829,6 +23767,10 @@ h1 + .o-intro {
     border-color: var(--color-font);
   }
 
+  .lg\:divide-font-secondary > :not(template) ~ :not(template){
+    border-color: var(--color-font-secondary);
+  }
+
   .lg\:divide-opacity-0 > :not(template) ~ :not(template){
     --divide-opacity: 0;
   }
@@ -23929,6 +23871,10 @@ h1 + .o-intro {
     background-color: var(--color-font);
   }
 
+  .lg\:bg-font-secondary{
+    background-color: var(--color-font-secondary);
+  }
+
   .lg\:hover\:bg-background:hover{
     background-color: var(--color-background);
   }
@@ -23945,6 +23891,10 @@ h1 + .o-intro {
     background-color: var(--color-font);
   }
 
+  .lg\:hover\:bg-font-secondary:hover{
+    background-color: var(--color-font-secondary);
+  }
+
   .lg\:focus\:bg-background:focus{
     background-color: var(--color-background);
   }
@@ -23959,6 +23909,10 @@ h1 + .o-intro {
 
   .lg\:focus\:bg-font:focus{
     background-color: var(--color-font);
+  }
+
+  .lg\:focus\:bg-font-secondary:focus{
+    background-color: var(--color-font-secondary);
   }
 
   .lg\:bg-opacity-0{
@@ -24117,6 +24071,10 @@ h1 + .o-intro {
     border-color: var(--color-font);
   }
 
+  .lg\:border-font-secondary{
+    border-color: var(--color-font-secondary);
+  }
+
   .lg\:hover\:border-background:hover{
     border-color: var(--color-background);
   }
@@ -24133,6 +24091,10 @@ h1 + .o-intro {
     border-color: var(--color-font);
   }
 
+  .lg\:hover\:border-font-secondary:hover{
+    border-color: var(--color-font-secondary);
+  }
+
   .lg\:focus\:border-background:focus{
     border-color: var(--color-background);
   }
@@ -24147,6 +24109,10 @@ h1 + .o-intro {
 
   .lg\:focus\:border-font:focus{
     border-color: var(--color-font);
+  }
+
+  .lg\:focus\:border-font-secondary:focus{
+    border-color: var(--color-font-secondary);
   }
 
   .lg\:border-opacity-0{
@@ -24916,123 +24882,55 @@ h1 + .o-intro {
   }
 
   .lg\:font-sans{
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-family: var(--font-body);
   }
 
-  .lg\:font-serif{
-    font-family: Georgia, Cambria, "Times New Roman", Times, serif;
+  .lg\:font-body{
+    font-family: var(--font-body);
+  }
+
+  .lg\:font-display{
+    font-family: var(--font-display);
   }
 
   .lg\:font-mono{
-    font-family: Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-  }
-
-  .lg\:font-hairline{
-    font-weight: 100;
-  }
-
-  .lg\:font-thin{
-    font-weight: 200;
-  }
-
-  .lg\:font-light{
-    font-weight: 300;
+    font-family: var(--font-mono);
   }
 
   .lg\:font-normal{
-    font-weight: 400;
+    font-weight: var(--font-weight-normal);
   }
 
-  .lg\:font-medium{
-    font-weight: 500;
-  }
-
-  .lg\:font-semibold{
-    font-weight: 600;
+  .lg\:font-semi{
+    font-weight: var(--font-weight-semi);
   }
 
   .lg\:font-bold{
-    font-weight: 700;
-  }
-
-  .lg\:font-extrabold{
-    font-weight: 800;
-  }
-
-  .lg\:font-black{
-    font-weight: 900;
-  }
-
-  .lg\:hover\:font-hairline:hover{
-    font-weight: 100;
-  }
-
-  .lg\:hover\:font-thin:hover{
-    font-weight: 200;
-  }
-
-  .lg\:hover\:font-light:hover{
-    font-weight: 300;
+    font-weight: var(--font-weight-bold);
   }
 
   .lg\:hover\:font-normal:hover{
-    font-weight: 400;
+    font-weight: var(--font-weight-normal);
   }
 
-  .lg\:hover\:font-medium:hover{
-    font-weight: 500;
-  }
-
-  .lg\:hover\:font-semibold:hover{
-    font-weight: 600;
+  .lg\:hover\:font-semi:hover{
+    font-weight: var(--font-weight-semi);
   }
 
   .lg\:hover\:font-bold:hover{
-    font-weight: 700;
-  }
-
-  .lg\:hover\:font-extrabold:hover{
-    font-weight: 800;
-  }
-
-  .lg\:hover\:font-black:hover{
-    font-weight: 900;
-  }
-
-  .lg\:focus\:font-hairline:focus{
-    font-weight: 100;
-  }
-
-  .lg\:focus\:font-thin:focus{
-    font-weight: 200;
-  }
-
-  .lg\:focus\:font-light:focus{
-    font-weight: 300;
+    font-weight: var(--font-weight-bold);
   }
 
   .lg\:focus\:font-normal:focus{
-    font-weight: 400;
+    font-weight: var(--font-weight-normal);
   }
 
-  .lg\:focus\:font-medium:focus{
-    font-weight: 500;
-  }
-
-  .lg\:focus\:font-semibold:focus{
-    font-weight: 600;
+  .lg\:focus\:font-semi:focus{
+    font-weight: var(--font-weight-semi);
   }
 
   .lg\:focus\:font-bold:focus{
-    font-weight: 700;
-  }
-
-  .lg\:focus\:font-extrabold:focus{
-    font-weight: 800;
-  }
-
-  .lg\:focus\:font-black:focus{
-    font-weight: 900;
+    font-weight: var(--font-weight-bold);
   }
 
   .lg\:h-0{
@@ -25123,76 +25021,24 @@ h1 + .o-intro {
     height: 100vh;
   }
 
-  .lg\:text-xs{
-    font-size: 0.75rem;
-  }
-
-  .lg\:text-sm{
-    font-size: 0.875rem;
-  }
-
   .lg\:text-base{
-    font-size: 1rem;
+    font-size: var(--font-size-base);
   }
 
   .lg\:text-h1{
-    font-size: 3.052rem;
+    font-size: var(--font-size-h1);
   }
 
   .lg\:text-h2{
-    font-size: 2.441rem;
+    font-size: var(--font-size-h2);
   }
 
   .lg\:text-h3{
-    font-size: 1.953rem;
+    font-size: var(--font-size-h3);
   }
 
   .lg\:text-h4{
-    font-size: 1.563rem;
-  }
-
-  .lg\:text-h5{
-    font-size: 1.25rem;
-  }
-
-  .lg\:text-h6{
-    font-size: 1.25rem;
-  }
-
-  .lg\:text-h0{
-    font-size: 1rem;
-  }
-
-  .lg\:leading-3{
-    line-height: .75rem;
-  }
-
-  .lg\:leading-4{
-    line-height: 1rem;
-  }
-
-  .lg\:leading-5{
-    line-height: 1.25rem;
-  }
-
-  .lg\:leading-6{
-    line-height: 1.5rem;
-  }
-
-  .lg\:leading-7{
-    line-height: 1.75rem;
-  }
-
-  .lg\:leading-8{
-    line-height: 2rem;
-  }
-
-  .lg\:leading-9{
-    line-height: 2.25rem;
-  }
-
-  .lg\:leading-10{
-    line-height: 2.5rem;
+    font-size: var(--font-size-h4);
   }
 
   .lg\:leading-none{
@@ -25200,11 +25046,11 @@ h1 + .o-intro {
   }
 
   .lg\:leading-tight{
-    line-height: 1.25;
+    line-height: 1.15;
   }
 
   .lg\:leading-snug{
-    line-height: 1.375;
+    line-height: 1.25;
   }
 
   .lg\:leading-normal{
@@ -25213,10 +25059,6 @@ h1 + .o-intro {
 
   .lg\:leading-relaxed{
     line-height: 1.625;
-  }
-
-  .lg\:leading-loose{
-    line-height: 2;
   }
 
   .lg\:list-inside{
@@ -27299,6 +27141,22 @@ h1 + .o-intro {
     color: var(--color-font);
   }
 
+  .lg\:placeholder-font-secondary::-moz-placeholder{
+    color: var(--color-font-secondary);
+  }
+
+  .lg\:placeholder-font-secondary:-ms-input-placeholder{
+    color: var(--color-font-secondary);
+  }
+
+  .lg\:placeholder-font-secondary::-ms-input-placeholder{
+    color: var(--color-font-secondary);
+  }
+
+  .lg\:placeholder-font-secondary::placeholder{
+    color: var(--color-font-secondary);
+  }
+
   .lg\:focus\:placeholder-background:focus::-moz-placeholder{
     color: var(--color-background);
   }
@@ -27361,6 +27219,22 @@ h1 + .o-intro {
 
   .lg\:focus\:placeholder-font:focus::placeholder{
     color: var(--color-font);
+  }
+
+  .lg\:focus\:placeholder-font-secondary:focus::-moz-placeholder{
+    color: var(--color-font-secondary);
+  }
+
+  .lg\:focus\:placeholder-font-secondary:focus:-ms-input-placeholder{
+    color: var(--color-font-secondary);
+  }
+
+  .lg\:focus\:placeholder-font-secondary:focus::-ms-input-placeholder{
+    color: var(--color-font-secondary);
+  }
+
+  .lg\:focus\:placeholder-font-secondary:focus::placeholder{
+    color: var(--color-font-secondary);
   }
 
   .lg\:placeholder-opacity-0::-moz-placeholder{
@@ -27814,6 +27688,10 @@ h1 + .o-intro {
     color: var(--color-font);
   }
 
+  .lg\:text-font-secondary{
+    color: var(--color-font-secondary);
+  }
+
   .lg\:hover\:text-background:hover{
     color: var(--color-background);
   }
@@ -27830,6 +27708,10 @@ h1 + .o-intro {
     color: var(--color-font);
   }
 
+  .lg\:hover\:text-font-secondary:hover{
+    color: var(--color-font-secondary);
+  }
+
   .lg\:focus\:text-background:focus{
     color: var(--color-background);
   }
@@ -27844,6 +27726,10 @@ h1 + .o-intro {
 
   .lg\:focus\:text-font:focus{
     color: var(--color-font);
+  }
+
+  .lg\:focus\:text-font-secondary:focus{
+    color: var(--color-font-secondary);
   }
 
   .lg\:text-opacity-0{
@@ -28313,6 +28199,14 @@ h1 + .o-intro {
 
   .lg\:z-50{
     z-index: 50;
+  }
+
+  .lg\:z-998{
+    z-index: 998;
+  }
+
+  .lg\:z-999{
+    z-index: 999;
   }
 
   .lg\:z-auto{
@@ -31298,6 +31192,10 @@ h1 + .o-intro {
     border-color: var(--color-font);
   }
 
+  .xl\:divide-font-secondary > :not(template) ~ :not(template){
+    border-color: var(--color-font-secondary);
+  }
+
   .xl\:divide-opacity-0 > :not(template) ~ :not(template){
     --divide-opacity: 0;
   }
@@ -31398,6 +31296,10 @@ h1 + .o-intro {
     background-color: var(--color-font);
   }
 
+  .xl\:bg-font-secondary{
+    background-color: var(--color-font-secondary);
+  }
+
   .xl\:hover\:bg-background:hover{
     background-color: var(--color-background);
   }
@@ -31414,6 +31316,10 @@ h1 + .o-intro {
     background-color: var(--color-font);
   }
 
+  .xl\:hover\:bg-font-secondary:hover{
+    background-color: var(--color-font-secondary);
+  }
+
   .xl\:focus\:bg-background:focus{
     background-color: var(--color-background);
   }
@@ -31428,6 +31334,10 @@ h1 + .o-intro {
 
   .xl\:focus\:bg-font:focus{
     background-color: var(--color-font);
+  }
+
+  .xl\:focus\:bg-font-secondary:focus{
+    background-color: var(--color-font-secondary);
   }
 
   .xl\:bg-opacity-0{
@@ -31586,6 +31496,10 @@ h1 + .o-intro {
     border-color: var(--color-font);
   }
 
+  .xl\:border-font-secondary{
+    border-color: var(--color-font-secondary);
+  }
+
   .xl\:hover\:border-background:hover{
     border-color: var(--color-background);
   }
@@ -31602,6 +31516,10 @@ h1 + .o-intro {
     border-color: var(--color-font);
   }
 
+  .xl\:hover\:border-font-secondary:hover{
+    border-color: var(--color-font-secondary);
+  }
+
   .xl\:focus\:border-background:focus{
     border-color: var(--color-background);
   }
@@ -31616,6 +31534,10 @@ h1 + .o-intro {
 
   .xl\:focus\:border-font:focus{
     border-color: var(--color-font);
+  }
+
+  .xl\:focus\:border-font-secondary:focus{
+    border-color: var(--color-font-secondary);
   }
 
   .xl\:border-opacity-0{
@@ -32385,123 +32307,55 @@ h1 + .o-intro {
   }
 
   .xl\:font-sans{
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-family: var(--font-body);
   }
 
-  .xl\:font-serif{
-    font-family: Georgia, Cambria, "Times New Roman", Times, serif;
+  .xl\:font-body{
+    font-family: var(--font-body);
+  }
+
+  .xl\:font-display{
+    font-family: var(--font-display);
   }
 
   .xl\:font-mono{
-    font-family: Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-  }
-
-  .xl\:font-hairline{
-    font-weight: 100;
-  }
-
-  .xl\:font-thin{
-    font-weight: 200;
-  }
-
-  .xl\:font-light{
-    font-weight: 300;
+    font-family: var(--font-mono);
   }
 
   .xl\:font-normal{
-    font-weight: 400;
+    font-weight: var(--font-weight-normal);
   }
 
-  .xl\:font-medium{
-    font-weight: 500;
-  }
-
-  .xl\:font-semibold{
-    font-weight: 600;
+  .xl\:font-semi{
+    font-weight: var(--font-weight-semi);
   }
 
   .xl\:font-bold{
-    font-weight: 700;
-  }
-
-  .xl\:font-extrabold{
-    font-weight: 800;
-  }
-
-  .xl\:font-black{
-    font-weight: 900;
-  }
-
-  .xl\:hover\:font-hairline:hover{
-    font-weight: 100;
-  }
-
-  .xl\:hover\:font-thin:hover{
-    font-weight: 200;
-  }
-
-  .xl\:hover\:font-light:hover{
-    font-weight: 300;
+    font-weight: var(--font-weight-bold);
   }
 
   .xl\:hover\:font-normal:hover{
-    font-weight: 400;
+    font-weight: var(--font-weight-normal);
   }
 
-  .xl\:hover\:font-medium:hover{
-    font-weight: 500;
-  }
-
-  .xl\:hover\:font-semibold:hover{
-    font-weight: 600;
+  .xl\:hover\:font-semi:hover{
+    font-weight: var(--font-weight-semi);
   }
 
   .xl\:hover\:font-bold:hover{
-    font-weight: 700;
-  }
-
-  .xl\:hover\:font-extrabold:hover{
-    font-weight: 800;
-  }
-
-  .xl\:hover\:font-black:hover{
-    font-weight: 900;
-  }
-
-  .xl\:focus\:font-hairline:focus{
-    font-weight: 100;
-  }
-
-  .xl\:focus\:font-thin:focus{
-    font-weight: 200;
-  }
-
-  .xl\:focus\:font-light:focus{
-    font-weight: 300;
+    font-weight: var(--font-weight-bold);
   }
 
   .xl\:focus\:font-normal:focus{
-    font-weight: 400;
+    font-weight: var(--font-weight-normal);
   }
 
-  .xl\:focus\:font-medium:focus{
-    font-weight: 500;
-  }
-
-  .xl\:focus\:font-semibold:focus{
-    font-weight: 600;
+  .xl\:focus\:font-semi:focus{
+    font-weight: var(--font-weight-semi);
   }
 
   .xl\:focus\:font-bold:focus{
-    font-weight: 700;
-  }
-
-  .xl\:focus\:font-extrabold:focus{
-    font-weight: 800;
-  }
-
-  .xl\:focus\:font-black:focus{
-    font-weight: 900;
+    font-weight: var(--font-weight-bold);
   }
 
   .xl\:h-0{
@@ -32592,76 +32446,24 @@ h1 + .o-intro {
     height: 100vh;
   }
 
-  .xl\:text-xs{
-    font-size: 0.75rem;
-  }
-
-  .xl\:text-sm{
-    font-size: 0.875rem;
-  }
-
   .xl\:text-base{
-    font-size: 1rem;
+    font-size: var(--font-size-base);
   }
 
   .xl\:text-h1{
-    font-size: 3.052rem;
+    font-size: var(--font-size-h1);
   }
 
   .xl\:text-h2{
-    font-size: 2.441rem;
+    font-size: var(--font-size-h2);
   }
 
   .xl\:text-h3{
-    font-size: 1.953rem;
+    font-size: var(--font-size-h3);
   }
 
   .xl\:text-h4{
-    font-size: 1.563rem;
-  }
-
-  .xl\:text-h5{
-    font-size: 1.25rem;
-  }
-
-  .xl\:text-h6{
-    font-size: 1.25rem;
-  }
-
-  .xl\:text-h0{
-    font-size: 1rem;
-  }
-
-  .xl\:leading-3{
-    line-height: .75rem;
-  }
-
-  .xl\:leading-4{
-    line-height: 1rem;
-  }
-
-  .xl\:leading-5{
-    line-height: 1.25rem;
-  }
-
-  .xl\:leading-6{
-    line-height: 1.5rem;
-  }
-
-  .xl\:leading-7{
-    line-height: 1.75rem;
-  }
-
-  .xl\:leading-8{
-    line-height: 2rem;
-  }
-
-  .xl\:leading-9{
-    line-height: 2.25rem;
-  }
-
-  .xl\:leading-10{
-    line-height: 2.5rem;
+    font-size: var(--font-size-h4);
   }
 
   .xl\:leading-none{
@@ -32669,11 +32471,11 @@ h1 + .o-intro {
   }
 
   .xl\:leading-tight{
-    line-height: 1.25;
+    line-height: 1.15;
   }
 
   .xl\:leading-snug{
-    line-height: 1.375;
+    line-height: 1.25;
   }
 
   .xl\:leading-normal{
@@ -32682,10 +32484,6 @@ h1 + .o-intro {
 
   .xl\:leading-relaxed{
     line-height: 1.625;
-  }
-
-  .xl\:leading-loose{
-    line-height: 2;
   }
 
   .xl\:list-inside{
@@ -34768,6 +34566,22 @@ h1 + .o-intro {
     color: var(--color-font);
   }
 
+  .xl\:placeholder-font-secondary::-moz-placeholder{
+    color: var(--color-font-secondary);
+  }
+
+  .xl\:placeholder-font-secondary:-ms-input-placeholder{
+    color: var(--color-font-secondary);
+  }
+
+  .xl\:placeholder-font-secondary::-ms-input-placeholder{
+    color: var(--color-font-secondary);
+  }
+
+  .xl\:placeholder-font-secondary::placeholder{
+    color: var(--color-font-secondary);
+  }
+
   .xl\:focus\:placeholder-background:focus::-moz-placeholder{
     color: var(--color-background);
   }
@@ -34830,6 +34644,22 @@ h1 + .o-intro {
 
   .xl\:focus\:placeholder-font:focus::placeholder{
     color: var(--color-font);
+  }
+
+  .xl\:focus\:placeholder-font-secondary:focus::-moz-placeholder{
+    color: var(--color-font-secondary);
+  }
+
+  .xl\:focus\:placeholder-font-secondary:focus:-ms-input-placeholder{
+    color: var(--color-font-secondary);
+  }
+
+  .xl\:focus\:placeholder-font-secondary:focus::-ms-input-placeholder{
+    color: var(--color-font-secondary);
+  }
+
+  .xl\:focus\:placeholder-font-secondary:focus::placeholder{
+    color: var(--color-font-secondary);
   }
 
   .xl\:placeholder-opacity-0::-moz-placeholder{
@@ -35283,6 +35113,10 @@ h1 + .o-intro {
     color: var(--color-font);
   }
 
+  .xl\:text-font-secondary{
+    color: var(--color-font-secondary);
+  }
+
   .xl\:hover\:text-background:hover{
     color: var(--color-background);
   }
@@ -35299,6 +35133,10 @@ h1 + .o-intro {
     color: var(--color-font);
   }
 
+  .xl\:hover\:text-font-secondary:hover{
+    color: var(--color-font-secondary);
+  }
+
   .xl\:focus\:text-background:focus{
     color: var(--color-background);
   }
@@ -35313,6 +35151,10 @@ h1 + .o-intro {
 
   .xl\:focus\:text-font:focus{
     color: var(--color-font);
+  }
+
+  .xl\:focus\:text-font-secondary:focus{
+    color: var(--color-font-secondary);
   }
 
   .xl\:text-opacity-0{
@@ -35782,6 +35624,14 @@ h1 + .o-intro {
 
   .xl\:z-50{
     z-index: 50;
+  }
+
+  .xl\:z-998{
+    z-index: 998;
+  }
+
+  .xl\:z-999{
+    z-index: 999;
   }
 
   .xl\:z-auto{

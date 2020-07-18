@@ -1,0 +1,21 @@
+html.o-theme--light {
+    --color-background: #fff;
+    --color-surface:#fbfbfb;
+    --color-accent: #bee4ff;
+    --color-underline: #e6e6e6;
+    --color-font: #192633;
+    --color-font-secondary:#7abaff;  
+
+    // Experimental
+    --color-code: var(--color-accent);
+    
+    
+}
+
+html.o-theme--80s {
+    --color-background: #fff;
+    --color-surface: #fd48c4;
+    --color-accent: rgb(240, 240, 240);
+    --color-font: #333;
+}
+

@@ -3,11 +3,11 @@
 // them here.
 
 @import "./headers";
+@import "./code";
 @import "./pre-code";
 
 
-
-p+p 
+body 
 {
-    @apply mt-4
+    font-size:clamp(0.9375rem, calc(1rem + .15vw), 20px);
 }

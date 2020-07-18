@@ -1,7 +1,10 @@
 pre 
 {
-    @apply my-4;
+    @apply mt-6;
     white-space: pre-wrap;
-    font-family: 'Source Code Pro', monospace;
 }
 
+pre + * 
+{
+    @apply mt-6;
+}

@@ -19,7 +19,7 @@ use Anomaly\Streams\Platform\Application\ApplicationManager;
 Route::view('/', 'welcome');
 
 Route::any('test/seo', function() {
-    dd(Streams::entries('pages')->find('about')->expand('docs'));
+    dd(Streams::entries('docs')->where('slug', 'directory-structure')->first());
 });
 
 // Route::any('docs/{handle}', [

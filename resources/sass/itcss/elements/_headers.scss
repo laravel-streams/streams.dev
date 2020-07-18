@@ -1,29 +1,87 @@
-h1
-{
-    @apply text-h1 leading-tight;
-}
-h2
-{
-    @apply text-h2 border-b-2 border-accent mb-6 mt-12;
-    &:first-child
-    {
-        @apply mt-0;
-    }
-}
-h3
-{
-    @apply text-h3  mb-4 mt-8;
-}
-
-h4
-{
-    @apply text-h4  mb-3 mt-6;
-}
-h5
-{
-    @apply text-h5 mb-3 mt-6;
-}
+h1,
+h2,
+h3,
+h4,
+h5,
 h6
 {
-    @apply text-h6 mb-3 mt-6;
+    @apply font-display font-bold;
+}
+
+h1 
+{
+    
+}
+
+h3,h4 
+{
+    @apply font-semi;
+}
+
+//  ----------------------------------------------------------------------------
+//  h1
+//  ----------------------------------------------------------------------------
+h1
+{
+    font-size: clamp(var(--font-size-h1), calc(var(--font-size-h1) + 1.3vw), 72px);
+    @apply leading-none mt-0 mb-12 ;
+
+    & + .o-intro
+    {
+        @apply -mt-6;
+    }
+}
+
+//  ----------------------------------------------------------------------------
+//  h2
+//  ----------------------------------------------------------------------------
+h2
+{
+    font-size: clamp(var(--font-size-h2), calc(var(--font-size-h2) + .8vw), 45px);
+    @apply leading-tight mt-16 relative;
+    margin-bottom: calc(var(--font-size-h2) * 1.5);
+
+    & + p
+    {
+        @apply -mt-8;
+    }
+
+    // We need something to separate / make h2's stand out, for this is 
+    // just something temp..
+    &:before
+    {
+        position: absolute;
+        top: 22px;
+        left: -100px;
+
+        display: block;
+
+        width: 40px;
+        height: 5px;
+
+        content: '';
+
+        background-color: var(--color-accent);
+    }
+}
+
+//  ----------------------------------------------------------------------------
+//  h3
+//  ----------------------------------------------------------------------------
+h3
+{
+    font-size: clamp(var(--font-size-h3), calc(var(--font-size-h3) + .3vw), 25px);
+    @apply leading-tight mt-12;
+    margin-bottom: calc(var(--font-size-h3) * .5);
+}
+
+//  ----------------------------------------------------------------------------
+//  h4
+//  ----------------------------------------------------------------------------
+h4
+{
+    font-size: clamp(var(--font-size-h4), calc(var(--font-size-h4) + .3vw), 22px);
+    @apply leading-tight mt-12;
+    margin-bottom: calc(var(--font-size-h4) * .3);
+
 }
