@@ -19,7 +19,9 @@
                 <ul>
                     @foreach (Streams::entries(request()->segment(1))->orderBy('sort', 'asc')->get() as $item)
                     <li>
-                    <a href="/{{request()->segment(1)}}/{{ $item->id }}">{{ $item->title }}</a>
+                    <a href="/{{request()->segment(1)}}/{{ $item->id }}" title="{{ $item->linkTitle ?? $item->title }}">
+                        {{ $item->linkTitle ?? $item->title }}
+                    </a>
                     </li>
                     @endforeach
                 </ul>

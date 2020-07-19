@@ -1,5 +1,6 @@
 ---
 title: Introduction
+linkTitle: About
 intro: Streams is a system for describing, managing, working with, presenting, and accessing application data.
 sort: 0
 ---

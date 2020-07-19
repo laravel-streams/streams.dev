@@ -18,7 +18,9 @@
                 <ul>
                     @foreach (Streams::entries('examples')->orderBy('sort', 'asc')->get() as $item)
                     <li>
-                        <a href="/examples/{{ $item->id }}">{{ $item->title }}</a>
+                        <a href="/examples/{{ $item->id }}" title="{{ $item->linkTitle ?? $item->title }}">
+                            {{ $item->linkTitle ?? $item->title }}
+                        </a>
                     </li>
                     @endforeach
                 </ul>

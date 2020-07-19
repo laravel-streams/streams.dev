@@ -1,5 +1,6 @@
 ---
 title: Installation
+linkTitle: Installation
 intro: Streams utilizes [Composer](https://getcomposer.org/) to manage its dependencies. Before using Streams, make sure you have Composer installed on your machine.
 sort: 5
 ---
