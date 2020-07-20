@@ -23,7 +23,7 @@
                         <?php $docs = Streams::entries('docs_streams')->orderBy('sort', 'asc')->get(); ?>
                         <?php $suffix = '/core'; ?>
                     @elseif (count(request()->segments()) == 3 && request()->segment(2) == 'ui')
-                        <?php $docs = Streams::entries('docs_streams')->orderBy('sort', 'asc')->get(); ?>
+                        <?php $docs = Streams::entries('docs_ui')->orderBy('sort', 'asc')->get(); ?>
                         <?php $suffix = '/ui'; ?>
                     @else
                         <?php $docs = Streams::entries('docs')->orderBy('sort', 'asc')->get(); ?>
