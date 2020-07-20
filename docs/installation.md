@@ -14,7 +14,7 @@ Streams is a Laravel 7.x package. For more information on Laravel's system requi
 ### Via Composer Create-Project
 
 ```bash
-composer create-project anomalylabs/streams example.com --prefer-dist --stability=dev
+composer create-project anomaly/streams example.local --prefer-dist --stability=dev
 ```
 
 ### Local Development Server
