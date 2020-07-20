@@ -69,12 +69,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/anomalylabs/streams-ui.git",
-                "reference": "5f91d75457a7f67410ecb76ad75c779ac76eed4d"
+                "reference": "a997069b45a31b05aa9e759d312b6f9166462f6c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/anomalylabs/streams-ui/zipball/5f91d75457a7f67410ecb76ad75c779ac76eed4d",
-                "reference": "5f91d75457a7f67410ecb76ad75c779ac76eed4d",
+                "url": "https://api.github.com/repos/anomalylabs/streams-ui/zipball/a997069b45a31b05aa9e759d312b6f9166462f6c",
+                "reference": "a997069b45a31b05aa9e759d312b6f9166462f6c",
                 "shasum": ""
             },
             "type": "library",
@@ -94,7 +94,7 @@
                 }
             ],
             "description": "The official UI package for Streams.",
-            "time": "2020-07-18T15:45:36+00:00"
+            "time": "2020-07-18T16:21:11+00:00"
         },
         {
             "name": "brick/math",
@@ -1138,16 +1138,16 @@
         },
         {
             "name": "league/commonmark",
-            "version": "1.5.1",
+            "version": "1.5.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/commonmark.git",
-                "reference": "6d74caf6abeed5fd85d6ec20da23d7269cd0b46f"
+                "reference": "2574454b97e4103dc4e36917bd783b25624aefcd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/commonmark/zipball/6d74caf6abeed5fd85d6ec20da23d7269cd0b46f",
-                "reference": "6d74caf6abeed5fd85d6ec20da23d7269cd0b46f",
+                "url": "https://api.github.com/repos/thephpleague/commonmark/zipball/2574454b97e4103dc4e36917bd783b25624aefcd",
+                "reference": "2574454b97e4103dc4e36917bd783b25624aefcd",
                 "shasum": ""
             },
             "require": {
@@ -1166,7 +1166,7 @@
                 "michelf/php-markdown": "~1.4",
                 "mikehaertl/php-shellcommand": "^1.4",
                 "phpstan/phpstan": "^0.12",
-                "phpunit/phpunit": "^7.5",
+                "phpunit/phpunit": "^7.5 || ^8.5 || ^9.2",
                 "scrutinizer/ocular": "^1.5",
                 "symfony/finder": "^4.2"
             },
@@ -1203,7 +1203,7 @@
                 "md",
                 "parser"
             ],
-            "time": "2020-06-27T12:50:08+00:00"
+            "time": "2020-07-19T22:47:30+00:00"
         },
         {
             "name": "league/flysystem",

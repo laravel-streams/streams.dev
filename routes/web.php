@@ -17,9 +17,9 @@ use Anomaly\Streams\Platform\Support\Facades\Streams;
 
 Route::view('/', 'welcome');
 
-Route::any('test/array', function() {
-    return Response::json(Streams::entries('docs')->find('directory-structure')->toArray());
-});
+// Route::any('test/array', function() {
+//     return Response::json(Streams::entries('docs')->find('directory-structure')->toArray());
+// });
 
 // Route::any('docs/{handle}', [
 //     'stream' => 'docs',
