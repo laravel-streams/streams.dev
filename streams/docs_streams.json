@@ -4,9 +4,5 @@
     "source": {
         "path": "vendor/anomaly/streams-platform/docs"
     },
-    "fields": {
-        "title": "text",
-        "description": "textarea",
-        "content": "textarea"
-    }
+    "extends": "docs"
 }
