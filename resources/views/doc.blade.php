@@ -17,7 +17,12 @@
                 </ul>
             
                 <ul>
-                    @foreach (Streams::entries(request()->segment(1))->orderBy('sort', 'asc')->get() as $item)
+                    @if (request()->segment(2) == 'core')
+                        <?php $docs = Streams::entries('docs_streams')->orderBy('sort', 'asc')->get(); ?>
+                    @else
+                        <?php $docs = Streams::entries('docs')->orderBy('sort', 'asc')->get(); ?>
+                    @endif
+                    @foreach ($docs as $item)
                     <li>
                     <a href="/{{request()->segment(1)}}/{{ $item->id }}" title="{{ $item->linkTitle ?? $item->title }}">
                         {{ $item->linkTitle ?? $item->title }}
