@@ -17,14 +17,19 @@
                 </ul>
             
                 <ul>
-                    @if (request()->segment(2) == 'core')
+                    @if (count(request()->segments()) == 3 && request()->segment(2) == 'core')
                         <?php $docs = Streams::entries('docs_streams')->orderBy('sort', 'asc')->get(); ?>
+                        <?php $suffix = '/core'; ?>
+                    @elseif (count(request()->segments()) == 3 && request()->segment(2) == 'ui')
+                        <?php $docs = Streams::entries('docs_streams')->orderBy('sort', 'asc')->get(); ?>
+                        <?php $suffix = '/ui'; ?>
                     @else
                         <?php $docs = Streams::entries('docs')->orderBy('sort', 'asc')->get(); ?>
+                        <?php $suffix = ''; ?>
                     @endif
                     @foreach ($docs as $item)
                     <li>
-                    <a href="/{{request()->segment(1)}}/{{ $item->id }}" title="{{ $item->linkTitle ?? $item->title }}">
+                    <a href="/{{request()->segment(1)}}{{ $suffix }}/{{ $item->id }}" title="{{ $item->linkTitle ?? $item->title }}">
                         {{ $item->linkTitle ?? $item->title }}
                     </a>
                     </li>
