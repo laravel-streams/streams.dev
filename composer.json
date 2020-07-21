@@ -16,7 +16,8 @@
     ],
     "require": {
         "anomaly/streams-platform": "2.0.x-dev",
-        "anomaly/streams-ui": "1.0.x-dev"
+        "anomaly/streams-ui": "1.0.x-dev",
+        "blade-ui-kit/blade-icons": "^0.4.3"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.3",

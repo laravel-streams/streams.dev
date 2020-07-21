@@ -923,6 +923,15 @@ body {
   font-size: clamp(0.9375rem, calc(1rem + .15vw), 20px);
 }
 
+.o-html--show-settings-menu .o-doc {
+  opacity: 0;
+}
+
+.o-doc {
+  opacity: 1;
+  transition: opacity 200ms ease-in-out;
+}
+
 .o-main {
   padding-top: 2.5rem;
   padding-bottom: 2.5rem;
@@ -951,6 +960,15 @@ body {
   text-decoration: underline;
   -webkit-text-decoration-color: var(--color-surface);
           text-decoration-color: var(--color-surface);
+}
+
+.c-icon--settings {
+  position: fixed;
+  z-index: 999;
+  width: 2rem;
+  height: 2rem;
+  left: 15px;
+  top: 15px;
 }
 
 /* Start purging... */

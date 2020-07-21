@@ -32714,8 +32714,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var alpinejs__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(alpinejs__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _src_theme__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./src/theme */ "./resources/js/src/theme.js");
 /* harmony import */ var _src_theme__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_src_theme__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _src_highlight__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./src/highlight */ "./resources/js/src/highlight.js");
-/* harmony import */ var _src_events_onPageLoad__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./src/events/onPageLoad */ "./resources/js/src/events/onPageLoad.js");
+/* harmony import */ var _src_settings__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./src/settings */ "./resources/js/src/settings.js");
+/* harmony import */ var _src_settings__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_src_settings__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _src_highlight__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./src/highlight */ "./resources/js/src/highlight.js");
+/* harmony import */ var _src_events_onPageLoad__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./src/events/onPageLoad */ "./resources/js/src/events/onPageLoad.js");
+
 
 
  // Events 
@@ -32785,6 +32788,49 @@ document.addEventListener('DOMContentLoaded', function (event) {
     highlight_js__WEBPACK_IMPORTED_MODULE_0___default.a.highlightBlock(block);
   });
 });
+
+/***/ }),
+
+/***/ "./resources/js/src/settings.js":
+/*!**************************************!*\
+  !*** ./resources/js/src/settings.js ***!
+  \**************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+window.settings = function () {
+  return {
+    show: false,
+    doc: false,
+    wrapper: false,
+    init: function init() {
+      this.doc = document.querySelector('.o-doc');
+      this.wrapper = document.documentElement;
+    },
+    onClick: function onClick() {
+      if (!this.doc || !this.wrapper) return;
+      var dis = this;
+
+      if (this.show === false) {
+        this.wrapper.classList.add('o-html--show-settings-menu');
+        window.addEventListener('transitionend', function onShowSettingsMenu(e) {
+          if (e.target.classList.contains('o-doc')) {
+            window.removeEventListener('transitionend', onShowSettingsMenu);
+            dis.show = !dis.show;
+          }
+        });
+      } else {
+        this.wrapper.classList.remove('o-html--show-settings-menu');
+        window.addEventListener('transitionend', function onHideSettingsMenu(e) {
+          if (e.target.classList.contains('o-doc')) {
+            window.removeEventListener('transitionend', onHideSettingsMenu);
+            dis.show = !dis.show;
+          }
+        });
+      }
+    }
+  };
+};
 
 /***/ }),
 

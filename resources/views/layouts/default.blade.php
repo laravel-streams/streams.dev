@@ -6,10 +6,10 @@
 </head>
 
 <body>
-    
+    <x-icon-wheel class="c-icon--settings" x-data="settings()" x-init="init" @click="onClick"/>
     @yield('content')    
     @include('partials/assets')
-
+    
 </body>
 
 </html>
