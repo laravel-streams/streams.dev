@@ -5,11 +5,12 @@
 <div class="o-doc">
     
     <div class="grid grid-cols-12 gap-4">
-        <div class="col-span-2">
+        <div class="col-span-4 xl:col-span-2">
             
             <aside class="o-aside sticky top-0">
                 
                 <h4>Themes</h4>
+                
                 <ul x-data="theme()" x-init="init">
                     <li @click="onLight" class="cursor-pointer">
                         I like the lightness
@@ -50,7 +51,7 @@
                 
             </aside>
         </div>
-        <div class="col-span-8 col-start-4">
+        <div class="col-span-8 xl:col-span-8 xl:col-start-4">
             <main class="o-main">
                 <h1>
                     {{ $entry->title }}
