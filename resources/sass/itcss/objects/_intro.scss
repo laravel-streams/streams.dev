@@ -7,7 +7,7 @@
 .o-intro
 {
     @apply font-mono leading-normal mb-12;
-    font-size: clamp(1.3rem,calc(1.3rem + 0.1vw),24px);
+    font-size:var(--font-size-intro,1rem);
 }
 
 

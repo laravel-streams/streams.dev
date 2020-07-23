@@ -4,8 +4,8 @@
 
 <div class="o-doc">
     
-    <div class="grid grid-cols-12 gap-4">
-        <div class="col-span-4 xl:col-span-2">
+    <div class="grid grid-cols-12 gap-4 px-4">
+        <div class="hidden xl:col-span-2">
             
             <aside class="o-aside sticky top-0">
                 
@@ -51,7 +51,7 @@
                 
             </aside>
         </div>
-        <div class="col-span-8 xl:col-span-8 xl:col-start-4">
+        <div class="col-span-12 xl:col-span-8 xl:col-start-4">
             <main class="o-main">
                 <h1>
                     {{ $entry->title }}

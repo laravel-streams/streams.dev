@@ -12,11 +12,9 @@ sort: 5
 Streams is a Laravel 7.x package. For more information on Laravel's system requirements, check the [Laravel documentation](https://laravel.com/docs/7.x/installation#server-requirements).
 
 ### Via Composer Create-Project
-
 ```bash
 composer create-project anomaly/streams example.local --prefer-dist --stability=dev
 ```
-
 ### Local Development Server
 
 If you have PHP installed locally and you would like to use PHP's built-in development server to serve your application, you may use the **serve** Artisan command. This command will start a development server at [http://localhost:8000](http://localhost:8000):
