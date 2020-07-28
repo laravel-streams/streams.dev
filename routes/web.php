@@ -51,8 +51,16 @@ Route::any('/test/foo', function () {
         }
     ]));
 
+    $workflow->steps = array_merge($workflow->steps, ['third_step' => function() {
+        \Log::info('Third (Custom) Step Output');
+    }]);
+    
     $builder->on('build_after_second_step', function() {
         \Log::info('AFTER Second Step Output');
+    });
+
+    $builder->on('build_after_third_step', function() {
+        \Log::info('AFTER THIRD (Custom) Step Output');
     });
 
     $workflow->process();
