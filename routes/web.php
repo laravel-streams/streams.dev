@@ -34,6 +34,7 @@ Route::any('/test/foo', function () {
     $builder = new Builder;
 
     $workflow = (new Workflow([
+        'name' => 'build',
         'steps' => [
             'first_step' => function () {
                 \Log::info('First Step Output');
@@ -42,11 +43,17 @@ Route::any('/test/foo', function () {
                 \Log::info('Second Step Output');
             }
         ],
+        'callback' => function ($callback, $payload) use ($builder) {
+            $builder->fire(implode('_', [
+                $callback['workflow'],
+                $callback['name']
+            ]), $payload);
+        }
     ]));
 
-    $workflow->callback = function ($callback, $payload) use ($builder) {
-        $builder->fire($callback['workflow'] . '_' . $callback['name'], $payload);
-    };
+    $builder->on('build_after_second_step', function() {
+        \Log::info('AFTER Second Step Output');
+    });
 
     $workflow->process();
 });
