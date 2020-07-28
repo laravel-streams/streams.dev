@@ -43,13 +43,13 @@ Route::any('/test/foo', function () {
                 \Log::info('Second Step Output');
             }
         ],
-        'callback' => function ($callback, $payload) use ($builder) {
-            $builder->fire(implode('_', [
-                $callback['workflow'],
-                $callback['name']
-            ]), $payload);
-        }
-    ]));
+        // 'callback' => function ($callback, $payload) use ($builder) {
+        //     $builder->fire(implode('_', [
+        //         $callback['workflow'],
+        //         $callback['name']
+        //     ]), $payload);
+        // }
+    ]))->passThrough($builder);
 
     $workflow->steps = array_merge($workflow->steps, ['third_step' => function() {
         \Log::info('Third (Custom) Step Output');
