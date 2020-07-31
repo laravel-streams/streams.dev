@@ -12,7 +12,10 @@
 */
 
 use Illuminate\Support\Facades\Route;
+use Anomaly\Streams\Ui\Support\Builder;
 use Illuminate\Support\Facades\Response;
+use Anomaly\Streams\Platform\Support\Workflow;
+use Anomaly\Streams\Platform\Ui\Table\TableBuilder;
 use Anomaly\Streams\Platform\Support\Facades\Streams;
 
 Route::view('/', 'welcome');
@@ -26,21 +29,42 @@ Route::view('/', 'welcome');
 //     'uses' => '\Anomaly\Streams\Platform\Http\Controller\EntryController@view'
 // ]);
 
-// Route::any('/test', function () {
+Route::any('/test/foo', function () {
 
+    $builder = new Builder;
+
+    $workflow = (new Workflow([
+        'name' => 'build',
+        'steps' => [
+            'first_step' => function () {
+                \Log::info('First Step Output');
+            },
+            'second_step' => function () {
+                \Log::info('Second Step Output');
+            }
+        ],
+        // 'callback' => function ($callback, $payload) use ($builder) {
+        //     $builder->fire(implode('_', [
+        //         $callback['workflow'],
+        //         $callback['name']
+        //     ]), $payload);
+        // }
+    ]))->passThrough($builder);
+
+    $workflow->steps = array_merge($workflow->steps, ['third_step' => function() {
+        \Log::info('Third (Custom) Step Output');
+    }]);
     
-//     $builder = (new TableBuilder([
-//         'stream' => 'plants',
-//         'columns' => [
-//             'name',
-//         ],
-//         'buttons' => [
-//             'view',
-//         ],
-//     ]));
+    $builder->on('build_after_second_step', function() {
+        \Log::info('AFTER Second Step Output');
+    });
 
-//     return $builder->response();
-// });
+    $builder->on('build_after_third_step', function() {
+        \Log::info('AFTER THIRD (Custom) Step Output');
+    });
+
+    $workflow->process();
+});
 
 // Route::get('/garden', function () {
 
