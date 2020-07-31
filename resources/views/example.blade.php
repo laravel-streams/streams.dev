@@ -7,11 +7,11 @@
         <div class="col-span-2">
             <aside class="o-aside sticky top-0">
                 
-                <ul x-data="theme()" x-init="init">
-                    <li @click="onLight" class="cursor-pointer">
+                <ul >
+                    <li class="cursor-pointer">
                         I like the lightness s
                     </li>
-                    <li @click="onDark" class="cursor-pointer">
+                    <li class="cursor-pointer">
                         I like the darkness
                     </li>
                 </ul>

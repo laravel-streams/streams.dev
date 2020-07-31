@@ -11,12 +11,12 @@
             
             <aside class="o-aside sticky top-0">
                 
-                <ul x-data="theme()" x-init="init" class="flex text-sm">
-                    <li @click="onLight" class="cursor-pointer mr-2">
+                <ul class="flex text-sm">
+                    <li class="cursor-pointer mr-2">
                         Lightness
                     </li>
                     <li>|</li>
-                    <li @click="onDark" class="cursor-pointer ml-2">
+                    <li class="cursor-pointer ml-2">
                         Darkness
                     </li>
                 </ul>
