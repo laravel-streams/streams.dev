@@ -1,11 +1,9 @@
 pre 
 {
     white-space: pre-wrap;
-    margin-top:calc(var(--margin-factor) * 2rem);
-    margin-bottom:calc(var(--margin-factor) * .8rem);
 }
 
 pre + *:not(h2):not(h3):not(h4)
 {
-   // @apply mt-6;
+   
 }

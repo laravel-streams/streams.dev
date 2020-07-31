@@ -795,60 +795,9 @@ html.o-theme--dark .hljs-deletion {
   --font-display: "Inter", "sans-serif";
   --font-body: "Inter", "sans-serif";
   --font-mono: "Inconsolata";
-  --font-size-base: 1rem;
-  --font-size-xl1: 2.5rem;
-  --font-size-xl2: 1.8rem;
-  --font-size-xl3: 1.1rem;
-  --font-size-xl4: 1rem;
-  --font-size-intro: 1.1rem;
   --font-weight-normal: 400;
   --font-weight-semi: 700;
   --font-weight-bold: 800;
-  --margin-factor: 1;
-}
-
-@media (min-width: 1440px) {
-  :root {
-    --font-size-base: 1.05rem;
-    --font-size-xl1: 3.9rem;
-    --font-size-xl2: 2.8rem;
-    --font-size-xl3: 1.5rem;
-    --font-size-xl4: 1.2rem;
-    --font-size-intro: 1.4rem;
-  }
-}
-
-@media (min-width: 14400px) {
-  :root {
-    --margin-factor: 1.5;
-  }
-}
-
-html.o-theme--compacts {
-  --font-size-base: .925rem;
-  --font-size-xl1:2rem;
-  --font-size-xl2: 1.6rem;
-  --font-size-xl3: 1.2rem;
-  --font-size-xl4: 1rem;
-  --font-size-intro: 1.1rem;
-  --margin-factor: .1;
-}
-
-@media (min-width: 1440px) {
-  html.o-theme--compacts {
-    --font-size-base: 1.15rem;
-    --font-size-xl1:1.5rem;
-    --font-size-xl2: 1.25rem;
-    --font-size-xl3: 1.15rem;
-    --font-size-xl4: 1rem;
-    --font-size-intro: 1.1rem;
-  }
-}
-
-@media (min-width: 1440px) {
-  html.o-theme--compacts {
-    --margin-factor: .5;
-  }
 }
 
 html.o-theme--light {
@@ -894,45 +843,6 @@ h3, h4 {
   font-weight: var(--font-weight-semi);
 }
 
-h1 {
-  font-size: var(--font-size-xl1);
-  line-height: 1;
-  margin-bottom: calc(var(--margin-factor) * 1rem);
-}
-
-h2 {
-  font-size: var(--font-size-xl2);
-  line-height: 1.15;
-  position: relative;
-  margin-top: calc(var(--margin-factor) * 3.5rem);
-  margin-bottom: calc(var(--margin-factor) * .8rem);
-}
-
-h2:before {
-  position: absolute;
-  top: 22px;
-  left: -100px;
-  display: block;
-  width: 40px;
-  height: 5px;
-  content: "";
-  background-color: var(--color-accent);
-}
-
-h3 {
-  font-size: var(--font-size-xl3);
-  line-height: 1.15;
-  margin-top: calc(var(--margin-factor) * 3rem);
-  margin-bottom: calc(var(--margin-factor) * .8rem);
-}
-
-h4 {
-  font-size: var(--font-size-xl4);
-  line-height: 1.15;
-  margin-top: calc(var(--margin-factor) * 1.25rem);
-  margin-bottom: calc(var(--margin-factor) * .5rem);
-}
-
 code {
   color: white;
   padding-left: 0.5rem;
@@ -943,8 +853,6 @@ code {
 
 pre {
   white-space: pre-wrap;
-  margin-top: calc(var(--margin-factor) * 2rem);
-  margin-bottom: calc(var(--margin-factor) * .8rem);
 }
 
 body {
@@ -961,8 +869,6 @@ body {
 }
 
 .o-main {
-  padding-top: 2.5rem;
-  padding-bottom: 2.5rem;
   width: 100%;
 }
 
@@ -982,7 +888,6 @@ body {
 .o-intro {
   font-family: var(--font-mono);
   line-height: 1.5;
-  margin-bottom: 3rem;
   font-size: var(--font-size-intro, 1rem);
 }
 

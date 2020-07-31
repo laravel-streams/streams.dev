@@ -11,55 +11,16 @@
     --font-body: "Inter", "sans-serif";
     --font-mono: "Inconsolata";
 
-    // Font size
-    --font-size-base: 1rem;
-    --font-size-xl1: 2.5rem;
-    --font-size-xl2: 1.8rem;
-    --font-size-xl3: 1.1rem;
-    --font-size-xl4: 1rem;
-    --font-size-intro: 1.1rem;
-    @media (min-width: 1440px) {
-        --font-size-base: 1.05rem;
-        --font-size-xl1: 3.9rem;
-        --font-size-xl2: 2.8rem;
-        --font-size-xl3: 1.5rem;
-        --font-size-xl4: 1.2rem;
-        --font-size-intro: 1.4rem;
-    }
+   
 
     // Font Weight
     --font-weight-normal: 400;
     --font-weight-semi: 700;
     --font-weight-bold: 800;
 
-    // Margins
-    --margin-factor: 1;
-    @media (min-width: 14400px) {
-        --margin-factor: 1.5;
-        
-    }
+   
 }
 
 html.o-theme--compacts {
-   // Font size
-   --font-size-base: .925rem;
-   --font-size-xl1:2rem;
-   --font-size-xl2: 1.6rem;
-   --font-size-xl3: 1.2rem;
-   --font-size-xl4: 1rem;
-   --font-size-intro: 1.1rem;
-   @media (min-width: 1440px) {
-       --font-size-base: 1.15rem;
-       --font-size-xl1:1.5rem;
-       --font-size-xl2: 1.25rem;
-       --font-size-xl3: 1.15rem;
-       --font-size-xl4: 1rem;
-       --font-size-intro: 1.1rem;
-   }
-   // Margins
-   --margin-factor: .1;
-   @media (min-width: 1440px) {
-       --margin-factor: .5;
-       
-   }
+  
 }
