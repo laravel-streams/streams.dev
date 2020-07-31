@@ -32,13 +32,31 @@
                         <?php $docs = Streams::entries('docs')->orderBy('sort', 'asc')->get(); ?>
                         <?php $suffix = ''; ?>
                     @endif
-                    @foreach ($docs as $item)
+                    
+                    @foreach ($docs->filter(function($item) {
+                        return $item->section == null;
+                    }) as $item)
                     <li>
                     <a href="/{{request()->segment(1)}}{{ $suffix }}/{{ $item->id }}" title="{{ $item->linkTitle ?? $item->title }}">
                         {{ $item->linkTitle ?? $item->title }}
                     </a>
                     </li>
                     @endforeach
+                    
+                    <?php $sections = Streams::make('docs')->fields->section->options; ?>
+                    @foreach ($sections as $section => $name)
+                    <li><small class="opacity-25">{{$name}}</small></li>
+                    @foreach ($docs->filter(function($item) use ($section) {
+                        return $item->section == $section;
+                    }) as $item)
+                    <li>
+                    <a href="/{{request()->segment(1)}}{{ $suffix }}/{{ $item->id }}" title="{{ $item->linkTitle ?? $item->title }}">
+                        {{ $item->linkTitle ?? $item->title }}
+                    </a>
+                    </li>
+                    @endforeach
+                    @endforeach
+
                 </ul>
 
                 <h4>Projects</h4>
