@@ -1,6 +1,6 @@
 import "./src/theme";
 import "./src/settings";
-import "./src/highlight"
+import "./src/highlight";
 
 // Events 
 import "./src/events/onPageLoad";

@@ -3,13 +3,15 @@
 @section('content')
 
 <div class="o-doc">
+
+    <style rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/styles/default.min.css"></style>
     
     <div class="grid grid-cols-12 gap-4">
         <div class="col-span-4 xl:col-span-2">
             
             <aside class="o-aside sticky top-0">
                 
-                <ul x-data="theme()" x-init="init" class="flex">
+                <ul x-data="theme()" x-init="init" class="flex text-sm">
                     <li @click="onLight" class="cursor-pointer mr-2">
                         Lightness
                     </li>
@@ -45,7 +47,7 @@
                     
                     <?php $sections = Streams::make('docs')->fields->section->options; ?>
                     @foreach ($sections as $section => $name)
-                    <li><small class="opacity-25">{{$name}}</small></li>
+                    <li><small class="opacity-25 mt-3 inline-block">{{$name}}</small></li>
                     @foreach ($docs->filter(function($item) use ($section) {
                         return $item->section == $section;
                     }) as $item)
@@ -59,9 +61,8 @@
 
                 </ul>
 
-                <h4>Projects</h4>
+                <h4>Digging Deeper</h4>
                 <ul>
-                    <li><a href="/docs/introduction">Streams</a></li>
                     <li><a href="/docs/core/introduction">Core</a></li>
                     <li><a href="/docs/ui/introduction">UI</a></li>
                     <li><a href="#docs/api/introduction" class="disabled">API</a></li>
