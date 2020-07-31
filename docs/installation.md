@@ -1,6 +1,7 @@
 ---
 title: Installation
-intro: 
+section: getting_started
+intro: Installation is a strong word.
 sort: 1
 ---
 You won't need anything to kick the tires but it is highly recommend to become somewhat familiar with the [basics of Laravel](https://laravel.com/docs/routing).

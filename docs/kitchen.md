@@ -1,7 +1,7 @@
 ---
 title: Kitchen Sink
 intro: I think it would be beneficial to the pages if they all have this introsection, to summarize what the documentation is all about. This section adds a margin to the bottom. Same margins as the h1 has at the bottom. Making sure both this element and a h2 can follow.
-sort: 9999
+sort: 99999
 ---
 
 ## H2 follows h1 or intro

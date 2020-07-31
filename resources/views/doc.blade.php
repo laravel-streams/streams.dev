@@ -9,18 +9,18 @@
             
             <aside class="o-aside sticky top-0">
                 
-                <h4>Themes</h4>
-                
-                <ul x-data="theme()" x-init="init">
-                    <li @click="onLight" class="cursor-pointer">
-                        I like the lightness
+                <ul x-data="theme()" x-init="init" class="flex">
+                    <li @click="onLight" class="cursor-pointer mr-2">
+                        Lightness
                     </li>
-                    <li @click="onDark" class="cursor-pointer">
-                        I like the darkness
+                    <li>|</li>
+                    <li @click="onDark" class="cursor-pointer ml-2">
+                        Darkness
                     </li>
                 </ul>
+
+                <br>
             
-                <h4>Docs</h4>
                 <ul>
                     @if (count(request()->segments()) == 3 && request()->segment(2) == 'core')
                         <?php $docs = Streams::entries('docs_streams')->orderBy('sort', 'asc')->get(); ?>
