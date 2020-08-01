@@ -9,7 +9,11 @@ html {
 
     // Experimental
     --color-code: hsl(216, 7%, 93%);
-    --color-code-text : hsl(216, 7%, 35%)
+    --color-code-text : hsl(216, 7%, 35%);
+
+    --accent-surface:hsl(194, 100%, 98%);
+    --accent-surface-shadow:hsl(194, 100%, 88%);
+    --accent-surface-text:hsl(194, 100%, 20%);
 }
 
 html.o-theme--80s {

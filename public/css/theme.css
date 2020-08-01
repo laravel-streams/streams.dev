@@ -811,7 +811,10 @@ html {
   --color-font: #192633;
   --color-font-secondary: #7abaff;
   --color-code: hsl(216, 7%, 93%);
-  --color-code-text: hsl(216, 7%, 35%) ;
+  --color-code-text: hsl(216, 7%, 35%);
+  --accent-surface:hsl(194, 100%, 98%);
+  --accent-surface-shadow:hsl(194, 100%, 88%);
+  --accent-surface-text:hsl(194, 100%, 20%);
 }
 
 html.o-theme--80s {
@@ -878,8 +881,8 @@ code {
 
 code.language-bash.hljs {
   padding: 0 1rem;
-  background: aliceblue;
-  box-shadow: 5px 6px 0px 0px rgba(0, 0, 255, 0.2);
+  background: var(--accent-surface);
+  box-shadow: 5px 6px 0px 0px var(--accent-surface-shadow);
 }
 
 pre {
@@ -942,9 +945,10 @@ html, body {
   margin-top: calc(var(--line-height-base) * 1);
   margin-bottom: calc(var(--line-height-base) * 2);
   padding: var(--line-height-base);
-  background: aliceblue;
-  box-shadow: 8px 9px 0px 0px rgba(0, 0, 255, 0.2);
+  background: var(--accent-surface);
+  box-shadow: 8px 9px 0px 0px var(--accent-surface-shadow);
   transform: skewY(-3deg) rotate(2deg);
+  color: var(--accent-surface-text);
 }
 
 .o-intro p {
