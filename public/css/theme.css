@@ -931,14 +931,11 @@ html, body {
 
 .o-intro {
   font-family: var(--font-mono);
-  font-size: 1.1875rem;
+  font-size: 1.0625rem;
   margin-top: calc(var(--line-height-base) * 1);
   margin-bottom: calc(var(--line-height-base) * 2);
-  text-decoration: underline;
-  -webkit-text-decoration-color: #cbe9ff;
-          text-decoration-color: #cbe9ff;
-  -webkit-text-decoration-style: wavy;
-          text-decoration-style: wavy;
+  background: aliceblue;
+  padding: var(--line-height-base);
 }
 
 .o-intro p {
