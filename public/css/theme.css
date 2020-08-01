@@ -914,6 +914,7 @@ html, body {
   padding: 2rem;
   padding-top: 3rem;
   min-height: 100vh;
+  background: #eee;
 }
 
 .o-intro {

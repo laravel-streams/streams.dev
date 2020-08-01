@@ -6,8 +6,8 @@
 
     <style rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/styles/default.min.css"></style>
     
-    <div class="grid grid-cols-12 gap-4 px-4">
-        <div class="hidden xl:col-span-2">
+    <div class="grid grid-cols-12 gap-4">
+        <div class="xl:col-span-2">
             
             <aside class="o-aside sticky top-0">
                 
