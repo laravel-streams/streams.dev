@@ -931,6 +931,9 @@ html, body {
 
 .o-intro {
   font-family: var(--font-mono);
+  font-size: 1.1875rem;
+  margin-top: calc(var(--line-height-base) * 1);
+  margin-bottom: calc(var(--line-height-base) * 2);
 }
 
 .o-intro p {

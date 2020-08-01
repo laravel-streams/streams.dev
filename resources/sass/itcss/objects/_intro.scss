@@ -2,7 +2,9 @@
 .o-intro
 {
     @apply font-mono;
-    
+    font-size:1.1875rem; // Must be larger than base font size
+    margin-top:calc(var(--line-height-base) * 1);
+    margin-bottom:calc(var(--line-height-base) * 2);
 }
 
 
