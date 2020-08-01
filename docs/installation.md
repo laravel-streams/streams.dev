@@ -4,15 +4,10 @@ section: getting_started
 intro: Installation is a strong word.
 sort: 1
 ---
-You won't need anything to kick the tires but it is highly recommend to become somewhat familiar with the [basics of Laravel](https://laravel.com/docs/routing).
-
-## System Requirements
-
-Please first review the [Laravel server requirements](https://laravel.com/docs/installation#server-requirements) before continueing. Streams may require an additional requirement for [image manipulation](images):
-
-- GD Library **OR** Imagick PHP extension
 
 ## Download
+
+Start using streams by first downloading it using Composer:
 
 ### Via Composer Create-Project
 
