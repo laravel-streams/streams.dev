@@ -2,23 +2,32 @@
 //  Global settings only — Otherwise use the theme files.
 //  ----------------------------------------------------------------------------
 :root {
+    
     //  ------------------------------------------------------------------------
     //  Font Settings
     //  ------------------------------------------------------------------------
 
-    // Font families
+    // Families
     --font-display: "Inter", "sans-serif";
     --font-body: "Inter", "sans-serif";
     --font-mono: "Inconsolata";
 
-   
-
-    // Font Weight
+    // Weight
     --font-weight-normal: 400;
     --font-weight-semi: 700;
     --font-weight-bold: 800;
 
-   
+    // Size
+    --font-size-base: 16;
+  
+    // Line Height
+    --line-height-base:1.375rem;
+    --line-height-bash:2.8125rem;
+
+    // Global 
+
+
+
 }
 
 html.o-theme--compacts {

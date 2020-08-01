@@ -1,14 +1,14 @@
 
 .o-intro
 {
-    @apply font-mono leading-normal;
-    font-size:var(--font-size-intro,1rem);
+    @apply font-mono;
+    
 }
 
 
 .o-intro p 
 {
-    text-decoration: underline;
+    //text-decoration: underline;
     text-decoration-color:var(--color-surface);
 }
 
