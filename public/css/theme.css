@@ -878,6 +878,8 @@ code {
 
 code.language-bash.hljs {
   padding: 0 1rem;
+  background: aliceblue;
+  box-shadow: 5px 6px 0px 0px rgba(0, 0, 255, 0.2);
 }
 
 pre {
@@ -939,8 +941,9 @@ html, body {
   font-size: 1.0625rem;
   margin-top: calc(var(--line-height-base) * 1);
   margin-bottom: calc(var(--line-height-base) * 2);
-  background: aliceblue;
   padding: var(--line-height-base);
+  background: aliceblue;
+  box-shadow: 8px 9px 0px 0px rgba(0, 0, 255, 0.2);
 }
 
 .o-intro p {
