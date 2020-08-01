@@ -1,17 +1,16 @@
-code 
+code
 {
+    line-height: calc(var(--line-height-base) * 2);
+
+    padding: 0 1rem;
+
     color: white;
-    @apply inline-block;
-    // line-height:1;
-    // padding: .3rem .7rem calc(.3rem + 1px);
-    background-color:var(--color-code);
-    padding:  0 .5rem;
-    
+    color: var(--color-code-text);
+    background-color: var(--color-code);
+    @apply inline-block;;
 }
 
 code.language-bash.hljs
 {
-    //line-height: var(--line-height-bash);
-    //margin: 2px 0;
-   padding:  0 .5rem;
+    padding: 0 1rem;
 }

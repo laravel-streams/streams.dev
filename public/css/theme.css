@@ -810,7 +810,8 @@ html {
   --color-underline: #e6e6e6;
   --color-font: #192633;
   --color-font-secondary: #7abaff;
-  --color-code: #25292e;
+  --color-code: hsl(216, 7%, 93%);
+  --color-code-text: hsl(216, 7%, 35%) ;
 }
 
 html.o-theme--80s {
@@ -849,28 +850,30 @@ h2 {
 }
 
 h3 {
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   line-height: calc(var(--line-height-base) * 2);
   margin-top: calc(var(--line-height-base) * 1);
   margin-bottom: calc(var(--line-height-base) * 0);
 }
 
 h4 {
-  font-size: 1rem;
+  font-size: 1.1rem;
   line-height: calc(var(--line-height-base) * 1);
   margin-top: calc(var(--line-height-base) * 1);
   margin-bottom: calc(var(--line-height-base) * 0);
 }
 
 code {
+  line-height: calc(var(--line-height-base) * 2);
+  padding: 0 1rem;
   color: white;
-  display: inline-block;
+  color: var(--color-code-text);
   background-color: var(--color-code);
-  padding: 0 0.5rem;
+  display: inline-block;
 }
 
 code.language-bash.hljs {
-  padding: 0 0.5rem;
+  padding: 0 1rem;
 }
 
 pre {
