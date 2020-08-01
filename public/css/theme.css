@@ -934,6 +934,11 @@ html, body {
   font-size: 1.1875rem;
   margin-top: calc(var(--line-height-base) * 1);
   margin-bottom: calc(var(--line-height-base) * 2);
+  text-decoration: underline;
+  -webkit-text-decoration-color: #cbe9ff;
+          text-decoration-color: #cbe9ff;
+  -webkit-text-decoration-style: wavy;
+          text-decoration-style: wavy;
 }
 
 .o-intro p {
