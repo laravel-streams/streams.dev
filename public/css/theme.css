@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap);@import url(https://fonts.googleapis.com/css2?family=Inconsolata:wght@300;400;500&display=swap);/* purgecss start ignore */
+@import url(https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap);@import url(https://fonts.googleapis.com/css2?family=Inconsolata:wght@300;400;500&display=swap);@import url(https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&display=swap);/* purgecss start ignore */
 
 /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
 
@@ -821,6 +821,10 @@ html.o-theme--80s {
   --color-font: #333;
 }
 
+.c-versioning {
+  font-family: "Caveat", cursive;
+}
+
 h1,
 h2,
 h3,
@@ -878,6 +882,7 @@ code.language-bash.hljs {
 
 pre {
   white-space: pre-wrap;
+  margin-bottom: calc(var(--line-height-base) * 1);
 }
 
 html, body {
@@ -950,6 +955,15 @@ html, body {
   height: 2rem;
   left: 15px;
   top: 15px;
+}
+
+.c-versioning {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 2rem;
+  font-size: 36px;
+  color: #ddd;
 }
 
 /* Start purging... */

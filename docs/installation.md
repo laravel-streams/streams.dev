@@ -5,27 +5,32 @@ intro: Installation is a strong word.
 sort: 2
 ---
 
-## Download
+## Start a new project
 
-Start using streams by first downloading it using Composer:
 
-### Via Composer Create-Project
+You will be using composer to install streams. Unless you already have it installed on 
+your machine, follow this link and do that first: [https://getcomposer.org/](https://getcomposer.org/)
+
+
+### Create
 
 ```bash
 composer create-project anomaly/streams example.local --prefer-dist --stability=dev
 ```
 
-### Via Composer Existing-Project
+### Create within an existing project
+
 
 ```bash
 composer require anomaly/streams-platform --prefer-dist --stability=dev
 ```
 
-#### Or you can do 
 Optionally you can also install the **anomaly/streams-ui** and **anomaly/streams-api** packages that come standard in Streams.
 
 ## Updating
 From within your project, use Composer to update the Streams core package:
+
+### Composer update
 
 ```bash
 composer update anomalylabs/streams-platform --with-dependencies

@@ -13,4 +13,3 @@
 {{-- {!! assets()->style('public::assets/css/style.css') !!} --}}
 <link href="{{ mix('/css/theme.css') }}" rel="stylesheet">
 
-<link href="https://fonts.googleapis.com/css2?family=Courier+Prime&display=swap" rel="stylesheet">

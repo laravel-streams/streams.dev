@@ -3,7 +3,9 @@
 @section('content')
 
 <div class="o-doc">
-
+    <div class="c-versioning">
+        Alpha Version
+    </div>
     <style rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/styles/default.min.css"></style>
     
     <div class="flex flex-wrap">
