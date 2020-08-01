@@ -944,6 +944,7 @@ html, body {
   padding: var(--line-height-base);
   background: aliceblue;
   box-shadow: 8px 9px 0px 0px rgba(0, 0, 255, 0.2);
+  transform: skewY(-3deg) rotate(2deg);
 }
 
 .o-intro p {
