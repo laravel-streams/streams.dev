@@ -6,8 +6,8 @@
 
     <style rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/styles/default.min.css"></style>
     
-    <div class="grid grid-cols-12 gap-4">
-        <div class="xl:col-span-2">
+    <div class="flex flex-wrap">
+        <div class="xl:w-2/12">
             
             <aside class="o-aside sticky top-0">
                 
@@ -70,7 +70,7 @@
                 
             </aside>
         </div>
-        <div class="col-span-12 xl:col-span-8 xl:col-start-4">
+        <div class="lg:w-8/12 xl:w-9/12 lg:ml-auto">
             <main class="o-main">
                 <h1>
                     {{ $entry->title }}

@@ -2,7 +2,7 @@
 title: Installation
 section: getting_started
 intro: Installation is a strong word.
-sort: 1
+sort: 2
 ---
 
 ## Download

@@ -903,6 +903,13 @@ html, body {
   width: 100%;
 }
 
+@media (max-width: 1279px) {
+  .o-main *:not(pre):not(code) {
+    width: 100%;
+    padding-right: 2rem;
+  }
+}
+
 @media (min-width: 1280px) {
   .o-main *:not(pre):not(code) {
     width: clamp(320px, 100%, 850px);
@@ -914,7 +921,12 @@ html, body {
   padding: 2rem;
   padding-top: 3rem;
   min-height: 100vh;
-  background: #eee;
+}
+
+@media (min-width: 1024px) {
+  .o-aside {
+    min-width: 300px;
+  }
 }
 
 .o-intro {
