@@ -13,6 +13,9 @@ code
 code.language-bash.hljs
 {
     padding: 0 1rem;
+    
     background:var(--accent-surface);
-    box-shadow: 5px 6px 0px 0px var(--accent-surface-shadow);;
+    box-shadow: 5px 6px 0px 0px var(--accent-surface-shadow);
+    color:var(--accent-surface-text);
+
 }

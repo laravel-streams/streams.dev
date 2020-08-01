@@ -819,7 +819,7 @@ html {
 
 html.o-theme--80s {
   --color-background: #fff;
-  --color-surface: #fd48c4;
+  --color-surface: #b987a9;
   --color-accent: rgb(240, 240, 240);
   --color-font: #333;
 }
@@ -883,6 +883,7 @@ code.language-bash.hljs {
   padding: 0 1rem;
   background: var(--accent-surface);
   box-shadow: 5px 6px 0px 0px var(--accent-surface-shadow);
+  color: var(--accent-surface-text);
 }
 
 pre {
