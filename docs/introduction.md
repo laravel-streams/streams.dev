@@ -1,26 +1,24 @@
 ---
 title: Introduction
-intro: Streams is a data-first, choose-your-own-adventure and open source web application engine for Laravel.
+intro: Streams is your data-first multitool for building Laravel applications.
 sort: 0
 ---
-Using streams-configured data structures instantly provides extensive and universally helpful functionality for Laravel applications.
 
-We highly suggest you review the [who is it for](who-is-it-for) and [how it works](how-it-works) pages to learn more before [getting started](installation).
+## What is streams?
 
-### Not a CMS
+### Streams Core
+[Streams Core](core/introduction) builds upon streams configured data-structures to standardize your application's data modeling, querying and storage. Fetch, store and interact with data consistently regardless of the source of the data. Streams are configured as flat-file by default but support Eloquent models, generic Laravel databases, and any other source you can wrap with our basic interface like APIs.
 
-Streams is not a CMS. It can easily be used without UI like Jekyll for example. It can even be used _with_ a Laravel CMS. Streams does not assume data is content nor that your application is a website.
+### Streams UI
 
-That said, it can certainly be [used as a CMS](#use-cases/cms) and has many other [use cases](#use-cases).
+[Streams UI](ui/introduction) is a natural extension of [Streams Core](core/introduction) and provides instant bolt-on access to a control panel, forms, tables and more, all using your Streams cnofigured data-structures for default functionality. Extreme extensibility let you fine-tune your application UI however needed quickly and easily.
 
-## Getting Started
+### Streams API
 
-- [Who is it for](who-is-it-for)
-- [How does it work](how-does-it-work)
-- [Installation](installation)
+[Streams API](#ui/api) is a natural extension of [Streams Core](core/introduction) and provides instant bolt-on access to a standardized RESTful API. Extreme extensibility let you fine-tune your application API however needed quickly and easily.
 
-### Get Involved
+## Why use it?
 
-- [Link to Discord](#)
-- [Link to GitHub](https://github.com/anomaly/streams)
-- [Link to Me](https://ryanthepyro.com/)
+## Who is it for?
+
+## How does it work?
