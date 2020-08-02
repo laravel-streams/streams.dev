@@ -1,10 +1,17 @@
 pre 
 {
-    @apply mt-6;
     white-space: pre-wrap;
+    margin-bottom:calc(var(--line-height-base) * 1);
+    
+    
+    
+}
+p+pre 
+{
+   // margin-top:calc(var(--line-height-base) * 1);
 }
 
 pre + *:not(h2):not(h3):not(h4)
 {
-    @apply mt-6;
+   
 }

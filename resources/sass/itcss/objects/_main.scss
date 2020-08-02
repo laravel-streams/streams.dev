@@ -1,13 +1,20 @@
 .o-main
 {
-    @apply py-10 w-full;
+    @apply w-full;
     
     
 }
 
+
 .o-main *:not(pre):not(code)
 {
-   width:clamp(320px,100%,850px);
+   @media (max-width: 1279px) {
+      width:100%;
+      padding-right:2rem;
+   }
+   @media (min-width: 1280px) {
+      width:clamp(320px,100%,850px);
+   }
 }
 
 .o-main h2 

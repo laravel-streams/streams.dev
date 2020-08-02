@@ -4,32 +4,32 @@
 :root {
     
     //  ------------------------------------------------------------------------
-    //  Font Settings 
+    //  Font Settings
     //  ------------------------------------------------------------------------
-    
-    // Font families
-    --font-display : 'Inter', 'sans-serif';
-    --font-body : 'Inter', 'sans-serif';
-    --font-mono: 'Inconsolata';
 
-    // Font size
-    --font-size-base:1rem;
-    --font-size-h1:2.825rem;
-    --font-size-h2:1.825rem;
-    --font-size-h3:1.125rem;
-    --font-size-h4:1.08rem;
+    // Families
+    --font-display: "Inter", "sans-serif";
+    --font-body: "Inter", "sans-serif";
+    --font-mono: "Inconsolata";
 
-    // Font Weight 
+    // Weight
     --font-weight-normal: 400;
-    --font-weight-semi: 700; 
-    --font-weight-bold: 800; 
+    --font-weight-semi: 700;
+    --font-weight-bold: 800;
+
+    // Size
+    --font-size-base: 16;
+  
+    // Line Height
+    --line-height-base:1.375rem;
+    --line-height-bash:2.8125rem;
+
+    // Global 
+
+
+
 }
 
-html.o-theme--compact
-{
-    // Font size
-    --font-size-h1:2.625rem;
-    --font-size-h2:2rem;
-    --font-size-h3:1.5rem;
-    --font-size-h4:1rem;
+html.o-theme--compacts {
+  
 }

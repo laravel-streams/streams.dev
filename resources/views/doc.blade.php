@@ -3,24 +3,28 @@
 @section('content')
 
 <div class="o-doc">
+    <div class="c-versioning">
+        Alpha Version
+    </div>
+    <style rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/styles/default.min.css"></style>
     
-    <div class="grid grid-cols-12 gap-4">
-        <div class="col-span-4 xl:col-span-2">
+    <div class="flex flex-wrap">
+        <div class="xl:w-2/12">
             
             <aside class="o-aside sticky top-0">
                 
-                <h4>Themes</h4>
-                
-                <ul x-data="theme()" x-init="init">
-                    <li @click="onLight" class="cursor-pointer">
-                        I like the lightness
+                <ul class="flex text-sm">
+                    <li class="cursor-pointer mr-2">
+                        Lightness
                     </li>
-                    <li @click="onDark" class="cursor-pointer">
-                        I like the darkness
+                    <li>|</li>
+                    <li class="cursor-pointer ml-2">
+                        Darkness
                     </li>
                 </ul>
+
+                <br>
             
-                <h4>Docs</h4>
                 <ul>
                     @if (count(request()->segments()) == 3 && request()->segment(2) == 'core')
                         <?php $docs = Streams::entries('docs_streams')->orderBy('sort', 'asc')->get(); ?>
@@ -32,18 +36,35 @@
                         <?php $docs = Streams::entries('docs')->orderBy('sort', 'asc')->get(); ?>
                         <?php $suffix = ''; ?>
                     @endif
-                    @foreach ($docs as $item)
+                    
+                    @foreach ($docs->filter(function($item) {
+                        return $item->section == null;
+                    }) as $item)
                     <li>
                     <a href="/{{request()->segment(1)}}{{ $suffix }}/{{ $item->id }}" title="{{ $item->linkTitle ?? $item->title }}">
                         {{ $item->linkTitle ?? $item->title }}
                     </a>
                     </li>
                     @endforeach
+                    
+                    <?php $sections = Streams::make('docs')->fields->section->options; ?>
+                    @foreach ($sections as $section => $name)
+                    <li><small class="opacity-25 mt-3 inline-block">{{$name}}</small></li>
+                    @foreach ($docs->filter(function($item) use ($section) {
+                        return $item->section == $section;
+                    }) as $item)
+                    <li>
+                    <a href="/{{request()->segment(1)}}{{ $suffix }}/{{ $item->id }}" title="{{ $item->linkTitle ?? $item->title }}">
+                        {{ $item->linkTitle ?? $item->title }}
+                    </a>
+                    </li>
+                    @endforeach
+                    @endforeach
+
                 </ul>
 
-                <h4>Projects</h4>
+                <h4>Digging Deeper</h4>
                 <ul>
-                    <li><a href="/docs/introduction">Streams</a></li>
                     <li><a href="/docs/core/introduction">Core</a></li>
                     <li><a href="/docs/ui/introduction">UI</a></li>
                     <li><a href="#docs/api/introduction" class="disabled">API</a></li>
@@ -51,7 +72,7 @@
                 
             </aside>
         </div>
-        <div class="col-span-8 xl:col-span-8 xl:col-start-4">
+        <div class="lg:w-8/12 xl:w-9/12 lg:ml-auto">
             <main class="o-main">
                 <h1>
                     {{ $entry->title }}

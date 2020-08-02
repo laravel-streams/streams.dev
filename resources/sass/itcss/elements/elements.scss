@@ -7,7 +7,19 @@
 @import "./pre-code";
 
 
-body 
+
+
+html,body 
 {
-    font-size:clamp(0.9375rem, calc(1rem + .15vw), 20px);
+    @apply bg-background text-font;
+    font-size:var(--font-size-base);
+    // line-height:var(--line-height-base);    
+}
+
+* 
+{
+    line-height: var(--line-height-base);
+    // line-height:1.5;
+    // margin-top:0;
+    // margin-bottom:calc(1 * var(--font-size-base) * var(--line-height-base)) !important;
 }

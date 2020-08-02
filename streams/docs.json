@@ -7,6 +7,14 @@
     "fields": {
         "title": "text",
         "description": "textarea",
-        "content": "textarea"
+        "content": "textarea",
+        "section": {
+            "type": "text",
+            "options": {
+                "core_concepts": "Core Concepts",
+                "getting_started": "Getting Started",
+                "the_basics": "The Basics"
+            }
+        }
     }
 }

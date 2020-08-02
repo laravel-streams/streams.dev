@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap);@import url(https://fonts.googleapis.com/css2?family=Inconsolata:wght@300;400;500&display=swap);/* purgecss start ignore */
+@import url(https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap);@import url(https://fonts.googleapis.com/css2?family=Inconsolata:wght@300;400;500&display=swap);@import url(https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&display=swap);/* purgecss start ignore */
 
 /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
 
@@ -795,50 +795,37 @@ html.o-theme--dark .hljs-deletion {
   --font-display: "Inter", "sans-serif";
   --font-body: "Inter", "sans-serif";
   --font-mono: "Inconsolata";
-  --font-size-base:1rem;
-  --font-size-h1:2.825rem;
-  --font-size-h2:1.825rem;
-  --font-size-h3:1.125rem;
-  --font-size-h4:1.08rem;
   --font-weight-normal: 400;
   --font-weight-semi: 700;
   --font-weight-bold: 800;
+  --font-size-base: 16;
+  --line-height-base:1.375rem;
+  --line-height-bash:2.8125rem;
 }
 
-html.o-theme--compact {
-  --font-size-h1:2.625rem;
-  --font-size-h2:2rem;
-  --font-size-h3:1.5rem;
-  --font-size-h4:1rem;
-}
-
-html.o-theme--light {
+html {
   --color-background: #fff;
-  --color-surface:#fbfbfb;
+  --color-surface: #fbfbfb;
   --color-accent: #bee4ff;
   --color-underline: #e6e6e6;
   --color-font: #192633;
-  --color-font-secondary:#7abaff;
-  --color-code: var(--color-accent);
+  --color-font-secondary: #7abaff;
+  --color-code: hsl(216, 7%, 93%);
+  --color-code-text: hsl(216, 7%, 35%);
+  --accent-surface:hsl(194, 100%, 98%);
+  --accent-surface-shadow:hsl(194, 100%, 88%);
+  --accent-surface-text:hsl(194, 100%, 20%);
 }
 
 html.o-theme--80s {
   --color-background: #fff;
-  --color-surface: #fd48c4;
+  --color-surface: #b987a9;
   --color-accent: rgb(240, 240, 240);
   --color-font: #333;
 }
 
-html.o-theme--dark {
-  --color-background: #222322;
-  --color-surface: #2d2d2d;
-  --color-accent: #005a96;
-  --color-font: #fff;
-}
-
-html, body {
-  background-color: var(--color-background);
-  color: var(--color-font);
+.c-versioning {
+  font-family: "Caveat", cursive;
 }
 
 h1,
@@ -856,71 +843,62 @@ h3, h4 {
 }
 
 h1 {
-  font-size: clamp(var(--font-size-h1), calc(var(--font-size-h1) + 1.3vw), 4.5rem);
-  line-height: 1;
-  margin-top: 0;
-  margin-bottom: 3rem;
-}
-
-h1 + .o-intro {
-  margin-top: -1.5rem;
+  font-size: 3rem;
+  line-height: calc(var(--line-height-base) * 2);
+  margin-top: calc(var(--line-height-base) * 3);
+  margin-bottom: calc(var(--line-height-base) * 1);
 }
 
 h2 {
-  font-size: clamp(var(--font-size-h2), calc(var(--font-size-h2) + .8vw), 45px);
-  line-height: 1.15;
-  margin-top: 4rem;
-  position: relative;
-  margin-bottom: calc(var(--font-size-h2) * 1.5);
-}
-
-h2 + p {
-  margin-top: -2rem;
-}
-
-h2:before {
-  position: absolute;
-  top: 22px;
-  left: -100px;
-  display: block;
-  width: 40px;
-  height: 5px;
-  content: "";
-  background-color: var(--color-accent);
+  font-size: 2rem;
+  line-height: calc(var(--line-height-base) * 2);
+  margin-top: calc(var(--line-height-base) * 2);
+  margin-bottom: calc(var(--line-height-base) * 1);
 }
 
 h3 {
-  font-size: clamp(var(--font-size-h3), calc(var(--font-size-h3) + .3vw), 25px);
-  line-height: 1.15;
-  margin-top: 3rem;
-  margin-bottom: calc(var(--font-size-h3) * .5);
+  font-size: 1.3rem;
+  line-height: calc(var(--line-height-base) * 2);
+  margin-top: calc(var(--line-height-base) * 1);
+  margin-bottom: calc(var(--line-height-base) * 0);
 }
 
 h4 {
-  font-size: clamp(var(--font-size-h4), calc(var(--font-size-h4) + .3vw), 22px);
-  line-height: 1.15;
-  margin-top: 3rem;
-  margin-bottom: calc(var(--font-size-h4) * .3);
+  font-size: 1.1rem;
+  line-height: calc(var(--line-height-base) * 1);
+  margin-top: calc(var(--line-height-base) * 1);
+  margin-bottom: calc(var(--line-height-base) * 0);
 }
 
 code {
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
+  line-height: calc(var(--line-height-base) * 2);
+  padding: 0 1rem;
+  color: white;
+  color: var(--color-code-text);
+  background-color: var(--color-code);
   display: inline-block;
-  background-color: var(--color-code, #000);
+}
+
+code.language-bash.hljs {
+  padding: 0 1rem;
+  background: var(--accent-surface);
+  box-shadow: 5px 6px 0px 0px var(--accent-surface-shadow);
+  color: var(--accent-surface-text);
 }
 
 pre {
-  margin-top: 1.5rem;
   white-space: pre-wrap;
+  margin-bottom: calc(var(--line-height-base) * 1);
 }
 
-pre + *:not(h2):not(h3):not(h4) {
-  margin-top: 1.5rem;
+html, body {
+  background-color: var(--color-background);
+  color: var(--color-font);
+  font-size: var(--font-size-base);
 }
 
-body {
-  font-size: clamp(0.9375rem, calc(1rem + .15vw), 20px);
+* {
+  line-height: var(--line-height-base);
 }
 
 .o-html--show-settings-menu .o-doc {
@@ -933,13 +911,20 @@ body {
 }
 
 .o-main {
-  padding-top: 2.5rem;
-  padding-bottom: 2.5rem;
   width: 100%;
 }
 
-.o-main *:not(pre):not(code) {
-  width: clamp(320px, 100%, 850px);
+@media (max-width: 1279px) {
+  .o-main *:not(pre):not(code) {
+    width: 100%;
+    padding-right: 2rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .o-main *:not(pre):not(code) {
+    width: clamp(320px, 100%, 850px);
+  }
 }
 
 .o-aside {
@@ -949,15 +934,25 @@ body {
   min-height: 100vh;
 }
 
+@media (min-width: 1024px) {
+  .o-aside {
+    min-width: 300px;
+  }
+}
+
 .o-intro {
   font-family: var(--font-mono);
-  line-height: 1.5;
-  margin-bottom: 3rem;
-  font-size: clamp(1.3rem, calc(1.3rem + 0.1vw), 24px);
+  font-size: 1.0625rem;
+  margin-top: calc(var(--line-height-base) * 1);
+  margin-bottom: calc(var(--line-height-base) * 2);
+  padding: var(--line-height-base);
+  background: var(--accent-surface);
+  box-shadow: 8px 9px 0px 0px var(--accent-surface-shadow);
+  transform: skewY(-3deg) rotate(2deg);
+  color: var(--accent-surface-text);
 }
 
 .o-intro p {
-  text-decoration: underline;
   -webkit-text-decoration-color: var(--color-surface);
           text-decoration-color: var(--color-surface);
 }
@@ -969,6 +964,15 @@ body {
   height: 2rem;
   left: 15px;
   top: 15px;
+}
+
+.c-versioning {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 2rem;
+  font-size: 36px;
+  color: #ddd;
 }
 
 /* Start purging... */

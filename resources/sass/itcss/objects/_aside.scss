@@ -1,4 +1,8 @@
 .o-aside
 {
     @apply bg-surface p-8 pt-12 min-h-screen;
+    
+    @media (min-width: 1024px) {
+        min-width: 300px;
+    }
 }

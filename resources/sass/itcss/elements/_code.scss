@@ -1,5 +1,21 @@
-code 
+code
 {
-    @apply px-2 inline-block;
-    background-color:var(--color-code,#000)
+    line-height: calc(var(--line-height-base) * 2);
+
+    padding: 0 1rem;
+
+    color: white;
+    color: var(--color-code-text);
+    background-color: var(--color-code);
+    @apply inline-block;;
+}
+
+code.language-bash.hljs
+{
+    padding: 0 1rem;
+    
+    background:var(--accent-surface);
+    box-shadow: 5px 6px 0px 0px var(--accent-surface-shadow);
+    color:var(--accent-surface-text);
+
 }
