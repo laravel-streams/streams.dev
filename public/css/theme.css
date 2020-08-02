@@ -852,7 +852,7 @@ h1 {
 h2 {
   font-size: 2rem;
   line-height: calc(var(--line-height-base) * 2);
-  margin-top: calc(var(--line-height-base) * 2);
+  margin-top: calc(var(--line-height-base) * 4);
   margin-bottom: calc(var(--line-height-base) * 1);
 }
 
@@ -944,7 +944,7 @@ html, body {
   font-family: var(--font-mono);
   font-size: 1.0625rem;
   margin-top: calc(var(--line-height-base) * 1);
-  margin-bottom: calc(var(--line-height-base) * 2);
+  margin-bottom: calc(var(--line-height-base) * 3);
   padding: var(--line-height-base);
   background: var(--accent-surface);
   box-shadow: 8px 9px 0px 0px var(--accent-surface-shadow);
