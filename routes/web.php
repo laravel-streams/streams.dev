@@ -13,16 +13,16 @@
 
 use Illuminate\Support\Facades\Route;
 use Anomaly\Streams\Ui\Support\Builder;
-use Illuminate\Support\Facades\Response;
+use Anomaly\Streams\Ui\Form\FormBuilder;
 use Anomaly\Streams\Platform\Support\Workflow;
-use Anomaly\Streams\Platform\Ui\Table\TableBuilder;
-use Anomaly\Streams\Platform\Support\Facades\Streams;
 
 Route::view('/', 'welcome');
 
-// Route::any('test/array', function() {
-//     return Response::json(Streams::entries('docs')->find('directory-structure')->toArray());
-// });
+Route::any('test/builders', function() {
+    dd((new FormBuilder([
+        'stream' => 'docs',
+    ]))->build());
+});
 
 // Route::any('docs/{handle}', [
 //     'stream' => 'docs',
