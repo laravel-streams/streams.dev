@@ -63,7 +63,7 @@
 
                 </ul>
 
-                <h4>Digging Deeper</h4>
+                <h4>Packages</h4>
                 <ul>
                     <li><a href="/docs/core/introduction">Core</a></li>
                     <li><a href="/docs/ui/introduction">UI</a></li>
