@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/anomalylabs/streams-platform.git",
-                "reference": "7117f50bb419609c355793b12bf40d4c5457a045"
+                "reference": "6951252e04c666b12e82573f075d8583c831850e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/anomalylabs/streams-platform/zipball/7117f50bb419609c355793b12bf40d4c5457a045",
-                "reference": "7117f50bb419609c355793b12bf40d4c5457a045",
+                "url": "https://api.github.com/repos/anomalylabs/streams-platform/zipball/6951252e04c666b12e82573f075d8583c831850e",
+                "reference": "6951252e04c666b12e82573f075d8583c831850e",
                 "shasum": ""
             },
             "require": {
@@ -68,7 +68,7 @@
                 }
             ],
             "description": "A drop-in application platform for Laravel.",
-            "time": "2020-07-28T05:15:08+00:00"
+            "time": "2020-07-29T04:31:21+00:00"
         },
         {
             "name": "anomaly/streams-ui",
@@ -4717,16 +4717,16 @@
         },
         {
             "name": "facade/ignition",
-            "version": "2.3.4",
+            "version": "2.3.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/facade/ignition.git",
-                "reference": "87335b120bc9652e4ee2bf285b7322a785211476"
+                "reference": "58dc4a8df3d41174c677a370b6779b694e4539e7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/facade/ignition/zipball/87335b120bc9652e4ee2bf285b7322a785211476",
-                "reference": "87335b120bc9652e4ee2bf285b7322a785211476",
+                "url": "https://api.github.com/repos/facade/ignition/zipball/58dc4a8df3d41174c677a370b6779b694e4539e7",
+                "reference": "58dc4a8df3d41174c677a370b6779b694e4539e7",
                 "shasum": ""
             },
             "require": {
@@ -4785,7 +4785,7 @@
                 "laravel",
                 "page"
             ],
-            "time": "2020-07-27T15:17:39+00:00"
+            "time": "2020-08-01T21:20:01+00:00"
         },
         {
             "name": "facade/ignition-contracts",
