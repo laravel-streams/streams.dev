@@ -5,7 +5,9 @@ intro:
 sort: 1
 ---
 
-## What is a stream?
-## Configuring streams
-## Streams entries
-## Streams API
+## Streams
+### Configuring streams
+
+## Fields
+### Field Types
+### Input Types

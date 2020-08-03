@@ -5,8 +5,6 @@ intro:
 sort: 2
 ---
 
-## What is an entry?
-## Entry repositories
+## Entries
+## Repositories
 ## Querying entries
-## Entry field types
-## Entry field inputs
