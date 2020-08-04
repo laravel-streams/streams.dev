@@ -901,6 +901,10 @@ html, body {
   line-height: var(--line-height-base);
 }
 
+a {
+  color: #116ab8;
+}
+
 .o-html--show-settings-menu .o-doc {
   opacity: 0;
 }
