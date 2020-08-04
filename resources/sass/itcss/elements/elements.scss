@@ -27,3 +27,9 @@ html,body
 a{
     color:rgb(17, 106, 184);
 }
+
+ul,ol 
+{
+    @apply p-4;
+    list-style-type: disc ;
+}

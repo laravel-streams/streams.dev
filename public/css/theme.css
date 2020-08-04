@@ -906,6 +906,11 @@ a {
   color: #116ab8;
 }
 
+ul, ol {
+  padding: 1rem;
+  list-style-type: disc;
+}
+
 .o-html--show-settings-menu .o-doc {
   opacity: 0;
 }
