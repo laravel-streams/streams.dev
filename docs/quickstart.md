@@ -11,6 +11,16 @@ Just like Laravel, Streams utilizes Composer to manage its dependencies. So befo
 ### Install using Composer Create-Project
 `composer create-project anomaly/streams yourproject.test --prefer-dist --stability=dev`
 
-## Configure Streams
+### Configure Streams
+Once you have you project setup, you can simply follow the instructions from Laravel to [configuring your project.](https://laravel.com/docs/7.x/installation#configuration)
+
+## Hello world 
+If you are interested in creating a website, you need pages. So let's start with an example where we show a navigation of our existing pages.
+
+### Define pages data structure
+
+### Example of adding a list of items to the homepage.
+
+
 ## Route an entry
 ## Updating Streams

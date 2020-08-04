@@ -876,6 +876,7 @@ code {
   color: white;
   color: var(--color-code-text);
   background-color: var(--color-code);
+  margin-bottom: calc(var(--line-height-base) * 1);
   display: inline-block;
 }
 
