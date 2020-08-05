@@ -21,25 +21,34 @@ If you are interested in creating a website, you need pages. So let's start with
 ```json
 // streams/pages.json
 {
-    "name": "pages",
     "slug": "pages",
     "route": "/{id}",
     "template": "page",
     "fields": {
         "title": "text",
+        "sort": "integer",
+        "description": "textarea",
+        "cover": "image",
         "doc": {
-            "type": "entry",
-            "stream": "docs"
+            "type": "relationship",
+            "config": {
+                "stream": "docs"
+            }
         },
         "docs": {
-            "type": "entries",
-            "stream": "docs"
+            "type": "multiple",
+            "config": {
+                "stream": "docs"
+            }
         }
     }
 }
+
 ```
-- I dont directly understand why we define slug as "pages"?
+
 - Route has an ID, where does that come from? Why don't this stucture has a field id?
+- $entry->expand , explain expand
+- !! $entry->expand('cover')->resize(100) !!} resize doesnt work
 
 
 
