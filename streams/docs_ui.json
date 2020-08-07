@@ -1,8 +1,0 @@
-{
-    "route": "docs/ui/{id}",
-    "template": "doc",
-    "source": {
-        "path": "vendor/anomaly/streams-ui/docs"
-    },
-    "extends": "docs"
-}

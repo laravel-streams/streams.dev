@@ -1,28 +1,19 @@
 {
-    "route": "/{slug}",
-    "template": "doc",
-
+    "slug": "pages",
+    "route": "/{id}",
+    "template": "example",
     "fields": {
         "title": "text",
+        "sort": "integer",
         "description": "textarea",
-        "content": "textarea",
-        "seo": {
+        "cover": "image",
+        "doc": {
             "type": "entry",
-            "config": {
-                "stream": "seo"
-            }
+            "stream": "docs"
         },
         "docs": {
             "type": "entries",
-            "config": {
-                "stream": "docs"
-            }
-        },
-        "examples": {
-            "type": "entries",
-            "config": {
-                "stream": "examples"
-            }
+            "stream": "docs"
         }
     }
 }
