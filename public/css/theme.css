@@ -876,6 +876,7 @@ code {
   color: white;
   color: var(--color-code-text);
   background-color: var(--color-code);
+  margin-bottom: calc(var(--line-height-base) * 1);
   display: inline-block;
 }
 
@@ -899,6 +900,15 @@ html, body {
 
 * {
   line-height: var(--line-height-base);
+}
+
+a {
+  color: #116ab8;
+}
+
+ul, ol {
+  padding: 1rem;
+  list-style-type: disc;
 }
 
 .o-html--show-settings-menu .o-doc {
