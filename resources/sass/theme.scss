@@ -1,7 +1,9 @@
-/* purgecss start ignore */
+
 @tailwind base;
 @tailwind components;
-/* purgecss end ignore */
+
+/*! purgecss start ignore */
+
 // 
 // ITCSS 
 // https://www.xfive.co/blog/itcss-scalable-maintainable-css-architecture/
@@ -36,6 +38,8 @@
 //which goes before in the triangle.
 @import './itcss/utilities/utilities';
 
-/* Start purging... */
+/*! purgecss end ignore */
+
+
 @tailwind  utilities;
-/* Stop purging. */
+

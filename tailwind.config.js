@@ -8,7 +8,18 @@ module.exports = {
       './resources/js/**/*.js',
     ],
     options: {
-      whitelist: [],
+      whitelist: [
+        'bg-background',
+        'bg-surface',
+        'bg-accent',
+        'bg-font',
+        'bg-font-secondary',
+        'text-background',
+        'text-surface',
+        'text-accent',
+        'text-font',
+        'text-font-secondary',
+      ],
     }
   },
 
