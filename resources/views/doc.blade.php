@@ -24,51 +24,52 @@
                 </ul>
 
                 <br>
+
+                <ul>
+                    <li>
+                        <a href="/docs">Docs Home</a>
+                    </li>
+                </ul>
+
+                <br>
+
+                <?php $areas = ['docs' => 'Streams', 'core' => 'Core', 'ui' => 'UI']; ?>
             
-                <ul>
-                    @if (count(request()->segments()) == 3 && request()->segment(2) == 'core')
-                        <?php $docs = Streams::entries('docs_streams')->orderBy('sort', 'asc')->get(); ?>
-                        <?php $suffix = '/core'; ?>
-                    @elseif (count(request()->segments()) == 3 && request()->segment(2) == 'ui')
-                        <?php $docs = Streams::entries('docs_ui')->orderBy('sort', 'asc')->get(); ?>
-                        <?php $suffix = '/ui'; ?>
-                    @else
-                        <?php $docs = Streams::entries('docs')->orderBy('sort', 'asc')->get(); ?>
-                        <?php $suffix = ''; ?>
-                    @endif
-                    
-                    @foreach ($docs->filter(function($item) {
-                        return $item->section == null;
-                    }) as $item)
+                @if (count(request()->segments()) == 3 && request()->segment(2) == 'core')
+                    <?php $docs = Streams::entries('docs_core')->orderBy('sort', 'asc')->get(); ?>
+                    <?php $suffix = '/core'; ?>
+                @elseif (count(request()->segments()) == 3 && request()->segment(2) == 'ui')
+                    <?php $docs = Streams::entries('docs_ui')->orderBy('sort', 'asc')->get(); ?>
+                    <?php $suffix = '/ui'; ?>
+                @else
+                    <?php $docs = Streams::entries('docs')->orderBy('sort', 'asc')->get(); ?>
+                    <?php $suffix = ''; ?>
+                @endif
+                
+                <ul>                    
+                    @foreach ($stream->entries()->where('category', null)->get() as $page)
                     <li>
-                    <a href="/{{request()->segment(1)}}{{ $suffix }}/{{ $item->id }}" title="{{ $item->linkTitle ?? $item->title }}">
-                        {{ $item->linkTitle ?? $item->title }}
-                    </a>
+                        <a href="{{$page->id}}">{{ $page->title }}</a> <strong>[{{ $page->stage ?: $default }}]</strong>
                     </li>
                     @endforeach
-                    
-                    <?php $sections = Streams::make('docs')->fields->section->options; ?>
-                    @foreach ($sections as $section => $name)
-                    <li><small class="opacity-25 mt-3 inline-block">{{$name}}</small></li>
-                    @foreach ($docs->filter(function($item) use ($section) {
-                        return $item->section == $section;
-                    }) as $item)
+                </ul>
+
+                @foreach ($stream->fields->category->config['options'] as $category => $label)
+
+                <?php $pages = $stream->entries()->where('category', $category)->get() ?>
+
+                @if ($pages->isNotEmpty())
+                <h4>{{ $label }}</h4>
+                <ul>
+                    @foreach ($pages as $page)
                     <li>
-                    <a href="/{{request()->segment(1)}}{{ $suffix }}/{{ $item->id }}" title="{{ $item->linkTitle ?? $item->title }}">
-                        {{ $item->linkTitle ?? $item->title }}
-                    </a>
+                        <a href="{{$page->id}}">{{ $page->title }}</a> <strong>[{{ $page->stage ?: $default }}]</strong>
                     </li>
                     @endforeach
-                    @endforeach
-
                 </ul>
+                @endif
 
-                <h4>Packages</h4>
-                <ul>
-                    <li><a href="/docs/core/introduction">Core</a></li>
-                    <li><a href="/docs/ui/introduction">UI</a></li>
-                    <li><a href="#docs/api/introduction" class="disabled">API</a></li>
-                </ul>
+                @endforeach
                 
             </aside>
         </div>

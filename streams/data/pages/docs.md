@@ -9,7 +9,7 @@ intro: Everything here is about building with Streams.
 
 ## Project Documentation
 
-- [Streams](docs/streams/introduction)
+- [Streams](docs/introduction)
 
 ## Package Documentation
 
