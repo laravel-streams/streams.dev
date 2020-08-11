@@ -9,7 +9,7 @@
     <style rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/styles/default.min.css"></style>
     
     <div class="flex flex-wrap">
-        <div class="w-12/12 m-auto">
+        <div class="container m-auto">
             <main class="o-main">
                 <h1>
                     {{ $entry->title }}
