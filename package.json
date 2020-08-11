@@ -11,19 +11,19 @@
     },
     "devDependencies": {
         "axios": "^0.19",
-        "browser-sync": "^2.26.7",
-        "browser-sync-webpack-plugin": "^2.0.1",
+        "browser-sync": "^2.26.12",
+        "browser-sync-webpack-plugin": "^2.2.2",
         "cross-env": "^5.1",
         "laravel-mix": "^4.0.7",
         "resolve-url-loader": "^2.3.1",
-        "sass": "^1.15.2",
+        "sass": "^1.26.10",
         "sass-loader": "^7.1.0",
-        "svelte": "^3.0.0",
+        "svelte": "^3.24.1",
         "vue-template-compiler": "^2.6.11"
     },
     "dependencies": {
-        "@tailwindcss/ui": "^0.3.0",
-        "highlight.js": "^10.1.1",
-        "tailwindcss": "^1.4.6"
+        "@tailwindcss/ui": "^0.3.1",
+        "highlight.js": "^10.1.2",
+        "tailwindcss": "^1.6.2"
     }
 }

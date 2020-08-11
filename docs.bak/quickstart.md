@@ -45,7 +45,6 @@ If you are interested in creating a website, you need pages. So let's start with
 }
 
 ```
-
 - Route has an ID, where does that come from? Why don't this stucture has a field id?
 - $entry->expand , explain expand
 - !! $entry->expand('cover')->resize(100) !!} resize doesnt work
