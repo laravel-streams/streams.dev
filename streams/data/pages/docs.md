@@ -2,7 +2,7 @@
 enabled: true
 sort: 14
 title: Documentation
-intro: Everything here is about building with Streams.
+intro: Everything you need to know about Streams.
 ---
 
 - <a href="status">DOCUMENTATION STATUS</a>
@@ -13,6 +13,11 @@ intro: Everything here is about building with Streams.
 - https://craftcms.com/docs/3.x/
 
 <br>
+
+## Getting Started
+
+- [Overview](#overview)
+- [Installation](docs/installation)
 
 ## Project Documentation
 
