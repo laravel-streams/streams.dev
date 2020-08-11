@@ -1,7 +1,11 @@
 ---
-title: Install & Update
+title: Installation
+category: installation
 intro: Installing and updating Streams.
 ---
+
+## System Requirements 
+
 Before installing Streams please ensure [Laravel system requirements](https://laravel.com/docs/installation#server-requirements) are met. No database is required.
 
 ## Supported Image Libraries
@@ -45,6 +49,18 @@ You can also easily add Streams to an existing Laravel project.
 
 ```bash
 composer require anomaly/streams-platform
+```
+
+### Require Streams UI
+
+```bash
+composer require anomaly/streams-ui
+```
+
+### Require Streams API
+
+```bash
+composer require anomaly/streams-api
 ```
 
 

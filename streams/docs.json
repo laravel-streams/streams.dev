@@ -1,19 +1,44 @@
 {
     "route": "docs/{id}",
     "template": "doc",
+    "description": "The main entry point to project and component documentation.",
     "source": {
-        "path": "docs/{request.segments.1}"
+        "path": "docs"
     },
     "fields": {
         "title": "text",
         "description": "textarea",
         "content": "textarea",
-        "section": {
+        "category": {
             "type": "text",
-            "options": {
-                "core_concepts": "Core Concepts",
-                "getting_started": "Getting Started",
-                "the_basics": "The Basics"
+            "config": {
+                "options": {
+                    "prologue": "Prologue",
+                    "introduction": "Introduction",
+                    "installation": "Installing & Updating",
+                    "getting_started": "Getting Started",
+                    "core_concepts": "Core Concepts",
+                    "basics": "The Basics",
+                    "configuration": "Configuration",
+                    "templating": "Templating",
+                    "frontend": "Frontend",
+                    "advanced": "Advanced",
+                    "security": "Security",
+                    "database": "Database"
+                }
+            }
+        },
+        "stage": {
+            "type": "text",
+            "default": "outlining",
+            "config": {
+                "options": {
+                    "outlining": "Outlining",
+                    "drafting": "Drafting",
+                    "editing": "Editing",
+                    "review": "Review",
+                    "done": "Done"
+                }
             }
         }
     }
