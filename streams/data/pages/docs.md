@@ -7,12 +7,10 @@ intro: Everything you need to know about Streams.
 
 - <a href="status">DOCUMENTATION STATUS</a>
 
-<br>
+## References
 
 - https://docs.djangoproject.com/en/3.1/
 - https://craftcms.com/docs/3.x/
-
-<br>
 
 ## Getting Started
 
