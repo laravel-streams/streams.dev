@@ -5,7 +5,14 @@ title: Documentation
 intro: Everything here is about building with Streams.
 ---
 
-<a href="status">DOCUMENTATION STATUS</a>
+- <a href="status">DOCUMENTATION STATUS</a>
+
+<br>
+
+- https://docs.djangoproject.com/en/3.1/
+- https://craftcms.com/docs/3.x/
+
+<br>
 
 ## Project Documentation
 
