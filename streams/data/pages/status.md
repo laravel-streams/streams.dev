@@ -9,6 +9,11 @@ intro: All documentation at a bird's eye view.
 
 <br>
 
+# Documentation Parts
+
+- Introduction - introduce the idea/parts
+- Additional Reading - Link to related ideas/topics
+
 # Available Categories
 ---
 @foreach (Streams::make('docs')->fields->category->config['options'] as $label)
