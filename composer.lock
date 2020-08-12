@@ -4,8 +4,48 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "312026b7ced423279fa041c1759393b9",
+    "content-hash": "c809a48f46fb3fc9b34de7f75ed097b5",
     "packages": [
+        {
+            "name": "anomaly/streams-api",
+            "version": "1.0.x-dev",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/anomalylabs/streams-api.git",
+                "reference": "1660666f9c92f99c25f30a8bb5bf0893df491c35"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/anomalylabs/streams-api/zipball/1660666f9c92f99c25f30a8bb5bf0893df491c35",
+                "reference": "1660666f9c92f99c25f30a8bb5bf0893df491c35",
+                "shasum": ""
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Anomaly\\Streams\\Api\\ApiServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Anomaly\\Streams\\Api\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ryan Thompson",
+                    "email": "ryan@pyrocms.com"
+                }
+            ],
+            "description": "The official REST API package for Streams.",
+            "time": "2020-08-12T17:48:46+00:00"
+        },
         {
             "name": "anomaly/streams-platform",
             "version": "2.0.x-dev",
@@ -7057,6 +7097,7 @@
     "minimum-stability": "stable",
     "stability-flags": {
         "anomaly/streams-platform": 20,
+        "anomaly/streams-api": 20,
         "anomaly/streams-ui": 20
     },
     "prefer-stable": false,

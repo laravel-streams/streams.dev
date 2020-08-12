@@ -5,7 +5,7 @@ intro: All documentation at a bird's eye view.
 
 - <a href="docs">DOCUMENTATION HOME</a>
 
-<?php $areas = ['docs' => 'Streams', 'core' => 'Core', 'ui' => 'UI']; ?>
+<?php $areas = ['docs' => 'Streams', 'core' => 'Core', 'ui' => 'UI', 'api' => 'API']; ?>
 
 <br>
 
