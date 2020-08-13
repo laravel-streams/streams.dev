@@ -5,14 +5,11 @@ title: Documentation
 intro: Everything you need to know about Streams.
 ---
 
-## Utilities
-
-- <a href="status">DOCUMENTATION STATUS</a>
-
-## References
-
-- https://docs.djangoproject.com/en/3.1/
-- https://craftcms.com/docs/3.x/
+- **Utilities**
+    - <a href="status">DOCUMENTATION STATUS</a>
+- **References**
+    - https://docs.djangoproject.com/en/3.1/
+    - https://craftcms.com/docs/3.x/
 
 ## Welcome
 
