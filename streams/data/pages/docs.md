@@ -28,15 +28,10 @@ intro: Everything you need to know about Streams.
     - [Streams UI](docs/ui/introduction)
     - [Streams API](docs/api/introduction)
 - Addon Documentation
-
-## Tutorials
-
-- Intro to Streams: Learn about the fundamentals of building a simple stream-enhanced application.
-
-## Community Resources
-
-- [Discord](https://discord.gg/vhz8NZC)
-- [Stack Exchange](https://stackoverflow.com/search?q=laravel+streams)
-- [GitHub](https://github.com/anomalylabs)
-- [YouTube](https://www.youtube.com/user/AIWebSystems)
-- Awesome Streams List (eventually right? lol)
+- Tutorials
+- Community Resources
+    - [Discord](https://discord.gg/vhz8NZC)
+    - [Stack Exchange](https://stackoverflow.com/search?q=laravel+streams)
+    - [GitHub](https://github.com/anomalylabs)
+    - [YouTube](https://www.youtube.com/user/AIWebSystems)
+    - Awesome Streams List (eventually right? lol)
