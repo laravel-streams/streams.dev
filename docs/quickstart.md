@@ -1,7 +1,8 @@
 ---
 title: Quickstart
-category: installation
-intro: TLDR; Show me the goods.
+category: getting_started
+intro:
+sort: 10
 ---
 
 ## Download & Install

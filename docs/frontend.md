@@ -1,7 +1,7 @@
 ---
 title: Frontend Development
 category: frontend
-intro: Overview of frontend development.
+intro: 
 ---
 
 https://statamic.dev/frontend-overview

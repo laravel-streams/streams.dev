@@ -1,7 +1,7 @@
 ---
 title: Applications
 category: advanced
-intro: The multi-site, localization, etc, device.
+intro: 
 ---
 
 - Introduction
