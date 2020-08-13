@@ -1,6 +1,6 @@
 ---
 title: Streams
-category: frontend
+category: core_concepts
 intro: 
 ---
 
