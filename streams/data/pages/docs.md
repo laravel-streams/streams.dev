@@ -13,20 +13,20 @@ intro: Everything you need to know about Streams.
 
 ## Welcome
 
-- Introduction
+- **Introduction**
     - How the documentation is organized
-- Getting Started
+- **Getting Started**
     - [Overview](docs/introduction)
     - [Installation](docs/installation)
-- Beginner/Introductory Documentation
+- **Beginner/Introductory Documentation**
     - [Streams](docs/introduction)
-- Package Documentation
+- **Package Documentation**
     - [Streams Core](docs/core/introduction)
     - [Streams UI](docs/ui/introduction)
     - [Streams API](docs/api/introduction)
-- Addon Documentation
-- Tutorials
-- Community Resources
+- **Addon Documentation**
+- **Tutorials**
+- **Community Resources**
     - [Discord](https://discord.gg/vhz8NZC)
     - [Stack Exchange](https://stackoverflow.com/search?q=laravel+streams)
     - [GitHub](https://github.com/anomalylabs)
