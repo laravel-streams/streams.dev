@@ -57,6 +57,8 @@ cd example.com && php artisan serve
 
 ## Create Templates
 
+
+@verbatim
 ```blade
 // resources/views/layouts/default.blade.php
 <!doctype html>
@@ -114,6 +116,7 @@ cd example.com && php artisan serve
 
 @endsection
 ```
+@endverbatim
 
 ## Create Entries
 
