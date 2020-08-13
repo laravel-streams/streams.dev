@@ -47,7 +47,7 @@
                 @endif
                 
                 <ul>                    
-                    @foreach ($stream->entries()->where('category', null)->get() as $page)
+                    @foreach ($stream->entries()->orderBy('sort', 'ASC')->where('category', null)->get() as $page)
                     <li>
                         <a href="{{$page->id}}">{{ $page->title }}</a> <strong>[{{ $page->stage ?: $default }}]</strong>
                     </li>
@@ -56,7 +56,7 @@
 
                 @foreach ($stream->fields->category->config['options'] as $category => $label)
 
-                <?php $pages = $stream->entries()->where('category', $category)->get() ?>
+                <?php $pages = $stream->entries()->orderBy('sort', 'ASC')->where('category', $category)->get() ?>
 
                 @if ($pages->isNotEmpty())
                 <h4>{{ $label }}</h4>

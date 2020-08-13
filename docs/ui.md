@@ -1,7 +1,8 @@
 ---
-title: UI & Control Panel
-category: frontend
+title: User Interface
+category: core_concepts
 intro: 
+sort: 5
 ---
 
 Introduce UI package and link to it's introduction OR even render nav here?
