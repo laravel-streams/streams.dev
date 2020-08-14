@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/anomalylabs/streams-api.git",
-                "reference": "1660666f9c92f99c25f30a8bb5bf0893df491c35"
+                "reference": "38e0aab91987217b2ee53e1daaf8b9fb7046ce3d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/anomalylabs/streams-api/zipball/1660666f9c92f99c25f30a8bb5bf0893df491c35",
-                "reference": "1660666f9c92f99c25f30a8bb5bf0893df491c35",
+                "url": "https://api.github.com/repos/anomalylabs/streams-api/zipball/38e0aab91987217b2ee53e1daaf8b9fb7046ce3d",
+                "reference": "38e0aab91987217b2ee53e1daaf8b9fb7046ce3d",
                 "shasum": ""
             },
             "type": "library",
@@ -44,7 +44,7 @@
                 }
             ],
             "description": "The official REST API package for Streams.",
-            "time": "2020-08-12T17:48:46+00:00"
+            "time": "2020-08-13T21:35:32+00:00"
         },
         {
             "name": "anomaly/streams-platform",
@@ -52,12 +52,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/anomalylabs/streams-platform.git",
-                "reference": "71bc7d363ed231e6088ffe5048c7e9cecff40b58"
+                "reference": "3928d147f0fb40411adfb8a11949f9bb42c0b31e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/anomalylabs/streams-platform/zipball/71bc7d363ed231e6088ffe5048c7e9cecff40b58",
-                "reference": "71bc7d363ed231e6088ffe5048c7e9cecff40b58",
+                "url": "https://api.github.com/repos/anomalylabs/streams-platform/zipball/3928d147f0fb40411adfb8a11949f9bb42c0b31e",
+                "reference": "3928d147f0fb40411adfb8a11949f9bb42c0b31e",
                 "shasum": ""
             },
             "require": {
@@ -108,7 +108,7 @@
                 }
             ],
             "description": "A drop-in application platform for Laravel.",
-            "time": "2020-08-12T18:03:28+00:00"
+            "time": "2020-08-13T21:22:56+00:00"
         },
         {
             "name": "anomaly/streams-ui",
@@ -116,12 +116,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/anomalylabs/streams-ui.git",
-                "reference": "539c1b5c4740df9b001318be94dac90517535201"
+                "reference": "4dd5273492ed45997f2a25c4850ae0b536f58a3d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/anomalylabs/streams-ui/zipball/539c1b5c4740df9b001318be94dac90517535201",
-                "reference": "539c1b5c4740df9b001318be94dac90517535201",
+                "url": "https://api.github.com/repos/anomalylabs/streams-ui/zipball/4dd5273492ed45997f2a25c4850ae0b536f58a3d",
+                "reference": "4dd5273492ed45997f2a25c4850ae0b536f58a3d",
                 "shasum": ""
             },
             "type": "library",
@@ -148,7 +148,7 @@
                 }
             ],
             "description": "The official UI package for Streams.",
-            "time": "2020-08-12T14:51:16+00:00"
+            "time": "2020-08-13T18:25:34+00:00"
         },
         {
             "name": "blade-ui-kit/blade-icons",
