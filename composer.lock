@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/anomalylabs/streams-api.git",
-                "reference": "38e0aab91987217b2ee53e1daaf8b9fb7046ce3d"
+                "reference": "23dc0033671a5aa3ce597ad0a76e2bc777206b5b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/anomalylabs/streams-api/zipball/38e0aab91987217b2ee53e1daaf8b9fb7046ce3d",
-                "reference": "38e0aab91987217b2ee53e1daaf8b9fb7046ce3d",
+                "url": "https://api.github.com/repos/anomalylabs/streams-api/zipball/23dc0033671a5aa3ce597ad0a76e2bc777206b5b",
+                "reference": "23dc0033671a5aa3ce597ad0a76e2bc777206b5b",
                 "shasum": ""
             },
             "type": "library",
@@ -44,7 +44,7 @@
                 }
             ],
             "description": "The official REST API package for Streams.",
-            "time": "2020-08-13T21:35:32+00:00"
+            "time": "2020-08-14T08:48:07+00:00"
         },
         {
             "name": "anomaly/streams-platform",
@@ -52,12 +52,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/anomalylabs/streams-platform.git",
-                "reference": "3928d147f0fb40411adfb8a11949f9bb42c0b31e"
+                "reference": "70d6c45448dc1ad76fc594894dc4413029d4be38"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/anomalylabs/streams-platform/zipball/3928d147f0fb40411adfb8a11949f9bb42c0b31e",
-                "reference": "3928d147f0fb40411adfb8a11949f9bb42c0b31e",
+                "url": "https://api.github.com/repos/anomalylabs/streams-platform/zipball/70d6c45448dc1ad76fc594894dc4413029d4be38",
+                "reference": "70d6c45448dc1ad76fc594894dc4413029d4be38",
                 "shasum": ""
             },
             "require": {
@@ -108,7 +108,7 @@
                 }
             ],
             "description": "A drop-in application platform for Laravel.",
-            "time": "2020-08-13T21:22:56+00:00"
+            "time": "2020-08-14T06:14:01+00:00"
         },
         {
             "name": "anomaly/streams-ui",
@@ -116,12 +116,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/anomalylabs/streams-ui.git",
-                "reference": "4dd5273492ed45997f2a25c4850ae0b536f58a3d"
+                "reference": "5c57fefe5f26a7e07b8c7c5da253cce49c8f0e12"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/anomalylabs/streams-ui/zipball/4dd5273492ed45997f2a25c4850ae0b536f58a3d",
-                "reference": "4dd5273492ed45997f2a25c4850ae0b536f58a3d",
+                "url": "https://api.github.com/repos/anomalylabs/streams-ui/zipball/5c57fefe5f26a7e07b8c7c5da253cce49c8f0e12",
+                "reference": "5c57fefe5f26a7e07b8c7c5da253cce49c8f0e12",
                 "shasum": ""
             },
             "type": "library",
@@ -148,20 +148,20 @@
                 }
             ],
             "description": "The official UI package for Streams.",
-            "time": "2020-08-13T18:25:34+00:00"
+            "time": "2020-08-14T08:46:29+00:00"
         },
         {
             "name": "blade-ui-kit/blade-icons",
-            "version": "0.4.3",
+            "version": "0.4.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/blade-ui-kit/blade-icons.git",
-                "reference": "709cc25c732f0e88c103af2ee423e7220e53c5bd"
+                "reference": "53bbc70dcd93a35cd3b6f328778f0666bdcba1e0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/blade-ui-kit/blade-icons/zipball/709cc25c732f0e88c103af2ee423e7220e53c5bd",
-                "reference": "709cc25c732f0e88c103af2ee423e7220e53c5bd",
+                "url": "https://api.github.com/repos/blade-ui-kit/blade-icons/zipball/53bbc70dcd93a35cd3b6f328778f0666bdcba1e0",
+                "reference": "53bbc70dcd93a35cd3b6f328778f0666bdcba1e0",
                 "shasum": ""
             },
             "require": {
@@ -217,7 +217,7 @@
                 "laravel",
                 "svg"
             ],
-            "time": "2020-07-09T20:12:04+00:00"
+            "time": "2020-08-14T09:15:55+00:00"
         },
         {
             "name": "brick/math",
@@ -5533,16 +5533,16 @@
         },
         {
             "name": "phpdocumentor/reflection-docblock",
-            "version": "5.2.0",
+            "version": "5.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpDocumentor/ReflectionDocBlock.git",
-                "reference": "3170448f5769fe19f456173d833734e0ff1b84df"
+                "reference": "d870572532cd70bc3fab58f2e23ad423c8404c44"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpDocumentor/ReflectionDocBlock/zipball/3170448f5769fe19f456173d833734e0ff1b84df",
-                "reference": "3170448f5769fe19f456173d833734e0ff1b84df",
+                "url": "https://api.github.com/repos/phpDocumentor/ReflectionDocBlock/zipball/d870572532cd70bc3fab58f2e23ad423c8404c44",
+                "reference": "d870572532cd70bc3fab58f2e23ad423c8404c44",
                 "shasum": ""
             },
             "require": {
@@ -5581,7 +5581,7 @@
                 }
             ],
             "description": "With this component, a library can provide support for annotations via DocBlocks or otherwise retrieve information that is embedded in a DocBlock.",
-            "time": "2020-07-20T20:05:34+00:00"
+            "time": "2020-08-15T11:14:08+00:00"
         },
         {
             "name": "phpdocumentor/type-resolver",
