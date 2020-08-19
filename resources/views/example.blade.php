@@ -36,7 +36,7 @@
                         {!! Str::markdown($entry->intro) !!}
                     </div>
                 @endif
-                {!! Str::markdown(View::parse($entry->body)) !!}
+                {!! Str::markdown(View::parse($entry->body, compact('entry'))) !!}
             </main>
         </div>
     </div>

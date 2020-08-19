@@ -8,7 +8,7 @@
     "fields": {
         "title": "text",
         "description": "textarea",
-        "content": "textarea"
+        "content": "textarea",
+        "modified": "datetime"
     }
 }
-
