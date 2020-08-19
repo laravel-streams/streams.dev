@@ -5,4 +5,4 @@ intro: Get started.
 modified: 2020-08-15
 ---
 
-{{ dd($entry->modified->format('Y')) }}
+{{ dd($entry->modified->format('Y-m-d H:i:s.u')) }}
