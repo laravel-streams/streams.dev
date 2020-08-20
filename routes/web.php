@@ -13,11 +13,12 @@
 
 use Illuminate\Support\Facades\Route;
 use Anomaly\Streams\Ui\Form\FormBuilder;
+use Illuminate\Support\Facades\Response;
 
 Route::view('/', 'welcome');
 
 Route::any('test/builders', function() {
-    dd((new FormBuilder([
+    return Response::json((new FormBuilder([
         'stream' => 'docs',
     ]))->build());
 });
