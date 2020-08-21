@@ -1,5 +1,6 @@
 <?php
 
+
 return [
 
     /*
@@ -167,6 +168,7 @@ return [
          */
         \Facade\Ignition\IgnitionServiceProvider::class,
         \Anomaly\Streams\Platform\StreamsServiceProvider::class,
+        \Barryvdh\Debugbar\ServiceProvider::class,
 
         /*
          * Application Service Providers...
