@@ -17,10 +17,10 @@ use Anomaly\Streams\Ui\Form\FormBuilder;
 Route::view('/', 'welcome');
 
 Route::any('test/builders', function() {
-    dd((new FormBuilder([
+    dd(Streams::form([
         'stream' => 'docs',
         'entry' => 'introduction'
-    ]))->build());
+    ]));
 });
 
 // Route::any('docs/{handle}', [
