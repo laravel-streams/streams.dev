@@ -13,6 +13,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Anomaly\Streams\Ui\Form\FormBuilder;
+use Anomaly\Streams\Platform\Support\Facades\Streams;
 
 Route::view('/', 'welcome');
 
