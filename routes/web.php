@@ -20,8 +20,13 @@ Route::view('/', 'welcome');
 Route::any('test/builders', function() {
     dd(Streams::form([
         'stream' => 'docs',
-        'entry' => 'introduction'
-    ]));
+        'entry' => 'introduction',
+        'buttons' => [
+            'edit' => [
+                'href' => 'admin/{entry.id}'
+            ],
+        ],
+    ])->build()->buttons);
 });
 
 // Route::any('docs/{handle}', [
