@@ -18,15 +18,15 @@ use Anomaly\Streams\Platform\Support\Facades\Streams;
 Route::view('/', 'welcome');
 
 Route::any('test/builders', function() {
-    dd(Streams::form([
+    dd(Streams::table([
         'stream' => 'docs',
-        'entry' => 'introduction',
+        //'entry' => 'introduction',
         'buttons' => [
             'edit' => [
                 'href' => 'admin/{entry.id}'
             ],
         ],
-    ])->build()->buttons);
+    ])->build());
 });
 
 // Route::any('docs/{handle}', [

@@ -7,7 +7,12 @@
         "path": "docs"
     },
     "fields": {
-        "title": "text",
+        "title": {
+            "type": "text",
+            "rules": [
+                "required"
+            ]
+        },
         "description": "textarea",
         "content": "textarea",
         "category": {
