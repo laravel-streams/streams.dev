@@ -12,21 +12,33 @@
 */
 
 use Illuminate\Support\Facades\Route;
-use Anomaly\Streams\Ui\Form\FormBuilder;
 use Anomaly\Streams\Platform\Support\Facades\Streams;
 
 Route::view('/', 'welcome');
 
 Route::any('test/builders', function() {
-    dd(Streams::table([
+    // Streams::make('docs')->table($table = 'default');
+    // 'Default' is the 'ui.form' configuration
+    return Streams::table([
         'stream' => 'docs',
-        //'entry' => 'introduction',
+        'columns' => [
+            'title',
+            'category',
+            'stage',
+        ],
+        'options' => [
+            'title' => 'Example Title',
+            'description' => 'Example Description',
+            'order_by' => [
+                'category' => 'asc'
+            ]
+        ],
         'buttons' => [
             'edit' => [
                 'href' => 'admin/{entry.id}'
             ],
         ],
-    ])->build());
+    ])->response();
 });
 
 // Route::any('docs/{handle}', [

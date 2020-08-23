@@ -52,12 +52,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/anomalylabs/streams-platform.git",
-                "reference": "c728fee9175ca48063fc76e2d2816aa395ac56ba"
+                "reference": "e930096c1d6f0416085b1a3b496e7121d819f8b8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/anomalylabs/streams-platform/zipball/c728fee9175ca48063fc76e2d2816aa395ac56ba",
-                "reference": "c728fee9175ca48063fc76e2d2816aa395ac56ba",
+                "url": "https://api.github.com/repos/anomalylabs/streams-platform/zipball/e930096c1d6f0416085b1a3b496e7121d819f8b8",
+                "reference": "e930096c1d6f0416085b1a3b496e7121d819f8b8",
                 "shasum": ""
             },
             "require": {
@@ -108,7 +108,7 @@
                 }
             ],
             "description": "A drop-in application platform for Laravel.",
-            "time": "2020-08-21T05:50:25+00:00"
+            "time": "2020-08-23T04:52:57+00:00"
         },
         {
             "name": "anomaly/streams-ui",
@@ -116,12 +116,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/anomalylabs/streams-ui.git",
-                "reference": "08943aff1dcb4bb1d77d1728ea1bf0f860e156f5"
+                "reference": "c7b098b38a0aa6a0a198f5ad45a3df6060c565ac"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/anomalylabs/streams-ui/zipball/08943aff1dcb4bb1d77d1728ea1bf0f860e156f5",
-                "reference": "08943aff1dcb4bb1d77d1728ea1bf0f860e156f5",
+                "url": "https://api.github.com/repos/anomalylabs/streams-ui/zipball/c7b098b38a0aa6a0a198f5ad45a3df6060c565ac",
+                "reference": "c7b098b38a0aa6a0a198f5ad45a3df6060c565ac",
                 "shasum": ""
             },
             "type": "library",
@@ -148,7 +148,7 @@
                 }
             ],
             "description": "The official UI package for Streams.",
-            "time": "2020-08-21T05:50:36+00:00"
+            "time": "2020-08-23T04:52:36+00:00"
         },
         {
             "name": "blade-ui-kit/blade-icons",
