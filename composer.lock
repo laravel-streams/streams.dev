@@ -52,12 +52,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/anomalylabs/streams-platform.git",
-                "reference": "e930096c1d6f0416085b1a3b496e7121d819f8b8"
+                "reference": "355bd9320ae79d7236c38cb639941b01c817c081"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/anomalylabs/streams-platform/zipball/e930096c1d6f0416085b1a3b496e7121d819f8b8",
-                "reference": "e930096c1d6f0416085b1a3b496e7121d819f8b8",
+                "url": "https://api.github.com/repos/anomalylabs/streams-platform/zipball/355bd9320ae79d7236c38cb639941b01c817c081",
+                "reference": "355bd9320ae79d7236c38cb639941b01c817c081",
                 "shasum": ""
             },
             "require": {
@@ -108,7 +108,7 @@
                 }
             ],
             "description": "A drop-in application platform for Laravel.",
-            "time": "2020-08-23T04:52:57+00:00"
+            "time": "2020-08-23T09:49:48+00:00"
         },
         {
             "name": "anomaly/streams-ui",
@@ -116,12 +116,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/anomalylabs/streams-ui.git",
-                "reference": "c7b098b38a0aa6a0a198f5ad45a3df6060c565ac"
+                "reference": "83448a9a6b5c4f487fcea00903d1642d6bd588fd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/anomalylabs/streams-ui/zipball/c7b098b38a0aa6a0a198f5ad45a3df6060c565ac",
-                "reference": "c7b098b38a0aa6a0a198f5ad45a3df6060c565ac",
+                "url": "https://api.github.com/repos/anomalylabs/streams-ui/zipball/83448a9a6b5c4f487fcea00903d1642d6bd588fd",
+                "reference": "83448a9a6b5c4f487fcea00903d1642d6bd588fd",
                 "shasum": ""
             },
             "type": "library",
@@ -148,7 +148,7 @@
                 }
             ],
             "description": "The official UI package for Streams.",
-            "time": "2020-08-23T04:52:36+00:00"
+            "time": "2020-08-23T09:49:27+00:00"
         },
         {
             "name": "blade-ui-kit/blade-icons",
@@ -1330,16 +1330,16 @@
         },
         {
             "name": "league/flysystem",
-            "version": "1.1.2",
+            "version": "1.1.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/flysystem.git",
-                "reference": "63cd8c14708b9544d3f61d3c15b747fda1c95c6e"
+                "reference": "9be3b16c877d477357c015cec057548cf9b2a14a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/63cd8c14708b9544d3f61d3c15b747fda1c95c6e",
-                "reference": "63cd8c14708b9544d3f61d3c15b747fda1c95c6e",
+                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/9be3b16c877d477357c015cec057548cf9b2a14a",
+                "reference": "9be3b16c877d477357c015cec057548cf9b2a14a",
                 "shasum": ""
             },
             "require": {
@@ -1411,7 +1411,7 @@
                 "sftp",
                 "storage"
             ],
-            "time": "2020-08-18T10:57:55+00:00"
+            "time": "2020-08-23T07:39:11+00:00"
         },
         {
             "name": "league/mime-type-detection",

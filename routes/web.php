@@ -35,17 +35,18 @@ Route::any('test/table', function() {
         ],
         'buttons' => [
             'edit' => [
-                'href' => 'admin/{entry.id}'
+                'href' => 'test/form/{entry.id}'
             ],
         ],
     ])->response();
 });
 
-Route::any('test/form', function() {
+Route::any('test/form/{entry?}', function($entry = null) {
     // Streams::make('docs')->table($table = 'default');
     // 'Default' is the 'ui.form' configuration
     return Streams::form([
         'stream' => 'docs',
+        'entry' => $entry,
         'options' => [
             'title' => 'Example Title',
             'description' => 'Example Description',
