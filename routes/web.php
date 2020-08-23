@@ -16,7 +16,7 @@ use Anomaly\Streams\Platform\Support\Facades\Streams;
 
 Route::view('/', 'welcome');
 
-Route::any('test/builders', function() {
+Route::any('test/table', function() {
     // Streams::make('docs')->table($table = 'default');
     // 'Default' is the 'ui.form' configuration
     return Streams::table([
@@ -37,6 +37,18 @@ Route::any('test/builders', function() {
             'edit' => [
                 'href' => 'admin/{entry.id}'
             ],
+        ],
+    ])->response();
+});
+
+Route::any('test/form', function() {
+    // Streams::make('docs')->table($table = 'default');
+    // 'Default' is the 'ui.form' configuration
+    return Streams::form([
+        'stream' => 'docs',
+        'options' => [
+            'title' => 'Example Title',
+            'description' => 'Example Description',
         ],
     ])->response();
 });
