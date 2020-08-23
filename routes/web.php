@@ -16,41 +16,21 @@ use Anomaly\Streams\Platform\Support\Facades\Streams;
 
 Route::view('/', 'welcome');
 
-Route::any('test/table', function() {
-    // Streams::make('docs')->table($table = 'default');
-    // 'Default' is the 'ui.form' configuration
-    return Streams::table([
-        'stream' => 'docs',
-        'columns' => [
-            'title',
-            'category',
-            'stage',
-        ],
-        'options' => [
-            'title' => 'Example Title',
-            'description' => 'Example Description',
-            'order_by' => [
-                'category' => 'asc'
-            ]
-        ],
-        'buttons' => [
-            'edit' => [
-                'href' => 'test/form/{entry.id}'
-            ],
-        ],
-    ])->response();
+Route::any('ui/{stream}/table', function($stream) {
+    
+    $stream = Streams::make($stream);
+
+    return $stream
+        ->table()
+        ->response();
 });
 
-Route::any('test/form/{entry?}', function($entry = null) {
-    // Streams::make('docs')->table($table = 'default');
-    // 'Default' is the 'ui.form' configuration
-    return Streams::form([
-        'stream' => 'docs',
+Route::any('ui/{stream}/form/{entry?}', function($stream, $entry = null) {
+    
+    $stream = Streams::make($stream);
+
+    return $stream->form([
         'entry' => $entry,
-        'options' => [
-            'title' => 'Example Title',
-            'description' => 'Example Description',
-        ],
     ])->response();
 });
 
