@@ -2,25 +2,10 @@
     "slug": "pages",
     "route": "/{id}",
     "template": "page",
-    "rules": {
-        "sort": [
-            "required",
-            "testing"
-        ]
-    },
-    "validators": {
-        "testing": {
-            "handler": "Anomaly\\Streams\\Ui\\Form\\Testing",
-            "message": "You should know better.."
-        }
-    },
     "fields": {
         "title": {
             "type": "text",
-            "required": true,
-            "rules": [
-                "min:255"
-            ]
+            "required": true
         },
         "intro": "textarea",
         "body": "text|textarea",
