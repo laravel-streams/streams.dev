@@ -5,11 +5,11 @@
     "rules": {
         "sort": [
             "required",
-            "test_crap"
+            "testing"
         ]
     },
     "validators": {
-        "test_crap": {
+        "testing": {
             "handler": "Anomaly\\Streams\\Ui\\Form\\Testing",
             "message": "You should know better.."
         }
