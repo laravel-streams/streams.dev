@@ -14,7 +14,7 @@
             ]
         },
         "description": "textarea",
-        "content": "textarea",
+        "body": "text|textarea",
         "category": {
             "type": "text",
             "config": {
