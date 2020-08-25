@@ -19,7 +19,7 @@
                 'A Development Cult',
                 'Stacked',
                 'A Development Methodology',
-                'Idoimatic Bliss',
+                'Idoimatic Bliss', 
                 'A Higher Language',
                 'Data First',
             ]) }}
@@ -27,7 +27,9 @@
 
         <p class="font-mono text-center">
             <a href="https://github.com/anomalylabs/streams" target="_blank" class="btn-outline-primary transition duration-300 ease-in-out focus:outline-none focus:shadow-outline border border-purple hover:bg-purple text-purple hover:text-white font-normal py-2 px-4 rounded">GitHub</a>
-            {{-- <a href="/docs" class="btn-outline-primary transition duration-300 ease-in-out focus:outline-none focus:shadow-outline border border-purple hover:bg-purple text-purple hover:text-white font-normal py-2 px-4 rounded">Docs</a> --}}
+            @if (in_array(Request::ip(), ['127.0.0.1', '::1']))
+            <a href="/docs" class="btn-outline-primary transition duration-300 ease-in-out focus:outline-none focus:shadow-outline border border-purple hover:bg-purple text-purple hover:text-white font-normal py-2 px-4 rounded">Docs</a>
+            @endif
         </p>
     </div>
 </div>
