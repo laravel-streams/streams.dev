@@ -25,6 +25,9 @@ module.exports = {
 
   theme: {
     colors: {
+      dark: "#202225",
+      white: "#fff",
+      purple: "#6b46c1",
       background: "var(--color-background)",
       surface: "var(--color-surface)",
       accent: "var(--color-accent)",
