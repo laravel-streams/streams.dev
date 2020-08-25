@@ -5,7 +5,7 @@
 <div class="o-doc">
 
     <style rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/styles/default.min.css"></style>
-    
+
     <div class="flex flex-wrap">
         <div class="container m-auto">
             <main class="o-main">
