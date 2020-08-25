@@ -2,18 +2,22 @@
     "slug": "pages",
     "route": "/{id}",
     "template": "page",
+    "rules": {
+        "sort": [
+            "required",
+            "test_crap"
+        ]
+    },
+    "validators": {
+        "test_crap": {
+            "handler": "Anomaly\\Streams\\Ui\\Form\\Testing",
+            "message": "You should know better.."
+        }
+    },
     "fields": {
         "title": "text",
-        "sort": "integer",
-        "description": "textarea",
-        "cover": "image",
-        "doc": {
-            "type": "entry",
-            "stream": "docs"
-        },
-        "docs": {
-            "type": "entries",
-            "stream": "docs"
-        }
+        "intro": "textarea",
+        "body": "text|textarea",
+        "sort": "integer"
     }
 }

@@ -52,12 +52,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/anomalylabs/streams-platform.git",
-                "reference": "68712c7d2e6c4c37fbdc0f30ed8dd35c7dd2f441"
+                "reference": "aff8b89740cafec655c4f56bb7cb8b3bd21470b2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/anomalylabs/streams-platform/zipball/68712c7d2e6c4c37fbdc0f30ed8dd35c7dd2f441",
-                "reference": "68712c7d2e6c4c37fbdc0f30ed8dd35c7dd2f441",
+                "url": "https://api.github.com/repos/anomalylabs/streams-platform/zipball/aff8b89740cafec655c4f56bb7cb8b3bd21470b2",
+                "reference": "aff8b89740cafec655c4f56bb7cb8b3bd21470b2",
                 "shasum": ""
             },
             "require": {
@@ -108,7 +108,7 @@
                 }
             ],
             "description": "A drop-in application platform for Laravel.",
-            "time": "2020-08-24T22:28:25+00:00"
+            "time": "2020-08-25T03:14:27+00:00"
         },
         {
             "name": "anomaly/streams-ui",
@@ -116,12 +116,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/anomalylabs/streams-ui.git",
-                "reference": "895afcaf81b5516f060a03a5dc4fa3b5e5529066"
+                "reference": "5e0e9c57a7cc103976e226624c062d7d2c3b9b49"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/anomalylabs/streams-ui/zipball/895afcaf81b5516f060a03a5dc4fa3b5e5529066",
-                "reference": "895afcaf81b5516f060a03a5dc4fa3b5e5529066",
+                "url": "https://api.github.com/repos/anomalylabs/streams-ui/zipball/5e0e9c57a7cc103976e226624c062d7d2c3b9b49",
+                "reference": "5e0e9c57a7cc103976e226624c062d7d2c3b9b49",
                 "shasum": ""
             },
             "type": "library",
@@ -148,7 +148,7 @@
                 }
             ],
             "description": "The official UI package for Streams.",
-            "time": "2020-08-24T21:42:37+00:00"
+            "time": "2020-08-25T04:32:25+00:00"
         },
         {
             "name": "blade-ui-kit/blade-icons",
@@ -971,16 +971,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v7.25.0",
+            "version": "v7.26.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "fdf3d4a40447eb286ba3820768306cae64bcc0b3"
+                "reference": "f64299a11dedaaadf1cfff07b2b3220a9b791837"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/fdf3d4a40447eb286ba3820768306cae64bcc0b3",
-                "reference": "fdf3d4a40447eb286ba3820768306cae64bcc0b3",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/f64299a11dedaaadf1cfff07b2b3220a9b791837",
+                "reference": "f64299a11dedaaadf1cfff07b2b3220a9b791837",
                 "shasum": ""
             },
             "require": {
@@ -1086,6 +1086,7 @@
                 "nyholm/psr7": "Required to use PSR-7 bridging features (^1.2).",
                 "pda/pheanstalk": "Required to use the beanstalk queue driver (^4.0).",
                 "phpunit/phpunit": "Required to use assertions and run tests (^8.4|^9.0).",
+                "predis/predis": "Required to use the predis connector (^1.1.2).",
                 "psr/http-message": "Required to allow Storage::put to accept a StreamInterface (^1.0).",
                 "pusher/pusher-php-server": "Required to use the Pusher broadcast driver (^4.0).",
                 "symfony/cache": "Required to PSR-6 cache bridge (^5.0).",
@@ -1124,7 +1125,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2020-08-11T13:43:10+00:00"
+            "time": "2020-08-25T13:44:44+00:00"
         },
         {
             "name": "laravel/scout",
