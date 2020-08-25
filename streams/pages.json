@@ -15,7 +15,13 @@
         }
     },
     "fields": {
-        "title": "text",
+        "title": {
+            "type": "text",
+            "required": true,
+            "rules": [
+                "min:255"
+            ]
+        },
         "intro": "textarea",
         "body": "text|textarea",
         "sort": "integer"
