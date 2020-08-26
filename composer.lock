@@ -52,12 +52,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/anomalylabs/streams-platform.git",
-                "reference": "739a7fc48f91f0d2d05dda34fe0e1819bfd346b7"
+                "reference": "f66a57b19c8341882a43f265e9689b9ca2bc09cd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/anomalylabs/streams-platform/zipball/739a7fc48f91f0d2d05dda34fe0e1819bfd346b7",
-                "reference": "739a7fc48f91f0d2d05dda34fe0e1819bfd346b7",
+                "url": "https://api.github.com/repos/anomalylabs/streams-platform/zipball/f66a57b19c8341882a43f265e9689b9ca2bc09cd",
+                "reference": "f66a57b19c8341882a43f265e9689b9ca2bc09cd",
                 "shasum": ""
             },
             "require": {
@@ -108,7 +108,7 @@
                 }
             ],
             "description": "A drop-in application platform for Laravel.",
-            "time": "2020-08-25T21:16:09+00:00"
+            "time": "2020-08-26T02:15:52+00:00"
         },
         {
             "name": "anomaly/streams-ui",
@@ -116,12 +116,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/anomalylabs/streams-ui.git",
-                "reference": "685d4a17d38cc0a6abfbf4b25d5c5d3716b05aac"
+                "reference": "7af8af6460ff7955c08b741b6f14bd351d80f876"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/anomalylabs/streams-ui/zipball/685d4a17d38cc0a6abfbf4b25d5c5d3716b05aac",
-                "reference": "685d4a17d38cc0a6abfbf4b25d5c5d3716b05aac",
+                "url": "https://api.github.com/repos/anomalylabs/streams-ui/zipball/7af8af6460ff7955c08b741b6f14bd351d80f876",
+                "reference": "7af8af6460ff7955c08b741b6f14bd351d80f876",
                 "shasum": ""
             },
             "type": "library",
@@ -148,7 +148,7 @@
                 }
             ],
             "description": "The official UI package for Streams.",
-            "time": "2020-08-25T20:24:28+00:00"
+            "time": "2020-08-26T03:56:32+00:00"
         },
         {
             "name": "blade-ui-kit/blade-icons",
@@ -853,16 +853,16 @@
         },
         {
             "name": "jaybizzle/crawler-detect",
-            "version": "v1.2.98",
+            "version": "v1.2.99",
             "source": {
                 "type": "git",
                 "url": "https://github.com/JayBizzle/Crawler-Detect.git",
-                "reference": "02b24e5d4dc347737577f48c688ee14c3b5dfd4f"
+                "reference": "0ffea34489b258a2709bfe93a9553e1efa5d1904"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/JayBizzle/Crawler-Detect/zipball/02b24e5d4dc347737577f48c688ee14c3b5dfd4f",
-                "reference": "02b24e5d4dc347737577f48c688ee14c3b5dfd4f",
+                "url": "https://api.github.com/repos/JayBizzle/Crawler-Detect/zipball/0ffea34489b258a2709bfe93a9553e1efa5d1904",
+                "reference": "0ffea34489b258a2709bfe93a9553e1efa5d1904",
                 "shasum": ""
             },
             "require": {
@@ -898,7 +898,7 @@
                 "crawlerdetect",
                 "php crawler detect"
             ],
-            "time": "2020-08-20T18:36:15+00:00"
+            "time": "2020-08-25T21:35:55+00:00"
         },
         {
             "name": "jenssegers/agent",
