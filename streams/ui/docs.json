@@ -5,6 +5,9 @@
             "category",
             "stage"
         ],
+        "actions": [
+            "delete"
+        ],
         "options": {
             "title": "Example Title",
             "description": "Example Description",
