@@ -13,7 +13,8 @@ references:
     - Streams can be installed as a new blank project or added to an existing Laravel application.
 - **Sections/Features:** Separate sections/sub-sections (h2s/h3s) consistently. This will build the ToC.
     - Creating a new project
-        - Starter projects
+        - Starter projects (Stems?)
+            - After Installing (docs/delete/etc)
     - Adding to existing Laravel projects
         - Core is required
         - UI is optional
