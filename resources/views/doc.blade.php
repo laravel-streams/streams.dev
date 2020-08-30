@@ -49,7 +49,7 @@
                 <ul>                    
                     @foreach ($stream->entries()->orderBy('sort', 'ASC')->where('category', null)->get() as $page)
                     <li>
-                        <a href="{{$page->id}}">{{ $page->title }}</a> <strong>[{{ $page->stage ?: $default }}]</strong>
+                        <a href="{{$page->id}}">{{ $page->title }}</a> <strong>[{{ $page->stage ?: 'outlining' }}]</strong>
                     </li>
                     @endforeach
                 </ul>
@@ -63,7 +63,7 @@
                 <ul>
                     @foreach ($pages as $page)
                     <li>
-                        <a href="{{$page->id}}">{{ $page->title }}</a> <strong>[{{ $page->stage ?: $default }}]</strong>
+                        <a href="{{$page->id}}">{{ $page->title }}</a> <strong>[{{ $page->stage ?: 'outlining' }}]</strong>
                     </li>
                     @endforeach
                 </ul>
