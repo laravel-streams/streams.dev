@@ -15,9 +15,7 @@
             "type": "text",
             "config": {
                 "options": {
-                    "prologue": "Prologue",
                     "introduction": "Introduction",
-                    "configuration": "Configuration",
                     "getting_started": "Getting Started",
                     "core_concepts": "Core Concepts",
                     "basics": "The Basics",
