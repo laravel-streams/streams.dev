@@ -2,6 +2,7 @@
 title: Configuration
 category: getting_started
 intro: Streams uses Laravel config files and environment variables for application-level settings.
+stage: drafting
 sort: 2
 ---
 
