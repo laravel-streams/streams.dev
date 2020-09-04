@@ -1,10 +1,9 @@
 ---
 title: Debugging
 category: getting_started
-intro: 
+intro: Debugging is an essential form of critical thinking.
+stage: drafting
 sort: 20
-references:
-    - https://statamic.dev/debugging
 ---
 
 ## Ignition Error Handler

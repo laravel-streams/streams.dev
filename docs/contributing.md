@@ -1,7 +1,8 @@
 ---
 title: Contributing
 category: getting_started
-intro: 
+intro: Thank you for considering contributing to Streams!
+stage: drafting
 sort: 30
 references:
     - https://laravel.com/docs/7.x/contributions
