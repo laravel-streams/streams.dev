@@ -10,11 +10,9 @@ references:
 
 The Streams platform is a new bread of CMS. We call it a (DMS) data management system. Streams is abstracted into a few core packages so you can choose your own adventure and keep your project tight.
 
-Before you get started, please take a moment to review our project's principles
-
 ## Principle Concerns
 
-The Streams platform focuses on these main areas of application development.
+The Streams platform focuses on these fundamental areas of application development.
 
 - [Data Modeling](streams)
 - [Laravel Enhancement](core)
