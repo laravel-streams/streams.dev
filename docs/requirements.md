@@ -17,7 +17,7 @@ Streams is a self-hosted PHP 7 application, designed as [Composer](https://getco
     
 To run Streams you will need a to meet the following basic requirements.
 
-- PHP >= 7.2.5
+- PHP >= 7.3
 - BCMath PHP Extension
 - Ctype PHP Extension
 - Fileinfo PHP extension
