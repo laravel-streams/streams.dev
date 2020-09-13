@@ -1,6 +1,6 @@
 ---
 title: Documentation
-intro: Everything you need to know about the Streams Platform.
+intro: Everything you need to know about the Streams platform.
 enabled: true
 sort: 14
 references:
@@ -8,10 +8,7 @@ references:
     - https://craftcms.com/docs/3.x/
 ---
 
-- <a href="status">DOCUMENTATION STATUS</a>
-- <a href="ui">USER INTERFACE STATUS</a>
-
-<br>
+Welcome! The Streams platform is a collection of highly extensible, purist Laravel packages that assist developers by reducing work around data-modeling, UI, APIs, and more.
 
 ## Getting Started
 

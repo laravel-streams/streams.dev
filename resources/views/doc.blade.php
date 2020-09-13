@@ -13,7 +13,7 @@
             
             <aside class="o-aside sticky top-0">
                 
-                <ul class="flex text-sm">
+                {{-- <ul class="flex text-sm">
                     <li class="cursor-pointer mr-2">
                         Lightness
                     </li>
@@ -23,7 +23,7 @@
                     </li>
                 </ul>
 
-                <br>
+                <br> --}}
 
                 <ul>
                     <li>
@@ -36,18 +36,18 @@
                 <?php $areas = ['docs' => 'Streams', 'core' => 'Core', 'ui' => 'UI']; ?>
             
                 @if (count(request()->segments()) == 3 && request()->segment(2) == 'core')
-                    <?php $docs = Streams::entries('docs_core')->orderBy('sort', 'asc')->get(); ?>
+                    <?php $docs = Streams::entries('docs_core')->where('enabled', true)->orderBy('sort', 'asc')->get(); ?>
                     <?php $suffix = '/core'; ?>
                 @elseif (count(request()->segments()) == 3 && request()->segment(2) == 'ui')
-                    <?php $docs = Streams::entries('docs_ui')->orderBy('sort', 'asc')->get(); ?>
+                    <?php $docs = Streams::entries('docs_ui')->where('enabled', true)->orderBy('sort', 'asc')->get(); ?>
                     <?php $suffix = '/ui'; ?>
                 @else
-                    <?php $docs = Streams::entries('docs')->orderBy('sort', 'asc')->get(); ?>
+                    <?php $docs = Streams::entries('docs')->where('enabled', true)->orderBy('sort', 'asc')->get(); ?>
                     <?php $suffix = ''; ?>
                 @endif
                 
                 <ul>                    
-                    @foreach ($stream->entries()->orderBy('sort', 'ASC')->where('category', null)->get() as $page)
+                    @foreach ($stream->entries()->where('enabled', true)->orderBy('sort', 'ASC')->where('category', null)->get() as $page)
                     <li>
                         <a href="{{$page->id}}">{{ $page->title }}</a>
                         {{-- <strong>[{{ $page->stage ?: 'outlining' }}]</strong> --}}
@@ -57,7 +57,7 @@
 
                 @foreach ($stream->fields->category->config['options'] as $category => $label)
 
-                <?php $pages = $stream->entries()->orderBy('sort', 'ASC')->where('category', $category)->get() ?>
+                <?php $pages = $stream->entries()->where('enabled', true)->orderBy('sort', 'ASC')->where('category', $category)->get() ?>
 
                 @if ($pages->isNotEmpty())
                 <h4>{{ $label }}</h4>
