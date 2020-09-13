@@ -2,7 +2,8 @@
 title: Data Modeling
 category: core_concepts
 intro: Data modeling is where we begin.
-stage: outlining
+stage: drafting
+enabled: true
 sort: 0
 ---
 
@@ -20,7 +21,7 @@ An example could be configuring a domain model (a stream) for a website's pages,
 
 #### Data Sources
 
-If not configured otherwise, streams will utilize the built-in, lightning-fast, schema-less, flat-file database.
+If not configured otherwise, streams will utilize the built-in, lightning-fast, schema-less, flat-file database. All databases available to Laravel are supported as well.
 
 - [Stream Sources](/docs/core/sources)
 
