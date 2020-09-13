@@ -9,8 +9,8 @@ references:
 
 
 - Domain Driven Design
+    - Naturalistic
 - Minimum Effective Input
 - Minimum Technical Impact
 - Face Melting Performance
 - Rediculous Flexibility
-- Naturalistic Simplicity
