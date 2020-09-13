@@ -12,11 +12,17 @@ Data modeling is a fundamental aspect of building with the Streams platform.
 
 ### Domain Information
 
-The Streams platform leans heavily on domain-driven design (DDD). We call these domain abstractions `Streams`, hence our namesake.
+The Streams platform leans heavily on domain-driven design (DDD). We call these domain abstractions `streams`, hence our namesake.
 
-An example could be configuring a domain model (a stream) for a website's pages, users of an application, or feedback from a form.
+An example could be configuring a domain model (a stream) for a website's pages, users of an application, or feedback submissions from a form.
 
 - [Defining Streams](/docs/core/streams#defining-streams)
+
+#### Data Sources
+
+If not configured otherwise, streams will utilize the built-in, lightning-fast, schema-less, flat-file database.
+
+- [Stream Sources](/docs/core/sources)
 
 ### Domain Entities
 
