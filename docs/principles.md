@@ -15,6 +15,7 @@ references:
 - Rediculous Flexibility
 - Naturalistic Simplicity
 
+<br><br>
 
 - An intuitive and lightning fast control panel for data management and administrative tasks.
 - A clean-slate approach to data modeling and front-end development that doesn’t make any assumptions about your data or how it should be used, managed, or consumed.
