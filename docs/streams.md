@@ -11,6 +11,8 @@ sort: 0
 
 Data modeling is a fundamental aspect of building with the Streams platform.
 
+- [Data Modeling Introduction](core/introduction#data-modeling)
+
 ### Domain Information
 
 The Streams platform leans heavily on domain-driven design (DDD). We call these domain abstractions `streams`, hence our namesake.
