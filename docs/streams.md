@@ -6,32 +6,29 @@ stage: outlining
 sort: 0
 ---
 
-The `anomaly/streams-core` package is responsible for the fundamental data-modeling features in the Streams platform.
+## Introduction
 
-- [Streams Core](core/introduction)
+Data modeling is a fundamental aspect of building with the Streams platform.
 
-### Code Configured Schema
+### Domain Information
 
-All configured data-structures (called Streams) are defined in the root `streams/` directory.
+The Streams platform leans heavily on domain-driven design (DDD). We call these domain abstractions `Streams`, hence our namesake.
 
-- [Streams](core/streams)
+An example could be configuring a domain model (a stream) for a website's pages, users of an application, or feedback from a form.
 
-### Flat-file Databases
+- [Defining Streams](/docs/core/streams#defining-streams)
 
-The Streams platform supports all Laravel databases and adds flat-file database support.
+### Domain Entities
 
-- [Sources](core/sources)
+Domain entities are called `entries` within the Streams platform. A stream also defines entry attributes, or fields, that dictate the entry's properties and data-casting.
 
-### Streams ORM
+- [Stream Entries](/docs/core/entries)
+- [Entry Fields](/docs/core/fields)
+- [Field Types](/docs/core/fields#field-types)
 
-The Streams ORM standardizes querying and create/update functionality between all configured databases.
+### Retrieving Data Entities
 
-### Object Prototypes
+The Streams platform separates methods to retrieve and store entries from the entry objects themselves, less a few convenient functions like `save` and `delete`, by using a repository pattern.
 
-Prototype objects called "Entries" provide a performant and deep attribute access system.
-
-```php
-$entry->image; // path/to/image.jpg
-
-$entry->expand('image')->tag(); // <img href="path/to/image.jpg" alt="Image">
-```
+- [Repositories](/docs/core/repositories)
+- [Querying Entries](/docs/core/querying)

@@ -1,7 +1,7 @@
 ---
 title: Contributing
 category: getting_started
-intro: Thank you for considering contributing to Streams!
+intro: Thank you for considering contributing to the Streams platform!
 stage: review
 enabled: true
 sort: 30
