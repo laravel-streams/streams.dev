@@ -5,9 +5,10 @@
     color: #ddd;
 
     .js-toc {
+        margin-top: 2rem;
         font-family: Inter;
         font-size: 14px;
-        color: inherit;
+        color: var(--color-font);
 
         ul,
         ol {
