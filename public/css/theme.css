@@ -869,7 +869,7 @@ code[class^=language]::-webkit-scrollbar-thumb {
 }
 
 .w-aside__scrollbar {
-  overflow-y: scroll;
+  overflow-y: auto;
   max-height: 100vh;
   min-height: 100vh;
 }
