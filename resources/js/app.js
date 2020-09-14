@@ -1,6 +1,7 @@
 
 import "./src/highlight"
 import "./src/highlight-copy"
+import "./src/anchor"
 import "./src/tocbot"
 
 const bashes = document.querySelectorAll('.language-bash');

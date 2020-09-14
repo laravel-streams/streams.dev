@@ -64,19 +64,4 @@
 </div>
 
 
-
-
-<script src="https://cdn.jsdelivr.net/npm/anchor-js/anchor.min.js"></script>
-
-<script>
-    anchors.options = {
-        placement: 'right',
-        visible: 'hover',
-        truncate: 64,
-        icon: '#'
-    };
-
-    anchors.add('.o-doc-body h2, .o-doc-body h3, .o-doc-body h4');
-</script>
-
 @endsection
