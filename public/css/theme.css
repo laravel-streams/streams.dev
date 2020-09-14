@@ -908,7 +908,7 @@ code[class^=language]::-webkit-scrollbar-thumb {
 }
 
 .js-toc {
-  padding-top: 2rem;
+  padding-top: 0;
 }
 
 .toc-list-item {
@@ -973,10 +973,11 @@ a.toc-link {
   margin-top: -1px;
   position: absolute;
   width: 2px;
+  height: 100vh;
 }
 
 .is-active-link::before {
-  background-color: #54BC4B;
+  background-color: #cd2222;
 }
 
 .anchorjs-link {
