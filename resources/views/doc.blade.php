@@ -4,7 +4,6 @@
 <div class="flex flex-wrap min-h-screen">
     <aside class="w-aside p-8">
         Aside
-        <div class="js-toc"></div>
         <ul>
             <li>
                 <a href="/docs">Docs Home</a>
@@ -60,6 +59,10 @@
         {!! Str::markdown($entry->intro) !!}
         @endif
         {!! Str::markdown(View::parse($entry->body)) !!}
+    </div>
+    <div>
+        <div class="sticky top-0 js-toc"></div>
+
     </div>
 </div>
 
