@@ -1,7 +1,33 @@
-.c-versioning 
-{
-    @apply absolute top-0 right-0 p-8;
+.c-versioning {
+    @apply fixed top-0 right-0 p-8;
     @extend %handwrite;
-    font-size:36px;
-    color:#ddd;
+    font-size: 36px;
+    color: #ddd;
+
+    .js-toc {
+        font-family: Inter;
+        font-size: 14px;
+        color: inherit;
+
+        ul,
+        ol {
+            padding: 0;
+        }
+    }
+}
+
+.js-toc-content {
+
+    h1::before,
+    h2::before,
+    h3::before,
+    h4::before,
+    h5::before,
+    h6::before {
+        display: block;
+        content: " ";
+        height: 10px;
+        margin-top: -10px;
+        visibility: hidden;
+    }
 }
