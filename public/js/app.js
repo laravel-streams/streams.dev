@@ -4743,7 +4743,7 @@ tocbot__WEBPACK_IMPORTED_MODULE_0___default.a.init({
   // Main class to add to links.
   linkClass: 'toc-link',
   // Extra classes to add to links.
-  extraLinkClasses: '',
+  extraLinkClasses: 'c-toc-link',
   // Class to add to active links,
   // the link corresponding to the top most heading on the page.
   activeLinkClass: 'is-active-link',

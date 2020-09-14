@@ -920,6 +920,12 @@ code[class^=language]::-webkit-scrollbar-thumb {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  font-size: 1rem;
+}
+
+.js-toc > .toc-list > .toc-list-item:first-child > a {
+  display: block;
+  margin-top: 2rem;
 }
 
 /* Core Styles */
@@ -977,7 +983,6 @@ a.toc-link {
   margin-top: -1px;
   position: absolute;
   width: 2px;
-  height: 100vh;
 }
 
 .is-active-link::before {

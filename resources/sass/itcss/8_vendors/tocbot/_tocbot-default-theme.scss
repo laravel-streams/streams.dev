@@ -10,7 +10,7 @@
   margin-top: -1px;
   position: absolute;
   width: 2px;
-  height:100vh;
+  //height:calc(100vh + 20px);
 }
 
 .is-active-link::before {
