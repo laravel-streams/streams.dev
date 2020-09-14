@@ -7,7 +7,7 @@ tocbot.init({
     // Where to grab the headings to build the table of contents.
     contentSelector: '.o-doc-body',
     // Which headings to grab inside of the contentSelector element.
-    headingSelector: 'h1, h2, h3',
+    headingSelector: 'h2,h3',
     // Headings that match the ignoreSelector will be skipped.
     ignoreSelector: '.js-toc-ignore',
     // For headings inside relative or absolute positioned containers within content.

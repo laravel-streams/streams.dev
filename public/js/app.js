@@ -4713,7 +4713,7 @@ highlight_js_lib_core__WEBPACK_IMPORTED_MODULE_0___default.a.registerLanguage('b
 highlight_js_lib_core__WEBPACK_IMPORTED_MODULE_0___default.a.registerLanguage('json', highlight_js_lib_languages_json__WEBPACK_IMPORTED_MODULE_3___default.a);
 highlight_js_lib_core__WEBPACK_IMPORTED_MODULE_0___default.a.initHighlighting(); //import 'highlight.js/styles/solarized-dark.css';
 
-
+ //import 'highlight.js/styles/okaida.css';
 
 /***/ }),
 
@@ -4735,7 +4735,7 @@ tocbot__WEBPACK_IMPORTED_MODULE_0___default.a.init({
   // Where to grab the headings to build the table of contents.
   contentSelector: '.o-doc-body',
   // Which headings to grab inside of the contentSelector element.
-  headingSelector: 'h1, h2, h3',
+  headingSelector: 'h2,h3',
   // Headings that match the ignoreSelector will be skipped.
   ignoreSelector: '.js-toc-ignore',
   // For headings inside relative or absolute positioned containers within content.

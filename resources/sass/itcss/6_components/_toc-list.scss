@@ -2,7 +2,19 @@
 {
     min-width:300px;
 }
+.js-toc 
+{
+    @apply pt-8;
+}
 .toc-list 
 {
+   
    // min-height: 100vh;
+}
+.toc-list-item
+{
+    max-width:250px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }

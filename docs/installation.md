@@ -72,7 +72,7 @@ composer require anomaly/streams-api
 
 This step is **optional**. You may find it helpful to compare our default `scripts` below to your own and decide what you would like to include.
 
-```bash
+```json
 // composer.json
 "scripts": {
     "pre-autoload-dump": [

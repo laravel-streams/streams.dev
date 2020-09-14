@@ -907,6 +907,17 @@ code[class^=language]::-webkit-scrollbar-thumb {
   min-width: 300px;
 }
 
+.js-toc {
+  padding-top: 2rem;
+}
+
+.toc-list-item {
+  max-width: 250px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 /* Core Styles */
 
 .toc {
