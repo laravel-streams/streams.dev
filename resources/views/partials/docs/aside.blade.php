@@ -1,9 +1,13 @@
-<ul>
-    <li>
-        <a href="/docs">Docs Home</a>
-    </li>
-</ul>
-<?php $areas = ['docs' => 'Streams', 'core' => 'Core', 'ui' => 'UI']; ?>
+<aside class="w-aside pl-4 mr-6">
+
+    <div class="sticky top-0 ">
+        <div class="c-scrollbar w-aside__scrollbar">
+        <ul>
+            <li>
+                <a href="/docs">Docs Home</a>
+            </li>
+        </ul>
+        <?php $areas = ['docs' => 'Streams', 'core' => 'Core', 'ui' => 'UI']; ?>
 
         @if (count(request()->segments()) == 3 && request()->segment(2) == 'core')
         <?php $docs = Streams::entries('docs_core')->where('enabled', true)->orderBy('sort', 'asc')->get(); ?>
@@ -43,4 +47,8 @@
         @endif
 
         @endforeach
-a
+        
+    </div>
+    </div>
+
+</aside>

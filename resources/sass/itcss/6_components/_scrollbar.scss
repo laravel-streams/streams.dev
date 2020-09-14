@@ -1,13 +1,13 @@
 body,
 .c-scrollbar,
 code[class^="language"] {
-    --scrollbar-color:#666;
+    --scrollbar-color:#cd2222;
     --scrollbar-bkg-color:#282828;
     scrollbar-width: thin; /* "auto" or "thin"  */
     scrollbar-color: var(--scrollbar-color) var(--scrollbar-bkg-color);; /* scroll thumb & track */
     &::-webkit-scrollbar {
-        width: 2px;
-        height: 2px;
+        width: 5px;
+        height: 5px;
     }
     // &::-webkit-scrollbar {
     //     width: 5px;
@@ -26,3 +26,11 @@ code[class^="language"] {
 }
 
 
+
+// TODO: Temp thing
+.w-aside__scrollbar
+{
+    overflow-y: scroll;
+    max-height: 100vh;
+    min-height: 100vh;;
+}

@@ -2,9 +2,8 @@
 
 @section('content')
 <div class="flex flex-wrap min-h-screen">
-    <aside class="w-aside p-8">
-        @include('partials.docs.aside')
-    </aside>
+    @include('partials.docs.aside')
+    
     <div class="o-doc-body">
         <h1>
             {{ $entry->title }}
