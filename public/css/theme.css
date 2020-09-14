@@ -822,6 +822,10 @@ pre.language-bash {
   color: #333;
 }
 
+h4 + pre {
+  margin-top: clamp(10px, calc(1rem + var(--baseline)), 100px);
+}
+
 code.language-bash.hljs {
   padding: 0;
   padding-bottom: 0.5rem;
