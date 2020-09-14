@@ -29,7 +29,7 @@ If not configured otherwise, streams will utilize the built-in flat-file databas
 
 ### Domain Entities
 
-Domain entities are called `entries` within the Streams platform. A stream also defines entry attributes, or fields, that dictate the entry's properties and data-casting.
+Domain entities are called `entries` within the Streams platform. A stream also defines entry attributes, or fields, that dictate the entry's properties, data-casting, and more.
 
 - [Stream Entries](/docs/core/entries)
 - [Entry Fields](/docs/core/fields)
