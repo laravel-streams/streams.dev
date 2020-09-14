@@ -1,6 +1,6 @@
-
 const mix = require('laravel-mix');
 const tailwindcss = require('tailwindcss');
+
 
 // Do we want notifications?
 mix.disableSuccessNotifications();
@@ -14,15 +14,21 @@ mix.options({
     postCss: [tailwindcss('./tailwind.config.js')],
 });
 
+
 mix.browserSync({
-    proxy: 'streamsd.test',
+    proxy: process.env.APP_URL,
     files: [
         'public/js/**/*.js',
         'public/css/**/*.css',
         'resources/views/**/*.html',
-    ]
+        'streams/**/*.json',
+        'streams/**/*.md'
+    ],
+    notify: false
 });
 
+
+mix.version();
 
 // Purge css 
 if (mix.inProduction()) {

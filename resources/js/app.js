@@ -1,8 +1,11 @@
-import "./src/theme";
-import "./src/settings";
-import "./src/highlight";
 
-// Events 
-import "./src/events/onPageLoad";
+import "./src/highlight"
+import "./src/highlight-copy"
+import "./src/tocbot"
 
-import "svelte";
+const bashes = document.querySelectorAll('.language-bash');
+bashes.forEach(bash => {
+    bash.closest('pre').classList.add('language-bash');
+    bash.classList.add('c-scrollbar');
+});
+
