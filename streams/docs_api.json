@@ -1,6 +1,6 @@
 {
-    "routes.view": "docs/api/{id}",
     "extends": "docs",
+    "routes.view": "docs/api/{id}",
     "description": "Documentation for all things contained in the API package.",
     "notes": "",
     "source": {

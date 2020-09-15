@@ -1,6 +1,6 @@
 {
-    "routes.view": "docs/core/{id}",
     "extends": "docs",
+    "routes.view": "docs/core/{id}",
     "description": "Documentation for all things contained in the core package.",
     "notes": "This is looking good. Ready for discussion.",
     "source": {
