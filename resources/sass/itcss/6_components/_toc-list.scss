@@ -4,7 +4,7 @@
 }
 .js-toc 
 {
-    @apply pt-8;
+    @apply pt-0;
 }
 .toc-list 
 {
@@ -17,4 +17,23 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    font-size:1rem;
+}
+.js-toc>.toc-list>.toc-list-item:first-child>a
+{
+    @apply block mt-8;
+    //line-height:50px;
+    // font-weight: 700; 
+    // font-size:1.2rem;
+    // &:not(.is-active-li){
+    //     //color:red;
+    // }  
+}
+
+
+.js-toc>.toc-list>.toc-list-item.is-active-li>a 
+{
+    // &:not(.is-active-li){
+    //     color:#000;
+    // }
 }

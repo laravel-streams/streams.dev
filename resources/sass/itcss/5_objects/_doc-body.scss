@@ -101,8 +101,11 @@ pre {
 pre.language-bash {
     background: #1d1f21;
     color: #333;
-  
-    
+}
+
+h4+pre 
+{
+    margin-top: clamp(10px, calc(1rem + var(--baseline)), 100px);
 }
 code.language-bash.hljs 
 {
