@@ -36,7 +36,11 @@ pre.language-bash {
         font-size: clamp(28px, calc(3.5rem + var(--baseline)), 64px);
         margin-top: clamp(10px, calc(1.5rem + var(--baseline)), 50px);
         margin-bottom: clamp(10px, calc(0.5rem + var(--baseline)), 20px);
-        // color:red;
+        
+        background: -webkit-linear-gradient(55deg, #651dff, #00ceff 42%);
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
     }
     h2 {
         font-size: clamp(24px, calc(3rem + var(--baseline)), 42px);
@@ -104,4 +108,3 @@ code.language-bash.hljs
 {
     @apply p-0 pb-2;
 }
-
