@@ -35,9 +35,9 @@ The Streams platform is well suited to build darn-near anything you can think of
 
 Know what you are looking for already? Dive right in to our core packages.
 
-- [Streams Core](docs/core/introduction)
-- [Streams UI](docs/ui/introduction)
-- [Streams API](docs/api/introduction)
+- [Streams Core](core/introduction)
+- [Streams UI](ui/introduction)
+- [Streams API](api/introduction)
 
 ## Popular Resources
 
