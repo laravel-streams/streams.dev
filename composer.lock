@@ -52,12 +52,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/anomalylabs/streams-platform.git",
-                "reference": "bae9a9ab3d6488b4a5e4112e729f50aa95709b79"
+                "reference": "57d2f4c2a2fa61f5d696720724a6ae20ba1743ae"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/anomalylabs/streams-platform/zipball/bae9a9ab3d6488b4a5e4112e729f50aa95709b79",
-                "reference": "bae9a9ab3d6488b4a5e4112e729f50aa95709b79",
+                "url": "https://api.github.com/repos/anomalylabs/streams-platform/zipball/57d2f4c2a2fa61f5d696720724a6ae20ba1743ae",
+                "reference": "57d2f4c2a2fa61f5d696720724a6ae20ba1743ae",
                 "shasum": ""
             },
             "require": {
@@ -108,7 +108,7 @@
                 }
             ],
             "description": "A drop-in application platform for Laravel.",
-            "time": "2020-09-15T08:03:49+00:00"
+            "time": "2020-09-15T19:05:36+00:00"
         },
         {
             "name": "anomaly/streams-ui",
@@ -971,16 +971,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v7.28.1",
+            "version": "v7.28.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "f7493ab717ca2a9598b1db2d6a3bae8ac8c755e8"
+                "reference": "0956b0688d96565044074b77f521a653d9fce5fb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/f7493ab717ca2a9598b1db2d6a3bae8ac8c755e8",
-                "reference": "f7493ab717ca2a9598b1db2d6a3bae8ac8c755e8",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/0956b0688d96565044074b77f521a653d9fce5fb",
+                "reference": "0956b0688d96565044074b77f521a653d9fce5fb",
                 "shasum": ""
             },
             "require": {
@@ -1125,7 +1125,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2020-09-09T15:02:46+00:00"
+            "time": "2020-09-15T14:48:02+00:00"
         },
         {
             "name": "laravel/scout",
