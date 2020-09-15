@@ -33,6 +33,7 @@
             <a href="/status" class="btn-outline-primary transition duration-300 ease-in-out focus:outline-none focus:shadow-outline border border-purple _hover:bg-purple text-purple _hover:text-white font-normal py-2 px-4 rounded">Status</a>
             @endif
         </p>
+
     </div>
 </div>
     

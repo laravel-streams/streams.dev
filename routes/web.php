@@ -14,7 +14,15 @@
 use Illuminate\Support\Facades\Route;
 use Anomaly\Streams\Platform\Support\Facades\Streams;
 
-Route::view('/', 'welcome');
+Route::streams('/', 'welcome');
+
+Route::streams('/routing/{entry.id}', [
+    'view' => 'welcome',
+    'stream' => 'docs',
+    //'entry' => 'introduction',
+    'as' => 'streams::docs.index',
+    //'redirect' => 'foo/{stream.handle}/{entry.id}',
+]);
 
 Route::any('validate/{stream}/{entry}', function($stream, $entry) {
     dd(Streams::entries($stream)->find($entry)->validator()->passes());
