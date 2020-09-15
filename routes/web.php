@@ -16,9 +16,9 @@ use Anomaly\Streams\Platform\Support\Facades\Streams;
 
 Route::streams('/', 'welcome');
 
-Route::streams('/routing/{entry.id}', [
+Route::streams('/routing/{stream}/{entry.id}', [
     'view' => 'welcome',
-    'stream' => 'docs',
+    //'stream' => 'docs',
     //'entry' => 'introduction',
     'as' => 'streams::docs.index',
     //'redirect' => 'foo/{stream.handle}/{entry.id}',
