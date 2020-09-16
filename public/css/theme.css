@@ -674,7 +674,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .o-navbar {
-  margin-top: 2rem;
+  margin-top: 0;
   margin-bottom: 4rem;
   border-top-width: 1px;
   border-bottom-width: 1px;
