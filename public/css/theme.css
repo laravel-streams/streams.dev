@@ -669,6 +669,7 @@ h1, h2, h3, h4, h5, h6 {
 .o-doc-body {
   width: min(868px, 100%);
   margin-left: 3rem;
+  padding-top: 1.5rem;
 }
 
 .o-doc-body *:not(code):not(pre):not(.c-copy-code):not(.c-copy-code__icon),
@@ -789,6 +790,11 @@ code.language-bash.hljs {
   padding-bottom: 0.5rem;
 }
 
+.o-aside {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
 .c-alert {
   padding-left: 1rem;
   padding-right: 1rem;
@@ -877,7 +883,7 @@ code[class^=language]::-webkit-scrollbar-thumb {
 }
 
 .js-toc {
-  padding-top: 0;
+  padding-top: 4rem;
 }
 
 .toc-list-item {
@@ -890,7 +896,6 @@ code[class^=language]::-webkit-scrollbar-thumb {
 
 .js-toc > .toc-list > .toc-list-item:first-child > a {
   display: block;
-  margin-top: 2rem;
 }
 
 .c-aside-menu-title {

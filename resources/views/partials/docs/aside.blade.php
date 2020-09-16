@@ -22,7 +22,7 @@ $suffix = '';
 <aside class="w-2/12 pl-4 mr-6">
 
     <div class="sticky top-0 ">
-        <div class="c-scrollbar">
+        <div class="o-aside c-scrollbar">
             
             <p class="c-aside-menu-title">
                 <a  href="/docs">Docs Home</a>

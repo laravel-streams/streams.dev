@@ -1,13 +1,14 @@
 .c-toc-list
 {
     width: 300px;
+   
     @apply ml-auto;
 }
 .js-toc 
 {
-    @apply pt-0;
+    @apply pt-16;
 }
-.toc-list 
+ol.toc-list 
 {
    
    // min-height: 100vh;
@@ -22,7 +23,7 @@
 }
 .js-toc>.toc-list>.toc-list-item:first-child>a
 {
-    @apply block mt-8;
+    @apply block ;
     //line-height:50px;
     // font-weight: 700; 
     // font-size:1.2rem;

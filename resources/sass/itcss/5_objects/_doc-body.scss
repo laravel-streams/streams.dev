@@ -1,7 +1,7 @@
 .o-doc-body
 {
     width: min(868px, 100%);
-    @apply ml-12;
+    @apply ml-12 pt-6;
 }
 
 // We want the content to be more narrow, this is were we control that.
