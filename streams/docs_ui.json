@@ -1,6 +1,6 @@
 {
-    "route": "docs/ui/{id}",
     "extends": "docs",
+    "routes.view": "docs/ui/{id}",
     "description": "Documentation for all things contained in the UI package.",
     "notes": "This is looking good. Ready for discussion.",
     "source": {

@@ -1,6 +1,6 @@
 {
     "slug": "pages",
-    "route": "/{id}",
+    "routes.view": "/{id}",
     "template": "page",
     "fields": {
         "title": {

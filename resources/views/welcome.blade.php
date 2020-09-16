@@ -6,7 +6,7 @@
     <div class="flex flex-col self-center">
         
         <div>
-            <pre class="brand-ascii text-center text-xs mb-8 leading-tight text-white opacity-90" style="font-family: Courier Prime;">
+            <pre class="brand-ascii text-center text-xs mb-8 leading-tight text-black bg-white opacity-90" style="font-family: Courier Prime;">
    _____________  _______   __  _______
   / __/_  __/ _ \/ __/ _ | /  |/  / __/
  _\ \  / / / , _/ _// __ |/ /|_/ /\ \  
@@ -26,13 +26,14 @@
         </p> --}}
 
         <p class="font-mono text-center">
-            <a href="https://github.com/anomalylabs/streams" target="_blank" class="btn-outline-primary transition duration-300 ease-in-out focus:outline-none focus:shadow-outline border border-purple hover:bg-purple text-purple hover:text-white font-normal py-2 px-4 rounded">GitHub</a>
-            <a href="https://discord.gg/RjywDG2" target="_blank" class="btn-outline-primary transition duration-300 ease-in-out focus:outline-none focus:shadow-outline border border-purple hover:bg-purple text-purple hover:text-white font-normal py-2 px-4 rounded">Discord</a>
+            <a href="https://github.com/anomalylabs/streams" target="_blank" class="btn-outline-primary transition duration-300 ease-in-out focus:outline-none focus:shadow-outline border border-purple _hover:bg-purple text-purple _hover:text-white font-normal py-2 px-4 rounded">GitHub</a>
+            <a href="https://discord.gg/RjywDG2" target="_blank" class="btn-outline-primary transition duration-300 ease-in-out focus:outline-none focus:shadow-outline border border-purple _hover:bg-purple text-purple _hover:text-white font-normal py-2 px-4 rounded">Discord</a>
             @if (in_array(Request::ip(), ['127.0.0.1', '::1']) || Request::has('showmethedocs'))
-            <a href="/docs" class="btn-outline-primary transition duration-300 ease-in-out focus:outline-none focus:shadow-outline border border-purple hover:bg-purple text-purple hover:text-white font-normal py-2 px-4 rounded">Docs</a>
-            <a href="/status" class="btn-outline-primary transition duration-300 ease-in-out focus:outline-none focus:shadow-outline border border-purple hover:bg-purple text-purple hover:text-white font-normal py-2 px-4 rounded">Status</a>
+            <a href="/docs" class="btn-outline-primary transition duration-300 ease-in-out focus:outline-none focus:shadow-outline border border-purple _hover:bg-purple text-purple _hover:text-white font-normal py-2 px-4 rounded">Docs</a>
+            <a href="/status" class="btn-outline-primary transition duration-300 ease-in-out focus:outline-none focus:shadow-outline border border-purple _hover:bg-purple text-purple _hover:text-white font-normal py-2 px-4 rounded">Status</a>
             @endif
         </p>
+
     </div>
 </div>
     

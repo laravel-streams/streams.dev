@@ -12,7 +12,7 @@ return [
      |
      */
 
-    'enabled' => env('DEBUGBAR_ENABLED', $_SERVER['REQUEST_URI'] == '/' ? false : true),
+    'enabled' => env('DEBUGBAR_ENABLED', false),
 
     /*
      |--------------------------------------------------------------------------
