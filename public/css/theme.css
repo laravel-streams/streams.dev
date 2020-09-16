@@ -675,19 +675,19 @@ h1, h2, h3, h4, h5, h6 {
 
 .o-navbar {
   margin-top: 0;
-  margin-bottom: 4rem;
   border-bottom-width: 1px;
+  margin-bottom: 4rem;
   padding-top: 2rem;
   padding-bottom: 2rem;
   position: -webkit-sticky;
   position: sticky;
   z-index: 10;
-  -webkit-backdrop-filter: blur(2px);
-          backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(3px);
+          backdrop-filter: blur(3px);
   top: 0px;
   background: rgba(255, 255, 255, 0.92);
   background: linear-gradient(0deg, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0.88) 50%, white 95%);
-  border-color: #eee;
+  border-color: #eaeaea;
 }
 
 .o-doc-body {

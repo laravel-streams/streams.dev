@@ -1,9 +1,9 @@
 .o-navbar 
 {
-    @apply mt-0 mb-16 border-b py-8 sticky z-10;
-    backdrop-filter: blur(2px);
+    @apply mt-0 border-b mb-16 py-8 sticky z-10;
+    backdrop-filter: blur(3px);
     top:0px;
     background:rgba(255,255,255,0.92);
     background: linear-gradient(0deg, rgba(255,255,255,.5) 0%, rgba(255,255,255,.88) 50%,rgba(255,255,255,1) 95%);
-    border-color:#eee;
+    border-color:#eaeaea;
 }
