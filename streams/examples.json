@@ -1,7 +1,6 @@
 {
     "name": "examples",
-    "route": "examples/{id}",
-    "template": "example",
+    "routes.view": "examples/{id}",
     "source": {
         "path": "examples"
     },
