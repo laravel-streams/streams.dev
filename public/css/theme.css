@@ -629,7 +629,7 @@ video {
   --color-accent:#00ceff;
   --color-accent-dark:#6fa6b3;
   --color-accent-light:#d1f6ff;
-  --position-top-aside-menus:150px;
+  --position-top-aside-menus:153px;
 }
 
 @font-face {
@@ -684,7 +684,7 @@ h1, h2, h3, h4, h5, h6 {
   z-index: 10;
   -webkit-backdrop-filter: blur(2px);
           backdrop-filter: blur(2px);
-  top: -1px;
+  top: 0px;
   background: rgba(255, 255, 255, 0.92);
   border-color: #eee;
 }
