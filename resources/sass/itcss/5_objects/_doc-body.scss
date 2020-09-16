@@ -138,9 +138,17 @@ pre.language-bash
     background: #1d1f21;
 }
 
-h4 + pre
+h4 + pre,
+p+pre
 {
-    margin-top: clamp(10px, calc(1rem + var(--baseline)), 100px);
+    margin-top: clamp(10px, calc(1.2rem + var(--baseline)), 100px);
+}
+.o-doc-body pre+p,
+.o-doc-body pre+h4,
+.o-doc-body pre+pre,
+
+{
+    margin-top: clamp(-50px, calc((1.5rem + var(--baseline) ) * -1), 1000px) !important;
 }
 code.language-bash.hljs
 {
