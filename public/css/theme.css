@@ -621,64 +621,14 @@ video {
 /*! purgecss start ignore */
 
 :root {
-  --width-aside:300px;
-  --width-main:calc(100% - var(--width-aside));
-  --color-primary: #0B2F59;
-  --color-primary-rgb: 11,47,89;
-  --color-primary-10: #0e3b70;
-  --color-primary-10-rgb: 14,59,112;
-  --color-primary-20: #114786;
-  --color-primary-20-rgb: 17,71,134;
-  --color-primary-30: #13539d;
-  --color-primary-30-rgb: 19,83,157;
-  --color-primary-40: #165fb4;
-  --color-primary-40-rgb: 22,95,180;
-  --color-primary-50: #196bca;
-  --color-primary-50-rgb: 25,107,202;
-  --color-primary-60: #1c77e1;
-  --color-primary-60-rgb: 28,119,225;
-  --color-primary-70: #3184e6;
-  --color-primary-70-rgb: 49,132,230;
-  --color-primary-80: #4892e8;
-  --color-primary-80-rgb: 72,146,232;
-  --color-oxford: #04182E;
-  --color-oxford-rgb: 4,24,46;
-  --color-oxford-10: #062445;
-  --color-oxford-10-rgb: 6,36,69;
-  --color-oxford-20: #08305d;
-  --color-oxford-20-rgb: 8,48,93;
-  --color-oxford-30: #0a3d74;
-  --color-oxford-30-rgb: 10,61,116;
-  --color-oxford-40: #0c498c;
-  --color-oxford-40-rgb: 12,73,140;
-  --color-oxford-50: #0e55a3;
-  --color-oxford-50-rgb: 14,85,163;
-  --color-oxford-60: #1061bb;
-  --color-oxford-60-rgb: 16,97,187;
-  --color-oxford-70: #126ed2;
-  --color-oxford-70-rgb: 18,110,210;
-  --color-oxford-80: #147aea;
-  --color-oxford-80-rgb: 20,122,234;
-  --color-rich-black: #020912;
-  --color-rich-black-rgb: 2,9,18;
-  --color-rich-black-10: #051429;
-  --color-rich-black-10-rgb: 5,20,41;
-  --color-rich-black-20: #072040;
-  --color-rich-black-20-rgb: 7,32,64;
-  --color-rich-black-30: #0a2b57;
-  --color-rich-black-30-rgb: 10,43,87;
-  --color-rich-black-40: #0c376e;
-  --color-rich-black-40-rgb: 12,55,110;
-  --color-rich-black-50: #0f4285;
-  --color-rich-black-50-rgb: 15,66,133;
-  --color-rich-black-60: #114e9c;
-  --color-rich-black-60-rgb: 17,78,156;
-  --color-rich-black-70: #1459b3;
-  --color-rich-black-70-rgb: 20,89,179;
-  --color-rich-black-80: #1665ca;
-  --color-rich-black-80-rgb: 22,101,202;
-  --color-white:#fff;
-  --color-link:var(--color-oxford-50);
+  --width-aside: 300px;
+  --width-main: calc(100% - var(--width-aside));
+  --color-white: #fff;
+  --color-black:#000;
+  --color-primary: #000;
+  --color-accent:#00ceff;
+  --color-accent-dark:#00ceff;
+  --color-accent-light:#d1f6ff;
 }
 
 @font-face {
@@ -707,10 +657,6 @@ ul:not(.c-list) li ul {
   margin-left: 1.5rem;
 }
 
-a:not(.c-link) {
-  color: var(--color-link);
-}
-
 * {
   outline: none;
   -webkit-tap-highlight-color: transparent;
@@ -721,9 +667,9 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .o-doc-body {
+  width: min(868px, 100%);
   padding-left: 1rem;
   padding-right: 1rem;
-  width: min(868px, 100%);
 }
 
 .o-doc-body *:not(code):not(pre):not(.c-copy-code):not(.c-copy-code__icon),
@@ -732,7 +678,7 @@ pre.language-bash {
 }
 
 .o-doc-body {
-  --baseline: 0.15vw;
+  --baseline: .15vw;
 }
 
 .o-doc-body * {
@@ -756,11 +702,7 @@ pre.language-bash {
 .o-doc-body h1 {
   font-size: clamp(28px, calc(3.5rem + var(--baseline)), 64px);
   margin-top: clamp(10px, calc(1.5rem + var(--baseline)), 50px);
-  margin-bottom: clamp(10px, calc(0.5rem + var(--baseline)), 20px);
-  background: -webkit-linear-gradient(55deg, #651dff, #00ceff 42%);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  margin-bottom: clamp(10px, calc(.5rem + var(--baseline)), 20px);
 }
 
 .o-doc-body h2 {
@@ -772,24 +714,37 @@ pre.language-bash {
 .o-doc-body h3 {
   font-size: clamp(21px, calc(1.5rem + var(--baseline)), 36px);
   margin-top: clamp(10px, calc(2rem + var(--baseline)), 50px);
-  margin-bottom: clamp(10px, calc(0.5rem + var(--baseline)), 20px);
+  margin-bottom: clamp(10px, calc(.5rem + var(--baseline)), 20px);
 }
 
 .o-doc-body h4 {
   font-size: clamp(16px, 18px, 28px);
   margin-top: clamp(10px, calc(1.5rem + var(--baseline)), 50px);
-  margin-bottom: clamp(10px, calc(0.5rem + var(--baseline)), 20px);
+  margin-bottom: clamp(10px, calc(.5rem + var(--baseline)), 20px);
 }
 
-.o-doc-body a {
-  color: #651dff;
+.o-doc-body p a {
+  transition: all 200ms ease-in-out;
+  border-bottom-width: 4px;
+  border-color: var(--color-accent);
+  border-left-width: 0;
+  border-right-width: 0;
+  border-top-width: 0;
 }
 
-pre, code {
+.o-doc-body p a:hover {
+  background-color: transparent;
+}
+
+pre,
+code {
   font-family: JetBrains Mono, inter, monospace;
 }
 
-pre, pre *, code, code * {
+pre,
+pre *,
+code,
+code * {
   font-size: clamp(14px, calc(14px + var(--baseline)), 21px) !important;
 }
 
@@ -797,8 +752,8 @@ pre {
   overflow-x: auto;
   margin-top: clamp(10px, calc(2rem + var(--baseline)), 100px);
   margin-bottom: clamp(10px, calc(4rem + var(--baseline)), 100px);
-  background: #1d1f21;
   color: #eee;
+  background: #1d1f21;
   padding-top: 1.5rem;
   padding-bottom: 1.5rem;
   padding-bottom: 1rem;
@@ -812,18 +767,18 @@ pre::before {
   position: absolute;
   top: -1px;
   left: 0;
+  display: block;
   width: 20px;
   height: 20px;
-  display: block;
   content: "";
-  background: #FFF;
+  background: #fff;
   -webkit-clip-path: polygon(100% 0, 0 0, 0 100%);
           clip-path: polygon(100% 0, 0 0, 0 100%);
 }
 
 pre.language-bash {
-  background: #1d1f21;
   color: #333;
+  background: #1d1f21;
 }
 
 h4 + pre {
@@ -841,14 +796,18 @@ code.language-bash.hljs {
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
   background-color: var(--color-primary);
-  color: var(--color-white);
+  --text-opacity: 1;
+  color: #fff;
+  color: rgba(255, 255, 255, var(--text-opacity));
 }
 
 body,
 .c-scrollbar,
 code[class^=language] {
-  --scrollbar-color:#cd2222;
-  --scrollbar-bkg-color:#282828;
+  --scrollbar-color:var(--color-accent-dark);
+  --scrollbar-bkg-color:var(--color-accent-light);
+  --scrollbar-width:5px;
+  --scrollbar-height:1px;
   scrollbar-width: thin;
   /* "auto" or "thin"  */
   scrollbar-color: var(--scrollbar-color) var(--scrollbar-bkg-color);
@@ -858,8 +817,8 @@ code[class^=language] {
 body::-webkit-scrollbar,
 .c-scrollbar::-webkit-scrollbar,
 code[class^=language]::-webkit-scrollbar {
-  width: 5px;
-  height: 5px;
+  width: var(--scrollbar-width);
+  height: var(--scrollbar-height);
 }
 
 body::-webkit-scrollbar-track,
@@ -890,7 +849,9 @@ code[class^=language]::-webkit-scrollbar-thumb {
   padding-right: 0.5rem;
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
-  color: var(--color-white);
+  --text-opacity: 1;
+  color: #fff;
+  color: rgba(255, 255, 255, var(--text-opacity));
 }
 
 .c-copy-code:focus {
@@ -980,7 +941,7 @@ a.toc-link {
 /* Default Theme Styles */
 
 .toc-link::before {
-  background-color: #EEE;
+  background-color: var(--color-accent-light);
   content: " ";
   display: inline-block;
   height: inherit;
@@ -991,7 +952,7 @@ a.toc-link {
 }
 
 .is-active-link::before {
-  background-color: #651dff;
+  background-color: var(--color-accent);
 }
 
 .anchorjs-link {
@@ -1530,6 +1491,18 @@ a.toc-link {
   border-color: transparent;
 }
 
+.divide-white > :not(template) ~ :not(template) {
+  --divide-opacity: 1;
+  border-color: #fff;
+  border-color: rgba(255, 255, 255, var(--divide-opacity));
+}
+
+.divide-black > :not(template) ~ :not(template) {
+  --divide-opacity: 1;
+  border-color: #000;
+  border-color: rgba(0, 0, 0, var(--divide-opacity));
+}
+
 .divide-current > :not(template) ~ :not(template) {
   border-color: currentColor;
 }
@@ -1538,20 +1511,16 @@ a.toc-link {
   border-color: var(--color-primary);
 }
 
-.divide-oxford > :not(template) ~ :not(template) {
-  border-color: var(--color-oxford);
+.divide-accent > :not(template) ~ :not(template) {
+  border-color: var(--color-accent);
 }
 
-.divide-black > :not(template) ~ :not(template) {
-  border-color: var(--color-black);
+.divide-accent-dark > :not(template) ~ :not(template) {
+  border-color: var(--color-accent-dark);
 }
 
-.divide-white > :not(template) ~ :not(template) {
-  border-color: var(--color-white);
-}
-
-.divide-link > :not(template) ~ :not(template) {
-  border-color: var(--color-link);
+.divide-accent-light > :not(template) ~ :not(template) {
+  border-color: var(--color-accent-light);
 }
 
 .divide-solid > :not(template) ~ :not(template) {
@@ -1679,6 +1648,18 @@ a.toc-link {
   background-color: transparent;
 }
 
+.bg-white {
+  --bg-opacity: 1;
+  background-color: #fff;
+  background-color: rgba(255, 255, 255, var(--bg-opacity));
+}
+
+.bg-black {
+  --bg-opacity: 1;
+  background-color: #000;
+  background-color: rgba(0, 0, 0, var(--bg-opacity));
+}
+
 .bg-current {
   background-color: currentColor;
 }
@@ -1687,24 +1668,32 @@ a.toc-link {
   background-color: var(--color-primary);
 }
 
-.bg-oxford {
-  background-color: var(--color-oxford);
+.bg-accent {
+  background-color: var(--color-accent);
 }
 
-.bg-black {
-  background-color: var(--color-black);
+.bg-accent-dark {
+  background-color: var(--color-accent-dark);
 }
 
-.bg-white {
-  background-color: var(--color-white);
-}
-
-.bg-link {
-  background-color: var(--color-link);
+.bg-accent-light {
+  background-color: var(--color-accent-light);
 }
 
 .hover\:bg-transparent:hover {
   background-color: transparent;
+}
+
+.hover\:bg-white:hover {
+  --bg-opacity: 1;
+  background-color: #fff;
+  background-color: rgba(255, 255, 255, var(--bg-opacity));
+}
+
+.hover\:bg-black:hover {
+  --bg-opacity: 1;
+  background-color: #000;
+  background-color: rgba(0, 0, 0, var(--bg-opacity));
 }
 
 .hover\:bg-current:hover {
@@ -1715,24 +1704,32 @@ a.toc-link {
   background-color: var(--color-primary);
 }
 
-.hover\:bg-oxford:hover {
-  background-color: var(--color-oxford);
+.hover\:bg-accent:hover {
+  background-color: var(--color-accent);
 }
 
-.hover\:bg-black:hover {
-  background-color: var(--color-black);
+.hover\:bg-accent-dark:hover {
+  background-color: var(--color-accent-dark);
 }
 
-.hover\:bg-white:hover {
-  background-color: var(--color-white);
-}
-
-.hover\:bg-link:hover {
-  background-color: var(--color-link);
+.hover\:bg-accent-light:hover {
+  background-color: var(--color-accent-light);
 }
 
 .focus\:bg-transparent:focus {
   background-color: transparent;
+}
+
+.focus\:bg-white:focus {
+  --bg-opacity: 1;
+  background-color: #fff;
+  background-color: rgba(255, 255, 255, var(--bg-opacity));
+}
+
+.focus\:bg-black:focus {
+  --bg-opacity: 1;
+  background-color: #000;
+  background-color: rgba(0, 0, 0, var(--bg-opacity));
 }
 
 .focus\:bg-current:focus {
@@ -1743,20 +1740,16 @@ a.toc-link {
   background-color: var(--color-primary);
 }
 
-.focus\:bg-oxford:focus {
-  background-color: var(--color-oxford);
+.focus\:bg-accent:focus {
+  background-color: var(--color-accent);
 }
 
-.focus\:bg-black:focus {
-  background-color: var(--color-black);
+.focus\:bg-accent-dark:focus {
+  background-color: var(--color-accent-dark);
 }
 
-.focus\:bg-white:focus {
-  background-color: var(--color-white);
-}
-
-.focus\:bg-link:focus {
-  background-color: var(--color-link);
+.focus\:bg-accent-light:focus {
+  background-color: var(--color-accent-light);
 }
 
 .bg-none {
@@ -1800,6 +1793,16 @@ a.toc-link {
   --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(0, 0, 0, 0));
 }
 
+.from-white {
+  --gradient-from-color: #fff;
+  --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
+}
+
+.from-black {
+  --gradient-from-color: #000;
+  --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(0, 0, 0, 0));
+}
+
 .from-current {
   --gradient-from-color: currentColor;
   --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
@@ -1810,28 +1813,33 @@ a.toc-link {
   --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
 }
 
-.from-oxford {
-  --gradient-from-color: var(--color-oxford);
+.from-accent {
+  --gradient-from-color: var(--color-accent);
   --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
 }
 
-.from-black {
-  --gradient-from-color: var(--color-black);
+.from-accent-dark {
+  --gradient-from-color: var(--color-accent-dark);
   --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
 }
 
-.from-white {
-  --gradient-from-color: var(--color-white);
-  --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
-}
-
-.from-link {
-  --gradient-from-color: var(--color-link);
+.from-accent-light {
+  --gradient-from-color: var(--color-accent-light);
   --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
 }
 
 .via-transparent {
   --gradient-via-color: transparent;
+  --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(0, 0, 0, 0));
+}
+
+.via-white {
+  --gradient-via-color: #fff;
+  --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
+}
+
+.via-black {
+  --gradient-via-color: #000;
   --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(0, 0, 0, 0));
 }
 
@@ -1845,28 +1853,31 @@ a.toc-link {
   --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
 }
 
-.via-oxford {
-  --gradient-via-color: var(--color-oxford);
+.via-accent {
+  --gradient-via-color: var(--color-accent);
   --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
 }
 
-.via-black {
-  --gradient-via-color: var(--color-black);
+.via-accent-dark {
+  --gradient-via-color: var(--color-accent-dark);
   --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
 }
 
-.via-white {
-  --gradient-via-color: var(--color-white);
-  --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
-}
-
-.via-link {
-  --gradient-via-color: var(--color-link);
+.via-accent-light {
+  --gradient-via-color: var(--color-accent-light);
   --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
 }
 
 .to-transparent {
   --gradient-to-color: transparent;
+}
+
+.to-white {
+  --gradient-to-color: #fff;
+}
+
+.to-black {
+  --gradient-to-color: #000;
 }
 
 .to-current {
@@ -1877,24 +1888,30 @@ a.toc-link {
   --gradient-to-color: var(--color-primary);
 }
 
-.to-oxford {
-  --gradient-to-color: var(--color-oxford);
+.to-accent {
+  --gradient-to-color: var(--color-accent);
 }
 
-.to-black {
-  --gradient-to-color: var(--color-black);
+.to-accent-dark {
+  --gradient-to-color: var(--color-accent-dark);
 }
 
-.to-white {
-  --gradient-to-color: var(--color-white);
-}
-
-.to-link {
-  --gradient-to-color: var(--color-link);
+.to-accent-light {
+  --gradient-to-color: var(--color-accent-light);
 }
 
 .hover\:from-transparent:hover {
   --gradient-from-color: transparent;
+  --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(0, 0, 0, 0));
+}
+
+.hover\:from-white:hover {
+  --gradient-from-color: #fff;
+  --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
+}
+
+.hover\:from-black:hover {
+  --gradient-from-color: #000;
   --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(0, 0, 0, 0));
 }
 
@@ -1908,28 +1925,33 @@ a.toc-link {
   --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
 }
 
-.hover\:from-oxford:hover {
-  --gradient-from-color: var(--color-oxford);
+.hover\:from-accent:hover {
+  --gradient-from-color: var(--color-accent);
   --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
 }
 
-.hover\:from-black:hover {
-  --gradient-from-color: var(--color-black);
+.hover\:from-accent-dark:hover {
+  --gradient-from-color: var(--color-accent-dark);
   --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
 }
 
-.hover\:from-white:hover {
-  --gradient-from-color: var(--color-white);
-  --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
-}
-
-.hover\:from-link:hover {
-  --gradient-from-color: var(--color-link);
+.hover\:from-accent-light:hover {
+  --gradient-from-color: var(--color-accent-light);
   --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
 }
 
 .hover\:via-transparent:hover {
   --gradient-via-color: transparent;
+  --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(0, 0, 0, 0));
+}
+
+.hover\:via-white:hover {
+  --gradient-via-color: #fff;
+  --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
+}
+
+.hover\:via-black:hover {
+  --gradient-via-color: #000;
   --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(0, 0, 0, 0));
 }
 
@@ -1943,28 +1965,31 @@ a.toc-link {
   --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
 }
 
-.hover\:via-oxford:hover {
-  --gradient-via-color: var(--color-oxford);
+.hover\:via-accent:hover {
+  --gradient-via-color: var(--color-accent);
   --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
 }
 
-.hover\:via-black:hover {
-  --gradient-via-color: var(--color-black);
+.hover\:via-accent-dark:hover {
+  --gradient-via-color: var(--color-accent-dark);
   --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
 }
 
-.hover\:via-white:hover {
-  --gradient-via-color: var(--color-white);
-  --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
-}
-
-.hover\:via-link:hover {
-  --gradient-via-color: var(--color-link);
+.hover\:via-accent-light:hover {
+  --gradient-via-color: var(--color-accent-light);
   --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
 }
 
 .hover\:to-transparent:hover {
   --gradient-to-color: transparent;
+}
+
+.hover\:to-white:hover {
+  --gradient-to-color: #fff;
+}
+
+.hover\:to-black:hover {
+  --gradient-to-color: #000;
 }
 
 .hover\:to-current:hover {
@@ -1975,24 +2000,30 @@ a.toc-link {
   --gradient-to-color: var(--color-primary);
 }
 
-.hover\:to-oxford:hover {
-  --gradient-to-color: var(--color-oxford);
+.hover\:to-accent:hover {
+  --gradient-to-color: var(--color-accent);
 }
 
-.hover\:to-black:hover {
-  --gradient-to-color: var(--color-black);
+.hover\:to-accent-dark:hover {
+  --gradient-to-color: var(--color-accent-dark);
 }
 
-.hover\:to-white:hover {
-  --gradient-to-color: var(--color-white);
-}
-
-.hover\:to-link:hover {
-  --gradient-to-color: var(--color-link);
+.hover\:to-accent-light:hover {
+  --gradient-to-color: var(--color-accent-light);
 }
 
 .focus\:from-transparent:focus {
   --gradient-from-color: transparent;
+  --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(0, 0, 0, 0));
+}
+
+.focus\:from-white:focus {
+  --gradient-from-color: #fff;
+  --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
+}
+
+.focus\:from-black:focus {
+  --gradient-from-color: #000;
   --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(0, 0, 0, 0));
 }
 
@@ -2006,28 +2037,33 @@ a.toc-link {
   --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
 }
 
-.focus\:from-oxford:focus {
-  --gradient-from-color: var(--color-oxford);
+.focus\:from-accent:focus {
+  --gradient-from-color: var(--color-accent);
   --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
 }
 
-.focus\:from-black:focus {
-  --gradient-from-color: var(--color-black);
+.focus\:from-accent-dark:focus {
+  --gradient-from-color: var(--color-accent-dark);
   --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
 }
 
-.focus\:from-white:focus {
-  --gradient-from-color: var(--color-white);
-  --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
-}
-
-.focus\:from-link:focus {
-  --gradient-from-color: var(--color-link);
+.focus\:from-accent-light:focus {
+  --gradient-from-color: var(--color-accent-light);
   --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
 }
 
 .focus\:via-transparent:focus {
   --gradient-via-color: transparent;
+  --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(0, 0, 0, 0));
+}
+
+.focus\:via-white:focus {
+  --gradient-via-color: #fff;
+  --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
+}
+
+.focus\:via-black:focus {
+  --gradient-via-color: #000;
   --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(0, 0, 0, 0));
 }
 
@@ -2041,28 +2077,31 @@ a.toc-link {
   --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
 }
 
-.focus\:via-oxford:focus {
-  --gradient-via-color: var(--color-oxford);
+.focus\:via-accent:focus {
+  --gradient-via-color: var(--color-accent);
   --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
 }
 
-.focus\:via-black:focus {
-  --gradient-via-color: var(--color-black);
+.focus\:via-accent-dark:focus {
+  --gradient-via-color: var(--color-accent-dark);
   --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
 }
 
-.focus\:via-white:focus {
-  --gradient-via-color: var(--color-white);
-  --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
-}
-
-.focus\:via-link:focus {
-  --gradient-via-color: var(--color-link);
+.focus\:via-accent-light:focus {
+  --gradient-via-color: var(--color-accent-light);
   --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
 }
 
 .focus\:to-transparent:focus {
   --gradient-to-color: transparent;
+}
+
+.focus\:to-white:focus {
+  --gradient-to-color: #fff;
+}
+
+.focus\:to-black:focus {
+  --gradient-to-color: #000;
 }
 
 .focus\:to-current:focus {
@@ -2073,20 +2112,16 @@ a.toc-link {
   --gradient-to-color: var(--color-primary);
 }
 
-.focus\:to-oxford:focus {
-  --gradient-to-color: var(--color-oxford);
+.focus\:to-accent:focus {
+  --gradient-to-color: var(--color-accent);
 }
 
-.focus\:to-black:focus {
-  --gradient-to-color: var(--color-black);
+.focus\:to-accent-dark:focus {
+  --gradient-to-color: var(--color-accent-dark);
 }
 
-.focus\:to-white:focus {
-  --gradient-to-color: var(--color-white);
-}
-
-.focus\:to-link:focus {
-  --gradient-to-color: var(--color-link);
+.focus\:to-accent-light:focus {
+  --gradient-to-color: var(--color-accent-light);
 }
 
 .bg-opacity-0 {
@@ -2233,6 +2268,18 @@ a.toc-link {
   border-color: transparent;
 }
 
+.border-white {
+  --border-opacity: 1;
+  border-color: #fff;
+  border-color: rgba(255, 255, 255, var(--border-opacity));
+}
+
+.border-black {
+  --border-opacity: 1;
+  border-color: #000;
+  border-color: rgba(0, 0, 0, var(--border-opacity));
+}
+
 .border-current {
   border-color: currentColor;
 }
@@ -2241,24 +2288,32 @@ a.toc-link {
   border-color: var(--color-primary);
 }
 
-.border-oxford {
-  border-color: var(--color-oxford);
+.border-accent {
+  border-color: var(--color-accent);
 }
 
-.border-black {
-  border-color: var(--color-black);
+.border-accent-dark {
+  border-color: var(--color-accent-dark);
 }
 
-.border-white {
-  border-color: var(--color-white);
-}
-
-.border-link {
-  border-color: var(--color-link);
+.border-accent-light {
+  border-color: var(--color-accent-light);
 }
 
 .hover\:border-transparent:hover {
   border-color: transparent;
+}
+
+.hover\:border-white:hover {
+  --border-opacity: 1;
+  border-color: #fff;
+  border-color: rgba(255, 255, 255, var(--border-opacity));
+}
+
+.hover\:border-black:hover {
+  --border-opacity: 1;
+  border-color: #000;
+  border-color: rgba(0, 0, 0, var(--border-opacity));
 }
 
 .hover\:border-current:hover {
@@ -2269,24 +2324,32 @@ a.toc-link {
   border-color: var(--color-primary);
 }
 
-.hover\:border-oxford:hover {
-  border-color: var(--color-oxford);
+.hover\:border-accent:hover {
+  border-color: var(--color-accent);
 }
 
-.hover\:border-black:hover {
-  border-color: var(--color-black);
+.hover\:border-accent-dark:hover {
+  border-color: var(--color-accent-dark);
 }
 
-.hover\:border-white:hover {
-  border-color: var(--color-white);
-}
-
-.hover\:border-link:hover {
-  border-color: var(--color-link);
+.hover\:border-accent-light:hover {
+  border-color: var(--color-accent-light);
 }
 
 .focus\:border-transparent:focus {
   border-color: transparent;
+}
+
+.focus\:border-white:focus {
+  --border-opacity: 1;
+  border-color: #fff;
+  border-color: rgba(255, 255, 255, var(--border-opacity));
+}
+
+.focus\:border-black:focus {
+  --border-opacity: 1;
+  border-color: #000;
+  border-color: rgba(0, 0, 0, var(--border-opacity));
 }
 
 .focus\:border-current:focus {
@@ -2297,20 +2360,16 @@ a.toc-link {
   border-color: var(--color-primary);
 }
 
-.focus\:border-oxford:focus {
-  border-color: var(--color-oxford);
+.focus\:border-accent:focus {
+  border-color: var(--color-accent);
 }
 
-.focus\:border-black:focus {
-  border-color: var(--color-black);
+.focus\:border-accent-dark:focus {
+  border-color: var(--color-accent-dark);
 }
 
-.focus\:border-white:focus {
-  border-color: var(--color-white);
-}
-
-.focus\:border-link:focus {
-  border-color: var(--color-link);
+.focus\:border-accent-light:focus {
+  border-color: var(--color-accent-light);
 }
 
 .border-opacity-0 {
@@ -5566,6 +5625,54 @@ a.toc-link {
   color: transparent;
 }
 
+.placeholder-white::-moz-placeholder {
+  --placeholder-opacity: 1;
+  color: #fff;
+  color: rgba(255, 255, 255, var(--placeholder-opacity));
+}
+
+.placeholder-white:-ms-input-placeholder {
+  --placeholder-opacity: 1;
+  color: #fff;
+  color: rgba(255, 255, 255, var(--placeholder-opacity));
+}
+
+.placeholder-white::-ms-input-placeholder {
+  --placeholder-opacity: 1;
+  color: #fff;
+  color: rgba(255, 255, 255, var(--placeholder-opacity));
+}
+
+.placeholder-white::placeholder {
+  --placeholder-opacity: 1;
+  color: #fff;
+  color: rgba(255, 255, 255, var(--placeholder-opacity));
+}
+
+.placeholder-black::-moz-placeholder {
+  --placeholder-opacity: 1;
+  color: #000;
+  color: rgba(0, 0, 0, var(--placeholder-opacity));
+}
+
+.placeholder-black:-ms-input-placeholder {
+  --placeholder-opacity: 1;
+  color: #000;
+  color: rgba(0, 0, 0, var(--placeholder-opacity));
+}
+
+.placeholder-black::-ms-input-placeholder {
+  --placeholder-opacity: 1;
+  color: #000;
+  color: rgba(0, 0, 0, var(--placeholder-opacity));
+}
+
+.placeholder-black::placeholder {
+  --placeholder-opacity: 1;
+  color: #000;
+  color: rgba(0, 0, 0, var(--placeholder-opacity));
+}
+
 .placeholder-current::-moz-placeholder {
   color: currentColor;
 }
@@ -5598,68 +5705,52 @@ a.toc-link {
   color: var(--color-primary);
 }
 
-.placeholder-oxford::-moz-placeholder {
-  color: var(--color-oxford);
+.placeholder-accent::-moz-placeholder {
+  color: var(--color-accent);
 }
 
-.placeholder-oxford:-ms-input-placeholder {
-  color: var(--color-oxford);
+.placeholder-accent:-ms-input-placeholder {
+  color: var(--color-accent);
 }
 
-.placeholder-oxford::-ms-input-placeholder {
-  color: var(--color-oxford);
+.placeholder-accent::-ms-input-placeholder {
+  color: var(--color-accent);
 }
 
-.placeholder-oxford::placeholder {
-  color: var(--color-oxford);
+.placeholder-accent::placeholder {
+  color: var(--color-accent);
 }
 
-.placeholder-black::-moz-placeholder {
-  color: var(--color-black);
+.placeholder-accent-dark::-moz-placeholder {
+  color: var(--color-accent-dark);
 }
 
-.placeholder-black:-ms-input-placeholder {
-  color: var(--color-black);
+.placeholder-accent-dark:-ms-input-placeholder {
+  color: var(--color-accent-dark);
 }
 
-.placeholder-black::-ms-input-placeholder {
-  color: var(--color-black);
+.placeholder-accent-dark::-ms-input-placeholder {
+  color: var(--color-accent-dark);
 }
 
-.placeholder-black::placeholder {
-  color: var(--color-black);
+.placeholder-accent-dark::placeholder {
+  color: var(--color-accent-dark);
 }
 
-.placeholder-white::-moz-placeholder {
-  color: var(--color-white);
+.placeholder-accent-light::-moz-placeholder {
+  color: var(--color-accent-light);
 }
 
-.placeholder-white:-ms-input-placeholder {
-  color: var(--color-white);
+.placeholder-accent-light:-ms-input-placeholder {
+  color: var(--color-accent-light);
 }
 
-.placeholder-white::-ms-input-placeholder {
-  color: var(--color-white);
+.placeholder-accent-light::-ms-input-placeholder {
+  color: var(--color-accent-light);
 }
 
-.placeholder-white::placeholder {
-  color: var(--color-white);
-}
-
-.placeholder-link::-moz-placeholder {
-  color: var(--color-link);
-}
-
-.placeholder-link:-ms-input-placeholder {
-  color: var(--color-link);
-}
-
-.placeholder-link::-ms-input-placeholder {
-  color: var(--color-link);
-}
-
-.placeholder-link::placeholder {
-  color: var(--color-link);
+.placeholder-accent-light::placeholder {
+  color: var(--color-accent-light);
 }
 
 .focus\:placeholder-transparent:focus::-moz-placeholder {
@@ -5676,6 +5767,54 @@ a.toc-link {
 
 .focus\:placeholder-transparent:focus::placeholder {
   color: transparent;
+}
+
+.focus\:placeholder-white:focus::-moz-placeholder {
+  --placeholder-opacity: 1;
+  color: #fff;
+  color: rgba(255, 255, 255, var(--placeholder-opacity));
+}
+
+.focus\:placeholder-white:focus:-ms-input-placeholder {
+  --placeholder-opacity: 1;
+  color: #fff;
+  color: rgba(255, 255, 255, var(--placeholder-opacity));
+}
+
+.focus\:placeholder-white:focus::-ms-input-placeholder {
+  --placeholder-opacity: 1;
+  color: #fff;
+  color: rgba(255, 255, 255, var(--placeholder-opacity));
+}
+
+.focus\:placeholder-white:focus::placeholder {
+  --placeholder-opacity: 1;
+  color: #fff;
+  color: rgba(255, 255, 255, var(--placeholder-opacity));
+}
+
+.focus\:placeholder-black:focus::-moz-placeholder {
+  --placeholder-opacity: 1;
+  color: #000;
+  color: rgba(0, 0, 0, var(--placeholder-opacity));
+}
+
+.focus\:placeholder-black:focus:-ms-input-placeholder {
+  --placeholder-opacity: 1;
+  color: #000;
+  color: rgba(0, 0, 0, var(--placeholder-opacity));
+}
+
+.focus\:placeholder-black:focus::-ms-input-placeholder {
+  --placeholder-opacity: 1;
+  color: #000;
+  color: rgba(0, 0, 0, var(--placeholder-opacity));
+}
+
+.focus\:placeholder-black:focus::placeholder {
+  --placeholder-opacity: 1;
+  color: #000;
+  color: rgba(0, 0, 0, var(--placeholder-opacity));
 }
 
 .focus\:placeholder-current:focus::-moz-placeholder {
@@ -5710,68 +5849,52 @@ a.toc-link {
   color: var(--color-primary);
 }
 
-.focus\:placeholder-oxford:focus::-moz-placeholder {
-  color: var(--color-oxford);
+.focus\:placeholder-accent:focus::-moz-placeholder {
+  color: var(--color-accent);
 }
 
-.focus\:placeholder-oxford:focus:-ms-input-placeholder {
-  color: var(--color-oxford);
+.focus\:placeholder-accent:focus:-ms-input-placeholder {
+  color: var(--color-accent);
 }
 
-.focus\:placeholder-oxford:focus::-ms-input-placeholder {
-  color: var(--color-oxford);
+.focus\:placeholder-accent:focus::-ms-input-placeholder {
+  color: var(--color-accent);
 }
 
-.focus\:placeholder-oxford:focus::placeholder {
-  color: var(--color-oxford);
+.focus\:placeholder-accent:focus::placeholder {
+  color: var(--color-accent);
 }
 
-.focus\:placeholder-black:focus::-moz-placeholder {
-  color: var(--color-black);
+.focus\:placeholder-accent-dark:focus::-moz-placeholder {
+  color: var(--color-accent-dark);
 }
 
-.focus\:placeholder-black:focus:-ms-input-placeholder {
-  color: var(--color-black);
+.focus\:placeholder-accent-dark:focus:-ms-input-placeholder {
+  color: var(--color-accent-dark);
 }
 
-.focus\:placeholder-black:focus::-ms-input-placeholder {
-  color: var(--color-black);
+.focus\:placeholder-accent-dark:focus::-ms-input-placeholder {
+  color: var(--color-accent-dark);
 }
 
-.focus\:placeholder-black:focus::placeholder {
-  color: var(--color-black);
+.focus\:placeholder-accent-dark:focus::placeholder {
+  color: var(--color-accent-dark);
 }
 
-.focus\:placeholder-white:focus::-moz-placeholder {
-  color: var(--color-white);
+.focus\:placeholder-accent-light:focus::-moz-placeholder {
+  color: var(--color-accent-light);
 }
 
-.focus\:placeholder-white:focus:-ms-input-placeholder {
-  color: var(--color-white);
+.focus\:placeholder-accent-light:focus:-ms-input-placeholder {
+  color: var(--color-accent-light);
 }
 
-.focus\:placeholder-white:focus::-ms-input-placeholder {
-  color: var(--color-white);
+.focus\:placeholder-accent-light:focus::-ms-input-placeholder {
+  color: var(--color-accent-light);
 }
 
-.focus\:placeholder-white:focus::placeholder {
-  color: var(--color-white);
-}
-
-.focus\:placeholder-link:focus::-moz-placeholder {
-  color: var(--color-link);
-}
-
-.focus\:placeholder-link:focus:-ms-input-placeholder {
-  color: var(--color-link);
-}
-
-.focus\:placeholder-link:focus::-ms-input-placeholder {
-  color: var(--color-link);
-}
-
-.focus\:placeholder-link:focus::placeholder {
-  color: var(--color-link);
+.focus\:placeholder-accent-light:focus::placeholder {
+  color: var(--color-accent-light);
 }
 
 .placeholder-opacity-0::-moz-placeholder {
@@ -6213,6 +6336,18 @@ a.toc-link {
   color: transparent;
 }
 
+.text-white {
+  --text-opacity: 1;
+  color: #fff;
+  color: rgba(255, 255, 255, var(--text-opacity));
+}
+
+.text-black {
+  --text-opacity: 1;
+  color: #000;
+  color: rgba(0, 0, 0, var(--text-opacity));
+}
+
 .text-current {
   color: currentColor;
 }
@@ -6221,24 +6356,32 @@ a.toc-link {
   color: var(--color-primary);
 }
 
-.text-oxford {
-  color: var(--color-oxford);
+.text-accent {
+  color: var(--color-accent);
 }
 
-.text-black {
-  color: var(--color-black);
+.text-accent-dark {
+  color: var(--color-accent-dark);
 }
 
-.text-white {
-  color: var(--color-white);
-}
-
-.text-link {
-  color: var(--color-link);
+.text-accent-light {
+  color: var(--color-accent-light);
 }
 
 .hover\:text-transparent:hover {
   color: transparent;
+}
+
+.hover\:text-white:hover {
+  --text-opacity: 1;
+  color: #fff;
+  color: rgba(255, 255, 255, var(--text-opacity));
+}
+
+.hover\:text-black:hover {
+  --text-opacity: 1;
+  color: #000;
+  color: rgba(0, 0, 0, var(--text-opacity));
 }
 
 .hover\:text-current:hover {
@@ -6249,24 +6392,32 @@ a.toc-link {
   color: var(--color-primary);
 }
 
-.hover\:text-oxford:hover {
-  color: var(--color-oxford);
+.hover\:text-accent:hover {
+  color: var(--color-accent);
 }
 
-.hover\:text-black:hover {
-  color: var(--color-black);
+.hover\:text-accent-dark:hover {
+  color: var(--color-accent-dark);
 }
 
-.hover\:text-white:hover {
-  color: var(--color-white);
-}
-
-.hover\:text-link:hover {
-  color: var(--color-link);
+.hover\:text-accent-light:hover {
+  color: var(--color-accent-light);
 }
 
 .focus\:text-transparent:focus {
   color: transparent;
+}
+
+.focus\:text-white:focus {
+  --text-opacity: 1;
+  color: #fff;
+  color: rgba(255, 255, 255, var(--text-opacity));
+}
+
+.focus\:text-black:focus {
+  --text-opacity: 1;
+  color: #000;
+  color: rgba(0, 0, 0, var(--text-opacity));
 }
 
 .focus\:text-current:focus {
@@ -6277,20 +6428,16 @@ a.toc-link {
   color: var(--color-primary);
 }
 
-.focus\:text-oxford:focus {
-  color: var(--color-oxford);
+.focus\:text-accent:focus {
+  color: var(--color-accent);
 }
 
-.focus\:text-black:focus {
-  color: var(--color-black);
+.focus\:text-accent-dark:focus {
+  color: var(--color-accent-dark);
 }
 
-.focus\:text-white:focus {
-  color: var(--color-white);
-}
-
-.focus\:text-link:focus {
-  color: var(--color-link);
+.focus\:text-accent-light:focus {
+  color: var(--color-accent-light);
 }
 
 .text-opacity-0 {
@@ -10113,6 +10260,18 @@ a.toc-link {
     border-color: transparent;
   }
 
+  .sm\:divide-white > :not(template) ~ :not(template) {
+    --divide-opacity: 1;
+    border-color: #fff;
+    border-color: rgba(255, 255, 255, var(--divide-opacity));
+  }
+
+  .sm\:divide-black > :not(template) ~ :not(template) {
+    --divide-opacity: 1;
+    border-color: #000;
+    border-color: rgba(0, 0, 0, var(--divide-opacity));
+  }
+
   .sm\:divide-current > :not(template) ~ :not(template) {
     border-color: currentColor;
   }
@@ -10121,20 +10280,16 @@ a.toc-link {
     border-color: var(--color-primary);
   }
 
-  .sm\:divide-oxford > :not(template) ~ :not(template) {
-    border-color: var(--color-oxford);
+  .sm\:divide-accent > :not(template) ~ :not(template) {
+    border-color: var(--color-accent);
   }
 
-  .sm\:divide-black > :not(template) ~ :not(template) {
-    border-color: var(--color-black);
+  .sm\:divide-accent-dark > :not(template) ~ :not(template) {
+    border-color: var(--color-accent-dark);
   }
 
-  .sm\:divide-white > :not(template) ~ :not(template) {
-    border-color: var(--color-white);
-  }
-
-  .sm\:divide-link > :not(template) ~ :not(template) {
-    border-color: var(--color-link);
+  .sm\:divide-accent-light > :not(template) ~ :not(template) {
+    border-color: var(--color-accent-light);
   }
 
   .sm\:divide-solid > :not(template) ~ :not(template) {
@@ -10262,6 +10417,18 @@ a.toc-link {
     background-color: transparent;
   }
 
+  .sm\:bg-white {
+    --bg-opacity: 1;
+    background-color: #fff;
+    background-color: rgba(255, 255, 255, var(--bg-opacity));
+  }
+
+  .sm\:bg-black {
+    --bg-opacity: 1;
+    background-color: #000;
+    background-color: rgba(0, 0, 0, var(--bg-opacity));
+  }
+
   .sm\:bg-current {
     background-color: currentColor;
   }
@@ -10270,24 +10437,32 @@ a.toc-link {
     background-color: var(--color-primary);
   }
 
-  .sm\:bg-oxford {
-    background-color: var(--color-oxford);
+  .sm\:bg-accent {
+    background-color: var(--color-accent);
   }
 
-  .sm\:bg-black {
-    background-color: var(--color-black);
+  .sm\:bg-accent-dark {
+    background-color: var(--color-accent-dark);
   }
 
-  .sm\:bg-white {
-    background-color: var(--color-white);
-  }
-
-  .sm\:bg-link {
-    background-color: var(--color-link);
+  .sm\:bg-accent-light {
+    background-color: var(--color-accent-light);
   }
 
   .sm\:hover\:bg-transparent:hover {
     background-color: transparent;
+  }
+
+  .sm\:hover\:bg-white:hover {
+    --bg-opacity: 1;
+    background-color: #fff;
+    background-color: rgba(255, 255, 255, var(--bg-opacity));
+  }
+
+  .sm\:hover\:bg-black:hover {
+    --bg-opacity: 1;
+    background-color: #000;
+    background-color: rgba(0, 0, 0, var(--bg-opacity));
   }
 
   .sm\:hover\:bg-current:hover {
@@ -10298,24 +10473,32 @@ a.toc-link {
     background-color: var(--color-primary);
   }
 
-  .sm\:hover\:bg-oxford:hover {
-    background-color: var(--color-oxford);
+  .sm\:hover\:bg-accent:hover {
+    background-color: var(--color-accent);
   }
 
-  .sm\:hover\:bg-black:hover {
-    background-color: var(--color-black);
+  .sm\:hover\:bg-accent-dark:hover {
+    background-color: var(--color-accent-dark);
   }
 
-  .sm\:hover\:bg-white:hover {
-    background-color: var(--color-white);
-  }
-
-  .sm\:hover\:bg-link:hover {
-    background-color: var(--color-link);
+  .sm\:hover\:bg-accent-light:hover {
+    background-color: var(--color-accent-light);
   }
 
   .sm\:focus\:bg-transparent:focus {
     background-color: transparent;
+  }
+
+  .sm\:focus\:bg-white:focus {
+    --bg-opacity: 1;
+    background-color: #fff;
+    background-color: rgba(255, 255, 255, var(--bg-opacity));
+  }
+
+  .sm\:focus\:bg-black:focus {
+    --bg-opacity: 1;
+    background-color: #000;
+    background-color: rgba(0, 0, 0, var(--bg-opacity));
   }
 
   .sm\:focus\:bg-current:focus {
@@ -10326,20 +10509,16 @@ a.toc-link {
     background-color: var(--color-primary);
   }
 
-  .sm\:focus\:bg-oxford:focus {
-    background-color: var(--color-oxford);
+  .sm\:focus\:bg-accent:focus {
+    background-color: var(--color-accent);
   }
 
-  .sm\:focus\:bg-black:focus {
-    background-color: var(--color-black);
+  .sm\:focus\:bg-accent-dark:focus {
+    background-color: var(--color-accent-dark);
   }
 
-  .sm\:focus\:bg-white:focus {
-    background-color: var(--color-white);
-  }
-
-  .sm\:focus\:bg-link:focus {
-    background-color: var(--color-link);
+  .sm\:focus\:bg-accent-light:focus {
+    background-color: var(--color-accent-light);
   }
 
   .sm\:bg-none {
@@ -10383,6 +10562,16 @@ a.toc-link {
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(0, 0, 0, 0));
   }
 
+  .sm\:from-white {
+    --gradient-from-color: #fff;
+    --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
+  }
+
+  .sm\:from-black {
+    --gradient-from-color: #000;
+    --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(0, 0, 0, 0));
+  }
+
   .sm\:from-current {
     --gradient-from-color: currentColor;
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
@@ -10393,28 +10582,33 @@ a.toc-link {
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
   }
 
-  .sm\:from-oxford {
-    --gradient-from-color: var(--color-oxford);
+  .sm\:from-accent {
+    --gradient-from-color: var(--color-accent);
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
   }
 
-  .sm\:from-black {
-    --gradient-from-color: var(--color-black);
+  .sm\:from-accent-dark {
+    --gradient-from-color: var(--color-accent-dark);
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
   }
 
-  .sm\:from-white {
-    --gradient-from-color: var(--color-white);
-    --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
-  }
-
-  .sm\:from-link {
-    --gradient-from-color: var(--color-link);
+  .sm\:from-accent-light {
+    --gradient-from-color: var(--color-accent-light);
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
   }
 
   .sm\:via-transparent {
     --gradient-via-color: transparent;
+    --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(0, 0, 0, 0));
+  }
+
+  .sm\:via-white {
+    --gradient-via-color: #fff;
+    --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
+  }
+
+  .sm\:via-black {
+    --gradient-via-color: #000;
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(0, 0, 0, 0));
   }
 
@@ -10428,28 +10622,31 @@ a.toc-link {
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
   }
 
-  .sm\:via-oxford {
-    --gradient-via-color: var(--color-oxford);
+  .sm\:via-accent {
+    --gradient-via-color: var(--color-accent);
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
   }
 
-  .sm\:via-black {
-    --gradient-via-color: var(--color-black);
+  .sm\:via-accent-dark {
+    --gradient-via-color: var(--color-accent-dark);
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
   }
 
-  .sm\:via-white {
-    --gradient-via-color: var(--color-white);
-    --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
-  }
-
-  .sm\:via-link {
-    --gradient-via-color: var(--color-link);
+  .sm\:via-accent-light {
+    --gradient-via-color: var(--color-accent-light);
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
   }
 
   .sm\:to-transparent {
     --gradient-to-color: transparent;
+  }
+
+  .sm\:to-white {
+    --gradient-to-color: #fff;
+  }
+
+  .sm\:to-black {
+    --gradient-to-color: #000;
   }
 
   .sm\:to-current {
@@ -10460,24 +10657,30 @@ a.toc-link {
     --gradient-to-color: var(--color-primary);
   }
 
-  .sm\:to-oxford {
-    --gradient-to-color: var(--color-oxford);
+  .sm\:to-accent {
+    --gradient-to-color: var(--color-accent);
   }
 
-  .sm\:to-black {
-    --gradient-to-color: var(--color-black);
+  .sm\:to-accent-dark {
+    --gradient-to-color: var(--color-accent-dark);
   }
 
-  .sm\:to-white {
-    --gradient-to-color: var(--color-white);
-  }
-
-  .sm\:to-link {
-    --gradient-to-color: var(--color-link);
+  .sm\:to-accent-light {
+    --gradient-to-color: var(--color-accent-light);
   }
 
   .sm\:hover\:from-transparent:hover {
     --gradient-from-color: transparent;
+    --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(0, 0, 0, 0));
+  }
+
+  .sm\:hover\:from-white:hover {
+    --gradient-from-color: #fff;
+    --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
+  }
+
+  .sm\:hover\:from-black:hover {
+    --gradient-from-color: #000;
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(0, 0, 0, 0));
   }
 
@@ -10491,28 +10694,33 @@ a.toc-link {
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
   }
 
-  .sm\:hover\:from-oxford:hover {
-    --gradient-from-color: var(--color-oxford);
+  .sm\:hover\:from-accent:hover {
+    --gradient-from-color: var(--color-accent);
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
   }
 
-  .sm\:hover\:from-black:hover {
-    --gradient-from-color: var(--color-black);
+  .sm\:hover\:from-accent-dark:hover {
+    --gradient-from-color: var(--color-accent-dark);
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
   }
 
-  .sm\:hover\:from-white:hover {
-    --gradient-from-color: var(--color-white);
-    --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
-  }
-
-  .sm\:hover\:from-link:hover {
-    --gradient-from-color: var(--color-link);
+  .sm\:hover\:from-accent-light:hover {
+    --gradient-from-color: var(--color-accent-light);
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
   }
 
   .sm\:hover\:via-transparent:hover {
     --gradient-via-color: transparent;
+    --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(0, 0, 0, 0));
+  }
+
+  .sm\:hover\:via-white:hover {
+    --gradient-via-color: #fff;
+    --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
+  }
+
+  .sm\:hover\:via-black:hover {
+    --gradient-via-color: #000;
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(0, 0, 0, 0));
   }
 
@@ -10526,28 +10734,31 @@ a.toc-link {
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
   }
 
-  .sm\:hover\:via-oxford:hover {
-    --gradient-via-color: var(--color-oxford);
+  .sm\:hover\:via-accent:hover {
+    --gradient-via-color: var(--color-accent);
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
   }
 
-  .sm\:hover\:via-black:hover {
-    --gradient-via-color: var(--color-black);
+  .sm\:hover\:via-accent-dark:hover {
+    --gradient-via-color: var(--color-accent-dark);
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
   }
 
-  .sm\:hover\:via-white:hover {
-    --gradient-via-color: var(--color-white);
-    --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
-  }
-
-  .sm\:hover\:via-link:hover {
-    --gradient-via-color: var(--color-link);
+  .sm\:hover\:via-accent-light:hover {
+    --gradient-via-color: var(--color-accent-light);
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
   }
 
   .sm\:hover\:to-transparent:hover {
     --gradient-to-color: transparent;
+  }
+
+  .sm\:hover\:to-white:hover {
+    --gradient-to-color: #fff;
+  }
+
+  .sm\:hover\:to-black:hover {
+    --gradient-to-color: #000;
   }
 
   .sm\:hover\:to-current:hover {
@@ -10558,24 +10769,30 @@ a.toc-link {
     --gradient-to-color: var(--color-primary);
   }
 
-  .sm\:hover\:to-oxford:hover {
-    --gradient-to-color: var(--color-oxford);
+  .sm\:hover\:to-accent:hover {
+    --gradient-to-color: var(--color-accent);
   }
 
-  .sm\:hover\:to-black:hover {
-    --gradient-to-color: var(--color-black);
+  .sm\:hover\:to-accent-dark:hover {
+    --gradient-to-color: var(--color-accent-dark);
   }
 
-  .sm\:hover\:to-white:hover {
-    --gradient-to-color: var(--color-white);
-  }
-
-  .sm\:hover\:to-link:hover {
-    --gradient-to-color: var(--color-link);
+  .sm\:hover\:to-accent-light:hover {
+    --gradient-to-color: var(--color-accent-light);
   }
 
   .sm\:focus\:from-transparent:focus {
     --gradient-from-color: transparent;
+    --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(0, 0, 0, 0));
+  }
+
+  .sm\:focus\:from-white:focus {
+    --gradient-from-color: #fff;
+    --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
+  }
+
+  .sm\:focus\:from-black:focus {
+    --gradient-from-color: #000;
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(0, 0, 0, 0));
   }
 
@@ -10589,28 +10806,33 @@ a.toc-link {
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
   }
 
-  .sm\:focus\:from-oxford:focus {
-    --gradient-from-color: var(--color-oxford);
+  .sm\:focus\:from-accent:focus {
+    --gradient-from-color: var(--color-accent);
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
   }
 
-  .sm\:focus\:from-black:focus {
-    --gradient-from-color: var(--color-black);
+  .sm\:focus\:from-accent-dark:focus {
+    --gradient-from-color: var(--color-accent-dark);
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
   }
 
-  .sm\:focus\:from-white:focus {
-    --gradient-from-color: var(--color-white);
-    --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
-  }
-
-  .sm\:focus\:from-link:focus {
-    --gradient-from-color: var(--color-link);
+  .sm\:focus\:from-accent-light:focus {
+    --gradient-from-color: var(--color-accent-light);
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
   }
 
   .sm\:focus\:via-transparent:focus {
     --gradient-via-color: transparent;
+    --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(0, 0, 0, 0));
+  }
+
+  .sm\:focus\:via-white:focus {
+    --gradient-via-color: #fff;
+    --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
+  }
+
+  .sm\:focus\:via-black:focus {
+    --gradient-via-color: #000;
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(0, 0, 0, 0));
   }
 
@@ -10624,28 +10846,31 @@ a.toc-link {
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
   }
 
-  .sm\:focus\:via-oxford:focus {
-    --gradient-via-color: var(--color-oxford);
+  .sm\:focus\:via-accent:focus {
+    --gradient-via-color: var(--color-accent);
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
   }
 
-  .sm\:focus\:via-black:focus {
-    --gradient-via-color: var(--color-black);
+  .sm\:focus\:via-accent-dark:focus {
+    --gradient-via-color: var(--color-accent-dark);
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
   }
 
-  .sm\:focus\:via-white:focus {
-    --gradient-via-color: var(--color-white);
-    --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
-  }
-
-  .sm\:focus\:via-link:focus {
-    --gradient-via-color: var(--color-link);
+  .sm\:focus\:via-accent-light:focus {
+    --gradient-via-color: var(--color-accent-light);
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
   }
 
   .sm\:focus\:to-transparent:focus {
     --gradient-to-color: transparent;
+  }
+
+  .sm\:focus\:to-white:focus {
+    --gradient-to-color: #fff;
+  }
+
+  .sm\:focus\:to-black:focus {
+    --gradient-to-color: #000;
   }
 
   .sm\:focus\:to-current:focus {
@@ -10656,20 +10881,16 @@ a.toc-link {
     --gradient-to-color: var(--color-primary);
   }
 
-  .sm\:focus\:to-oxford:focus {
-    --gradient-to-color: var(--color-oxford);
+  .sm\:focus\:to-accent:focus {
+    --gradient-to-color: var(--color-accent);
   }
 
-  .sm\:focus\:to-black:focus {
-    --gradient-to-color: var(--color-black);
+  .sm\:focus\:to-accent-dark:focus {
+    --gradient-to-color: var(--color-accent-dark);
   }
 
-  .sm\:focus\:to-white:focus {
-    --gradient-to-color: var(--color-white);
-  }
-
-  .sm\:focus\:to-link:focus {
-    --gradient-to-color: var(--color-link);
+  .sm\:focus\:to-accent-light:focus {
+    --gradient-to-color: var(--color-accent-light);
   }
 
   .sm\:bg-opacity-0 {
@@ -10816,6 +11037,18 @@ a.toc-link {
     border-color: transparent;
   }
 
+  .sm\:border-white {
+    --border-opacity: 1;
+    border-color: #fff;
+    border-color: rgba(255, 255, 255, var(--border-opacity));
+  }
+
+  .sm\:border-black {
+    --border-opacity: 1;
+    border-color: #000;
+    border-color: rgba(0, 0, 0, var(--border-opacity));
+  }
+
   .sm\:border-current {
     border-color: currentColor;
   }
@@ -10824,24 +11057,32 @@ a.toc-link {
     border-color: var(--color-primary);
   }
 
-  .sm\:border-oxford {
-    border-color: var(--color-oxford);
+  .sm\:border-accent {
+    border-color: var(--color-accent);
   }
 
-  .sm\:border-black {
-    border-color: var(--color-black);
+  .sm\:border-accent-dark {
+    border-color: var(--color-accent-dark);
   }
 
-  .sm\:border-white {
-    border-color: var(--color-white);
-  }
-
-  .sm\:border-link {
-    border-color: var(--color-link);
+  .sm\:border-accent-light {
+    border-color: var(--color-accent-light);
   }
 
   .sm\:hover\:border-transparent:hover {
     border-color: transparent;
+  }
+
+  .sm\:hover\:border-white:hover {
+    --border-opacity: 1;
+    border-color: #fff;
+    border-color: rgba(255, 255, 255, var(--border-opacity));
+  }
+
+  .sm\:hover\:border-black:hover {
+    --border-opacity: 1;
+    border-color: #000;
+    border-color: rgba(0, 0, 0, var(--border-opacity));
   }
 
   .sm\:hover\:border-current:hover {
@@ -10852,24 +11093,32 @@ a.toc-link {
     border-color: var(--color-primary);
   }
 
-  .sm\:hover\:border-oxford:hover {
-    border-color: var(--color-oxford);
+  .sm\:hover\:border-accent:hover {
+    border-color: var(--color-accent);
   }
 
-  .sm\:hover\:border-black:hover {
-    border-color: var(--color-black);
+  .sm\:hover\:border-accent-dark:hover {
+    border-color: var(--color-accent-dark);
   }
 
-  .sm\:hover\:border-white:hover {
-    border-color: var(--color-white);
-  }
-
-  .sm\:hover\:border-link:hover {
-    border-color: var(--color-link);
+  .sm\:hover\:border-accent-light:hover {
+    border-color: var(--color-accent-light);
   }
 
   .sm\:focus\:border-transparent:focus {
     border-color: transparent;
+  }
+
+  .sm\:focus\:border-white:focus {
+    --border-opacity: 1;
+    border-color: #fff;
+    border-color: rgba(255, 255, 255, var(--border-opacity));
+  }
+
+  .sm\:focus\:border-black:focus {
+    --border-opacity: 1;
+    border-color: #000;
+    border-color: rgba(0, 0, 0, var(--border-opacity));
   }
 
   .sm\:focus\:border-current:focus {
@@ -10880,20 +11129,16 @@ a.toc-link {
     border-color: var(--color-primary);
   }
 
-  .sm\:focus\:border-oxford:focus {
-    border-color: var(--color-oxford);
+  .sm\:focus\:border-accent:focus {
+    border-color: var(--color-accent);
   }
 
-  .sm\:focus\:border-black:focus {
-    border-color: var(--color-black);
+  .sm\:focus\:border-accent-dark:focus {
+    border-color: var(--color-accent-dark);
   }
 
-  .sm\:focus\:border-white:focus {
-    border-color: var(--color-white);
-  }
-
-  .sm\:focus\:border-link:focus {
-    border-color: var(--color-link);
+  .sm\:focus\:border-accent-light:focus {
+    border-color: var(--color-accent-light);
   }
 
   .sm\:border-opacity-0 {
@@ -14149,6 +14394,54 @@ a.toc-link {
     color: transparent;
   }
 
+  .sm\:placeholder-white::-moz-placeholder {
+    --placeholder-opacity: 1;
+    color: #fff;
+    color: rgba(255, 255, 255, var(--placeholder-opacity));
+  }
+
+  .sm\:placeholder-white:-ms-input-placeholder {
+    --placeholder-opacity: 1;
+    color: #fff;
+    color: rgba(255, 255, 255, var(--placeholder-opacity));
+  }
+
+  .sm\:placeholder-white::-ms-input-placeholder {
+    --placeholder-opacity: 1;
+    color: #fff;
+    color: rgba(255, 255, 255, var(--placeholder-opacity));
+  }
+
+  .sm\:placeholder-white::placeholder {
+    --placeholder-opacity: 1;
+    color: #fff;
+    color: rgba(255, 255, 255, var(--placeholder-opacity));
+  }
+
+  .sm\:placeholder-black::-moz-placeholder {
+    --placeholder-opacity: 1;
+    color: #000;
+    color: rgba(0, 0, 0, var(--placeholder-opacity));
+  }
+
+  .sm\:placeholder-black:-ms-input-placeholder {
+    --placeholder-opacity: 1;
+    color: #000;
+    color: rgba(0, 0, 0, var(--placeholder-opacity));
+  }
+
+  .sm\:placeholder-black::-ms-input-placeholder {
+    --placeholder-opacity: 1;
+    color: #000;
+    color: rgba(0, 0, 0, var(--placeholder-opacity));
+  }
+
+  .sm\:placeholder-black::placeholder {
+    --placeholder-opacity: 1;
+    color: #000;
+    color: rgba(0, 0, 0, var(--placeholder-opacity));
+  }
+
   .sm\:placeholder-current::-moz-placeholder {
     color: currentColor;
   }
@@ -14181,68 +14474,52 @@ a.toc-link {
     color: var(--color-primary);
   }
 
-  .sm\:placeholder-oxford::-moz-placeholder {
-    color: var(--color-oxford);
+  .sm\:placeholder-accent::-moz-placeholder {
+    color: var(--color-accent);
   }
 
-  .sm\:placeholder-oxford:-ms-input-placeholder {
-    color: var(--color-oxford);
+  .sm\:placeholder-accent:-ms-input-placeholder {
+    color: var(--color-accent);
   }
 
-  .sm\:placeholder-oxford::-ms-input-placeholder {
-    color: var(--color-oxford);
+  .sm\:placeholder-accent::-ms-input-placeholder {
+    color: var(--color-accent);
   }
 
-  .sm\:placeholder-oxford::placeholder {
-    color: var(--color-oxford);
+  .sm\:placeholder-accent::placeholder {
+    color: var(--color-accent);
   }
 
-  .sm\:placeholder-black::-moz-placeholder {
-    color: var(--color-black);
+  .sm\:placeholder-accent-dark::-moz-placeholder {
+    color: var(--color-accent-dark);
   }
 
-  .sm\:placeholder-black:-ms-input-placeholder {
-    color: var(--color-black);
+  .sm\:placeholder-accent-dark:-ms-input-placeholder {
+    color: var(--color-accent-dark);
   }
 
-  .sm\:placeholder-black::-ms-input-placeholder {
-    color: var(--color-black);
+  .sm\:placeholder-accent-dark::-ms-input-placeholder {
+    color: var(--color-accent-dark);
   }
 
-  .sm\:placeholder-black::placeholder {
-    color: var(--color-black);
+  .sm\:placeholder-accent-dark::placeholder {
+    color: var(--color-accent-dark);
   }
 
-  .sm\:placeholder-white::-moz-placeholder {
-    color: var(--color-white);
+  .sm\:placeholder-accent-light::-moz-placeholder {
+    color: var(--color-accent-light);
   }
 
-  .sm\:placeholder-white:-ms-input-placeholder {
-    color: var(--color-white);
+  .sm\:placeholder-accent-light:-ms-input-placeholder {
+    color: var(--color-accent-light);
   }
 
-  .sm\:placeholder-white::-ms-input-placeholder {
-    color: var(--color-white);
+  .sm\:placeholder-accent-light::-ms-input-placeholder {
+    color: var(--color-accent-light);
   }
 
-  .sm\:placeholder-white::placeholder {
-    color: var(--color-white);
-  }
-
-  .sm\:placeholder-link::-moz-placeholder {
-    color: var(--color-link);
-  }
-
-  .sm\:placeholder-link:-ms-input-placeholder {
-    color: var(--color-link);
-  }
-
-  .sm\:placeholder-link::-ms-input-placeholder {
-    color: var(--color-link);
-  }
-
-  .sm\:placeholder-link::placeholder {
-    color: var(--color-link);
+  .sm\:placeholder-accent-light::placeholder {
+    color: var(--color-accent-light);
   }
 
   .sm\:focus\:placeholder-transparent:focus::-moz-placeholder {
@@ -14259,6 +14536,54 @@ a.toc-link {
 
   .sm\:focus\:placeholder-transparent:focus::placeholder {
     color: transparent;
+  }
+
+  .sm\:focus\:placeholder-white:focus::-moz-placeholder {
+    --placeholder-opacity: 1;
+    color: #fff;
+    color: rgba(255, 255, 255, var(--placeholder-opacity));
+  }
+
+  .sm\:focus\:placeholder-white:focus:-ms-input-placeholder {
+    --placeholder-opacity: 1;
+    color: #fff;
+    color: rgba(255, 255, 255, var(--placeholder-opacity));
+  }
+
+  .sm\:focus\:placeholder-white:focus::-ms-input-placeholder {
+    --placeholder-opacity: 1;
+    color: #fff;
+    color: rgba(255, 255, 255, var(--placeholder-opacity));
+  }
+
+  .sm\:focus\:placeholder-white:focus::placeholder {
+    --placeholder-opacity: 1;
+    color: #fff;
+    color: rgba(255, 255, 255, var(--placeholder-opacity));
+  }
+
+  .sm\:focus\:placeholder-black:focus::-moz-placeholder {
+    --placeholder-opacity: 1;
+    color: #000;
+    color: rgba(0, 0, 0, var(--placeholder-opacity));
+  }
+
+  .sm\:focus\:placeholder-black:focus:-ms-input-placeholder {
+    --placeholder-opacity: 1;
+    color: #000;
+    color: rgba(0, 0, 0, var(--placeholder-opacity));
+  }
+
+  .sm\:focus\:placeholder-black:focus::-ms-input-placeholder {
+    --placeholder-opacity: 1;
+    color: #000;
+    color: rgba(0, 0, 0, var(--placeholder-opacity));
+  }
+
+  .sm\:focus\:placeholder-black:focus::placeholder {
+    --placeholder-opacity: 1;
+    color: #000;
+    color: rgba(0, 0, 0, var(--placeholder-opacity));
   }
 
   .sm\:focus\:placeholder-current:focus::-moz-placeholder {
@@ -14293,68 +14618,52 @@ a.toc-link {
     color: var(--color-primary);
   }
 
-  .sm\:focus\:placeholder-oxford:focus::-moz-placeholder {
-    color: var(--color-oxford);
+  .sm\:focus\:placeholder-accent:focus::-moz-placeholder {
+    color: var(--color-accent);
   }
 
-  .sm\:focus\:placeholder-oxford:focus:-ms-input-placeholder {
-    color: var(--color-oxford);
+  .sm\:focus\:placeholder-accent:focus:-ms-input-placeholder {
+    color: var(--color-accent);
   }
 
-  .sm\:focus\:placeholder-oxford:focus::-ms-input-placeholder {
-    color: var(--color-oxford);
+  .sm\:focus\:placeholder-accent:focus::-ms-input-placeholder {
+    color: var(--color-accent);
   }
 
-  .sm\:focus\:placeholder-oxford:focus::placeholder {
-    color: var(--color-oxford);
+  .sm\:focus\:placeholder-accent:focus::placeholder {
+    color: var(--color-accent);
   }
 
-  .sm\:focus\:placeholder-black:focus::-moz-placeholder {
-    color: var(--color-black);
+  .sm\:focus\:placeholder-accent-dark:focus::-moz-placeholder {
+    color: var(--color-accent-dark);
   }
 
-  .sm\:focus\:placeholder-black:focus:-ms-input-placeholder {
-    color: var(--color-black);
+  .sm\:focus\:placeholder-accent-dark:focus:-ms-input-placeholder {
+    color: var(--color-accent-dark);
   }
 
-  .sm\:focus\:placeholder-black:focus::-ms-input-placeholder {
-    color: var(--color-black);
+  .sm\:focus\:placeholder-accent-dark:focus::-ms-input-placeholder {
+    color: var(--color-accent-dark);
   }
 
-  .sm\:focus\:placeholder-black:focus::placeholder {
-    color: var(--color-black);
+  .sm\:focus\:placeholder-accent-dark:focus::placeholder {
+    color: var(--color-accent-dark);
   }
 
-  .sm\:focus\:placeholder-white:focus::-moz-placeholder {
-    color: var(--color-white);
+  .sm\:focus\:placeholder-accent-light:focus::-moz-placeholder {
+    color: var(--color-accent-light);
   }
 
-  .sm\:focus\:placeholder-white:focus:-ms-input-placeholder {
-    color: var(--color-white);
+  .sm\:focus\:placeholder-accent-light:focus:-ms-input-placeholder {
+    color: var(--color-accent-light);
   }
 
-  .sm\:focus\:placeholder-white:focus::-ms-input-placeholder {
-    color: var(--color-white);
+  .sm\:focus\:placeholder-accent-light:focus::-ms-input-placeholder {
+    color: var(--color-accent-light);
   }
 
-  .sm\:focus\:placeholder-white:focus::placeholder {
-    color: var(--color-white);
-  }
-
-  .sm\:focus\:placeholder-link:focus::-moz-placeholder {
-    color: var(--color-link);
-  }
-
-  .sm\:focus\:placeholder-link:focus:-ms-input-placeholder {
-    color: var(--color-link);
-  }
-
-  .sm\:focus\:placeholder-link:focus::-ms-input-placeholder {
-    color: var(--color-link);
-  }
-
-  .sm\:focus\:placeholder-link:focus::placeholder {
-    color: var(--color-link);
+  .sm\:focus\:placeholder-accent-light:focus::placeholder {
+    color: var(--color-accent-light);
   }
 
   .sm\:placeholder-opacity-0::-moz-placeholder {
@@ -14796,6 +15105,18 @@ a.toc-link {
     color: transparent;
   }
 
+  .sm\:text-white {
+    --text-opacity: 1;
+    color: #fff;
+    color: rgba(255, 255, 255, var(--text-opacity));
+  }
+
+  .sm\:text-black {
+    --text-opacity: 1;
+    color: #000;
+    color: rgba(0, 0, 0, var(--text-opacity));
+  }
+
   .sm\:text-current {
     color: currentColor;
   }
@@ -14804,24 +15125,32 @@ a.toc-link {
     color: var(--color-primary);
   }
 
-  .sm\:text-oxford {
-    color: var(--color-oxford);
+  .sm\:text-accent {
+    color: var(--color-accent);
   }
 
-  .sm\:text-black {
-    color: var(--color-black);
+  .sm\:text-accent-dark {
+    color: var(--color-accent-dark);
   }
 
-  .sm\:text-white {
-    color: var(--color-white);
-  }
-
-  .sm\:text-link {
-    color: var(--color-link);
+  .sm\:text-accent-light {
+    color: var(--color-accent-light);
   }
 
   .sm\:hover\:text-transparent:hover {
     color: transparent;
+  }
+
+  .sm\:hover\:text-white:hover {
+    --text-opacity: 1;
+    color: #fff;
+    color: rgba(255, 255, 255, var(--text-opacity));
+  }
+
+  .sm\:hover\:text-black:hover {
+    --text-opacity: 1;
+    color: #000;
+    color: rgba(0, 0, 0, var(--text-opacity));
   }
 
   .sm\:hover\:text-current:hover {
@@ -14832,24 +15161,32 @@ a.toc-link {
     color: var(--color-primary);
   }
 
-  .sm\:hover\:text-oxford:hover {
-    color: var(--color-oxford);
+  .sm\:hover\:text-accent:hover {
+    color: var(--color-accent);
   }
 
-  .sm\:hover\:text-black:hover {
-    color: var(--color-black);
+  .sm\:hover\:text-accent-dark:hover {
+    color: var(--color-accent-dark);
   }
 
-  .sm\:hover\:text-white:hover {
-    color: var(--color-white);
-  }
-
-  .sm\:hover\:text-link:hover {
-    color: var(--color-link);
+  .sm\:hover\:text-accent-light:hover {
+    color: var(--color-accent-light);
   }
 
   .sm\:focus\:text-transparent:focus {
     color: transparent;
+  }
+
+  .sm\:focus\:text-white:focus {
+    --text-opacity: 1;
+    color: #fff;
+    color: rgba(255, 255, 255, var(--text-opacity));
+  }
+
+  .sm\:focus\:text-black:focus {
+    --text-opacity: 1;
+    color: #000;
+    color: rgba(0, 0, 0, var(--text-opacity));
   }
 
   .sm\:focus\:text-current:focus {
@@ -14860,20 +15197,16 @@ a.toc-link {
     color: var(--color-primary);
   }
 
-  .sm\:focus\:text-oxford:focus {
-    color: var(--color-oxford);
+  .sm\:focus\:text-accent:focus {
+    color: var(--color-accent);
   }
 
-  .sm\:focus\:text-black:focus {
-    color: var(--color-black);
+  .sm\:focus\:text-accent-dark:focus {
+    color: var(--color-accent-dark);
   }
 
-  .sm\:focus\:text-white:focus {
-    color: var(--color-white);
-  }
-
-  .sm\:focus\:text-link:focus {
-    color: var(--color-link);
+  .sm\:focus\:text-accent-light:focus {
+    color: var(--color-accent-light);
   }
 
   .sm\:text-opacity-0 {
@@ -18631,6 +18964,18 @@ a.toc-link {
     border-color: transparent;
   }
 
+  .md\:divide-white > :not(template) ~ :not(template) {
+    --divide-opacity: 1;
+    border-color: #fff;
+    border-color: rgba(255, 255, 255, var(--divide-opacity));
+  }
+
+  .md\:divide-black > :not(template) ~ :not(template) {
+    --divide-opacity: 1;
+    border-color: #000;
+    border-color: rgba(0, 0, 0, var(--divide-opacity));
+  }
+
   .md\:divide-current > :not(template) ~ :not(template) {
     border-color: currentColor;
   }
@@ -18639,20 +18984,16 @@ a.toc-link {
     border-color: var(--color-primary);
   }
 
-  .md\:divide-oxford > :not(template) ~ :not(template) {
-    border-color: var(--color-oxford);
+  .md\:divide-accent > :not(template) ~ :not(template) {
+    border-color: var(--color-accent);
   }
 
-  .md\:divide-black > :not(template) ~ :not(template) {
-    border-color: var(--color-black);
+  .md\:divide-accent-dark > :not(template) ~ :not(template) {
+    border-color: var(--color-accent-dark);
   }
 
-  .md\:divide-white > :not(template) ~ :not(template) {
-    border-color: var(--color-white);
-  }
-
-  .md\:divide-link > :not(template) ~ :not(template) {
-    border-color: var(--color-link);
+  .md\:divide-accent-light > :not(template) ~ :not(template) {
+    border-color: var(--color-accent-light);
   }
 
   .md\:divide-solid > :not(template) ~ :not(template) {
@@ -18780,6 +19121,18 @@ a.toc-link {
     background-color: transparent;
   }
 
+  .md\:bg-white {
+    --bg-opacity: 1;
+    background-color: #fff;
+    background-color: rgba(255, 255, 255, var(--bg-opacity));
+  }
+
+  .md\:bg-black {
+    --bg-opacity: 1;
+    background-color: #000;
+    background-color: rgba(0, 0, 0, var(--bg-opacity));
+  }
+
   .md\:bg-current {
     background-color: currentColor;
   }
@@ -18788,24 +19141,32 @@ a.toc-link {
     background-color: var(--color-primary);
   }
 
-  .md\:bg-oxford {
-    background-color: var(--color-oxford);
+  .md\:bg-accent {
+    background-color: var(--color-accent);
   }
 
-  .md\:bg-black {
-    background-color: var(--color-black);
+  .md\:bg-accent-dark {
+    background-color: var(--color-accent-dark);
   }
 
-  .md\:bg-white {
-    background-color: var(--color-white);
-  }
-
-  .md\:bg-link {
-    background-color: var(--color-link);
+  .md\:bg-accent-light {
+    background-color: var(--color-accent-light);
   }
 
   .md\:hover\:bg-transparent:hover {
     background-color: transparent;
+  }
+
+  .md\:hover\:bg-white:hover {
+    --bg-opacity: 1;
+    background-color: #fff;
+    background-color: rgba(255, 255, 255, var(--bg-opacity));
+  }
+
+  .md\:hover\:bg-black:hover {
+    --bg-opacity: 1;
+    background-color: #000;
+    background-color: rgba(0, 0, 0, var(--bg-opacity));
   }
 
   .md\:hover\:bg-current:hover {
@@ -18816,24 +19177,32 @@ a.toc-link {
     background-color: var(--color-primary);
   }
 
-  .md\:hover\:bg-oxford:hover {
-    background-color: var(--color-oxford);
+  .md\:hover\:bg-accent:hover {
+    background-color: var(--color-accent);
   }
 
-  .md\:hover\:bg-black:hover {
-    background-color: var(--color-black);
+  .md\:hover\:bg-accent-dark:hover {
+    background-color: var(--color-accent-dark);
   }
 
-  .md\:hover\:bg-white:hover {
-    background-color: var(--color-white);
-  }
-
-  .md\:hover\:bg-link:hover {
-    background-color: var(--color-link);
+  .md\:hover\:bg-accent-light:hover {
+    background-color: var(--color-accent-light);
   }
 
   .md\:focus\:bg-transparent:focus {
     background-color: transparent;
+  }
+
+  .md\:focus\:bg-white:focus {
+    --bg-opacity: 1;
+    background-color: #fff;
+    background-color: rgba(255, 255, 255, var(--bg-opacity));
+  }
+
+  .md\:focus\:bg-black:focus {
+    --bg-opacity: 1;
+    background-color: #000;
+    background-color: rgba(0, 0, 0, var(--bg-opacity));
   }
 
   .md\:focus\:bg-current:focus {
@@ -18844,20 +19213,16 @@ a.toc-link {
     background-color: var(--color-primary);
   }
 
-  .md\:focus\:bg-oxford:focus {
-    background-color: var(--color-oxford);
+  .md\:focus\:bg-accent:focus {
+    background-color: var(--color-accent);
   }
 
-  .md\:focus\:bg-black:focus {
-    background-color: var(--color-black);
+  .md\:focus\:bg-accent-dark:focus {
+    background-color: var(--color-accent-dark);
   }
 
-  .md\:focus\:bg-white:focus {
-    background-color: var(--color-white);
-  }
-
-  .md\:focus\:bg-link:focus {
-    background-color: var(--color-link);
+  .md\:focus\:bg-accent-light:focus {
+    background-color: var(--color-accent-light);
   }
 
   .md\:bg-none {
@@ -18901,6 +19266,16 @@ a.toc-link {
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(0, 0, 0, 0));
   }
 
+  .md\:from-white {
+    --gradient-from-color: #fff;
+    --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
+  }
+
+  .md\:from-black {
+    --gradient-from-color: #000;
+    --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(0, 0, 0, 0));
+  }
+
   .md\:from-current {
     --gradient-from-color: currentColor;
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
@@ -18911,28 +19286,33 @@ a.toc-link {
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
   }
 
-  .md\:from-oxford {
-    --gradient-from-color: var(--color-oxford);
+  .md\:from-accent {
+    --gradient-from-color: var(--color-accent);
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
   }
 
-  .md\:from-black {
-    --gradient-from-color: var(--color-black);
+  .md\:from-accent-dark {
+    --gradient-from-color: var(--color-accent-dark);
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
   }
 
-  .md\:from-white {
-    --gradient-from-color: var(--color-white);
-    --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
-  }
-
-  .md\:from-link {
-    --gradient-from-color: var(--color-link);
+  .md\:from-accent-light {
+    --gradient-from-color: var(--color-accent-light);
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
   }
 
   .md\:via-transparent {
     --gradient-via-color: transparent;
+    --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(0, 0, 0, 0));
+  }
+
+  .md\:via-white {
+    --gradient-via-color: #fff;
+    --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
+  }
+
+  .md\:via-black {
+    --gradient-via-color: #000;
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(0, 0, 0, 0));
   }
 
@@ -18946,28 +19326,31 @@ a.toc-link {
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
   }
 
-  .md\:via-oxford {
-    --gradient-via-color: var(--color-oxford);
+  .md\:via-accent {
+    --gradient-via-color: var(--color-accent);
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
   }
 
-  .md\:via-black {
-    --gradient-via-color: var(--color-black);
+  .md\:via-accent-dark {
+    --gradient-via-color: var(--color-accent-dark);
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
   }
 
-  .md\:via-white {
-    --gradient-via-color: var(--color-white);
-    --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
-  }
-
-  .md\:via-link {
-    --gradient-via-color: var(--color-link);
+  .md\:via-accent-light {
+    --gradient-via-color: var(--color-accent-light);
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
   }
 
   .md\:to-transparent {
     --gradient-to-color: transparent;
+  }
+
+  .md\:to-white {
+    --gradient-to-color: #fff;
+  }
+
+  .md\:to-black {
+    --gradient-to-color: #000;
   }
 
   .md\:to-current {
@@ -18978,24 +19361,30 @@ a.toc-link {
     --gradient-to-color: var(--color-primary);
   }
 
-  .md\:to-oxford {
-    --gradient-to-color: var(--color-oxford);
+  .md\:to-accent {
+    --gradient-to-color: var(--color-accent);
   }
 
-  .md\:to-black {
-    --gradient-to-color: var(--color-black);
+  .md\:to-accent-dark {
+    --gradient-to-color: var(--color-accent-dark);
   }
 
-  .md\:to-white {
-    --gradient-to-color: var(--color-white);
-  }
-
-  .md\:to-link {
-    --gradient-to-color: var(--color-link);
+  .md\:to-accent-light {
+    --gradient-to-color: var(--color-accent-light);
   }
 
   .md\:hover\:from-transparent:hover {
     --gradient-from-color: transparent;
+    --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(0, 0, 0, 0));
+  }
+
+  .md\:hover\:from-white:hover {
+    --gradient-from-color: #fff;
+    --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
+  }
+
+  .md\:hover\:from-black:hover {
+    --gradient-from-color: #000;
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(0, 0, 0, 0));
   }
 
@@ -19009,28 +19398,33 @@ a.toc-link {
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
   }
 
-  .md\:hover\:from-oxford:hover {
-    --gradient-from-color: var(--color-oxford);
+  .md\:hover\:from-accent:hover {
+    --gradient-from-color: var(--color-accent);
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
   }
 
-  .md\:hover\:from-black:hover {
-    --gradient-from-color: var(--color-black);
+  .md\:hover\:from-accent-dark:hover {
+    --gradient-from-color: var(--color-accent-dark);
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
   }
 
-  .md\:hover\:from-white:hover {
-    --gradient-from-color: var(--color-white);
-    --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
-  }
-
-  .md\:hover\:from-link:hover {
-    --gradient-from-color: var(--color-link);
+  .md\:hover\:from-accent-light:hover {
+    --gradient-from-color: var(--color-accent-light);
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
   }
 
   .md\:hover\:via-transparent:hover {
     --gradient-via-color: transparent;
+    --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(0, 0, 0, 0));
+  }
+
+  .md\:hover\:via-white:hover {
+    --gradient-via-color: #fff;
+    --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
+  }
+
+  .md\:hover\:via-black:hover {
+    --gradient-via-color: #000;
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(0, 0, 0, 0));
   }
 
@@ -19044,28 +19438,31 @@ a.toc-link {
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
   }
 
-  .md\:hover\:via-oxford:hover {
-    --gradient-via-color: var(--color-oxford);
+  .md\:hover\:via-accent:hover {
+    --gradient-via-color: var(--color-accent);
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
   }
 
-  .md\:hover\:via-black:hover {
-    --gradient-via-color: var(--color-black);
+  .md\:hover\:via-accent-dark:hover {
+    --gradient-via-color: var(--color-accent-dark);
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
   }
 
-  .md\:hover\:via-white:hover {
-    --gradient-via-color: var(--color-white);
-    --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
-  }
-
-  .md\:hover\:via-link:hover {
-    --gradient-via-color: var(--color-link);
+  .md\:hover\:via-accent-light:hover {
+    --gradient-via-color: var(--color-accent-light);
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
   }
 
   .md\:hover\:to-transparent:hover {
     --gradient-to-color: transparent;
+  }
+
+  .md\:hover\:to-white:hover {
+    --gradient-to-color: #fff;
+  }
+
+  .md\:hover\:to-black:hover {
+    --gradient-to-color: #000;
   }
 
   .md\:hover\:to-current:hover {
@@ -19076,24 +19473,30 @@ a.toc-link {
     --gradient-to-color: var(--color-primary);
   }
 
-  .md\:hover\:to-oxford:hover {
-    --gradient-to-color: var(--color-oxford);
+  .md\:hover\:to-accent:hover {
+    --gradient-to-color: var(--color-accent);
   }
 
-  .md\:hover\:to-black:hover {
-    --gradient-to-color: var(--color-black);
+  .md\:hover\:to-accent-dark:hover {
+    --gradient-to-color: var(--color-accent-dark);
   }
 
-  .md\:hover\:to-white:hover {
-    --gradient-to-color: var(--color-white);
-  }
-
-  .md\:hover\:to-link:hover {
-    --gradient-to-color: var(--color-link);
+  .md\:hover\:to-accent-light:hover {
+    --gradient-to-color: var(--color-accent-light);
   }
 
   .md\:focus\:from-transparent:focus {
     --gradient-from-color: transparent;
+    --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(0, 0, 0, 0));
+  }
+
+  .md\:focus\:from-white:focus {
+    --gradient-from-color: #fff;
+    --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
+  }
+
+  .md\:focus\:from-black:focus {
+    --gradient-from-color: #000;
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(0, 0, 0, 0));
   }
 
@@ -19107,28 +19510,33 @@ a.toc-link {
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
   }
 
-  .md\:focus\:from-oxford:focus {
-    --gradient-from-color: var(--color-oxford);
+  .md\:focus\:from-accent:focus {
+    --gradient-from-color: var(--color-accent);
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
   }
 
-  .md\:focus\:from-black:focus {
-    --gradient-from-color: var(--color-black);
+  .md\:focus\:from-accent-dark:focus {
+    --gradient-from-color: var(--color-accent-dark);
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
   }
 
-  .md\:focus\:from-white:focus {
-    --gradient-from-color: var(--color-white);
-    --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
-  }
-
-  .md\:focus\:from-link:focus {
-    --gradient-from-color: var(--color-link);
+  .md\:focus\:from-accent-light:focus {
+    --gradient-from-color: var(--color-accent-light);
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
   }
 
   .md\:focus\:via-transparent:focus {
     --gradient-via-color: transparent;
+    --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(0, 0, 0, 0));
+  }
+
+  .md\:focus\:via-white:focus {
+    --gradient-via-color: #fff;
+    --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
+  }
+
+  .md\:focus\:via-black:focus {
+    --gradient-via-color: #000;
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(0, 0, 0, 0));
   }
 
@@ -19142,28 +19550,31 @@ a.toc-link {
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
   }
 
-  .md\:focus\:via-oxford:focus {
-    --gradient-via-color: var(--color-oxford);
+  .md\:focus\:via-accent:focus {
+    --gradient-via-color: var(--color-accent);
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
   }
 
-  .md\:focus\:via-black:focus {
-    --gradient-via-color: var(--color-black);
+  .md\:focus\:via-accent-dark:focus {
+    --gradient-via-color: var(--color-accent-dark);
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
   }
 
-  .md\:focus\:via-white:focus {
-    --gradient-via-color: var(--color-white);
-    --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
-  }
-
-  .md\:focus\:via-link:focus {
-    --gradient-via-color: var(--color-link);
+  .md\:focus\:via-accent-light:focus {
+    --gradient-via-color: var(--color-accent-light);
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
   }
 
   .md\:focus\:to-transparent:focus {
     --gradient-to-color: transparent;
+  }
+
+  .md\:focus\:to-white:focus {
+    --gradient-to-color: #fff;
+  }
+
+  .md\:focus\:to-black:focus {
+    --gradient-to-color: #000;
   }
 
   .md\:focus\:to-current:focus {
@@ -19174,20 +19585,16 @@ a.toc-link {
     --gradient-to-color: var(--color-primary);
   }
 
-  .md\:focus\:to-oxford:focus {
-    --gradient-to-color: var(--color-oxford);
+  .md\:focus\:to-accent:focus {
+    --gradient-to-color: var(--color-accent);
   }
 
-  .md\:focus\:to-black:focus {
-    --gradient-to-color: var(--color-black);
+  .md\:focus\:to-accent-dark:focus {
+    --gradient-to-color: var(--color-accent-dark);
   }
 
-  .md\:focus\:to-white:focus {
-    --gradient-to-color: var(--color-white);
-  }
-
-  .md\:focus\:to-link:focus {
-    --gradient-to-color: var(--color-link);
+  .md\:focus\:to-accent-light:focus {
+    --gradient-to-color: var(--color-accent-light);
   }
 
   .md\:bg-opacity-0 {
@@ -19334,6 +19741,18 @@ a.toc-link {
     border-color: transparent;
   }
 
+  .md\:border-white {
+    --border-opacity: 1;
+    border-color: #fff;
+    border-color: rgba(255, 255, 255, var(--border-opacity));
+  }
+
+  .md\:border-black {
+    --border-opacity: 1;
+    border-color: #000;
+    border-color: rgba(0, 0, 0, var(--border-opacity));
+  }
+
   .md\:border-current {
     border-color: currentColor;
   }
@@ -19342,24 +19761,32 @@ a.toc-link {
     border-color: var(--color-primary);
   }
 
-  .md\:border-oxford {
-    border-color: var(--color-oxford);
+  .md\:border-accent {
+    border-color: var(--color-accent);
   }
 
-  .md\:border-black {
-    border-color: var(--color-black);
+  .md\:border-accent-dark {
+    border-color: var(--color-accent-dark);
   }
 
-  .md\:border-white {
-    border-color: var(--color-white);
-  }
-
-  .md\:border-link {
-    border-color: var(--color-link);
+  .md\:border-accent-light {
+    border-color: var(--color-accent-light);
   }
 
   .md\:hover\:border-transparent:hover {
     border-color: transparent;
+  }
+
+  .md\:hover\:border-white:hover {
+    --border-opacity: 1;
+    border-color: #fff;
+    border-color: rgba(255, 255, 255, var(--border-opacity));
+  }
+
+  .md\:hover\:border-black:hover {
+    --border-opacity: 1;
+    border-color: #000;
+    border-color: rgba(0, 0, 0, var(--border-opacity));
   }
 
   .md\:hover\:border-current:hover {
@@ -19370,24 +19797,32 @@ a.toc-link {
     border-color: var(--color-primary);
   }
 
-  .md\:hover\:border-oxford:hover {
-    border-color: var(--color-oxford);
+  .md\:hover\:border-accent:hover {
+    border-color: var(--color-accent);
   }
 
-  .md\:hover\:border-black:hover {
-    border-color: var(--color-black);
+  .md\:hover\:border-accent-dark:hover {
+    border-color: var(--color-accent-dark);
   }
 
-  .md\:hover\:border-white:hover {
-    border-color: var(--color-white);
-  }
-
-  .md\:hover\:border-link:hover {
-    border-color: var(--color-link);
+  .md\:hover\:border-accent-light:hover {
+    border-color: var(--color-accent-light);
   }
 
   .md\:focus\:border-transparent:focus {
     border-color: transparent;
+  }
+
+  .md\:focus\:border-white:focus {
+    --border-opacity: 1;
+    border-color: #fff;
+    border-color: rgba(255, 255, 255, var(--border-opacity));
+  }
+
+  .md\:focus\:border-black:focus {
+    --border-opacity: 1;
+    border-color: #000;
+    border-color: rgba(0, 0, 0, var(--border-opacity));
   }
 
   .md\:focus\:border-current:focus {
@@ -19398,20 +19833,16 @@ a.toc-link {
     border-color: var(--color-primary);
   }
 
-  .md\:focus\:border-oxford:focus {
-    border-color: var(--color-oxford);
+  .md\:focus\:border-accent:focus {
+    border-color: var(--color-accent);
   }
 
-  .md\:focus\:border-black:focus {
-    border-color: var(--color-black);
+  .md\:focus\:border-accent-dark:focus {
+    border-color: var(--color-accent-dark);
   }
 
-  .md\:focus\:border-white:focus {
-    border-color: var(--color-white);
-  }
-
-  .md\:focus\:border-link:focus {
-    border-color: var(--color-link);
+  .md\:focus\:border-accent-light:focus {
+    border-color: var(--color-accent-light);
   }
 
   .md\:border-opacity-0 {
@@ -22667,6 +23098,54 @@ a.toc-link {
     color: transparent;
   }
 
+  .md\:placeholder-white::-moz-placeholder {
+    --placeholder-opacity: 1;
+    color: #fff;
+    color: rgba(255, 255, 255, var(--placeholder-opacity));
+  }
+
+  .md\:placeholder-white:-ms-input-placeholder {
+    --placeholder-opacity: 1;
+    color: #fff;
+    color: rgba(255, 255, 255, var(--placeholder-opacity));
+  }
+
+  .md\:placeholder-white::-ms-input-placeholder {
+    --placeholder-opacity: 1;
+    color: #fff;
+    color: rgba(255, 255, 255, var(--placeholder-opacity));
+  }
+
+  .md\:placeholder-white::placeholder {
+    --placeholder-opacity: 1;
+    color: #fff;
+    color: rgba(255, 255, 255, var(--placeholder-opacity));
+  }
+
+  .md\:placeholder-black::-moz-placeholder {
+    --placeholder-opacity: 1;
+    color: #000;
+    color: rgba(0, 0, 0, var(--placeholder-opacity));
+  }
+
+  .md\:placeholder-black:-ms-input-placeholder {
+    --placeholder-opacity: 1;
+    color: #000;
+    color: rgba(0, 0, 0, var(--placeholder-opacity));
+  }
+
+  .md\:placeholder-black::-ms-input-placeholder {
+    --placeholder-opacity: 1;
+    color: #000;
+    color: rgba(0, 0, 0, var(--placeholder-opacity));
+  }
+
+  .md\:placeholder-black::placeholder {
+    --placeholder-opacity: 1;
+    color: #000;
+    color: rgba(0, 0, 0, var(--placeholder-opacity));
+  }
+
   .md\:placeholder-current::-moz-placeholder {
     color: currentColor;
   }
@@ -22699,68 +23178,52 @@ a.toc-link {
     color: var(--color-primary);
   }
 
-  .md\:placeholder-oxford::-moz-placeholder {
-    color: var(--color-oxford);
+  .md\:placeholder-accent::-moz-placeholder {
+    color: var(--color-accent);
   }
 
-  .md\:placeholder-oxford:-ms-input-placeholder {
-    color: var(--color-oxford);
+  .md\:placeholder-accent:-ms-input-placeholder {
+    color: var(--color-accent);
   }
 
-  .md\:placeholder-oxford::-ms-input-placeholder {
-    color: var(--color-oxford);
+  .md\:placeholder-accent::-ms-input-placeholder {
+    color: var(--color-accent);
   }
 
-  .md\:placeholder-oxford::placeholder {
-    color: var(--color-oxford);
+  .md\:placeholder-accent::placeholder {
+    color: var(--color-accent);
   }
 
-  .md\:placeholder-black::-moz-placeholder {
-    color: var(--color-black);
+  .md\:placeholder-accent-dark::-moz-placeholder {
+    color: var(--color-accent-dark);
   }
 
-  .md\:placeholder-black:-ms-input-placeholder {
-    color: var(--color-black);
+  .md\:placeholder-accent-dark:-ms-input-placeholder {
+    color: var(--color-accent-dark);
   }
 
-  .md\:placeholder-black::-ms-input-placeholder {
-    color: var(--color-black);
+  .md\:placeholder-accent-dark::-ms-input-placeholder {
+    color: var(--color-accent-dark);
   }
 
-  .md\:placeholder-black::placeholder {
-    color: var(--color-black);
+  .md\:placeholder-accent-dark::placeholder {
+    color: var(--color-accent-dark);
   }
 
-  .md\:placeholder-white::-moz-placeholder {
-    color: var(--color-white);
+  .md\:placeholder-accent-light::-moz-placeholder {
+    color: var(--color-accent-light);
   }
 
-  .md\:placeholder-white:-ms-input-placeholder {
-    color: var(--color-white);
+  .md\:placeholder-accent-light:-ms-input-placeholder {
+    color: var(--color-accent-light);
   }
 
-  .md\:placeholder-white::-ms-input-placeholder {
-    color: var(--color-white);
+  .md\:placeholder-accent-light::-ms-input-placeholder {
+    color: var(--color-accent-light);
   }
 
-  .md\:placeholder-white::placeholder {
-    color: var(--color-white);
-  }
-
-  .md\:placeholder-link::-moz-placeholder {
-    color: var(--color-link);
-  }
-
-  .md\:placeholder-link:-ms-input-placeholder {
-    color: var(--color-link);
-  }
-
-  .md\:placeholder-link::-ms-input-placeholder {
-    color: var(--color-link);
-  }
-
-  .md\:placeholder-link::placeholder {
-    color: var(--color-link);
+  .md\:placeholder-accent-light::placeholder {
+    color: var(--color-accent-light);
   }
 
   .md\:focus\:placeholder-transparent:focus::-moz-placeholder {
@@ -22777,6 +23240,54 @@ a.toc-link {
 
   .md\:focus\:placeholder-transparent:focus::placeholder {
     color: transparent;
+  }
+
+  .md\:focus\:placeholder-white:focus::-moz-placeholder {
+    --placeholder-opacity: 1;
+    color: #fff;
+    color: rgba(255, 255, 255, var(--placeholder-opacity));
+  }
+
+  .md\:focus\:placeholder-white:focus:-ms-input-placeholder {
+    --placeholder-opacity: 1;
+    color: #fff;
+    color: rgba(255, 255, 255, var(--placeholder-opacity));
+  }
+
+  .md\:focus\:placeholder-white:focus::-ms-input-placeholder {
+    --placeholder-opacity: 1;
+    color: #fff;
+    color: rgba(255, 255, 255, var(--placeholder-opacity));
+  }
+
+  .md\:focus\:placeholder-white:focus::placeholder {
+    --placeholder-opacity: 1;
+    color: #fff;
+    color: rgba(255, 255, 255, var(--placeholder-opacity));
+  }
+
+  .md\:focus\:placeholder-black:focus::-moz-placeholder {
+    --placeholder-opacity: 1;
+    color: #000;
+    color: rgba(0, 0, 0, var(--placeholder-opacity));
+  }
+
+  .md\:focus\:placeholder-black:focus:-ms-input-placeholder {
+    --placeholder-opacity: 1;
+    color: #000;
+    color: rgba(0, 0, 0, var(--placeholder-opacity));
+  }
+
+  .md\:focus\:placeholder-black:focus::-ms-input-placeholder {
+    --placeholder-opacity: 1;
+    color: #000;
+    color: rgba(0, 0, 0, var(--placeholder-opacity));
+  }
+
+  .md\:focus\:placeholder-black:focus::placeholder {
+    --placeholder-opacity: 1;
+    color: #000;
+    color: rgba(0, 0, 0, var(--placeholder-opacity));
   }
 
   .md\:focus\:placeholder-current:focus::-moz-placeholder {
@@ -22811,68 +23322,52 @@ a.toc-link {
     color: var(--color-primary);
   }
 
-  .md\:focus\:placeholder-oxford:focus::-moz-placeholder {
-    color: var(--color-oxford);
+  .md\:focus\:placeholder-accent:focus::-moz-placeholder {
+    color: var(--color-accent);
   }
 
-  .md\:focus\:placeholder-oxford:focus:-ms-input-placeholder {
-    color: var(--color-oxford);
+  .md\:focus\:placeholder-accent:focus:-ms-input-placeholder {
+    color: var(--color-accent);
   }
 
-  .md\:focus\:placeholder-oxford:focus::-ms-input-placeholder {
-    color: var(--color-oxford);
+  .md\:focus\:placeholder-accent:focus::-ms-input-placeholder {
+    color: var(--color-accent);
   }
 
-  .md\:focus\:placeholder-oxford:focus::placeholder {
-    color: var(--color-oxford);
+  .md\:focus\:placeholder-accent:focus::placeholder {
+    color: var(--color-accent);
   }
 
-  .md\:focus\:placeholder-black:focus::-moz-placeholder {
-    color: var(--color-black);
+  .md\:focus\:placeholder-accent-dark:focus::-moz-placeholder {
+    color: var(--color-accent-dark);
   }
 
-  .md\:focus\:placeholder-black:focus:-ms-input-placeholder {
-    color: var(--color-black);
+  .md\:focus\:placeholder-accent-dark:focus:-ms-input-placeholder {
+    color: var(--color-accent-dark);
   }
 
-  .md\:focus\:placeholder-black:focus::-ms-input-placeholder {
-    color: var(--color-black);
+  .md\:focus\:placeholder-accent-dark:focus::-ms-input-placeholder {
+    color: var(--color-accent-dark);
   }
 
-  .md\:focus\:placeholder-black:focus::placeholder {
-    color: var(--color-black);
+  .md\:focus\:placeholder-accent-dark:focus::placeholder {
+    color: var(--color-accent-dark);
   }
 
-  .md\:focus\:placeholder-white:focus::-moz-placeholder {
-    color: var(--color-white);
+  .md\:focus\:placeholder-accent-light:focus::-moz-placeholder {
+    color: var(--color-accent-light);
   }
 
-  .md\:focus\:placeholder-white:focus:-ms-input-placeholder {
-    color: var(--color-white);
+  .md\:focus\:placeholder-accent-light:focus:-ms-input-placeholder {
+    color: var(--color-accent-light);
   }
 
-  .md\:focus\:placeholder-white:focus::-ms-input-placeholder {
-    color: var(--color-white);
+  .md\:focus\:placeholder-accent-light:focus::-ms-input-placeholder {
+    color: var(--color-accent-light);
   }
 
-  .md\:focus\:placeholder-white:focus::placeholder {
-    color: var(--color-white);
-  }
-
-  .md\:focus\:placeholder-link:focus::-moz-placeholder {
-    color: var(--color-link);
-  }
-
-  .md\:focus\:placeholder-link:focus:-ms-input-placeholder {
-    color: var(--color-link);
-  }
-
-  .md\:focus\:placeholder-link:focus::-ms-input-placeholder {
-    color: var(--color-link);
-  }
-
-  .md\:focus\:placeholder-link:focus::placeholder {
-    color: var(--color-link);
+  .md\:focus\:placeholder-accent-light:focus::placeholder {
+    color: var(--color-accent-light);
   }
 
   .md\:placeholder-opacity-0::-moz-placeholder {
@@ -23314,6 +23809,18 @@ a.toc-link {
     color: transparent;
   }
 
+  .md\:text-white {
+    --text-opacity: 1;
+    color: #fff;
+    color: rgba(255, 255, 255, var(--text-opacity));
+  }
+
+  .md\:text-black {
+    --text-opacity: 1;
+    color: #000;
+    color: rgba(0, 0, 0, var(--text-opacity));
+  }
+
   .md\:text-current {
     color: currentColor;
   }
@@ -23322,24 +23829,32 @@ a.toc-link {
     color: var(--color-primary);
   }
 
-  .md\:text-oxford {
-    color: var(--color-oxford);
+  .md\:text-accent {
+    color: var(--color-accent);
   }
 
-  .md\:text-black {
-    color: var(--color-black);
+  .md\:text-accent-dark {
+    color: var(--color-accent-dark);
   }
 
-  .md\:text-white {
-    color: var(--color-white);
-  }
-
-  .md\:text-link {
-    color: var(--color-link);
+  .md\:text-accent-light {
+    color: var(--color-accent-light);
   }
 
   .md\:hover\:text-transparent:hover {
     color: transparent;
+  }
+
+  .md\:hover\:text-white:hover {
+    --text-opacity: 1;
+    color: #fff;
+    color: rgba(255, 255, 255, var(--text-opacity));
+  }
+
+  .md\:hover\:text-black:hover {
+    --text-opacity: 1;
+    color: #000;
+    color: rgba(0, 0, 0, var(--text-opacity));
   }
 
   .md\:hover\:text-current:hover {
@@ -23350,24 +23865,32 @@ a.toc-link {
     color: var(--color-primary);
   }
 
-  .md\:hover\:text-oxford:hover {
-    color: var(--color-oxford);
+  .md\:hover\:text-accent:hover {
+    color: var(--color-accent);
   }
 
-  .md\:hover\:text-black:hover {
-    color: var(--color-black);
+  .md\:hover\:text-accent-dark:hover {
+    color: var(--color-accent-dark);
   }
 
-  .md\:hover\:text-white:hover {
-    color: var(--color-white);
-  }
-
-  .md\:hover\:text-link:hover {
-    color: var(--color-link);
+  .md\:hover\:text-accent-light:hover {
+    color: var(--color-accent-light);
   }
 
   .md\:focus\:text-transparent:focus {
     color: transparent;
+  }
+
+  .md\:focus\:text-white:focus {
+    --text-opacity: 1;
+    color: #fff;
+    color: rgba(255, 255, 255, var(--text-opacity));
+  }
+
+  .md\:focus\:text-black:focus {
+    --text-opacity: 1;
+    color: #000;
+    color: rgba(0, 0, 0, var(--text-opacity));
   }
 
   .md\:focus\:text-current:focus {
@@ -23378,20 +23901,16 @@ a.toc-link {
     color: var(--color-primary);
   }
 
-  .md\:focus\:text-oxford:focus {
-    color: var(--color-oxford);
+  .md\:focus\:text-accent:focus {
+    color: var(--color-accent);
   }
 
-  .md\:focus\:text-black:focus {
-    color: var(--color-black);
+  .md\:focus\:text-accent-dark:focus {
+    color: var(--color-accent-dark);
   }
 
-  .md\:focus\:text-white:focus {
-    color: var(--color-white);
-  }
-
-  .md\:focus\:text-link:focus {
-    color: var(--color-link);
+  .md\:focus\:text-accent-light:focus {
+    color: var(--color-accent-light);
   }
 
   .md\:text-opacity-0 {
@@ -27149,6 +27668,18 @@ a.toc-link {
     border-color: transparent;
   }
 
+  .lg\:divide-white > :not(template) ~ :not(template) {
+    --divide-opacity: 1;
+    border-color: #fff;
+    border-color: rgba(255, 255, 255, var(--divide-opacity));
+  }
+
+  .lg\:divide-black > :not(template) ~ :not(template) {
+    --divide-opacity: 1;
+    border-color: #000;
+    border-color: rgba(0, 0, 0, var(--divide-opacity));
+  }
+
   .lg\:divide-current > :not(template) ~ :not(template) {
     border-color: currentColor;
   }
@@ -27157,20 +27688,16 @@ a.toc-link {
     border-color: var(--color-primary);
   }
 
-  .lg\:divide-oxford > :not(template) ~ :not(template) {
-    border-color: var(--color-oxford);
+  .lg\:divide-accent > :not(template) ~ :not(template) {
+    border-color: var(--color-accent);
   }
 
-  .lg\:divide-black > :not(template) ~ :not(template) {
-    border-color: var(--color-black);
+  .lg\:divide-accent-dark > :not(template) ~ :not(template) {
+    border-color: var(--color-accent-dark);
   }
 
-  .lg\:divide-white > :not(template) ~ :not(template) {
-    border-color: var(--color-white);
-  }
-
-  .lg\:divide-link > :not(template) ~ :not(template) {
-    border-color: var(--color-link);
+  .lg\:divide-accent-light > :not(template) ~ :not(template) {
+    border-color: var(--color-accent-light);
   }
 
   .lg\:divide-solid > :not(template) ~ :not(template) {
@@ -27298,6 +27825,18 @@ a.toc-link {
     background-color: transparent;
   }
 
+  .lg\:bg-white {
+    --bg-opacity: 1;
+    background-color: #fff;
+    background-color: rgba(255, 255, 255, var(--bg-opacity));
+  }
+
+  .lg\:bg-black {
+    --bg-opacity: 1;
+    background-color: #000;
+    background-color: rgba(0, 0, 0, var(--bg-opacity));
+  }
+
   .lg\:bg-current {
     background-color: currentColor;
   }
@@ -27306,24 +27845,32 @@ a.toc-link {
     background-color: var(--color-primary);
   }
 
-  .lg\:bg-oxford {
-    background-color: var(--color-oxford);
+  .lg\:bg-accent {
+    background-color: var(--color-accent);
   }
 
-  .lg\:bg-black {
-    background-color: var(--color-black);
+  .lg\:bg-accent-dark {
+    background-color: var(--color-accent-dark);
   }
 
-  .lg\:bg-white {
-    background-color: var(--color-white);
-  }
-
-  .lg\:bg-link {
-    background-color: var(--color-link);
+  .lg\:bg-accent-light {
+    background-color: var(--color-accent-light);
   }
 
   .lg\:hover\:bg-transparent:hover {
     background-color: transparent;
+  }
+
+  .lg\:hover\:bg-white:hover {
+    --bg-opacity: 1;
+    background-color: #fff;
+    background-color: rgba(255, 255, 255, var(--bg-opacity));
+  }
+
+  .lg\:hover\:bg-black:hover {
+    --bg-opacity: 1;
+    background-color: #000;
+    background-color: rgba(0, 0, 0, var(--bg-opacity));
   }
 
   .lg\:hover\:bg-current:hover {
@@ -27334,24 +27881,32 @@ a.toc-link {
     background-color: var(--color-primary);
   }
 
-  .lg\:hover\:bg-oxford:hover {
-    background-color: var(--color-oxford);
+  .lg\:hover\:bg-accent:hover {
+    background-color: var(--color-accent);
   }
 
-  .lg\:hover\:bg-black:hover {
-    background-color: var(--color-black);
+  .lg\:hover\:bg-accent-dark:hover {
+    background-color: var(--color-accent-dark);
   }
 
-  .lg\:hover\:bg-white:hover {
-    background-color: var(--color-white);
-  }
-
-  .lg\:hover\:bg-link:hover {
-    background-color: var(--color-link);
+  .lg\:hover\:bg-accent-light:hover {
+    background-color: var(--color-accent-light);
   }
 
   .lg\:focus\:bg-transparent:focus {
     background-color: transparent;
+  }
+
+  .lg\:focus\:bg-white:focus {
+    --bg-opacity: 1;
+    background-color: #fff;
+    background-color: rgba(255, 255, 255, var(--bg-opacity));
+  }
+
+  .lg\:focus\:bg-black:focus {
+    --bg-opacity: 1;
+    background-color: #000;
+    background-color: rgba(0, 0, 0, var(--bg-opacity));
   }
 
   .lg\:focus\:bg-current:focus {
@@ -27362,20 +27917,16 @@ a.toc-link {
     background-color: var(--color-primary);
   }
 
-  .lg\:focus\:bg-oxford:focus {
-    background-color: var(--color-oxford);
+  .lg\:focus\:bg-accent:focus {
+    background-color: var(--color-accent);
   }
 
-  .lg\:focus\:bg-black:focus {
-    background-color: var(--color-black);
+  .lg\:focus\:bg-accent-dark:focus {
+    background-color: var(--color-accent-dark);
   }
 
-  .lg\:focus\:bg-white:focus {
-    background-color: var(--color-white);
-  }
-
-  .lg\:focus\:bg-link:focus {
-    background-color: var(--color-link);
+  .lg\:focus\:bg-accent-light:focus {
+    background-color: var(--color-accent-light);
   }
 
   .lg\:bg-none {
@@ -27419,6 +27970,16 @@ a.toc-link {
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(0, 0, 0, 0));
   }
 
+  .lg\:from-white {
+    --gradient-from-color: #fff;
+    --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
+  }
+
+  .lg\:from-black {
+    --gradient-from-color: #000;
+    --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(0, 0, 0, 0));
+  }
+
   .lg\:from-current {
     --gradient-from-color: currentColor;
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
@@ -27429,28 +27990,33 @@ a.toc-link {
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
   }
 
-  .lg\:from-oxford {
-    --gradient-from-color: var(--color-oxford);
+  .lg\:from-accent {
+    --gradient-from-color: var(--color-accent);
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
   }
 
-  .lg\:from-black {
-    --gradient-from-color: var(--color-black);
+  .lg\:from-accent-dark {
+    --gradient-from-color: var(--color-accent-dark);
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
   }
 
-  .lg\:from-white {
-    --gradient-from-color: var(--color-white);
-    --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
-  }
-
-  .lg\:from-link {
-    --gradient-from-color: var(--color-link);
+  .lg\:from-accent-light {
+    --gradient-from-color: var(--color-accent-light);
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
   }
 
   .lg\:via-transparent {
     --gradient-via-color: transparent;
+    --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(0, 0, 0, 0));
+  }
+
+  .lg\:via-white {
+    --gradient-via-color: #fff;
+    --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
+  }
+
+  .lg\:via-black {
+    --gradient-via-color: #000;
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(0, 0, 0, 0));
   }
 
@@ -27464,28 +28030,31 @@ a.toc-link {
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
   }
 
-  .lg\:via-oxford {
-    --gradient-via-color: var(--color-oxford);
+  .lg\:via-accent {
+    --gradient-via-color: var(--color-accent);
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
   }
 
-  .lg\:via-black {
-    --gradient-via-color: var(--color-black);
+  .lg\:via-accent-dark {
+    --gradient-via-color: var(--color-accent-dark);
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
   }
 
-  .lg\:via-white {
-    --gradient-via-color: var(--color-white);
-    --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
-  }
-
-  .lg\:via-link {
-    --gradient-via-color: var(--color-link);
+  .lg\:via-accent-light {
+    --gradient-via-color: var(--color-accent-light);
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
   }
 
   .lg\:to-transparent {
     --gradient-to-color: transparent;
+  }
+
+  .lg\:to-white {
+    --gradient-to-color: #fff;
+  }
+
+  .lg\:to-black {
+    --gradient-to-color: #000;
   }
 
   .lg\:to-current {
@@ -27496,24 +28065,30 @@ a.toc-link {
     --gradient-to-color: var(--color-primary);
   }
 
-  .lg\:to-oxford {
-    --gradient-to-color: var(--color-oxford);
+  .lg\:to-accent {
+    --gradient-to-color: var(--color-accent);
   }
 
-  .lg\:to-black {
-    --gradient-to-color: var(--color-black);
+  .lg\:to-accent-dark {
+    --gradient-to-color: var(--color-accent-dark);
   }
 
-  .lg\:to-white {
-    --gradient-to-color: var(--color-white);
-  }
-
-  .lg\:to-link {
-    --gradient-to-color: var(--color-link);
+  .lg\:to-accent-light {
+    --gradient-to-color: var(--color-accent-light);
   }
 
   .lg\:hover\:from-transparent:hover {
     --gradient-from-color: transparent;
+    --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(0, 0, 0, 0));
+  }
+
+  .lg\:hover\:from-white:hover {
+    --gradient-from-color: #fff;
+    --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
+  }
+
+  .lg\:hover\:from-black:hover {
+    --gradient-from-color: #000;
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(0, 0, 0, 0));
   }
 
@@ -27527,28 +28102,33 @@ a.toc-link {
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
   }
 
-  .lg\:hover\:from-oxford:hover {
-    --gradient-from-color: var(--color-oxford);
+  .lg\:hover\:from-accent:hover {
+    --gradient-from-color: var(--color-accent);
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
   }
 
-  .lg\:hover\:from-black:hover {
-    --gradient-from-color: var(--color-black);
+  .lg\:hover\:from-accent-dark:hover {
+    --gradient-from-color: var(--color-accent-dark);
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
   }
 
-  .lg\:hover\:from-white:hover {
-    --gradient-from-color: var(--color-white);
-    --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
-  }
-
-  .lg\:hover\:from-link:hover {
-    --gradient-from-color: var(--color-link);
+  .lg\:hover\:from-accent-light:hover {
+    --gradient-from-color: var(--color-accent-light);
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
   }
 
   .lg\:hover\:via-transparent:hover {
     --gradient-via-color: transparent;
+    --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(0, 0, 0, 0));
+  }
+
+  .lg\:hover\:via-white:hover {
+    --gradient-via-color: #fff;
+    --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
+  }
+
+  .lg\:hover\:via-black:hover {
+    --gradient-via-color: #000;
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(0, 0, 0, 0));
   }
 
@@ -27562,28 +28142,31 @@ a.toc-link {
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
   }
 
-  .lg\:hover\:via-oxford:hover {
-    --gradient-via-color: var(--color-oxford);
+  .lg\:hover\:via-accent:hover {
+    --gradient-via-color: var(--color-accent);
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
   }
 
-  .lg\:hover\:via-black:hover {
-    --gradient-via-color: var(--color-black);
+  .lg\:hover\:via-accent-dark:hover {
+    --gradient-via-color: var(--color-accent-dark);
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
   }
 
-  .lg\:hover\:via-white:hover {
-    --gradient-via-color: var(--color-white);
-    --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
-  }
-
-  .lg\:hover\:via-link:hover {
-    --gradient-via-color: var(--color-link);
+  .lg\:hover\:via-accent-light:hover {
+    --gradient-via-color: var(--color-accent-light);
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
   }
 
   .lg\:hover\:to-transparent:hover {
     --gradient-to-color: transparent;
+  }
+
+  .lg\:hover\:to-white:hover {
+    --gradient-to-color: #fff;
+  }
+
+  .lg\:hover\:to-black:hover {
+    --gradient-to-color: #000;
   }
 
   .lg\:hover\:to-current:hover {
@@ -27594,24 +28177,30 @@ a.toc-link {
     --gradient-to-color: var(--color-primary);
   }
 
-  .lg\:hover\:to-oxford:hover {
-    --gradient-to-color: var(--color-oxford);
+  .lg\:hover\:to-accent:hover {
+    --gradient-to-color: var(--color-accent);
   }
 
-  .lg\:hover\:to-black:hover {
-    --gradient-to-color: var(--color-black);
+  .lg\:hover\:to-accent-dark:hover {
+    --gradient-to-color: var(--color-accent-dark);
   }
 
-  .lg\:hover\:to-white:hover {
-    --gradient-to-color: var(--color-white);
-  }
-
-  .lg\:hover\:to-link:hover {
-    --gradient-to-color: var(--color-link);
+  .lg\:hover\:to-accent-light:hover {
+    --gradient-to-color: var(--color-accent-light);
   }
 
   .lg\:focus\:from-transparent:focus {
     --gradient-from-color: transparent;
+    --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(0, 0, 0, 0));
+  }
+
+  .lg\:focus\:from-white:focus {
+    --gradient-from-color: #fff;
+    --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
+  }
+
+  .lg\:focus\:from-black:focus {
+    --gradient-from-color: #000;
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(0, 0, 0, 0));
   }
 
@@ -27625,28 +28214,33 @@ a.toc-link {
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
   }
 
-  .lg\:focus\:from-oxford:focus {
-    --gradient-from-color: var(--color-oxford);
+  .lg\:focus\:from-accent:focus {
+    --gradient-from-color: var(--color-accent);
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
   }
 
-  .lg\:focus\:from-black:focus {
-    --gradient-from-color: var(--color-black);
+  .lg\:focus\:from-accent-dark:focus {
+    --gradient-from-color: var(--color-accent-dark);
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
   }
 
-  .lg\:focus\:from-white:focus {
-    --gradient-from-color: var(--color-white);
-    --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
-  }
-
-  .lg\:focus\:from-link:focus {
-    --gradient-from-color: var(--color-link);
+  .lg\:focus\:from-accent-light:focus {
+    --gradient-from-color: var(--color-accent-light);
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
   }
 
   .lg\:focus\:via-transparent:focus {
     --gradient-via-color: transparent;
+    --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(0, 0, 0, 0));
+  }
+
+  .lg\:focus\:via-white:focus {
+    --gradient-via-color: #fff;
+    --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
+  }
+
+  .lg\:focus\:via-black:focus {
+    --gradient-via-color: #000;
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(0, 0, 0, 0));
   }
 
@@ -27660,28 +28254,31 @@ a.toc-link {
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
   }
 
-  .lg\:focus\:via-oxford:focus {
-    --gradient-via-color: var(--color-oxford);
+  .lg\:focus\:via-accent:focus {
+    --gradient-via-color: var(--color-accent);
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
   }
 
-  .lg\:focus\:via-black:focus {
-    --gradient-via-color: var(--color-black);
+  .lg\:focus\:via-accent-dark:focus {
+    --gradient-via-color: var(--color-accent-dark);
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
   }
 
-  .lg\:focus\:via-white:focus {
-    --gradient-via-color: var(--color-white);
-    --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
-  }
-
-  .lg\:focus\:via-link:focus {
-    --gradient-via-color: var(--color-link);
+  .lg\:focus\:via-accent-light:focus {
+    --gradient-via-color: var(--color-accent-light);
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
   }
 
   .lg\:focus\:to-transparent:focus {
     --gradient-to-color: transparent;
+  }
+
+  .lg\:focus\:to-white:focus {
+    --gradient-to-color: #fff;
+  }
+
+  .lg\:focus\:to-black:focus {
+    --gradient-to-color: #000;
   }
 
   .lg\:focus\:to-current:focus {
@@ -27692,20 +28289,16 @@ a.toc-link {
     --gradient-to-color: var(--color-primary);
   }
 
-  .lg\:focus\:to-oxford:focus {
-    --gradient-to-color: var(--color-oxford);
+  .lg\:focus\:to-accent:focus {
+    --gradient-to-color: var(--color-accent);
   }
 
-  .lg\:focus\:to-black:focus {
-    --gradient-to-color: var(--color-black);
+  .lg\:focus\:to-accent-dark:focus {
+    --gradient-to-color: var(--color-accent-dark);
   }
 
-  .lg\:focus\:to-white:focus {
-    --gradient-to-color: var(--color-white);
-  }
-
-  .lg\:focus\:to-link:focus {
-    --gradient-to-color: var(--color-link);
+  .lg\:focus\:to-accent-light:focus {
+    --gradient-to-color: var(--color-accent-light);
   }
 
   .lg\:bg-opacity-0 {
@@ -27852,6 +28445,18 @@ a.toc-link {
     border-color: transparent;
   }
 
+  .lg\:border-white {
+    --border-opacity: 1;
+    border-color: #fff;
+    border-color: rgba(255, 255, 255, var(--border-opacity));
+  }
+
+  .lg\:border-black {
+    --border-opacity: 1;
+    border-color: #000;
+    border-color: rgba(0, 0, 0, var(--border-opacity));
+  }
+
   .lg\:border-current {
     border-color: currentColor;
   }
@@ -27860,24 +28465,32 @@ a.toc-link {
     border-color: var(--color-primary);
   }
 
-  .lg\:border-oxford {
-    border-color: var(--color-oxford);
+  .lg\:border-accent {
+    border-color: var(--color-accent);
   }
 
-  .lg\:border-black {
-    border-color: var(--color-black);
+  .lg\:border-accent-dark {
+    border-color: var(--color-accent-dark);
   }
 
-  .lg\:border-white {
-    border-color: var(--color-white);
-  }
-
-  .lg\:border-link {
-    border-color: var(--color-link);
+  .lg\:border-accent-light {
+    border-color: var(--color-accent-light);
   }
 
   .lg\:hover\:border-transparent:hover {
     border-color: transparent;
+  }
+
+  .lg\:hover\:border-white:hover {
+    --border-opacity: 1;
+    border-color: #fff;
+    border-color: rgba(255, 255, 255, var(--border-opacity));
+  }
+
+  .lg\:hover\:border-black:hover {
+    --border-opacity: 1;
+    border-color: #000;
+    border-color: rgba(0, 0, 0, var(--border-opacity));
   }
 
   .lg\:hover\:border-current:hover {
@@ -27888,24 +28501,32 @@ a.toc-link {
     border-color: var(--color-primary);
   }
 
-  .lg\:hover\:border-oxford:hover {
-    border-color: var(--color-oxford);
+  .lg\:hover\:border-accent:hover {
+    border-color: var(--color-accent);
   }
 
-  .lg\:hover\:border-black:hover {
-    border-color: var(--color-black);
+  .lg\:hover\:border-accent-dark:hover {
+    border-color: var(--color-accent-dark);
   }
 
-  .lg\:hover\:border-white:hover {
-    border-color: var(--color-white);
-  }
-
-  .lg\:hover\:border-link:hover {
-    border-color: var(--color-link);
+  .lg\:hover\:border-accent-light:hover {
+    border-color: var(--color-accent-light);
   }
 
   .lg\:focus\:border-transparent:focus {
     border-color: transparent;
+  }
+
+  .lg\:focus\:border-white:focus {
+    --border-opacity: 1;
+    border-color: #fff;
+    border-color: rgba(255, 255, 255, var(--border-opacity));
+  }
+
+  .lg\:focus\:border-black:focus {
+    --border-opacity: 1;
+    border-color: #000;
+    border-color: rgba(0, 0, 0, var(--border-opacity));
   }
 
   .lg\:focus\:border-current:focus {
@@ -27916,20 +28537,16 @@ a.toc-link {
     border-color: var(--color-primary);
   }
 
-  .lg\:focus\:border-oxford:focus {
-    border-color: var(--color-oxford);
+  .lg\:focus\:border-accent:focus {
+    border-color: var(--color-accent);
   }
 
-  .lg\:focus\:border-black:focus {
-    border-color: var(--color-black);
+  .lg\:focus\:border-accent-dark:focus {
+    border-color: var(--color-accent-dark);
   }
 
-  .lg\:focus\:border-white:focus {
-    border-color: var(--color-white);
-  }
-
-  .lg\:focus\:border-link:focus {
-    border-color: var(--color-link);
+  .lg\:focus\:border-accent-light:focus {
+    border-color: var(--color-accent-light);
   }
 
   .lg\:border-opacity-0 {
@@ -31185,6 +31802,54 @@ a.toc-link {
     color: transparent;
   }
 
+  .lg\:placeholder-white::-moz-placeholder {
+    --placeholder-opacity: 1;
+    color: #fff;
+    color: rgba(255, 255, 255, var(--placeholder-opacity));
+  }
+
+  .lg\:placeholder-white:-ms-input-placeholder {
+    --placeholder-opacity: 1;
+    color: #fff;
+    color: rgba(255, 255, 255, var(--placeholder-opacity));
+  }
+
+  .lg\:placeholder-white::-ms-input-placeholder {
+    --placeholder-opacity: 1;
+    color: #fff;
+    color: rgba(255, 255, 255, var(--placeholder-opacity));
+  }
+
+  .lg\:placeholder-white::placeholder {
+    --placeholder-opacity: 1;
+    color: #fff;
+    color: rgba(255, 255, 255, var(--placeholder-opacity));
+  }
+
+  .lg\:placeholder-black::-moz-placeholder {
+    --placeholder-opacity: 1;
+    color: #000;
+    color: rgba(0, 0, 0, var(--placeholder-opacity));
+  }
+
+  .lg\:placeholder-black:-ms-input-placeholder {
+    --placeholder-opacity: 1;
+    color: #000;
+    color: rgba(0, 0, 0, var(--placeholder-opacity));
+  }
+
+  .lg\:placeholder-black::-ms-input-placeholder {
+    --placeholder-opacity: 1;
+    color: #000;
+    color: rgba(0, 0, 0, var(--placeholder-opacity));
+  }
+
+  .lg\:placeholder-black::placeholder {
+    --placeholder-opacity: 1;
+    color: #000;
+    color: rgba(0, 0, 0, var(--placeholder-opacity));
+  }
+
   .lg\:placeholder-current::-moz-placeholder {
     color: currentColor;
   }
@@ -31217,68 +31882,52 @@ a.toc-link {
     color: var(--color-primary);
   }
 
-  .lg\:placeholder-oxford::-moz-placeholder {
-    color: var(--color-oxford);
+  .lg\:placeholder-accent::-moz-placeholder {
+    color: var(--color-accent);
   }
 
-  .lg\:placeholder-oxford:-ms-input-placeholder {
-    color: var(--color-oxford);
+  .lg\:placeholder-accent:-ms-input-placeholder {
+    color: var(--color-accent);
   }
 
-  .lg\:placeholder-oxford::-ms-input-placeholder {
-    color: var(--color-oxford);
+  .lg\:placeholder-accent::-ms-input-placeholder {
+    color: var(--color-accent);
   }
 
-  .lg\:placeholder-oxford::placeholder {
-    color: var(--color-oxford);
+  .lg\:placeholder-accent::placeholder {
+    color: var(--color-accent);
   }
 
-  .lg\:placeholder-black::-moz-placeholder {
-    color: var(--color-black);
+  .lg\:placeholder-accent-dark::-moz-placeholder {
+    color: var(--color-accent-dark);
   }
 
-  .lg\:placeholder-black:-ms-input-placeholder {
-    color: var(--color-black);
+  .lg\:placeholder-accent-dark:-ms-input-placeholder {
+    color: var(--color-accent-dark);
   }
 
-  .lg\:placeholder-black::-ms-input-placeholder {
-    color: var(--color-black);
+  .lg\:placeholder-accent-dark::-ms-input-placeholder {
+    color: var(--color-accent-dark);
   }
 
-  .lg\:placeholder-black::placeholder {
-    color: var(--color-black);
+  .lg\:placeholder-accent-dark::placeholder {
+    color: var(--color-accent-dark);
   }
 
-  .lg\:placeholder-white::-moz-placeholder {
-    color: var(--color-white);
+  .lg\:placeholder-accent-light::-moz-placeholder {
+    color: var(--color-accent-light);
   }
 
-  .lg\:placeholder-white:-ms-input-placeholder {
-    color: var(--color-white);
+  .lg\:placeholder-accent-light:-ms-input-placeholder {
+    color: var(--color-accent-light);
   }
 
-  .lg\:placeholder-white::-ms-input-placeholder {
-    color: var(--color-white);
+  .lg\:placeholder-accent-light::-ms-input-placeholder {
+    color: var(--color-accent-light);
   }
 
-  .lg\:placeholder-white::placeholder {
-    color: var(--color-white);
-  }
-
-  .lg\:placeholder-link::-moz-placeholder {
-    color: var(--color-link);
-  }
-
-  .lg\:placeholder-link:-ms-input-placeholder {
-    color: var(--color-link);
-  }
-
-  .lg\:placeholder-link::-ms-input-placeholder {
-    color: var(--color-link);
-  }
-
-  .lg\:placeholder-link::placeholder {
-    color: var(--color-link);
+  .lg\:placeholder-accent-light::placeholder {
+    color: var(--color-accent-light);
   }
 
   .lg\:focus\:placeholder-transparent:focus::-moz-placeholder {
@@ -31295,6 +31944,54 @@ a.toc-link {
 
   .lg\:focus\:placeholder-transparent:focus::placeholder {
     color: transparent;
+  }
+
+  .lg\:focus\:placeholder-white:focus::-moz-placeholder {
+    --placeholder-opacity: 1;
+    color: #fff;
+    color: rgba(255, 255, 255, var(--placeholder-opacity));
+  }
+
+  .lg\:focus\:placeholder-white:focus:-ms-input-placeholder {
+    --placeholder-opacity: 1;
+    color: #fff;
+    color: rgba(255, 255, 255, var(--placeholder-opacity));
+  }
+
+  .lg\:focus\:placeholder-white:focus::-ms-input-placeholder {
+    --placeholder-opacity: 1;
+    color: #fff;
+    color: rgba(255, 255, 255, var(--placeholder-opacity));
+  }
+
+  .lg\:focus\:placeholder-white:focus::placeholder {
+    --placeholder-opacity: 1;
+    color: #fff;
+    color: rgba(255, 255, 255, var(--placeholder-opacity));
+  }
+
+  .lg\:focus\:placeholder-black:focus::-moz-placeholder {
+    --placeholder-opacity: 1;
+    color: #000;
+    color: rgba(0, 0, 0, var(--placeholder-opacity));
+  }
+
+  .lg\:focus\:placeholder-black:focus:-ms-input-placeholder {
+    --placeholder-opacity: 1;
+    color: #000;
+    color: rgba(0, 0, 0, var(--placeholder-opacity));
+  }
+
+  .lg\:focus\:placeholder-black:focus::-ms-input-placeholder {
+    --placeholder-opacity: 1;
+    color: #000;
+    color: rgba(0, 0, 0, var(--placeholder-opacity));
+  }
+
+  .lg\:focus\:placeholder-black:focus::placeholder {
+    --placeholder-opacity: 1;
+    color: #000;
+    color: rgba(0, 0, 0, var(--placeholder-opacity));
   }
 
   .lg\:focus\:placeholder-current:focus::-moz-placeholder {
@@ -31329,68 +32026,52 @@ a.toc-link {
     color: var(--color-primary);
   }
 
-  .lg\:focus\:placeholder-oxford:focus::-moz-placeholder {
-    color: var(--color-oxford);
+  .lg\:focus\:placeholder-accent:focus::-moz-placeholder {
+    color: var(--color-accent);
   }
 
-  .lg\:focus\:placeholder-oxford:focus:-ms-input-placeholder {
-    color: var(--color-oxford);
+  .lg\:focus\:placeholder-accent:focus:-ms-input-placeholder {
+    color: var(--color-accent);
   }
 
-  .lg\:focus\:placeholder-oxford:focus::-ms-input-placeholder {
-    color: var(--color-oxford);
+  .lg\:focus\:placeholder-accent:focus::-ms-input-placeholder {
+    color: var(--color-accent);
   }
 
-  .lg\:focus\:placeholder-oxford:focus::placeholder {
-    color: var(--color-oxford);
+  .lg\:focus\:placeholder-accent:focus::placeholder {
+    color: var(--color-accent);
   }
 
-  .lg\:focus\:placeholder-black:focus::-moz-placeholder {
-    color: var(--color-black);
+  .lg\:focus\:placeholder-accent-dark:focus::-moz-placeholder {
+    color: var(--color-accent-dark);
   }
 
-  .lg\:focus\:placeholder-black:focus:-ms-input-placeholder {
-    color: var(--color-black);
+  .lg\:focus\:placeholder-accent-dark:focus:-ms-input-placeholder {
+    color: var(--color-accent-dark);
   }
 
-  .lg\:focus\:placeholder-black:focus::-ms-input-placeholder {
-    color: var(--color-black);
+  .lg\:focus\:placeholder-accent-dark:focus::-ms-input-placeholder {
+    color: var(--color-accent-dark);
   }
 
-  .lg\:focus\:placeholder-black:focus::placeholder {
-    color: var(--color-black);
+  .lg\:focus\:placeholder-accent-dark:focus::placeholder {
+    color: var(--color-accent-dark);
   }
 
-  .lg\:focus\:placeholder-white:focus::-moz-placeholder {
-    color: var(--color-white);
+  .lg\:focus\:placeholder-accent-light:focus::-moz-placeholder {
+    color: var(--color-accent-light);
   }
 
-  .lg\:focus\:placeholder-white:focus:-ms-input-placeholder {
-    color: var(--color-white);
+  .lg\:focus\:placeholder-accent-light:focus:-ms-input-placeholder {
+    color: var(--color-accent-light);
   }
 
-  .lg\:focus\:placeholder-white:focus::-ms-input-placeholder {
-    color: var(--color-white);
+  .lg\:focus\:placeholder-accent-light:focus::-ms-input-placeholder {
+    color: var(--color-accent-light);
   }
 
-  .lg\:focus\:placeholder-white:focus::placeholder {
-    color: var(--color-white);
-  }
-
-  .lg\:focus\:placeholder-link:focus::-moz-placeholder {
-    color: var(--color-link);
-  }
-
-  .lg\:focus\:placeholder-link:focus:-ms-input-placeholder {
-    color: var(--color-link);
-  }
-
-  .lg\:focus\:placeholder-link:focus::-ms-input-placeholder {
-    color: var(--color-link);
-  }
-
-  .lg\:focus\:placeholder-link:focus::placeholder {
-    color: var(--color-link);
+  .lg\:focus\:placeholder-accent-light:focus::placeholder {
+    color: var(--color-accent-light);
   }
 
   .lg\:placeholder-opacity-0::-moz-placeholder {
@@ -31832,6 +32513,18 @@ a.toc-link {
     color: transparent;
   }
 
+  .lg\:text-white {
+    --text-opacity: 1;
+    color: #fff;
+    color: rgba(255, 255, 255, var(--text-opacity));
+  }
+
+  .lg\:text-black {
+    --text-opacity: 1;
+    color: #000;
+    color: rgba(0, 0, 0, var(--text-opacity));
+  }
+
   .lg\:text-current {
     color: currentColor;
   }
@@ -31840,24 +32533,32 @@ a.toc-link {
     color: var(--color-primary);
   }
 
-  .lg\:text-oxford {
-    color: var(--color-oxford);
+  .lg\:text-accent {
+    color: var(--color-accent);
   }
 
-  .lg\:text-black {
-    color: var(--color-black);
+  .lg\:text-accent-dark {
+    color: var(--color-accent-dark);
   }
 
-  .lg\:text-white {
-    color: var(--color-white);
-  }
-
-  .lg\:text-link {
-    color: var(--color-link);
+  .lg\:text-accent-light {
+    color: var(--color-accent-light);
   }
 
   .lg\:hover\:text-transparent:hover {
     color: transparent;
+  }
+
+  .lg\:hover\:text-white:hover {
+    --text-opacity: 1;
+    color: #fff;
+    color: rgba(255, 255, 255, var(--text-opacity));
+  }
+
+  .lg\:hover\:text-black:hover {
+    --text-opacity: 1;
+    color: #000;
+    color: rgba(0, 0, 0, var(--text-opacity));
   }
 
   .lg\:hover\:text-current:hover {
@@ -31868,24 +32569,32 @@ a.toc-link {
     color: var(--color-primary);
   }
 
-  .lg\:hover\:text-oxford:hover {
-    color: var(--color-oxford);
+  .lg\:hover\:text-accent:hover {
+    color: var(--color-accent);
   }
 
-  .lg\:hover\:text-black:hover {
-    color: var(--color-black);
+  .lg\:hover\:text-accent-dark:hover {
+    color: var(--color-accent-dark);
   }
 
-  .lg\:hover\:text-white:hover {
-    color: var(--color-white);
-  }
-
-  .lg\:hover\:text-link:hover {
-    color: var(--color-link);
+  .lg\:hover\:text-accent-light:hover {
+    color: var(--color-accent-light);
   }
 
   .lg\:focus\:text-transparent:focus {
     color: transparent;
+  }
+
+  .lg\:focus\:text-white:focus {
+    --text-opacity: 1;
+    color: #fff;
+    color: rgba(255, 255, 255, var(--text-opacity));
+  }
+
+  .lg\:focus\:text-black:focus {
+    --text-opacity: 1;
+    color: #000;
+    color: rgba(0, 0, 0, var(--text-opacity));
   }
 
   .lg\:focus\:text-current:focus {
@@ -31896,20 +32605,16 @@ a.toc-link {
     color: var(--color-primary);
   }
 
-  .lg\:focus\:text-oxford:focus {
-    color: var(--color-oxford);
+  .lg\:focus\:text-accent:focus {
+    color: var(--color-accent);
   }
 
-  .lg\:focus\:text-black:focus {
-    color: var(--color-black);
+  .lg\:focus\:text-accent-dark:focus {
+    color: var(--color-accent-dark);
   }
 
-  .lg\:focus\:text-white:focus {
-    color: var(--color-white);
-  }
-
-  .lg\:focus\:text-link:focus {
-    color: var(--color-link);
+  .lg\:focus\:text-accent-light:focus {
+    color: var(--color-accent-light);
   }
 
   .lg\:text-opacity-0 {
@@ -35667,6 +36372,18 @@ a.toc-link {
     border-color: transparent;
   }
 
+  .xl\:divide-white > :not(template) ~ :not(template) {
+    --divide-opacity: 1;
+    border-color: #fff;
+    border-color: rgba(255, 255, 255, var(--divide-opacity));
+  }
+
+  .xl\:divide-black > :not(template) ~ :not(template) {
+    --divide-opacity: 1;
+    border-color: #000;
+    border-color: rgba(0, 0, 0, var(--divide-opacity));
+  }
+
   .xl\:divide-current > :not(template) ~ :not(template) {
     border-color: currentColor;
   }
@@ -35675,20 +36392,16 @@ a.toc-link {
     border-color: var(--color-primary);
   }
 
-  .xl\:divide-oxford > :not(template) ~ :not(template) {
-    border-color: var(--color-oxford);
+  .xl\:divide-accent > :not(template) ~ :not(template) {
+    border-color: var(--color-accent);
   }
 
-  .xl\:divide-black > :not(template) ~ :not(template) {
-    border-color: var(--color-black);
+  .xl\:divide-accent-dark > :not(template) ~ :not(template) {
+    border-color: var(--color-accent-dark);
   }
 
-  .xl\:divide-white > :not(template) ~ :not(template) {
-    border-color: var(--color-white);
-  }
-
-  .xl\:divide-link > :not(template) ~ :not(template) {
-    border-color: var(--color-link);
+  .xl\:divide-accent-light > :not(template) ~ :not(template) {
+    border-color: var(--color-accent-light);
   }
 
   .xl\:divide-solid > :not(template) ~ :not(template) {
@@ -35816,6 +36529,18 @@ a.toc-link {
     background-color: transparent;
   }
 
+  .xl\:bg-white {
+    --bg-opacity: 1;
+    background-color: #fff;
+    background-color: rgba(255, 255, 255, var(--bg-opacity));
+  }
+
+  .xl\:bg-black {
+    --bg-opacity: 1;
+    background-color: #000;
+    background-color: rgba(0, 0, 0, var(--bg-opacity));
+  }
+
   .xl\:bg-current {
     background-color: currentColor;
   }
@@ -35824,24 +36549,32 @@ a.toc-link {
     background-color: var(--color-primary);
   }
 
-  .xl\:bg-oxford {
-    background-color: var(--color-oxford);
+  .xl\:bg-accent {
+    background-color: var(--color-accent);
   }
 
-  .xl\:bg-black {
-    background-color: var(--color-black);
+  .xl\:bg-accent-dark {
+    background-color: var(--color-accent-dark);
   }
 
-  .xl\:bg-white {
-    background-color: var(--color-white);
-  }
-
-  .xl\:bg-link {
-    background-color: var(--color-link);
+  .xl\:bg-accent-light {
+    background-color: var(--color-accent-light);
   }
 
   .xl\:hover\:bg-transparent:hover {
     background-color: transparent;
+  }
+
+  .xl\:hover\:bg-white:hover {
+    --bg-opacity: 1;
+    background-color: #fff;
+    background-color: rgba(255, 255, 255, var(--bg-opacity));
+  }
+
+  .xl\:hover\:bg-black:hover {
+    --bg-opacity: 1;
+    background-color: #000;
+    background-color: rgba(0, 0, 0, var(--bg-opacity));
   }
 
   .xl\:hover\:bg-current:hover {
@@ -35852,24 +36585,32 @@ a.toc-link {
     background-color: var(--color-primary);
   }
 
-  .xl\:hover\:bg-oxford:hover {
-    background-color: var(--color-oxford);
+  .xl\:hover\:bg-accent:hover {
+    background-color: var(--color-accent);
   }
 
-  .xl\:hover\:bg-black:hover {
-    background-color: var(--color-black);
+  .xl\:hover\:bg-accent-dark:hover {
+    background-color: var(--color-accent-dark);
   }
 
-  .xl\:hover\:bg-white:hover {
-    background-color: var(--color-white);
-  }
-
-  .xl\:hover\:bg-link:hover {
-    background-color: var(--color-link);
+  .xl\:hover\:bg-accent-light:hover {
+    background-color: var(--color-accent-light);
   }
 
   .xl\:focus\:bg-transparent:focus {
     background-color: transparent;
+  }
+
+  .xl\:focus\:bg-white:focus {
+    --bg-opacity: 1;
+    background-color: #fff;
+    background-color: rgba(255, 255, 255, var(--bg-opacity));
+  }
+
+  .xl\:focus\:bg-black:focus {
+    --bg-opacity: 1;
+    background-color: #000;
+    background-color: rgba(0, 0, 0, var(--bg-opacity));
   }
 
   .xl\:focus\:bg-current:focus {
@@ -35880,20 +36621,16 @@ a.toc-link {
     background-color: var(--color-primary);
   }
 
-  .xl\:focus\:bg-oxford:focus {
-    background-color: var(--color-oxford);
+  .xl\:focus\:bg-accent:focus {
+    background-color: var(--color-accent);
   }
 
-  .xl\:focus\:bg-black:focus {
-    background-color: var(--color-black);
+  .xl\:focus\:bg-accent-dark:focus {
+    background-color: var(--color-accent-dark);
   }
 
-  .xl\:focus\:bg-white:focus {
-    background-color: var(--color-white);
-  }
-
-  .xl\:focus\:bg-link:focus {
-    background-color: var(--color-link);
+  .xl\:focus\:bg-accent-light:focus {
+    background-color: var(--color-accent-light);
   }
 
   .xl\:bg-none {
@@ -35937,6 +36674,16 @@ a.toc-link {
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(0, 0, 0, 0));
   }
 
+  .xl\:from-white {
+    --gradient-from-color: #fff;
+    --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
+  }
+
+  .xl\:from-black {
+    --gradient-from-color: #000;
+    --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(0, 0, 0, 0));
+  }
+
   .xl\:from-current {
     --gradient-from-color: currentColor;
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
@@ -35947,28 +36694,33 @@ a.toc-link {
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
   }
 
-  .xl\:from-oxford {
-    --gradient-from-color: var(--color-oxford);
+  .xl\:from-accent {
+    --gradient-from-color: var(--color-accent);
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
   }
 
-  .xl\:from-black {
-    --gradient-from-color: var(--color-black);
+  .xl\:from-accent-dark {
+    --gradient-from-color: var(--color-accent-dark);
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
   }
 
-  .xl\:from-white {
-    --gradient-from-color: var(--color-white);
-    --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
-  }
-
-  .xl\:from-link {
-    --gradient-from-color: var(--color-link);
+  .xl\:from-accent-light {
+    --gradient-from-color: var(--color-accent-light);
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
   }
 
   .xl\:via-transparent {
     --gradient-via-color: transparent;
+    --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(0, 0, 0, 0));
+  }
+
+  .xl\:via-white {
+    --gradient-via-color: #fff;
+    --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
+  }
+
+  .xl\:via-black {
+    --gradient-via-color: #000;
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(0, 0, 0, 0));
   }
 
@@ -35982,28 +36734,31 @@ a.toc-link {
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
   }
 
-  .xl\:via-oxford {
-    --gradient-via-color: var(--color-oxford);
+  .xl\:via-accent {
+    --gradient-via-color: var(--color-accent);
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
   }
 
-  .xl\:via-black {
-    --gradient-via-color: var(--color-black);
+  .xl\:via-accent-dark {
+    --gradient-via-color: var(--color-accent-dark);
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
   }
 
-  .xl\:via-white {
-    --gradient-via-color: var(--color-white);
-    --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
-  }
-
-  .xl\:via-link {
-    --gradient-via-color: var(--color-link);
+  .xl\:via-accent-light {
+    --gradient-via-color: var(--color-accent-light);
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
   }
 
   .xl\:to-transparent {
     --gradient-to-color: transparent;
+  }
+
+  .xl\:to-white {
+    --gradient-to-color: #fff;
+  }
+
+  .xl\:to-black {
+    --gradient-to-color: #000;
   }
 
   .xl\:to-current {
@@ -36014,24 +36769,30 @@ a.toc-link {
     --gradient-to-color: var(--color-primary);
   }
 
-  .xl\:to-oxford {
-    --gradient-to-color: var(--color-oxford);
+  .xl\:to-accent {
+    --gradient-to-color: var(--color-accent);
   }
 
-  .xl\:to-black {
-    --gradient-to-color: var(--color-black);
+  .xl\:to-accent-dark {
+    --gradient-to-color: var(--color-accent-dark);
   }
 
-  .xl\:to-white {
-    --gradient-to-color: var(--color-white);
-  }
-
-  .xl\:to-link {
-    --gradient-to-color: var(--color-link);
+  .xl\:to-accent-light {
+    --gradient-to-color: var(--color-accent-light);
   }
 
   .xl\:hover\:from-transparent:hover {
     --gradient-from-color: transparent;
+    --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(0, 0, 0, 0));
+  }
+
+  .xl\:hover\:from-white:hover {
+    --gradient-from-color: #fff;
+    --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
+  }
+
+  .xl\:hover\:from-black:hover {
+    --gradient-from-color: #000;
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(0, 0, 0, 0));
   }
 
@@ -36045,28 +36806,33 @@ a.toc-link {
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
   }
 
-  .xl\:hover\:from-oxford:hover {
-    --gradient-from-color: var(--color-oxford);
+  .xl\:hover\:from-accent:hover {
+    --gradient-from-color: var(--color-accent);
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
   }
 
-  .xl\:hover\:from-black:hover {
-    --gradient-from-color: var(--color-black);
+  .xl\:hover\:from-accent-dark:hover {
+    --gradient-from-color: var(--color-accent-dark);
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
   }
 
-  .xl\:hover\:from-white:hover {
-    --gradient-from-color: var(--color-white);
-    --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
-  }
-
-  .xl\:hover\:from-link:hover {
-    --gradient-from-color: var(--color-link);
+  .xl\:hover\:from-accent-light:hover {
+    --gradient-from-color: var(--color-accent-light);
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
   }
 
   .xl\:hover\:via-transparent:hover {
     --gradient-via-color: transparent;
+    --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(0, 0, 0, 0));
+  }
+
+  .xl\:hover\:via-white:hover {
+    --gradient-via-color: #fff;
+    --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
+  }
+
+  .xl\:hover\:via-black:hover {
+    --gradient-via-color: #000;
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(0, 0, 0, 0));
   }
 
@@ -36080,28 +36846,31 @@ a.toc-link {
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
   }
 
-  .xl\:hover\:via-oxford:hover {
-    --gradient-via-color: var(--color-oxford);
+  .xl\:hover\:via-accent:hover {
+    --gradient-via-color: var(--color-accent);
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
   }
 
-  .xl\:hover\:via-black:hover {
-    --gradient-via-color: var(--color-black);
+  .xl\:hover\:via-accent-dark:hover {
+    --gradient-via-color: var(--color-accent-dark);
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
   }
 
-  .xl\:hover\:via-white:hover {
-    --gradient-via-color: var(--color-white);
-    --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
-  }
-
-  .xl\:hover\:via-link:hover {
-    --gradient-via-color: var(--color-link);
+  .xl\:hover\:via-accent-light:hover {
+    --gradient-via-color: var(--color-accent-light);
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
   }
 
   .xl\:hover\:to-transparent:hover {
     --gradient-to-color: transparent;
+  }
+
+  .xl\:hover\:to-white:hover {
+    --gradient-to-color: #fff;
+  }
+
+  .xl\:hover\:to-black:hover {
+    --gradient-to-color: #000;
   }
 
   .xl\:hover\:to-current:hover {
@@ -36112,24 +36881,30 @@ a.toc-link {
     --gradient-to-color: var(--color-primary);
   }
 
-  .xl\:hover\:to-oxford:hover {
-    --gradient-to-color: var(--color-oxford);
+  .xl\:hover\:to-accent:hover {
+    --gradient-to-color: var(--color-accent);
   }
 
-  .xl\:hover\:to-black:hover {
-    --gradient-to-color: var(--color-black);
+  .xl\:hover\:to-accent-dark:hover {
+    --gradient-to-color: var(--color-accent-dark);
   }
 
-  .xl\:hover\:to-white:hover {
-    --gradient-to-color: var(--color-white);
-  }
-
-  .xl\:hover\:to-link:hover {
-    --gradient-to-color: var(--color-link);
+  .xl\:hover\:to-accent-light:hover {
+    --gradient-to-color: var(--color-accent-light);
   }
 
   .xl\:focus\:from-transparent:focus {
     --gradient-from-color: transparent;
+    --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(0, 0, 0, 0));
+  }
+
+  .xl\:focus\:from-white:focus {
+    --gradient-from-color: #fff;
+    --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
+  }
+
+  .xl\:focus\:from-black:focus {
+    --gradient-from-color: #000;
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(0, 0, 0, 0));
   }
 
@@ -36143,28 +36918,33 @@ a.toc-link {
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
   }
 
-  .xl\:focus\:from-oxford:focus {
-    --gradient-from-color: var(--color-oxford);
+  .xl\:focus\:from-accent:focus {
+    --gradient-from-color: var(--color-accent);
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
   }
 
-  .xl\:focus\:from-black:focus {
-    --gradient-from-color: var(--color-black);
+  .xl\:focus\:from-accent-dark:focus {
+    --gradient-from-color: var(--color-accent-dark);
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
   }
 
-  .xl\:focus\:from-white:focus {
-    --gradient-from-color: var(--color-white);
-    --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
-  }
-
-  .xl\:focus\:from-link:focus {
-    --gradient-from-color: var(--color-link);
+  .xl\:focus\:from-accent-light:focus {
+    --gradient-from-color: var(--color-accent-light);
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
   }
 
   .xl\:focus\:via-transparent:focus {
     --gradient-via-color: transparent;
+    --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(0, 0, 0, 0));
+  }
+
+  .xl\:focus\:via-white:focus {
+    --gradient-via-color: #fff;
+    --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
+  }
+
+  .xl\:focus\:via-black:focus {
+    --gradient-via-color: #000;
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(0, 0, 0, 0));
   }
 
@@ -36178,28 +36958,31 @@ a.toc-link {
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
   }
 
-  .xl\:focus\:via-oxford:focus {
-    --gradient-via-color: var(--color-oxford);
+  .xl\:focus\:via-accent:focus {
+    --gradient-via-color: var(--color-accent);
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
   }
 
-  .xl\:focus\:via-black:focus {
-    --gradient-via-color: var(--color-black);
+  .xl\:focus\:via-accent-dark:focus {
+    --gradient-via-color: var(--color-accent-dark);
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
   }
 
-  .xl\:focus\:via-white:focus {
-    --gradient-via-color: var(--color-white);
-    --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
-  }
-
-  .xl\:focus\:via-link:focus {
-    --gradient-via-color: var(--color-link);
+  .xl\:focus\:via-accent-light:focus {
+    --gradient-via-color: var(--color-accent-light);
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
   }
 
   .xl\:focus\:to-transparent:focus {
     --gradient-to-color: transparent;
+  }
+
+  .xl\:focus\:to-white:focus {
+    --gradient-to-color: #fff;
+  }
+
+  .xl\:focus\:to-black:focus {
+    --gradient-to-color: #000;
   }
 
   .xl\:focus\:to-current:focus {
@@ -36210,20 +36993,16 @@ a.toc-link {
     --gradient-to-color: var(--color-primary);
   }
 
-  .xl\:focus\:to-oxford:focus {
-    --gradient-to-color: var(--color-oxford);
+  .xl\:focus\:to-accent:focus {
+    --gradient-to-color: var(--color-accent);
   }
 
-  .xl\:focus\:to-black:focus {
-    --gradient-to-color: var(--color-black);
+  .xl\:focus\:to-accent-dark:focus {
+    --gradient-to-color: var(--color-accent-dark);
   }
 
-  .xl\:focus\:to-white:focus {
-    --gradient-to-color: var(--color-white);
-  }
-
-  .xl\:focus\:to-link:focus {
-    --gradient-to-color: var(--color-link);
+  .xl\:focus\:to-accent-light:focus {
+    --gradient-to-color: var(--color-accent-light);
   }
 
   .xl\:bg-opacity-0 {
@@ -36370,6 +37149,18 @@ a.toc-link {
     border-color: transparent;
   }
 
+  .xl\:border-white {
+    --border-opacity: 1;
+    border-color: #fff;
+    border-color: rgba(255, 255, 255, var(--border-opacity));
+  }
+
+  .xl\:border-black {
+    --border-opacity: 1;
+    border-color: #000;
+    border-color: rgba(0, 0, 0, var(--border-opacity));
+  }
+
   .xl\:border-current {
     border-color: currentColor;
   }
@@ -36378,24 +37169,32 @@ a.toc-link {
     border-color: var(--color-primary);
   }
 
-  .xl\:border-oxford {
-    border-color: var(--color-oxford);
+  .xl\:border-accent {
+    border-color: var(--color-accent);
   }
 
-  .xl\:border-black {
-    border-color: var(--color-black);
+  .xl\:border-accent-dark {
+    border-color: var(--color-accent-dark);
   }
 
-  .xl\:border-white {
-    border-color: var(--color-white);
-  }
-
-  .xl\:border-link {
-    border-color: var(--color-link);
+  .xl\:border-accent-light {
+    border-color: var(--color-accent-light);
   }
 
   .xl\:hover\:border-transparent:hover {
     border-color: transparent;
+  }
+
+  .xl\:hover\:border-white:hover {
+    --border-opacity: 1;
+    border-color: #fff;
+    border-color: rgba(255, 255, 255, var(--border-opacity));
+  }
+
+  .xl\:hover\:border-black:hover {
+    --border-opacity: 1;
+    border-color: #000;
+    border-color: rgba(0, 0, 0, var(--border-opacity));
   }
 
   .xl\:hover\:border-current:hover {
@@ -36406,24 +37205,32 @@ a.toc-link {
     border-color: var(--color-primary);
   }
 
-  .xl\:hover\:border-oxford:hover {
-    border-color: var(--color-oxford);
+  .xl\:hover\:border-accent:hover {
+    border-color: var(--color-accent);
   }
 
-  .xl\:hover\:border-black:hover {
-    border-color: var(--color-black);
+  .xl\:hover\:border-accent-dark:hover {
+    border-color: var(--color-accent-dark);
   }
 
-  .xl\:hover\:border-white:hover {
-    border-color: var(--color-white);
-  }
-
-  .xl\:hover\:border-link:hover {
-    border-color: var(--color-link);
+  .xl\:hover\:border-accent-light:hover {
+    border-color: var(--color-accent-light);
   }
 
   .xl\:focus\:border-transparent:focus {
     border-color: transparent;
+  }
+
+  .xl\:focus\:border-white:focus {
+    --border-opacity: 1;
+    border-color: #fff;
+    border-color: rgba(255, 255, 255, var(--border-opacity));
+  }
+
+  .xl\:focus\:border-black:focus {
+    --border-opacity: 1;
+    border-color: #000;
+    border-color: rgba(0, 0, 0, var(--border-opacity));
   }
 
   .xl\:focus\:border-current:focus {
@@ -36434,20 +37241,16 @@ a.toc-link {
     border-color: var(--color-primary);
   }
 
-  .xl\:focus\:border-oxford:focus {
-    border-color: var(--color-oxford);
+  .xl\:focus\:border-accent:focus {
+    border-color: var(--color-accent);
   }
 
-  .xl\:focus\:border-black:focus {
-    border-color: var(--color-black);
+  .xl\:focus\:border-accent-dark:focus {
+    border-color: var(--color-accent-dark);
   }
 
-  .xl\:focus\:border-white:focus {
-    border-color: var(--color-white);
-  }
-
-  .xl\:focus\:border-link:focus {
-    border-color: var(--color-link);
+  .xl\:focus\:border-accent-light:focus {
+    border-color: var(--color-accent-light);
   }
 
   .xl\:border-opacity-0 {
@@ -39703,6 +40506,54 @@ a.toc-link {
     color: transparent;
   }
 
+  .xl\:placeholder-white::-moz-placeholder {
+    --placeholder-opacity: 1;
+    color: #fff;
+    color: rgba(255, 255, 255, var(--placeholder-opacity));
+  }
+
+  .xl\:placeholder-white:-ms-input-placeholder {
+    --placeholder-opacity: 1;
+    color: #fff;
+    color: rgba(255, 255, 255, var(--placeholder-opacity));
+  }
+
+  .xl\:placeholder-white::-ms-input-placeholder {
+    --placeholder-opacity: 1;
+    color: #fff;
+    color: rgba(255, 255, 255, var(--placeholder-opacity));
+  }
+
+  .xl\:placeholder-white::placeholder {
+    --placeholder-opacity: 1;
+    color: #fff;
+    color: rgba(255, 255, 255, var(--placeholder-opacity));
+  }
+
+  .xl\:placeholder-black::-moz-placeholder {
+    --placeholder-opacity: 1;
+    color: #000;
+    color: rgba(0, 0, 0, var(--placeholder-opacity));
+  }
+
+  .xl\:placeholder-black:-ms-input-placeholder {
+    --placeholder-opacity: 1;
+    color: #000;
+    color: rgba(0, 0, 0, var(--placeholder-opacity));
+  }
+
+  .xl\:placeholder-black::-ms-input-placeholder {
+    --placeholder-opacity: 1;
+    color: #000;
+    color: rgba(0, 0, 0, var(--placeholder-opacity));
+  }
+
+  .xl\:placeholder-black::placeholder {
+    --placeholder-opacity: 1;
+    color: #000;
+    color: rgba(0, 0, 0, var(--placeholder-opacity));
+  }
+
   .xl\:placeholder-current::-moz-placeholder {
     color: currentColor;
   }
@@ -39735,68 +40586,52 @@ a.toc-link {
     color: var(--color-primary);
   }
 
-  .xl\:placeholder-oxford::-moz-placeholder {
-    color: var(--color-oxford);
+  .xl\:placeholder-accent::-moz-placeholder {
+    color: var(--color-accent);
   }
 
-  .xl\:placeholder-oxford:-ms-input-placeholder {
-    color: var(--color-oxford);
+  .xl\:placeholder-accent:-ms-input-placeholder {
+    color: var(--color-accent);
   }
 
-  .xl\:placeholder-oxford::-ms-input-placeholder {
-    color: var(--color-oxford);
+  .xl\:placeholder-accent::-ms-input-placeholder {
+    color: var(--color-accent);
   }
 
-  .xl\:placeholder-oxford::placeholder {
-    color: var(--color-oxford);
+  .xl\:placeholder-accent::placeholder {
+    color: var(--color-accent);
   }
 
-  .xl\:placeholder-black::-moz-placeholder {
-    color: var(--color-black);
+  .xl\:placeholder-accent-dark::-moz-placeholder {
+    color: var(--color-accent-dark);
   }
 
-  .xl\:placeholder-black:-ms-input-placeholder {
-    color: var(--color-black);
+  .xl\:placeholder-accent-dark:-ms-input-placeholder {
+    color: var(--color-accent-dark);
   }
 
-  .xl\:placeholder-black::-ms-input-placeholder {
-    color: var(--color-black);
+  .xl\:placeholder-accent-dark::-ms-input-placeholder {
+    color: var(--color-accent-dark);
   }
 
-  .xl\:placeholder-black::placeholder {
-    color: var(--color-black);
+  .xl\:placeholder-accent-dark::placeholder {
+    color: var(--color-accent-dark);
   }
 
-  .xl\:placeholder-white::-moz-placeholder {
-    color: var(--color-white);
+  .xl\:placeholder-accent-light::-moz-placeholder {
+    color: var(--color-accent-light);
   }
 
-  .xl\:placeholder-white:-ms-input-placeholder {
-    color: var(--color-white);
+  .xl\:placeholder-accent-light:-ms-input-placeholder {
+    color: var(--color-accent-light);
   }
 
-  .xl\:placeholder-white::-ms-input-placeholder {
-    color: var(--color-white);
+  .xl\:placeholder-accent-light::-ms-input-placeholder {
+    color: var(--color-accent-light);
   }
 
-  .xl\:placeholder-white::placeholder {
-    color: var(--color-white);
-  }
-
-  .xl\:placeholder-link::-moz-placeholder {
-    color: var(--color-link);
-  }
-
-  .xl\:placeholder-link:-ms-input-placeholder {
-    color: var(--color-link);
-  }
-
-  .xl\:placeholder-link::-ms-input-placeholder {
-    color: var(--color-link);
-  }
-
-  .xl\:placeholder-link::placeholder {
-    color: var(--color-link);
+  .xl\:placeholder-accent-light::placeholder {
+    color: var(--color-accent-light);
   }
 
   .xl\:focus\:placeholder-transparent:focus::-moz-placeholder {
@@ -39813,6 +40648,54 @@ a.toc-link {
 
   .xl\:focus\:placeholder-transparent:focus::placeholder {
     color: transparent;
+  }
+
+  .xl\:focus\:placeholder-white:focus::-moz-placeholder {
+    --placeholder-opacity: 1;
+    color: #fff;
+    color: rgba(255, 255, 255, var(--placeholder-opacity));
+  }
+
+  .xl\:focus\:placeholder-white:focus:-ms-input-placeholder {
+    --placeholder-opacity: 1;
+    color: #fff;
+    color: rgba(255, 255, 255, var(--placeholder-opacity));
+  }
+
+  .xl\:focus\:placeholder-white:focus::-ms-input-placeholder {
+    --placeholder-opacity: 1;
+    color: #fff;
+    color: rgba(255, 255, 255, var(--placeholder-opacity));
+  }
+
+  .xl\:focus\:placeholder-white:focus::placeholder {
+    --placeholder-opacity: 1;
+    color: #fff;
+    color: rgba(255, 255, 255, var(--placeholder-opacity));
+  }
+
+  .xl\:focus\:placeholder-black:focus::-moz-placeholder {
+    --placeholder-opacity: 1;
+    color: #000;
+    color: rgba(0, 0, 0, var(--placeholder-opacity));
+  }
+
+  .xl\:focus\:placeholder-black:focus:-ms-input-placeholder {
+    --placeholder-opacity: 1;
+    color: #000;
+    color: rgba(0, 0, 0, var(--placeholder-opacity));
+  }
+
+  .xl\:focus\:placeholder-black:focus::-ms-input-placeholder {
+    --placeholder-opacity: 1;
+    color: #000;
+    color: rgba(0, 0, 0, var(--placeholder-opacity));
+  }
+
+  .xl\:focus\:placeholder-black:focus::placeholder {
+    --placeholder-opacity: 1;
+    color: #000;
+    color: rgba(0, 0, 0, var(--placeholder-opacity));
   }
 
   .xl\:focus\:placeholder-current:focus::-moz-placeholder {
@@ -39847,68 +40730,52 @@ a.toc-link {
     color: var(--color-primary);
   }
 
-  .xl\:focus\:placeholder-oxford:focus::-moz-placeholder {
-    color: var(--color-oxford);
+  .xl\:focus\:placeholder-accent:focus::-moz-placeholder {
+    color: var(--color-accent);
   }
 
-  .xl\:focus\:placeholder-oxford:focus:-ms-input-placeholder {
-    color: var(--color-oxford);
+  .xl\:focus\:placeholder-accent:focus:-ms-input-placeholder {
+    color: var(--color-accent);
   }
 
-  .xl\:focus\:placeholder-oxford:focus::-ms-input-placeholder {
-    color: var(--color-oxford);
+  .xl\:focus\:placeholder-accent:focus::-ms-input-placeholder {
+    color: var(--color-accent);
   }
 
-  .xl\:focus\:placeholder-oxford:focus::placeholder {
-    color: var(--color-oxford);
+  .xl\:focus\:placeholder-accent:focus::placeholder {
+    color: var(--color-accent);
   }
 
-  .xl\:focus\:placeholder-black:focus::-moz-placeholder {
-    color: var(--color-black);
+  .xl\:focus\:placeholder-accent-dark:focus::-moz-placeholder {
+    color: var(--color-accent-dark);
   }
 
-  .xl\:focus\:placeholder-black:focus:-ms-input-placeholder {
-    color: var(--color-black);
+  .xl\:focus\:placeholder-accent-dark:focus:-ms-input-placeholder {
+    color: var(--color-accent-dark);
   }
 
-  .xl\:focus\:placeholder-black:focus::-ms-input-placeholder {
-    color: var(--color-black);
+  .xl\:focus\:placeholder-accent-dark:focus::-ms-input-placeholder {
+    color: var(--color-accent-dark);
   }
 
-  .xl\:focus\:placeholder-black:focus::placeholder {
-    color: var(--color-black);
+  .xl\:focus\:placeholder-accent-dark:focus::placeholder {
+    color: var(--color-accent-dark);
   }
 
-  .xl\:focus\:placeholder-white:focus::-moz-placeholder {
-    color: var(--color-white);
+  .xl\:focus\:placeholder-accent-light:focus::-moz-placeholder {
+    color: var(--color-accent-light);
   }
 
-  .xl\:focus\:placeholder-white:focus:-ms-input-placeholder {
-    color: var(--color-white);
+  .xl\:focus\:placeholder-accent-light:focus:-ms-input-placeholder {
+    color: var(--color-accent-light);
   }
 
-  .xl\:focus\:placeholder-white:focus::-ms-input-placeholder {
-    color: var(--color-white);
+  .xl\:focus\:placeholder-accent-light:focus::-ms-input-placeholder {
+    color: var(--color-accent-light);
   }
 
-  .xl\:focus\:placeholder-white:focus::placeholder {
-    color: var(--color-white);
-  }
-
-  .xl\:focus\:placeholder-link:focus::-moz-placeholder {
-    color: var(--color-link);
-  }
-
-  .xl\:focus\:placeholder-link:focus:-ms-input-placeholder {
-    color: var(--color-link);
-  }
-
-  .xl\:focus\:placeholder-link:focus::-ms-input-placeholder {
-    color: var(--color-link);
-  }
-
-  .xl\:focus\:placeholder-link:focus::placeholder {
-    color: var(--color-link);
+  .xl\:focus\:placeholder-accent-light:focus::placeholder {
+    color: var(--color-accent-light);
   }
 
   .xl\:placeholder-opacity-0::-moz-placeholder {
@@ -40350,6 +41217,18 @@ a.toc-link {
     color: transparent;
   }
 
+  .xl\:text-white {
+    --text-opacity: 1;
+    color: #fff;
+    color: rgba(255, 255, 255, var(--text-opacity));
+  }
+
+  .xl\:text-black {
+    --text-opacity: 1;
+    color: #000;
+    color: rgba(0, 0, 0, var(--text-opacity));
+  }
+
   .xl\:text-current {
     color: currentColor;
   }
@@ -40358,24 +41237,32 @@ a.toc-link {
     color: var(--color-primary);
   }
 
-  .xl\:text-oxford {
-    color: var(--color-oxford);
+  .xl\:text-accent {
+    color: var(--color-accent);
   }
 
-  .xl\:text-black {
-    color: var(--color-black);
+  .xl\:text-accent-dark {
+    color: var(--color-accent-dark);
   }
 
-  .xl\:text-white {
-    color: var(--color-white);
-  }
-
-  .xl\:text-link {
-    color: var(--color-link);
+  .xl\:text-accent-light {
+    color: var(--color-accent-light);
   }
 
   .xl\:hover\:text-transparent:hover {
     color: transparent;
+  }
+
+  .xl\:hover\:text-white:hover {
+    --text-opacity: 1;
+    color: #fff;
+    color: rgba(255, 255, 255, var(--text-opacity));
+  }
+
+  .xl\:hover\:text-black:hover {
+    --text-opacity: 1;
+    color: #000;
+    color: rgba(0, 0, 0, var(--text-opacity));
   }
 
   .xl\:hover\:text-current:hover {
@@ -40386,24 +41273,32 @@ a.toc-link {
     color: var(--color-primary);
   }
 
-  .xl\:hover\:text-oxford:hover {
-    color: var(--color-oxford);
+  .xl\:hover\:text-accent:hover {
+    color: var(--color-accent);
   }
 
-  .xl\:hover\:text-black:hover {
-    color: var(--color-black);
+  .xl\:hover\:text-accent-dark:hover {
+    color: var(--color-accent-dark);
   }
 
-  .xl\:hover\:text-white:hover {
-    color: var(--color-white);
-  }
-
-  .xl\:hover\:text-link:hover {
-    color: var(--color-link);
+  .xl\:hover\:text-accent-light:hover {
+    color: var(--color-accent-light);
   }
 
   .xl\:focus\:text-transparent:focus {
     color: transparent;
+  }
+
+  .xl\:focus\:text-white:focus {
+    --text-opacity: 1;
+    color: #fff;
+    color: rgba(255, 255, 255, var(--text-opacity));
+  }
+
+  .xl\:focus\:text-black:focus {
+    --text-opacity: 1;
+    color: #000;
+    color: rgba(0, 0, 0, var(--text-opacity));
   }
 
   .xl\:focus\:text-current:focus {
@@ -40414,20 +41309,16 @@ a.toc-link {
     color: var(--color-primary);
   }
 
-  .xl\:focus\:text-oxford:focus {
-    color: var(--color-oxford);
+  .xl\:focus\:text-accent:focus {
+    color: var(--color-accent);
   }
 
-  .xl\:focus\:text-black:focus {
-    color: var(--color-black);
+  .xl\:focus\:text-accent-dark:focus {
+    color: var(--color-accent-dark);
   }
 
-  .xl\:focus\:text-white:focus {
-    color: var(--color-white);
-  }
-
-  .xl\:focus\:text-link:focus {
-    color: var(--color-link);
+  .xl\:focus\:text-accent-light:focus {
+    color: var(--color-accent-light);
   }
 
   .xl\:text-opacity-0 {

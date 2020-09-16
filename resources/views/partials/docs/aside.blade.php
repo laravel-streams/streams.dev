@@ -24,7 +24,7 @@
             @foreach ($stream->entries()->where('enabled', true)->orderBy('sort', 'ASC')->where('category',
             null)->get() as $page)
             <li>
-                <a href="{{$page->id}}">{{ $page->title }}</a>
+                <a class="tmplink" href="{{$page->id}}">{{ $page->title }}</a>
                 {{-- <strong>[{{ $page->stage ?: 'outlining' }}]</strong> --}}
             </li>
             @endforeach

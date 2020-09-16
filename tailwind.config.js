@@ -14,12 +14,14 @@ module.exports = {
   theme: {
     colors:{
       transparent: 'transparent',
+      white:"#fff",
+      black:"#000",
       current: 'currentColor',
       primary:"var(--color-primary)",
-      oxford:"var(--color-oxford)",
-      black:"var(--color-black)",
-      white:"var(--color-white)",
-      link:"var(--color-link)"
+      // Accent
+      accent:"var(--color-accent)",
+      "accent-dark":"var(--color-accent-dark)",
+      "accent-light":"var(--color-accent-light)"
     },
     fontSize: {
       xs: '0.75rem',
