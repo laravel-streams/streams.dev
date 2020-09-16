@@ -627,7 +627,7 @@ video {
   --color-black:#000;
   --color-primary: #000;
   --color-accent:#00ceff;
-  --color-accent-dark:#00ceff;
+  --color-accent-dark:#6fa6b3;
   --color-accent-light:#d1f6ff;
   --position-top-aside-menus:150px;
 }
@@ -853,7 +853,7 @@ code.language-bash.hljs {
 body,
 .c-scrollbar,
 code[class^=language] {
-  --scrollbar-color:var(--color-accent-dark);
+  --scrollbar-color:var(--color-accent);
   --scrollbar-bkg-color:var(--color-accent-light);
   --scrollbar-width:5px;
   --scrollbar-height:1px;
@@ -978,9 +978,8 @@ code[class^=language]::-webkit-scrollbar-thumb {
 
 .c-aside-menu .active a {
   background-color: var(--color-accent-light);
-  --text-opacity: 1;
-  color: #000;
-  color: rgba(0, 0, 0, var(--text-opacity));
+  color: var(--color-accent-dark);
+  border-radius: 0.125rem;
 }
 
 /* Core Styles */
