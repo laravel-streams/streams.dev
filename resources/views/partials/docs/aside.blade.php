@@ -26,8 +26,9 @@
             $docs = Streams::entries('docs')->where('enabled', true)->orderBy('sort', 'asc')->get();
             $suffix = '';
         @endphp
-        
         @endif
+
+
         <ul>
             @foreach ($stream->entries()->where('enabled', true)->orderBy('sort', 'ASC')->where('category',
             null)->get() as $page)
@@ -40,7 +41,9 @@
 
         @foreach ($stream->fields->category->config['options'] as $category => $label)
 
-        <?php $pages = $stream->entries()->where('enabled', true)->orderBy('sort', 'ASC')->where('category', $category)->get() ?>
+        @php 
+            $pages = $stream->entries()->where('enabled', true)->orderBy('sort', 'ASC')->where('category', $category)->get()
+        @endphp
 
         @if ($pages->isNotEmpty())
         <h4>{{ $label }}</h4>
