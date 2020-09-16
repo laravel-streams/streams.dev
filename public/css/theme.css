@@ -676,7 +676,6 @@ h1, h2, h3, h4, h5, h6 {
 .o-navbar {
   margin-top: 0;
   margin-bottom: 4rem;
-  border-top-width: 1px;
   border-bottom-width: 1px;
   padding-top: 2rem;
   padding-bottom: 2rem;
@@ -687,11 +686,13 @@ h1, h2, h3, h4, h5, h6 {
           backdrop-filter: blur(4px);
   top: -1px;
   background: rgba(255, 255, 255, 0.85);
+  border-color: #eee;
 }
 
 .o-doc-body {
   width: min(868px, 100%);
   margin-left: 0;
+  padding-bottom: 16rem;
 }
 
 .o-doc-body *:not(code):not(pre):not(.c-copy-code):not(.c-copy-code__icon),
