@@ -1,13 +1,15 @@
 body,
 .c-scrollbar,
 code[class^="language"] {
-    --scrollbar-color:#cd2222;
-    --scrollbar-bkg-color:#282828;
+    --scrollbar-color:var(--color-accent-dark);
+    --scrollbar-bkg-color:var(--color-accent-light);
+    --scrollbar-width:5px;
+    --scrollbar-height:1px;
     scrollbar-width: thin; /* "auto" or "thin"  */
     scrollbar-color: var(--scrollbar-color) var(--scrollbar-bkg-color);; /* scroll thumb & track */
     &::-webkit-scrollbar {
-        width: 5px;
-        height: 5px;
+        width: var(--scrollbar-width);
+        height: var(--scrollbar-height);
     }
     // &::-webkit-scrollbar {
     //     width: 5px;

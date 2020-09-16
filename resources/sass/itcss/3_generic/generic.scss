@@ -6,7 +6,7 @@ html {
     overflow-x: hidden;
 }
 
-ul:not(.c-list) {
+ul:not(.c-list):not(.c-aside-menu) {
     @apply list-disc my-6;
 
     // Nested unordered list elements
@@ -15,9 +15,7 @@ ul:not(.c-list) {
     }
 }
 
-a:not(.c-link){
-    @apply text-link;
-}
+
 * 
 {
     outline: none;

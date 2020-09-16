@@ -1,54 +1,67 @@
-<aside class="w-aside pl-4 mr-6">
+@php
+$areas = ['docs' => 'Streams', 'core' => 'Core', 'ui' => 'UI'];
+@endphp
+
+@if (count(request()->segments()) == 3 && request()->segment(2) == 'core')
+@php
+$docs = Streams::entries('docs_core')->where('enabled', true)->orderBy('sort', 'asc')->get();
+$suffix = '/core';
+@endphp
+@elseif (count(request()->segments()) == 3 && request()->segment(2) == 'ui')
+@php
+$docs = Streams::entries('docs_ui')->where('enabled', true)->orderBy('sort', 'asc')->get();
+$suffix = '/ui';
+@endphp
+@else
+@php
+$docs = Streams::entries('docs')->where('enabled', true)->orderBy('sort', 'asc')->get();
+$suffix = '';
+@endphp
+@endif
+
+<aside class="w-2/12 pl-4 mr-6">
 
     <div class="sticky top-0 ">
-        <div class="c-scrollbar w-aside__scrollbar">
-        <ul>
-            <li>
-                <a href="/docs">Docs Home</a>
-            </li>
-        </ul>
-        <?php $areas = ['docs' => 'Streams', 'core' => 'Core', 'ui' => 'UI']; ?>
+        <div class="o-aside c-scrollbar">
+            
+            <p class="c-aside-menu-title">
+                <a  href="/docs">Docs Home</a>
+            </p>
 
-        @if (count(request()->segments()) == 3 && request()->segment(2) == 'core')
-        <?php $docs = Streams::entries('docs_core')->where('enabled', true)->orderBy('sort', 'asc')->get(); ?>
-        <?php $suffix = '/core'; ?>
-        @elseif (count(request()->segments()) == 3 && request()->segment(2) == 'ui')
-        <?php $docs = Streams::entries('docs_ui')->where('enabled', true)->orderBy('sort', 'asc')->get(); ?>
-        <?php $suffix = '/ui'; ?>
-        @else
-        <?php $docs = Streams::entries('docs')->where('enabled', true)->orderBy('sort', 'asc')->get(); ?>
-        <?php $suffix = ''; ?>
-        @endif
+            <ul class="c-aside-menu">
+                @foreach ($stream->entries()->where('enabled', true)->orderBy('sort', 'ASC')->where('category',
+                null)->get() as $page)
+                <li {{{ (Request::is('docs/'.$page->id) ? 'class=active' : '') }}}>
+                    <a href="{{$page->id}}">{{ $page->title }}</a>
+                    {{-- <strong>[{{ $page->stage ?: 'outlining' }}]</strong> --}}
+                </li>
+                @endforeach
+            </ul>
 
-        <ul>
-            @foreach ($stream->entries()->where('enabled', true)->orderBy('sort', 'ASC')->where('category',
-            null)->get() as $page)
-            <li>
-                <a href="{{$page->id}}">{{ $page->title }}</a>
-                {{-- <strong>[{{ $page->stage ?: 'outlining' }}]</strong> --}}
-            </li>
+            @foreach ($stream->fields->category->config['options'] as $category => $label)
+
+            @php
+            $pages = $stream->entries()->where('enabled', true)->orderBy('sort', 'ASC')->where('category',
+            $category)->get()
+            @endphp
+
+            @if ($pages->isNotEmpty())
+            <p class="c-aside-menu-title">
+                {{ $label }}
+            </p>
+            <ul class="c-aside-menu">
+                @foreach ($pages as $page)
+                <li {{{ (Request::is('docs/'.$page->id) ? 'class=active' : '') }}}>
+                    <a href="{{$page->id}}">{{ $page->title }}</a>
+                    {{-- <strong>[{{ $page->stage ?: 'outlining' }}]</strong> --}}
+                </li>
+                @endforeach
+            </ul>
+            @endif
+
             @endforeach
-        </ul>
 
-        @foreach ($stream->fields->category->config['options'] as $category => $label)
-
-        <?php $pages = $stream->entries()->where('enabled', true)->orderBy('sort', 'ASC')->where('category', $category)->get() ?>
-
-        @if ($pages->isNotEmpty())
-        <h4>{{ $label }}</h4>
-        <ul>
-            @foreach ($pages as $page)
-            <li>
-                <a href="{{$page->id}}">{{ $page->title }}</a>
-                {{-- <strong>[{{ $page->stage ?: 'outlining' }}]</strong> --}}
-            </li>
-            @endforeach
-        </ul>
-        @endif
-
-        @endforeach
-        
-    </div>
+        </div>
     </div>
 
 </aside>

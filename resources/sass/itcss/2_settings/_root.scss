@@ -1,12 +1,18 @@
 :root {
-    // Widths 
-    --width-aside:300px;
-    --width-main:calc(100% - var(--width-aside));
+    // Widths
+    --width-aside: 300px;
+    --width-main: calc(100% - var(--width-aside));
 
-    @each $key, $value in $colors {
-        @include generate-color-var($key, $value);
-    }
+    // @each $key, $value in $colors {
+    //     @include generate-color-var($key, $value);
+    // }
 
-    --color-white:#fff;
-    --color-link:var(--color-oxford-50);
+    --color-white: #fff;
+    --color-black:#000;
+    --color-primary: #000;
+
+    // Accent
+    --color-accent:#00ceff;
+    --color-accent-dark:#00ceff;
+    --color-accent-light:#d1f6ff;
 }
