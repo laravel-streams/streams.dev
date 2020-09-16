@@ -941,7 +941,7 @@ a.toc-link {
 /* Default Theme Styles */
 
 .toc-link::before {
-  background-color: var(--color-accent-light);
+  background-color: #EEE;
   content: " ";
   display: inline-block;
   height: inherit;
@@ -952,7 +952,7 @@ a.toc-link {
 }
 
 .is-active-link::before {
-  background-color: var(--color-accent);
+  background-color: #651dff;
 }
 
 .anchorjs-link {

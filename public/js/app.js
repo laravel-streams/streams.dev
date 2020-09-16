@@ -4656,28 +4656,30 @@ anchors.add('.o-doc-body h1, .o-doc-body h2, .o-doc-body h3, .o-doc-body h4');
 /*! no static exports found */
 /***/ (function(module, exports) {
 
+function copyCodeblockToClipboard(button, codeBlock) {
+  var clipboard = navigator.clipboard;
+  clipboard.writeText(codeBlock.innerText).then(function () {
+    button.blur();
+    button.classList.add('c-copy-code__copied');
+    setTimeout(function () {
+      button.classList.remove('c-copy-code__copied');
+    }, 2000);
+  }, function (error) {
+    button.innerText = 'Error';
+  });
+}
+
 if (navigator && navigator.clipboard) {
   document.querySelectorAll('pre > code').forEach(function (codeBlock) {
     var button = document.createElement('button');
     var icon = document.createElement('span');
     icon.classList.add('c-copy-code__icon');
-    var clipboard = navigator.clipboard;
     button.className = 'c-copy-code';
     button.type = 'button';
     button.appendChild(icon);
     codeBlock.parentNode.appendChild(button);
-    button.addEventListener('click', function () {
-      console.log('clickeds');
-      clipboard.writeText(codeBlock.innerText).then(function () {
-        button.blur();
-        button.classList.add('c-copy-code__copied');
-        setTimeout(function () {
-          button.classList.remove('c-copy-code__copied');
-        }, 2000);
-      }, function (error) {
-        button.innerText = 'Error';
-      });
-    });
+    button.addEventListener('click', copyCodeblockToClipboard.bind(null, button, codeBlock));
+    button.closest('pre').addEventListener('dblclick', copyCodeblockToClipboard.bind(null, button, codeBlock));
   });
 } else if (window.location.protocol == 'http:') {
   alert('Copy to clipboard functionality will not work unless you use a secure origin');
