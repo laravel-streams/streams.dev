@@ -1,14 +1,14 @@
 .o-doc-body {
-    @apply mx-auto px-4;
-    width: min(768px, 100%);
+    @apply px-4;
+    width: min(868px, 100%);
 }
 
 // We want the content to be more narrow, this is were we control that.
 // Any element that has to be narrow like the text, include it in a not.
 .o-doc-body *:not(code):not(pre):not(.c-copy-code):not(.c-copy-code__icon),
 pre.language-bash {
-    width: min(800px, 100%);
-    @apply mx-auto;
+    width: min(768px, 100%);
+    
 }
 
 

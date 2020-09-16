@@ -721,18 +721,14 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .o-doc-body {
-  margin-left: auto;
-  margin-right: auto;
   padding-left: 1rem;
   padding-right: 1rem;
-  width: min(768px, 100%);
+  width: min(868px, 100%);
 }
 
 .o-doc-body *:not(code):not(pre):not(.c-copy-code):not(.c-copy-code__icon),
 pre.language-bash {
-  width: min(800px, 100%);
-  margin-left: auto;
-  margin-right: auto;
+  width: min(768px, 100%);
 }
 
 .o-doc-body {
@@ -908,7 +904,8 @@ code[class^=language]::-webkit-scrollbar-thumb {
 }
 
 .c-toc-list {
-  min-width: 300px;
+  width: 300px;
+  margin-left: auto;
 }
 
 .js-toc {

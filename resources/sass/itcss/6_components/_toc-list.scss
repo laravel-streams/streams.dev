@@ -1,6 +1,7 @@
 .c-toc-list
 {
-    min-width:300px;
+    width: 300px;
+    @apply ml-auto;
 }
 .js-toc 
 {

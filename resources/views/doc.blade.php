@@ -1,7 +1,7 @@
 @extends('layouts/default')
 
 @section('content')
-<div class="flex flex-wrap min-h-screen">
+<div class="flex flex-wrap min-h-screen mx-auto" style="max-width:1500px;">
     @include('partials.docs.aside')
     
     <div class="o-doc-body">
