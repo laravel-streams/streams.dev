@@ -2,17 +2,36 @@
 
 // Left line before pseudo element.
 .toc-link::before {
-  background-color: #EEE;
-  content: ' ';
-  display: inline-block;
-  height: inherit;
-  left: 0;
-  margin-top: -1px;
-  position: absolute;
-  width: 2px;
-  //height:calc(100vh + 20px);
+    background-color: #eee;
+    content: " ";
+    display: inline-block;
+    height: inherit;
+    left: 0;
+    margin-top: -1px;
+    position: absolute;
+    width: 2px;
+    //height:calc(100vh + 20px);
+}
+.c-toc-link
+{
+  font-size:15px !important;
+}
+.is-active-link::before {
+    background-color: var(--color-accent);
 }
 
-.is-active-link::before {
-  background-color: #651dff;
+.c-toc-link:not(.is-active-link) {
+    color: #999 !important;
+}
+
+.node-name--H2.c-toc-link:not(.is-active-link) {
+    color: #333 !important;
+  }
+  .node-name--H2.c-toc-link {
+    margin-top: 10px;
+    display: block;
+    font-size:16px !important;
+}
+.c-toc-link.is-active-link {
+    color: #000 !important;
 }

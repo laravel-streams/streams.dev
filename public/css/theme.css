@@ -1030,7 +1030,7 @@ a.toc-link {
 /* Default Theme Styles */
 
 .toc-link::before {
-  background-color: #EEE;
+  background-color: #eee;
   content: " ";
   display: inline-block;
   height: inherit;
@@ -1040,8 +1040,30 @@ a.toc-link {
   width: 2px;
 }
 
+.c-toc-link {
+  font-size: 15px !important;
+}
+
 .is-active-link::before {
-  background-color: #651dff;
+  background-color: var(--color-accent);
+}
+
+.c-toc-link:not(.is-active-link) {
+  color: #999 !important;
+}
+
+.node-name--H2.c-toc-link:not(.is-active-link) {
+  color: #333 !important;
+}
+
+.node-name--H2.c-toc-link {
+  margin-top: 10px;
+  display: block;
+  font-size: 16px !important;
+}
+
+.c-toc-link.is-active-link {
+  color: #000 !important;
 }
 
 .anchorjs-link {
