@@ -75,6 +75,10 @@ pre.language-bash
         margin-bottom: clamp(10px, calc(.5rem + var(--baseline)), 20px);
         //color:yellow;
     }
+    p+p 
+    {
+        margin-top: clamp(10px, calc(1.5rem + var(--baseline)), 50px);
+    }
     p a
     {
         transition: all 200ms ease-in-out;
@@ -84,6 +88,10 @@ pre.language-bash
         {
             @apply bg-transparent;
         }
+    }
+    ul
+    {
+        margin-top: clamp(10px, calc(1.5rem + var(--baseline)), 50px);
     }
 }
 

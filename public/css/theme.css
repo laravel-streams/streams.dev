@@ -656,12 +656,12 @@ ul:not(.c-list):not(.c-aside-menu) {
   list-style-type: disc;
   margin-top: 1.5rem;
   margin-bottom: 1.5rem;
+  list-style-position: inside;
 }
 
-ul:not(.c-list):not(.c-aside-menu) li ul {
-  margin-top: 0.25rem;
-  margin-bottom: 0.25rem;
-  margin-left: 1.5rem;
+ul:not(.c-list):not(.c-aside-menu) li {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
 }
 
 * {
@@ -686,7 +686,7 @@ h1, h2, h3, h4, h5, h6 {
           backdrop-filter: blur(3px);
   top: 0px;
   background: rgba(255, 255, 255, 0.92);
-  background: linear-gradient(0deg, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0.88) 50%, white 95%);
+  background: linear-gradient(0deg, rgba(255, 255, 255, 0.88) 0%, rgba(255, 255, 255, 0.95) 50%, white 95%);
   border-color: #eaeaea;
 }
 
@@ -749,6 +749,10 @@ pre.language-bash {
   margin-bottom: clamp(10px, calc(.5rem + var(--baseline)), 20px);
 }
 
+.o-doc-body p + p {
+  margin-top: clamp(10px, calc(1.5rem + var(--baseline)), 50px);
+}
+
 .o-doc-body p a {
   transition: all 200ms ease-in-out;
   border-bottom-width: 4px;
@@ -760,6 +764,10 @@ pre.language-bash {
 
 .o-doc-body p a:hover {
   background-color: transparent;
+}
+
+.o-doc-body ul {
+  margin-top: clamp(10px, calc(1.5rem + var(--baseline)), 50px);
 }
 
 pre,
@@ -958,6 +966,7 @@ code[class^=language]::-webkit-scrollbar-thumb {
 
 .c-aside-menu {
   list-style-type: none;
+  list-style-position: inside;
   list-style-type: none;
   margin-right: 2rem;
 }
