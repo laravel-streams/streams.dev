@@ -1,0 +1,23 @@
+.c-aside-menu
+{
+    list-style-type: none;
+    @apply list-none;
+}
+.c-aside-menu a
+{
+    margin: 5px 0;
+
+    transition: color 200ms ease-in-out;
+
+    color: #999;
+    @apply block px-2;
+
+    &:hover
+    {
+        @apply text-black;
+    }
+}
+.c-aside-menu .active a
+{
+    @apply bg-accent-light text-black;
+}

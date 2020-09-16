@@ -645,13 +645,13 @@ html {
   overflow-x: hidden;
 }
 
-ul:not(.c-list) {
+ul:not(.c-list):not(.c-aside-menu) {
   list-style-type: disc;
   margin-top: 1.5rem;
   margin-bottom: 1.5rem;
 }
 
-ul:not(.c-list) li ul {
+ul:not(.c-list):not(.c-aside-menu) li ul {
   margin-top: 0.25rem;
   margin-bottom: 0.25rem;
   margin-left: 1.5rem;
@@ -668,8 +668,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .o-doc-body {
   width: min(868px, 100%);
-  padding-left: 1rem;
-  padding-right: 1rem;
+  margin-left: 3rem;
 }
 
 .o-doc-body *:not(code):not(pre):not(.c-copy-code):not(.c-copy-code__icon),
@@ -892,6 +891,38 @@ code[class^=language]::-webkit-scrollbar-thumb {
 .js-toc > .toc-list > .toc-list-item:first-child > a {
   display: block;
   margin-top: 2rem;
+}
+
+.c-aside-menu-title {
+  font-weight: 700;
+  margin-top: 1.5rem;
+}
+
+.c-aside-menu {
+  list-style-type: none;
+  list-style-type: none;
+}
+
+.c-aside-menu a {
+  margin: 5px 0;
+  transition: color 200ms ease-in-out;
+  color: #999;
+  display: block;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
+.c-aside-menu a:hover {
+  --text-opacity: 1;
+  color: #000;
+  color: rgba(0, 0, 0, var(--text-opacity));
+}
+
+.c-aside-menu .active a {
+  background-color: var(--color-accent-light);
+  --text-opacity: 1;
+  color: #000;
+  color: rgba(0, 0, 0, var(--text-opacity));
 }
 
 /* Core Styles */

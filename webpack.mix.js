@@ -21,6 +21,7 @@ mix.browserSync({
         'public/js/**/*.js',
         'public/css/**/*.css',
         'resources/views/**/*.html',
+        'resources/views/**/*.php',
         'streams/**/*.json',
         'streams/**/*.md'
     ],
