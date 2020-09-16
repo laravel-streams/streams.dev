@@ -1,8 +1,8 @@
 .o-navbar 
 {
     @apply mt-0 mb-16 border-b py-8 sticky z-10;
-    backdrop-filter: blur(4px);
+    backdrop-filter: blur(2px);
     top:-1px;
-    background:rgba(255,255,255,0.85);
+    background:rgba(255,255,255,0.92);
     border-color:#eee;
 }
