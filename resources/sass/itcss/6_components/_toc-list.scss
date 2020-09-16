@@ -1,13 +1,14 @@
 .c-toc-list
 {
     width: 300px;
-   
     @apply ml-auto;
 }
-.js-toc 
+.c-toc-list__child 
 {
-    @apply pt-16;
+    @apply sticky;
+    top:var(--position-top-aside-menus);
 }
+
 ol.toc-list 
 {
    

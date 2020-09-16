@@ -1,3 +1,3 @@
 <div class="c-toc-list">
-    <div class="sticky top-0 js-toc"></div>
+    <div class="c-toc-list__child js-toc"></div>
 </div>

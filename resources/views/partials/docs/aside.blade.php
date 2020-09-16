@@ -19,10 +19,10 @@ $suffix = '';
 @endphp
 @endif
 
-<aside class="w-2/12 pl-4 mr-6">
+<aside class="w-2/12">
 
-    <div class="sticky top-0 ">
-        <div class="o-aside c-scrollbar">
+    <div class="o-aside">
+        <div class="c-scrollbar">
             
             <p class="c-aside-menu-title">
                 <a  href="/docs">Docs Home</a>

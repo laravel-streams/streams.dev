@@ -4640,8 +4640,8 @@ __webpack_require__.r(__webpack_exports__);
 
 var anchors = new anchor_js__WEBPACK_IMPORTED_MODULE_0___default.a();
 anchors.options = {
-  placement: 'left',
-  visible: 'always',
+  placement: 'right',
+  visible: 'hover',
   truncate: 64,
   icon: ''
 };

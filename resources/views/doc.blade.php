@@ -1,7 +1,10 @@
 @extends('layouts/default')
 @section('navigation')
-<div class="navbar container">
-
+<div id="blurryscroll" aria-hidden="true"></div>
+<div class="o-navbar">
+    <div class="container mx-auto">
+        <a href="/docs/introduction">home</a>
+    </div>
 </div>
 @endsection
 @section('content')
