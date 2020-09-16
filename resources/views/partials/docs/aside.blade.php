@@ -31,7 +31,7 @@ $suffix = '';
             <ul class="c-aside-menu">
                 @foreach ($stream->entries()->where('enabled', true)->orderBy('sort', 'ASC')->where('category',
                 null)->get() as $page)
-                <li {{{ (Request::is('docs/'.$page->id) ? 'class=active' : '') }}}>
+                <li {{ ($page->id == $entry->id) ? 'class=active' : '' }}>
                     <a href="{{$page->id}}">{{ $page->title }}</a>
                     {{-- <strong>[{{ $page->stage ?: 'outlining' }}]</strong> --}}
                 </li>
@@ -51,7 +51,7 @@ $suffix = '';
             </p>
             <ul class="c-aside-menu">
                 @foreach ($pages as $page)
-                <li {{{ (Request::is('docs/'.$page->id) ? 'class=active' : '') }}}>
+                <li {{ ($page->id == $entry->id) ? 'class=active' : '' }}>
                     <a href="{{$page->id}}">{{ $page->title }}</a>
                     {{-- <strong>[{{ $page->stage ?: 'outlining' }}]</strong> --}}
                 </li>
