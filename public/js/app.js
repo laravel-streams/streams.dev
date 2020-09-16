@@ -4682,7 +4682,7 @@ if (navigator && navigator.clipboard) {
     button.closest('pre').addEventListener('dblclick', copyCodeblockToClipboard.bind(null, button, codeBlock));
   });
 } else if (window.location.protocol == 'http:') {
-  alert('Copy to clipboard functionality will not work unless you use a secure origin');
+  console.info('Copy to clipboard functionality will not work unless you use a secure origin');
 }
 
 /***/ }),
