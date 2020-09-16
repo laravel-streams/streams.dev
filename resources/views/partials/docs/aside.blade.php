@@ -7,19 +7,27 @@
                 <a href="/docs">Docs Home</a>
             </li>
         </ul>
-        <?php $areas = ['docs' => 'Streams', 'core' => 'Core', 'ui' => 'UI']; ?>
+        @php 
+            $areas = ['docs' => 'Streams', 'core' => 'Core', 'ui' => 'UI'];
+        @endphp
 
         @if (count(request()->segments()) == 3 && request()->segment(2) == 'core')
-        <?php $docs = Streams::entries('docs_core')->where('enabled', true)->orderBy('sort', 'asc')->get(); ?>
-        <?php $suffix = '/core'; ?>
+        @php 
+            $docs = Streams::entries('docs_core')->where('enabled', true)->orderBy('sort', 'asc')->get();
+            $suffix = '/core';
+        @endphp
         @elseif (count(request()->segments()) == 3 && request()->segment(2) == 'ui')
-        <?php $docs = Streams::entries('docs_ui')->where('enabled', true)->orderBy('sort', 'asc')->get(); ?>
-        <?php $suffix = '/ui'; ?>
+        @php 
+            $docs = Streams::entries('docs_ui')->where('enabled', true)->orderBy('sort', 'asc')->get();
+            $suffix = '/ui';
+        @endphp
         @else
-        <?php $docs = Streams::entries('docs')->where('enabled', true)->orderBy('sort', 'asc')->get(); ?>
-        <?php $suffix = ''; ?>
+        @php 
+            $docs = Streams::entries('docs')->where('enabled', true)->orderBy('sort', 'asc')->get();
+            $suffix = '';
+        @endphp
+        
         @endif
-
         <ul>
             @foreach ($stream->entries()->where('enabled', true)->orderBy('sort', 'ASC')->where('category',
             null)->get() as $page)
