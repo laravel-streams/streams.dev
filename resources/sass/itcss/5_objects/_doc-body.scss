@@ -86,7 +86,7 @@ pre.language-bash
     p a
     {
         transition: all 200ms ease-in-out;
-        @apply border-b-4 border-accent border-l-0 border-r-0 border-t-0;
+        @apply border-b border-accent ;
         
         &:hover
         {
@@ -165,4 +165,11 @@ p+pre
 code.language-bash.hljs
 {
     @apply p-0 pb-2;
+}
+
+
+code 
+{
+    background:#eee;
+    @apply p-1 px-2 rounded-sm;
 }

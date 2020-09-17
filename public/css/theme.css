@@ -768,11 +768,8 @@ pre.language-bash {
 
 .o-doc-body p a, .c-intro p a {
   transition: all 200ms ease-in-out;
-  border-bottom-width: 4px;
+  border-bottom-width: 1px;
   border-color: var(--color-accent);
-  border-left-width: 0;
-  border-right-width: 0;
-  border-top-width: 0;
 }
 
 .o-doc-body p a:hover, .c-intro p a:hover {
@@ -842,6 +839,14 @@ p + pre {
 code.language-bash.hljs {
   padding: 0;
   padding-bottom: 0.5rem;
+}
+
+code {
+  background: #eee;
+  padding: 0.25rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  border-radius: 0.125rem;
 }
 
 .o-aside {
