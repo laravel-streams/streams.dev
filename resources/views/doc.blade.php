@@ -9,9 +9,7 @@
 @endsection
 @section('content')
 @if($entry->intro)
-<div class="flex">
-    @include('partials.docs.intro')
-</div>
+@include('partials.docs.intro')
 @endif
 <div class="flex flex-wrap min-h-screen mx-auto" style="max-width:1500px;">
     @include('partials.docs.aside')

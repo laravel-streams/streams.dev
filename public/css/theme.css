@@ -687,7 +687,7 @@ h1, h2, h3, h4, h5, h6 {
   top: 0px;
   background: rgba(255, 255, 255, 0.92);
   background: linear-gradient(0deg, rgba(255, 255, 255, 0.88) 0%, rgba(255, 255, 255, 0.95) 50%, white 95%);
-  border-color: #eaeaea;
+  border-color: #fafafa;
 }
 
 .o-navbar__has-intro {
@@ -977,39 +977,39 @@ pre.c-copy-code__preflash:after {
   color: #fff;
   color: rgba(255, 255, 255, var(--text-opacity));
   width: 100%;
-  margin-bottom: 3rem;
-  padding-top: 3rem;
-  padding-bottom: 3rem;
   border-bottom-width: 1px;
   text-align: center;
-  background: -webkit-linear-gradient(55deg, #651dff, #00ceff 42%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.c-intro h1 {
-  font-size: clamp(28px, calc(8rem + var(--baseline)), 120px);
-  margin-top: clamp(10px, calc(1.5rem + var(--baseline)), 50px);
-  margin-bottom: clamp(10px, calc(.5rem + var(--baseline)), 20px);
+  margin-bottom: 3rem;
   margin-top: 0;
-  line-height: 1.375;
-}
-
-.c-intro h1 + p {
-  font-family: JetBrains Mono, monospace;
-  font-size: 1.125rem;
-}
-
-.c-intro h1 {
-  background: -webkit-linear-gradient(55deg, #651dff, #00ceff 42%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
+  padding-bottom: 2rem;
+  padding-top: 1rem;
+  background: #fafafa;
 }
 
 .c-intro__wave {
   width: 100%;
+}
+
+.c-intro__body h1 {
+  font-size: clamp(28px, calc(6rem + var(--baseline)), 120px);
+  line-height: 1.2;
+  margin-top: clamp(10px, calc(1.5rem + var(--baseline)), 50px);
+  margin-bottom: clamp(10px, calc(.5rem + var(--baseline)), 20px);
+  margin-top: 0;
+}
+
+.c-intro h1 + p {
+  margin-top: -10px;
+  font-family: JetBrains Mono, monospace;
+  font-size: 1.125rem;
+}
+
+.c-intro__body h1,
+.c-intro__body p {
+  background: -webkit-linear-gradient(55deg, #651dff, #00ceff 42%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 body,
