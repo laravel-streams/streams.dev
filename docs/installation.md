@@ -102,12 +102,4 @@ From within your project, use Composer to update individual packages:
 composer update anomaly/streams-platform --with-dependencies
 ```
 
-```bash
-composer update anomaly/streams-ui --with-dependencies
-```
-
-```bash
-composer update anomaly/streams-api --with-dependencies
-```
-
 You can, of course, update your entire project using `composer update`.
