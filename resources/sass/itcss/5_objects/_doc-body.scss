@@ -1,12 +1,12 @@
 .o-doc-body
 {
     width: min(868px, 100%);
-    @apply ml-12 pt-6;
+    @apply ml-0 pb-64;
 }
 
 // We want the content to be more narrow, this is were we control that.
-// Any element that has to be narrow like the text, include it in a not.
-.o-doc-body *:not(code):not(pre):not(.c-copy-code):not(.c-copy-code__icon),
+// Any element that has to be narrow like the text, include it in a not. 
+.o-doc-body *:not(code):not(pre):not(.c-copy-code):not(.c-copy-code__icon):not(.c-intro):not(.c-intro__wave),
 pre.language-bash
 {
     width: min(768px, 100%);
@@ -16,7 +16,7 @@ pre.language-bash
 //  ----------------------------------------------------------------------------
 //  Documentation Typography settings
 //  ----------------------------------------------------------------------------
-.o-doc-body
+.o-doc-body,.c-intro
 {
     --baseline: .15vw;
     *
@@ -34,7 +34,7 @@ pre.language-bash
     h2,
     h3
     {
-        @apply tracking-tighter leading-tight;
+        @apply tracking-tight leading-tight;
     }
 
     h1
@@ -43,6 +43,8 @@ pre.language-bash
 
         margin-top: clamp(10px, calc(1.5rem + var(--baseline)), 50px);
         margin-bottom: clamp(10px, calc(.5rem + var(--baseline)), 20px);
+
+        @apply mt-0 leading-none; // WIP
 
         // background: -webkit-linear-gradient(55deg, #651dff, #00ceff 42%);
         // -webkit-background-clip: text;
@@ -56,6 +58,10 @@ pre.language-bash
 
         margin-top: clamp(10px, calc(3rem + var(--baseline)), 50px);
         margin-bottom: clamp(10px, calc(1rem + var(--baseline)), 50px);
+
+        &:first-child{
+            margin-top:-5px;
+        }
     }
 
     h3
@@ -73,6 +79,10 @@ pre.language-bash
         margin-bottom: clamp(10px, calc(.5rem + var(--baseline)), 20px);
         //color:yellow;
     }
+    p+p 
+    {
+        margin-top: clamp(10px, calc(1.5rem + var(--baseline)), 50px);
+    }
     p a
     {
         transition: all 200ms ease-in-out;
@@ -82,6 +92,10 @@ pre.language-bash
         {
             @apply bg-transparent;
         }
+    }
+    ul
+    {
+        margin-top: clamp(10px, calc(1.5rem + var(--baseline)), 50px);
     }
 }
 
@@ -136,9 +150,17 @@ pre.language-bash
     background: #1d1f21;
 }
 
-h4 + pre
+h4 + pre,
+p+pre
 {
-    margin-top: clamp(10px, calc(1rem + var(--baseline)), 100px);
+    margin-top: clamp(10px, calc(1.2rem + var(--baseline)), 100px);
+}
+.o-doc-body pre+p,
+.o-doc-body pre+h4,
+.o-doc-body pre+pre,
+
+{
+    margin-top: clamp(-50px, calc((1.5rem + var(--baseline) ) * -1), 1000px) !important;
 }
 code.language-bash.hljs
 {

@@ -48,7 +48,7 @@ module.exports = {
         'system-ui',
       ],
       serif: ['Georgia', 'Cambria', '"Times New Roman"', 'Times', 'serif'],
-      mono: ['JetBrains Mono','inter','monospace'],
+      mono: ['JetBrains Mono','monospace'],
     },
     fontWeight: {
       hairline: '100',

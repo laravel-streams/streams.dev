@@ -6,7 +6,7 @@
     <div class="flex flex-col self-center">
         
         <div>
-            <pre class="brand-ascii text-center text-xs mb-8 leading-tight text-black bg-white opacity-90" style="font-family: Courier Prime;">
+            <pre class="brand-ascii text-center text-xs mb-8 leading-tight text-black bg-white opacity-90">
    _____________  _______   __  _______
   / __/_  __/ _ \/ __/ _ | /  |/  / __/
  _\ \  / / / , _/ _// __ |/ /|_/ /\ \  

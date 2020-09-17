@@ -1,7 +1,8 @@
 .c-aside-menu
 {
     list-style-type: none;
-    @apply list-none;
+    list-style-position: inside;
+    @apply list-none mr-8;
 }
 .c-aside-menu a
 {
@@ -10,7 +11,7 @@
     transition: color 200ms ease-in-out;
 
     color: #999;
-    @apply block px-2;
+    @apply block px-1;
 
     &:hover
     {
@@ -19,5 +20,5 @@
 }
 .c-aside-menu .active a
 {
-    @apply bg-accent-light text-black;
+    @apply bg-accent-light text-accent-dark rounded-sm;
 }

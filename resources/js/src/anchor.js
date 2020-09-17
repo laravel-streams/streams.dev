@@ -3,8 +3,8 @@ import AnchorJS from 'anchor-js';
 const anchors = new AnchorJS();
 
 anchors.options = {
-    placement: 'left',
-    visible: 'always',
+    placement: 'right',
+    visible: 'hover',
     truncate: 64,
     icon: ''
 };

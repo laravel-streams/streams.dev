@@ -8,6 +8,7 @@
 
 <body>
     @section('navigation')
+    
     @show
     @yield('content')    
     

@@ -5,13 +5,19 @@
 html {
     overflow-x: hidden;
 }
-
+.container 
+{
+    @media (min-width: 1540px) {
+        max-width:1500px;
+    }
+}
 ul:not(.c-list):not(.c-aside-menu) {
     @apply list-disc my-6;
-
+    list-style-position: inside;
     // Nested unordered list elements
-    li ul {
-        @apply my-1 ml-6;
+    li 
+    {
+        @apply my-2;
     }
 }
 
