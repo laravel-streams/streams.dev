@@ -1,12 +1,23 @@
+ 
+
 function copyCodeblockToClipboard(button, codeBlock) {
     const clipboard = navigator.clipboard;
 
     clipboard.writeText(codeBlock.innerText).then(function () {
         button.blur();
-        button.classList.add('c-copy-code__copied')
+
+        button.classList.add('c-copy-code__hide-button');
+        button.closest('pre').classList.add('c-copy-code__preflash--step-1');
+        setTimeout(() => {
+            button.closest('pre').classList.add('c-copy-code__preflash');
+        }, 100);
         setTimeout(function () {
-            button.classList.remove('c-copy-code__copied')
-        }, 2000);
+            button.closest('pre').classList.remove('c-copy-code__preflash');
+        }, 1300);
+        setTimeout(() => {
+            button.closest('pre').classList.remove('c-copy-code__preflash--step-1');
+            button.classList.remove('c-copy-code__hide-button');
+        }, 1475);
     }, function (error) {
         button.innerText = 'Error';
     });
