@@ -1,20 +1,9 @@
-.c-intro {
-    @apply text-white w-full mb-12 py-12 border-b text-center;
+.c-intro
+{
+    @apply text-white w-full border-b text-center mb-12 mt-0 pb-8 pt-4;
     
+    background:#fafafa;
 
-    h1 
-    {
-        font-size: clamp(28px, calc(8rem + var(--baseline)), 120px);
-
-        margin-top: clamp(10px, calc(1.5rem + var(--baseline)), 50px);
-        margin-bottom: clamp(10px, calc(.5rem + var(--baseline)), 20px);
-
-        @apply mt-0 leading-snug; // WIP
-    }
-    h1 + p 
-    {
-        @apply font-mono text-lg;
-    }
 
     // background: linear-gradient(
     //     0deg,
@@ -27,21 +16,33 @@
     //     rgba(0, 206, 255, 1) 100%
     // );
 
-    // TMP Playing with ryan idea 
+    // TMP Playing with ryan idea
+}
+.c-intro__wave
+{
+    width: 100%;
+}
+.c-intro__body h1
+{
+    font-size: clamp(28px, calc(6rem + var(--baseline)), 120px); // WIP
+    line-height: 1.2;
 
+    margin-top: clamp(10px, calc(1.5rem + var(--baseline)), 50px);
+    margin-bottom: clamp(10px, calc(.5rem + var(--baseline)), 20px);
+
+    @apply mt-0;
+}
+.c-intro h1 + p
+{
+    margin-top: -10px;
+    @apply font-mono text-lg;
+}
+.c-intro__body h1,
+.c-intro__body p
+{
     background: -webkit-linear-gradient(55deg, #651dff, #00ceff 42%);
     -webkit-background-clip: text;
-    background-clip: text;
+            background-clip: text;
 
     -webkit-text-fill-color: transparent;
-    h1 {
-        background: -webkit-linear-gradient(55deg, #651dff, #00ceff 42%);
-        -webkit-background-clip: text;
-        background-clip: text;
-
-        -webkit-text-fill-color: transparent;
-    }
-}
-.c-intro__wave {
-    width: 100%;
 }

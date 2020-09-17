@@ -86,14 +86,14 @@ pre.language-bash
     p a
     {
         transition: all 200ms ease-in-out;
-        @apply border-b-4 border-accent border-l-0 border-r-0 border-t-0;
+        @apply border-b border-accent ;
         
         &:hover
         {
             @apply bg-transparent;
         }
     }
-    ul
+    ul 
     {
         margin-top: clamp(10px, calc(1.5rem + var(--baseline)), 50px);
     }
@@ -165,4 +165,12 @@ p+pre
 code.language-bash.hljs
 {
     @apply p-0 pb-2;
+}
+
+
+code:not([class^="language"]) 
+{
+    background:#eee;
+    white-space: nowrap;
+    @apply p-1 px-2 rounded-sm;
 }
