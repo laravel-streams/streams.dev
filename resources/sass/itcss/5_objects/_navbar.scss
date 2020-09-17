@@ -7,3 +7,8 @@
     background: linear-gradient(0deg, rgba(255,255,255,.88) 0%, rgba(255,255,255,.95) 50%,rgba(255,255,255,1) 95%);
     border-color:#eaeaea;
 }
+
+.o-navbar__has-intro 
+{
+    @apply mb-0;
+}

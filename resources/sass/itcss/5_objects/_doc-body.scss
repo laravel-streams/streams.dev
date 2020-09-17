@@ -5,8 +5,8 @@
 }
 
 // We want the content to be more narrow, this is were we control that.
-// Any element that has to be narrow like the text, include it in a not.
-.o-doc-body *:not(code):not(pre):not(.c-copy-code):not(.c-copy-code__icon),
+// Any element that has to be narrow like the text, include it in a not. 
+.o-doc-body *:not(code):not(pre):not(.c-copy-code):not(.c-copy-code__icon):not(.c-intro):not(.c-intro__wave),
 pre.language-bash
 {
     width: min(768px, 100%);
@@ -16,7 +16,7 @@ pre.language-bash
 //  ----------------------------------------------------------------------------
 //  Documentation Typography settings
 //  ----------------------------------------------------------------------------
-.o-doc-body
+.o-doc-body,.c-intro
 {
     --baseline: .15vw;
     *
@@ -34,7 +34,7 @@ pre.language-bash
     h2,
     h3
     {
-        @apply tracking-tighter leading-tight;
+        @apply tracking-tight leading-tight;
     }
 
     h1
@@ -58,6 +58,10 @@ pre.language-bash
 
         margin-top: clamp(10px, calc(3rem + var(--baseline)), 50px);
         margin-bottom: clamp(10px, calc(1rem + var(--baseline)), 50px);
+
+        &:first-child{
+            margin-top:-5px;
+        }
     }
 
     h3
