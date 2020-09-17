@@ -843,6 +843,7 @@ code.language-bash.hljs {
 
 code:not([class^=language]) {
   background: #eee;
+  white-space: nowrap;
   padding: 0.25rem;
   padding-left: 0.5rem;
   padding-right: 0.5rem;

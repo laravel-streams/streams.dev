@@ -171,5 +171,6 @@ code.language-bash.hljs
 code:not([class^="language"]) 
 {
     background:#eee;
+    white-space: nowrap;
     @apply p-1 px-2 rounded-sm;
 }
