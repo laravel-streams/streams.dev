@@ -554,7 +554,7 @@ pre,
 code,
 kbd,
 samp {
-  font-family: JetBrains Mono, inter, monospace;
+  font-family: JetBrains Mono, monospace;
 }
 
 /**
@@ -635,7 +635,7 @@ video {
 @font-face {
   font-family: "JetBrains Mono";
 
-  src: url("/css/fonts/mono/eot/JetBrainsMono-Regular.eot") format("embedded-opentype"), url("/css/fonts/mono/woff2/JetBrainsMono-Regular.woff2") format("woff2"), url("/css/fonts/mono/woff/JetBrainsMono-Regular.woff") format("woff");
+  src: url("./fonts/mono/eot/JetBrainsMono-Regular.eot") format("embedded-opentype"), url("./fonts/mono/woff2/JetBrainsMono-Regular.woff2") format("woff2"), url("./fonts/mono/woff/JetBrainsMono-Regular.woff") format("woff");
 
   font-weight: normal;
 
@@ -772,7 +772,7 @@ pre.language-bash {
 
 pre,
 code {
-  font-family: JetBrains Mono, inter, monospace;
+  font-family: JetBrains Mono, monospace;
 }
 
 pre,
@@ -3386,7 +3386,7 @@ a.toc-link {
 }
 
 .font-mono {
-  font-family: JetBrains Mono, inter, monospace;
+  font-family: JetBrains Mono, monospace;
 }
 
 .font-hairline {
@@ -12155,7 +12155,7 @@ a.toc-link {
   }
 
   .sm\:font-mono {
-    font-family: JetBrains Mono, inter, monospace;
+    font-family: JetBrains Mono, monospace;
   }
 
   .sm\:font-hairline {
@@ -20859,7 +20859,7 @@ a.toc-link {
   }
 
   .md\:font-mono {
-    font-family: JetBrains Mono, inter, monospace;
+    font-family: JetBrains Mono, monospace;
   }
 
   .md\:font-hairline {
@@ -29563,7 +29563,7 @@ a.toc-link {
   }
 
   .lg\:font-mono {
-    font-family: JetBrains Mono, inter, monospace;
+    font-family: JetBrains Mono, monospace;
   }
 
   .lg\:font-hairline {
@@ -38267,7 +38267,7 @@ a.toc-link {
   }
 
   .xl\:font-mono {
-    font-family: JetBrains Mono, inter, monospace;
+    font-family: JetBrains Mono, monospace;
   }
 
   .xl\:font-hairline {

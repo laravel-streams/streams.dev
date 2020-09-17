@@ -9,9 +9,14 @@
 
 @font-face{
    font-family: 'JetBrains Mono';
-   src: url('/css/fonts/mono/eot/JetBrainsMono-Regular.eot') format('embedded-opentype'),
-        url('/css/fonts/mono/woff2/JetBrainsMono-Regular.woff2') format('woff2'),
-        url('/css/fonts/mono/woff/JetBrainsMono-Regular.woff') format('woff');
+   src: url('./fonts/mono/eot/JetBrainsMono-Regular.eot') format('embedded-opentype'),
+        url('./fonts/mono/woff2/JetBrainsMono-Regular.woff2') format('woff2'),
+        url('./fonts/mono/woff/JetBrainsMono-Regular.woff') format('woff');
    font-weight: normal;
    font-style: normal;
 }
+
+// pre,code 
+// {
+//    font-family: JetBrains Mono !important;
+// }
