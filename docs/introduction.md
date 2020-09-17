@@ -1,12 +1,12 @@
 ---
 title: Introduction
-intro: The Streams platform is a new bread of CMS.
+intro: The Streams platform is a new breed of CMS.
 sort: 0
 stage: review
 enabled: true
 ---
 
-The Streams platform is a new bread of CMS. We call it a data management system (DMS).
+The Streams platform is a new breed of CMS. We call it a data management system (DMS).
 
 The project is abstracted into a few core packages so you can choose your adventure and keep your project tight.
 
