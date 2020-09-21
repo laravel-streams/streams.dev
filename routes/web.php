@@ -11,10 +11,21 @@
 |
 */
 
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Route;
 use Anomaly\Streams\Platform\Support\Facades\Streams;
 
 Route::streams('/', 'welcome');
+// Route::get('/', function() {
+
+//     $dotted = [
+//         'foo.bar' => 'baz'
+//     ];
+    
+//     $undotted = Arr::undot($dotted);
+    
+//     dd($undotted);
+// });
 
 Route::streams('/routing/{stream}/{entry.id}', [
     'view' => 'welcome',
