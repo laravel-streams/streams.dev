@@ -1,6 +1,9 @@
 {
     "extends": "docs",
-    "routes.view": "docs/core/{id}",
+    "routes.view": {
+        "uri": "docs/core/{id}",
+        "csrf": false
+    },
     "description": "Documentation for all things contained in the core package.",
     "notes": "This is looking good. Ready for discussion.",
     "source": {

@@ -56,8 +56,3 @@ Route::any('ui/{stream}/form/{entry?}', function($stream, $entry = null) {
         'entry' => $entry,
     ])->response();
 });
-
-// Route::any('docs/{handle}', [
-//     'stream' => 'docs',
-//     'uses' => '\Anomaly\Streams\Platform\Http\Controller\EntryController@view'
-// ]);

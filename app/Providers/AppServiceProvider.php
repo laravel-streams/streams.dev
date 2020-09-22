@@ -2,8 +2,8 @@
 
 namespace App\Providers;
 
-use Illuminate\Support\Facades\File;
 use Illuminate\Support\ServiceProvider;
+use Anomaly\Streams\Platform\Image\Image;
 
 /**
  * Class AppServiceProvider
@@ -43,6 +43,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        Image::macro('thumbnail', function () {
+            return $this->fit(148)->encode('jpg', 50);
+        });
     }
 }
