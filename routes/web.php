@@ -15,11 +15,11 @@ use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Route;
 use Anomaly\Streams\Platform\Support\Facades\Streams;
 
-//Route::streams('/', 'welcome');
-Route::get('/', function() {
+Route::streams('/', 'welcome');
+// Route::get('/', function() {
 
-    dd(Streams::repository('pages')->find('test')->validator()->errors()->all());
-});
+//     dd(Streams::repository('pages')->find('test')->validator()->errors()->all());
+// });
 
 Route::streams('/routing/{stream}/{entry.id}', [
     'view' => 'welcome',
