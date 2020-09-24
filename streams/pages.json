@@ -4,8 +4,7 @@
     "template": "page",
     "fields": {
         "title": {
-            "type": "text",
-            "required": true
+            "type": "text"
         },
         "intro": "textarea",
         "body": "text|textarea",
