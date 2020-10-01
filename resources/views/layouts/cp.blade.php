@@ -7,10 +7,6 @@
 
 <body>
 
-    <!--
-  Tailwind UI components require Tailwind CSS v1.8 and the @tailwindcss/ui plugin.
-  Read the documentation to get started: https://tailwindui.com/documentation
--->
     <div class="h-screen flex overflow-hidden bg-gray-100">
         <!-- Off-canvas menu for mobile -->
         <div class="md:hidden">
@@ -39,6 +35,7 @@
             To: "-translate-x-full"
         -->
                 <div class="relative flex-1 flex flex-col max-w-xs w-full pt-5 pb-4 bg-indigo-800">
+                    
                     <div class="absolute top-0 right-0 -mr-14 p-1">
                         <button
                             class="flex items-center justify-center h-12 w-12 rounded-full focus:outline-none focus:bg-gray-600"
@@ -49,32 +46,33 @@
                             </svg>
                         </button>
                     </div>
-                    <div class="flex-shrink-0 flex items-center px-4">
+                    
+                    {{-- <div class="flex-shrink-0 flex items-center px-4">
                         <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/workflow-logo-on-brand.svg"
                             alt="Workflow">
-                    </div>
+                    </div> --}}
+                    
                     <div class="mt-5 flex-1 h-0 overflow-y-auto">
 
                         @section('navigation')
                         <nav class="px-2 space-y-1">
                             @foreach ($cp->navigation as $item)
                             <a href="#"
-                                class="group flex items-center px-2 py-2 text-base leading-6 font-medium rounded-md text-white bg-indigo-900 focus:outline-none focus:bg-indigo-700 transition ease-in-out duration-150">
-                                Title
+                                class="group flex items-center px-2 py-2 text-base leading-6 font-medium rounded-md {{ $item->active ? 'text-white' : '' }} bg-indigo-900 focus:outline-none focus:bg-indigo-700 transition ease-in-out duration-150">
+                                {{ $item->title }}
                             </a>    
                             @endforeach
-                            <a href="#"
-                                class="group flex items-center px-2 py-2 text-base leading-6 font-medium rounded-md text-white bg-indigo-900 focus:outline-none focus:bg-indigo-700 transition ease-in-out duration-150">
-                                Default
-                            </a>
                         </nav>
                         @show
 
                     </div>
+
                 </div>
+                
                 <div class="flex-shrink-0 w-14">
                     <!-- Dummy element to force sidebar to shrink to fit close icon -->
                 </div>
+
             </div>
         </div>
 
@@ -90,8 +88,8 @@
                         <nav class="flex-1 px-2 bg-indigo-800 space-y-1">
                             @foreach ($cp->navigation as $item)
                             <a href="#"
-                                class="group flex items-center px-2 py-2 text-sm leading-5 font-medium text-white rounded-md bg-indigo-900 focus:outline-none focus:bg-indigo-700 transition ease-in-out duration-150">
-                                Dashboard
+                                class="group flex items-center px-2 py-2 text-sm leading-5 font-medium {{ $item->active ? 'text-white' : '' }} rounded-md bg-indigo-900 focus:outline-none focus:bg-indigo-700 transition ease-in-out duration-150">
+                                {{ $item->title }}
                             </a>
                             @endforeach
                         </nav>
