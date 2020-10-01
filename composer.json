@@ -74,9 +74,7 @@
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
             "@php artisan package:discover --ansi",
-            "@php artisan assets:clear --ansi",
-            "@php artisan cache:clear --ansi",
-            "@php artisan view:clear --ansi",
+            "@php artisan clear --ansi",
             "@php artisan vendor:publish --ansi --tag=assets",
             "@php artisan queue:restart --ansi"
         ],
