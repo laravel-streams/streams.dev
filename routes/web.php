@@ -14,6 +14,7 @@
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Route;
 use Anomaly\Streams\Platform\Support\Facades\Streams;
+use Anomaly\Streams\Ui\ControlPanel\ControlPanelBuilder;
 
 Route::streams('/', 'welcome');
 // Route::get('/', function() {
@@ -34,6 +35,8 @@ Route::any('validate/{stream}/{entry}', function($stream, $entry) {
 });
 
 Route::any('ui/{stream}/table', function($stream) {
+
+    //(new ControlPanelBuilder())->build();
     
     $stream = Streams::make($stream);
 
