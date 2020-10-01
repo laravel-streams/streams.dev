@@ -5,5 +5,36 @@
         "title": "text",
         "description": "text",
         "image": "url"
+    },
+    "ui": {
+        "table": {
+            "columns": [
+                "title",
+                "description",
+                "url"
+            ],
+            "actions": [
+                "delete"
+            ],
+            "options": {
+                "title": "SEOs",
+                "description": "SEO Entries",
+                "order_by": {
+                    "category": "asc"
+                }
+            },
+            "buttons": {
+                "edit": {
+                    "href": "ui/{stream.handle}/form/{entry.id}"
+                }
+            }
+        },
+        "form": {
+            "options": {
+                "title": "Example TitleSEO",
+                "description": "Example DescriptionSEO"
+            }
+        }
     }
+    
 }
