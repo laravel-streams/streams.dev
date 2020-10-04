@@ -4697,9 +4697,10 @@ function changeDarkLightMode(e) {
     } // If user prefers dark mode
     else if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
         modeEl.classList.add('o-mode__light');
-      } else if (!modeEl.classList.contains('o-mode__light') && !modeEl.classList.contains('o-mode__dark')) {
-        modeEl.classList.add('o-mode__dark');
-      }
+      } // Otherwise default to light mode
+      else {
+          modeEl.classList.add('o-mode__light');
+        }
 
   if (config.selector) {
     selectors = document.querySelectorAll(config.selector);
