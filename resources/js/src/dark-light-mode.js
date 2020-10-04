@@ -19,14 +19,22 @@ export default function (config = {}) {
 
     console.log(localStorage.getItem('mode'));
     modeEl.classList.add('o-mode');
-    if (localStorage.getItem('mode') === "dark") {
+
+    // If we are previously set prefered mode.
+    if (localStorage.getItem('mode')) {
+        if (localStorage.getItem('mode') === "dark") { modeEl.classList.add('o-mode__dark') }
+        else { modeEl.classList.add('o-mode__light') }
+    }
+    // If user prefers light mode
+    else if (window.matchMedia("(prefers-color-scheme: light)").matches) {
+        modeEl.classList.add('o-mode__light')
+    }
+    // If user prefers dark mode
+    else if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+        modeEl.classList.add('o-mode__light')
+    }
+    else if (!modeEl.classList.contains('o-mode__light') && !modeEl.classList.contains('o-mode__dark')) {
         modeEl.classList.add('o-mode__dark')
-
-    } else if (localStorage.getItem('mode') === "light") {
-        modeEl.classList.add('o-mode__light')
-
-    } else if (!modeEl.classList.contains('o-mode__light') && !modeEl.classList.contains('o-mode__dark')) {
-        modeEl.classList.add('o-mode__light')
     }
 
     if (config.selector) {
