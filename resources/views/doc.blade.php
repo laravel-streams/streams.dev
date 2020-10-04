@@ -3,17 +3,17 @@
 @include('partials.navbar')
 @endsection
 @section('content')
-@if($entry->intro)
-@include('partials.docs.intro')
-@endif
+
 <div class="flex flex-wrap min-h-screen mx-auto" style="max-width:1500px;">
     @include('partials.docs.aside')
 
     <div class="o-doc-body">
 
-        {{-- l1N$Z2Y78wnKoU@M --}}
+
 
         @if($entry->intro)
+
+        @include('partials.docs.intro')
 
         @else
         <h1>

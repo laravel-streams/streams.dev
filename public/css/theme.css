@@ -652,14 +652,14 @@ html {
   }
 }
 
-ul:not(.c-list):not(.c-aside-menu) {
+ul:not(.c-list):not(.c-aside-menu):not(.c-navbar) {
   list-style-type: disc;
   margin-top: 1.5rem;
   margin-bottom: 1.5rem;
   list-style-position: inside;
 }
 
-ul:not(.c-list):not(.c-aside-menu) li {
+ul:not(.c-list):not(.c-aside-menu):not(.c-navbar) li {
   margin-top: 0.5rem;
   margin-bottom: 0.5rem;
 }
@@ -669,13 +669,17 @@ ul:not(.c-list):not(.c-aside-menu) li {
   -webkit-tap-highlight-color: transparent;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   position: relative;
 }
 
 .o-navbar {
   margin-top: 0;
-  border-bottom-width: 1px;
   margin-bottom: 4rem;
   padding-top: 2rem;
   padding-bottom: 2rem;
@@ -685,13 +689,18 @@ h1, h2, h3, h4, h5, h6 {
   -webkit-backdrop-filter: blur(3px);
           backdrop-filter: blur(3px);
   top: 0px;
-  background: rgba(255, 255, 255, 0.92);
-  background: linear-gradient(0deg, rgba(255, 255, 255, 0.88) 0%, rgba(255, 255, 255, 0.95) 50%, white 95%);
-  border-color: #fafafa;
+  background: rgba(245, 245, 245, 0.92);
+  background: linear-gradient(0deg, rgba(245, 245, 245, 0.88) 0%, rgba(245, 245, 245, 0.95) 50%, whitesmoke 95%);
 }
 
 .o-navbar__has-intro {
   margin-bottom: 0;
+}
+
+.o-navbar__list-wrapper {
+  display: flex;
+  place-content: space-between;
+  align-items: center;
 }
 
 .o-doc-body {
@@ -705,18 +714,21 @@ pre.language-bash {
   width: min(768px, 100%);
 }
 
-.o-doc-body, .c-intro {
-  --baseline: .15vw;
+.o-doc-body,
+.c-intro {
+  --baseline: 0.15vw;
 }
 
-.o-doc-body *, .c-intro * {
+.o-doc-body *,
+.c-intro * {
   font-size: clamp(14px, calc(1rem + var(--baseline)), 21px);
 }
 
 .o-doc-body h1,
 .o-doc-body h2,
 .o-doc-body h3,
-.o-doc-body h4, .c-intro h1,
+.o-doc-body h4,
+.c-intro h1,
 .c-intro h2,
 .c-intro h3,
 .c-intro h4 {
@@ -725,58 +737,68 @@ pre.language-bash {
 
 .o-doc-body h1,
 .o-doc-body h2,
-.o-doc-body h3, .c-intro h1,
+.o-doc-body h3,
+.c-intro h1,
 .c-intro h2,
 .c-intro h3 {
   letter-spacing: -0.025em;
   line-height: 1.25;
 }
 
-.o-doc-body h1, .c-intro h1 {
+.o-doc-body h1,
+.c-intro h1 {
   font-size: clamp(28px, calc(3.5rem + var(--baseline)), 64px);
   margin-top: clamp(10px, calc(1.5rem + var(--baseline)), 50px);
-  margin-bottom: clamp(10px, calc(.5rem + var(--baseline)), 20px);
+  margin-bottom: clamp(10px, calc(0.5rem + var(--baseline)), 20px);
   margin-top: 0;
   line-height: 1;
 }
 
-.o-doc-body h2, .c-intro h2 {
+.o-doc-body h2,
+.c-intro h2 {
   font-size: clamp(24px, calc(3rem + var(--baseline)), 42px);
   margin-top: clamp(10px, calc(3rem + var(--baseline)), 50px);
   margin-bottom: clamp(10px, calc(1rem + var(--baseline)), 50px);
 }
 
-.o-doc-body h2:first-child, .c-intro h2:first-child {
+.o-doc-body h2:first-child,
+.c-intro h2:first-child {
   margin-top: -5px;
 }
 
-.o-doc-body h3, .c-intro h3 {
-  font-size: clamp(21px, calc(1.5rem + var(--baseline)), 36px);
-  margin-top: clamp(10px, calc(2rem + var(--baseline)), 50px);
-  margin-bottom: clamp(10px, calc(.5rem + var(--baseline)), 20px);
-}
-
-.o-doc-body h4, .c-intro h4 {
-  font-size: clamp(16px, 18px, 28px);
+.o-doc-body h3,
+.c-intro h3 {
+  font-size: clamp(21px, calc(1.2rem + var(--baseline)), 36px);
   margin-top: clamp(10px, calc(1.5rem + var(--baseline)), 50px);
-  margin-bottom: clamp(10px, calc(.5rem + var(--baseline)), 20px);
+  margin-bottom: clamp(10px, calc(0.5rem + var(--baseline)), 20px);
 }
 
-.o-doc-body p + p, .c-intro p + p {
+.o-doc-body h4,
+.c-intro h4 {
+  font-size: clamp(16px, 17px, 28px);
+  margin-top: clamp(10px, calc(1rem + var(--baseline)), 50px);
+  margin-bottom: clamp(10px, calc(0.5rem + var(--baseline)), 20px);
+}
+
+.o-doc-body p + p,
+.c-intro p + p {
   margin-top: clamp(10px, calc(1.5rem + var(--baseline)), 50px);
 }
 
-.o-doc-body p a, .c-intro p a {
+.o-doc-body p a,
+.c-intro p a {
   transition: all 200ms ease-in-out;
   border-bottom-width: 1px;
   border-color: var(--color-accent);
 }
 
-.o-doc-body p a:hover, .c-intro p a:hover {
+.o-doc-body p a:hover,
+.c-intro p a:hover {
   background-color: transparent;
 }
 
-.o-doc-body ul, .c-intro ul {
+.o-doc-body ul,
+.c-intro ul {
   margin-top: clamp(10px, calc(1.5rem + var(--baseline)), 50px);
 }
 
@@ -794,7 +816,7 @@ code * {
 
 pre {
   overflow-x: auto;
-  margin-top: clamp(10px, calc(2rem + var(--baseline)), 100px);
+  margin-top: clamp(10px, calc(1.2rem + var(--baseline)), 100px);
   margin-bottom: clamp(10px, calc(4rem + var(--baseline)), 100px);
   color: #eee;
   background: #1d1f21;
@@ -833,7 +855,7 @@ p + pre {
 .o-doc-body pre + p,
 .o-doc-body pre + h4,
 .o-doc-body pre + pre {
-  margin-top: clamp(-50px, calc((1.5rem + var(--baseline) ) * -1), 1000px) !important;
+  margin-top: clamp(-50px, calc((1.5rem + var(--baseline)) * -1), 1000px) !important;
 }
 
 code.language-bash.hljs {
@@ -848,6 +870,10 @@ code:not([class^=language]) {
   padding-left: 0.5rem;
   padding-right: 0.5rem;
   border-radius: 0.125rem;
+}
+
+.language-bash.hljs {
+  color: #fff;
 }
 
 .o-aside {
@@ -980,34 +1006,7 @@ pre.c-copy-code__preflash:after {
 
 .c-intro {
   text-align: left;
-  margin-bottom: 3rem;
-  padding-bottom: 2rem;
-  border-bottom-width: 1px;
-}
-
-.c-intro__wave {
-  width: 100%;
-}
-
-.c-intro__body h1 {
-  font-size: clamp(28px, calc(4rem + var(--baseline)), 80px);
-  line-height: 1.2;
-  margin-top: clamp(10px, calc(1.5rem + var(--baseline)), 50px);
-  margin-bottom: clamp(10px, calc(0.5rem + var(--baseline)), 20px);
-  margin-top: 0;
-}
-
-.c-intro h1 + p {
-  margin-top: -10px;
-  font-family: JetBrains Mono, monospace;
-  font-size: 1.125rem;
-}
-
-.c-intro__body h1,
-.c-intro__body p {
-  --text-opacity: 1;
-  color: #000;
-  color: rgba(0, 0, 0, var(--text-opacity));
+  padding-top: 4rem;
 }
 
 body,
@@ -1071,6 +1070,15 @@ code[class^=language]::-webkit-scrollbar-thumb {
 
 .js-toc > .toc-list > .toc-list-item:first-child > a {
   display: block;
+}
+
+.c-navbar {
+  list-style-type: none;
+}
+
+.c-navbar__icon {
+  width: 25px;
+  height: 25px;
 }
 
 /* Core Styles */

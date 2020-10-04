@@ -1,23 +1,21 @@
 .c-intro {
-    @apply text-left mb-12 pb-8 border-b;
+    @apply text-left pt-16;
 }
-.c-intro__wave {
-    width: 100%;
-}
-.c-intro__body h1 {
-    font-size: clamp(28px, calc(4rem + var(--baseline)), 80px); // WIP
-    line-height: 1.2;
 
-    margin-top: clamp(10px, calc(1.5rem + var(--baseline)), 50px);
-    margin-bottom: clamp(10px, calc(0.5rem + var(--baseline)), 20px);
+// .c-intro__body h1 {
+//     font-size: clamp(28px, calc(4rem + var(--baseline)), 80px); // WIP
+//     line-height: 1.2;
 
-    @apply mt-0;
-}
-.c-intro h1 + p {
-    margin-top: -10px;
-    @apply font-mono text-lg;
-}
-.c-intro__body h1,
-.c-intro__body p {
-    @apply text-black;
-}
+//     margin-top: clamp(10px, calc(1.5rem + var(--baseline)), 50px);
+//     margin-bottom: clamp(10px, calc(0.5rem + var(--baseline)), 20px);
+
+//     @apply mt-0;
+// }
+// .c-intro h1 + p {
+//     margin-top: -10px;
+//     @apply font-mono text-lg;
+// }
+// .c-intro__body h1,
+// .c-intro__body p {
+//     @apply text-black;
+// }

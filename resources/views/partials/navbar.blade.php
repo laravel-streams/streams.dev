@@ -1,6 +1,18 @@
 <div id="blurryscroll" aria-hidden="true"></div>
 <div class="o-navbar @if($entry->intro) o-navbar__has-intro @endif">
     <div class="container mx-auto">
-        <a href="/docs/introduction">home</a>
+        <div class="o-navbar__list-wrapper">
+            <ul class="c-navbar c-navbar__left">
+                <li class="c-navbar__item">
+                    <a href="/docs/introduction">Streams</a>
+                </li>
+            </ul>
+            <ul class="c-navbar c-navbar__right">
+                <li class="c-navbar__item">
+                    <a href="/docs/introduction">
+                        <x-icon-color class="c-navbar__icon" /></a>
+                </li>
+            </ul>
+        </div>
     </div>
 </div>

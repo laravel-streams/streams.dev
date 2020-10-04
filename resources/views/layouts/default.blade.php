@@ -7,6 +7,7 @@
 </head>
 
 <body>
+
     @section('navigation')
 
     @show

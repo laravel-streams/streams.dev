@@ -15,10 +15,10 @@
         }
     ],
     "require": {
-        "anomaly/streams-platform": "2.0.x-dev",
         "anomaly/streams-api": "1.0.x-dev",
+        "anomaly/streams-platform": "2.0.x-dev",
         "anomaly/streams-ui": "1.0.x-dev",
-        "blade-ui-kit/blade-icons": "^0.4.3"
+        "blade-ui-kit/blade-icons": "^0.4.5"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.3",
