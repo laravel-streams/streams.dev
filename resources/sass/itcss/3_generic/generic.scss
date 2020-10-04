@@ -6,8 +6,8 @@ html {
     overflow-x: hidden;
 }
 .container {
-    @media (min-width: 1540px) {
-        max-width: 1500px;
+    @media (min-width: 1600px) {
+        max-width: 1536px;
     }
 }
 ul:not(.c-list):not(.c-aside-menu):not(.c-navbar) {

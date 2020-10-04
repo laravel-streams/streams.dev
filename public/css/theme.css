@@ -658,9 +658,9 @@ html {
   overflow-x: hidden;
 }
 
-@media (min-width: 1540px) {
+@media (min-width: 1600px) {
   .container {
-    max-width: 1500px;
+    max-width: 1536px;
   }
 }
 
@@ -722,9 +722,10 @@ h6 {
 }
 
 .o-doc-body {
-  width: min(868px, 100%);
+  width: min(850px, 100%);
   margin-left: 0;
   padding-bottom: 16rem;
+  padding-right: 1rem;
 }
 
 .o-doc-body *:not(code):not(pre):not(.c-copy-code):not(.c-copy-code__icon):not(.c-intro):not(.c-intro__wave),
@@ -734,7 +735,7 @@ pre.language-bash {
 
 .o-doc-body,
 .c-intro {
-  --baseline: 0.15vw;
+  --baseline: 0.1vw;
 }
 
 .o-doc-body *,
@@ -1065,11 +1066,6 @@ code[class^=language]::-webkit-scrollbar-thumb {
   overflow-y: auto;
   max-height: 100vh;
   min-height: 100vh;
-}
-
-.c-toc-list {
-  width: 300px;
-  margin-left: auto;
 }
 
 .c-toc-list__child {
