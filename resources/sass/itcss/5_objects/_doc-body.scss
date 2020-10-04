@@ -1,5 +1,6 @@
 .o-doc-body {
-    width: min(850px, 100%);
+    //width: min(850px, 100%);
+    width:100%;
     @apply ml-0 pb-64 pr-4;
 }
 
@@ -9,6 +10,12 @@
     *:not(code):not(pre):not(.c-copy-code):not(.c-copy-code__icon):not(.c-intro):not(.c-intro__wave),
 pre.language-bash {
     width: min(768px, 100%);
+    @media (min-width: 1600px) {
+         width: min(868px, 100%);
+    }
+     @media (min-width: 1700px) {
+         width: min(868px, 100%);
+    }
 }
 
 //  ----------------------------------------------------------------------------

@@ -8,7 +8,7 @@
     <div class="flex flex-wrap min-h-screen mx-auto">
         @include('partials.docs.aside')
 
-        <div class="o-doc-body">
+        <div class="o-doc-body w-8/12">
 
 
 

@@ -9,6 +9,9 @@ html {
     @media (min-width: 1600px) {
         max-width: 1536px;
     }
+     @media (min-width: 1700px) {
+        max-width: 1636px;
+    }
 }
 ul:not(.c-list):not(.c-aside-menu):not(.c-navbar) {
     @apply list-disc my-6;
