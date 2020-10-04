@@ -9,5 +9,6 @@
         "description": "textarea",
         "content": "textarea",
         "modified": "datetime"
-    }
+    },
+    "ui": "@streams/ui/examples.json"
 }

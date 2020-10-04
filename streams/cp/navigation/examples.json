@@ -1,0 +1,7 @@
+{
+    "data": {
+        "navigation_link": "App\\NavigationLink",
+        "title": "Examples",
+        "sort": 99
+    }
+}

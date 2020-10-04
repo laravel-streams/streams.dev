@@ -10,7 +10,7 @@
         "sort": "integer",
         "title": "text",
         "intro": "textarea",
-        "body": "text|textarea",
+        "body": "text|markdown",
         "category": {
             "type": "text",
             "config": {

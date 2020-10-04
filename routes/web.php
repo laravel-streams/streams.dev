@@ -35,8 +35,6 @@ Route::any('validate/{stream}/{entry}', function($stream, $entry) {
 });
 
 Route::any('ui/{stream}/table', function($stream) {
-
-    //(new ControlPanelBuilder())->build();
     
     $stream = Streams::make($stream);
 

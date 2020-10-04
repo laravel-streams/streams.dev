@@ -1,0 +1,19 @@
+{
+    "table": {
+        "columns": [
+            "title",
+            "description",
+            "modified"
+        ],
+        "actions": [
+            "delete"
+        ],
+        "options": {},
+        "buttons": {
+            "edit": {
+                "href": "ui/{stream.handle}/form/{entry.id}"
+            }
+        }
+    },
+    "form": {}
+}
