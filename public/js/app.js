@@ -4612,8 +4612,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _src_highlight__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./src/highlight */ "./resources/js/src/highlight.js");
 /* harmony import */ var _src_highlight_copy__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./src/highlight-copy */ "./resources/js/src/highlight-copy.js");
 /* harmony import */ var _src_highlight_copy__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_src_highlight_copy__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _src_anchor__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./src/anchor */ "./resources/js/src/anchor.js");
-/* harmony import */ var _src_tocbot__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./src/tocbot */ "./resources/js/src/tocbot.js");
+/* harmony import */ var _src_dark_light_mode__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./src/dark-light-mode */ "./resources/js/src/dark-light-mode.js");
+/* harmony import */ var _src_anchor__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./src/anchor */ "./resources/js/src/anchor.js");
+/* harmony import */ var _src_tocbot__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./src/tocbot */ "./resources/js/src/tocbot.js");
+
 
 
 
@@ -4622,6 +4624,9 @@ var bashes = document.querySelectorAll('.language-bash');
 bashes.forEach(function (bash) {
   bash.closest('pre').classList.add('language-bash');
   bash.classList.add('c-scrollbar');
+});
+Object(_src_dark_light_mode__WEBPACK_IMPORTED_MODULE_2__["default"])({
+  selector: '[data-streams=toggle-color-mode]'
 });
 
 /***/ }),
@@ -4646,6 +4651,58 @@ anchors.options = {
   icon: ''
 };
 anchors.add('.o-doc-body h1, .o-doc-body h2, .o-doc-body h3, .o-doc-body h4');
+
+/***/ }),
+
+/***/ "./resources/js/src/dark-light-mode.js":
+/*!*********************************************!*\
+  !*** ./resources/js/src/dark-light-mode.js ***!
+  \*********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+var selectors;
+var modeEl = document.body;
+
+function changeDarkLightMode(e) {
+  e.preventDefault();
+
+  if (modeEl.classList.contains('o-mode__light')) {
+    modeEl.classList.remove('o-mode__light');
+    modeEl.classList.add('o-mode__dark');
+    localStorage.setItem('mode', 'dark');
+  } else if (modeEl.classList.contains('o-mode__dark')) {
+    modeEl.classList.remove('o-mode__dark');
+    modeEl.classList.add('o-mode__light');
+    localStorage.setItem('mode', 'light');
+  }
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (function () {
+  var config = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  console.log(localStorage.getItem('mode'));
+  modeEl.classList.add('o-mode');
+
+  if (localStorage.getItem('mode') === "dark") {
+    modeEl.classList.add('o-mode__dark');
+  } else if (localStorage.getItem('mode') === "light") {
+    modeEl.classList.add('o-mode__light');
+  } else if (!modeEl.classList.contains('o-mode__light') && !modeEl.classList.contains('o-mode__dark')) {
+    modeEl.classList.add('o-mode__light');
+  }
+
+  if (config.selector) {
+    selectors = document.querySelectorAll(config.selector);
+  } else {
+    selectors = document.querySelectorAll('[data-streams=toggle-color-mode]');
+  }
+
+  selectors.forEach(function (el) {
+    el.addEventListener('click', changeDarkLightMode);
+  });
+});
 
 /***/ }),
 

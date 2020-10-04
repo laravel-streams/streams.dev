@@ -9,8 +9,9 @@
             </ul>
             <ul class="c-navbar c-navbar__right">
                 <li class="c-navbar__item">
-                    <a href="/docs/introduction">
-                        <x-icon-color class="c-navbar__icon" /></a>
+                    <a href="/docs/introduction" data-streams="toggle-color-mode">
+                        <x-icon-color class="c-navbar__icon" />
+                    </a>
                 </li>
             </ul>
         </div>

@@ -8,13 +8,25 @@
     // }
 
     --color-white: #fff;
-    --color-black:#000;
+    --color-black: #000;
     --color-primary: #000;
 
     // Accent
-    --color-accent:#00ceff;
-    --color-accent-dark:#6fa6b3;
-    --color-accent-light:#d1f6ff;
+    --color-accent: #00ceff;
+    --color-accent-dark: #6fa6b3;
+    --color-accent-light: #d1f6ff;
 
-    --position-top-aside-menus:153px;
+    --position-top-aside-menus: 153px;
+}
+
+.o-mode__dark {
+    --navbar-color-text: #000;
+    --color-text: #fff;
+    --color-background: #000;
+}
+
+.o-mode__light {
+    --navbar-color-text: #000;
+    --color-text: #000;
+    --color-background: #fff;
 }

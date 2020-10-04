@@ -2,7 +2,6 @@
 <html lang="en">
 
 <head>
-
     @include('partials/head')
 </head>
 

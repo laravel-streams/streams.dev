@@ -624,12 +624,24 @@ video {
   --width-aside: 300px;
   --width-main: calc(100% - var(--width-aside));
   --color-white: #fff;
-  --color-black:#000;
+  --color-black: #000;
   --color-primary: #000;
-  --color-accent:#00ceff;
-  --color-accent-dark:#6fa6b3;
-  --color-accent-light:#d1f6ff;
-  --position-top-aside-menus:153px;
+  --color-accent: #00ceff;
+  --color-accent-dark: #6fa6b3;
+  --color-accent-light: #d1f6ff;
+  --position-top-aside-menus: 153px;
+}
+
+.o-mode__dark {
+  --navbar-color-text: #000;
+  --color-text: #fff;
+  --color-background: #000;
+}
+
+.o-mode__light {
+  --navbar-color-text: #000;
+  --color-text: #000;
+  --color-background: #fff;
 }
 
 @font-face {
@@ -678,6 +690,11 @@ h6 {
   position: relative;
 }
 
+.o-mode {
+  background: var(--color-background);
+  color: var(--color-text);
+}
+
 .o-navbar {
   margin-top: 0;
   margin-bottom: 4rem;
@@ -691,6 +708,7 @@ h6 {
   top: 0px;
   background: rgba(245, 245, 245, 0.92);
   background: linear-gradient(0deg, rgba(245, 245, 245, 0.88) 0%, rgba(245, 245, 245, 0.95) 50%, whitesmoke 95%);
+  color: var(--navbar-color-text);
 }
 
 .o-navbar__has-intro {
@@ -1128,7 +1146,6 @@ a.toc-link {
 /* Default Theme Styles */
 
 .toc-link::before {
-  background-color: #eee;
   content: " ";
   display: inline-block;
   height: inherit;
@@ -1146,22 +1163,10 @@ a.toc-link {
   background-color: var(--color-accent);
 }
 
-.c-toc-link:not(.is-active-link) {
-  color: #999 !important;
-}
-
-.node-name--H2.c-toc-link:not(.is-active-link) {
-  color: #333 !important;
-}
-
 .node-name--H2.c-toc-link {
   margin-top: 10px;
   display: block;
   font-size: 16px !important;
-}
-
-.c-toc-link.is-active-link {
-  color: #000 !important;
 }
 
 .anchorjs-link {
