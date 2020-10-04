@@ -3,7 +3,8 @@
         "columns": [
             "title",
             "description",
-            "modified"
+            "modified",
+            "favorite_color"
         ],
         "actions": [
             "delete"
@@ -12,6 +13,10 @@
         "buttons": {
             "edit": {
                 "href": "ui/{stream.handle}/form/{entry.id}"
+            },
+            "view": {
+                "target": "_blank",
+                "href": "{stream.handle}/{entry.id}"
             }
         }
     },

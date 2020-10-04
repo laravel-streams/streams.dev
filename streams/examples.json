@@ -7,8 +7,9 @@
     "fields": {
         "title": "text",
         "description": "textarea",
-        "content": "textarea",
-        "modified": "datetime"
+        "content": "markdown",
+        "modified": "datetime",
+        "favorite_color": "color"
     },
     "ui": "@streams/ui/examples.json"
 }

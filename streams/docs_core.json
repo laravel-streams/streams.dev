@@ -1,5 +1,6 @@
 {
     "extends": "docs",
+    "url_prefix": "docs/core",
     "routes.view": {
         "uri": "docs/core/{id}",
         "csrf": false
