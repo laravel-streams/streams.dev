@@ -979,17 +979,10 @@ pre.c-copy-code__preflash:after {
 }
 
 .c-intro {
-  --text-opacity: 1;
-  color: #fff;
-  color: rgba(255, 255, 255, var(--text-opacity));
-  width: 100%;
-  border-bottom-width: 1px;
-  text-align: center;
+  text-align: left;
   margin-bottom: 3rem;
-  margin-top: 0;
   padding-bottom: 2rem;
-  padding-top: 1rem;
-  background: #fafafa;
+  border-bottom-width: 1px;
 }
 
 .c-intro__wave {
@@ -997,10 +990,10 @@ pre.c-copy-code__preflash:after {
 }
 
 .c-intro__body h1 {
-  font-size: clamp(28px, calc(6rem + var(--baseline)), 120px);
+  font-size: clamp(28px, calc(4rem + var(--baseline)), 80px);
   line-height: 1.2;
   margin-top: clamp(10px, calc(1.5rem + var(--baseline)), 50px);
-  margin-bottom: clamp(10px, calc(.5rem + var(--baseline)), 20px);
+  margin-bottom: clamp(10px, calc(0.5rem + var(--baseline)), 20px);
   margin-top: 0;
 }
 
@@ -1012,10 +1005,9 @@ pre.c-copy-code__preflash:after {
 
 .c-intro__body h1,
 .c-intro__body p {
-  background: -webkit-linear-gradient(55deg, #651dff, #00ceff 42%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
+  --text-opacity: 1;
+  color: #000;
+  color: rgba(0, 0, 0, var(--text-opacity));
 }
 
 body,

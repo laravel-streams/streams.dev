@@ -1,48 +1,23 @@
-.c-intro
-{
-    @apply text-white w-full border-b text-center mb-12 mt-0 pb-8 pt-4;
-    
-    background:#fafafa;
-
-
-    // background: linear-gradient(
-    //     0deg,
-    //     rgba(101, 29, 255, 1) 0%,
-    //     rgba(0, 206, 255, 1) 100%
-    // );
-    // background: radial-gradient(
-    //     circle,
-    //     rgba(101, 29, 255, 1) 0%,
-    //     rgba(0, 206, 255, 1) 100%
-    // );
-
-    // TMP Playing with ryan idea
+.c-intro {
+    @apply text-left mb-12 pb-8 border-b;
 }
-.c-intro__wave
-{
+.c-intro__wave {
     width: 100%;
 }
-.c-intro__body h1
-{
-    font-size: clamp(28px, calc(6rem + var(--baseline)), 120px); // WIP
+.c-intro__body h1 {
+    font-size: clamp(28px, calc(4rem + var(--baseline)), 80px); // WIP
     line-height: 1.2;
 
     margin-top: clamp(10px, calc(1.5rem + var(--baseline)), 50px);
-    margin-bottom: clamp(10px, calc(.5rem + var(--baseline)), 20px);
+    margin-bottom: clamp(10px, calc(0.5rem + var(--baseline)), 20px);
 
     @apply mt-0;
 }
-.c-intro h1 + p
-{
+.c-intro h1 + p {
     margin-top: -10px;
     @apply font-mono text-lg;
 }
 .c-intro__body h1,
-.c-intro__body p
-{
-    background: -webkit-linear-gradient(55deg, #651dff, #00ceff 42%);
-    -webkit-background-clip: text;
-            background-clip: text;
-
-    -webkit-text-fill-color: transparent;
+.c-intro__body p {
+    @apply text-black;
 }
