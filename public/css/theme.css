@@ -633,14 +633,14 @@ video {
 }
 
 .o-mode__dark {
-  --navbar-color-text: #000;
+  --navbar-color-text: #fff;
   --color-text: #fff;
-  --color-background: #000;
+  --color-background: #181a1b;
 }
 
 .o-mode__light {
-  --navbar-color-text: #000;
-  --color-text: #000;
+  --navbar-color-text: #181a1b;
+  --color-text: #181a1b;
   --color-background: #fff;
 }
 
@@ -709,6 +709,10 @@ h6 {
   background: rgba(245, 245, 245, 0.92);
   background: linear-gradient(0deg, rgba(245, 245, 245, 0.88) 0%, rgba(245, 245, 245, 0.95) 50%, whitesmoke 95%);
   color: var(--navbar-color-text);
+}
+
+.o-mode__dark .o-navbar {
+  background: rgba(19, 21, 22, 0.9);
 }
 
 .o-navbar__has-intro {
@@ -1093,6 +1097,7 @@ code[class^=language]::-webkit-scrollbar-thumb {
 .c-navbar__icon {
   width: 25px;
   height: 25px;
+  fill: var(--navbar-color-text);
 }
 
 /* Core Styles */

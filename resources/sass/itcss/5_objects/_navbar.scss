@@ -10,8 +10,12 @@
         rgba(245, 245, 245, 0.95) 50%,
         rgba(245, 245, 245, 1) 95%
     );
+
     // border-color: #fafafa;
     color: var(--navbar-color-text);
+}
+.o-mode__dark .o-navbar {
+    background: rgba(19, 21, 22, 0.9);
 }
 
 .o-navbar__has-intro {
