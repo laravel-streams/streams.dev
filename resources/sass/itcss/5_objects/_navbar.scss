@@ -1,14 +1,17 @@
-.o-navbar 
-{
+.o-navbar {
     @apply mt-0 border-b mb-16 py-8 sticky z-10;
     backdrop-filter: blur(3px);
-    top:0px;
-    background:rgba(255,255,255,0.92);
-    background: linear-gradient(0deg, rgba(255,255,255,.88) 0%, rgba(255,255,255,.95) 50%,rgba(255,255,255,1) 95%);
-    border-color:#fafafa;
+    top: 0px;
+    background: rgba(255, 255, 255, 0.92);
+    background: linear-gradient(
+        0deg,
+        rgba(255, 255, 255, 0.88) 0%,
+        rgba(255, 255, 255, 0.95) 50%,
+        rgba(255, 255, 255, 1) 95%
+    );
+    border-color: #fafafa;
 }
 
-.o-navbar__has-intro 
-{
+.o-navbar__has-intro {
     @apply mb-0;
 }

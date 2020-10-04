@@ -1,11 +1,6 @@
 @extends('layouts/default')
 @section('navigation')
-<div id="blurryscroll" aria-hidden="true"></div>
-<div class="o-navbar @if($entry->intro) o-navbar__has-intro @endif">
-    <div class="container mx-auto">
-        <a href="/docs/introduction">home</a>
-    </div>
-</div>
+@include('partials.navbar')
 @endsection
 @section('content')
 @if($entry->intro)
@@ -19,7 +14,7 @@
         {{-- l1N$Z2Y78wnKoU@M --}}
 
         @if($entry->intro)
-        
+
         @else
         <h1>
             {{ $entry->title }}
