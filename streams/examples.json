@@ -6,10 +6,21 @@
     },
     "fields": {
         "title": "text",
+        "uri_slug": "slug",
         "description": "textarea",
         "content": "markdown",
         "modified": "datetime",
-        "favorite_color": "color"
+        "favorite_color": "color",
+        "example_type": {
+            "type": "select",
+            "config": {
+                "options": {
+                    "simple": "Simple",
+                    "medium": "Intermediate",
+                    "hard": "Advanced"
+                }
+            }
+        }
     },
     "ui": "@streams/ui/examples.json"
 }

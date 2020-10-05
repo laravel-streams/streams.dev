@@ -1,10 +1,12 @@
 ---
 test: Foo
 title: 'Simple Website'
-modified: '2020-10-04T08:00'
+modified: '2020-10-05 14:28:16'
 description: 'A simple description will do.'
 content: 'Some content'
 favorite_color: '#8147eb'
+uri_slug: simple-website
+example_type: simple
 ---
 
 title: {{ dump($entry->expand('title')) }} // Should be StringValue
