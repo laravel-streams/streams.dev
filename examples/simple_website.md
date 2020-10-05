@@ -1,14 +1,16 @@
 ---
 test: Foo
-title: 'Simple Website'
-modified: '2020-10-05 14:28:16'
-description: 'A simple description will do.'
-content: 'Some content'
-favorite_color: '#8147eb'
-uri_slug: simple-website
-example_type: simple
+example_title: 'Simple Website'
+example_datetime: '2020-10-05 15:15:04'
+example_textarea: 'A simple description will do.'
+example_content: 'Some content'
+example_color: '#8147eb'
+example_slug: simple-website
+example_select: hard
+example_radio: second
+title: ''
+example_markdown: "# Yay!\r\nStyles are no longer colliding here :-)"
 ---
-
 title: {{ dump($entry->expand('title')) }} // Should be StringValue
 
 ---

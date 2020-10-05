@@ -6,18 +6,29 @@
     },
     "fields": {
         "title": "text",
-        "uri_slug": "slug",
-        "description": "textarea",
-        "content": "markdown",
-        "modified": "datetime",
-        "favorite_color": "color",
-        "example_type": {
+        "example_slug": "slug",
+        "example_textarea": "textarea",
+        "example_markdown": "markdown",
+        "body": "markdown",
+        "example_datetime": "datetime",
+        "example_color": "color",
+        "example_select": {
             "type": "select",
             "config": {
                 "options": {
                     "simple": "Simple",
                     "medium": "Intermediate",
                     "hard": "Advanced"
+                }
+            }
+        },
+        "example_radio": {
+            "type": "select|radio",
+            "config": {
+                "options": {
+                    "first": "1st",
+                    "second": "2nd",
+                    "third": "3rd"
                 }
             }
         }
