@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 use Anomaly\Streams\Platform\Image\Image;
 
@@ -43,6 +44,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        View::override('ui::example', 'resources/views/ui/override.blade.php');
+        
         Image::macro('thumbnail', function () {
             return $this->fit(148)->encode('jpg', 50);
         });
