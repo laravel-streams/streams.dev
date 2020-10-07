@@ -1,10 +1,12 @@
 {
     "table": {
-        "columns": [
-            "title",
-            "category",
-            "stage"
-        ],
+        "columns": {
+            "title": {
+                "sortable": false
+            },
+            "category": {},
+            "stage": {}
+        },
         "actions": [
             "delete"
         ],
