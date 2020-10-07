@@ -1,10 +1,10 @@
 {
     "table": {
         "columns": [
-            "title",
-            "description",
-            "modified",
-            "favorite_color"
+            "example_title",
+            "example_textarea",
+            "example_datetime",
+            "example_color"
         ],
         "actions": [
             "delete"
