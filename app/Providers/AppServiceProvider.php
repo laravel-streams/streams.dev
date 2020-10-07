@@ -44,7 +44,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        View::override('ui::example', 'resources/views/ui/override.blade.php');
+        //View::override('ui::example', 'resources/views/ui/override.blade.php');
         
         Image::macro('thumbnail', function () {
             return $this->fit(148)->encode('jpg', 50);
