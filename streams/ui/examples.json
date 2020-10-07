@@ -1,41 +1,23 @@
 {
     "table": {
-        "default": {
-            "columns": [
-                "example_title",
-                "example_textarea",
-                "example_datetime",
-                "example_color"
-            ],
-            "actions": [
-                "delete",
-                "edit"
-            ],
-            "options": {},
-            "buttons": {
-                "edit": {
-                    "href": "ui/{stream.handle}/form/{entry.id}"
-                },
-                "view": {
-                    "target": "_blank",
-                    "href": "{stream.handle}/{entry.id}"
-                }
-            }
-        },
-        "testing": {
-            "columns": [
-                "example_title"
-            ],
-            "actions": {},
-            "options": {},
-            "buttons": {
-                "edit": {
-                    "href": "ui/{stream.handle}/form/{entry.id}"
-                },
-                "view": {
-                    "target": "_blank",
-                    "href": "{stream.handle}/{entry.id}"
-                }
+        "columns": [
+            "example_title",
+            "example_textarea",
+            "example_datetime",
+            "example_color"
+        ],
+        "actions": [
+            "delete",
+            "edit"
+        ],
+        "options": {},
+        "buttons": {
+            "edit": {
+                "href": "ui/{stream.handle}/form/{entry.id}"
+            },
+            "view": {
+                "target": "_blank",
+                "href": "{stream.handle}/{entry.id}"
             }
         }
     },
