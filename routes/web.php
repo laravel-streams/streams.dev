@@ -15,6 +15,7 @@ use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Route;
 use Anomaly\Streams\Platform\Support\Facades\Streams;
 use Anomaly\Streams\Ui\ControlPanel\ControlPanelBuilder;
+use Illuminate\Support\Facades\Request;
 
 Route::streams('/', 'welcome');
 // Route::get('/', function() {
@@ -31,11 +32,20 @@ Route::streams('/routing/{stream}/{entry.id}', [
 ]);
 
 Route::any('validate/{stream}/{entry}', function($stream, $entry) {
+
+    if (!Request::isLocal()) {
+        abort(404);
+    }
+
     dd(Streams::entries($stream)->find($entry)->validator()->passes());
 });
 
 Route::any('ui/{stream}/table', function($stream) {
     
+    if (!Request::isLocal()) {
+        abort(404);
+    }
+
     $stream = Streams::make($stream);
 
     return $stream
@@ -44,6 +54,10 @@ Route::any('ui/{stream}/table', function($stream) {
 });
 
 Route::any('ui/{stream}/form/{entry?}', function($stream, $entry = null) {
+    
+    if (!Request::isLocal()) {
+        abort(404);
+    }
     
     $stream = Streams::make($stream);
 
