@@ -648,6 +648,7 @@ video {
   --bg:var(--color-dark);
   --scrollbar-color:var(--color-accent);
   --scrollbar-bg:var(--color-accent-darker);
+  --highlightjs-bg:var(--color-dark-darker);
   --code-in-text-color:var(--color-light-darker);
   --code-in-text-bg:var(--color-dark-lighter);
   --navbar-text:var(--color-light);
@@ -746,11 +747,8 @@ h6 {
   padding-right: 2rem;
 }
 
-@media (min-width: 1280px) {
-  .o-doc-body *:not(code):not(pre):not(.c-copy-code):not(.c-copy-code__icon):not(.c-intro):not(.c-intro__wave):not(span),
-pre.language-bash {
-    max-width: 65ch;
-  }
+.o-doc-body p {
+  max-width: 65ch;
 }
 
 .o-doc-body *,
@@ -838,16 +836,6 @@ pre {
   margin-top: 2rem;
   margin-bottom: 2rem;
   position: relative;
-}
-
-pre.language-bash {
-  color: #333;
-  background: yellow;
-}
-
-code.language-bash.hljs {
-  padding: 0;
-  padding-bottom: 0.5rem;
 }
 
 p code:not([class^=language]) {

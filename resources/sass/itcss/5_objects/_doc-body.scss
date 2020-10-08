@@ -1,6 +1,11 @@
 .o-doc-body
 {
     @apply ml-0 pb-64 px-8;
+
+    p 
+    {
+        max-width: 65ch;
+    }
 }
 
 // We want the content to be more narrow, this is were we control that.
@@ -10,7 +15,7 @@ pre.language-bash
 {
     @media (min-width: 1280px)
     {
-        max-width: 65ch;
+       // 
     }
 }
 
@@ -101,19 +106,6 @@ pre
     @apply relative;
 }
 
-// Style of pre tag if it is bash language
-pre.language-bash
-{
-    color: #333;
-    background: yellow;
-}
-
-
-
-code.language-bash.hljs
-{
-    @apply p-0 pb-2;
-}
 
 code:not([class^='language'])
 {
