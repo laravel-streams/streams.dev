@@ -647,7 +647,7 @@ video {
   --text:var(--color-light);
   --bg:var(--color-dark);
   --scrollbar-color:var(--color-accent);
-  --scrollbar-bg:var(--color-accent-darker);
+  --scrollbar-bg:var(--color-dark);
   --highlightjs-bg:var(--color-dark-darker);
   --code-in-text-color:var(--color-light-darker);
   --code-in-text-bg:var(--color-dark-lighter);
