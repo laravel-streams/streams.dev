@@ -4,60 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0f86a016d83e7d1a02159e5b6dac3066",
+    "content-hash": "9f01c2ef8c5fc6941c9a4c523065ac07",
     "packages": [
-        {
-            "name": "anomaly/streams-api",
-            "version": "1.0.x-dev",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/anomalylabs/streams-api.git",
-                "reference": "42f0a387cd354153f41ed5b087cb6920fa9cd516"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/anomalylabs/streams-api/zipball/42f0a387cd354153f41ed5b087cb6920fa9cd516",
-                "reference": "42f0a387cd354153f41ed5b087cb6920fa9cd516",
-                "shasum": ""
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "Anomaly\\Streams\\Api\\ApiServiceProvider"
-                    ]
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Anomaly\\Streams\\Api\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Ryan Thompson",
-                    "email": "ryan@pyrocms.com"
-                }
-            ],
-            "description": "The official REST API package for Streams.",
-            "time": "2020-09-22T05:13:53+00:00"
-        },
         {
             "name": "anomaly/streams-platform",
             "version": "2.0.x-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/anomalylabs/streams-platform.git",
-                "reference": "2045f7a7deffec094ff2b522756f74bc6c96f883"
+                "reference": "0d450803fca545ffc677a2dec4cce52088bdc1da"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/anomalylabs/streams-platform/zipball/2045f7a7deffec094ff2b522756f74bc6c96f883",
-                "reference": "2045f7a7deffec094ff2b522756f74bc6c96f883",
+                "url": "https://api.github.com/repos/anomalylabs/streams-platform/zipball/0d450803fca545ffc677a2dec4cce52088bdc1da",
+                "reference": "0d450803fca545ffc677a2dec4cce52088bdc1da",
                 "shasum": ""
             },
             "require": {
@@ -108,47 +68,7 @@
                 }
             ],
             "description": "A drop-in application platform for Laravel.",
-            "time": "2020-10-06T20:45:55+00:00"
-        },
-        {
-            "name": "anomaly/streams-ui",
-            "version": "1.0.x-dev",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/anomalylabs/streams-ui.git",
-                "reference": "282d387fac8b44b4b86bd7c0de2608374d0611be"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/anomalylabs/streams-ui/zipball/282d387fac8b44b4b86bd7c0de2608374d0611be",
-                "reference": "282d387fac8b44b4b86bd7c0de2608374d0611be",
-                "shasum": ""
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "Anomaly\\Streams\\Ui\\UiServiceProvider"
-                    ]
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Anomaly\\Streams\\Ui\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Ryan Thompson",
-                    "email": "ryan@pyrocms.com"
-                }
-            ],
-            "description": "The official UI package for Streams.",
-            "time": "2020-10-07T16:31:32+00:00"
+            "time": "2020-10-08T05:46:02+00:00"
         },
         {
             "name": "blade-ui-kit/blade-icons",
@@ -2490,6 +2410,86 @@
                 "yaml"
             ],
             "time": "2019-12-02T20:50:50+00:00"
+        },
+        {
+            "name": "streams/api",
+            "version": "1.0.x-dev",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laravel-streams/streams-api.git",
+                "reference": "08381a18ca2846e2dcc0f4c3664170012059a347"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laravel-streams/streams-api/zipball/08381a18ca2846e2dcc0f4c3664170012059a347",
+                "reference": "08381a18ca2846e2dcc0f4c3664170012059a347",
+                "shasum": ""
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Anomaly\\Streams\\Api\\ApiServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Anomaly\\Streams\\Api\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ryan Thompson",
+                    "email": "ryan@pyrocms.com"
+                }
+            ],
+            "description": "The official REST API package for Streams.",
+            "time": "2020-10-08T06:33:29+00:00"
+        },
+        {
+            "name": "streams/ui",
+            "version": "1.0.x-dev",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laravel-streams/streams-ui.git",
+                "reference": "8948083dd995717f20363267859f0995b8df056c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laravel-streams/streams-ui/zipball/8948083dd995717f20363267859f0995b8df056c",
+                "reference": "8948083dd995717f20363267859f0995b8df056c",
+                "shasum": ""
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Anomaly\\Streams\\Ui\\UiServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Anomaly\\Streams\\Ui\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ryan Thompson",
+                    "email": "ryan@pyrocms.com"
+                }
+            ],
+            "description": "The official UI package for Laravel Streams.",
+            "time": "2020-10-08T06:25:24+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -7261,9 +7261,9 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "anomaly/streams-api": 20,
         "anomaly/streams-platform": 20,
-        "anomaly/streams-ui": 20
+        "streams/api": 20,
+        "streams/ui": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

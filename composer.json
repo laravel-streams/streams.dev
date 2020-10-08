@@ -15,9 +15,9 @@
         }
     ],
     "require": {
-        "anomaly/streams-api": "1.0.x-dev",
-        "anomaly/streams-platform": "2.0.x-dev",
-        "anomaly/streams-ui": "1.0.x-dev",
+        "streams/core": "2.0.x-dev",
+        "streams/api": "1.0.x-dev",
+        "streams/ui": "1.0.x-dev",
         "blade-ui-kit/blade-icons": "^0.4.5"
     },
     "require-dev": {
@@ -32,14 +32,6 @@
         {
             "type": "composer",
             "url": "https://packages.pyrocms.com"
-        },
-        {
-            "type": "composer",
-            "url": "https://community.pyrocms.com"
-        },
-        {
-            "type": "composer",
-            "url": "https://development.pyrocms.com"
         }
     ],
     "autoload": {
