@@ -51,7 +51,6 @@ module.exports = {
       mono: ['JetBrains Mono','monospace'],
     },
     fontWeight: {
-      thin: 'var(--font-weight-thin)',
       normal: 'var(--font-weight-normal)',
       bold: 'var(--font-weight-bold)'
     },

@@ -617,7 +617,6 @@ video {
 /*! purgecss start ignore */
 
 :root {
-  --font-weight-thin:300;
   --font-weight-normal:300;
   --font-weight-bold:800;
   --width-aside: 300px;
@@ -3502,10 +3501,6 @@ a.toc-link {
   font-family: JetBrains Mono, monospace;
 }
 
-.font-thin {
-  font-weight: var(--font-weight-thin);
-}
-
 .font-normal {
   font-weight: var(--font-weight-normal);
 }
@@ -3514,20 +3509,12 @@ a.toc-link {
   font-weight: var(--font-weight-bold);
 }
 
-.hover\:font-thin:hover {
-  font-weight: var(--font-weight-thin);
-}
-
 .hover\:font-normal:hover {
   font-weight: var(--font-weight-normal);
 }
 
 .hover\:font-bold:hover {
   font-weight: var(--font-weight-bold);
-}
-
-.focus\:font-thin:focus {
-  font-weight: var(--font-weight-thin);
 }
 
 .focus\:font-normal:focus {
@@ -12087,10 +12074,6 @@ a.toc-link {
     font-family: JetBrains Mono, monospace;
   }
 
-  .sm\:font-thin {
-    font-weight: var(--font-weight-thin);
-  }
-
   .sm\:font-normal {
     font-weight: var(--font-weight-normal);
   }
@@ -12099,20 +12082,12 @@ a.toc-link {
     font-weight: var(--font-weight-bold);
   }
 
-  .sm\:hover\:font-thin:hover {
-    font-weight: var(--font-weight-thin);
-  }
-
   .sm\:hover\:font-normal:hover {
     font-weight: var(--font-weight-normal);
   }
 
   .sm\:hover\:font-bold:hover {
     font-weight: var(--font-weight-bold);
-  }
-
-  .sm\:focus\:font-thin:focus {
-    font-weight: var(--font-weight-thin);
   }
 
   .sm\:focus\:font-normal:focus {
@@ -20607,10 +20582,6 @@ a.toc-link {
     font-family: JetBrains Mono, monospace;
   }
 
-  .md\:font-thin {
-    font-weight: var(--font-weight-thin);
-  }
-
   .md\:font-normal {
     font-weight: var(--font-weight-normal);
   }
@@ -20619,20 +20590,12 @@ a.toc-link {
     font-weight: var(--font-weight-bold);
   }
 
-  .md\:hover\:font-thin:hover {
-    font-weight: var(--font-weight-thin);
-  }
-
   .md\:hover\:font-normal:hover {
     font-weight: var(--font-weight-normal);
   }
 
   .md\:hover\:font-bold:hover {
     font-weight: var(--font-weight-bold);
-  }
-
-  .md\:focus\:font-thin:focus {
-    font-weight: var(--font-weight-thin);
   }
 
   .md\:focus\:font-normal:focus {
@@ -29127,10 +29090,6 @@ a.toc-link {
     font-family: JetBrains Mono, monospace;
   }
 
-  .lg\:font-thin {
-    font-weight: var(--font-weight-thin);
-  }
-
   .lg\:font-normal {
     font-weight: var(--font-weight-normal);
   }
@@ -29139,20 +29098,12 @@ a.toc-link {
     font-weight: var(--font-weight-bold);
   }
 
-  .lg\:hover\:font-thin:hover {
-    font-weight: var(--font-weight-thin);
-  }
-
   .lg\:hover\:font-normal:hover {
     font-weight: var(--font-weight-normal);
   }
 
   .lg\:hover\:font-bold:hover {
     font-weight: var(--font-weight-bold);
-  }
-
-  .lg\:focus\:font-thin:focus {
-    font-weight: var(--font-weight-thin);
   }
 
   .lg\:focus\:font-normal:focus {
@@ -37647,10 +37598,6 @@ a.toc-link {
     font-family: JetBrains Mono, monospace;
   }
 
-  .xl\:font-thin {
-    font-weight: var(--font-weight-thin);
-  }
-
   .xl\:font-normal {
     font-weight: var(--font-weight-normal);
   }
@@ -37659,20 +37606,12 @@ a.toc-link {
     font-weight: var(--font-weight-bold);
   }
 
-  .xl\:hover\:font-thin:hover {
-    font-weight: var(--font-weight-thin);
-  }
-
   .xl\:hover\:font-normal:hover {
     font-weight: var(--font-weight-normal);
   }
 
   .xl\:hover\:font-bold:hover {
     font-weight: var(--font-weight-bold);
-  }
-
-  .xl\:focus\:font-thin:focus {
-    font-weight: var(--font-weight-thin);
   }
 
   .xl\:focus\:font-normal:focus {
