@@ -637,7 +637,7 @@ video {
   --font-size-lg:1.2rem;
   --font-size-xl:2rem;
   --font-size-xxl:3rem;
-  --highlight-padding:1.5rem;
+  --highlight-padding:0 0rem 3px;
   --width-aside: 300px;
   --width-main: calc(100% - var(--width-aside));
   --position-top-aside-menus: 153px;
@@ -658,7 +658,7 @@ video {
   --text:var(--color-dark);
   --bg:var(--color-light);
   --scrollbar-color:var(--color-accent);
-  --scrollbar-bg:var(--color-accent-darker);
+  --scrollbar-bg:var(--color-dark-lighter);
   --highlightjs-bg:var(--color-dark);
   --code-in-text-color:var(--color-light);
   --code-in-text-bg:var(--color-dark);
@@ -832,9 +832,10 @@ code {
 pre {
   overflow-x: auto;
   color: #eee;
-  background: var(--code-bkg);
+  background: var(--highlightjs-bg);
   margin-top: 2rem;
   margin-bottom: 2rem;
+  padding: 1.5rem;
   position: relative;
 }
 
@@ -979,13 +980,13 @@ pre.c-copy-code__preflash:after {
 body,
 .c-scrollbar,
 code[class^=language] {
-  --scrollbar-color:var(--scrollbar-color);
-  --scrollbar-bkg-color:var(--scrollbar-bg);
+  --scrollbar:var(--scrollbar-color);
+  --scrollbar-bkg:var(--scrollbar-bg);
   --scrollbar-width:5px;
   --scrollbar-height:1px;
   scrollbar-width: thin;
   /* "auto" or "thin"  */
-  scrollbar-color: var(--scrollbar-color) var(--scrollbar-bkg-color);
+  scrollbar-color: var(--scrollbar) var(--scrollbar-bkg);
   /* scroll thumb & track */
 }
 
@@ -1000,14 +1001,14 @@ body::-webkit-scrollbar-track,
 .c-scrollbar::-webkit-scrollbar-track,
 code[class^=language]::-webkit-scrollbar-track {
   border-radius: 0;
-  background: var(--scrollbar-bkg-color);
+  background: var(--scrollbar-bkg);
 }
 
 body::-webkit-scrollbar-thumb,
 .c-scrollbar::-webkit-scrollbar-thumb,
 code[class^=language]::-webkit-scrollbar-thumb {
   border-radius: 0;
-  background: var(--scrollbar-color);
+  background: var(--scrollbar);
 }
 
 .w-aside__scrollbar {

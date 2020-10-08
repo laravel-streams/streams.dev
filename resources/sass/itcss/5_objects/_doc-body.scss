@@ -99,12 +99,13 @@ pre
     overflow-x: auto;
 
     color: #eee;
-    background: var(--code-bkg);
-    @apply my-8;
+    background: var(--highlightjs-bg);
+    @apply my-8 p-6;
 
 
     @apply relative;
 }
+
 
 
 code:not([class^='language'])
