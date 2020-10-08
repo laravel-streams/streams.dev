@@ -1,24 +1,16 @@
 .o-doc-body
 {
-    //width: min(850px, 100%);
-    width: 100%;
-    @apply ml-0 pb-64 pr-4;
+    @apply ml-0 pb-64 px-8;
 }
 
 // We want the content to be more narrow, this is were we control that.
 // Any element that has to be narrow like the text, include it in a not.
-.o-doc-body
-    *:not(code):not(pre):not(.c-copy-code):not(.c-copy-code__icon):not(.c-intro):not(.c-intro__wave),
+.o-doc-body *:not(code):not(pre):not(.c-copy-code):not(.c-copy-code__icon):not(.c-intro):not(.c-intro__wave):not(span),
 pre.language-bash
 {
-    width: min(768px, 100%);
-    @media (min-width: 1600px)
+    @media (min-width: 1280px)
     {
-        width: min(868px, 100%);
-    }
-    @media (min-width: 1700px)
-    {
-        width: min(868px, 100%);
+        max-width: 65ch;
     }
 }
 
@@ -28,10 +20,9 @@ pre.language-bash
 .o-doc-body,
 .c-intro
 {
-    --baseline: .1vw;
     *
     {
-        font-size: clamp(14px, calc(1rem + var(--baseline)), 21px);
+        font-size: var(--font-size-base);
     }
     h1,
     h2,
@@ -49,49 +40,30 @@ pre.language-bash
 
     h1
     {
-        font-size: clamp(28px, calc(3.5rem + var(--baseline)), 64px);
-
-        margin-top: clamp(10px, calc(1.5rem + var(--baseline)), 50px);
-        margin-bottom: clamp(10px, calc(.5rem + var(--baseline)), 20px);
+        font-size: var(--font-size-xxl);
+        @apply mb-2 mt-0;
 
         @apply mt-0 leading-none; // WIP
-
-        // background: -webkit-linear-gradient(55deg, #651dff, #00ceff 42%);
-        // -webkit-background-clip: text;
-        //         background-clip: text;
-
-        // -webkit-text-fill-color: transparent;
     }
     h2
     {
-        font-size: clamp(24px, calc(3rem + var(--baseline)), 42px);
-
-        margin-top: clamp(10px, calc(3rem + var(--baseline)), 50px);
-        margin-bottom: clamp(10px, calc(1rem + var(--baseline)), 50px);
-        &:first-child
-        {
-            margin-top: -5px;
-        }
+        font-size: var(--font-size-xl);
+        @apply mt-12 mb-1;
     }
 
     h3
     {
-        font-size: clamp(21px, calc(1.2rem + var(--baseline)), 36px);
-
-        margin-top: clamp(10px, calc(1.5rem + var(--baseline)), 50px);
-        margin-bottom: clamp(10px, calc(.5rem + var(--baseline)), 20px);
+        font-size: var(--font-size-lg);
+        @apply mt-4 mb-1;
     }
     h4
     {
-        font-size: clamp(16px, 17px, 28px);
-
-        margin-top: clamp(10px, calc(1rem + var(--baseline)), 50px);
-        margin-bottom: clamp(10px, calc(.5rem + var(--baseline)), 20px);
-        //color:yellow;
+        font-size: var(--font-size-base);
+        @apply mt-6 mb-1;
     }
     p + p
     {
-        margin-top: clamp(10px, calc(1.5rem + var(--baseline)), 50px);
+        @apply mt-3;
     }
     p a
     {
@@ -103,10 +75,6 @@ pre.language-bash
             @apply bg-transparent;
         }
     }
-    ul
-    {
-        margin-top: clamp(10px, calc(1.5rem + var(--baseline)), 50px);
-    }
 }
 
 // Common styling for pre and code
@@ -117,7 +85,7 @@ code
     &,
     *
     {
-        font-size: clamp(14px, calc(14px + var(--baseline)), 21px) !important;
+        //font-size:var(--font-size-sm);
     }
 }
 // Style the pre tag
@@ -125,54 +93,23 @@ pre
 {
     overflow-x: auto;
 
-    margin-top: clamp(10px, calc(1.2rem + var(--baseline)), 100px);
-    margin-bottom: clamp(10px, calc(4rem + var(--baseline)), 100px);
-
     color: #eee;
-    background: #1d1f21;
-    @apply py-6 pb-4 px-8 pr-12 relative;
+    background: var(--code-bkg);
+    @apply my-8;
 
-    &::before
-    {
-        position: absolute;
-        top: -1px;
-        left: 0;
 
-        display: block;
-
-        width: 20px;
-        height: 20px;
-
-        content: '';
-
-        background: #fff;
-
-        clip-path: polygon(100% 0, 0 0, 0 100%);
-    }
+    @apply relative;
 }
 
 // Style of pre tag if it is bash language
 pre.language-bash
 {
     color: #333;
-    background: #1d1f21;
+    background: yellow;
 }
 
-h4 + pre,
-p + pre
-{
-    margin-top: clamp(10px, calc(1.2rem + var(--baseline)), 100px);
-}
-.o-doc-body pre + p,
-.o-doc-body pre + h4,
-.o-doc-body pre + pre
-{
-    margin-top: clamp(
-    -50px,
-    calc((1.5rem + var(--baseline)) * -1),
-    1000px
-    ) !important;
-}
+
+
 code.language-bash.hljs
 {
     @apply p-0 pb-2;
@@ -180,13 +117,24 @@ code.language-bash.hljs
 
 code:not([class^='language'])
 {
-    white-space: nowrap;
-
-    background: #eee;
-    @apply p-1 px-2 rounded-sm;
+    // white-space: nowrap;
+    // @apply p-1 px-2 rounded-sm;
 }
+p code:not([class^='language'])
+{
+    font-size: var(--font-size-sm);
 
+    padding: .1rem .4rem .12rem;
+
+    color: var(--code-in-text-color);
+    background: var(--code-in-text-bg);
+}
 .language-bash.hljs
 {
     color: #fff;
+}
+
+.hljs
+{
+    background: yellow;
 }

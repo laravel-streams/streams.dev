@@ -1,6 +1,6 @@
 .c-copy-code 
 {
-    @apply absolute top-0 right-0 px-2 py-2 text-white;
+    @apply absolute top-0 right-0 px-2 py-2 text-light;
     transition: opacity 200ms ease-in-out;
     &:focus {
         outline: none;
@@ -8,7 +8,7 @@
 }
 
 //  ----------------------------------------------------------------------------
-//  Copy Clipboatd Icon
+//  Copy Clipboard Icon
 //  ----------------------------------------------------------------------------
 .c-copy-code span 
 {
@@ -44,10 +44,10 @@ pre.c-copy-code__preflash--step-1
         bottom:calc(var(--height) * -1);
         height:var(--height);
         left:0;
-        background:var(--color-accent-light);
         display: flex;
         justify-content: center;
         align-items: center;
+        background:blanchedalmond;
         color: var(--color-accent-dark);
 
     }

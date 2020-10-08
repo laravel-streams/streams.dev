@@ -617,29 +617,51 @@ video {
 /*! purgecss start ignore */
 
 :root {
+  --color-dark-base: 210;
+  --color-dark:hsla(var(--color-dark-base),6%,8%,1);
+  --color-dark-darker:hsla(var(--color-dark-base),6%,5%,1);
+  --color-dark-lighter:hsla(var(--color-dark-base),6%,21%,1);
+  --color-light-base: 0;
+  --color-light:hsla(var(--color-light-base),0%,99%,1);
+  --color-light-darker:hsla(var(--color-light-base),0%,95%,1);
+  --color-light-lighter:hsla(var(--color-light-base),0%,95%,1);
+  --color-accent-base: 210;
+  --color-accent:hsla(var(--color-accent-base),63%,50%,1);
+  --color-accent-darker:hsla(var(--color-accent-base),63%,35%,1);
+  --color-accent-lighter:hsla(var(--color-accent-base),63%,65%,1);
   --font-weight-normal:300;
-  --font-weight-bold:800;
+  --font-weight-bold:700;
+  --font-size-xs:.75rem;
+  --font-size-sm:.875rem;
+  --font-size-base:1.1rem;
+  --font-size-lg:1.2rem;
+  --font-size-xl:2rem;
+  --font-size-xxl:3rem;
+  --highlight-padding:1.5rem;
   --width-aside: 300px;
   --width-main: calc(100% - var(--width-aside));
-  --color-white: #fff;
-  --color-black: #000;
-  --color-primary: #000;
-  --color-accent: #00ceff;
-  --color-accent-dark: #6fa6b3;
-  --color-accent-light: #d1f6ff;
   --position-top-aside-menus: 153px;
 }
 
 .o-mode__dark {
-  --navbar-color-text: #fff;
-  --color-text: #fff;
-  --color-background: #181a1b;
+  --text:var(--color-light);
+  --bg:var(--color-dark);
+  --scrollbar-color:var(--color-accent);
+  --scrollbar-bg:var(--color-accent-darker);
+  --code-in-text-color:var(--color-light-darker);
+  --code-in-text-bg:var(--color-dark-lighter);
+  --navbar-text:var(--color-light);
 }
 
 .o-mode__light {
-  --navbar-color-text: #181a1b;
-  --color-text: #181a1b;
-  --color-background: #fff;
+  --text:var(--color-dark);
+  --bg:var(--color-light);
+  --scrollbar-color:var(--color-accent);
+  --scrollbar-bg:var(--color-accent-darker);
+  --highlightjs-bg:var(--color-dark);
+  --code-in-text-color:var(--color-light);
+  --code-in-text-bg:var(--color-dark);
+  --navbar-text:var(--color-dark);
 }
 
 @font-face {
@@ -654,18 +676,6 @@ video {
 
 html {
   overflow-x: hidden;
-}
-
-@media (min-width: 1600px) {
-  .container {
-    max-width: 1536px;
-  }
-}
-
-@media (min-width: 1700px) {
-  .container {
-    max-width: 1636px;
-  }
 }
 
 ul:not(.c-list):not(.c-aside-menu):not(.c-navbar) {
@@ -683,6 +693,7 @@ ul:not(.c-list):not(.c-aside-menu):not(.c-navbar) li {
 * {
   outline: none;
   -webkit-tap-highlight-color: transparent;
+  color: var(--text);
 }
 
 h1,
@@ -695,8 +706,7 @@ h6 {
 }
 
 .o-mode {
-  background: var(--color-background);
-  color: var(--color-text);
+  background: var(--bg);
 }
 
 .o-navbar {
@@ -712,7 +722,7 @@ h6 {
   top: 0px;
   background: rgba(245, 245, 245, 0.92);
   background: linear-gradient(0deg, rgba(245, 245, 245, 0.88) 0%, rgba(245, 245, 245, 0.95) 50%, whitesmoke 95%);
-  color: var(--navbar-color-text);
+  color: var(--navbar-text);
 }
 
 .o-mode__dark .o-navbar {
@@ -730,39 +740,22 @@ h6 {
 }
 
 .o-doc-body {
-  width: 100%;
   margin-left: 0;
   padding-bottom: 16rem;
-  padding-right: 1rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
 }
 
-.o-doc-body *:not(code):not(pre):not(.c-copy-code):not(.c-copy-code__icon):not(.c-intro):not(.c-intro__wave),
+@media (min-width: 1280px) {
+  .o-doc-body *:not(code):not(pre):not(.c-copy-code):not(.c-copy-code__icon):not(.c-intro):not(.c-intro__wave):not(span),
 pre.language-bash {
-  width: min(768px, 100%);
-}
-
-@media (min-width: 1600px) {
-  .o-doc-body *:not(code):not(pre):not(.c-copy-code):not(.c-copy-code__icon):not(.c-intro):not(.c-intro__wave),
-pre.language-bash {
-    width: min(868px, 100%);
+    max-width: 65ch;
   }
-}
-
-@media (min-width: 1700px) {
-  .o-doc-body *:not(code):not(pre):not(.c-copy-code):not(.c-copy-code__icon):not(.c-intro):not(.c-intro__wave),
-pre.language-bash {
-    width: min(868px, 100%);
-  }
-}
-
-.o-doc-body,
-.c-intro {
-  --baseline: .1vw;
 }
 
 .o-doc-body *,
 .c-intro * {
-  font-size: clamp(14px, calc(1rem + var(--baseline)), 21px);
+  font-size: var(--font-size-base);
 }
 
 .o-doc-body h1,
@@ -788,42 +781,37 @@ pre.language-bash {
 
 .o-doc-body h1,
 .c-intro h1 {
-  font-size: clamp(28px, calc(3.5rem + var(--baseline)), 64px);
-  margin-top: clamp(10px, calc(1.5rem + var(--baseline)), 50px);
-  margin-bottom: clamp(10px, calc(.5rem + var(--baseline)), 20px);
+  font-size: var(--font-size-xxl);
+  margin-bottom: 0.5rem;
+  margin-top: 0;
   margin-top: 0;
   line-height: 1;
 }
 
 .o-doc-body h2,
 .c-intro h2 {
-  font-size: clamp(24px, calc(3rem + var(--baseline)), 42px);
-  margin-top: clamp(10px, calc(3rem + var(--baseline)), 50px);
-  margin-bottom: clamp(10px, calc(1rem + var(--baseline)), 50px);
-}
-
-.o-doc-body h2:first-child,
-.c-intro h2:first-child {
-  margin-top: -5px;
+  font-size: var(--font-size-xl);
+  margin-top: 3rem;
+  margin-bottom: 0.25rem;
 }
 
 .o-doc-body h3,
 .c-intro h3 {
-  font-size: clamp(21px, calc(1.2rem + var(--baseline)), 36px);
-  margin-top: clamp(10px, calc(1.5rem + var(--baseline)), 50px);
-  margin-bottom: clamp(10px, calc(.5rem + var(--baseline)), 20px);
+  font-size: var(--font-size-lg);
+  margin-top: 1rem;
+  margin-bottom: 0.25rem;
 }
 
 .o-doc-body h4,
 .c-intro h4 {
-  font-size: clamp(16px, 17px, 28px);
-  margin-top: clamp(10px, calc(1rem + var(--baseline)), 50px);
-  margin-bottom: clamp(10px, calc(.5rem + var(--baseline)), 20px);
+  font-size: var(--font-size-base);
+  margin-top: 1.5rem;
+  margin-bottom: 0.25rem;
 }
 
 .o-doc-body p + p,
 .c-intro p + p {
-  margin-top: clamp(10px, calc(1.5rem + var(--baseline)), 50px);
+  margin-top: 0.75rem;
 }
 
 .o-doc-body p a,
@@ -838,65 +826,23 @@ pre.language-bash {
   background-color: transparent;
 }
 
-.o-doc-body ul,
-.c-intro ul {
-  margin-top: clamp(10px, calc(1.5rem + var(--baseline)), 50px);
-}
-
 pre,
 code {
   font-family: JetBrains Mono, monospace;
 }
 
-pre,
-pre *,
-code,
-code * {
-  font-size: clamp(14px, calc(14px + var(--baseline)), 21px) !important;
-}
-
 pre {
   overflow-x: auto;
-  margin-top: clamp(10px, calc(1.2rem + var(--baseline)), 100px);
-  margin-bottom: clamp(10px, calc(4rem + var(--baseline)), 100px);
   color: #eee;
-  background: #1d1f21;
-  padding-top: 1.5rem;
-  padding-bottom: 1.5rem;
-  padding-bottom: 1rem;
-  padding-left: 2rem;
-  padding-right: 2rem;
-  padding-right: 3rem;
+  background: var(--code-bkg);
+  margin-top: 2rem;
+  margin-bottom: 2rem;
   position: relative;
-}
-
-pre::before {
-  position: absolute;
-  top: -1px;
-  left: 0;
-  display: block;
-  width: 20px;
-  height: 20px;
-  content: "";
-  background: #fff;
-  -webkit-clip-path: polygon(100% 0, 0 0, 0 100%);
-          clip-path: polygon(100% 0, 0 0, 0 100%);
 }
 
 pre.language-bash {
   color: #333;
-  background: #1d1f21;
-}
-
-h4 + pre,
-p + pre {
-  margin-top: clamp(10px, calc(1.2rem + var(--baseline)), 100px);
-}
-
-.o-doc-body pre + p,
-.o-doc-body pre + h4,
-.o-doc-body pre + pre {
-  margin-top: clamp(-50px, calc((1.5rem + var(--baseline)) * -1), 1000px) !important;
+  background: yellow;
 }
 
 code.language-bash.hljs {
@@ -904,32 +850,35 @@ code.language-bash.hljs {
   padding-bottom: 0.5rem;
 }
 
-code:not([class^=language]) {
-  white-space: nowrap;
-  background: #eee;
-  padding: 0.25rem;
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
-  border-radius: 0.125rem;
+p code:not([class^=language]) {
+  font-size: var(--font-size-sm);
+  padding: 0.1rem 0.4rem 0.12rem;
+  color: var(--code-in-text-color);
+  background: var(--code-in-text-bg);
 }
 
 .language-bash.hljs {
   color: #fff;
 }
 
+.hljs {
+  background: yellow;
+}
+
 .o-aside {
+  top: var(--position-top-aside-menus);
   position: -webkit-sticky;
   position: sticky;
-  top: var(--position-top-aside-menus);
+  color: var(--aside-text-color);
 }
 
 #blurryscroll {
+  position: fixed;
   top: 0;
   left: 0;
+  overflow: hidden;
   width: 100%;
   height: 5rem;
-  overflow: hidden;
-  position: fixed;
   filter: blur(4px);
 }
 
@@ -938,10 +887,7 @@ code:not([class^=language]) {
   padding-right: 1rem;
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
-  background-color: var(--color-primary);
-  --text-opacity: 1;
-  color: #fff;
-  color: rgba(255, 255, 255, var(--text-opacity));
+  color: var(--color-light);
 }
 
 .c-aside-menu {
@@ -954,21 +900,16 @@ code:not([class^=language]) {
 .c-aside-menu a {
   margin: 5px 0;
   transition: color 200ms ease-in-out;
-  color: #999;
   display: block;
   padding-left: 0.25rem;
   padding-right: 0.25rem;
 }
 
 .c-aside-menu a:hover {
-  --text-opacity: 1;
-  color: #000;
-  color: rgba(0, 0, 0, var(--text-opacity));
+  color: var(--color-dark);
 }
 
 .c-aside-menu .active a {
-  background-color: var(--color-accent-light);
-  color: var(--color-accent-dark);
   border-radius: 0.125rem;
 }
 
@@ -991,9 +932,7 @@ code:not([class^=language]) {
   padding-right: 0.5rem;
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
-  --text-opacity: 1;
-  color: #fff;
-  color: rgba(255, 255, 255, var(--text-opacity));
+  color: var(--color-light);
   transition: opacity 200ms ease-in-out;
 }
 
@@ -1033,10 +972,10 @@ pre.c-copy-code__preflash--step-1:after {
   bottom: calc(var(--height) * -1);
   height: var(--height);
   left: 0;
-  background: var(--color-accent-light);
   display: flex;
   justify-content: center;
   align-items: center;
+  background: blanchedalmond;
   color: var(--color-accent-dark);
 }
 
@@ -1052,8 +991,8 @@ pre.c-copy-code__preflash:after {
 body,
 .c-scrollbar,
 code[class^=language] {
-  --scrollbar-color:var(--color-accent);
-  --scrollbar-bkg-color:var(--color-accent-light);
+  --scrollbar-color:var(--scrollbar-color);
+  --scrollbar-bkg-color:var(--scrollbar-bg);
   --scrollbar-width:5px;
   --scrollbar-height:1px;
   scrollbar-width: thin;
@@ -1114,7 +1053,7 @@ code[class^=language]::-webkit-scrollbar-thumb {
 .c-navbar__icon {
   width: 25px;
   height: 25px;
-  fill: var(--navbar-color-text);
+  fill: var(--navbar-text);
 }
 
 /* Core Styles */
@@ -1185,6 +1124,93 @@ a.toc-link {
   margin-top: 10px;
   display: block;
   font-size: 16px !important;
+}
+
+/* Tomorrow Night Theme */
+
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+
+/* Tomorrow Comment */
+
+.hljs-comment,
+.hljs-quote {
+  color: #969896;
+}
+
+/* Tomorrow Red */
+
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+  color: #cc6666;
+}
+
+/* Tomorrow Orange */
+
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+  color: #de935f;
+}
+
+/* Tomorrow Yellow */
+
+.hljs-attribute,
+.hljs-attr {
+  color: #f0c674;
+}
+
+/* Tomorrow Green */
+
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+  color: #b5bd68;
+}
+
+/* Tomorrow Blue */
+
+.hljs-title,
+.hljs-section {
+  color: #81a2be;
+}
+
+/* Tomorrow Purple */
+
+.hljs-keyword,
+.hljs-selector-tag {
+  color: #b294bb;
+}
+
+.hljs {
+  display: block;
+  overflow-x: auto;
+  background: var(--highlightjs-bg);
+  color: #c5c8c6;
+  padding: var(--highlight-padding);
+}
+
+.hljs-emphasis {
+  font-style: italic;
+}
+
+.hljs-strong {
+  font-weight: bold;
 }
 
 .anchorjs-link {
@@ -1722,36 +1748,16 @@ a.toc-link {
   border-color: transparent;
 }
 
-.divide-white > :not(template) ~ :not(template) {
-  --divide-opacity: 1;
-  border-color: #fff;
-  border-color: rgba(255, 255, 255, var(--divide-opacity));
+.divide-dark > :not(template) ~ :not(template) {
+  border-color: var(--color-dark);
 }
 
-.divide-black > :not(template) ~ :not(template) {
-  --divide-opacity: 1;
-  border-color: #000;
-  border-color: rgba(0, 0, 0, var(--divide-opacity));
-}
-
-.divide-current > :not(template) ~ :not(template) {
-  border-color: currentColor;
-}
-
-.divide-primary > :not(template) ~ :not(template) {
-  border-color: var(--color-primary);
+.divide-light > :not(template) ~ :not(template) {
+  border-color: var(--color-light);
 }
 
 .divide-accent > :not(template) ~ :not(template) {
   border-color: var(--color-accent);
-}
-
-.divide-accent-dark > :not(template) ~ :not(template) {
-  border-color: var(--color-accent-dark);
-}
-
-.divide-accent-light > :not(template) ~ :not(template) {
-  border-color: var(--color-accent-light);
 }
 
 .divide-solid > :not(template) ~ :not(template) {
@@ -1879,108 +1885,48 @@ a.toc-link {
   background-color: transparent;
 }
 
-.bg-white {
-  --bg-opacity: 1;
-  background-color: #fff;
-  background-color: rgba(255, 255, 255, var(--bg-opacity));
+.bg-dark {
+  background-color: var(--color-dark);
 }
 
-.bg-black {
-  --bg-opacity: 1;
-  background-color: #000;
-  background-color: rgba(0, 0, 0, var(--bg-opacity));
-}
-
-.bg-current {
-  background-color: currentColor;
-}
-
-.bg-primary {
-  background-color: var(--color-primary);
+.bg-light {
+  background-color: var(--color-light);
 }
 
 .bg-accent {
   background-color: var(--color-accent);
 }
 
-.bg-accent-dark {
-  background-color: var(--color-accent-dark);
-}
-
-.bg-accent-light {
-  background-color: var(--color-accent-light);
-}
-
 .hover\:bg-transparent:hover {
   background-color: transparent;
 }
 
-.hover\:bg-white:hover {
-  --bg-opacity: 1;
-  background-color: #fff;
-  background-color: rgba(255, 255, 255, var(--bg-opacity));
+.hover\:bg-dark:hover {
+  background-color: var(--color-dark);
 }
 
-.hover\:bg-black:hover {
-  --bg-opacity: 1;
-  background-color: #000;
-  background-color: rgba(0, 0, 0, var(--bg-opacity));
-}
-
-.hover\:bg-current:hover {
-  background-color: currentColor;
-}
-
-.hover\:bg-primary:hover {
-  background-color: var(--color-primary);
+.hover\:bg-light:hover {
+  background-color: var(--color-light);
 }
 
 .hover\:bg-accent:hover {
   background-color: var(--color-accent);
 }
 
-.hover\:bg-accent-dark:hover {
-  background-color: var(--color-accent-dark);
-}
-
-.hover\:bg-accent-light:hover {
-  background-color: var(--color-accent-light);
-}
-
 .focus\:bg-transparent:focus {
   background-color: transparent;
 }
 
-.focus\:bg-white:focus {
-  --bg-opacity: 1;
-  background-color: #fff;
-  background-color: rgba(255, 255, 255, var(--bg-opacity));
+.focus\:bg-dark:focus {
+  background-color: var(--color-dark);
 }
 
-.focus\:bg-black:focus {
-  --bg-opacity: 1;
-  background-color: #000;
-  background-color: rgba(0, 0, 0, var(--bg-opacity));
-}
-
-.focus\:bg-current:focus {
-  background-color: currentColor;
-}
-
-.focus\:bg-primary:focus {
-  background-color: var(--color-primary);
+.focus\:bg-light:focus {
+  background-color: var(--color-light);
 }
 
 .focus\:bg-accent:focus {
   background-color: var(--color-accent);
-}
-
-.focus\:bg-accent-dark:focus {
-  background-color: var(--color-accent-dark);
-}
-
-.focus\:bg-accent-light:focus {
-  background-color: var(--color-accent-light);
 }
 
 .bg-none {
@@ -2024,23 +1970,13 @@ a.toc-link {
   --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(0, 0, 0, 0));
 }
 
-.from-white {
-  --gradient-from-color: #fff;
+.from-dark {
+  --gradient-from-color: var(--color-dark);
   --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
 }
 
-.from-black {
-  --gradient-from-color: #000;
-  --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(0, 0, 0, 0));
-}
-
-.from-current {
-  --gradient-from-color: currentColor;
-  --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
-}
-
-.from-primary {
-  --gradient-from-color: var(--color-primary);
+.from-light {
+  --gradient-from-color: var(--color-light);
   --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
 }
 
@@ -2049,38 +1985,18 @@ a.toc-link {
   --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
 }
 
-.from-accent-dark {
-  --gradient-from-color: var(--color-accent-dark);
-  --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
-}
-
-.from-accent-light {
-  --gradient-from-color: var(--color-accent-light);
-  --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
-}
-
 .via-transparent {
   --gradient-via-color: transparent;
   --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(0, 0, 0, 0));
 }
 
-.via-white {
-  --gradient-via-color: #fff;
+.via-dark {
+  --gradient-via-color: var(--color-dark);
   --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
 }
 
-.via-black {
-  --gradient-via-color: #000;
-  --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(0, 0, 0, 0));
-}
-
-.via-current {
-  --gradient-via-color: currentColor;
-  --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
-}
-
-.via-primary {
-  --gradient-via-color: var(--color-primary);
+.via-light {
+  --gradient-via-color: var(--color-light);
   --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
 }
 
@@ -2089,46 +2005,20 @@ a.toc-link {
   --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
 }
 
-.via-accent-dark {
-  --gradient-via-color: var(--color-accent-dark);
-  --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
-}
-
-.via-accent-light {
-  --gradient-via-color: var(--color-accent-light);
-  --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
-}
-
 .to-transparent {
   --gradient-to-color: transparent;
 }
 
-.to-white {
-  --gradient-to-color: #fff;
+.to-dark {
+  --gradient-to-color: var(--color-dark);
 }
 
-.to-black {
-  --gradient-to-color: #000;
-}
-
-.to-current {
-  --gradient-to-color: currentColor;
-}
-
-.to-primary {
-  --gradient-to-color: var(--color-primary);
+.to-light {
+  --gradient-to-color: var(--color-light);
 }
 
 .to-accent {
   --gradient-to-color: var(--color-accent);
-}
-
-.to-accent-dark {
-  --gradient-to-color: var(--color-accent-dark);
-}
-
-.to-accent-light {
-  --gradient-to-color: var(--color-accent-light);
 }
 
 .hover\:from-transparent:hover {
@@ -2136,23 +2026,13 @@ a.toc-link {
   --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(0, 0, 0, 0));
 }
 
-.hover\:from-white:hover {
-  --gradient-from-color: #fff;
+.hover\:from-dark:hover {
+  --gradient-from-color: var(--color-dark);
   --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
 }
 
-.hover\:from-black:hover {
-  --gradient-from-color: #000;
-  --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(0, 0, 0, 0));
-}
-
-.hover\:from-current:hover {
-  --gradient-from-color: currentColor;
-  --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
-}
-
-.hover\:from-primary:hover {
-  --gradient-from-color: var(--color-primary);
+.hover\:from-light:hover {
+  --gradient-from-color: var(--color-light);
   --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
 }
 
@@ -2161,38 +2041,18 @@ a.toc-link {
   --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
 }
 
-.hover\:from-accent-dark:hover {
-  --gradient-from-color: var(--color-accent-dark);
-  --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
-}
-
-.hover\:from-accent-light:hover {
-  --gradient-from-color: var(--color-accent-light);
-  --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
-}
-
 .hover\:via-transparent:hover {
   --gradient-via-color: transparent;
   --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(0, 0, 0, 0));
 }
 
-.hover\:via-white:hover {
-  --gradient-via-color: #fff;
+.hover\:via-dark:hover {
+  --gradient-via-color: var(--color-dark);
   --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
 }
 
-.hover\:via-black:hover {
-  --gradient-via-color: #000;
-  --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(0, 0, 0, 0));
-}
-
-.hover\:via-current:hover {
-  --gradient-via-color: currentColor;
-  --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
-}
-
-.hover\:via-primary:hover {
-  --gradient-via-color: var(--color-primary);
+.hover\:via-light:hover {
+  --gradient-via-color: var(--color-light);
   --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
 }
 
@@ -2201,46 +2061,20 @@ a.toc-link {
   --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
 }
 
-.hover\:via-accent-dark:hover {
-  --gradient-via-color: var(--color-accent-dark);
-  --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
-}
-
-.hover\:via-accent-light:hover {
-  --gradient-via-color: var(--color-accent-light);
-  --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
-}
-
 .hover\:to-transparent:hover {
   --gradient-to-color: transparent;
 }
 
-.hover\:to-white:hover {
-  --gradient-to-color: #fff;
+.hover\:to-dark:hover {
+  --gradient-to-color: var(--color-dark);
 }
 
-.hover\:to-black:hover {
-  --gradient-to-color: #000;
-}
-
-.hover\:to-current:hover {
-  --gradient-to-color: currentColor;
-}
-
-.hover\:to-primary:hover {
-  --gradient-to-color: var(--color-primary);
+.hover\:to-light:hover {
+  --gradient-to-color: var(--color-light);
 }
 
 .hover\:to-accent:hover {
   --gradient-to-color: var(--color-accent);
-}
-
-.hover\:to-accent-dark:hover {
-  --gradient-to-color: var(--color-accent-dark);
-}
-
-.hover\:to-accent-light:hover {
-  --gradient-to-color: var(--color-accent-light);
 }
 
 .focus\:from-transparent:focus {
@@ -2248,23 +2082,13 @@ a.toc-link {
   --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(0, 0, 0, 0));
 }
 
-.focus\:from-white:focus {
-  --gradient-from-color: #fff;
+.focus\:from-dark:focus {
+  --gradient-from-color: var(--color-dark);
   --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
 }
 
-.focus\:from-black:focus {
-  --gradient-from-color: #000;
-  --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(0, 0, 0, 0));
-}
-
-.focus\:from-current:focus {
-  --gradient-from-color: currentColor;
-  --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
-}
-
-.focus\:from-primary:focus {
-  --gradient-from-color: var(--color-primary);
+.focus\:from-light:focus {
+  --gradient-from-color: var(--color-light);
   --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
 }
 
@@ -2273,38 +2097,18 @@ a.toc-link {
   --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
 }
 
-.focus\:from-accent-dark:focus {
-  --gradient-from-color: var(--color-accent-dark);
-  --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
-}
-
-.focus\:from-accent-light:focus {
-  --gradient-from-color: var(--color-accent-light);
-  --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
-}
-
 .focus\:via-transparent:focus {
   --gradient-via-color: transparent;
   --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(0, 0, 0, 0));
 }
 
-.focus\:via-white:focus {
-  --gradient-via-color: #fff;
+.focus\:via-dark:focus {
+  --gradient-via-color: var(--color-dark);
   --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
 }
 
-.focus\:via-black:focus {
-  --gradient-via-color: #000;
-  --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(0, 0, 0, 0));
-}
-
-.focus\:via-current:focus {
-  --gradient-via-color: currentColor;
-  --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
-}
-
-.focus\:via-primary:focus {
-  --gradient-via-color: var(--color-primary);
+.focus\:via-light:focus {
+  --gradient-via-color: var(--color-light);
   --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
 }
 
@@ -2313,46 +2117,20 @@ a.toc-link {
   --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
 }
 
-.focus\:via-accent-dark:focus {
-  --gradient-via-color: var(--color-accent-dark);
-  --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
-}
-
-.focus\:via-accent-light:focus {
-  --gradient-via-color: var(--color-accent-light);
-  --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
-}
-
 .focus\:to-transparent:focus {
   --gradient-to-color: transparent;
 }
 
-.focus\:to-white:focus {
-  --gradient-to-color: #fff;
+.focus\:to-dark:focus {
+  --gradient-to-color: var(--color-dark);
 }
 
-.focus\:to-black:focus {
-  --gradient-to-color: #000;
-}
-
-.focus\:to-current:focus {
-  --gradient-to-color: currentColor;
-}
-
-.focus\:to-primary:focus {
-  --gradient-to-color: var(--color-primary);
+.focus\:to-light:focus {
+  --gradient-to-color: var(--color-light);
 }
 
 .focus\:to-accent:focus {
   --gradient-to-color: var(--color-accent);
-}
-
-.focus\:to-accent-dark:focus {
-  --gradient-to-color: var(--color-accent-dark);
-}
-
-.focus\:to-accent-light:focus {
-  --gradient-to-color: var(--color-accent-light);
 }
 
 .bg-opacity-0 {
@@ -2499,108 +2277,48 @@ a.toc-link {
   border-color: transparent;
 }
 
-.border-white {
-  --border-opacity: 1;
-  border-color: #fff;
-  border-color: rgba(255, 255, 255, var(--border-opacity));
+.border-dark {
+  border-color: var(--color-dark);
 }
 
-.border-black {
-  --border-opacity: 1;
-  border-color: #000;
-  border-color: rgba(0, 0, 0, var(--border-opacity));
-}
-
-.border-current {
-  border-color: currentColor;
-}
-
-.border-primary {
-  border-color: var(--color-primary);
+.border-light {
+  border-color: var(--color-light);
 }
 
 .border-accent {
   border-color: var(--color-accent);
 }
 
-.border-accent-dark {
-  border-color: var(--color-accent-dark);
-}
-
-.border-accent-light {
-  border-color: var(--color-accent-light);
-}
-
 .hover\:border-transparent:hover {
   border-color: transparent;
 }
 
-.hover\:border-white:hover {
-  --border-opacity: 1;
-  border-color: #fff;
-  border-color: rgba(255, 255, 255, var(--border-opacity));
+.hover\:border-dark:hover {
+  border-color: var(--color-dark);
 }
 
-.hover\:border-black:hover {
-  --border-opacity: 1;
-  border-color: #000;
-  border-color: rgba(0, 0, 0, var(--border-opacity));
-}
-
-.hover\:border-current:hover {
-  border-color: currentColor;
-}
-
-.hover\:border-primary:hover {
-  border-color: var(--color-primary);
+.hover\:border-light:hover {
+  border-color: var(--color-light);
 }
 
 .hover\:border-accent:hover {
   border-color: var(--color-accent);
 }
 
-.hover\:border-accent-dark:hover {
-  border-color: var(--color-accent-dark);
-}
-
-.hover\:border-accent-light:hover {
-  border-color: var(--color-accent-light);
-}
-
 .focus\:border-transparent:focus {
   border-color: transparent;
 }
 
-.focus\:border-white:focus {
-  --border-opacity: 1;
-  border-color: #fff;
-  border-color: rgba(255, 255, 255, var(--border-opacity));
+.focus\:border-dark:focus {
+  border-color: var(--color-dark);
 }
 
-.focus\:border-black:focus {
-  --border-opacity: 1;
-  border-color: #000;
-  border-color: rgba(0, 0, 0, var(--border-opacity));
-}
-
-.focus\:border-current:focus {
-  border-color: currentColor;
-}
-
-.focus\:border-primary:focus {
-  border-color: var(--color-primary);
+.focus\:border-light:focus {
+  border-color: var(--color-light);
 }
 
 .focus\:border-accent:focus {
   border-color: var(--color-accent);
-}
-
-.focus\:border-accent-dark:focus {
-  border-color: var(--color-accent-dark);
-}
-
-.focus\:border-accent-light:focus {
-  border-color: var(--color-accent-light);
 }
 
 .border-opacity-0 {
@@ -3614,35 +3332,27 @@ a.toc-link {
 }
 
 .text-xs {
-  font-size: 0.75rem;
+  font-size: var(--font-size-xs);
 }
 
 .text-sm {
-  font-size: 0.875rem;
+  font-size: var(--font-size-sm);
 }
 
 .text-base {
-  font-size: 1rem;
+  font-size: var(--font-size-base);
 }
 
 .text-lg {
-  font-size: 1.125rem;
+  font-size: var(--font-size-lg);
 }
 
 .text-xl {
-  font-size: 1.25rem;
+  font-size: var(--font-size-xl);
 }
 
 .text-xxl {
-  font-size: 6rem;
-}
-
-.text-subtitle {
-  font-size: 2rem;
-}
-
-.text-title {
-  font-size: 8rem;
+  font-size: var(--font-size-xxl);
 }
 
 .leading-3 {
@@ -5768,64 +5478,28 @@ a.toc-link {
   color: transparent;
 }
 
-.placeholder-white::-moz-placeholder {
-  --placeholder-opacity: 1;
-  color: #fff;
-  color: rgba(255, 255, 255, var(--placeholder-opacity));
+.placeholder-dark::-moz-placeholder {
+  color: var(--color-dark);
 }
 
-.placeholder-white:-ms-input-placeholder {
-  --placeholder-opacity: 1;
-  color: #fff;
-  color: rgba(255, 255, 255, var(--placeholder-opacity));
+.placeholder-dark:-ms-input-placeholder {
+  color: var(--color-dark);
 }
 
-.placeholder-white::placeholder {
-  --placeholder-opacity: 1;
-  color: #fff;
-  color: rgba(255, 255, 255, var(--placeholder-opacity));
+.placeholder-dark::placeholder {
+  color: var(--color-dark);
 }
 
-.placeholder-black::-moz-placeholder {
-  --placeholder-opacity: 1;
-  color: #000;
-  color: rgba(0, 0, 0, var(--placeholder-opacity));
+.placeholder-light::-moz-placeholder {
+  color: var(--color-light);
 }
 
-.placeholder-black:-ms-input-placeholder {
-  --placeholder-opacity: 1;
-  color: #000;
-  color: rgba(0, 0, 0, var(--placeholder-opacity));
+.placeholder-light:-ms-input-placeholder {
+  color: var(--color-light);
 }
 
-.placeholder-black::placeholder {
-  --placeholder-opacity: 1;
-  color: #000;
-  color: rgba(0, 0, 0, var(--placeholder-opacity));
-}
-
-.placeholder-current::-moz-placeholder {
-  color: currentColor;
-}
-
-.placeholder-current:-ms-input-placeholder {
-  color: currentColor;
-}
-
-.placeholder-current::placeholder {
-  color: currentColor;
-}
-
-.placeholder-primary::-moz-placeholder {
-  color: var(--color-primary);
-}
-
-.placeholder-primary:-ms-input-placeholder {
-  color: var(--color-primary);
-}
-
-.placeholder-primary::placeholder {
-  color: var(--color-primary);
+.placeholder-light::placeholder {
+  color: var(--color-light);
 }
 
 .placeholder-accent::-moz-placeholder {
@@ -5840,30 +5514,6 @@ a.toc-link {
   color: var(--color-accent);
 }
 
-.placeholder-accent-dark::-moz-placeholder {
-  color: var(--color-accent-dark);
-}
-
-.placeholder-accent-dark:-ms-input-placeholder {
-  color: var(--color-accent-dark);
-}
-
-.placeholder-accent-dark::placeholder {
-  color: var(--color-accent-dark);
-}
-
-.placeholder-accent-light::-moz-placeholder {
-  color: var(--color-accent-light);
-}
-
-.placeholder-accent-light:-ms-input-placeholder {
-  color: var(--color-accent-light);
-}
-
-.placeholder-accent-light::placeholder {
-  color: var(--color-accent-light);
-}
-
 .focus\:placeholder-transparent:focus::-moz-placeholder {
   color: transparent;
 }
@@ -5876,64 +5526,28 @@ a.toc-link {
   color: transparent;
 }
 
-.focus\:placeholder-white:focus::-moz-placeholder {
-  --placeholder-opacity: 1;
-  color: #fff;
-  color: rgba(255, 255, 255, var(--placeholder-opacity));
+.focus\:placeholder-dark:focus::-moz-placeholder {
+  color: var(--color-dark);
 }
 
-.focus\:placeholder-white:focus:-ms-input-placeholder {
-  --placeholder-opacity: 1;
-  color: #fff;
-  color: rgba(255, 255, 255, var(--placeholder-opacity));
+.focus\:placeholder-dark:focus:-ms-input-placeholder {
+  color: var(--color-dark);
 }
 
-.focus\:placeholder-white:focus::placeholder {
-  --placeholder-opacity: 1;
-  color: #fff;
-  color: rgba(255, 255, 255, var(--placeholder-opacity));
+.focus\:placeholder-dark:focus::placeholder {
+  color: var(--color-dark);
 }
 
-.focus\:placeholder-black:focus::-moz-placeholder {
-  --placeholder-opacity: 1;
-  color: #000;
-  color: rgba(0, 0, 0, var(--placeholder-opacity));
+.focus\:placeholder-light:focus::-moz-placeholder {
+  color: var(--color-light);
 }
 
-.focus\:placeholder-black:focus:-ms-input-placeholder {
-  --placeholder-opacity: 1;
-  color: #000;
-  color: rgba(0, 0, 0, var(--placeholder-opacity));
+.focus\:placeholder-light:focus:-ms-input-placeholder {
+  color: var(--color-light);
 }
 
-.focus\:placeholder-black:focus::placeholder {
-  --placeholder-opacity: 1;
-  color: #000;
-  color: rgba(0, 0, 0, var(--placeholder-opacity));
-}
-
-.focus\:placeholder-current:focus::-moz-placeholder {
-  color: currentColor;
-}
-
-.focus\:placeholder-current:focus:-ms-input-placeholder {
-  color: currentColor;
-}
-
-.focus\:placeholder-current:focus::placeholder {
-  color: currentColor;
-}
-
-.focus\:placeholder-primary:focus::-moz-placeholder {
-  color: var(--color-primary);
-}
-
-.focus\:placeholder-primary:focus:-ms-input-placeholder {
-  color: var(--color-primary);
-}
-
-.focus\:placeholder-primary:focus::placeholder {
-  color: var(--color-primary);
+.focus\:placeholder-light:focus::placeholder {
+  color: var(--color-light);
 }
 
 .focus\:placeholder-accent:focus::-moz-placeholder {
@@ -5946,30 +5560,6 @@ a.toc-link {
 
 .focus\:placeholder-accent:focus::placeholder {
   color: var(--color-accent);
-}
-
-.focus\:placeholder-accent-dark:focus::-moz-placeholder {
-  color: var(--color-accent-dark);
-}
-
-.focus\:placeholder-accent-dark:focus:-ms-input-placeholder {
-  color: var(--color-accent-dark);
-}
-
-.focus\:placeholder-accent-dark:focus::placeholder {
-  color: var(--color-accent-dark);
-}
-
-.focus\:placeholder-accent-light:focus::-moz-placeholder {
-  color: var(--color-accent-light);
-}
-
-.focus\:placeholder-accent-light:focus:-ms-input-placeholder {
-  color: var(--color-accent-light);
-}
-
-.focus\:placeholder-accent-light:focus::placeholder {
-  color: var(--color-accent-light);
 }
 
 .placeholder-opacity-0::-moz-placeholder {
@@ -6371,108 +5961,48 @@ a.toc-link {
   color: transparent;
 }
 
-.text-white {
-  --text-opacity: 1;
-  color: #fff;
-  color: rgba(255, 255, 255, var(--text-opacity));
+.text-dark {
+  color: var(--color-dark);
 }
 
-.text-black {
-  --text-opacity: 1;
-  color: #000;
-  color: rgba(0, 0, 0, var(--text-opacity));
-}
-
-.text-current {
-  color: currentColor;
-}
-
-.text-primary {
-  color: var(--color-primary);
+.text-light {
+  color: var(--color-light);
 }
 
 .text-accent {
   color: var(--color-accent);
 }
 
-.text-accent-dark {
-  color: var(--color-accent-dark);
-}
-
-.text-accent-light {
-  color: var(--color-accent-light);
-}
-
 .hover\:text-transparent:hover {
   color: transparent;
 }
 
-.hover\:text-white:hover {
-  --text-opacity: 1;
-  color: #fff;
-  color: rgba(255, 255, 255, var(--text-opacity));
+.hover\:text-dark:hover {
+  color: var(--color-dark);
 }
 
-.hover\:text-black:hover {
-  --text-opacity: 1;
-  color: #000;
-  color: rgba(0, 0, 0, var(--text-opacity));
-}
-
-.hover\:text-current:hover {
-  color: currentColor;
-}
-
-.hover\:text-primary:hover {
-  color: var(--color-primary);
+.hover\:text-light:hover {
+  color: var(--color-light);
 }
 
 .hover\:text-accent:hover {
   color: var(--color-accent);
 }
 
-.hover\:text-accent-dark:hover {
-  color: var(--color-accent-dark);
-}
-
-.hover\:text-accent-light:hover {
-  color: var(--color-accent-light);
-}
-
 .focus\:text-transparent:focus {
   color: transparent;
 }
 
-.focus\:text-white:focus {
-  --text-opacity: 1;
-  color: #fff;
-  color: rgba(255, 255, 255, var(--text-opacity));
+.focus\:text-dark:focus {
+  color: var(--color-dark);
 }
 
-.focus\:text-black:focus {
-  --text-opacity: 1;
-  color: #000;
-  color: rgba(0, 0, 0, var(--text-opacity));
-}
-
-.focus\:text-current:focus {
-  color: currentColor;
-}
-
-.focus\:text-primary:focus {
-  color: var(--color-primary);
+.focus\:text-light:focus {
+  color: var(--color-light);
 }
 
 .focus\:text-accent:focus {
   color: var(--color-accent);
-}
-
-.focus\:text-accent-dark:focus {
-  color: var(--color-accent-dark);
-}
-
-.focus\:text-accent-light:focus {
-  color: var(--color-accent-light);
 }
 
 .text-opacity-0 {
@@ -10295,36 +9825,16 @@ a.toc-link {
     border-color: transparent;
   }
 
-  .sm\:divide-white > :not(template) ~ :not(template) {
-    --divide-opacity: 1;
-    border-color: #fff;
-    border-color: rgba(255, 255, 255, var(--divide-opacity));
+  .sm\:divide-dark > :not(template) ~ :not(template) {
+    border-color: var(--color-dark);
   }
 
-  .sm\:divide-black > :not(template) ~ :not(template) {
-    --divide-opacity: 1;
-    border-color: #000;
-    border-color: rgba(0, 0, 0, var(--divide-opacity));
-  }
-
-  .sm\:divide-current > :not(template) ~ :not(template) {
-    border-color: currentColor;
-  }
-
-  .sm\:divide-primary > :not(template) ~ :not(template) {
-    border-color: var(--color-primary);
+  .sm\:divide-light > :not(template) ~ :not(template) {
+    border-color: var(--color-light);
   }
 
   .sm\:divide-accent > :not(template) ~ :not(template) {
     border-color: var(--color-accent);
-  }
-
-  .sm\:divide-accent-dark > :not(template) ~ :not(template) {
-    border-color: var(--color-accent-dark);
-  }
-
-  .sm\:divide-accent-light > :not(template) ~ :not(template) {
-    border-color: var(--color-accent-light);
   }
 
   .sm\:divide-solid > :not(template) ~ :not(template) {
@@ -10452,108 +9962,48 @@ a.toc-link {
     background-color: transparent;
   }
 
-  .sm\:bg-white {
-    --bg-opacity: 1;
-    background-color: #fff;
-    background-color: rgba(255, 255, 255, var(--bg-opacity));
+  .sm\:bg-dark {
+    background-color: var(--color-dark);
   }
 
-  .sm\:bg-black {
-    --bg-opacity: 1;
-    background-color: #000;
-    background-color: rgba(0, 0, 0, var(--bg-opacity));
-  }
-
-  .sm\:bg-current {
-    background-color: currentColor;
-  }
-
-  .sm\:bg-primary {
-    background-color: var(--color-primary);
+  .sm\:bg-light {
+    background-color: var(--color-light);
   }
 
   .sm\:bg-accent {
     background-color: var(--color-accent);
   }
 
-  .sm\:bg-accent-dark {
-    background-color: var(--color-accent-dark);
-  }
-
-  .sm\:bg-accent-light {
-    background-color: var(--color-accent-light);
-  }
-
   .sm\:hover\:bg-transparent:hover {
     background-color: transparent;
   }
 
-  .sm\:hover\:bg-white:hover {
-    --bg-opacity: 1;
-    background-color: #fff;
-    background-color: rgba(255, 255, 255, var(--bg-opacity));
+  .sm\:hover\:bg-dark:hover {
+    background-color: var(--color-dark);
   }
 
-  .sm\:hover\:bg-black:hover {
-    --bg-opacity: 1;
-    background-color: #000;
-    background-color: rgba(0, 0, 0, var(--bg-opacity));
-  }
-
-  .sm\:hover\:bg-current:hover {
-    background-color: currentColor;
-  }
-
-  .sm\:hover\:bg-primary:hover {
-    background-color: var(--color-primary);
+  .sm\:hover\:bg-light:hover {
+    background-color: var(--color-light);
   }
 
   .sm\:hover\:bg-accent:hover {
     background-color: var(--color-accent);
   }
 
-  .sm\:hover\:bg-accent-dark:hover {
-    background-color: var(--color-accent-dark);
-  }
-
-  .sm\:hover\:bg-accent-light:hover {
-    background-color: var(--color-accent-light);
-  }
-
   .sm\:focus\:bg-transparent:focus {
     background-color: transparent;
   }
 
-  .sm\:focus\:bg-white:focus {
-    --bg-opacity: 1;
-    background-color: #fff;
-    background-color: rgba(255, 255, 255, var(--bg-opacity));
+  .sm\:focus\:bg-dark:focus {
+    background-color: var(--color-dark);
   }
 
-  .sm\:focus\:bg-black:focus {
-    --bg-opacity: 1;
-    background-color: #000;
-    background-color: rgba(0, 0, 0, var(--bg-opacity));
-  }
-
-  .sm\:focus\:bg-current:focus {
-    background-color: currentColor;
-  }
-
-  .sm\:focus\:bg-primary:focus {
-    background-color: var(--color-primary);
+  .sm\:focus\:bg-light:focus {
+    background-color: var(--color-light);
   }
 
   .sm\:focus\:bg-accent:focus {
     background-color: var(--color-accent);
-  }
-
-  .sm\:focus\:bg-accent-dark:focus {
-    background-color: var(--color-accent-dark);
-  }
-
-  .sm\:focus\:bg-accent-light:focus {
-    background-color: var(--color-accent-light);
   }
 
   .sm\:bg-none {
@@ -10597,23 +10047,13 @@ a.toc-link {
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(0, 0, 0, 0));
   }
 
-  .sm\:from-white {
-    --gradient-from-color: #fff;
+  .sm\:from-dark {
+    --gradient-from-color: var(--color-dark);
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
   }
 
-  .sm\:from-black {
-    --gradient-from-color: #000;
-    --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(0, 0, 0, 0));
-  }
-
-  .sm\:from-current {
-    --gradient-from-color: currentColor;
-    --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
-  }
-
-  .sm\:from-primary {
-    --gradient-from-color: var(--color-primary);
+  .sm\:from-light {
+    --gradient-from-color: var(--color-light);
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
   }
 
@@ -10622,38 +10062,18 @@ a.toc-link {
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
   }
 
-  .sm\:from-accent-dark {
-    --gradient-from-color: var(--color-accent-dark);
-    --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
-  }
-
-  .sm\:from-accent-light {
-    --gradient-from-color: var(--color-accent-light);
-    --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
-  }
-
   .sm\:via-transparent {
     --gradient-via-color: transparent;
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(0, 0, 0, 0));
   }
 
-  .sm\:via-white {
-    --gradient-via-color: #fff;
+  .sm\:via-dark {
+    --gradient-via-color: var(--color-dark);
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
   }
 
-  .sm\:via-black {
-    --gradient-via-color: #000;
-    --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(0, 0, 0, 0));
-  }
-
-  .sm\:via-current {
-    --gradient-via-color: currentColor;
-    --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
-  }
-
-  .sm\:via-primary {
-    --gradient-via-color: var(--color-primary);
+  .sm\:via-light {
+    --gradient-via-color: var(--color-light);
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
   }
 
@@ -10662,46 +10082,20 @@ a.toc-link {
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
   }
 
-  .sm\:via-accent-dark {
-    --gradient-via-color: var(--color-accent-dark);
-    --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
-  }
-
-  .sm\:via-accent-light {
-    --gradient-via-color: var(--color-accent-light);
-    --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
-  }
-
   .sm\:to-transparent {
     --gradient-to-color: transparent;
   }
 
-  .sm\:to-white {
-    --gradient-to-color: #fff;
+  .sm\:to-dark {
+    --gradient-to-color: var(--color-dark);
   }
 
-  .sm\:to-black {
-    --gradient-to-color: #000;
-  }
-
-  .sm\:to-current {
-    --gradient-to-color: currentColor;
-  }
-
-  .sm\:to-primary {
-    --gradient-to-color: var(--color-primary);
+  .sm\:to-light {
+    --gradient-to-color: var(--color-light);
   }
 
   .sm\:to-accent {
     --gradient-to-color: var(--color-accent);
-  }
-
-  .sm\:to-accent-dark {
-    --gradient-to-color: var(--color-accent-dark);
-  }
-
-  .sm\:to-accent-light {
-    --gradient-to-color: var(--color-accent-light);
   }
 
   .sm\:hover\:from-transparent:hover {
@@ -10709,23 +10103,13 @@ a.toc-link {
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(0, 0, 0, 0));
   }
 
-  .sm\:hover\:from-white:hover {
-    --gradient-from-color: #fff;
+  .sm\:hover\:from-dark:hover {
+    --gradient-from-color: var(--color-dark);
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
   }
 
-  .sm\:hover\:from-black:hover {
-    --gradient-from-color: #000;
-    --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(0, 0, 0, 0));
-  }
-
-  .sm\:hover\:from-current:hover {
-    --gradient-from-color: currentColor;
-    --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
-  }
-
-  .sm\:hover\:from-primary:hover {
-    --gradient-from-color: var(--color-primary);
+  .sm\:hover\:from-light:hover {
+    --gradient-from-color: var(--color-light);
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
   }
 
@@ -10734,38 +10118,18 @@ a.toc-link {
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
   }
 
-  .sm\:hover\:from-accent-dark:hover {
-    --gradient-from-color: var(--color-accent-dark);
-    --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
-  }
-
-  .sm\:hover\:from-accent-light:hover {
-    --gradient-from-color: var(--color-accent-light);
-    --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
-  }
-
   .sm\:hover\:via-transparent:hover {
     --gradient-via-color: transparent;
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(0, 0, 0, 0));
   }
 
-  .sm\:hover\:via-white:hover {
-    --gradient-via-color: #fff;
+  .sm\:hover\:via-dark:hover {
+    --gradient-via-color: var(--color-dark);
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
   }
 
-  .sm\:hover\:via-black:hover {
-    --gradient-via-color: #000;
-    --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(0, 0, 0, 0));
-  }
-
-  .sm\:hover\:via-current:hover {
-    --gradient-via-color: currentColor;
-    --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
-  }
-
-  .sm\:hover\:via-primary:hover {
-    --gradient-via-color: var(--color-primary);
+  .sm\:hover\:via-light:hover {
+    --gradient-via-color: var(--color-light);
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
   }
 
@@ -10774,46 +10138,20 @@ a.toc-link {
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
   }
 
-  .sm\:hover\:via-accent-dark:hover {
-    --gradient-via-color: var(--color-accent-dark);
-    --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
-  }
-
-  .sm\:hover\:via-accent-light:hover {
-    --gradient-via-color: var(--color-accent-light);
-    --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
-  }
-
   .sm\:hover\:to-transparent:hover {
     --gradient-to-color: transparent;
   }
 
-  .sm\:hover\:to-white:hover {
-    --gradient-to-color: #fff;
+  .sm\:hover\:to-dark:hover {
+    --gradient-to-color: var(--color-dark);
   }
 
-  .sm\:hover\:to-black:hover {
-    --gradient-to-color: #000;
-  }
-
-  .sm\:hover\:to-current:hover {
-    --gradient-to-color: currentColor;
-  }
-
-  .sm\:hover\:to-primary:hover {
-    --gradient-to-color: var(--color-primary);
+  .sm\:hover\:to-light:hover {
+    --gradient-to-color: var(--color-light);
   }
 
   .sm\:hover\:to-accent:hover {
     --gradient-to-color: var(--color-accent);
-  }
-
-  .sm\:hover\:to-accent-dark:hover {
-    --gradient-to-color: var(--color-accent-dark);
-  }
-
-  .sm\:hover\:to-accent-light:hover {
-    --gradient-to-color: var(--color-accent-light);
   }
 
   .sm\:focus\:from-transparent:focus {
@@ -10821,23 +10159,13 @@ a.toc-link {
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(0, 0, 0, 0));
   }
 
-  .sm\:focus\:from-white:focus {
-    --gradient-from-color: #fff;
+  .sm\:focus\:from-dark:focus {
+    --gradient-from-color: var(--color-dark);
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
   }
 
-  .sm\:focus\:from-black:focus {
-    --gradient-from-color: #000;
-    --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(0, 0, 0, 0));
-  }
-
-  .sm\:focus\:from-current:focus {
-    --gradient-from-color: currentColor;
-    --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
-  }
-
-  .sm\:focus\:from-primary:focus {
-    --gradient-from-color: var(--color-primary);
+  .sm\:focus\:from-light:focus {
+    --gradient-from-color: var(--color-light);
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
   }
 
@@ -10846,38 +10174,18 @@ a.toc-link {
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
   }
 
-  .sm\:focus\:from-accent-dark:focus {
-    --gradient-from-color: var(--color-accent-dark);
-    --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
-  }
-
-  .sm\:focus\:from-accent-light:focus {
-    --gradient-from-color: var(--color-accent-light);
-    --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
-  }
-
   .sm\:focus\:via-transparent:focus {
     --gradient-via-color: transparent;
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(0, 0, 0, 0));
   }
 
-  .sm\:focus\:via-white:focus {
-    --gradient-via-color: #fff;
+  .sm\:focus\:via-dark:focus {
+    --gradient-via-color: var(--color-dark);
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
   }
 
-  .sm\:focus\:via-black:focus {
-    --gradient-via-color: #000;
-    --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(0, 0, 0, 0));
-  }
-
-  .sm\:focus\:via-current:focus {
-    --gradient-via-color: currentColor;
-    --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
-  }
-
-  .sm\:focus\:via-primary:focus {
-    --gradient-via-color: var(--color-primary);
+  .sm\:focus\:via-light:focus {
+    --gradient-via-color: var(--color-light);
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
   }
 
@@ -10886,46 +10194,20 @@ a.toc-link {
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
   }
 
-  .sm\:focus\:via-accent-dark:focus {
-    --gradient-via-color: var(--color-accent-dark);
-    --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
-  }
-
-  .sm\:focus\:via-accent-light:focus {
-    --gradient-via-color: var(--color-accent-light);
-    --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
-  }
-
   .sm\:focus\:to-transparent:focus {
     --gradient-to-color: transparent;
   }
 
-  .sm\:focus\:to-white:focus {
-    --gradient-to-color: #fff;
+  .sm\:focus\:to-dark:focus {
+    --gradient-to-color: var(--color-dark);
   }
 
-  .sm\:focus\:to-black:focus {
-    --gradient-to-color: #000;
-  }
-
-  .sm\:focus\:to-current:focus {
-    --gradient-to-color: currentColor;
-  }
-
-  .sm\:focus\:to-primary:focus {
-    --gradient-to-color: var(--color-primary);
+  .sm\:focus\:to-light:focus {
+    --gradient-to-color: var(--color-light);
   }
 
   .sm\:focus\:to-accent:focus {
     --gradient-to-color: var(--color-accent);
-  }
-
-  .sm\:focus\:to-accent-dark:focus {
-    --gradient-to-color: var(--color-accent-dark);
-  }
-
-  .sm\:focus\:to-accent-light:focus {
-    --gradient-to-color: var(--color-accent-light);
   }
 
   .sm\:bg-opacity-0 {
@@ -11072,108 +10354,48 @@ a.toc-link {
     border-color: transparent;
   }
 
-  .sm\:border-white {
-    --border-opacity: 1;
-    border-color: #fff;
-    border-color: rgba(255, 255, 255, var(--border-opacity));
+  .sm\:border-dark {
+    border-color: var(--color-dark);
   }
 
-  .sm\:border-black {
-    --border-opacity: 1;
-    border-color: #000;
-    border-color: rgba(0, 0, 0, var(--border-opacity));
-  }
-
-  .sm\:border-current {
-    border-color: currentColor;
-  }
-
-  .sm\:border-primary {
-    border-color: var(--color-primary);
+  .sm\:border-light {
+    border-color: var(--color-light);
   }
 
   .sm\:border-accent {
     border-color: var(--color-accent);
   }
 
-  .sm\:border-accent-dark {
-    border-color: var(--color-accent-dark);
-  }
-
-  .sm\:border-accent-light {
-    border-color: var(--color-accent-light);
-  }
-
   .sm\:hover\:border-transparent:hover {
     border-color: transparent;
   }
 
-  .sm\:hover\:border-white:hover {
-    --border-opacity: 1;
-    border-color: #fff;
-    border-color: rgba(255, 255, 255, var(--border-opacity));
+  .sm\:hover\:border-dark:hover {
+    border-color: var(--color-dark);
   }
 
-  .sm\:hover\:border-black:hover {
-    --border-opacity: 1;
-    border-color: #000;
-    border-color: rgba(0, 0, 0, var(--border-opacity));
-  }
-
-  .sm\:hover\:border-current:hover {
-    border-color: currentColor;
-  }
-
-  .sm\:hover\:border-primary:hover {
-    border-color: var(--color-primary);
+  .sm\:hover\:border-light:hover {
+    border-color: var(--color-light);
   }
 
   .sm\:hover\:border-accent:hover {
     border-color: var(--color-accent);
   }
 
-  .sm\:hover\:border-accent-dark:hover {
-    border-color: var(--color-accent-dark);
-  }
-
-  .sm\:hover\:border-accent-light:hover {
-    border-color: var(--color-accent-light);
-  }
-
   .sm\:focus\:border-transparent:focus {
     border-color: transparent;
   }
 
-  .sm\:focus\:border-white:focus {
-    --border-opacity: 1;
-    border-color: #fff;
-    border-color: rgba(255, 255, 255, var(--border-opacity));
+  .sm\:focus\:border-dark:focus {
+    border-color: var(--color-dark);
   }
 
-  .sm\:focus\:border-black:focus {
-    --border-opacity: 1;
-    border-color: #000;
-    border-color: rgba(0, 0, 0, var(--border-opacity));
-  }
-
-  .sm\:focus\:border-current:focus {
-    border-color: currentColor;
-  }
-
-  .sm\:focus\:border-primary:focus {
-    border-color: var(--color-primary);
+  .sm\:focus\:border-light:focus {
+    border-color: var(--color-light);
   }
 
   .sm\:focus\:border-accent:focus {
     border-color: var(--color-accent);
-  }
-
-  .sm\:focus\:border-accent-dark:focus {
-    border-color: var(--color-accent-dark);
-  }
-
-  .sm\:focus\:border-accent-light:focus {
-    border-color: var(--color-accent-light);
   }
 
   .sm\:border-opacity-0 {
@@ -12187,35 +11409,27 @@ a.toc-link {
   }
 
   .sm\:text-xs {
-    font-size: 0.75rem;
+    font-size: var(--font-size-xs);
   }
 
   .sm\:text-sm {
-    font-size: 0.875rem;
+    font-size: var(--font-size-sm);
   }
 
   .sm\:text-base {
-    font-size: 1rem;
+    font-size: var(--font-size-base);
   }
 
   .sm\:text-lg {
-    font-size: 1.125rem;
+    font-size: var(--font-size-lg);
   }
 
   .sm\:text-xl {
-    font-size: 1.25rem;
+    font-size: var(--font-size-xl);
   }
 
   .sm\:text-xxl {
-    font-size: 6rem;
-  }
-
-  .sm\:text-subtitle {
-    font-size: 2rem;
-  }
-
-  .sm\:text-title {
-    font-size: 8rem;
+    font-size: var(--font-size-xxl);
   }
 
   .sm\:leading-3 {
@@ -14341,64 +13555,28 @@ a.toc-link {
     color: transparent;
   }
 
-  .sm\:placeholder-white::-moz-placeholder {
-    --placeholder-opacity: 1;
-    color: #fff;
-    color: rgba(255, 255, 255, var(--placeholder-opacity));
+  .sm\:placeholder-dark::-moz-placeholder {
+    color: var(--color-dark);
   }
 
-  .sm\:placeholder-white:-ms-input-placeholder {
-    --placeholder-opacity: 1;
-    color: #fff;
-    color: rgba(255, 255, 255, var(--placeholder-opacity));
+  .sm\:placeholder-dark:-ms-input-placeholder {
+    color: var(--color-dark);
   }
 
-  .sm\:placeholder-white::placeholder {
-    --placeholder-opacity: 1;
-    color: #fff;
-    color: rgba(255, 255, 255, var(--placeholder-opacity));
+  .sm\:placeholder-dark::placeholder {
+    color: var(--color-dark);
   }
 
-  .sm\:placeholder-black::-moz-placeholder {
-    --placeholder-opacity: 1;
-    color: #000;
-    color: rgba(0, 0, 0, var(--placeholder-opacity));
+  .sm\:placeholder-light::-moz-placeholder {
+    color: var(--color-light);
   }
 
-  .sm\:placeholder-black:-ms-input-placeholder {
-    --placeholder-opacity: 1;
-    color: #000;
-    color: rgba(0, 0, 0, var(--placeholder-opacity));
+  .sm\:placeholder-light:-ms-input-placeholder {
+    color: var(--color-light);
   }
 
-  .sm\:placeholder-black::placeholder {
-    --placeholder-opacity: 1;
-    color: #000;
-    color: rgba(0, 0, 0, var(--placeholder-opacity));
-  }
-
-  .sm\:placeholder-current::-moz-placeholder {
-    color: currentColor;
-  }
-
-  .sm\:placeholder-current:-ms-input-placeholder {
-    color: currentColor;
-  }
-
-  .sm\:placeholder-current::placeholder {
-    color: currentColor;
-  }
-
-  .sm\:placeholder-primary::-moz-placeholder {
-    color: var(--color-primary);
-  }
-
-  .sm\:placeholder-primary:-ms-input-placeholder {
-    color: var(--color-primary);
-  }
-
-  .sm\:placeholder-primary::placeholder {
-    color: var(--color-primary);
+  .sm\:placeholder-light::placeholder {
+    color: var(--color-light);
   }
 
   .sm\:placeholder-accent::-moz-placeholder {
@@ -14413,30 +13591,6 @@ a.toc-link {
     color: var(--color-accent);
   }
 
-  .sm\:placeholder-accent-dark::-moz-placeholder {
-    color: var(--color-accent-dark);
-  }
-
-  .sm\:placeholder-accent-dark:-ms-input-placeholder {
-    color: var(--color-accent-dark);
-  }
-
-  .sm\:placeholder-accent-dark::placeholder {
-    color: var(--color-accent-dark);
-  }
-
-  .sm\:placeholder-accent-light::-moz-placeholder {
-    color: var(--color-accent-light);
-  }
-
-  .sm\:placeholder-accent-light:-ms-input-placeholder {
-    color: var(--color-accent-light);
-  }
-
-  .sm\:placeholder-accent-light::placeholder {
-    color: var(--color-accent-light);
-  }
-
   .sm\:focus\:placeholder-transparent:focus::-moz-placeholder {
     color: transparent;
   }
@@ -14449,64 +13603,28 @@ a.toc-link {
     color: transparent;
   }
 
-  .sm\:focus\:placeholder-white:focus::-moz-placeholder {
-    --placeholder-opacity: 1;
-    color: #fff;
-    color: rgba(255, 255, 255, var(--placeholder-opacity));
+  .sm\:focus\:placeholder-dark:focus::-moz-placeholder {
+    color: var(--color-dark);
   }
 
-  .sm\:focus\:placeholder-white:focus:-ms-input-placeholder {
-    --placeholder-opacity: 1;
-    color: #fff;
-    color: rgba(255, 255, 255, var(--placeholder-opacity));
+  .sm\:focus\:placeholder-dark:focus:-ms-input-placeholder {
+    color: var(--color-dark);
   }
 
-  .sm\:focus\:placeholder-white:focus::placeholder {
-    --placeholder-opacity: 1;
-    color: #fff;
-    color: rgba(255, 255, 255, var(--placeholder-opacity));
+  .sm\:focus\:placeholder-dark:focus::placeholder {
+    color: var(--color-dark);
   }
 
-  .sm\:focus\:placeholder-black:focus::-moz-placeholder {
-    --placeholder-opacity: 1;
-    color: #000;
-    color: rgba(0, 0, 0, var(--placeholder-opacity));
+  .sm\:focus\:placeholder-light:focus::-moz-placeholder {
+    color: var(--color-light);
   }
 
-  .sm\:focus\:placeholder-black:focus:-ms-input-placeholder {
-    --placeholder-opacity: 1;
-    color: #000;
-    color: rgba(0, 0, 0, var(--placeholder-opacity));
+  .sm\:focus\:placeholder-light:focus:-ms-input-placeholder {
+    color: var(--color-light);
   }
 
-  .sm\:focus\:placeholder-black:focus::placeholder {
-    --placeholder-opacity: 1;
-    color: #000;
-    color: rgba(0, 0, 0, var(--placeholder-opacity));
-  }
-
-  .sm\:focus\:placeholder-current:focus::-moz-placeholder {
-    color: currentColor;
-  }
-
-  .sm\:focus\:placeholder-current:focus:-ms-input-placeholder {
-    color: currentColor;
-  }
-
-  .sm\:focus\:placeholder-current:focus::placeholder {
-    color: currentColor;
-  }
-
-  .sm\:focus\:placeholder-primary:focus::-moz-placeholder {
-    color: var(--color-primary);
-  }
-
-  .sm\:focus\:placeholder-primary:focus:-ms-input-placeholder {
-    color: var(--color-primary);
-  }
-
-  .sm\:focus\:placeholder-primary:focus::placeholder {
-    color: var(--color-primary);
+  .sm\:focus\:placeholder-light:focus::placeholder {
+    color: var(--color-light);
   }
 
   .sm\:focus\:placeholder-accent:focus::-moz-placeholder {
@@ -14519,30 +13637,6 @@ a.toc-link {
 
   .sm\:focus\:placeholder-accent:focus::placeholder {
     color: var(--color-accent);
-  }
-
-  .sm\:focus\:placeholder-accent-dark:focus::-moz-placeholder {
-    color: var(--color-accent-dark);
-  }
-
-  .sm\:focus\:placeholder-accent-dark:focus:-ms-input-placeholder {
-    color: var(--color-accent-dark);
-  }
-
-  .sm\:focus\:placeholder-accent-dark:focus::placeholder {
-    color: var(--color-accent-dark);
-  }
-
-  .sm\:focus\:placeholder-accent-light:focus::-moz-placeholder {
-    color: var(--color-accent-light);
-  }
-
-  .sm\:focus\:placeholder-accent-light:focus:-ms-input-placeholder {
-    color: var(--color-accent-light);
-  }
-
-  .sm\:focus\:placeholder-accent-light:focus::placeholder {
-    color: var(--color-accent-light);
   }
 
   .sm\:placeholder-opacity-0::-moz-placeholder {
@@ -14944,108 +14038,48 @@ a.toc-link {
     color: transparent;
   }
 
-  .sm\:text-white {
-    --text-opacity: 1;
-    color: #fff;
-    color: rgba(255, 255, 255, var(--text-opacity));
+  .sm\:text-dark {
+    color: var(--color-dark);
   }
 
-  .sm\:text-black {
-    --text-opacity: 1;
-    color: #000;
-    color: rgba(0, 0, 0, var(--text-opacity));
-  }
-
-  .sm\:text-current {
-    color: currentColor;
-  }
-
-  .sm\:text-primary {
-    color: var(--color-primary);
+  .sm\:text-light {
+    color: var(--color-light);
   }
 
   .sm\:text-accent {
     color: var(--color-accent);
   }
 
-  .sm\:text-accent-dark {
-    color: var(--color-accent-dark);
-  }
-
-  .sm\:text-accent-light {
-    color: var(--color-accent-light);
-  }
-
   .sm\:hover\:text-transparent:hover {
     color: transparent;
   }
 
-  .sm\:hover\:text-white:hover {
-    --text-opacity: 1;
-    color: #fff;
-    color: rgba(255, 255, 255, var(--text-opacity));
+  .sm\:hover\:text-dark:hover {
+    color: var(--color-dark);
   }
 
-  .sm\:hover\:text-black:hover {
-    --text-opacity: 1;
-    color: #000;
-    color: rgba(0, 0, 0, var(--text-opacity));
-  }
-
-  .sm\:hover\:text-current:hover {
-    color: currentColor;
-  }
-
-  .sm\:hover\:text-primary:hover {
-    color: var(--color-primary);
+  .sm\:hover\:text-light:hover {
+    color: var(--color-light);
   }
 
   .sm\:hover\:text-accent:hover {
     color: var(--color-accent);
   }
 
-  .sm\:hover\:text-accent-dark:hover {
-    color: var(--color-accent-dark);
-  }
-
-  .sm\:hover\:text-accent-light:hover {
-    color: var(--color-accent-light);
-  }
-
   .sm\:focus\:text-transparent:focus {
     color: transparent;
   }
 
-  .sm\:focus\:text-white:focus {
-    --text-opacity: 1;
-    color: #fff;
-    color: rgba(255, 255, 255, var(--text-opacity));
+  .sm\:focus\:text-dark:focus {
+    color: var(--color-dark);
   }
 
-  .sm\:focus\:text-black:focus {
-    --text-opacity: 1;
-    color: #000;
-    color: rgba(0, 0, 0, var(--text-opacity));
-  }
-
-  .sm\:focus\:text-current:focus {
-    color: currentColor;
-  }
-
-  .sm\:focus\:text-primary:focus {
-    color: var(--color-primary);
+  .sm\:focus\:text-light:focus {
+    color: var(--color-light);
   }
 
   .sm\:focus\:text-accent:focus {
     color: var(--color-accent);
-  }
-
-  .sm\:focus\:text-accent-dark:focus {
-    color: var(--color-accent-dark);
-  }
-
-  .sm\:focus\:text-accent-light:focus {
-    color: var(--color-accent-light);
   }
 
   .sm\:text-opacity-0 {
@@ -18803,36 +17837,16 @@ a.toc-link {
     border-color: transparent;
   }
 
-  .md\:divide-white > :not(template) ~ :not(template) {
-    --divide-opacity: 1;
-    border-color: #fff;
-    border-color: rgba(255, 255, 255, var(--divide-opacity));
+  .md\:divide-dark > :not(template) ~ :not(template) {
+    border-color: var(--color-dark);
   }
 
-  .md\:divide-black > :not(template) ~ :not(template) {
-    --divide-opacity: 1;
-    border-color: #000;
-    border-color: rgba(0, 0, 0, var(--divide-opacity));
-  }
-
-  .md\:divide-current > :not(template) ~ :not(template) {
-    border-color: currentColor;
-  }
-
-  .md\:divide-primary > :not(template) ~ :not(template) {
-    border-color: var(--color-primary);
+  .md\:divide-light > :not(template) ~ :not(template) {
+    border-color: var(--color-light);
   }
 
   .md\:divide-accent > :not(template) ~ :not(template) {
     border-color: var(--color-accent);
-  }
-
-  .md\:divide-accent-dark > :not(template) ~ :not(template) {
-    border-color: var(--color-accent-dark);
-  }
-
-  .md\:divide-accent-light > :not(template) ~ :not(template) {
-    border-color: var(--color-accent-light);
   }
 
   .md\:divide-solid > :not(template) ~ :not(template) {
@@ -18960,108 +17974,48 @@ a.toc-link {
     background-color: transparent;
   }
 
-  .md\:bg-white {
-    --bg-opacity: 1;
-    background-color: #fff;
-    background-color: rgba(255, 255, 255, var(--bg-opacity));
+  .md\:bg-dark {
+    background-color: var(--color-dark);
   }
 
-  .md\:bg-black {
-    --bg-opacity: 1;
-    background-color: #000;
-    background-color: rgba(0, 0, 0, var(--bg-opacity));
-  }
-
-  .md\:bg-current {
-    background-color: currentColor;
-  }
-
-  .md\:bg-primary {
-    background-color: var(--color-primary);
+  .md\:bg-light {
+    background-color: var(--color-light);
   }
 
   .md\:bg-accent {
     background-color: var(--color-accent);
   }
 
-  .md\:bg-accent-dark {
-    background-color: var(--color-accent-dark);
-  }
-
-  .md\:bg-accent-light {
-    background-color: var(--color-accent-light);
-  }
-
   .md\:hover\:bg-transparent:hover {
     background-color: transparent;
   }
 
-  .md\:hover\:bg-white:hover {
-    --bg-opacity: 1;
-    background-color: #fff;
-    background-color: rgba(255, 255, 255, var(--bg-opacity));
+  .md\:hover\:bg-dark:hover {
+    background-color: var(--color-dark);
   }
 
-  .md\:hover\:bg-black:hover {
-    --bg-opacity: 1;
-    background-color: #000;
-    background-color: rgba(0, 0, 0, var(--bg-opacity));
-  }
-
-  .md\:hover\:bg-current:hover {
-    background-color: currentColor;
-  }
-
-  .md\:hover\:bg-primary:hover {
-    background-color: var(--color-primary);
+  .md\:hover\:bg-light:hover {
+    background-color: var(--color-light);
   }
 
   .md\:hover\:bg-accent:hover {
     background-color: var(--color-accent);
   }
 
-  .md\:hover\:bg-accent-dark:hover {
-    background-color: var(--color-accent-dark);
-  }
-
-  .md\:hover\:bg-accent-light:hover {
-    background-color: var(--color-accent-light);
-  }
-
   .md\:focus\:bg-transparent:focus {
     background-color: transparent;
   }
 
-  .md\:focus\:bg-white:focus {
-    --bg-opacity: 1;
-    background-color: #fff;
-    background-color: rgba(255, 255, 255, var(--bg-opacity));
+  .md\:focus\:bg-dark:focus {
+    background-color: var(--color-dark);
   }
 
-  .md\:focus\:bg-black:focus {
-    --bg-opacity: 1;
-    background-color: #000;
-    background-color: rgba(0, 0, 0, var(--bg-opacity));
-  }
-
-  .md\:focus\:bg-current:focus {
-    background-color: currentColor;
-  }
-
-  .md\:focus\:bg-primary:focus {
-    background-color: var(--color-primary);
+  .md\:focus\:bg-light:focus {
+    background-color: var(--color-light);
   }
 
   .md\:focus\:bg-accent:focus {
     background-color: var(--color-accent);
-  }
-
-  .md\:focus\:bg-accent-dark:focus {
-    background-color: var(--color-accent-dark);
-  }
-
-  .md\:focus\:bg-accent-light:focus {
-    background-color: var(--color-accent-light);
   }
 
   .md\:bg-none {
@@ -19105,23 +18059,13 @@ a.toc-link {
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(0, 0, 0, 0));
   }
 
-  .md\:from-white {
-    --gradient-from-color: #fff;
+  .md\:from-dark {
+    --gradient-from-color: var(--color-dark);
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
   }
 
-  .md\:from-black {
-    --gradient-from-color: #000;
-    --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(0, 0, 0, 0));
-  }
-
-  .md\:from-current {
-    --gradient-from-color: currentColor;
-    --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
-  }
-
-  .md\:from-primary {
-    --gradient-from-color: var(--color-primary);
+  .md\:from-light {
+    --gradient-from-color: var(--color-light);
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
   }
 
@@ -19130,38 +18074,18 @@ a.toc-link {
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
   }
 
-  .md\:from-accent-dark {
-    --gradient-from-color: var(--color-accent-dark);
-    --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
-  }
-
-  .md\:from-accent-light {
-    --gradient-from-color: var(--color-accent-light);
-    --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
-  }
-
   .md\:via-transparent {
     --gradient-via-color: transparent;
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(0, 0, 0, 0));
   }
 
-  .md\:via-white {
-    --gradient-via-color: #fff;
+  .md\:via-dark {
+    --gradient-via-color: var(--color-dark);
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
   }
 
-  .md\:via-black {
-    --gradient-via-color: #000;
-    --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(0, 0, 0, 0));
-  }
-
-  .md\:via-current {
-    --gradient-via-color: currentColor;
-    --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
-  }
-
-  .md\:via-primary {
-    --gradient-via-color: var(--color-primary);
+  .md\:via-light {
+    --gradient-via-color: var(--color-light);
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
   }
 
@@ -19170,46 +18094,20 @@ a.toc-link {
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
   }
 
-  .md\:via-accent-dark {
-    --gradient-via-color: var(--color-accent-dark);
-    --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
-  }
-
-  .md\:via-accent-light {
-    --gradient-via-color: var(--color-accent-light);
-    --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
-  }
-
   .md\:to-transparent {
     --gradient-to-color: transparent;
   }
 
-  .md\:to-white {
-    --gradient-to-color: #fff;
+  .md\:to-dark {
+    --gradient-to-color: var(--color-dark);
   }
 
-  .md\:to-black {
-    --gradient-to-color: #000;
-  }
-
-  .md\:to-current {
-    --gradient-to-color: currentColor;
-  }
-
-  .md\:to-primary {
-    --gradient-to-color: var(--color-primary);
+  .md\:to-light {
+    --gradient-to-color: var(--color-light);
   }
 
   .md\:to-accent {
     --gradient-to-color: var(--color-accent);
-  }
-
-  .md\:to-accent-dark {
-    --gradient-to-color: var(--color-accent-dark);
-  }
-
-  .md\:to-accent-light {
-    --gradient-to-color: var(--color-accent-light);
   }
 
   .md\:hover\:from-transparent:hover {
@@ -19217,23 +18115,13 @@ a.toc-link {
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(0, 0, 0, 0));
   }
 
-  .md\:hover\:from-white:hover {
-    --gradient-from-color: #fff;
+  .md\:hover\:from-dark:hover {
+    --gradient-from-color: var(--color-dark);
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
   }
 
-  .md\:hover\:from-black:hover {
-    --gradient-from-color: #000;
-    --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(0, 0, 0, 0));
-  }
-
-  .md\:hover\:from-current:hover {
-    --gradient-from-color: currentColor;
-    --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
-  }
-
-  .md\:hover\:from-primary:hover {
-    --gradient-from-color: var(--color-primary);
+  .md\:hover\:from-light:hover {
+    --gradient-from-color: var(--color-light);
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
   }
 
@@ -19242,38 +18130,18 @@ a.toc-link {
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
   }
 
-  .md\:hover\:from-accent-dark:hover {
-    --gradient-from-color: var(--color-accent-dark);
-    --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
-  }
-
-  .md\:hover\:from-accent-light:hover {
-    --gradient-from-color: var(--color-accent-light);
-    --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
-  }
-
   .md\:hover\:via-transparent:hover {
     --gradient-via-color: transparent;
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(0, 0, 0, 0));
   }
 
-  .md\:hover\:via-white:hover {
-    --gradient-via-color: #fff;
+  .md\:hover\:via-dark:hover {
+    --gradient-via-color: var(--color-dark);
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
   }
 
-  .md\:hover\:via-black:hover {
-    --gradient-via-color: #000;
-    --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(0, 0, 0, 0));
-  }
-
-  .md\:hover\:via-current:hover {
-    --gradient-via-color: currentColor;
-    --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
-  }
-
-  .md\:hover\:via-primary:hover {
-    --gradient-via-color: var(--color-primary);
+  .md\:hover\:via-light:hover {
+    --gradient-via-color: var(--color-light);
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
   }
 
@@ -19282,46 +18150,20 @@ a.toc-link {
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
   }
 
-  .md\:hover\:via-accent-dark:hover {
-    --gradient-via-color: var(--color-accent-dark);
-    --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
-  }
-
-  .md\:hover\:via-accent-light:hover {
-    --gradient-via-color: var(--color-accent-light);
-    --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
-  }
-
   .md\:hover\:to-transparent:hover {
     --gradient-to-color: transparent;
   }
 
-  .md\:hover\:to-white:hover {
-    --gradient-to-color: #fff;
+  .md\:hover\:to-dark:hover {
+    --gradient-to-color: var(--color-dark);
   }
 
-  .md\:hover\:to-black:hover {
-    --gradient-to-color: #000;
-  }
-
-  .md\:hover\:to-current:hover {
-    --gradient-to-color: currentColor;
-  }
-
-  .md\:hover\:to-primary:hover {
-    --gradient-to-color: var(--color-primary);
+  .md\:hover\:to-light:hover {
+    --gradient-to-color: var(--color-light);
   }
 
   .md\:hover\:to-accent:hover {
     --gradient-to-color: var(--color-accent);
-  }
-
-  .md\:hover\:to-accent-dark:hover {
-    --gradient-to-color: var(--color-accent-dark);
-  }
-
-  .md\:hover\:to-accent-light:hover {
-    --gradient-to-color: var(--color-accent-light);
   }
 
   .md\:focus\:from-transparent:focus {
@@ -19329,23 +18171,13 @@ a.toc-link {
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(0, 0, 0, 0));
   }
 
-  .md\:focus\:from-white:focus {
-    --gradient-from-color: #fff;
+  .md\:focus\:from-dark:focus {
+    --gradient-from-color: var(--color-dark);
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
   }
 
-  .md\:focus\:from-black:focus {
-    --gradient-from-color: #000;
-    --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(0, 0, 0, 0));
-  }
-
-  .md\:focus\:from-current:focus {
-    --gradient-from-color: currentColor;
-    --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
-  }
-
-  .md\:focus\:from-primary:focus {
-    --gradient-from-color: var(--color-primary);
+  .md\:focus\:from-light:focus {
+    --gradient-from-color: var(--color-light);
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
   }
 
@@ -19354,38 +18186,18 @@ a.toc-link {
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
   }
 
-  .md\:focus\:from-accent-dark:focus {
-    --gradient-from-color: var(--color-accent-dark);
-    --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
-  }
-
-  .md\:focus\:from-accent-light:focus {
-    --gradient-from-color: var(--color-accent-light);
-    --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
-  }
-
   .md\:focus\:via-transparent:focus {
     --gradient-via-color: transparent;
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(0, 0, 0, 0));
   }
 
-  .md\:focus\:via-white:focus {
-    --gradient-via-color: #fff;
+  .md\:focus\:via-dark:focus {
+    --gradient-via-color: var(--color-dark);
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
   }
 
-  .md\:focus\:via-black:focus {
-    --gradient-via-color: #000;
-    --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(0, 0, 0, 0));
-  }
-
-  .md\:focus\:via-current:focus {
-    --gradient-via-color: currentColor;
-    --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
-  }
-
-  .md\:focus\:via-primary:focus {
-    --gradient-via-color: var(--color-primary);
+  .md\:focus\:via-light:focus {
+    --gradient-via-color: var(--color-light);
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
   }
 
@@ -19394,46 +18206,20 @@ a.toc-link {
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
   }
 
-  .md\:focus\:via-accent-dark:focus {
-    --gradient-via-color: var(--color-accent-dark);
-    --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
-  }
-
-  .md\:focus\:via-accent-light:focus {
-    --gradient-via-color: var(--color-accent-light);
-    --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
-  }
-
   .md\:focus\:to-transparent:focus {
     --gradient-to-color: transparent;
   }
 
-  .md\:focus\:to-white:focus {
-    --gradient-to-color: #fff;
+  .md\:focus\:to-dark:focus {
+    --gradient-to-color: var(--color-dark);
   }
 
-  .md\:focus\:to-black:focus {
-    --gradient-to-color: #000;
-  }
-
-  .md\:focus\:to-current:focus {
-    --gradient-to-color: currentColor;
-  }
-
-  .md\:focus\:to-primary:focus {
-    --gradient-to-color: var(--color-primary);
+  .md\:focus\:to-light:focus {
+    --gradient-to-color: var(--color-light);
   }
 
   .md\:focus\:to-accent:focus {
     --gradient-to-color: var(--color-accent);
-  }
-
-  .md\:focus\:to-accent-dark:focus {
-    --gradient-to-color: var(--color-accent-dark);
-  }
-
-  .md\:focus\:to-accent-light:focus {
-    --gradient-to-color: var(--color-accent-light);
   }
 
   .md\:bg-opacity-0 {
@@ -19580,108 +18366,48 @@ a.toc-link {
     border-color: transparent;
   }
 
-  .md\:border-white {
-    --border-opacity: 1;
-    border-color: #fff;
-    border-color: rgba(255, 255, 255, var(--border-opacity));
+  .md\:border-dark {
+    border-color: var(--color-dark);
   }
 
-  .md\:border-black {
-    --border-opacity: 1;
-    border-color: #000;
-    border-color: rgba(0, 0, 0, var(--border-opacity));
-  }
-
-  .md\:border-current {
-    border-color: currentColor;
-  }
-
-  .md\:border-primary {
-    border-color: var(--color-primary);
+  .md\:border-light {
+    border-color: var(--color-light);
   }
 
   .md\:border-accent {
     border-color: var(--color-accent);
   }
 
-  .md\:border-accent-dark {
-    border-color: var(--color-accent-dark);
-  }
-
-  .md\:border-accent-light {
-    border-color: var(--color-accent-light);
-  }
-
   .md\:hover\:border-transparent:hover {
     border-color: transparent;
   }
 
-  .md\:hover\:border-white:hover {
-    --border-opacity: 1;
-    border-color: #fff;
-    border-color: rgba(255, 255, 255, var(--border-opacity));
+  .md\:hover\:border-dark:hover {
+    border-color: var(--color-dark);
   }
 
-  .md\:hover\:border-black:hover {
-    --border-opacity: 1;
-    border-color: #000;
-    border-color: rgba(0, 0, 0, var(--border-opacity));
-  }
-
-  .md\:hover\:border-current:hover {
-    border-color: currentColor;
-  }
-
-  .md\:hover\:border-primary:hover {
-    border-color: var(--color-primary);
+  .md\:hover\:border-light:hover {
+    border-color: var(--color-light);
   }
 
   .md\:hover\:border-accent:hover {
     border-color: var(--color-accent);
   }
 
-  .md\:hover\:border-accent-dark:hover {
-    border-color: var(--color-accent-dark);
-  }
-
-  .md\:hover\:border-accent-light:hover {
-    border-color: var(--color-accent-light);
-  }
-
   .md\:focus\:border-transparent:focus {
     border-color: transparent;
   }
 
-  .md\:focus\:border-white:focus {
-    --border-opacity: 1;
-    border-color: #fff;
-    border-color: rgba(255, 255, 255, var(--border-opacity));
+  .md\:focus\:border-dark:focus {
+    border-color: var(--color-dark);
   }
 
-  .md\:focus\:border-black:focus {
-    --border-opacity: 1;
-    border-color: #000;
-    border-color: rgba(0, 0, 0, var(--border-opacity));
-  }
-
-  .md\:focus\:border-current:focus {
-    border-color: currentColor;
-  }
-
-  .md\:focus\:border-primary:focus {
-    border-color: var(--color-primary);
+  .md\:focus\:border-light:focus {
+    border-color: var(--color-light);
   }
 
   .md\:focus\:border-accent:focus {
     border-color: var(--color-accent);
-  }
-
-  .md\:focus\:border-accent-dark:focus {
-    border-color: var(--color-accent-dark);
-  }
-
-  .md\:focus\:border-accent-light:focus {
-    border-color: var(--color-accent-light);
   }
 
   .md\:border-opacity-0 {
@@ -20695,35 +19421,27 @@ a.toc-link {
   }
 
   .md\:text-xs {
-    font-size: 0.75rem;
+    font-size: var(--font-size-xs);
   }
 
   .md\:text-sm {
-    font-size: 0.875rem;
+    font-size: var(--font-size-sm);
   }
 
   .md\:text-base {
-    font-size: 1rem;
+    font-size: var(--font-size-base);
   }
 
   .md\:text-lg {
-    font-size: 1.125rem;
+    font-size: var(--font-size-lg);
   }
 
   .md\:text-xl {
-    font-size: 1.25rem;
+    font-size: var(--font-size-xl);
   }
 
   .md\:text-xxl {
-    font-size: 6rem;
-  }
-
-  .md\:text-subtitle {
-    font-size: 2rem;
-  }
-
-  .md\:text-title {
-    font-size: 8rem;
+    font-size: var(--font-size-xxl);
   }
 
   .md\:leading-3 {
@@ -22849,64 +21567,28 @@ a.toc-link {
     color: transparent;
   }
 
-  .md\:placeholder-white::-moz-placeholder {
-    --placeholder-opacity: 1;
-    color: #fff;
-    color: rgba(255, 255, 255, var(--placeholder-opacity));
+  .md\:placeholder-dark::-moz-placeholder {
+    color: var(--color-dark);
   }
 
-  .md\:placeholder-white:-ms-input-placeholder {
-    --placeholder-opacity: 1;
-    color: #fff;
-    color: rgba(255, 255, 255, var(--placeholder-opacity));
+  .md\:placeholder-dark:-ms-input-placeholder {
+    color: var(--color-dark);
   }
 
-  .md\:placeholder-white::placeholder {
-    --placeholder-opacity: 1;
-    color: #fff;
-    color: rgba(255, 255, 255, var(--placeholder-opacity));
+  .md\:placeholder-dark::placeholder {
+    color: var(--color-dark);
   }
 
-  .md\:placeholder-black::-moz-placeholder {
-    --placeholder-opacity: 1;
-    color: #000;
-    color: rgba(0, 0, 0, var(--placeholder-opacity));
+  .md\:placeholder-light::-moz-placeholder {
+    color: var(--color-light);
   }
 
-  .md\:placeholder-black:-ms-input-placeholder {
-    --placeholder-opacity: 1;
-    color: #000;
-    color: rgba(0, 0, 0, var(--placeholder-opacity));
+  .md\:placeholder-light:-ms-input-placeholder {
+    color: var(--color-light);
   }
 
-  .md\:placeholder-black::placeholder {
-    --placeholder-opacity: 1;
-    color: #000;
-    color: rgba(0, 0, 0, var(--placeholder-opacity));
-  }
-
-  .md\:placeholder-current::-moz-placeholder {
-    color: currentColor;
-  }
-
-  .md\:placeholder-current:-ms-input-placeholder {
-    color: currentColor;
-  }
-
-  .md\:placeholder-current::placeholder {
-    color: currentColor;
-  }
-
-  .md\:placeholder-primary::-moz-placeholder {
-    color: var(--color-primary);
-  }
-
-  .md\:placeholder-primary:-ms-input-placeholder {
-    color: var(--color-primary);
-  }
-
-  .md\:placeholder-primary::placeholder {
-    color: var(--color-primary);
+  .md\:placeholder-light::placeholder {
+    color: var(--color-light);
   }
 
   .md\:placeholder-accent::-moz-placeholder {
@@ -22921,30 +21603,6 @@ a.toc-link {
     color: var(--color-accent);
   }
 
-  .md\:placeholder-accent-dark::-moz-placeholder {
-    color: var(--color-accent-dark);
-  }
-
-  .md\:placeholder-accent-dark:-ms-input-placeholder {
-    color: var(--color-accent-dark);
-  }
-
-  .md\:placeholder-accent-dark::placeholder {
-    color: var(--color-accent-dark);
-  }
-
-  .md\:placeholder-accent-light::-moz-placeholder {
-    color: var(--color-accent-light);
-  }
-
-  .md\:placeholder-accent-light:-ms-input-placeholder {
-    color: var(--color-accent-light);
-  }
-
-  .md\:placeholder-accent-light::placeholder {
-    color: var(--color-accent-light);
-  }
-
   .md\:focus\:placeholder-transparent:focus::-moz-placeholder {
     color: transparent;
   }
@@ -22957,64 +21615,28 @@ a.toc-link {
     color: transparent;
   }
 
-  .md\:focus\:placeholder-white:focus::-moz-placeholder {
-    --placeholder-opacity: 1;
-    color: #fff;
-    color: rgba(255, 255, 255, var(--placeholder-opacity));
+  .md\:focus\:placeholder-dark:focus::-moz-placeholder {
+    color: var(--color-dark);
   }
 
-  .md\:focus\:placeholder-white:focus:-ms-input-placeholder {
-    --placeholder-opacity: 1;
-    color: #fff;
-    color: rgba(255, 255, 255, var(--placeholder-opacity));
+  .md\:focus\:placeholder-dark:focus:-ms-input-placeholder {
+    color: var(--color-dark);
   }
 
-  .md\:focus\:placeholder-white:focus::placeholder {
-    --placeholder-opacity: 1;
-    color: #fff;
-    color: rgba(255, 255, 255, var(--placeholder-opacity));
+  .md\:focus\:placeholder-dark:focus::placeholder {
+    color: var(--color-dark);
   }
 
-  .md\:focus\:placeholder-black:focus::-moz-placeholder {
-    --placeholder-opacity: 1;
-    color: #000;
-    color: rgba(0, 0, 0, var(--placeholder-opacity));
+  .md\:focus\:placeholder-light:focus::-moz-placeholder {
+    color: var(--color-light);
   }
 
-  .md\:focus\:placeholder-black:focus:-ms-input-placeholder {
-    --placeholder-opacity: 1;
-    color: #000;
-    color: rgba(0, 0, 0, var(--placeholder-opacity));
+  .md\:focus\:placeholder-light:focus:-ms-input-placeholder {
+    color: var(--color-light);
   }
 
-  .md\:focus\:placeholder-black:focus::placeholder {
-    --placeholder-opacity: 1;
-    color: #000;
-    color: rgba(0, 0, 0, var(--placeholder-opacity));
-  }
-
-  .md\:focus\:placeholder-current:focus::-moz-placeholder {
-    color: currentColor;
-  }
-
-  .md\:focus\:placeholder-current:focus:-ms-input-placeholder {
-    color: currentColor;
-  }
-
-  .md\:focus\:placeholder-current:focus::placeholder {
-    color: currentColor;
-  }
-
-  .md\:focus\:placeholder-primary:focus::-moz-placeholder {
-    color: var(--color-primary);
-  }
-
-  .md\:focus\:placeholder-primary:focus:-ms-input-placeholder {
-    color: var(--color-primary);
-  }
-
-  .md\:focus\:placeholder-primary:focus::placeholder {
-    color: var(--color-primary);
+  .md\:focus\:placeholder-light:focus::placeholder {
+    color: var(--color-light);
   }
 
   .md\:focus\:placeholder-accent:focus::-moz-placeholder {
@@ -23027,30 +21649,6 @@ a.toc-link {
 
   .md\:focus\:placeholder-accent:focus::placeholder {
     color: var(--color-accent);
-  }
-
-  .md\:focus\:placeholder-accent-dark:focus::-moz-placeholder {
-    color: var(--color-accent-dark);
-  }
-
-  .md\:focus\:placeholder-accent-dark:focus:-ms-input-placeholder {
-    color: var(--color-accent-dark);
-  }
-
-  .md\:focus\:placeholder-accent-dark:focus::placeholder {
-    color: var(--color-accent-dark);
-  }
-
-  .md\:focus\:placeholder-accent-light:focus::-moz-placeholder {
-    color: var(--color-accent-light);
-  }
-
-  .md\:focus\:placeholder-accent-light:focus:-ms-input-placeholder {
-    color: var(--color-accent-light);
-  }
-
-  .md\:focus\:placeholder-accent-light:focus::placeholder {
-    color: var(--color-accent-light);
   }
 
   .md\:placeholder-opacity-0::-moz-placeholder {
@@ -23452,108 +22050,48 @@ a.toc-link {
     color: transparent;
   }
 
-  .md\:text-white {
-    --text-opacity: 1;
-    color: #fff;
-    color: rgba(255, 255, 255, var(--text-opacity));
+  .md\:text-dark {
+    color: var(--color-dark);
   }
 
-  .md\:text-black {
-    --text-opacity: 1;
-    color: #000;
-    color: rgba(0, 0, 0, var(--text-opacity));
-  }
-
-  .md\:text-current {
-    color: currentColor;
-  }
-
-  .md\:text-primary {
-    color: var(--color-primary);
+  .md\:text-light {
+    color: var(--color-light);
   }
 
   .md\:text-accent {
     color: var(--color-accent);
   }
 
-  .md\:text-accent-dark {
-    color: var(--color-accent-dark);
-  }
-
-  .md\:text-accent-light {
-    color: var(--color-accent-light);
-  }
-
   .md\:hover\:text-transparent:hover {
     color: transparent;
   }
 
-  .md\:hover\:text-white:hover {
-    --text-opacity: 1;
-    color: #fff;
-    color: rgba(255, 255, 255, var(--text-opacity));
+  .md\:hover\:text-dark:hover {
+    color: var(--color-dark);
   }
 
-  .md\:hover\:text-black:hover {
-    --text-opacity: 1;
-    color: #000;
-    color: rgba(0, 0, 0, var(--text-opacity));
-  }
-
-  .md\:hover\:text-current:hover {
-    color: currentColor;
-  }
-
-  .md\:hover\:text-primary:hover {
-    color: var(--color-primary);
+  .md\:hover\:text-light:hover {
+    color: var(--color-light);
   }
 
   .md\:hover\:text-accent:hover {
     color: var(--color-accent);
   }
 
-  .md\:hover\:text-accent-dark:hover {
-    color: var(--color-accent-dark);
-  }
-
-  .md\:hover\:text-accent-light:hover {
-    color: var(--color-accent-light);
-  }
-
   .md\:focus\:text-transparent:focus {
     color: transparent;
   }
 
-  .md\:focus\:text-white:focus {
-    --text-opacity: 1;
-    color: #fff;
-    color: rgba(255, 255, 255, var(--text-opacity));
+  .md\:focus\:text-dark:focus {
+    color: var(--color-dark);
   }
 
-  .md\:focus\:text-black:focus {
-    --text-opacity: 1;
-    color: #000;
-    color: rgba(0, 0, 0, var(--text-opacity));
-  }
-
-  .md\:focus\:text-current:focus {
-    color: currentColor;
-  }
-
-  .md\:focus\:text-primary:focus {
-    color: var(--color-primary);
+  .md\:focus\:text-light:focus {
+    color: var(--color-light);
   }
 
   .md\:focus\:text-accent:focus {
     color: var(--color-accent);
-  }
-
-  .md\:focus\:text-accent-dark:focus {
-    color: var(--color-accent-dark);
-  }
-
-  .md\:focus\:text-accent-light:focus {
-    color: var(--color-accent-light);
   }
 
   .md\:text-opacity-0 {
@@ -27311,36 +25849,16 @@ a.toc-link {
     border-color: transparent;
   }
 
-  .lg\:divide-white > :not(template) ~ :not(template) {
-    --divide-opacity: 1;
-    border-color: #fff;
-    border-color: rgba(255, 255, 255, var(--divide-opacity));
+  .lg\:divide-dark > :not(template) ~ :not(template) {
+    border-color: var(--color-dark);
   }
 
-  .lg\:divide-black > :not(template) ~ :not(template) {
-    --divide-opacity: 1;
-    border-color: #000;
-    border-color: rgba(0, 0, 0, var(--divide-opacity));
-  }
-
-  .lg\:divide-current > :not(template) ~ :not(template) {
-    border-color: currentColor;
-  }
-
-  .lg\:divide-primary > :not(template) ~ :not(template) {
-    border-color: var(--color-primary);
+  .lg\:divide-light > :not(template) ~ :not(template) {
+    border-color: var(--color-light);
   }
 
   .lg\:divide-accent > :not(template) ~ :not(template) {
     border-color: var(--color-accent);
-  }
-
-  .lg\:divide-accent-dark > :not(template) ~ :not(template) {
-    border-color: var(--color-accent-dark);
-  }
-
-  .lg\:divide-accent-light > :not(template) ~ :not(template) {
-    border-color: var(--color-accent-light);
   }
 
   .lg\:divide-solid > :not(template) ~ :not(template) {
@@ -27468,108 +25986,48 @@ a.toc-link {
     background-color: transparent;
   }
 
-  .lg\:bg-white {
-    --bg-opacity: 1;
-    background-color: #fff;
-    background-color: rgba(255, 255, 255, var(--bg-opacity));
+  .lg\:bg-dark {
+    background-color: var(--color-dark);
   }
 
-  .lg\:bg-black {
-    --bg-opacity: 1;
-    background-color: #000;
-    background-color: rgba(0, 0, 0, var(--bg-opacity));
-  }
-
-  .lg\:bg-current {
-    background-color: currentColor;
-  }
-
-  .lg\:bg-primary {
-    background-color: var(--color-primary);
+  .lg\:bg-light {
+    background-color: var(--color-light);
   }
 
   .lg\:bg-accent {
     background-color: var(--color-accent);
   }
 
-  .lg\:bg-accent-dark {
-    background-color: var(--color-accent-dark);
-  }
-
-  .lg\:bg-accent-light {
-    background-color: var(--color-accent-light);
-  }
-
   .lg\:hover\:bg-transparent:hover {
     background-color: transparent;
   }
 
-  .lg\:hover\:bg-white:hover {
-    --bg-opacity: 1;
-    background-color: #fff;
-    background-color: rgba(255, 255, 255, var(--bg-opacity));
+  .lg\:hover\:bg-dark:hover {
+    background-color: var(--color-dark);
   }
 
-  .lg\:hover\:bg-black:hover {
-    --bg-opacity: 1;
-    background-color: #000;
-    background-color: rgba(0, 0, 0, var(--bg-opacity));
-  }
-
-  .lg\:hover\:bg-current:hover {
-    background-color: currentColor;
-  }
-
-  .lg\:hover\:bg-primary:hover {
-    background-color: var(--color-primary);
+  .lg\:hover\:bg-light:hover {
+    background-color: var(--color-light);
   }
 
   .lg\:hover\:bg-accent:hover {
     background-color: var(--color-accent);
   }
 
-  .lg\:hover\:bg-accent-dark:hover {
-    background-color: var(--color-accent-dark);
-  }
-
-  .lg\:hover\:bg-accent-light:hover {
-    background-color: var(--color-accent-light);
-  }
-
   .lg\:focus\:bg-transparent:focus {
     background-color: transparent;
   }
 
-  .lg\:focus\:bg-white:focus {
-    --bg-opacity: 1;
-    background-color: #fff;
-    background-color: rgba(255, 255, 255, var(--bg-opacity));
+  .lg\:focus\:bg-dark:focus {
+    background-color: var(--color-dark);
   }
 
-  .lg\:focus\:bg-black:focus {
-    --bg-opacity: 1;
-    background-color: #000;
-    background-color: rgba(0, 0, 0, var(--bg-opacity));
-  }
-
-  .lg\:focus\:bg-current:focus {
-    background-color: currentColor;
-  }
-
-  .lg\:focus\:bg-primary:focus {
-    background-color: var(--color-primary);
+  .lg\:focus\:bg-light:focus {
+    background-color: var(--color-light);
   }
 
   .lg\:focus\:bg-accent:focus {
     background-color: var(--color-accent);
-  }
-
-  .lg\:focus\:bg-accent-dark:focus {
-    background-color: var(--color-accent-dark);
-  }
-
-  .lg\:focus\:bg-accent-light:focus {
-    background-color: var(--color-accent-light);
   }
 
   .lg\:bg-none {
@@ -27613,23 +26071,13 @@ a.toc-link {
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(0, 0, 0, 0));
   }
 
-  .lg\:from-white {
-    --gradient-from-color: #fff;
+  .lg\:from-dark {
+    --gradient-from-color: var(--color-dark);
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
   }
 
-  .lg\:from-black {
-    --gradient-from-color: #000;
-    --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(0, 0, 0, 0));
-  }
-
-  .lg\:from-current {
-    --gradient-from-color: currentColor;
-    --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
-  }
-
-  .lg\:from-primary {
-    --gradient-from-color: var(--color-primary);
+  .lg\:from-light {
+    --gradient-from-color: var(--color-light);
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
   }
 
@@ -27638,38 +26086,18 @@ a.toc-link {
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
   }
 
-  .lg\:from-accent-dark {
-    --gradient-from-color: var(--color-accent-dark);
-    --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
-  }
-
-  .lg\:from-accent-light {
-    --gradient-from-color: var(--color-accent-light);
-    --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
-  }
-
   .lg\:via-transparent {
     --gradient-via-color: transparent;
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(0, 0, 0, 0));
   }
 
-  .lg\:via-white {
-    --gradient-via-color: #fff;
+  .lg\:via-dark {
+    --gradient-via-color: var(--color-dark);
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
   }
 
-  .lg\:via-black {
-    --gradient-via-color: #000;
-    --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(0, 0, 0, 0));
-  }
-
-  .lg\:via-current {
-    --gradient-via-color: currentColor;
-    --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
-  }
-
-  .lg\:via-primary {
-    --gradient-via-color: var(--color-primary);
+  .lg\:via-light {
+    --gradient-via-color: var(--color-light);
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
   }
 
@@ -27678,46 +26106,20 @@ a.toc-link {
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
   }
 
-  .lg\:via-accent-dark {
-    --gradient-via-color: var(--color-accent-dark);
-    --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
-  }
-
-  .lg\:via-accent-light {
-    --gradient-via-color: var(--color-accent-light);
-    --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
-  }
-
   .lg\:to-transparent {
     --gradient-to-color: transparent;
   }
 
-  .lg\:to-white {
-    --gradient-to-color: #fff;
+  .lg\:to-dark {
+    --gradient-to-color: var(--color-dark);
   }
 
-  .lg\:to-black {
-    --gradient-to-color: #000;
-  }
-
-  .lg\:to-current {
-    --gradient-to-color: currentColor;
-  }
-
-  .lg\:to-primary {
-    --gradient-to-color: var(--color-primary);
+  .lg\:to-light {
+    --gradient-to-color: var(--color-light);
   }
 
   .lg\:to-accent {
     --gradient-to-color: var(--color-accent);
-  }
-
-  .lg\:to-accent-dark {
-    --gradient-to-color: var(--color-accent-dark);
-  }
-
-  .lg\:to-accent-light {
-    --gradient-to-color: var(--color-accent-light);
   }
 
   .lg\:hover\:from-transparent:hover {
@@ -27725,23 +26127,13 @@ a.toc-link {
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(0, 0, 0, 0));
   }
 
-  .lg\:hover\:from-white:hover {
-    --gradient-from-color: #fff;
+  .lg\:hover\:from-dark:hover {
+    --gradient-from-color: var(--color-dark);
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
   }
 
-  .lg\:hover\:from-black:hover {
-    --gradient-from-color: #000;
-    --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(0, 0, 0, 0));
-  }
-
-  .lg\:hover\:from-current:hover {
-    --gradient-from-color: currentColor;
-    --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
-  }
-
-  .lg\:hover\:from-primary:hover {
-    --gradient-from-color: var(--color-primary);
+  .lg\:hover\:from-light:hover {
+    --gradient-from-color: var(--color-light);
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
   }
 
@@ -27750,38 +26142,18 @@ a.toc-link {
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
   }
 
-  .lg\:hover\:from-accent-dark:hover {
-    --gradient-from-color: var(--color-accent-dark);
-    --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
-  }
-
-  .lg\:hover\:from-accent-light:hover {
-    --gradient-from-color: var(--color-accent-light);
-    --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
-  }
-
   .lg\:hover\:via-transparent:hover {
     --gradient-via-color: transparent;
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(0, 0, 0, 0));
   }
 
-  .lg\:hover\:via-white:hover {
-    --gradient-via-color: #fff;
+  .lg\:hover\:via-dark:hover {
+    --gradient-via-color: var(--color-dark);
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
   }
 
-  .lg\:hover\:via-black:hover {
-    --gradient-via-color: #000;
-    --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(0, 0, 0, 0));
-  }
-
-  .lg\:hover\:via-current:hover {
-    --gradient-via-color: currentColor;
-    --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
-  }
-
-  .lg\:hover\:via-primary:hover {
-    --gradient-via-color: var(--color-primary);
+  .lg\:hover\:via-light:hover {
+    --gradient-via-color: var(--color-light);
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
   }
 
@@ -27790,46 +26162,20 @@ a.toc-link {
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
   }
 
-  .lg\:hover\:via-accent-dark:hover {
-    --gradient-via-color: var(--color-accent-dark);
-    --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
-  }
-
-  .lg\:hover\:via-accent-light:hover {
-    --gradient-via-color: var(--color-accent-light);
-    --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
-  }
-
   .lg\:hover\:to-transparent:hover {
     --gradient-to-color: transparent;
   }
 
-  .lg\:hover\:to-white:hover {
-    --gradient-to-color: #fff;
+  .lg\:hover\:to-dark:hover {
+    --gradient-to-color: var(--color-dark);
   }
 
-  .lg\:hover\:to-black:hover {
-    --gradient-to-color: #000;
-  }
-
-  .lg\:hover\:to-current:hover {
-    --gradient-to-color: currentColor;
-  }
-
-  .lg\:hover\:to-primary:hover {
-    --gradient-to-color: var(--color-primary);
+  .lg\:hover\:to-light:hover {
+    --gradient-to-color: var(--color-light);
   }
 
   .lg\:hover\:to-accent:hover {
     --gradient-to-color: var(--color-accent);
-  }
-
-  .lg\:hover\:to-accent-dark:hover {
-    --gradient-to-color: var(--color-accent-dark);
-  }
-
-  .lg\:hover\:to-accent-light:hover {
-    --gradient-to-color: var(--color-accent-light);
   }
 
   .lg\:focus\:from-transparent:focus {
@@ -27837,23 +26183,13 @@ a.toc-link {
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(0, 0, 0, 0));
   }
 
-  .lg\:focus\:from-white:focus {
-    --gradient-from-color: #fff;
+  .lg\:focus\:from-dark:focus {
+    --gradient-from-color: var(--color-dark);
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
   }
 
-  .lg\:focus\:from-black:focus {
-    --gradient-from-color: #000;
-    --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(0, 0, 0, 0));
-  }
-
-  .lg\:focus\:from-current:focus {
-    --gradient-from-color: currentColor;
-    --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
-  }
-
-  .lg\:focus\:from-primary:focus {
-    --gradient-from-color: var(--color-primary);
+  .lg\:focus\:from-light:focus {
+    --gradient-from-color: var(--color-light);
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
   }
 
@@ -27862,38 +26198,18 @@ a.toc-link {
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
   }
 
-  .lg\:focus\:from-accent-dark:focus {
-    --gradient-from-color: var(--color-accent-dark);
-    --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
-  }
-
-  .lg\:focus\:from-accent-light:focus {
-    --gradient-from-color: var(--color-accent-light);
-    --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
-  }
-
   .lg\:focus\:via-transparent:focus {
     --gradient-via-color: transparent;
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(0, 0, 0, 0));
   }
 
-  .lg\:focus\:via-white:focus {
-    --gradient-via-color: #fff;
+  .lg\:focus\:via-dark:focus {
+    --gradient-via-color: var(--color-dark);
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
   }
 
-  .lg\:focus\:via-black:focus {
-    --gradient-via-color: #000;
-    --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(0, 0, 0, 0));
-  }
-
-  .lg\:focus\:via-current:focus {
-    --gradient-via-color: currentColor;
-    --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
-  }
-
-  .lg\:focus\:via-primary:focus {
-    --gradient-via-color: var(--color-primary);
+  .lg\:focus\:via-light:focus {
+    --gradient-via-color: var(--color-light);
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
   }
 
@@ -27902,46 +26218,20 @@ a.toc-link {
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
   }
 
-  .lg\:focus\:via-accent-dark:focus {
-    --gradient-via-color: var(--color-accent-dark);
-    --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
-  }
-
-  .lg\:focus\:via-accent-light:focus {
-    --gradient-via-color: var(--color-accent-light);
-    --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
-  }
-
   .lg\:focus\:to-transparent:focus {
     --gradient-to-color: transparent;
   }
 
-  .lg\:focus\:to-white:focus {
-    --gradient-to-color: #fff;
+  .lg\:focus\:to-dark:focus {
+    --gradient-to-color: var(--color-dark);
   }
 
-  .lg\:focus\:to-black:focus {
-    --gradient-to-color: #000;
-  }
-
-  .lg\:focus\:to-current:focus {
-    --gradient-to-color: currentColor;
-  }
-
-  .lg\:focus\:to-primary:focus {
-    --gradient-to-color: var(--color-primary);
+  .lg\:focus\:to-light:focus {
+    --gradient-to-color: var(--color-light);
   }
 
   .lg\:focus\:to-accent:focus {
     --gradient-to-color: var(--color-accent);
-  }
-
-  .lg\:focus\:to-accent-dark:focus {
-    --gradient-to-color: var(--color-accent-dark);
-  }
-
-  .lg\:focus\:to-accent-light:focus {
-    --gradient-to-color: var(--color-accent-light);
   }
 
   .lg\:bg-opacity-0 {
@@ -28088,108 +26378,48 @@ a.toc-link {
     border-color: transparent;
   }
 
-  .lg\:border-white {
-    --border-opacity: 1;
-    border-color: #fff;
-    border-color: rgba(255, 255, 255, var(--border-opacity));
+  .lg\:border-dark {
+    border-color: var(--color-dark);
   }
 
-  .lg\:border-black {
-    --border-opacity: 1;
-    border-color: #000;
-    border-color: rgba(0, 0, 0, var(--border-opacity));
-  }
-
-  .lg\:border-current {
-    border-color: currentColor;
-  }
-
-  .lg\:border-primary {
-    border-color: var(--color-primary);
+  .lg\:border-light {
+    border-color: var(--color-light);
   }
 
   .lg\:border-accent {
     border-color: var(--color-accent);
   }
 
-  .lg\:border-accent-dark {
-    border-color: var(--color-accent-dark);
-  }
-
-  .lg\:border-accent-light {
-    border-color: var(--color-accent-light);
-  }
-
   .lg\:hover\:border-transparent:hover {
     border-color: transparent;
   }
 
-  .lg\:hover\:border-white:hover {
-    --border-opacity: 1;
-    border-color: #fff;
-    border-color: rgba(255, 255, 255, var(--border-opacity));
+  .lg\:hover\:border-dark:hover {
+    border-color: var(--color-dark);
   }
 
-  .lg\:hover\:border-black:hover {
-    --border-opacity: 1;
-    border-color: #000;
-    border-color: rgba(0, 0, 0, var(--border-opacity));
-  }
-
-  .lg\:hover\:border-current:hover {
-    border-color: currentColor;
-  }
-
-  .lg\:hover\:border-primary:hover {
-    border-color: var(--color-primary);
+  .lg\:hover\:border-light:hover {
+    border-color: var(--color-light);
   }
 
   .lg\:hover\:border-accent:hover {
     border-color: var(--color-accent);
   }
 
-  .lg\:hover\:border-accent-dark:hover {
-    border-color: var(--color-accent-dark);
-  }
-
-  .lg\:hover\:border-accent-light:hover {
-    border-color: var(--color-accent-light);
-  }
-
   .lg\:focus\:border-transparent:focus {
     border-color: transparent;
   }
 
-  .lg\:focus\:border-white:focus {
-    --border-opacity: 1;
-    border-color: #fff;
-    border-color: rgba(255, 255, 255, var(--border-opacity));
+  .lg\:focus\:border-dark:focus {
+    border-color: var(--color-dark);
   }
 
-  .lg\:focus\:border-black:focus {
-    --border-opacity: 1;
-    border-color: #000;
-    border-color: rgba(0, 0, 0, var(--border-opacity));
-  }
-
-  .lg\:focus\:border-current:focus {
-    border-color: currentColor;
-  }
-
-  .lg\:focus\:border-primary:focus {
-    border-color: var(--color-primary);
+  .lg\:focus\:border-light:focus {
+    border-color: var(--color-light);
   }
 
   .lg\:focus\:border-accent:focus {
     border-color: var(--color-accent);
-  }
-
-  .lg\:focus\:border-accent-dark:focus {
-    border-color: var(--color-accent-dark);
-  }
-
-  .lg\:focus\:border-accent-light:focus {
-    border-color: var(--color-accent-light);
   }
 
   .lg\:border-opacity-0 {
@@ -29203,35 +27433,27 @@ a.toc-link {
   }
 
   .lg\:text-xs {
-    font-size: 0.75rem;
+    font-size: var(--font-size-xs);
   }
 
   .lg\:text-sm {
-    font-size: 0.875rem;
+    font-size: var(--font-size-sm);
   }
 
   .lg\:text-base {
-    font-size: 1rem;
+    font-size: var(--font-size-base);
   }
 
   .lg\:text-lg {
-    font-size: 1.125rem;
+    font-size: var(--font-size-lg);
   }
 
   .lg\:text-xl {
-    font-size: 1.25rem;
+    font-size: var(--font-size-xl);
   }
 
   .lg\:text-xxl {
-    font-size: 6rem;
-  }
-
-  .lg\:text-subtitle {
-    font-size: 2rem;
-  }
-
-  .lg\:text-title {
-    font-size: 8rem;
+    font-size: var(--font-size-xxl);
   }
 
   .lg\:leading-3 {
@@ -31357,64 +29579,28 @@ a.toc-link {
     color: transparent;
   }
 
-  .lg\:placeholder-white::-moz-placeholder {
-    --placeholder-opacity: 1;
-    color: #fff;
-    color: rgba(255, 255, 255, var(--placeholder-opacity));
+  .lg\:placeholder-dark::-moz-placeholder {
+    color: var(--color-dark);
   }
 
-  .lg\:placeholder-white:-ms-input-placeholder {
-    --placeholder-opacity: 1;
-    color: #fff;
-    color: rgba(255, 255, 255, var(--placeholder-opacity));
+  .lg\:placeholder-dark:-ms-input-placeholder {
+    color: var(--color-dark);
   }
 
-  .lg\:placeholder-white::placeholder {
-    --placeholder-opacity: 1;
-    color: #fff;
-    color: rgba(255, 255, 255, var(--placeholder-opacity));
+  .lg\:placeholder-dark::placeholder {
+    color: var(--color-dark);
   }
 
-  .lg\:placeholder-black::-moz-placeholder {
-    --placeholder-opacity: 1;
-    color: #000;
-    color: rgba(0, 0, 0, var(--placeholder-opacity));
+  .lg\:placeholder-light::-moz-placeholder {
+    color: var(--color-light);
   }
 
-  .lg\:placeholder-black:-ms-input-placeholder {
-    --placeholder-opacity: 1;
-    color: #000;
-    color: rgba(0, 0, 0, var(--placeholder-opacity));
+  .lg\:placeholder-light:-ms-input-placeholder {
+    color: var(--color-light);
   }
 
-  .lg\:placeholder-black::placeholder {
-    --placeholder-opacity: 1;
-    color: #000;
-    color: rgba(0, 0, 0, var(--placeholder-opacity));
-  }
-
-  .lg\:placeholder-current::-moz-placeholder {
-    color: currentColor;
-  }
-
-  .lg\:placeholder-current:-ms-input-placeholder {
-    color: currentColor;
-  }
-
-  .lg\:placeholder-current::placeholder {
-    color: currentColor;
-  }
-
-  .lg\:placeholder-primary::-moz-placeholder {
-    color: var(--color-primary);
-  }
-
-  .lg\:placeholder-primary:-ms-input-placeholder {
-    color: var(--color-primary);
-  }
-
-  .lg\:placeholder-primary::placeholder {
-    color: var(--color-primary);
+  .lg\:placeholder-light::placeholder {
+    color: var(--color-light);
   }
 
   .lg\:placeholder-accent::-moz-placeholder {
@@ -31429,30 +29615,6 @@ a.toc-link {
     color: var(--color-accent);
   }
 
-  .lg\:placeholder-accent-dark::-moz-placeholder {
-    color: var(--color-accent-dark);
-  }
-
-  .lg\:placeholder-accent-dark:-ms-input-placeholder {
-    color: var(--color-accent-dark);
-  }
-
-  .lg\:placeholder-accent-dark::placeholder {
-    color: var(--color-accent-dark);
-  }
-
-  .lg\:placeholder-accent-light::-moz-placeholder {
-    color: var(--color-accent-light);
-  }
-
-  .lg\:placeholder-accent-light:-ms-input-placeholder {
-    color: var(--color-accent-light);
-  }
-
-  .lg\:placeholder-accent-light::placeholder {
-    color: var(--color-accent-light);
-  }
-
   .lg\:focus\:placeholder-transparent:focus::-moz-placeholder {
     color: transparent;
   }
@@ -31465,64 +29627,28 @@ a.toc-link {
     color: transparent;
   }
 
-  .lg\:focus\:placeholder-white:focus::-moz-placeholder {
-    --placeholder-opacity: 1;
-    color: #fff;
-    color: rgba(255, 255, 255, var(--placeholder-opacity));
+  .lg\:focus\:placeholder-dark:focus::-moz-placeholder {
+    color: var(--color-dark);
   }
 
-  .lg\:focus\:placeholder-white:focus:-ms-input-placeholder {
-    --placeholder-opacity: 1;
-    color: #fff;
-    color: rgba(255, 255, 255, var(--placeholder-opacity));
+  .lg\:focus\:placeholder-dark:focus:-ms-input-placeholder {
+    color: var(--color-dark);
   }
 
-  .lg\:focus\:placeholder-white:focus::placeholder {
-    --placeholder-opacity: 1;
-    color: #fff;
-    color: rgba(255, 255, 255, var(--placeholder-opacity));
+  .lg\:focus\:placeholder-dark:focus::placeholder {
+    color: var(--color-dark);
   }
 
-  .lg\:focus\:placeholder-black:focus::-moz-placeholder {
-    --placeholder-opacity: 1;
-    color: #000;
-    color: rgba(0, 0, 0, var(--placeholder-opacity));
+  .lg\:focus\:placeholder-light:focus::-moz-placeholder {
+    color: var(--color-light);
   }
 
-  .lg\:focus\:placeholder-black:focus:-ms-input-placeholder {
-    --placeholder-opacity: 1;
-    color: #000;
-    color: rgba(0, 0, 0, var(--placeholder-opacity));
+  .lg\:focus\:placeholder-light:focus:-ms-input-placeholder {
+    color: var(--color-light);
   }
 
-  .lg\:focus\:placeholder-black:focus::placeholder {
-    --placeholder-opacity: 1;
-    color: #000;
-    color: rgba(0, 0, 0, var(--placeholder-opacity));
-  }
-
-  .lg\:focus\:placeholder-current:focus::-moz-placeholder {
-    color: currentColor;
-  }
-
-  .lg\:focus\:placeholder-current:focus:-ms-input-placeholder {
-    color: currentColor;
-  }
-
-  .lg\:focus\:placeholder-current:focus::placeholder {
-    color: currentColor;
-  }
-
-  .lg\:focus\:placeholder-primary:focus::-moz-placeholder {
-    color: var(--color-primary);
-  }
-
-  .lg\:focus\:placeholder-primary:focus:-ms-input-placeholder {
-    color: var(--color-primary);
-  }
-
-  .lg\:focus\:placeholder-primary:focus::placeholder {
-    color: var(--color-primary);
+  .lg\:focus\:placeholder-light:focus::placeholder {
+    color: var(--color-light);
   }
 
   .lg\:focus\:placeholder-accent:focus::-moz-placeholder {
@@ -31535,30 +29661,6 @@ a.toc-link {
 
   .lg\:focus\:placeholder-accent:focus::placeholder {
     color: var(--color-accent);
-  }
-
-  .lg\:focus\:placeholder-accent-dark:focus::-moz-placeholder {
-    color: var(--color-accent-dark);
-  }
-
-  .lg\:focus\:placeholder-accent-dark:focus:-ms-input-placeholder {
-    color: var(--color-accent-dark);
-  }
-
-  .lg\:focus\:placeholder-accent-dark:focus::placeholder {
-    color: var(--color-accent-dark);
-  }
-
-  .lg\:focus\:placeholder-accent-light:focus::-moz-placeholder {
-    color: var(--color-accent-light);
-  }
-
-  .lg\:focus\:placeholder-accent-light:focus:-ms-input-placeholder {
-    color: var(--color-accent-light);
-  }
-
-  .lg\:focus\:placeholder-accent-light:focus::placeholder {
-    color: var(--color-accent-light);
   }
 
   .lg\:placeholder-opacity-0::-moz-placeholder {
@@ -31960,108 +30062,48 @@ a.toc-link {
     color: transparent;
   }
 
-  .lg\:text-white {
-    --text-opacity: 1;
-    color: #fff;
-    color: rgba(255, 255, 255, var(--text-opacity));
+  .lg\:text-dark {
+    color: var(--color-dark);
   }
 
-  .lg\:text-black {
-    --text-opacity: 1;
-    color: #000;
-    color: rgba(0, 0, 0, var(--text-opacity));
-  }
-
-  .lg\:text-current {
-    color: currentColor;
-  }
-
-  .lg\:text-primary {
-    color: var(--color-primary);
+  .lg\:text-light {
+    color: var(--color-light);
   }
 
   .lg\:text-accent {
     color: var(--color-accent);
   }
 
-  .lg\:text-accent-dark {
-    color: var(--color-accent-dark);
-  }
-
-  .lg\:text-accent-light {
-    color: var(--color-accent-light);
-  }
-
   .lg\:hover\:text-transparent:hover {
     color: transparent;
   }
 
-  .lg\:hover\:text-white:hover {
-    --text-opacity: 1;
-    color: #fff;
-    color: rgba(255, 255, 255, var(--text-opacity));
+  .lg\:hover\:text-dark:hover {
+    color: var(--color-dark);
   }
 
-  .lg\:hover\:text-black:hover {
-    --text-opacity: 1;
-    color: #000;
-    color: rgba(0, 0, 0, var(--text-opacity));
-  }
-
-  .lg\:hover\:text-current:hover {
-    color: currentColor;
-  }
-
-  .lg\:hover\:text-primary:hover {
-    color: var(--color-primary);
+  .lg\:hover\:text-light:hover {
+    color: var(--color-light);
   }
 
   .lg\:hover\:text-accent:hover {
     color: var(--color-accent);
   }
 
-  .lg\:hover\:text-accent-dark:hover {
-    color: var(--color-accent-dark);
-  }
-
-  .lg\:hover\:text-accent-light:hover {
-    color: var(--color-accent-light);
-  }
-
   .lg\:focus\:text-transparent:focus {
     color: transparent;
   }
 
-  .lg\:focus\:text-white:focus {
-    --text-opacity: 1;
-    color: #fff;
-    color: rgba(255, 255, 255, var(--text-opacity));
+  .lg\:focus\:text-dark:focus {
+    color: var(--color-dark);
   }
 
-  .lg\:focus\:text-black:focus {
-    --text-opacity: 1;
-    color: #000;
-    color: rgba(0, 0, 0, var(--text-opacity));
-  }
-
-  .lg\:focus\:text-current:focus {
-    color: currentColor;
-  }
-
-  .lg\:focus\:text-primary:focus {
-    color: var(--color-primary);
+  .lg\:focus\:text-light:focus {
+    color: var(--color-light);
   }
 
   .lg\:focus\:text-accent:focus {
     color: var(--color-accent);
-  }
-
-  .lg\:focus\:text-accent-dark:focus {
-    color: var(--color-accent-dark);
-  }
-
-  .lg\:focus\:text-accent-light:focus {
-    color: var(--color-accent-light);
   }
 
   .lg\:text-opacity-0 {
@@ -35819,36 +33861,16 @@ a.toc-link {
     border-color: transparent;
   }
 
-  .xl\:divide-white > :not(template) ~ :not(template) {
-    --divide-opacity: 1;
-    border-color: #fff;
-    border-color: rgba(255, 255, 255, var(--divide-opacity));
+  .xl\:divide-dark > :not(template) ~ :not(template) {
+    border-color: var(--color-dark);
   }
 
-  .xl\:divide-black > :not(template) ~ :not(template) {
-    --divide-opacity: 1;
-    border-color: #000;
-    border-color: rgba(0, 0, 0, var(--divide-opacity));
-  }
-
-  .xl\:divide-current > :not(template) ~ :not(template) {
-    border-color: currentColor;
-  }
-
-  .xl\:divide-primary > :not(template) ~ :not(template) {
-    border-color: var(--color-primary);
+  .xl\:divide-light > :not(template) ~ :not(template) {
+    border-color: var(--color-light);
   }
 
   .xl\:divide-accent > :not(template) ~ :not(template) {
     border-color: var(--color-accent);
-  }
-
-  .xl\:divide-accent-dark > :not(template) ~ :not(template) {
-    border-color: var(--color-accent-dark);
-  }
-
-  .xl\:divide-accent-light > :not(template) ~ :not(template) {
-    border-color: var(--color-accent-light);
   }
 
   .xl\:divide-solid > :not(template) ~ :not(template) {
@@ -35976,108 +33998,48 @@ a.toc-link {
     background-color: transparent;
   }
 
-  .xl\:bg-white {
-    --bg-opacity: 1;
-    background-color: #fff;
-    background-color: rgba(255, 255, 255, var(--bg-opacity));
+  .xl\:bg-dark {
+    background-color: var(--color-dark);
   }
 
-  .xl\:bg-black {
-    --bg-opacity: 1;
-    background-color: #000;
-    background-color: rgba(0, 0, 0, var(--bg-opacity));
-  }
-
-  .xl\:bg-current {
-    background-color: currentColor;
-  }
-
-  .xl\:bg-primary {
-    background-color: var(--color-primary);
+  .xl\:bg-light {
+    background-color: var(--color-light);
   }
 
   .xl\:bg-accent {
     background-color: var(--color-accent);
   }
 
-  .xl\:bg-accent-dark {
-    background-color: var(--color-accent-dark);
-  }
-
-  .xl\:bg-accent-light {
-    background-color: var(--color-accent-light);
-  }
-
   .xl\:hover\:bg-transparent:hover {
     background-color: transparent;
   }
 
-  .xl\:hover\:bg-white:hover {
-    --bg-opacity: 1;
-    background-color: #fff;
-    background-color: rgba(255, 255, 255, var(--bg-opacity));
+  .xl\:hover\:bg-dark:hover {
+    background-color: var(--color-dark);
   }
 
-  .xl\:hover\:bg-black:hover {
-    --bg-opacity: 1;
-    background-color: #000;
-    background-color: rgba(0, 0, 0, var(--bg-opacity));
-  }
-
-  .xl\:hover\:bg-current:hover {
-    background-color: currentColor;
-  }
-
-  .xl\:hover\:bg-primary:hover {
-    background-color: var(--color-primary);
+  .xl\:hover\:bg-light:hover {
+    background-color: var(--color-light);
   }
 
   .xl\:hover\:bg-accent:hover {
     background-color: var(--color-accent);
   }
 
-  .xl\:hover\:bg-accent-dark:hover {
-    background-color: var(--color-accent-dark);
-  }
-
-  .xl\:hover\:bg-accent-light:hover {
-    background-color: var(--color-accent-light);
-  }
-
   .xl\:focus\:bg-transparent:focus {
     background-color: transparent;
   }
 
-  .xl\:focus\:bg-white:focus {
-    --bg-opacity: 1;
-    background-color: #fff;
-    background-color: rgba(255, 255, 255, var(--bg-opacity));
+  .xl\:focus\:bg-dark:focus {
+    background-color: var(--color-dark);
   }
 
-  .xl\:focus\:bg-black:focus {
-    --bg-opacity: 1;
-    background-color: #000;
-    background-color: rgba(0, 0, 0, var(--bg-opacity));
-  }
-
-  .xl\:focus\:bg-current:focus {
-    background-color: currentColor;
-  }
-
-  .xl\:focus\:bg-primary:focus {
-    background-color: var(--color-primary);
+  .xl\:focus\:bg-light:focus {
+    background-color: var(--color-light);
   }
 
   .xl\:focus\:bg-accent:focus {
     background-color: var(--color-accent);
-  }
-
-  .xl\:focus\:bg-accent-dark:focus {
-    background-color: var(--color-accent-dark);
-  }
-
-  .xl\:focus\:bg-accent-light:focus {
-    background-color: var(--color-accent-light);
   }
 
   .xl\:bg-none {
@@ -36121,23 +34083,13 @@ a.toc-link {
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(0, 0, 0, 0));
   }
 
-  .xl\:from-white {
-    --gradient-from-color: #fff;
+  .xl\:from-dark {
+    --gradient-from-color: var(--color-dark);
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
   }
 
-  .xl\:from-black {
-    --gradient-from-color: #000;
-    --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(0, 0, 0, 0));
-  }
-
-  .xl\:from-current {
-    --gradient-from-color: currentColor;
-    --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
-  }
-
-  .xl\:from-primary {
-    --gradient-from-color: var(--color-primary);
+  .xl\:from-light {
+    --gradient-from-color: var(--color-light);
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
   }
 
@@ -36146,38 +34098,18 @@ a.toc-link {
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
   }
 
-  .xl\:from-accent-dark {
-    --gradient-from-color: var(--color-accent-dark);
-    --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
-  }
-
-  .xl\:from-accent-light {
-    --gradient-from-color: var(--color-accent-light);
-    --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
-  }
-
   .xl\:via-transparent {
     --gradient-via-color: transparent;
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(0, 0, 0, 0));
   }
 
-  .xl\:via-white {
-    --gradient-via-color: #fff;
+  .xl\:via-dark {
+    --gradient-via-color: var(--color-dark);
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
   }
 
-  .xl\:via-black {
-    --gradient-via-color: #000;
-    --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(0, 0, 0, 0));
-  }
-
-  .xl\:via-current {
-    --gradient-via-color: currentColor;
-    --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
-  }
-
-  .xl\:via-primary {
-    --gradient-via-color: var(--color-primary);
+  .xl\:via-light {
+    --gradient-via-color: var(--color-light);
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
   }
 
@@ -36186,46 +34118,20 @@ a.toc-link {
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
   }
 
-  .xl\:via-accent-dark {
-    --gradient-via-color: var(--color-accent-dark);
-    --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
-  }
-
-  .xl\:via-accent-light {
-    --gradient-via-color: var(--color-accent-light);
-    --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
-  }
-
   .xl\:to-transparent {
     --gradient-to-color: transparent;
   }
 
-  .xl\:to-white {
-    --gradient-to-color: #fff;
+  .xl\:to-dark {
+    --gradient-to-color: var(--color-dark);
   }
 
-  .xl\:to-black {
-    --gradient-to-color: #000;
-  }
-
-  .xl\:to-current {
-    --gradient-to-color: currentColor;
-  }
-
-  .xl\:to-primary {
-    --gradient-to-color: var(--color-primary);
+  .xl\:to-light {
+    --gradient-to-color: var(--color-light);
   }
 
   .xl\:to-accent {
     --gradient-to-color: var(--color-accent);
-  }
-
-  .xl\:to-accent-dark {
-    --gradient-to-color: var(--color-accent-dark);
-  }
-
-  .xl\:to-accent-light {
-    --gradient-to-color: var(--color-accent-light);
   }
 
   .xl\:hover\:from-transparent:hover {
@@ -36233,23 +34139,13 @@ a.toc-link {
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(0, 0, 0, 0));
   }
 
-  .xl\:hover\:from-white:hover {
-    --gradient-from-color: #fff;
+  .xl\:hover\:from-dark:hover {
+    --gradient-from-color: var(--color-dark);
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
   }
 
-  .xl\:hover\:from-black:hover {
-    --gradient-from-color: #000;
-    --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(0, 0, 0, 0));
-  }
-
-  .xl\:hover\:from-current:hover {
-    --gradient-from-color: currentColor;
-    --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
-  }
-
-  .xl\:hover\:from-primary:hover {
-    --gradient-from-color: var(--color-primary);
+  .xl\:hover\:from-light:hover {
+    --gradient-from-color: var(--color-light);
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
   }
 
@@ -36258,38 +34154,18 @@ a.toc-link {
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
   }
 
-  .xl\:hover\:from-accent-dark:hover {
-    --gradient-from-color: var(--color-accent-dark);
-    --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
-  }
-
-  .xl\:hover\:from-accent-light:hover {
-    --gradient-from-color: var(--color-accent-light);
-    --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
-  }
-
   .xl\:hover\:via-transparent:hover {
     --gradient-via-color: transparent;
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(0, 0, 0, 0));
   }
 
-  .xl\:hover\:via-white:hover {
-    --gradient-via-color: #fff;
+  .xl\:hover\:via-dark:hover {
+    --gradient-via-color: var(--color-dark);
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
   }
 
-  .xl\:hover\:via-black:hover {
-    --gradient-via-color: #000;
-    --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(0, 0, 0, 0));
-  }
-
-  .xl\:hover\:via-current:hover {
-    --gradient-via-color: currentColor;
-    --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
-  }
-
-  .xl\:hover\:via-primary:hover {
-    --gradient-via-color: var(--color-primary);
+  .xl\:hover\:via-light:hover {
+    --gradient-via-color: var(--color-light);
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
   }
 
@@ -36298,46 +34174,20 @@ a.toc-link {
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
   }
 
-  .xl\:hover\:via-accent-dark:hover {
-    --gradient-via-color: var(--color-accent-dark);
-    --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
-  }
-
-  .xl\:hover\:via-accent-light:hover {
-    --gradient-via-color: var(--color-accent-light);
-    --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
-  }
-
   .xl\:hover\:to-transparent:hover {
     --gradient-to-color: transparent;
   }
 
-  .xl\:hover\:to-white:hover {
-    --gradient-to-color: #fff;
+  .xl\:hover\:to-dark:hover {
+    --gradient-to-color: var(--color-dark);
   }
 
-  .xl\:hover\:to-black:hover {
-    --gradient-to-color: #000;
-  }
-
-  .xl\:hover\:to-current:hover {
-    --gradient-to-color: currentColor;
-  }
-
-  .xl\:hover\:to-primary:hover {
-    --gradient-to-color: var(--color-primary);
+  .xl\:hover\:to-light:hover {
+    --gradient-to-color: var(--color-light);
   }
 
   .xl\:hover\:to-accent:hover {
     --gradient-to-color: var(--color-accent);
-  }
-
-  .xl\:hover\:to-accent-dark:hover {
-    --gradient-to-color: var(--color-accent-dark);
-  }
-
-  .xl\:hover\:to-accent-light:hover {
-    --gradient-to-color: var(--color-accent-light);
   }
 
   .xl\:focus\:from-transparent:focus {
@@ -36345,23 +34195,13 @@ a.toc-link {
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(0, 0, 0, 0));
   }
 
-  .xl\:focus\:from-white:focus {
-    --gradient-from-color: #fff;
+  .xl\:focus\:from-dark:focus {
+    --gradient-from-color: var(--color-dark);
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
   }
 
-  .xl\:focus\:from-black:focus {
-    --gradient-from-color: #000;
-    --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(0, 0, 0, 0));
-  }
-
-  .xl\:focus\:from-current:focus {
-    --gradient-from-color: currentColor;
-    --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
-  }
-
-  .xl\:focus\:from-primary:focus {
-    --gradient-from-color: var(--color-primary);
+  .xl\:focus\:from-light:focus {
+    --gradient-from-color: var(--color-light);
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
   }
 
@@ -36370,38 +34210,18 @@ a.toc-link {
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
   }
 
-  .xl\:focus\:from-accent-dark:focus {
-    --gradient-from-color: var(--color-accent-dark);
-    --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
-  }
-
-  .xl\:focus\:from-accent-light:focus {
-    --gradient-from-color: var(--color-accent-light);
-    --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
-  }
-
   .xl\:focus\:via-transparent:focus {
     --gradient-via-color: transparent;
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(0, 0, 0, 0));
   }
 
-  .xl\:focus\:via-white:focus {
-    --gradient-via-color: #fff;
+  .xl\:focus\:via-dark:focus {
+    --gradient-via-color: var(--color-dark);
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
   }
 
-  .xl\:focus\:via-black:focus {
-    --gradient-via-color: #000;
-    --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(0, 0, 0, 0));
-  }
-
-  .xl\:focus\:via-current:focus {
-    --gradient-via-color: currentColor;
-    --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
-  }
-
-  .xl\:focus\:via-primary:focus {
-    --gradient-via-color: var(--color-primary);
+  .xl\:focus\:via-light:focus {
+    --gradient-via-color: var(--color-light);
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
   }
 
@@ -36410,46 +34230,20 @@ a.toc-link {
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
   }
 
-  .xl\:focus\:via-accent-dark:focus {
-    --gradient-via-color: var(--color-accent-dark);
-    --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
-  }
-
-  .xl\:focus\:via-accent-light:focus {
-    --gradient-via-color: var(--color-accent-light);
-    --gradient-color-stops: var(--gradient-from-color), var(--gradient-via-color), var(--gradient-to-color, rgba(255, 255, 255, 0));
-  }
-
   .xl\:focus\:to-transparent:focus {
     --gradient-to-color: transparent;
   }
 
-  .xl\:focus\:to-white:focus {
-    --gradient-to-color: #fff;
+  .xl\:focus\:to-dark:focus {
+    --gradient-to-color: var(--color-dark);
   }
 
-  .xl\:focus\:to-black:focus {
-    --gradient-to-color: #000;
-  }
-
-  .xl\:focus\:to-current:focus {
-    --gradient-to-color: currentColor;
-  }
-
-  .xl\:focus\:to-primary:focus {
-    --gradient-to-color: var(--color-primary);
+  .xl\:focus\:to-light:focus {
+    --gradient-to-color: var(--color-light);
   }
 
   .xl\:focus\:to-accent:focus {
     --gradient-to-color: var(--color-accent);
-  }
-
-  .xl\:focus\:to-accent-dark:focus {
-    --gradient-to-color: var(--color-accent-dark);
-  }
-
-  .xl\:focus\:to-accent-light:focus {
-    --gradient-to-color: var(--color-accent-light);
   }
 
   .xl\:bg-opacity-0 {
@@ -36596,108 +34390,48 @@ a.toc-link {
     border-color: transparent;
   }
 
-  .xl\:border-white {
-    --border-opacity: 1;
-    border-color: #fff;
-    border-color: rgba(255, 255, 255, var(--border-opacity));
+  .xl\:border-dark {
+    border-color: var(--color-dark);
   }
 
-  .xl\:border-black {
-    --border-opacity: 1;
-    border-color: #000;
-    border-color: rgba(0, 0, 0, var(--border-opacity));
-  }
-
-  .xl\:border-current {
-    border-color: currentColor;
-  }
-
-  .xl\:border-primary {
-    border-color: var(--color-primary);
+  .xl\:border-light {
+    border-color: var(--color-light);
   }
 
   .xl\:border-accent {
     border-color: var(--color-accent);
   }
 
-  .xl\:border-accent-dark {
-    border-color: var(--color-accent-dark);
-  }
-
-  .xl\:border-accent-light {
-    border-color: var(--color-accent-light);
-  }
-
   .xl\:hover\:border-transparent:hover {
     border-color: transparent;
   }
 
-  .xl\:hover\:border-white:hover {
-    --border-opacity: 1;
-    border-color: #fff;
-    border-color: rgba(255, 255, 255, var(--border-opacity));
+  .xl\:hover\:border-dark:hover {
+    border-color: var(--color-dark);
   }
 
-  .xl\:hover\:border-black:hover {
-    --border-opacity: 1;
-    border-color: #000;
-    border-color: rgba(0, 0, 0, var(--border-opacity));
-  }
-
-  .xl\:hover\:border-current:hover {
-    border-color: currentColor;
-  }
-
-  .xl\:hover\:border-primary:hover {
-    border-color: var(--color-primary);
+  .xl\:hover\:border-light:hover {
+    border-color: var(--color-light);
   }
 
   .xl\:hover\:border-accent:hover {
     border-color: var(--color-accent);
   }
 
-  .xl\:hover\:border-accent-dark:hover {
-    border-color: var(--color-accent-dark);
-  }
-
-  .xl\:hover\:border-accent-light:hover {
-    border-color: var(--color-accent-light);
-  }
-
   .xl\:focus\:border-transparent:focus {
     border-color: transparent;
   }
 
-  .xl\:focus\:border-white:focus {
-    --border-opacity: 1;
-    border-color: #fff;
-    border-color: rgba(255, 255, 255, var(--border-opacity));
+  .xl\:focus\:border-dark:focus {
+    border-color: var(--color-dark);
   }
 
-  .xl\:focus\:border-black:focus {
-    --border-opacity: 1;
-    border-color: #000;
-    border-color: rgba(0, 0, 0, var(--border-opacity));
-  }
-
-  .xl\:focus\:border-current:focus {
-    border-color: currentColor;
-  }
-
-  .xl\:focus\:border-primary:focus {
-    border-color: var(--color-primary);
+  .xl\:focus\:border-light:focus {
+    border-color: var(--color-light);
   }
 
   .xl\:focus\:border-accent:focus {
     border-color: var(--color-accent);
-  }
-
-  .xl\:focus\:border-accent-dark:focus {
-    border-color: var(--color-accent-dark);
-  }
-
-  .xl\:focus\:border-accent-light:focus {
-    border-color: var(--color-accent-light);
   }
 
   .xl\:border-opacity-0 {
@@ -37711,35 +35445,27 @@ a.toc-link {
   }
 
   .xl\:text-xs {
-    font-size: 0.75rem;
+    font-size: var(--font-size-xs);
   }
 
   .xl\:text-sm {
-    font-size: 0.875rem;
+    font-size: var(--font-size-sm);
   }
 
   .xl\:text-base {
-    font-size: 1rem;
+    font-size: var(--font-size-base);
   }
 
   .xl\:text-lg {
-    font-size: 1.125rem;
+    font-size: var(--font-size-lg);
   }
 
   .xl\:text-xl {
-    font-size: 1.25rem;
+    font-size: var(--font-size-xl);
   }
 
   .xl\:text-xxl {
-    font-size: 6rem;
-  }
-
-  .xl\:text-subtitle {
-    font-size: 2rem;
-  }
-
-  .xl\:text-title {
-    font-size: 8rem;
+    font-size: var(--font-size-xxl);
   }
 
   .xl\:leading-3 {
@@ -39865,64 +37591,28 @@ a.toc-link {
     color: transparent;
   }
 
-  .xl\:placeholder-white::-moz-placeholder {
-    --placeholder-opacity: 1;
-    color: #fff;
-    color: rgba(255, 255, 255, var(--placeholder-opacity));
+  .xl\:placeholder-dark::-moz-placeholder {
+    color: var(--color-dark);
   }
 
-  .xl\:placeholder-white:-ms-input-placeholder {
-    --placeholder-opacity: 1;
-    color: #fff;
-    color: rgba(255, 255, 255, var(--placeholder-opacity));
+  .xl\:placeholder-dark:-ms-input-placeholder {
+    color: var(--color-dark);
   }
 
-  .xl\:placeholder-white::placeholder {
-    --placeholder-opacity: 1;
-    color: #fff;
-    color: rgba(255, 255, 255, var(--placeholder-opacity));
+  .xl\:placeholder-dark::placeholder {
+    color: var(--color-dark);
   }
 
-  .xl\:placeholder-black::-moz-placeholder {
-    --placeholder-opacity: 1;
-    color: #000;
-    color: rgba(0, 0, 0, var(--placeholder-opacity));
+  .xl\:placeholder-light::-moz-placeholder {
+    color: var(--color-light);
   }
 
-  .xl\:placeholder-black:-ms-input-placeholder {
-    --placeholder-opacity: 1;
-    color: #000;
-    color: rgba(0, 0, 0, var(--placeholder-opacity));
+  .xl\:placeholder-light:-ms-input-placeholder {
+    color: var(--color-light);
   }
 
-  .xl\:placeholder-black::placeholder {
-    --placeholder-opacity: 1;
-    color: #000;
-    color: rgba(0, 0, 0, var(--placeholder-opacity));
-  }
-
-  .xl\:placeholder-current::-moz-placeholder {
-    color: currentColor;
-  }
-
-  .xl\:placeholder-current:-ms-input-placeholder {
-    color: currentColor;
-  }
-
-  .xl\:placeholder-current::placeholder {
-    color: currentColor;
-  }
-
-  .xl\:placeholder-primary::-moz-placeholder {
-    color: var(--color-primary);
-  }
-
-  .xl\:placeholder-primary:-ms-input-placeholder {
-    color: var(--color-primary);
-  }
-
-  .xl\:placeholder-primary::placeholder {
-    color: var(--color-primary);
+  .xl\:placeholder-light::placeholder {
+    color: var(--color-light);
   }
 
   .xl\:placeholder-accent::-moz-placeholder {
@@ -39937,30 +37627,6 @@ a.toc-link {
     color: var(--color-accent);
   }
 
-  .xl\:placeholder-accent-dark::-moz-placeholder {
-    color: var(--color-accent-dark);
-  }
-
-  .xl\:placeholder-accent-dark:-ms-input-placeholder {
-    color: var(--color-accent-dark);
-  }
-
-  .xl\:placeholder-accent-dark::placeholder {
-    color: var(--color-accent-dark);
-  }
-
-  .xl\:placeholder-accent-light::-moz-placeholder {
-    color: var(--color-accent-light);
-  }
-
-  .xl\:placeholder-accent-light:-ms-input-placeholder {
-    color: var(--color-accent-light);
-  }
-
-  .xl\:placeholder-accent-light::placeholder {
-    color: var(--color-accent-light);
-  }
-
   .xl\:focus\:placeholder-transparent:focus::-moz-placeholder {
     color: transparent;
   }
@@ -39973,64 +37639,28 @@ a.toc-link {
     color: transparent;
   }
 
-  .xl\:focus\:placeholder-white:focus::-moz-placeholder {
-    --placeholder-opacity: 1;
-    color: #fff;
-    color: rgba(255, 255, 255, var(--placeholder-opacity));
+  .xl\:focus\:placeholder-dark:focus::-moz-placeholder {
+    color: var(--color-dark);
   }
 
-  .xl\:focus\:placeholder-white:focus:-ms-input-placeholder {
-    --placeholder-opacity: 1;
-    color: #fff;
-    color: rgba(255, 255, 255, var(--placeholder-opacity));
+  .xl\:focus\:placeholder-dark:focus:-ms-input-placeholder {
+    color: var(--color-dark);
   }
 
-  .xl\:focus\:placeholder-white:focus::placeholder {
-    --placeholder-opacity: 1;
-    color: #fff;
-    color: rgba(255, 255, 255, var(--placeholder-opacity));
+  .xl\:focus\:placeholder-dark:focus::placeholder {
+    color: var(--color-dark);
   }
 
-  .xl\:focus\:placeholder-black:focus::-moz-placeholder {
-    --placeholder-opacity: 1;
-    color: #000;
-    color: rgba(0, 0, 0, var(--placeholder-opacity));
+  .xl\:focus\:placeholder-light:focus::-moz-placeholder {
+    color: var(--color-light);
   }
 
-  .xl\:focus\:placeholder-black:focus:-ms-input-placeholder {
-    --placeholder-opacity: 1;
-    color: #000;
-    color: rgba(0, 0, 0, var(--placeholder-opacity));
+  .xl\:focus\:placeholder-light:focus:-ms-input-placeholder {
+    color: var(--color-light);
   }
 
-  .xl\:focus\:placeholder-black:focus::placeholder {
-    --placeholder-opacity: 1;
-    color: #000;
-    color: rgba(0, 0, 0, var(--placeholder-opacity));
-  }
-
-  .xl\:focus\:placeholder-current:focus::-moz-placeholder {
-    color: currentColor;
-  }
-
-  .xl\:focus\:placeholder-current:focus:-ms-input-placeholder {
-    color: currentColor;
-  }
-
-  .xl\:focus\:placeholder-current:focus::placeholder {
-    color: currentColor;
-  }
-
-  .xl\:focus\:placeholder-primary:focus::-moz-placeholder {
-    color: var(--color-primary);
-  }
-
-  .xl\:focus\:placeholder-primary:focus:-ms-input-placeholder {
-    color: var(--color-primary);
-  }
-
-  .xl\:focus\:placeholder-primary:focus::placeholder {
-    color: var(--color-primary);
+  .xl\:focus\:placeholder-light:focus::placeholder {
+    color: var(--color-light);
   }
 
   .xl\:focus\:placeholder-accent:focus::-moz-placeholder {
@@ -40043,30 +37673,6 @@ a.toc-link {
 
   .xl\:focus\:placeholder-accent:focus::placeholder {
     color: var(--color-accent);
-  }
-
-  .xl\:focus\:placeholder-accent-dark:focus::-moz-placeholder {
-    color: var(--color-accent-dark);
-  }
-
-  .xl\:focus\:placeholder-accent-dark:focus:-ms-input-placeholder {
-    color: var(--color-accent-dark);
-  }
-
-  .xl\:focus\:placeholder-accent-dark:focus::placeholder {
-    color: var(--color-accent-dark);
-  }
-
-  .xl\:focus\:placeholder-accent-light:focus::-moz-placeholder {
-    color: var(--color-accent-light);
-  }
-
-  .xl\:focus\:placeholder-accent-light:focus:-ms-input-placeholder {
-    color: var(--color-accent-light);
-  }
-
-  .xl\:focus\:placeholder-accent-light:focus::placeholder {
-    color: var(--color-accent-light);
   }
 
   .xl\:placeholder-opacity-0::-moz-placeholder {
@@ -40468,108 +38074,48 @@ a.toc-link {
     color: transparent;
   }
 
-  .xl\:text-white {
-    --text-opacity: 1;
-    color: #fff;
-    color: rgba(255, 255, 255, var(--text-opacity));
+  .xl\:text-dark {
+    color: var(--color-dark);
   }
 
-  .xl\:text-black {
-    --text-opacity: 1;
-    color: #000;
-    color: rgba(0, 0, 0, var(--text-opacity));
-  }
-
-  .xl\:text-current {
-    color: currentColor;
-  }
-
-  .xl\:text-primary {
-    color: var(--color-primary);
+  .xl\:text-light {
+    color: var(--color-light);
   }
 
   .xl\:text-accent {
     color: var(--color-accent);
   }
 
-  .xl\:text-accent-dark {
-    color: var(--color-accent-dark);
-  }
-
-  .xl\:text-accent-light {
-    color: var(--color-accent-light);
-  }
-
   .xl\:hover\:text-transparent:hover {
     color: transparent;
   }
 
-  .xl\:hover\:text-white:hover {
-    --text-opacity: 1;
-    color: #fff;
-    color: rgba(255, 255, 255, var(--text-opacity));
+  .xl\:hover\:text-dark:hover {
+    color: var(--color-dark);
   }
 
-  .xl\:hover\:text-black:hover {
-    --text-opacity: 1;
-    color: #000;
-    color: rgba(0, 0, 0, var(--text-opacity));
-  }
-
-  .xl\:hover\:text-current:hover {
-    color: currentColor;
-  }
-
-  .xl\:hover\:text-primary:hover {
-    color: var(--color-primary);
+  .xl\:hover\:text-light:hover {
+    color: var(--color-light);
   }
 
   .xl\:hover\:text-accent:hover {
     color: var(--color-accent);
   }
 
-  .xl\:hover\:text-accent-dark:hover {
-    color: var(--color-accent-dark);
-  }
-
-  .xl\:hover\:text-accent-light:hover {
-    color: var(--color-accent-light);
-  }
-
   .xl\:focus\:text-transparent:focus {
     color: transparent;
   }
 
-  .xl\:focus\:text-white:focus {
-    --text-opacity: 1;
-    color: #fff;
-    color: rgba(255, 255, 255, var(--text-opacity));
+  .xl\:focus\:text-dark:focus {
+    color: var(--color-dark);
   }
 
-  .xl\:focus\:text-black:focus {
-    --text-opacity: 1;
-    color: #000;
-    color: rgba(0, 0, 0, var(--text-opacity));
-  }
-
-  .xl\:focus\:text-current:focus {
-    color: currentColor;
-  }
-
-  .xl\:focus\:text-primary:focus {
-    color: var(--color-primary);
+  .xl\:focus\:text-light:focus {
+    color: var(--color-light);
   }
 
   .xl\:focus\:text-accent:focus {
     color: var(--color-accent);
-  }
-
-  .xl\:focus\:text-accent-dark:focus {
-    color: var(--color-accent-dark);
-  }
-
-  .xl\:focus\:text-accent-light:focus {
-    color: var(--color-accent-light);
   }
 
   .xl\:text-opacity-0 {

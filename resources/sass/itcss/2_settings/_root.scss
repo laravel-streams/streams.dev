@@ -1,36 +1,69 @@
 :root {
+    // Colors 
+    --color-dark-base: 210;
+    --color-dark:hsla(var(--color-dark-base),6%,8%,1);
+    --color-dark-darker:hsla(var(--color-dark-base),6%,5%,1);
+    --color-dark-lighter:hsla(var(--color-dark-base),6%,21%,1);
+
+    --color-light-base: 0;
+    --color-light:hsla(var(--color-light-base),0%,99%,1);
+    --color-light-darker:hsla(var(--color-light-base),0%,95%,1);
+    --color-light-lighter:hsla(var(--color-light-base),0%,95%,1);
+
+    --color-accent-base: 210;
+    --color-accent:hsla(var(--color-accent-base),63%,50%,1);
+    --color-accent-darker:hsla(var(--color-accent-base),63%,35%,1);
+    --color-accent-lighter:hsla(var(--color-accent-base),63%,65%,1);
+
     // Font weights 
     --font-weight-normal:300;
-    --font-weight-bold:800;
+    --font-weight-bold:700;
+
+    // Font sizes 
+    --font-size-xs:.75rem;
+    --font-size-sm:.875rem;
+    --font-size-base:1.1rem;
+    --font-size-lg:1.2rem;
+    --font-size-xl:2rem;
+    --font-size-xxl:3rem;
+
+    // Hljs 
+    --highlight-padding:1.5rem;
 
     // Widths
     --width-aside: 300px;
     --width-main: calc(100% - var(--width-aside));
 
-    // @each $key, $value in $colors {
-    //     @include generate-color-var($key, $value);
-    // }
-
-    --color-white: #fff;
-    --color-black: #000;
-    --color-primary: #000;
-
-    // Accent
-    --color-accent: #00ceff;
-    --color-accent-dark: #6fa6b3;
-    --color-accent-light: #d1f6ff;
-
     --position-top-aside-menus: 153px;
 }
 
 .o-mode__dark {
-    --navbar-color-text: #fff;
-    --color-text: #fff;
-    --color-background: #181a1b;
+    
+    --text:var(--color-light);
+    --bg:var(--color-dark);
+
+    --scrollbar-color:var(--color-accent);
+    --scrollbar-bg:var(--color-accent-darker);
+
+    --code-in-text-color:var(--color-light-darker);
+    --code-in-text-bg:var(--color-dark-lighter);
+
+    --navbar-text:var(--color-light);
+
 }
 
 .o-mode__light {
-    --navbar-color-text: #181a1b;
-    --color-text: #181a1b;
-    --color-background: #fff;
+
+    --text:var(--color-dark);
+    --bg:var(--color-light);
+
+    --scrollbar-color:var(--color-accent);
+    --scrollbar-bg:var(--color-accent-darker);
+
+    --highlightjs-bg:var(--color-dark);
+
+    --code-in-text-color:var(--color-light);
+    --code-in-text-bg:var(--color-dark);
+
+    --navbar-text:var(--color-dark);
 }
