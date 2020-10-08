@@ -790,13 +790,13 @@ h6 {
 .c-intro h2 {
   font-size: var(--font-size-xl);
   margin-top: 3rem;
-  margin-bottom: 0.25rem;
+  margin-bottom: 1rem;
 }
 
 .o-doc-body h3,
 .c-intro h3 {
   font-size: var(--font-size-lg);
-  margin-top: 1rem;
+  margin-top: 2rem;
   margin-bottom: 0.25rem;
 }
 
