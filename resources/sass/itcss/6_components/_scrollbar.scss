@@ -1,12 +1,12 @@
 body,
 .c-scrollbar,
 code[class^="language"] {
-    --scrollbar-color:var(--color-accent);
-    --scrollbar-bkg-color:var(--color-accent-light);
+    --scrollbar-color:var(--scrollbar-color);
+    --scrollbar-bkg-color:var(--scrollbar-bg);
     --scrollbar-width:5px;
     --scrollbar-height:1px;
     scrollbar-width: thin; /* "auto" or "thin"  */
-    scrollbar-color: var(--scrollbar-color) var(--scrollbar-bkg-color);; /* scroll thumb & track */
+    scrollbar-color: var(--scrollbar-color) var(--scrollbar-bkg-color); /* scroll thumb & track */
     &::-webkit-scrollbar {
         width: var(--scrollbar-width);
         height: var(--scrollbar-height);

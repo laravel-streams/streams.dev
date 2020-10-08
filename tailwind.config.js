@@ -12,26 +12,24 @@ module.exports = {
   },
     
   theme: {
-    colors:{
-      transparent: 'transparent',
-      white:"#fff",
-      black:"#000",
-      current: 'currentColor',
-      primary:"var(--color-primary)",
-      // Accent
-      accent:"var(--color-accent)",
-      "accent-dark":"var(--color-accent-dark)",
-      "accent-light":"var(--color-accent-light)"
+    colors: {
+      
+      // I want to keep the number of colors down to a very minimum at this
+      // stage. And not hundreds of shaded either. Keep it simple. FFS!
+      transparent: 'transparent', // Necessary
+      
+      dark:"var(--color-dark)",
+      light: "var(--color-light)",
+      accent: "var(--color-accent)", // links and such.
+      
     },
     fontSize: {
-      xs: '0.75rem',
-      sm: '0.875rem',
-      base: '1rem',
-      lg: '1.125rem',
-      xl: '1.25rem',
-      xxl: '6rem',
-      subtitle:'2rem',
-      title: '8rem',
+      xs:"var(--font-size-xs)",
+      sm:"var(--font-size-sm)",
+      base:"var(--font-size-base)",
+      lg:"var(--font-size-lg)",
+      xl:"var(--font-size-xl)",
+      xxl:"var(--font-size-xxl)",
     },
     screens: {
       sm: '560px',

@@ -9,5 +9,5 @@ hljs.registerLanguage('json', json);
 hljs.initHighlighting();
 
 //import 'highlight.js/styles/solarized-dark.css';
-import 'highlight.js/styles/tomorrow-night.css';
+//import 'highlight.js/styles/tomorrow-night.css';
 //import 'highlight.js/styles/okaida.css';
