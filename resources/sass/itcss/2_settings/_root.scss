@@ -28,7 +28,7 @@
     --font-size-xxl:3rem;
 
     // Hljs 
-    --highlight-padding:1.5rem;
+    --highlight-padding:0 0rem 3px;
 
     // Widths
     --width-aside: 300px;
@@ -60,7 +60,7 @@
     --bg:var(--color-light);
 
     --scrollbar-color:var(--color-accent);
-    --scrollbar-bg:var(--color-accent-darker);
+    --scrollbar-bg:var(--color-dark-lighter);
 
     --highlightjs-bg:var(--color-dark);
 

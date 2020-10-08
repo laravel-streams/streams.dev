@@ -53,13 +53,13 @@ pre.language-bash
     h2
     {
         font-size: var(--font-size-xl);
-        @apply mt-12 mb-1;
+        @apply mt-12 mb-4;
     }
 
     h3
     {
         font-size: var(--font-size-lg);
-        @apply mt-4 mb-1;
+        @apply mt-8 mb-1;
     }
     h4
     {
@@ -99,12 +99,13 @@ pre
     overflow-x: auto;
 
     color: #eee;
-    background: var(--code-bkg);
-    @apply my-8;
+    background: var(--highlightjs-bg);
+    @apply my-8 p-6;
 
 
     @apply relative;
 }
+
 
 
 code:not([class^='language'])
