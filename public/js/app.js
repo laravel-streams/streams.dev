@@ -1458,7 +1458,7 @@ function compileLanguage(language) {
     }
 
     resumingScanAtSamePosition() {
-      return this.regexIndex != 0;
+      return this.regexIndex !== 0;
     }
 
     considerAll() {
@@ -1475,15 +1475,55 @@ function compileLanguage(language) {
     exec(s) {
       const m = this.getMatcher(this.regexIndex);
       m.lastIndex = this.lastIndex;
-      const result = m.exec(s);
-      if (result) {
-        this.regexIndex += result.position + 1;
-        if (this.regexIndex === this.count) { // wrap-around
-          this.regexIndex = 0;
+      let result = m.exec(s);
+
+      // The following is because we have no easy way to say "resume scanning at the
+      // existing position but also skip the current rule ONLY". What happens is
+      // all prior rules are also skipped which can result in matching the wrong
+      // thing. Example of matching "booger":
+
+      // our matcher is [string, "booger", number]
+      //
+      // ....booger....
+
+      // if "booger" is ignored then we'd really need a regex to scan from the
+      // SAME position for only: [string, number] but ignoring "booger" (if it
+      // was the first match), a simple resume would scan ahead who knows how
+      // far looking only for "number", ignoring potential string matches (or
+      // future "booger" matches that might be valid.)
+
+      // So what we do: We execute two matchers, one resuming at the same
+      // position, but the second full matcher starting at the position after:
+
+      //     /--- resume first regex match here (for [number])
+      //     |/---- full match here for [string, "booger", number]
+      //     vv
+      // ....booger....
+
+      // Which ever results in a match first is then used. So this 3-4 step
+      // process essentially allows us to say "match at this position, excluding
+      // a prior rule that was ignored".
+      //
+      // 1. Match "booger" first, ignore. Also proves that [string] does non match.
+      // 2. Resume matching for [number]
+      // 3. Match at index + 1 for [string, "booger", number]
+      // 4. If #2 and #3 result in matches, which came first?
+      if (this.resumingScanAtSamePosition()) {
+        if (result && result.index === this.lastIndex) ; else { // use the second matcher result
+          const m2 = this.getMatcher(0);
+          m2.lastIndex = this.lastIndex + 1;
+          result = m2.exec(s);
         }
       }
 
-      // this.regexIndex = 0;
+      if (result) {
+        this.regexIndex += result.position + 1;
+        if (this.regexIndex === this.count) {
+          // wrap-around to considering all matches again
+          this.considerAll();
+        }
+      }
+
       return result;
     }
   }
@@ -1768,7 +1808,7 @@ function commonKeyword(keyword) {
   return COMMON_KEYWORDS.includes(keyword.toLowerCase());
 }
 
-var version = "10.2.0";
+var version = "10.2.1";
 
 // @ts-nocheck
 
@@ -2087,14 +2127,6 @@ const HLJS = function(hljs) {
     }
 
     /**
-     * Advance a single character
-     */
-    function advanceOne() {
-      mode_buffer += codeToHighlight[index];
-      index += 1;
-    }
-
-    /**
      * Handle matching but then ignoring a sequence of text
      *
      * @param {string} lexeme - string containing full match text
@@ -2323,20 +2355,13 @@ const HLJS = function(hljs) {
           // considered for a potential match
           resumeScanAtSamePosition = false;
         } else {
-          top.matcher.lastIndex = index;
           top.matcher.considerAll();
         }
+        top.matcher.lastIndex = index;
 
         const match = top.matcher.exec(codeToHighlight);
         // console.log("match", match[0], match.rule && match.rule.begin)
 
-        // if our failure to match was the result of a "resumed scan" then we
-        // need to advance one position and revert to full scanning before we
-        // decide there are truly no more matches at all to be had
-        if (!match && top.matcher.resumingScanAtSamePosition()) {
-          advanceOne();
-          continue;
-        }
         if (!match) break;
 
         const beforeMatch = codeToHighlight.substring(index, match.index);
@@ -4785,6 +4810,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 highlight_js_lib_core__WEBPACK_IMPORTED_MODULE_0___default.a.registerLanguage('php', highlight_js_lib_languages_php__WEBPACK_IMPORTED_MODULE_1___default.a);
+highlight_js_lib_core__WEBPACK_IMPORTED_MODULE_0___default.a.registerLanguage('blade', highlight_js_lib_languages_php__WEBPACK_IMPORTED_MODULE_1___default.a);
 highlight_js_lib_core__WEBPACK_IMPORTED_MODULE_0___default.a.registerLanguage('bash', highlight_js_lib_languages_bash__WEBPACK_IMPORTED_MODULE_2___default.a);
 highlight_js_lib_core__WEBPACK_IMPORTED_MODULE_0___default.a.registerLanguage('json', highlight_js_lib_languages_json__WEBPACK_IMPORTED_MODULE_3___default.a);
 highlight_js_lib_core__WEBPACK_IMPORTED_MODULE_0___default.a.initHighlighting(); //import 'highlight.js/styles/solarized-dark.css';

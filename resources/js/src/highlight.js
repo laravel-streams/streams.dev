@@ -3,6 +3,7 @@ import php from 'highlight.js/lib/languages/php';
 import bash from 'highlight.js/lib/languages/bash';
 import json from 'highlight.js/lib/languages/json';
 hljs.registerLanguage('php', php);
+hljs.registerLanguage('blade', php);
 hljs.registerLanguage('bash', bash);
 hljs.registerLanguage('json', json);
 hljs.initHighlighting();

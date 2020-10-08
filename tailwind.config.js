@@ -51,15 +51,9 @@ module.exports = {
       mono: ['JetBrains Mono','monospace'],
     },
     fontWeight: {
-      hairline: '100',
-      thin: '200',
-      light: '300',
-      normal: '400',
-      medium: '500',
-      semibold: '600',
-      bold: '700',
-      extrabold: '800',
-      black: '900',
+      thin: 'var(--font-weight-thin)',
+      normal: 'var(--font-weight-normal)',
+      bold: 'var(--font-weight-bold)'
     },
     width: theme => ({
       auto: 'auto',

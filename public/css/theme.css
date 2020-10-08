@@ -487,10 +487,6 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   color: #a0aec0;
 }
 
-input::-ms-input-placeholder, textarea::-ms-input-placeholder {
-  color: #a0aec0;
-}
-
 input::placeholder,
 textarea::placeholder {
   color: #a0aec0;
@@ -621,6 +617,9 @@ video {
 /*! purgecss start ignore */
 
 :root {
+  --font-weight-thin:300;
+  --font-weight-normal:300;
+  --font-weight-bold:800;
   --width-aside: 300px;
   --width-main: calc(100% - var(--width-aside));
   --color-white: #fff;
@@ -759,7 +758,7 @@ pre.language-bash {
 
 .o-doc-body,
 .c-intro {
-  --baseline: 0.1vw;
+  --baseline: .1vw;
 }
 
 .o-doc-body *,
@@ -775,7 +774,7 @@ pre.language-bash {
 .c-intro h2,
 .c-intro h3,
 .c-intro h4 {
-  font-weight: 700;
+  font-weight: var(--font-weight-bold);
 }
 
 .o-doc-body h1,
@@ -792,7 +791,7 @@ pre.language-bash {
 .c-intro h1 {
   font-size: clamp(28px, calc(3.5rem + var(--baseline)), 64px);
   margin-top: clamp(10px, calc(1.5rem + var(--baseline)), 50px);
-  margin-bottom: clamp(10px, calc(0.5rem + var(--baseline)), 20px);
+  margin-bottom: clamp(10px, calc(.5rem + var(--baseline)), 20px);
   margin-top: 0;
   line-height: 1;
 }
@@ -813,14 +812,14 @@ pre.language-bash {
 .c-intro h3 {
   font-size: clamp(21px, calc(1.2rem + var(--baseline)), 36px);
   margin-top: clamp(10px, calc(1.5rem + var(--baseline)), 50px);
-  margin-bottom: clamp(10px, calc(0.5rem + var(--baseline)), 20px);
+  margin-bottom: clamp(10px, calc(.5rem + var(--baseline)), 20px);
 }
 
 .o-doc-body h4,
 .c-intro h4 {
   font-size: clamp(16px, 17px, 28px);
   margin-top: clamp(10px, calc(1rem + var(--baseline)), 50px);
-  margin-bottom: clamp(10px, calc(0.5rem + var(--baseline)), 20px);
+  margin-bottom: clamp(10px, calc(.5rem + var(--baseline)), 20px);
 }
 
 .o-doc-body p + p,
@@ -907,8 +906,8 @@ code.language-bash.hljs {
 }
 
 code:not([class^=language]) {
-  background: #eee;
   white-space: nowrap;
+  background: #eee;
   padding: 0.25rem;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
@@ -932,8 +931,7 @@ code:not([class^=language]) {
   height: 5rem;
   overflow: hidden;
   position: fixed;
-  -webkit-filter: blur(4px);
-          filter: blur(4px);
+  filter: blur(4px);
 }
 
 .c-alert {
@@ -976,7 +974,7 @@ code:not([class^=language]) {
 }
 
 .c-aside-menu-title {
-  font-weight: 700;
+  font-weight: var(--font-weight-bold);
   margin-top: 1.5rem;
   padding-left: 0.25rem;
   padding-right: 0.25rem;
@@ -3504,112 +3502,40 @@ a.toc-link {
   font-family: JetBrains Mono, monospace;
 }
 
-.font-hairline {
-  font-weight: 100;
-}
-
 .font-thin {
-  font-weight: 200;
-}
-
-.font-light {
-  font-weight: 300;
+  font-weight: var(--font-weight-thin);
 }
 
 .font-normal {
-  font-weight: 400;
-}
-
-.font-medium {
-  font-weight: 500;
-}
-
-.font-semibold {
-  font-weight: 600;
+  font-weight: var(--font-weight-normal);
 }
 
 .font-bold {
-  font-weight: 700;
-}
-
-.font-extrabold {
-  font-weight: 800;
-}
-
-.font-black {
-  font-weight: 900;
-}
-
-.hover\:font-hairline:hover {
-  font-weight: 100;
+  font-weight: var(--font-weight-bold);
 }
 
 .hover\:font-thin:hover {
-  font-weight: 200;
-}
-
-.hover\:font-light:hover {
-  font-weight: 300;
+  font-weight: var(--font-weight-thin);
 }
 
 .hover\:font-normal:hover {
-  font-weight: 400;
-}
-
-.hover\:font-medium:hover {
-  font-weight: 500;
-}
-
-.hover\:font-semibold:hover {
-  font-weight: 600;
+  font-weight: var(--font-weight-normal);
 }
 
 .hover\:font-bold:hover {
-  font-weight: 700;
-}
-
-.hover\:font-extrabold:hover {
-  font-weight: 800;
-}
-
-.hover\:font-black:hover {
-  font-weight: 900;
-}
-
-.focus\:font-hairline:focus {
-  font-weight: 100;
+  font-weight: var(--font-weight-bold);
 }
 
 .focus\:font-thin:focus {
-  font-weight: 200;
-}
-
-.focus\:font-light:focus {
-  font-weight: 300;
+  font-weight: var(--font-weight-thin);
 }
 
 .focus\:font-normal:focus {
-  font-weight: 400;
-}
-
-.focus\:font-medium:focus {
-  font-weight: 500;
-}
-
-.focus\:font-semibold:focus {
-  font-weight: 600;
+  font-weight: var(--font-weight-normal);
 }
 
 .focus\:font-bold:focus {
-  font-weight: 700;
-}
-
-.focus\:font-extrabold:focus {
-  font-weight: 800;
-}
-
-.focus\:font-black:focus {
-  font-weight: 900;
+  font-weight: var(--font-weight-bold);
 }
 
 .h-0 {
@@ -5851,10 +5777,6 @@ a.toc-link {
   color: transparent;
 }
 
-.placeholder-transparent::-ms-input-placeholder {
-  color: transparent;
-}
-
 .placeholder-transparent::placeholder {
   color: transparent;
 }
@@ -5866,12 +5788,6 @@ a.toc-link {
 }
 
 .placeholder-white:-ms-input-placeholder {
-  --placeholder-opacity: 1;
-  color: #fff;
-  color: rgba(255, 255, 255, var(--placeholder-opacity));
-}
-
-.placeholder-white::-ms-input-placeholder {
   --placeholder-opacity: 1;
   color: #fff;
   color: rgba(255, 255, 255, var(--placeholder-opacity));
@@ -5895,12 +5811,6 @@ a.toc-link {
   color: rgba(0, 0, 0, var(--placeholder-opacity));
 }
 
-.placeholder-black::-ms-input-placeholder {
-  --placeholder-opacity: 1;
-  color: #000;
-  color: rgba(0, 0, 0, var(--placeholder-opacity));
-}
-
 .placeholder-black::placeholder {
   --placeholder-opacity: 1;
   color: #000;
@@ -5912,10 +5822,6 @@ a.toc-link {
 }
 
 .placeholder-current:-ms-input-placeholder {
-  color: currentColor;
-}
-
-.placeholder-current::-ms-input-placeholder {
   color: currentColor;
 }
 
@@ -5931,10 +5837,6 @@ a.toc-link {
   color: var(--color-primary);
 }
 
-.placeholder-primary::-ms-input-placeholder {
-  color: var(--color-primary);
-}
-
 .placeholder-primary::placeholder {
   color: var(--color-primary);
 }
@@ -5944,10 +5846,6 @@ a.toc-link {
 }
 
 .placeholder-accent:-ms-input-placeholder {
-  color: var(--color-accent);
-}
-
-.placeholder-accent::-ms-input-placeholder {
   color: var(--color-accent);
 }
 
@@ -5963,10 +5861,6 @@ a.toc-link {
   color: var(--color-accent-dark);
 }
 
-.placeholder-accent-dark::-ms-input-placeholder {
-  color: var(--color-accent-dark);
-}
-
 .placeholder-accent-dark::placeholder {
   color: var(--color-accent-dark);
 }
@@ -5976,10 +5870,6 @@ a.toc-link {
 }
 
 .placeholder-accent-light:-ms-input-placeholder {
-  color: var(--color-accent-light);
-}
-
-.placeholder-accent-light::-ms-input-placeholder {
   color: var(--color-accent-light);
 }
 
@@ -5995,10 +5885,6 @@ a.toc-link {
   color: transparent;
 }
 
-.focus\:placeholder-transparent:focus::-ms-input-placeholder {
-  color: transparent;
-}
-
 .focus\:placeholder-transparent:focus::placeholder {
   color: transparent;
 }
@@ -6010,12 +5896,6 @@ a.toc-link {
 }
 
 .focus\:placeholder-white:focus:-ms-input-placeholder {
-  --placeholder-opacity: 1;
-  color: #fff;
-  color: rgba(255, 255, 255, var(--placeholder-opacity));
-}
-
-.focus\:placeholder-white:focus::-ms-input-placeholder {
   --placeholder-opacity: 1;
   color: #fff;
   color: rgba(255, 255, 255, var(--placeholder-opacity));
@@ -6039,12 +5919,6 @@ a.toc-link {
   color: rgba(0, 0, 0, var(--placeholder-opacity));
 }
 
-.focus\:placeholder-black:focus::-ms-input-placeholder {
-  --placeholder-opacity: 1;
-  color: #000;
-  color: rgba(0, 0, 0, var(--placeholder-opacity));
-}
-
 .focus\:placeholder-black:focus::placeholder {
   --placeholder-opacity: 1;
   color: #000;
@@ -6056,10 +5930,6 @@ a.toc-link {
 }
 
 .focus\:placeholder-current:focus:-ms-input-placeholder {
-  color: currentColor;
-}
-
-.focus\:placeholder-current:focus::-ms-input-placeholder {
   color: currentColor;
 }
 
@@ -6075,10 +5945,6 @@ a.toc-link {
   color: var(--color-primary);
 }
 
-.focus\:placeholder-primary:focus::-ms-input-placeholder {
-  color: var(--color-primary);
-}
-
 .focus\:placeholder-primary:focus::placeholder {
   color: var(--color-primary);
 }
@@ -6088,10 +5954,6 @@ a.toc-link {
 }
 
 .focus\:placeholder-accent:focus:-ms-input-placeholder {
-  color: var(--color-accent);
-}
-
-.focus\:placeholder-accent:focus::-ms-input-placeholder {
   color: var(--color-accent);
 }
 
@@ -6107,10 +5969,6 @@ a.toc-link {
   color: var(--color-accent-dark);
 }
 
-.focus\:placeholder-accent-dark:focus::-ms-input-placeholder {
-  color: var(--color-accent-dark);
-}
-
 .focus\:placeholder-accent-dark:focus::placeholder {
   color: var(--color-accent-dark);
 }
@@ -6120,10 +5978,6 @@ a.toc-link {
 }
 
 .focus\:placeholder-accent-light:focus:-ms-input-placeholder {
-  color: var(--color-accent-light);
-}
-
-.focus\:placeholder-accent-light:focus::-ms-input-placeholder {
   color: var(--color-accent-light);
 }
 
@@ -6139,10 +5993,6 @@ a.toc-link {
   --placeholder-opacity: 0;
 }
 
-.placeholder-opacity-0::-ms-input-placeholder {
-  --placeholder-opacity: 0;
-}
-
 .placeholder-opacity-0::placeholder {
   --placeholder-opacity: 0;
 }
@@ -6152,10 +6002,6 @@ a.toc-link {
 }
 
 .placeholder-opacity-25:-ms-input-placeholder {
-  --placeholder-opacity: 0.25;
-}
-
-.placeholder-opacity-25::-ms-input-placeholder {
   --placeholder-opacity: 0.25;
 }
 
@@ -6171,10 +6017,6 @@ a.toc-link {
   --placeholder-opacity: 0.5;
 }
 
-.placeholder-opacity-50::-ms-input-placeholder {
-  --placeholder-opacity: 0.5;
-}
-
 .placeholder-opacity-50::placeholder {
   --placeholder-opacity: 0.5;
 }
@@ -6184,10 +6026,6 @@ a.toc-link {
 }
 
 .placeholder-opacity-75:-ms-input-placeholder {
-  --placeholder-opacity: 0.75;
-}
-
-.placeholder-opacity-75::-ms-input-placeholder {
   --placeholder-opacity: 0.75;
 }
 
@@ -6203,10 +6041,6 @@ a.toc-link {
   --placeholder-opacity: 1;
 }
 
-.placeholder-opacity-100::-ms-input-placeholder {
-  --placeholder-opacity: 1;
-}
-
 .placeholder-opacity-100::placeholder {
   --placeholder-opacity: 1;
 }
@@ -6216,10 +6050,6 @@ a.toc-link {
 }
 
 .focus\:placeholder-opacity-0:focus:-ms-input-placeholder {
-  --placeholder-opacity: 0;
-}
-
-.focus\:placeholder-opacity-0:focus::-ms-input-placeholder {
   --placeholder-opacity: 0;
 }
 
@@ -6235,10 +6065,6 @@ a.toc-link {
   --placeholder-opacity: 0.25;
 }
 
-.focus\:placeholder-opacity-25:focus::-ms-input-placeholder {
-  --placeholder-opacity: 0.25;
-}
-
 .focus\:placeholder-opacity-25:focus::placeholder {
   --placeholder-opacity: 0.25;
 }
@@ -6248,10 +6074,6 @@ a.toc-link {
 }
 
 .focus\:placeholder-opacity-50:focus:-ms-input-placeholder {
-  --placeholder-opacity: 0.5;
-}
-
-.focus\:placeholder-opacity-50:focus::-ms-input-placeholder {
   --placeholder-opacity: 0.5;
 }
 
@@ -6267,10 +6089,6 @@ a.toc-link {
   --placeholder-opacity: 0.75;
 }
 
-.focus\:placeholder-opacity-75:focus::-ms-input-placeholder {
-  --placeholder-opacity: 0.75;
-}
-
 .focus\:placeholder-opacity-75:focus::placeholder {
   --placeholder-opacity: 0.75;
 }
@@ -6280,10 +6098,6 @@ a.toc-link {
 }
 
 .focus\:placeholder-opacity-100:focus:-ms-input-placeholder {
-  --placeholder-opacity: 1;
-}
-
-.focus\:placeholder-opacity-100:focus::-ms-input-placeholder {
   --placeholder-opacity: 1;
 }
 
@@ -12273,112 +12087,40 @@ a.toc-link {
     font-family: JetBrains Mono, monospace;
   }
 
-  .sm\:font-hairline {
-    font-weight: 100;
-  }
-
   .sm\:font-thin {
-    font-weight: 200;
-  }
-
-  .sm\:font-light {
-    font-weight: 300;
+    font-weight: var(--font-weight-thin);
   }
 
   .sm\:font-normal {
-    font-weight: 400;
-  }
-
-  .sm\:font-medium {
-    font-weight: 500;
-  }
-
-  .sm\:font-semibold {
-    font-weight: 600;
+    font-weight: var(--font-weight-normal);
   }
 
   .sm\:font-bold {
-    font-weight: 700;
-  }
-
-  .sm\:font-extrabold {
-    font-weight: 800;
-  }
-
-  .sm\:font-black {
-    font-weight: 900;
-  }
-
-  .sm\:hover\:font-hairline:hover {
-    font-weight: 100;
+    font-weight: var(--font-weight-bold);
   }
 
   .sm\:hover\:font-thin:hover {
-    font-weight: 200;
-  }
-
-  .sm\:hover\:font-light:hover {
-    font-weight: 300;
+    font-weight: var(--font-weight-thin);
   }
 
   .sm\:hover\:font-normal:hover {
-    font-weight: 400;
-  }
-
-  .sm\:hover\:font-medium:hover {
-    font-weight: 500;
-  }
-
-  .sm\:hover\:font-semibold:hover {
-    font-weight: 600;
+    font-weight: var(--font-weight-normal);
   }
 
   .sm\:hover\:font-bold:hover {
-    font-weight: 700;
-  }
-
-  .sm\:hover\:font-extrabold:hover {
-    font-weight: 800;
-  }
-
-  .sm\:hover\:font-black:hover {
-    font-weight: 900;
-  }
-
-  .sm\:focus\:font-hairline:focus {
-    font-weight: 100;
+    font-weight: var(--font-weight-bold);
   }
 
   .sm\:focus\:font-thin:focus {
-    font-weight: 200;
-  }
-
-  .sm\:focus\:font-light:focus {
-    font-weight: 300;
+    font-weight: var(--font-weight-thin);
   }
 
   .sm\:focus\:font-normal:focus {
-    font-weight: 400;
-  }
-
-  .sm\:focus\:font-medium:focus {
-    font-weight: 500;
-  }
-
-  .sm\:focus\:font-semibold:focus {
-    font-weight: 600;
+    font-weight: var(--font-weight-normal);
   }
 
   .sm\:focus\:font-bold:focus {
-    font-weight: 700;
-  }
-
-  .sm\:focus\:font-extrabold:focus {
-    font-weight: 800;
-  }
-
-  .sm\:focus\:font-black:focus {
-    font-weight: 900;
+    font-weight: var(--font-weight-bold);
   }
 
   .sm\:h-0 {
@@ -14620,10 +14362,6 @@ a.toc-link {
     color: transparent;
   }
 
-  .sm\:placeholder-transparent::-ms-input-placeholder {
-    color: transparent;
-  }
-
   .sm\:placeholder-transparent::placeholder {
     color: transparent;
   }
@@ -14635,12 +14373,6 @@ a.toc-link {
   }
 
   .sm\:placeholder-white:-ms-input-placeholder {
-    --placeholder-opacity: 1;
-    color: #fff;
-    color: rgba(255, 255, 255, var(--placeholder-opacity));
-  }
-
-  .sm\:placeholder-white::-ms-input-placeholder {
     --placeholder-opacity: 1;
     color: #fff;
     color: rgba(255, 255, 255, var(--placeholder-opacity));
@@ -14664,12 +14396,6 @@ a.toc-link {
     color: rgba(0, 0, 0, var(--placeholder-opacity));
   }
 
-  .sm\:placeholder-black::-ms-input-placeholder {
-    --placeholder-opacity: 1;
-    color: #000;
-    color: rgba(0, 0, 0, var(--placeholder-opacity));
-  }
-
   .sm\:placeholder-black::placeholder {
     --placeholder-opacity: 1;
     color: #000;
@@ -14681,10 +14407,6 @@ a.toc-link {
   }
 
   .sm\:placeholder-current:-ms-input-placeholder {
-    color: currentColor;
-  }
-
-  .sm\:placeholder-current::-ms-input-placeholder {
     color: currentColor;
   }
 
@@ -14700,10 +14422,6 @@ a.toc-link {
     color: var(--color-primary);
   }
 
-  .sm\:placeholder-primary::-ms-input-placeholder {
-    color: var(--color-primary);
-  }
-
   .sm\:placeholder-primary::placeholder {
     color: var(--color-primary);
   }
@@ -14713,10 +14431,6 @@ a.toc-link {
   }
 
   .sm\:placeholder-accent:-ms-input-placeholder {
-    color: var(--color-accent);
-  }
-
-  .sm\:placeholder-accent::-ms-input-placeholder {
     color: var(--color-accent);
   }
 
@@ -14732,10 +14446,6 @@ a.toc-link {
     color: var(--color-accent-dark);
   }
 
-  .sm\:placeholder-accent-dark::-ms-input-placeholder {
-    color: var(--color-accent-dark);
-  }
-
   .sm\:placeholder-accent-dark::placeholder {
     color: var(--color-accent-dark);
   }
@@ -14745,10 +14455,6 @@ a.toc-link {
   }
 
   .sm\:placeholder-accent-light:-ms-input-placeholder {
-    color: var(--color-accent-light);
-  }
-
-  .sm\:placeholder-accent-light::-ms-input-placeholder {
     color: var(--color-accent-light);
   }
 
@@ -14764,10 +14470,6 @@ a.toc-link {
     color: transparent;
   }
 
-  .sm\:focus\:placeholder-transparent:focus::-ms-input-placeholder {
-    color: transparent;
-  }
-
   .sm\:focus\:placeholder-transparent:focus::placeholder {
     color: transparent;
   }
@@ -14779,12 +14481,6 @@ a.toc-link {
   }
 
   .sm\:focus\:placeholder-white:focus:-ms-input-placeholder {
-    --placeholder-opacity: 1;
-    color: #fff;
-    color: rgba(255, 255, 255, var(--placeholder-opacity));
-  }
-
-  .sm\:focus\:placeholder-white:focus::-ms-input-placeholder {
     --placeholder-opacity: 1;
     color: #fff;
     color: rgba(255, 255, 255, var(--placeholder-opacity));
@@ -14808,12 +14504,6 @@ a.toc-link {
     color: rgba(0, 0, 0, var(--placeholder-opacity));
   }
 
-  .sm\:focus\:placeholder-black:focus::-ms-input-placeholder {
-    --placeholder-opacity: 1;
-    color: #000;
-    color: rgba(0, 0, 0, var(--placeholder-opacity));
-  }
-
   .sm\:focus\:placeholder-black:focus::placeholder {
     --placeholder-opacity: 1;
     color: #000;
@@ -14825,10 +14515,6 @@ a.toc-link {
   }
 
   .sm\:focus\:placeholder-current:focus:-ms-input-placeholder {
-    color: currentColor;
-  }
-
-  .sm\:focus\:placeholder-current:focus::-ms-input-placeholder {
     color: currentColor;
   }
 
@@ -14844,10 +14530,6 @@ a.toc-link {
     color: var(--color-primary);
   }
 
-  .sm\:focus\:placeholder-primary:focus::-ms-input-placeholder {
-    color: var(--color-primary);
-  }
-
   .sm\:focus\:placeholder-primary:focus::placeholder {
     color: var(--color-primary);
   }
@@ -14857,10 +14539,6 @@ a.toc-link {
   }
 
   .sm\:focus\:placeholder-accent:focus:-ms-input-placeholder {
-    color: var(--color-accent);
-  }
-
-  .sm\:focus\:placeholder-accent:focus::-ms-input-placeholder {
     color: var(--color-accent);
   }
 
@@ -14876,10 +14554,6 @@ a.toc-link {
     color: var(--color-accent-dark);
   }
 
-  .sm\:focus\:placeholder-accent-dark:focus::-ms-input-placeholder {
-    color: var(--color-accent-dark);
-  }
-
   .sm\:focus\:placeholder-accent-dark:focus::placeholder {
     color: var(--color-accent-dark);
   }
@@ -14889,10 +14563,6 @@ a.toc-link {
   }
 
   .sm\:focus\:placeholder-accent-light:focus:-ms-input-placeholder {
-    color: var(--color-accent-light);
-  }
-
-  .sm\:focus\:placeholder-accent-light:focus::-ms-input-placeholder {
     color: var(--color-accent-light);
   }
 
@@ -14908,10 +14578,6 @@ a.toc-link {
     --placeholder-opacity: 0;
   }
 
-  .sm\:placeholder-opacity-0::-ms-input-placeholder {
-    --placeholder-opacity: 0;
-  }
-
   .sm\:placeholder-opacity-0::placeholder {
     --placeholder-opacity: 0;
   }
@@ -14921,10 +14587,6 @@ a.toc-link {
   }
 
   .sm\:placeholder-opacity-25:-ms-input-placeholder {
-    --placeholder-opacity: 0.25;
-  }
-
-  .sm\:placeholder-opacity-25::-ms-input-placeholder {
     --placeholder-opacity: 0.25;
   }
 
@@ -14940,10 +14602,6 @@ a.toc-link {
     --placeholder-opacity: 0.5;
   }
 
-  .sm\:placeholder-opacity-50::-ms-input-placeholder {
-    --placeholder-opacity: 0.5;
-  }
-
   .sm\:placeholder-opacity-50::placeholder {
     --placeholder-opacity: 0.5;
   }
@@ -14953,10 +14611,6 @@ a.toc-link {
   }
 
   .sm\:placeholder-opacity-75:-ms-input-placeholder {
-    --placeholder-opacity: 0.75;
-  }
-
-  .sm\:placeholder-opacity-75::-ms-input-placeholder {
     --placeholder-opacity: 0.75;
   }
 
@@ -14972,10 +14626,6 @@ a.toc-link {
     --placeholder-opacity: 1;
   }
 
-  .sm\:placeholder-opacity-100::-ms-input-placeholder {
-    --placeholder-opacity: 1;
-  }
-
   .sm\:placeholder-opacity-100::placeholder {
     --placeholder-opacity: 1;
   }
@@ -14985,10 +14635,6 @@ a.toc-link {
   }
 
   .sm\:focus\:placeholder-opacity-0:focus:-ms-input-placeholder {
-    --placeholder-opacity: 0;
-  }
-
-  .sm\:focus\:placeholder-opacity-0:focus::-ms-input-placeholder {
     --placeholder-opacity: 0;
   }
 
@@ -15004,10 +14650,6 @@ a.toc-link {
     --placeholder-opacity: 0.25;
   }
 
-  .sm\:focus\:placeholder-opacity-25:focus::-ms-input-placeholder {
-    --placeholder-opacity: 0.25;
-  }
-
   .sm\:focus\:placeholder-opacity-25:focus::placeholder {
     --placeholder-opacity: 0.25;
   }
@@ -15017,10 +14659,6 @@ a.toc-link {
   }
 
   .sm\:focus\:placeholder-opacity-50:focus:-ms-input-placeholder {
-    --placeholder-opacity: 0.5;
-  }
-
-  .sm\:focus\:placeholder-opacity-50:focus::-ms-input-placeholder {
     --placeholder-opacity: 0.5;
   }
 
@@ -15036,10 +14674,6 @@ a.toc-link {
     --placeholder-opacity: 0.75;
   }
 
-  .sm\:focus\:placeholder-opacity-75:focus::-ms-input-placeholder {
-    --placeholder-opacity: 0.75;
-  }
-
   .sm\:focus\:placeholder-opacity-75:focus::placeholder {
     --placeholder-opacity: 0.75;
   }
@@ -15049,10 +14683,6 @@ a.toc-link {
   }
 
   .sm\:focus\:placeholder-opacity-100:focus:-ms-input-placeholder {
-    --placeholder-opacity: 1;
-  }
-
-  .sm\:focus\:placeholder-opacity-100:focus::-ms-input-placeholder {
     --placeholder-opacity: 1;
   }
 
@@ -20977,112 +20607,40 @@ a.toc-link {
     font-family: JetBrains Mono, monospace;
   }
 
-  .md\:font-hairline {
-    font-weight: 100;
-  }
-
   .md\:font-thin {
-    font-weight: 200;
-  }
-
-  .md\:font-light {
-    font-weight: 300;
+    font-weight: var(--font-weight-thin);
   }
 
   .md\:font-normal {
-    font-weight: 400;
-  }
-
-  .md\:font-medium {
-    font-weight: 500;
-  }
-
-  .md\:font-semibold {
-    font-weight: 600;
+    font-weight: var(--font-weight-normal);
   }
 
   .md\:font-bold {
-    font-weight: 700;
-  }
-
-  .md\:font-extrabold {
-    font-weight: 800;
-  }
-
-  .md\:font-black {
-    font-weight: 900;
-  }
-
-  .md\:hover\:font-hairline:hover {
-    font-weight: 100;
+    font-weight: var(--font-weight-bold);
   }
 
   .md\:hover\:font-thin:hover {
-    font-weight: 200;
-  }
-
-  .md\:hover\:font-light:hover {
-    font-weight: 300;
+    font-weight: var(--font-weight-thin);
   }
 
   .md\:hover\:font-normal:hover {
-    font-weight: 400;
-  }
-
-  .md\:hover\:font-medium:hover {
-    font-weight: 500;
-  }
-
-  .md\:hover\:font-semibold:hover {
-    font-weight: 600;
+    font-weight: var(--font-weight-normal);
   }
 
   .md\:hover\:font-bold:hover {
-    font-weight: 700;
-  }
-
-  .md\:hover\:font-extrabold:hover {
-    font-weight: 800;
-  }
-
-  .md\:hover\:font-black:hover {
-    font-weight: 900;
-  }
-
-  .md\:focus\:font-hairline:focus {
-    font-weight: 100;
+    font-weight: var(--font-weight-bold);
   }
 
   .md\:focus\:font-thin:focus {
-    font-weight: 200;
-  }
-
-  .md\:focus\:font-light:focus {
-    font-weight: 300;
+    font-weight: var(--font-weight-thin);
   }
 
   .md\:focus\:font-normal:focus {
-    font-weight: 400;
-  }
-
-  .md\:focus\:font-medium:focus {
-    font-weight: 500;
-  }
-
-  .md\:focus\:font-semibold:focus {
-    font-weight: 600;
+    font-weight: var(--font-weight-normal);
   }
 
   .md\:focus\:font-bold:focus {
-    font-weight: 700;
-  }
-
-  .md\:focus\:font-extrabold:focus {
-    font-weight: 800;
-  }
-
-  .md\:focus\:font-black:focus {
-    font-weight: 900;
+    font-weight: var(--font-weight-bold);
   }
 
   .md\:h-0 {
@@ -23324,10 +22882,6 @@ a.toc-link {
     color: transparent;
   }
 
-  .md\:placeholder-transparent::-ms-input-placeholder {
-    color: transparent;
-  }
-
   .md\:placeholder-transparent::placeholder {
     color: transparent;
   }
@@ -23339,12 +22893,6 @@ a.toc-link {
   }
 
   .md\:placeholder-white:-ms-input-placeholder {
-    --placeholder-opacity: 1;
-    color: #fff;
-    color: rgba(255, 255, 255, var(--placeholder-opacity));
-  }
-
-  .md\:placeholder-white::-ms-input-placeholder {
     --placeholder-opacity: 1;
     color: #fff;
     color: rgba(255, 255, 255, var(--placeholder-opacity));
@@ -23368,12 +22916,6 @@ a.toc-link {
     color: rgba(0, 0, 0, var(--placeholder-opacity));
   }
 
-  .md\:placeholder-black::-ms-input-placeholder {
-    --placeholder-opacity: 1;
-    color: #000;
-    color: rgba(0, 0, 0, var(--placeholder-opacity));
-  }
-
   .md\:placeholder-black::placeholder {
     --placeholder-opacity: 1;
     color: #000;
@@ -23385,10 +22927,6 @@ a.toc-link {
   }
 
   .md\:placeholder-current:-ms-input-placeholder {
-    color: currentColor;
-  }
-
-  .md\:placeholder-current::-ms-input-placeholder {
     color: currentColor;
   }
 
@@ -23404,10 +22942,6 @@ a.toc-link {
     color: var(--color-primary);
   }
 
-  .md\:placeholder-primary::-ms-input-placeholder {
-    color: var(--color-primary);
-  }
-
   .md\:placeholder-primary::placeholder {
     color: var(--color-primary);
   }
@@ -23417,10 +22951,6 @@ a.toc-link {
   }
 
   .md\:placeholder-accent:-ms-input-placeholder {
-    color: var(--color-accent);
-  }
-
-  .md\:placeholder-accent::-ms-input-placeholder {
     color: var(--color-accent);
   }
 
@@ -23436,10 +22966,6 @@ a.toc-link {
     color: var(--color-accent-dark);
   }
 
-  .md\:placeholder-accent-dark::-ms-input-placeholder {
-    color: var(--color-accent-dark);
-  }
-
   .md\:placeholder-accent-dark::placeholder {
     color: var(--color-accent-dark);
   }
@@ -23449,10 +22975,6 @@ a.toc-link {
   }
 
   .md\:placeholder-accent-light:-ms-input-placeholder {
-    color: var(--color-accent-light);
-  }
-
-  .md\:placeholder-accent-light::-ms-input-placeholder {
     color: var(--color-accent-light);
   }
 
@@ -23468,10 +22990,6 @@ a.toc-link {
     color: transparent;
   }
 
-  .md\:focus\:placeholder-transparent:focus::-ms-input-placeholder {
-    color: transparent;
-  }
-
   .md\:focus\:placeholder-transparent:focus::placeholder {
     color: transparent;
   }
@@ -23483,12 +23001,6 @@ a.toc-link {
   }
 
   .md\:focus\:placeholder-white:focus:-ms-input-placeholder {
-    --placeholder-opacity: 1;
-    color: #fff;
-    color: rgba(255, 255, 255, var(--placeholder-opacity));
-  }
-
-  .md\:focus\:placeholder-white:focus::-ms-input-placeholder {
     --placeholder-opacity: 1;
     color: #fff;
     color: rgba(255, 255, 255, var(--placeholder-opacity));
@@ -23512,12 +23024,6 @@ a.toc-link {
     color: rgba(0, 0, 0, var(--placeholder-opacity));
   }
 
-  .md\:focus\:placeholder-black:focus::-ms-input-placeholder {
-    --placeholder-opacity: 1;
-    color: #000;
-    color: rgba(0, 0, 0, var(--placeholder-opacity));
-  }
-
   .md\:focus\:placeholder-black:focus::placeholder {
     --placeholder-opacity: 1;
     color: #000;
@@ -23529,10 +23035,6 @@ a.toc-link {
   }
 
   .md\:focus\:placeholder-current:focus:-ms-input-placeholder {
-    color: currentColor;
-  }
-
-  .md\:focus\:placeholder-current:focus::-ms-input-placeholder {
     color: currentColor;
   }
 
@@ -23548,10 +23050,6 @@ a.toc-link {
     color: var(--color-primary);
   }
 
-  .md\:focus\:placeholder-primary:focus::-ms-input-placeholder {
-    color: var(--color-primary);
-  }
-
   .md\:focus\:placeholder-primary:focus::placeholder {
     color: var(--color-primary);
   }
@@ -23561,10 +23059,6 @@ a.toc-link {
   }
 
   .md\:focus\:placeholder-accent:focus:-ms-input-placeholder {
-    color: var(--color-accent);
-  }
-
-  .md\:focus\:placeholder-accent:focus::-ms-input-placeholder {
     color: var(--color-accent);
   }
 
@@ -23580,10 +23074,6 @@ a.toc-link {
     color: var(--color-accent-dark);
   }
 
-  .md\:focus\:placeholder-accent-dark:focus::-ms-input-placeholder {
-    color: var(--color-accent-dark);
-  }
-
   .md\:focus\:placeholder-accent-dark:focus::placeholder {
     color: var(--color-accent-dark);
   }
@@ -23593,10 +23083,6 @@ a.toc-link {
   }
 
   .md\:focus\:placeholder-accent-light:focus:-ms-input-placeholder {
-    color: var(--color-accent-light);
-  }
-
-  .md\:focus\:placeholder-accent-light:focus::-ms-input-placeholder {
     color: var(--color-accent-light);
   }
 
@@ -23612,10 +23098,6 @@ a.toc-link {
     --placeholder-opacity: 0;
   }
 
-  .md\:placeholder-opacity-0::-ms-input-placeholder {
-    --placeholder-opacity: 0;
-  }
-
   .md\:placeholder-opacity-0::placeholder {
     --placeholder-opacity: 0;
   }
@@ -23625,10 +23107,6 @@ a.toc-link {
   }
 
   .md\:placeholder-opacity-25:-ms-input-placeholder {
-    --placeholder-opacity: 0.25;
-  }
-
-  .md\:placeholder-opacity-25::-ms-input-placeholder {
     --placeholder-opacity: 0.25;
   }
 
@@ -23644,10 +23122,6 @@ a.toc-link {
     --placeholder-opacity: 0.5;
   }
 
-  .md\:placeholder-opacity-50::-ms-input-placeholder {
-    --placeholder-opacity: 0.5;
-  }
-
   .md\:placeholder-opacity-50::placeholder {
     --placeholder-opacity: 0.5;
   }
@@ -23657,10 +23131,6 @@ a.toc-link {
   }
 
   .md\:placeholder-opacity-75:-ms-input-placeholder {
-    --placeholder-opacity: 0.75;
-  }
-
-  .md\:placeholder-opacity-75::-ms-input-placeholder {
     --placeholder-opacity: 0.75;
   }
 
@@ -23676,10 +23146,6 @@ a.toc-link {
     --placeholder-opacity: 1;
   }
 
-  .md\:placeholder-opacity-100::-ms-input-placeholder {
-    --placeholder-opacity: 1;
-  }
-
   .md\:placeholder-opacity-100::placeholder {
     --placeholder-opacity: 1;
   }
@@ -23689,10 +23155,6 @@ a.toc-link {
   }
 
   .md\:focus\:placeholder-opacity-0:focus:-ms-input-placeholder {
-    --placeholder-opacity: 0;
-  }
-
-  .md\:focus\:placeholder-opacity-0:focus::-ms-input-placeholder {
     --placeholder-opacity: 0;
   }
 
@@ -23708,10 +23170,6 @@ a.toc-link {
     --placeholder-opacity: 0.25;
   }
 
-  .md\:focus\:placeholder-opacity-25:focus::-ms-input-placeholder {
-    --placeholder-opacity: 0.25;
-  }
-
   .md\:focus\:placeholder-opacity-25:focus::placeholder {
     --placeholder-opacity: 0.25;
   }
@@ -23721,10 +23179,6 @@ a.toc-link {
   }
 
   .md\:focus\:placeholder-opacity-50:focus:-ms-input-placeholder {
-    --placeholder-opacity: 0.5;
-  }
-
-  .md\:focus\:placeholder-opacity-50:focus::-ms-input-placeholder {
     --placeholder-opacity: 0.5;
   }
 
@@ -23740,10 +23194,6 @@ a.toc-link {
     --placeholder-opacity: 0.75;
   }
 
-  .md\:focus\:placeholder-opacity-75:focus::-ms-input-placeholder {
-    --placeholder-opacity: 0.75;
-  }
-
   .md\:focus\:placeholder-opacity-75:focus::placeholder {
     --placeholder-opacity: 0.75;
   }
@@ -23753,10 +23203,6 @@ a.toc-link {
   }
 
   .md\:focus\:placeholder-opacity-100:focus:-ms-input-placeholder {
-    --placeholder-opacity: 1;
-  }
-
-  .md\:focus\:placeholder-opacity-100:focus::-ms-input-placeholder {
     --placeholder-opacity: 1;
   }
 
@@ -29681,112 +29127,40 @@ a.toc-link {
     font-family: JetBrains Mono, monospace;
   }
 
-  .lg\:font-hairline {
-    font-weight: 100;
-  }
-
   .lg\:font-thin {
-    font-weight: 200;
-  }
-
-  .lg\:font-light {
-    font-weight: 300;
+    font-weight: var(--font-weight-thin);
   }
 
   .lg\:font-normal {
-    font-weight: 400;
-  }
-
-  .lg\:font-medium {
-    font-weight: 500;
-  }
-
-  .lg\:font-semibold {
-    font-weight: 600;
+    font-weight: var(--font-weight-normal);
   }
 
   .lg\:font-bold {
-    font-weight: 700;
-  }
-
-  .lg\:font-extrabold {
-    font-weight: 800;
-  }
-
-  .lg\:font-black {
-    font-weight: 900;
-  }
-
-  .lg\:hover\:font-hairline:hover {
-    font-weight: 100;
+    font-weight: var(--font-weight-bold);
   }
 
   .lg\:hover\:font-thin:hover {
-    font-weight: 200;
-  }
-
-  .lg\:hover\:font-light:hover {
-    font-weight: 300;
+    font-weight: var(--font-weight-thin);
   }
 
   .lg\:hover\:font-normal:hover {
-    font-weight: 400;
-  }
-
-  .lg\:hover\:font-medium:hover {
-    font-weight: 500;
-  }
-
-  .lg\:hover\:font-semibold:hover {
-    font-weight: 600;
+    font-weight: var(--font-weight-normal);
   }
 
   .lg\:hover\:font-bold:hover {
-    font-weight: 700;
-  }
-
-  .lg\:hover\:font-extrabold:hover {
-    font-weight: 800;
-  }
-
-  .lg\:hover\:font-black:hover {
-    font-weight: 900;
-  }
-
-  .lg\:focus\:font-hairline:focus {
-    font-weight: 100;
+    font-weight: var(--font-weight-bold);
   }
 
   .lg\:focus\:font-thin:focus {
-    font-weight: 200;
-  }
-
-  .lg\:focus\:font-light:focus {
-    font-weight: 300;
+    font-weight: var(--font-weight-thin);
   }
 
   .lg\:focus\:font-normal:focus {
-    font-weight: 400;
-  }
-
-  .lg\:focus\:font-medium:focus {
-    font-weight: 500;
-  }
-
-  .lg\:focus\:font-semibold:focus {
-    font-weight: 600;
+    font-weight: var(--font-weight-normal);
   }
 
   .lg\:focus\:font-bold:focus {
-    font-weight: 700;
-  }
-
-  .lg\:focus\:font-extrabold:focus {
-    font-weight: 800;
-  }
-
-  .lg\:focus\:font-black:focus {
-    font-weight: 900;
+    font-weight: var(--font-weight-bold);
   }
 
   .lg\:h-0 {
@@ -32028,10 +31402,6 @@ a.toc-link {
     color: transparent;
   }
 
-  .lg\:placeholder-transparent::-ms-input-placeholder {
-    color: transparent;
-  }
-
   .lg\:placeholder-transparent::placeholder {
     color: transparent;
   }
@@ -32043,12 +31413,6 @@ a.toc-link {
   }
 
   .lg\:placeholder-white:-ms-input-placeholder {
-    --placeholder-opacity: 1;
-    color: #fff;
-    color: rgba(255, 255, 255, var(--placeholder-opacity));
-  }
-
-  .lg\:placeholder-white::-ms-input-placeholder {
     --placeholder-opacity: 1;
     color: #fff;
     color: rgba(255, 255, 255, var(--placeholder-opacity));
@@ -32072,12 +31436,6 @@ a.toc-link {
     color: rgba(0, 0, 0, var(--placeholder-opacity));
   }
 
-  .lg\:placeholder-black::-ms-input-placeholder {
-    --placeholder-opacity: 1;
-    color: #000;
-    color: rgba(0, 0, 0, var(--placeholder-opacity));
-  }
-
   .lg\:placeholder-black::placeholder {
     --placeholder-opacity: 1;
     color: #000;
@@ -32089,10 +31447,6 @@ a.toc-link {
   }
 
   .lg\:placeholder-current:-ms-input-placeholder {
-    color: currentColor;
-  }
-
-  .lg\:placeholder-current::-ms-input-placeholder {
     color: currentColor;
   }
 
@@ -32108,10 +31462,6 @@ a.toc-link {
     color: var(--color-primary);
   }
 
-  .lg\:placeholder-primary::-ms-input-placeholder {
-    color: var(--color-primary);
-  }
-
   .lg\:placeholder-primary::placeholder {
     color: var(--color-primary);
   }
@@ -32121,10 +31471,6 @@ a.toc-link {
   }
 
   .lg\:placeholder-accent:-ms-input-placeholder {
-    color: var(--color-accent);
-  }
-
-  .lg\:placeholder-accent::-ms-input-placeholder {
     color: var(--color-accent);
   }
 
@@ -32140,10 +31486,6 @@ a.toc-link {
     color: var(--color-accent-dark);
   }
 
-  .lg\:placeholder-accent-dark::-ms-input-placeholder {
-    color: var(--color-accent-dark);
-  }
-
   .lg\:placeholder-accent-dark::placeholder {
     color: var(--color-accent-dark);
   }
@@ -32153,10 +31495,6 @@ a.toc-link {
   }
 
   .lg\:placeholder-accent-light:-ms-input-placeholder {
-    color: var(--color-accent-light);
-  }
-
-  .lg\:placeholder-accent-light::-ms-input-placeholder {
     color: var(--color-accent-light);
   }
 
@@ -32172,10 +31510,6 @@ a.toc-link {
     color: transparent;
   }
 
-  .lg\:focus\:placeholder-transparent:focus::-ms-input-placeholder {
-    color: transparent;
-  }
-
   .lg\:focus\:placeholder-transparent:focus::placeholder {
     color: transparent;
   }
@@ -32187,12 +31521,6 @@ a.toc-link {
   }
 
   .lg\:focus\:placeholder-white:focus:-ms-input-placeholder {
-    --placeholder-opacity: 1;
-    color: #fff;
-    color: rgba(255, 255, 255, var(--placeholder-opacity));
-  }
-
-  .lg\:focus\:placeholder-white:focus::-ms-input-placeholder {
     --placeholder-opacity: 1;
     color: #fff;
     color: rgba(255, 255, 255, var(--placeholder-opacity));
@@ -32216,12 +31544,6 @@ a.toc-link {
     color: rgba(0, 0, 0, var(--placeholder-opacity));
   }
 
-  .lg\:focus\:placeholder-black:focus::-ms-input-placeholder {
-    --placeholder-opacity: 1;
-    color: #000;
-    color: rgba(0, 0, 0, var(--placeholder-opacity));
-  }
-
   .lg\:focus\:placeholder-black:focus::placeholder {
     --placeholder-opacity: 1;
     color: #000;
@@ -32233,10 +31555,6 @@ a.toc-link {
   }
 
   .lg\:focus\:placeholder-current:focus:-ms-input-placeholder {
-    color: currentColor;
-  }
-
-  .lg\:focus\:placeholder-current:focus::-ms-input-placeholder {
     color: currentColor;
   }
 
@@ -32252,10 +31570,6 @@ a.toc-link {
     color: var(--color-primary);
   }
 
-  .lg\:focus\:placeholder-primary:focus::-ms-input-placeholder {
-    color: var(--color-primary);
-  }
-
   .lg\:focus\:placeholder-primary:focus::placeholder {
     color: var(--color-primary);
   }
@@ -32265,10 +31579,6 @@ a.toc-link {
   }
 
   .lg\:focus\:placeholder-accent:focus:-ms-input-placeholder {
-    color: var(--color-accent);
-  }
-
-  .lg\:focus\:placeholder-accent:focus::-ms-input-placeholder {
     color: var(--color-accent);
   }
 
@@ -32284,10 +31594,6 @@ a.toc-link {
     color: var(--color-accent-dark);
   }
 
-  .lg\:focus\:placeholder-accent-dark:focus::-ms-input-placeholder {
-    color: var(--color-accent-dark);
-  }
-
   .lg\:focus\:placeholder-accent-dark:focus::placeholder {
     color: var(--color-accent-dark);
   }
@@ -32297,10 +31603,6 @@ a.toc-link {
   }
 
   .lg\:focus\:placeholder-accent-light:focus:-ms-input-placeholder {
-    color: var(--color-accent-light);
-  }
-
-  .lg\:focus\:placeholder-accent-light:focus::-ms-input-placeholder {
     color: var(--color-accent-light);
   }
 
@@ -32316,10 +31618,6 @@ a.toc-link {
     --placeholder-opacity: 0;
   }
 
-  .lg\:placeholder-opacity-0::-ms-input-placeholder {
-    --placeholder-opacity: 0;
-  }
-
   .lg\:placeholder-opacity-0::placeholder {
     --placeholder-opacity: 0;
   }
@@ -32329,10 +31627,6 @@ a.toc-link {
   }
 
   .lg\:placeholder-opacity-25:-ms-input-placeholder {
-    --placeholder-opacity: 0.25;
-  }
-
-  .lg\:placeholder-opacity-25::-ms-input-placeholder {
     --placeholder-opacity: 0.25;
   }
 
@@ -32348,10 +31642,6 @@ a.toc-link {
     --placeholder-opacity: 0.5;
   }
 
-  .lg\:placeholder-opacity-50::-ms-input-placeholder {
-    --placeholder-opacity: 0.5;
-  }
-
   .lg\:placeholder-opacity-50::placeholder {
     --placeholder-opacity: 0.5;
   }
@@ -32361,10 +31651,6 @@ a.toc-link {
   }
 
   .lg\:placeholder-opacity-75:-ms-input-placeholder {
-    --placeholder-opacity: 0.75;
-  }
-
-  .lg\:placeholder-opacity-75::-ms-input-placeholder {
     --placeholder-opacity: 0.75;
   }
 
@@ -32380,10 +31666,6 @@ a.toc-link {
     --placeholder-opacity: 1;
   }
 
-  .lg\:placeholder-opacity-100::-ms-input-placeholder {
-    --placeholder-opacity: 1;
-  }
-
   .lg\:placeholder-opacity-100::placeholder {
     --placeholder-opacity: 1;
   }
@@ -32393,10 +31675,6 @@ a.toc-link {
   }
 
   .lg\:focus\:placeholder-opacity-0:focus:-ms-input-placeholder {
-    --placeholder-opacity: 0;
-  }
-
-  .lg\:focus\:placeholder-opacity-0:focus::-ms-input-placeholder {
     --placeholder-opacity: 0;
   }
 
@@ -32412,10 +31690,6 @@ a.toc-link {
     --placeholder-opacity: 0.25;
   }
 
-  .lg\:focus\:placeholder-opacity-25:focus::-ms-input-placeholder {
-    --placeholder-opacity: 0.25;
-  }
-
   .lg\:focus\:placeholder-opacity-25:focus::placeholder {
     --placeholder-opacity: 0.25;
   }
@@ -32425,10 +31699,6 @@ a.toc-link {
   }
 
   .lg\:focus\:placeholder-opacity-50:focus:-ms-input-placeholder {
-    --placeholder-opacity: 0.5;
-  }
-
-  .lg\:focus\:placeholder-opacity-50:focus::-ms-input-placeholder {
     --placeholder-opacity: 0.5;
   }
 
@@ -32444,10 +31714,6 @@ a.toc-link {
     --placeholder-opacity: 0.75;
   }
 
-  .lg\:focus\:placeholder-opacity-75:focus::-ms-input-placeholder {
-    --placeholder-opacity: 0.75;
-  }
-
   .lg\:focus\:placeholder-opacity-75:focus::placeholder {
     --placeholder-opacity: 0.75;
   }
@@ -32457,10 +31723,6 @@ a.toc-link {
   }
 
   .lg\:focus\:placeholder-opacity-100:focus:-ms-input-placeholder {
-    --placeholder-opacity: 1;
-  }
-
-  .lg\:focus\:placeholder-opacity-100:focus::-ms-input-placeholder {
     --placeholder-opacity: 1;
   }
 
@@ -38385,112 +37647,40 @@ a.toc-link {
     font-family: JetBrains Mono, monospace;
   }
 
-  .xl\:font-hairline {
-    font-weight: 100;
-  }
-
   .xl\:font-thin {
-    font-weight: 200;
-  }
-
-  .xl\:font-light {
-    font-weight: 300;
+    font-weight: var(--font-weight-thin);
   }
 
   .xl\:font-normal {
-    font-weight: 400;
-  }
-
-  .xl\:font-medium {
-    font-weight: 500;
-  }
-
-  .xl\:font-semibold {
-    font-weight: 600;
+    font-weight: var(--font-weight-normal);
   }
 
   .xl\:font-bold {
-    font-weight: 700;
-  }
-
-  .xl\:font-extrabold {
-    font-weight: 800;
-  }
-
-  .xl\:font-black {
-    font-weight: 900;
-  }
-
-  .xl\:hover\:font-hairline:hover {
-    font-weight: 100;
+    font-weight: var(--font-weight-bold);
   }
 
   .xl\:hover\:font-thin:hover {
-    font-weight: 200;
-  }
-
-  .xl\:hover\:font-light:hover {
-    font-weight: 300;
+    font-weight: var(--font-weight-thin);
   }
 
   .xl\:hover\:font-normal:hover {
-    font-weight: 400;
-  }
-
-  .xl\:hover\:font-medium:hover {
-    font-weight: 500;
-  }
-
-  .xl\:hover\:font-semibold:hover {
-    font-weight: 600;
+    font-weight: var(--font-weight-normal);
   }
 
   .xl\:hover\:font-bold:hover {
-    font-weight: 700;
-  }
-
-  .xl\:hover\:font-extrabold:hover {
-    font-weight: 800;
-  }
-
-  .xl\:hover\:font-black:hover {
-    font-weight: 900;
-  }
-
-  .xl\:focus\:font-hairline:focus {
-    font-weight: 100;
+    font-weight: var(--font-weight-bold);
   }
 
   .xl\:focus\:font-thin:focus {
-    font-weight: 200;
-  }
-
-  .xl\:focus\:font-light:focus {
-    font-weight: 300;
+    font-weight: var(--font-weight-thin);
   }
 
   .xl\:focus\:font-normal:focus {
-    font-weight: 400;
-  }
-
-  .xl\:focus\:font-medium:focus {
-    font-weight: 500;
-  }
-
-  .xl\:focus\:font-semibold:focus {
-    font-weight: 600;
+    font-weight: var(--font-weight-normal);
   }
 
   .xl\:focus\:font-bold:focus {
-    font-weight: 700;
-  }
-
-  .xl\:focus\:font-extrabold:focus {
-    font-weight: 800;
-  }
-
-  .xl\:focus\:font-black:focus {
-    font-weight: 900;
+    font-weight: var(--font-weight-bold);
   }
 
   .xl\:h-0 {
@@ -40732,10 +39922,6 @@ a.toc-link {
     color: transparent;
   }
 
-  .xl\:placeholder-transparent::-ms-input-placeholder {
-    color: transparent;
-  }
-
   .xl\:placeholder-transparent::placeholder {
     color: transparent;
   }
@@ -40747,12 +39933,6 @@ a.toc-link {
   }
 
   .xl\:placeholder-white:-ms-input-placeholder {
-    --placeholder-opacity: 1;
-    color: #fff;
-    color: rgba(255, 255, 255, var(--placeholder-opacity));
-  }
-
-  .xl\:placeholder-white::-ms-input-placeholder {
     --placeholder-opacity: 1;
     color: #fff;
     color: rgba(255, 255, 255, var(--placeholder-opacity));
@@ -40776,12 +39956,6 @@ a.toc-link {
     color: rgba(0, 0, 0, var(--placeholder-opacity));
   }
 
-  .xl\:placeholder-black::-ms-input-placeholder {
-    --placeholder-opacity: 1;
-    color: #000;
-    color: rgba(0, 0, 0, var(--placeholder-opacity));
-  }
-
   .xl\:placeholder-black::placeholder {
     --placeholder-opacity: 1;
     color: #000;
@@ -40793,10 +39967,6 @@ a.toc-link {
   }
 
   .xl\:placeholder-current:-ms-input-placeholder {
-    color: currentColor;
-  }
-
-  .xl\:placeholder-current::-ms-input-placeholder {
     color: currentColor;
   }
 
@@ -40812,10 +39982,6 @@ a.toc-link {
     color: var(--color-primary);
   }
 
-  .xl\:placeholder-primary::-ms-input-placeholder {
-    color: var(--color-primary);
-  }
-
   .xl\:placeholder-primary::placeholder {
     color: var(--color-primary);
   }
@@ -40825,10 +39991,6 @@ a.toc-link {
   }
 
   .xl\:placeholder-accent:-ms-input-placeholder {
-    color: var(--color-accent);
-  }
-
-  .xl\:placeholder-accent::-ms-input-placeholder {
     color: var(--color-accent);
   }
 
@@ -40844,10 +40006,6 @@ a.toc-link {
     color: var(--color-accent-dark);
   }
 
-  .xl\:placeholder-accent-dark::-ms-input-placeholder {
-    color: var(--color-accent-dark);
-  }
-
   .xl\:placeholder-accent-dark::placeholder {
     color: var(--color-accent-dark);
   }
@@ -40857,10 +40015,6 @@ a.toc-link {
   }
 
   .xl\:placeholder-accent-light:-ms-input-placeholder {
-    color: var(--color-accent-light);
-  }
-
-  .xl\:placeholder-accent-light::-ms-input-placeholder {
     color: var(--color-accent-light);
   }
 
@@ -40876,10 +40030,6 @@ a.toc-link {
     color: transparent;
   }
 
-  .xl\:focus\:placeholder-transparent:focus::-ms-input-placeholder {
-    color: transparent;
-  }
-
   .xl\:focus\:placeholder-transparent:focus::placeholder {
     color: transparent;
   }
@@ -40891,12 +40041,6 @@ a.toc-link {
   }
 
   .xl\:focus\:placeholder-white:focus:-ms-input-placeholder {
-    --placeholder-opacity: 1;
-    color: #fff;
-    color: rgba(255, 255, 255, var(--placeholder-opacity));
-  }
-
-  .xl\:focus\:placeholder-white:focus::-ms-input-placeholder {
     --placeholder-opacity: 1;
     color: #fff;
     color: rgba(255, 255, 255, var(--placeholder-opacity));
@@ -40920,12 +40064,6 @@ a.toc-link {
     color: rgba(0, 0, 0, var(--placeholder-opacity));
   }
 
-  .xl\:focus\:placeholder-black:focus::-ms-input-placeholder {
-    --placeholder-opacity: 1;
-    color: #000;
-    color: rgba(0, 0, 0, var(--placeholder-opacity));
-  }
-
   .xl\:focus\:placeholder-black:focus::placeholder {
     --placeholder-opacity: 1;
     color: #000;
@@ -40937,10 +40075,6 @@ a.toc-link {
   }
 
   .xl\:focus\:placeholder-current:focus:-ms-input-placeholder {
-    color: currentColor;
-  }
-
-  .xl\:focus\:placeholder-current:focus::-ms-input-placeholder {
     color: currentColor;
   }
 
@@ -40956,10 +40090,6 @@ a.toc-link {
     color: var(--color-primary);
   }
 
-  .xl\:focus\:placeholder-primary:focus::-ms-input-placeholder {
-    color: var(--color-primary);
-  }
-
   .xl\:focus\:placeholder-primary:focus::placeholder {
     color: var(--color-primary);
   }
@@ -40969,10 +40099,6 @@ a.toc-link {
   }
 
   .xl\:focus\:placeholder-accent:focus:-ms-input-placeholder {
-    color: var(--color-accent);
-  }
-
-  .xl\:focus\:placeholder-accent:focus::-ms-input-placeholder {
     color: var(--color-accent);
   }
 
@@ -40988,10 +40114,6 @@ a.toc-link {
     color: var(--color-accent-dark);
   }
 
-  .xl\:focus\:placeholder-accent-dark:focus::-ms-input-placeholder {
-    color: var(--color-accent-dark);
-  }
-
   .xl\:focus\:placeholder-accent-dark:focus::placeholder {
     color: var(--color-accent-dark);
   }
@@ -41001,10 +40123,6 @@ a.toc-link {
   }
 
   .xl\:focus\:placeholder-accent-light:focus:-ms-input-placeholder {
-    color: var(--color-accent-light);
-  }
-
-  .xl\:focus\:placeholder-accent-light:focus::-ms-input-placeholder {
     color: var(--color-accent-light);
   }
 
@@ -41020,10 +40138,6 @@ a.toc-link {
     --placeholder-opacity: 0;
   }
 
-  .xl\:placeholder-opacity-0::-ms-input-placeholder {
-    --placeholder-opacity: 0;
-  }
-
   .xl\:placeholder-opacity-0::placeholder {
     --placeholder-opacity: 0;
   }
@@ -41033,10 +40147,6 @@ a.toc-link {
   }
 
   .xl\:placeholder-opacity-25:-ms-input-placeholder {
-    --placeholder-opacity: 0.25;
-  }
-
-  .xl\:placeholder-opacity-25::-ms-input-placeholder {
     --placeholder-opacity: 0.25;
   }
 
@@ -41052,10 +40162,6 @@ a.toc-link {
     --placeholder-opacity: 0.5;
   }
 
-  .xl\:placeholder-opacity-50::-ms-input-placeholder {
-    --placeholder-opacity: 0.5;
-  }
-
   .xl\:placeholder-opacity-50::placeholder {
     --placeholder-opacity: 0.5;
   }
@@ -41065,10 +40171,6 @@ a.toc-link {
   }
 
   .xl\:placeholder-opacity-75:-ms-input-placeholder {
-    --placeholder-opacity: 0.75;
-  }
-
-  .xl\:placeholder-opacity-75::-ms-input-placeholder {
     --placeholder-opacity: 0.75;
   }
 
@@ -41084,10 +40186,6 @@ a.toc-link {
     --placeholder-opacity: 1;
   }
 
-  .xl\:placeholder-opacity-100::-ms-input-placeholder {
-    --placeholder-opacity: 1;
-  }
-
   .xl\:placeholder-opacity-100::placeholder {
     --placeholder-opacity: 1;
   }
@@ -41097,10 +40195,6 @@ a.toc-link {
   }
 
   .xl\:focus\:placeholder-opacity-0:focus:-ms-input-placeholder {
-    --placeholder-opacity: 0;
-  }
-
-  .xl\:focus\:placeholder-opacity-0:focus::-ms-input-placeholder {
     --placeholder-opacity: 0;
   }
 
@@ -41116,10 +40210,6 @@ a.toc-link {
     --placeholder-opacity: 0.25;
   }
 
-  .xl\:focus\:placeholder-opacity-25:focus::-ms-input-placeholder {
-    --placeholder-opacity: 0.25;
-  }
-
   .xl\:focus\:placeholder-opacity-25:focus::placeholder {
     --placeholder-opacity: 0.25;
   }
@@ -41129,10 +40219,6 @@ a.toc-link {
   }
 
   .xl\:focus\:placeholder-opacity-50:focus:-ms-input-placeholder {
-    --placeholder-opacity: 0.5;
-  }
-
-  .xl\:focus\:placeholder-opacity-50:focus::-ms-input-placeholder {
     --placeholder-opacity: 0.5;
   }
 
@@ -41148,10 +40234,6 @@ a.toc-link {
     --placeholder-opacity: 0.75;
   }
 
-  .xl\:focus\:placeholder-opacity-75:focus::-ms-input-placeholder {
-    --placeholder-opacity: 0.75;
-  }
-
   .xl\:focus\:placeholder-opacity-75:focus::placeholder {
     --placeholder-opacity: 0.75;
   }
@@ -41161,10 +40243,6 @@ a.toc-link {
   }
 
   .xl\:focus\:placeholder-opacity-100:focus:-ms-input-placeholder {
-    --placeholder-opacity: 1;
-  }
-
-  .xl\:focus\:placeholder-opacity-100:focus::-ms-input-placeholder {
     --placeholder-opacity: 1;
   }
 

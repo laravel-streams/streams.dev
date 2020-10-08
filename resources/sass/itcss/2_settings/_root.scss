@@ -1,4 +1,9 @@
 :root {
+    // Font weights 
+    --font-weight-thin:300;
+    --font-weight-normal:300;
+    --font-weight-bold:800;
+
     // Widths
     --width-aside: 300px;
     --width-main: calc(100% - var(--width-aside));
