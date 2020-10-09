@@ -1,0 +1,27 @@
+{
+    "source.format": "json",
+    "fields": {
+        "name": "string",
+        "description": "text",
+        "status": {
+            "type": "select",
+            "config": {
+                "options": {
+                    "planned": "Planned",
+                    "complete": "Complete",
+                    "in_progress": "In Progress",
+                    "paused": "Paused"
+                }
+            }
+        }
+    },
+    "ui": {
+        "table": {
+            "columns": [
+                "title",
+                "status"
+            ]
+        },
+        "form": {}
+    }
+}
