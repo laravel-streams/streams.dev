@@ -7,8 +7,8 @@
 
     --color-light-base: 0;
     --color-light:hsla(var(--color-light-base),0%,99%,1);
-    --color-light-darker:hsla(var(--color-light-base),0%,95%,1);
-    --color-light-lighter:hsla(var(--color-light-base),0%,95%,1);
+    --color-light-darker:hsla(var(--color-light-base),0%,75%,1);
+    --color-light-lighter:hsla(var(--color-light-base),0%,100%,1);
 
     --color-accent-base: 210;
     --color-accent:hsla(var(--color-accent-base),63%,50%,1);
@@ -43,17 +43,25 @@
     --text:var(--color-dark);
     --bg:var(--color-light);
 
+    // ASIDE
+    --aside-menu-link:var(--color-dark-lighter);
+    --aside-menu-link--active:var(--color-accent);
+    --aside-menu-link--hover:var(--color-accent);
+    
+    // Scrollbar
     --scrollbar-color:var(--color-accent);
     --scrollbar-bg:var(--color-dark-lighter);
 
+    // Highlight and code blocks
     --highlightjs-bg:var(--color-dark);
-
     --code-in-text-color:var(--color-light);
     --code-in-text-bg:var(--color-dark);
 
+    // Top navigation
     --navbar-text:var(--color-dark);
 
-    --code-bottom-anim:hsla(var(--color-accent-base),63%,50%,.2);
+    // Bottom animation
+    --code-bottom-anim:hsla(0,0%,85%,.4);;
 }
 
 
@@ -62,16 +70,24 @@
     --text:var(--color-light);
     --bg:var(--color-dark);
 
+    // ASIDE
+    --aside-menu-link:var(--color-light-darker);
+    --aside-menu-link--active:var(--color-accent);
+    --aside-menu-link--hover:var(--color-light-darker);
+
+    // Scrollbar
     --scrollbar-color:var(--color-accent);
     --scrollbar-bg:var(--color-dark);
 
+    // Highlight and code blocks
     --highlightjs-bg:var(--color-dark-darker);
-
     --code-in-text-color:var(--color-light-darker);
     --code-in-text-bg:var(--color-dark-lighter);
 
+    // Top navigation
     --navbar-text:var(--color-light);
 
+    // Bottom animation
     --code-bottom-anim:hsla(var(--color-accent-base),63%,50%,.2);
 
 }

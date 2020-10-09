@@ -623,8 +623,8 @@ video {
   --color-dark-lighter:hsla(var(--color-dark-base),6%,21%,1);
   --color-light-base: 0;
   --color-light:hsla(var(--color-light-base),0%,99%,1);
-  --color-light-darker:hsla(var(--color-light-base),0%,95%,1);
-  --color-light-lighter:hsla(var(--color-light-base),0%,95%,1);
+  --color-light-darker:hsla(var(--color-light-base),0%,75%,1);
+  --color-light-lighter:hsla(var(--color-light-base),0%,100%,1);
   --color-accent-base: 210;
   --color-accent:hsla(var(--color-accent-base),63%,50%,1);
   --color-accent-darker:hsla(var(--color-accent-base),63%,35%,1);
@@ -646,18 +646,24 @@ video {
 .o-mode__light {
   --text:var(--color-dark);
   --bg:var(--color-light);
+  --aside-menu-link:var(--color-dark-lighter);
+  --aside-menu-link--active:var(--color-accent);
+  --aside-menu-link--hover:var(--color-accent);
   --scrollbar-color:var(--color-accent);
   --scrollbar-bg:var(--color-dark-lighter);
   --highlightjs-bg:var(--color-dark);
   --code-in-text-color:var(--color-light);
   --code-in-text-bg:var(--color-dark);
   --navbar-text:var(--color-dark);
-  --code-bottom-anim:hsla(var(--color-accent-base),63%,50%,.2);
+  --code-bottom-anim:hsla(0,0%,85%,.4);
 }
 
 .o-mode__dark {
   --text:var(--color-light);
   --bg:var(--color-dark);
+  --aside-menu-link:var(--color-light-darker);
+  --aside-menu-link--active:var(--color-accent);
+  --aside-menu-link--hover:var(--color-light-darker);
   --scrollbar-color:var(--color-accent);
   --scrollbar-bg:var(--color-dark);
   --highlightjs-bg:var(--color-dark-darker);
@@ -881,27 +887,32 @@ p code:not([class^=language]) {
   color: var(--color-light);
 }
 
-.c-aside-menu {
-  list-style-type: none;
+ul.c-aside-menu {
   list-style-position: inside;
+  list-style-type: none;
   list-style-type: none;
   margin-right: 2rem;
 }
 
-.c-aside-menu a {
-  margin: 5px 0;
-  transition: color 200ms ease-in-out;
+ul.c-aside-menu a {
+  transition: all 200ms ease-in-out;
+  opacity: 1;
+  color: var(--aside-menu-link);
   display: block;
   padding-left: 0.25rem;
   padding-right: 0.25rem;
 }
 
-.c-aside-menu a:hover {
-  color: var(--color-dark);
+ul.c-aside-menu li.active a {
+  opacity: 1;
+  color: var(--aside-menu-link--active);
+  border-radius: 0.125rem;
 }
 
-.c-aside-menu .active a {
-  border-radius: 0.125rem;
+ul.c-aside-menu li a:hover,
+ul.c-aside-menu li.active a:hover {
+  opacity: 0.8;
+  color: var(--aside-menu-link--hover);
 }
 
 .c-aside-menu-title {

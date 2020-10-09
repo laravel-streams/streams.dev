@@ -1,19 +1,23 @@
-.c-aside-menu {
-    list-style-type: none;
+ul.c-aside-menu {
     list-style-position: inside;
+    list-style-type: none;
     @apply list-none mr-8;
 }
-.c-aside-menu a {
-    margin: 5px 0;
 
-    transition: color 200ms ease-in-out;
-
+ul.c-aside-menu a {
+    transition: all 200ms ease-in-out;
+    opacity: 1;
+    color: var(--aside-menu-link);
     @apply block px-1;
-
-    &:hover {
-        @apply text-dark;
-    }
 }
-.c-aside-menu .active a {
+
+ul.c-aside-menu li.active a {
+    opacity: 1;
+    color: var(--aside-menu-link--active);
     @apply rounded-sm;
+}
+ul.c-aside-menu li a:hover,
+ul.c-aside-menu li.active a:hover {
+    opacity: .8;
+    color: var(--aside-menu-link--hover);
 }
