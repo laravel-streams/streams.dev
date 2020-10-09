@@ -1045,6 +1045,17 @@ code[class^=language]::-webkit-scrollbar-thumb {
   fill: var(--navbar-text);
 }
 
+.c-code-bottom-anim {
+  position: relative;
+}
+
+.c-code-bottom-anim svg {
+  position: absolute;
+  left: -200px;
+  bottom: -300px;
+  z-index: -1;
+}
+
 /* Core Styles */
 
 .toc {

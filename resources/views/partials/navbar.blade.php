@@ -4,7 +4,9 @@
         <div class="o-navbar__list-wrapper">
             <ul class="c-navbar c-navbar__left">
                 <li class="c-navbar__item">
-                    <a href="/docs/introduction">Streams</a>
+                    <a href="/docs/introduction">
+                    
+                    </a>
                 </li>
             </ul>
             <ul class="c-navbar c-navbar__right">

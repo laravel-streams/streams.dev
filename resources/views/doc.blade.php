@@ -22,6 +22,7 @@
             </h1>
             @endif
             {!! Str::markdown(View::parse($entry->body)) !!}
+            @include('partials.code-bottom-anim')
         </div>
         @include('partials.docs.toc')
     </div>

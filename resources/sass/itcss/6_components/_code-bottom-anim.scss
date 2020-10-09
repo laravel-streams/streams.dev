@@ -1,0 +1,15 @@
+.c-code-bottom-anim 
+{
+    @apply relative;
+
+    
+
+}
+
+.c-code-bottom-anim svg 
+{
+    @apply absolute;
+    left: -200px;
+    bottom: -300px;
+    z-index: -1;
+}
