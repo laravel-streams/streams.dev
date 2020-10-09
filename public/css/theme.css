@@ -649,6 +649,8 @@ video {
   --aside-menu-link:var(--color-dark-lighter);
   --aside-menu-link--active:var(--color-accent);
   --aside-menu-link--hover:var(--color-accent);
+  --anchor:var(--color-accent);
+  --anchor--hover:var(--color-dark);
   --scrollbar-color:var(--color-accent);
   --scrollbar-bg:var(--color-dark-lighter);
   --highlightjs-bg:var(--color-dark);
@@ -664,6 +666,8 @@ video {
   --aside-menu-link:var(--color-light-darker);
   --aside-menu-link--active:var(--color-accent);
   --aside-menu-link--hover:var(--color-light-darker);
+  --anchor:var(--color-accent);
+  --anchor--hover:var(--color-light);
   --scrollbar-color:var(--color-accent);
   --scrollbar-bg:var(--color-dark);
   --highlightjs-bg:var(--color-dark-darker);
@@ -692,6 +696,22 @@ html {
   outline: none;
   -webkit-tap-highlight-color: transparent;
   color: var(--text);
+}
+
+a {
+  color: var(--anchor);
+  transition: color 200ms ease-in-out;
+}
+
+a:hover {
+  color: var(--anchor--hover);
+}
+
+ul:not(.c-list):not(.c-aside-menu):not(.c-navbar) {
+  list-style-type: disc;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+  list-style-position: inside;
 }
 
 h1,
@@ -789,18 +809,6 @@ p code:not([class^=language]) {
 
 .hljs {
   background: yellow;
-}
-
-ul:not(.c-list):not(.c-aside-menu):not(.c-navbar) {
-  list-style-type: disc;
-  margin-top: 1.5rem;
-  margin-bottom: 1.5rem;
-  list-style-position: inside;
-}
-
-ul:not(.c-list):not(.c-aside-menu):not(.c-navbar) li {
-  margin-top: 0.5rem;
-  margin-bottom: 0.5rem;
 }
 
 .o-mode {

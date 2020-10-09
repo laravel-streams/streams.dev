@@ -1,0 +1,14 @@
+
+ul:not(.c-list):not(.c-aside-menu):not(.c-navbar) {
+    @apply list-disc my-6;
+    list-style-position: inside;
+    // Nested unordered list elements
+    li {
+        
+    }
+    li a 
+    {
+        
+    }
+}
+

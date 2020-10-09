@@ -1,0 +1,9 @@
+a 
+{
+    color:var(--anchor);
+    transition: color 200ms ease-in-out;
+}
+a:hover 
+{
+    color:var(--anchor--hover);
+}

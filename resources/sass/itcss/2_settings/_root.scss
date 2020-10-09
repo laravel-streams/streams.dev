@@ -47,6 +47,10 @@
     --aside-menu-link:var(--color-dark-lighter);
     --aside-menu-link--active:var(--color-accent);
     --aside-menu-link--hover:var(--color-accent);
+
+    // Links
+    --anchor:var(--color-accent);
+    --anchor--hover:var(--color-dark);
     
     // Scrollbar
     --scrollbar-color:var(--color-accent);
@@ -74,6 +78,10 @@
     --aside-menu-link:var(--color-light-darker);
     --aside-menu-link--active:var(--color-accent);
     --aside-menu-link--hover:var(--color-light-darker);
+
+    // Links
+    --anchor:var(--color-accent);
+    --anchor--hover:var(--color-light);
 
     // Scrollbar
     --scrollbar-color:var(--color-accent);
