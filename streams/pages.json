@@ -12,5 +12,6 @@
         "intro": "textarea",
         "body": "text|textarea",
         "sort": "integer"
-    }
+    },
+    "source.format": "md"
 }

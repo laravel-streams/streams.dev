@@ -6,7 +6,7 @@
 
 
 <div class="container mx-auto">
-    <div class="o-page-body w-8/12">
+    <div class="o-page-body w-12/12">
         <h1>
             {{ $entry->title }}
         </h1>
@@ -15,7 +15,8 @@
             {!! Str::markdown($entry->intro) !!}
         </div>
         @endif
-        {!! Str::markdown(View::parse($entry->body)) !!}
+        {!! $entry->body !!}
+        
     </div>
 </div>
 @endsection
