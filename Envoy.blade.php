@@ -1,7 +1,13 @@
 @setup
 require __DIR__.'/vendor/autoload.php';
 
-$dotenv = \Dotenv\Dotenv::createImmutable(__DIR__);
+//$dotenv = \Dotenv\Dotenv::createImmutable(__DIR__);
+
+$dotenv = \Dotenv\Dotenv::create(
+    \Illuminate\Support\Env::getRepository(),
+    __DIR__,
+    '.env'
+);
 
 try {
 $dotenv->load();
