@@ -10,6 +10,10 @@
 {
     @apply absolute;
     left: -200px;
-    bottom: -300px;
+    bottom: -250px;
     z-index: -1;
+}
+
+.c-code-bottom-anim path[class^="triangle"]{
+    fill:var(--code-bottom-anim);
 }

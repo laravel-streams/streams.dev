@@ -643,17 +643,6 @@ video {
   --position-top-aside-menus: 153px;
 }
 
-.o-mode__dark {
-  --text:var(--color-light);
-  --bg:var(--color-dark);
-  --scrollbar-color:var(--color-accent);
-  --scrollbar-bg:var(--color-dark);
-  --highlightjs-bg:var(--color-dark-darker);
-  --code-in-text-color:var(--color-light-darker);
-  --code-in-text-bg:var(--color-dark-lighter);
-  --navbar-text:var(--color-light);
-}
-
 .o-mode__light {
   --text:var(--color-dark);
   --bg:var(--color-light);
@@ -663,6 +652,19 @@ video {
   --code-in-text-color:var(--color-light);
   --code-in-text-bg:var(--color-dark);
   --navbar-text:var(--color-dark);
+  --code-bottom-anim:hsla(var(--color-accent-base),63%,50%,.2);
+}
+
+.o-mode__dark {
+  --text:var(--color-light);
+  --bg:var(--color-dark);
+  --scrollbar-color:var(--color-accent);
+  --scrollbar-bg:var(--color-dark);
+  --highlightjs-bg:var(--color-dark-darker);
+  --code-in-text-color:var(--color-light-darker);
+  --code-in-text-bg:var(--color-dark-lighter);
+  --navbar-text:var(--color-light);
+  --code-bottom-anim:hsla(var(--color-accent-base),63%,50%,.2);
 }
 
 @font-face {
@@ -1052,8 +1054,12 @@ code[class^=language]::-webkit-scrollbar-thumb {
 .c-code-bottom-anim svg {
   position: absolute;
   left: -200px;
-  bottom: -300px;
+  bottom: -250px;
   z-index: -1;
+}
+
+.c-code-bottom-anim path[class^=triangle] {
+  fill: var(--code-bottom-anim);
 }
 
 /* Core Styles */
