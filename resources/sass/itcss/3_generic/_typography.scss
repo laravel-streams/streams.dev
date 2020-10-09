@@ -1,0 +1,105 @@
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    position: relative;
+}
+
+body {
+    font-size: var(--font-size-base);
+}
+
+h1,
+h2,
+h3,
+h4 {
+    @apply font-bold;
+}
+h1,
+h2,
+h3 {
+    @apply tracking-tight leading-tight;
+}
+
+h1 {
+    font-size: var(--font-size-xxl);
+    @apply mb-2 mt-0;
+
+    @apply mt-0 leading-none; // WIP
+}
+h2 {
+    font-size: var(--font-size-xl);
+    @apply mt-12 mb-4;
+}
+
+h3 {
+    font-size: var(--font-size-lg);
+    @apply mt-8 mb-1;
+}
+h4 {
+    font-size: var(--font-size-base);
+    @apply mt-6 mb-1;
+}
+p + p {
+    @apply mt-3;
+}
+p a {
+    transition: all 200ms ease-in-out;
+    @apply border-b border-accent;
+
+    &:hover {
+        @apply bg-transparent;
+    }
+}
+
+// Common styling for pre and code
+pre,
+code
+{
+    @apply font-mono;
+    &,
+    *
+    {
+        //font-size:var(--font-size-sm);
+    }
+}
+// Style the pre tag
+pre
+{
+    overflow-x: auto;
+
+    color: #eee;
+    background: var(--highlightjs-bg);
+    @apply my-8 p-6;
+
+
+    @apply relative;
+}
+
+
+
+code:not([class^='language'])
+{
+    // white-space: nowrap;
+    // @apply p-1 px-2 rounded-sm;
+}
+p code:not([class^='language'])
+{
+    font-size: var(--font-size-sm);
+
+    padding: .1rem .4rem .12rem;
+
+    color: var(--code-in-text-color);
+    background: var(--code-in-text-bg);
+}
+.language-bash.hljs
+{
+    color: #fff;
+}
+
+.hljs
+{
+    background: yellow;
+}

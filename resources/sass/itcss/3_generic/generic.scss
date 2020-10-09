@@ -4,12 +4,17 @@
 
 html {
     overflow-x: hidden;
+    font-size:16px;
+}
+* {
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+    color: var(--text);
+    
 }
 
-.container {
-    
-  
-}
+@import "./typography.scss";
+
 ul:not(.c-list):not(.c-aside-menu):not(.c-navbar) {
     @apply list-disc my-6;
     list-style-position: inside;
@@ -19,16 +24,6 @@ ul:not(.c-list):not(.c-aside-menu):not(.c-navbar) {
     }
 }
 
-* {
-    outline: none;
-    -webkit-tap-highlight-color: transparent;
-     color:var(--text);
-}
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    position: relative;
-}
+
+
+

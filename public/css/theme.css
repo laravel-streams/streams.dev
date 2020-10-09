@@ -685,18 +685,7 @@ video {
 
 html {
   overflow-x: hidden;
-}
-
-ul:not(.c-list):not(.c-aside-menu):not(.c-navbar) {
-  list-style-type: disc;
-  margin-top: 1.5rem;
-  margin-bottom: 1.5rem;
-  list-style-position: inside;
-}
-
-ul:not(.c-list):not(.c-aside-menu):not(.c-navbar) li {
-  margin-top: 0.5rem;
-  margin-bottom: 0.5rem;
+  font-size: 16px;
 }
 
 * {
@@ -712,6 +701,106 @@ h4,
 h5,
 h6 {
   position: relative;
+}
+
+body {
+  font-size: var(--font-size-base);
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-weight: var(--font-weight-bold);
+}
+
+h1,
+h2,
+h3 {
+  letter-spacing: -0.025em;
+  line-height: 1.25;
+}
+
+h1 {
+  font-size: var(--font-size-xxl);
+  margin-bottom: 0.5rem;
+  margin-top: 0;
+  margin-top: 0;
+  line-height: 1;
+}
+
+h2 {
+  font-size: var(--font-size-xl);
+  margin-top: 3rem;
+  margin-bottom: 1rem;
+}
+
+h3 {
+  font-size: var(--font-size-lg);
+  margin-top: 2rem;
+  margin-bottom: 0.25rem;
+}
+
+h4 {
+  font-size: var(--font-size-base);
+  margin-top: 1.5rem;
+  margin-bottom: 0.25rem;
+}
+
+p + p {
+  margin-top: 0.75rem;
+}
+
+p a {
+  transition: all 200ms ease-in-out;
+  border-bottom-width: 1px;
+  border-color: var(--color-accent);
+}
+
+p a:hover {
+  background-color: transparent;
+}
+
+pre,
+code {
+  font-family: JetBrains Mono, monospace;
+}
+
+pre {
+  overflow-x: auto;
+  color: #eee;
+  background: var(--highlightjs-bg);
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  position: relative;
+}
+
+p code:not([class^=language]) {
+  font-size: var(--font-size-sm);
+  padding: 0.1rem 0.4rem 0.12rem;
+  color: var(--code-in-text-color);
+  background: var(--code-in-text-bg);
+}
+
+.language-bash.hljs {
+  color: #fff;
+}
+
+.hljs {
+  background: yellow;
+}
+
+ul:not(.c-list):not(.c-aside-menu):not(.c-navbar) {
+  list-style-type: disc;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+  list-style-position: inside;
+}
+
+ul:not(.c-list):not(.c-aside-menu):not(.c-navbar) li {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
 }
 
 .o-mode {
@@ -757,109 +846,6 @@ h6 {
 
 .o-doc-body p {
   max-width: 65ch;
-}
-
-.o-doc-body *,
-.c-intro * {
-  font-size: var(--font-size-base);
-}
-
-.o-doc-body h1,
-.o-doc-body h2,
-.o-doc-body h3,
-.o-doc-body h4,
-.c-intro h1,
-.c-intro h2,
-.c-intro h3,
-.c-intro h4 {
-  font-weight: var(--font-weight-bold);
-}
-
-.o-doc-body h1,
-.o-doc-body h2,
-.o-doc-body h3,
-.c-intro h1,
-.c-intro h2,
-.c-intro h3 {
-  letter-spacing: -0.025em;
-  line-height: 1.25;
-}
-
-.o-doc-body h1,
-.c-intro h1 {
-  font-size: var(--font-size-xxl);
-  margin-bottom: 0.5rem;
-  margin-top: 0;
-  margin-top: 0;
-  line-height: 1;
-}
-
-.o-doc-body h2,
-.c-intro h2 {
-  font-size: var(--font-size-xl);
-  margin-top: 3rem;
-  margin-bottom: 1rem;
-}
-
-.o-doc-body h3,
-.c-intro h3 {
-  font-size: var(--font-size-lg);
-  margin-top: 2rem;
-  margin-bottom: 0.25rem;
-}
-
-.o-doc-body h4,
-.c-intro h4 {
-  font-size: var(--font-size-base);
-  margin-top: 1.5rem;
-  margin-bottom: 0.25rem;
-}
-
-.o-doc-body p + p,
-.c-intro p + p {
-  margin-top: 0.75rem;
-}
-
-.o-doc-body p a,
-.c-intro p a {
-  transition: all 200ms ease-in-out;
-  border-bottom-width: 1px;
-  border-color: var(--color-accent);
-}
-
-.o-doc-body p a:hover,
-.c-intro p a:hover {
-  background-color: transparent;
-}
-
-pre,
-code {
-  font-family: JetBrains Mono, monospace;
-}
-
-pre {
-  overflow-x: auto;
-  color: #eee;
-  background: var(--highlightjs-bg);
-  margin-top: 2rem;
-  margin-bottom: 2rem;
-  padding: 1.5rem;
-  position: relative;
-}
-
-p code:not([class^=language]) {
-  font-size: var(--font-size-sm);
-  padding: 0.1rem 0.4rem 0.12rem;
-  color: var(--code-in-text-color);
-  background: var(--code-in-text-bg);
-}
-
-.language-bash.hljs {
-  color: #fff;
-}
-
-.hljs {
-  background: yellow;
 }
 
 .o-aside {
