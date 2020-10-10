@@ -1,5 +1,5 @@
 .o-navbar {
-    @apply mt-0 mb-16 py-2 sticky z-10;
+    @apply mt-0 mb-16  sticky z-10;
     backdrop-filter: blur(3px);
     top: 0px;
 
@@ -24,4 +24,13 @@
 
 .o-navbar__list-wrapper {
     @apply flex place-content-between items-center;
+}
+
+
+
+// Icon styling for icons within the navbar 
+.o-navbar .c-icon 
+{
+    width:30px;
+    height:30px;
 }

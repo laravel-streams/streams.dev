@@ -5,7 +5,7 @@
             <ul class="c-navbar c-navbar__left">
                 <li class="c-navbar__item">
                     <a href="/docs/introduction">
-                    
+                    <x-icon-home class="c-navbar__icon" />
                     </a>
                 </li>
             </ul>

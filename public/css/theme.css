@@ -839,8 +839,6 @@ p code:not([class^=language]) {
 .o-navbar {
   margin-top: 0;
   margin-bottom: 4rem;
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
   position: -webkit-sticky;
   position: sticky;
   z-index: 10;
@@ -864,6 +862,11 @@ p code:not([class^=language]) {
   display: flex;
   place-content: space-between;
   align-items: center;
+}
+
+.o-navbar .c-icon {
+  width: 30px;
+  height: 30px;
 }
 
 .o-doc-body {
