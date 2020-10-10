@@ -12,9 +12,9 @@
     --color-light-darker:hsla(var(--color-light-base),0%,90%,var(--color-light-opacity));
     --color-light-lighter:hsla(var(--color-light-base),0%,100%,var(--color-light-opacity));
 
-    --color-accent-base: 210;
+    --color-accent-base: 278;
     --color-accent-opacity:1;
-    --color-accent:hsla(var(--color-accent-base),63%,50%,var(--color-accent-opacity));
+    --color-accent:hsla(var(--color-accent-base),68%,52%,var(--color-accent-opacity));
     --color-accent-darker:hsla(var(--color-accent-base),63%,35%,var(--color-accent-opacity));
     --color-accent-lighter:hsla(var(--color-accent-base),63%,65%,var(--color-accent-opacity));
 
@@ -46,6 +46,12 @@
 
 
 .o-mode__light {
+
+    --color-accent-base: 211;
+    --color-accent-opacity:1;
+    --color-accent:hsla(var(--color-accent-base),100%,76%,var(--color-accent-opacity));
+    --color-accent-darker:hsla(var(--color-accent-base),100%,35%,var(--color-accent-opacity));
+    --color-accent-lighter:hsla(var(--color-accent-base),100%,65%,var(--color-accent-opacity));
 
     --text:var(--color-dark);
     --bg:var(--color-light);
@@ -82,6 +88,12 @@
 
 
 .o-mode__dark {
+
+    --color-accent-base: 321;
+    --color-accent-opacity:1;
+    --color-accent:hsla(var(--color-accent-base),68%,52%,var(--color-accent-opacity));
+    --color-accent-darker:hsla(var(--color-accent-base),63%,35%,var(--color-accent-opacity));
+    --color-accent-lighter:hsla(var(--color-accent-base),63%,65%,var(--color-accent-opacity));
     
     --text:var(--color-light);
     --bg:var(--color-dark);
