@@ -44,6 +44,8 @@
 
     // Component Callout Global
     --callout-title-size:1.5rem;
+
+    
 }
 
 
@@ -88,6 +90,11 @@
 
     // Component card feature 
     --card-feature-bg:var(--color-white);
+
+    // Divider
+    --divider:var(--color-accent);
+
+    
     
 }
 
@@ -134,5 +141,8 @@
     // Component card feature 
     --card-feature-bg:var(--color-dark-lighter);
     --card-feature-icon:var(--color-light);
+
+    // Divider
+    --divider:var(--color-accent);
 
 }

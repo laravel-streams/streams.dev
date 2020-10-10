@@ -693,6 +693,7 @@ video {
   --callout-border:var(--color-light-darker);
   --callout-bg:var(--color-light-lighter);
   --card-feature-bg:var(--color-white);
+  --divider:var(--color-accent);
 }
 
 .o-mode__dark {
@@ -719,6 +720,7 @@ video {
   --callout-bg:var(--color-dark-lighter);
   --card-feature-bg:var(--color-dark-lighter);
   --card-feature-icon:var(--color-light);
+  --divider:var(--color-accent);
 }
 
 @font-face {
@@ -1186,6 +1188,10 @@ code[class^=language]::-webkit-scrollbar-thumb {
   font-size: var(--font-size-sm);
   margin: 0;
   margin-bottom: 0.25rem;
+}
+
+.c-divider {
+  fill: var(--divider);
 }
 
 /* Core Styles */
