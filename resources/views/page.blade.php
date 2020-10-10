@@ -10,4 +10,7 @@
         {!! $entry->body !!}
     </div>
 </div>
+<div class="o-footer">
+    
+</div>
 @endsection

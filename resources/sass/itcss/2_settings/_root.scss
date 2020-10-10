@@ -18,6 +18,8 @@
     --color-accent-darker:hsla(var(--color-accent-base),63%,35%,var(--color-accent-opacity));
     --color-accent-lighter:hsla(var(--color-accent-base),63%,65%,var(--color-accent-opacity));
 
+    --color-white:#fff;
+
     // Font weights 
     --font-weight-normal:300;
     --font-weight-bold:700;
@@ -83,6 +85,9 @@
     // Component Callout 
     --callout-border:var(--color-light-darker);
     --callout-bg:var(--color-light-lighter);
+
+    // Component card feature 
+    --card-feature-bg:var(--color-white);
     
 }
 

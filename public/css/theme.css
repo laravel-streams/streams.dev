@@ -653,6 +653,7 @@ video {
   --color-accent:hsla(var(--color-accent-base),68%,52%,var(--color-accent-opacity));
   --color-accent-darker:hsla(var(--color-accent-base),63%,35%,var(--color-accent-opacity));
   --color-accent-lighter:hsla(var(--color-accent-base),63%,65%,var(--color-accent-opacity));
+  --color-white:#fff;
   --font-weight-normal:300;
   --font-weight-bold:700;
   --font-size-xs:.75rem;
@@ -691,6 +692,7 @@ video {
   --code-bottom-anim:hsla(0,0%,85%,.4);
   --callout-border:var(--color-light-darker);
   --callout-bg:var(--color-light-lighter);
+  --card-feature-bg:var(--color-white);
 }
 
 .o-mode__dark {
@@ -930,6 +932,12 @@ p code:not([class^=language]) {
   font-size: var(--font-size-xl);
 }
 
+.o-footer {
+  margin-top: 5rem;
+  height: 200px;
+  background: #fafafa;
+}
+
 .c-alert {
   padding-left: 1rem;
   padding-right: 1rem;
@@ -1147,6 +1155,34 @@ code[class^=language]::-webkit-scrollbar-thumb {
 
 .c-callout h2 {
   font-size: var(--callout-title-size);
+}
+
+.c-card-feature {
+  background: var(--card-feature-bg);
+  min-height: 100px;
+  padding: 1rem;
+  border-radius: 9999px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  display: flex;
+}
+
+.c-card-feature__icon {
+  width: 40px;
+  min-width: 40px;
+  height: 40pxs;
+  min-height: 40px;
+  margin-right: 1rem;
+}
+
+.c-card-feature__body {
+  font-size: var(--font-size-sm);
+  line-height: 1.25;
+}
+
+.c-card-feature__title {
+  font-size: var(--font-size-sm);
+  margin: 0;
+  margin-bottom: 0.25rem;
 }
 
 /* Core Styles */

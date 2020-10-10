@@ -1,0 +1,22 @@
+.c-card-feature
+{
+    background: var(--card-feature-bg);
+    min-height:100px;
+    @apply p-4 rounded-full shadow-2xl flex;
+}
+.c-card-feature__icon
+{
+    width: 40px;
+    min-width: 40px;
+    height: 40pxs;
+    min-height: 40px;
+    @apply mr-4;
+}
+.c-card-feature__body
+{
+    @apply text-sm leading-tight;
+}
+.c-card-feature__title
+{
+    @apply text-sm m-0 mb-1;
+}
