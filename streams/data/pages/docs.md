@@ -22,9 +22,9 @@ references:
             <div class="grid grid-cols-2 col-gap-8 row-gap-12">
                 <div class="col-span-2 ">
         
-                    <h2 class="text-center">Getting Started</h2>
+                    <h2 >Getting Started</h2>
         
-                    <p class="text-center">
+                    <p >
                         Start here if you are new to the Streams platform or Laravel.
                     </p>
                     <ul class="grid grid-cols-2 col-gap-8 c-list-arrow">
