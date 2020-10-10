@@ -16,7 +16,7 @@ references:
         <p>The Streams platform is a collection of highly extensible, purist Laravel packages that assist developers by
             reducing
             work around data-modeling, UI, APIs, and more.</p>
-        <p><a class="c-button" href="/docs/installation">How to install and get started!</a></p>
+        <p><a class="c-button font-bold" href="/docs/installation">Install and get started!</a></p>
     </div>
     <div class="grid grid-cols-3 col-gap-8 ">
         <div class="col-span-2">
