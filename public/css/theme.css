@@ -616,6 +616,27 @@ video {
 
 /*! purgecss start ignore */
 
+.list-arrow, ul.c-list-arrow {
+  list-style-type: none;
+}
+
+.list-arrow li, ul.c-list-arrow li {
+  position: relative;
+  list-style-type: none;
+}
+
+.list-arrow li::before, ul.c-list-arrow li::before {
+  position: relative;
+  display: inline-block;
+  width: 0;
+  height: 0;
+  margin-right: 10px;
+  content: "";
+  border-width: 5px 0 5px 10px;
+  border-style: solid;
+  border-color: transparent transparent transparent var(--color-accent);
+}
+
 :root {
   --color-dark-base: 210;
   --color-dark:hsla(var(--color-dark-base),6%,8%,1);
@@ -1075,27 +1096,6 @@ code[class^=language]::-webkit-scrollbar-thumb {
 
 .c-code-bottom-anim path[class^=triangle] {
   fill: var(--code-bottom-anim);
-}
-
-ul.c-list-arrow {
-  list-style-type: none;
-}
-
-.c-list-arrow li {
-  position: relative;
-  list-style-type: none;
-}
-
-.c-list-arrow li::before {
-  content: "";
-  display: inline-block;
-  position: relative;
-  width: 0;
-  height: 0;
-  border-style: solid;
-  border-width: 5px 0 5px 10px;
-  border-color: transparent transparent transparent #007bff;
-  margin-right: 10px;
 }
 
 .c-button {
