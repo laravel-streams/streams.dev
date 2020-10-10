@@ -818,8 +818,8 @@ p code:not([class^=language]) {
 .o-navbar {
   margin-top: 0;
   margin-bottom: 4rem;
-  padding-top: 2rem;
-  padding-bottom: 2rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
   position: -webkit-sticky;
   position: sticky;
   z-index: 10;

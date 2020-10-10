@@ -11,25 +11,19 @@ references:
 
 
 <div class="o-feature-list">
-    <div class="text-center my-20">
+    <div class="text-center mb-12 w-7/12 mx-auto">
         <h1>Documentation</h1>
-        <p>Everything you need to know about the Streams platform.</p>
+        <p>The Streams platform is a collection of highly extensible, purist Laravel packages that assist developers by reducing
+        work around data-modeling, UI, APIs, and more.</p>
         <p><a class="c-button" href="/docs/installation">How to install and get started!</a></p>
     </div>
     <div class="grid grid-cols-3 col-gap-8 ">
-        <div class="col-span-1">
-            <h2>Welcome!</h2>
-            <p>
-                The Streams platform is a collection of highly extensible, purist Laravel packages that assist
-                developers by reducing work around data-modeling, UI, APIs, and more.
-            </p>
-        </div>
-        <div class="col-span-2">
-            <div class="grid grid-cols-2 col-gap-8 row-gap-8">
-                <div class="col-span-2 p-8" style="background:#eee">
-    
+        <div class="col-span-2" >
+            <div class="grid grid-cols-2 col-gap-8 row-gap-12">
+                <div class="col-span-2 ">
+        
                     <h2 class="text-center">Getting Started</h2>
-    
+        
                     <p class="text-center">
                         Start here if you are new to the Streams platform or Laravel.
                     </p>
@@ -50,50 +44,51 @@ references:
                             <a href="docs/sponsors">Sponsors</a>
                         </li>
                     </ul>
-    
+        
                 </div>
-                <div class="col-span-1">
+                <div class="col-span-1 " >
                     <h2>Core Packages</h2>
-    
+        
                     <p>
                         Know what you are looking for already? Dive right in to our core packages.
                     </p>
-    
+        
                     <ul class="c-list-arrow">
                         <li><a href="docs/core/introduction">Streams Core</a></li>
                         <li><a href="docs/ui/introduction">Streams UI</a></li>
                         <li><a href="docs/api/introduction">Streams API</a></li>
                     </ul>
-    
+        
                 </div>
                 <div class="col-span-1">
                     <h2>Addon Documentation</h2>
-    
+        
                     <p>
                         All addons are self-documenting. You can find an exhaustive list of free and commercial addons in
                         the addon
                         marketplace (soon).
                     </p>
-    
+        
                 </div>
             </div>
         </div>
+        <div class="col-span-1 p-6" style="background:#fafafa;border:1px solid #eee">
+            <h2>Community Resources</h2>
+            <p>
+                The core team and community work together.
+            </p>
+            <ul class="c-list-arrow">
+                <li><a href="https://discord.gg/vhz8NZC">Discord</a></li>
+                <li><a href="https://stackoverflow.com/search?q=laravel+streams">Stack Exchange</a></li>
+                <li><a href="https://github.com/anomalylabs">GitHub</a></li>
+                <li><a href="https://www.youtube.com/user/AIWebSystems">YouTube</a></li>
+                <li><a href="">Awesome Streams List (eventually right? lol)</a></li>
+            </ul>
+        </div>
+        
     </div>
 </div>
 
-<div class="o-changemynametosomethingsmart p-8 pt-1" style="background:#eee;">
-    <h2>Community Resources</h2>
-    <p>
-        The core team and community work together.
-    </p>
-    <ul class="c-list-arrow">
-        <li><a href="https://discord.gg/vhz8NZC">Discord</a></li>
-        <li><a href="https://stackoverflow.com/search?q=laravel+streams">Stack Exchange</a></li>
-        <li><a href="https://github.com/anomalylabs">GitHub</a></li>
-        <li><a href="https://www.youtube.com/user/AIWebSystems">YouTube</a></li>
-        <li><a href="">Awesome Streams List (eventually right? lol)</a></li>
-    </ul>
-</div>
 
 
 <div class="o-changemynametosomethingsmart">
