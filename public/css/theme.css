@@ -672,7 +672,7 @@ video {
 .o-mode__light {
   --color-accent-base: 211;
   --color-accent-opacity:1;
-  --color-accent:hsla(var(--color-accent-base),100%,76%,var(--color-accent-opacity));
+  --color-accent:hsla(var(--color-accent-base),100%,68%,var(--color-accent-opacity));
   --color-accent-darker:hsla(var(--color-accent-base),100%,35%,var(--color-accent-opacity));
   --color-accent-lighter:hsla(var(--color-accent-base),100%,65%,var(--color-accent-opacity));
   --text:var(--color-dark);
