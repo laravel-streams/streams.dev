@@ -703,7 +703,7 @@ video {
   --navbar-text:var(--color-light);
   --code-bottom-anim:hsla(var(--color-accent-base),63%,50%,.2);
   --callout-border:var(--color-dark-lighter);
-  --callout-bg:var(--color-dark);
+  --callout-bg:var(--color-dark-lighter);
 }
 
 @font-face {
