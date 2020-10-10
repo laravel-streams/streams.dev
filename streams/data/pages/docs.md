@@ -26,11 +26,11 @@ references:
         </div>
         <div class="col-span-2">
             <div class="grid grid-cols-2 col-gap-8 row-gap-8">
-                <div class="col-span-2">
+                <div class="col-span-2 p-8" style="background:#eee">
     
-                    <h2>Getting Started</h2>
+                    <h2 class="text-center">Getting Started</h2>
     
-                    <p>
+                    <p class="text-center">
                         Start here if you are new to the Streams platform or Laravel.
                     </p>
                     <ul class="grid grid-cols-2 col-gap-8 c-list-arrow">
