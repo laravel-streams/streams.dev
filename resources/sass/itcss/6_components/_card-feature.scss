@@ -2,7 +2,7 @@
 {
     background: var(--card-feature-bg);
     min-height:100px;
-    @apply p-4 rounded-full shadow-2xl flex;
+    @apply p-4 rounded-lg shadow-2xl flex;
 }
 .c-card-feature__icon
 {
