@@ -873,6 +873,15 @@ p code:not([class^=language]) {
   filter: blur(4px);
 }
 
+.o-feature-list {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.o-feature-list h2 {
+  margin: 0;
+}
+
 .c-alert {
   padding-left: 1rem;
   padding-right: 1rem;
