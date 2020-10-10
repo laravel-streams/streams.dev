@@ -11,17 +11,17 @@ references:
 
 
 <div class="o-feature-list">
-    <div class="text-center mt-12 mb-12 w-7/12 mx-auto">
+    <div class="text-center mt-12 mb-12 lg:w-9/12 xl:w-7/12 mx-auto">
         <h1>Laravel Streams Documentation</h1>
         <p>The Laravel Streams platform is a collection of highly extensible, purist Laravel packages that assist developers by
             reducing
             work around data-modeling, UI, APIs, and more.</p>
         <p><a class="c-button font-bold" href="/docs/installation">Install and get started!</a></p>
     </div>
-    <div class="grid grid-cols-3 col-gap-8 ">
-        <div class="col-span-2">
+    <div class="grid xl:grid-cols-3 col-gap-8 ">
+        <div class="col-span-3 xl:col-span-2">
             <div class="grid grid-cols-2 col-gap-8 row-gap-12">
-                <div class="col-span-2 ">
+                <div class="col-span-3 xl:col-span-2 ">
 
                     <h2>Getting Started</h2>
 
@@ -47,7 +47,7 @@ references:
                     </ul>
 
                 </div>
-                <div class="col-span-1 ">
+                <div class="col-span-3 xl:col-span-1 ">
                     <h2>Core Packages</h2>
 
                     <p>
@@ -61,7 +61,7 @@ references:
                     </ul>
 
                 </div>
-                <div class="col-span-1">
+                <div class="col-span-3 xl:col-span-1">
                     <h2>Addon Documentation</h2>
 
                     <p>
@@ -74,7 +74,7 @@ references:
                 </div>
             </div>
         </div>
-        <div class="col-span-1">
+        <div class="col-span-3 xl:col-span-1">
             <div class="c-callout">
                 <h2>Community Resources</h2>
                 <p>
