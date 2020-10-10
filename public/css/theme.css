@@ -928,12 +928,25 @@ p code:not([class^=language]) {
 .o-feature-list {
   margin-top: 2rem;
   margin-bottom: 2rem;
+  position: relative;
 }
 
 .o-feature-list h2 {
   margin-top: 0;
   margin-bottom: 0.5rem;
   font-size: var(--font-size-xl);
+}
+
+.o-feature-list__blob {
+  z-index: -1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  top: -50vh;
+  left: -50vw;
+  width: 1500px;
+  fill: var(--color-accent);
+  opacity: 0.05;
 }
 
 .o-footer {
@@ -1191,6 +1204,7 @@ code[class^=language]::-webkit-scrollbar-thumb {
 }
 
 .c-divider {
+  margin-top: 5rem;
   fill: var(--divider);
 }
 
