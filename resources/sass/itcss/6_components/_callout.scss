@@ -1,11 +1,11 @@
 .c-callout
 {
     
-    @apply  p-8 h-full rounded shadow-lg;
+    @apply  border p-8 h-full ;
     h2 
     {
         font-size:var(--callout-title-size);
     }
-   // border-color:var(--callout-border);
+   border-color:var(--callout-border);
     background-color:var(--callout-bg);
 }
