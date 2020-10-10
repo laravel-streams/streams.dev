@@ -11,7 +11,7 @@ references:
 
 
 <div class="o-feature-list">
-    <div class="text-center mb-12 w-7/12 mx-auto">
+    <div class="text-center mt-12 mb-12 w-7/12 mx-auto">
         <h1>Documentation</h1>
         <p>The Streams platform is a collection of highly extensible, purist Laravel packages that assist developers by reducing
         work around data-modeling, UI, APIs, and more.</p>
