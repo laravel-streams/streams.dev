@@ -12,8 +12,8 @@ references:
 
 <div class="o-feature-list">
     <div class="text-center mt-12 mb-12 w-7/12 mx-auto">
-        <h1>Documentation</h1>
-        <p>The Streams platform is a collection of highly extensible, purist Laravel packages that assist developers by
+        <h1>Laravel Streams Documentation</h1>
+        <p>The Laravel Streams platform is a collection of highly extensible, purist Laravel packages that assist developers by
             reducing
             work around data-modeling, UI, APIs, and more.</p>
         <p><a class="c-button font-bold" href="/docs/installation">Install and get started!</a></p>
@@ -26,7 +26,7 @@ references:
                     <h2>Getting Started</h2>
 
                     <p>
-                        Start here if you are new to the Streams platform or Laravel.
+                        Start here if you are new to the Laravel Streams platform or Laravel.
                     </p>
                     <ul class="grid grid-cols-2 col-gap-8 c-list-arrow">
                         <li class="">

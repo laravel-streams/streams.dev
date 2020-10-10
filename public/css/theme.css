@@ -862,6 +862,8 @@ p code:not([class^=language]) {
   position: -webkit-sticky;
   position: sticky;
   z-index: 10;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
   -webkit-backdrop-filter: blur(3px);
           backdrop-filter: blur(3px);
   top: 0px;
