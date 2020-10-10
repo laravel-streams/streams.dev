@@ -717,6 +717,8 @@ video {
   --code-bottom-anim:hsla(var(--color-accent-base),63%,50%,.2);
   --callout-border:var(--color-dark-lighter);
   --callout-bg:var(--color-dark-lighter);
+  --card-feature-bg:var(--color-dark-lighter);
+  --card-feature-icon:var(--color-light);
 }
 
 @font-face {
@@ -1172,6 +1174,7 @@ code[class^=language]::-webkit-scrollbar-thumb {
   height: 40pxs;
   min-height: 40px;
   margin-right: 1rem;
+  fill: var(--card-feature-icon);
 }
 
 .c-card-feature__body {

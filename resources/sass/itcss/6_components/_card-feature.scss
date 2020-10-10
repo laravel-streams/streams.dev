@@ -11,6 +11,7 @@
     height: 40pxs;
     min-height: 40px;
     @apply mr-4;
+    fill:var(--card-feature-icon);
 }
 .c-card-feature__body
 {
