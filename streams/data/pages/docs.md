@@ -11,9 +11,10 @@ references:
 
 
 <div class="o-feature-list">
-    <div class="text-center my-12">
+    <div class="text-center my-20">
         <h1>Documentation</h1>
-        Everything you need to know about the Streams platform.
+        <p>Everything you need to know about the Streams platform.</p>
+        <p><a class="c-button" href="/docs/installation">How to install and get started!</a></p>
     </div>
     <div class="grid grid-cols-3 col-gap-8 ">
         <div class="col-span-1">
