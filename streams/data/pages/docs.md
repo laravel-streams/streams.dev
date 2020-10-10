@@ -17,7 +17,7 @@ references:
                 d="M29.4,-29.3C43.9,-29.9,65.5,-29.1,73.5,-20.2C81.5,-11.3,75.8,5.8,70.2,22.7C64.6,39.7,59,56.6,47.3,60C35.6,63.4,17.8,53.4,1.9,50.7C-14,48.1,-27.9,52.8,-33.7,47.5C-39.4,42.2,-37,26.7,-43.4,12.8C-49.8,-1.2,-65,-13.6,-64.8,-23.2C-64.7,-32.9,-49.2,-39.7,-35.9,-39.5C-22.5,-39.3,-11.3,-32,-1.9,-29.4C7.4,-26.8,14.9,-28.7,29.4,-29.3Z"
                 transform="translate(100 100)" />
         </svg>
-        <div class="text-center mt-12 mb-12 lg:w-9/12 xl:w-7/12 mx-auto">
+        <div class="text-center my-20 lg:w-9/12 xl:w-7/12 mx-auto">
             <h1>Laravel Streams Documentation</h1>
             <p>The Laravel Streams platform is a collection of highly extensible, purist Laravel packages that assist
                 developers by
