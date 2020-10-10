@@ -879,7 +879,8 @@ p code:not([class^=language]) {
 }
 
 .o-feature-list h2 {
-  margin: 0;
+  margin-top: 0;
+  font-size: var(--font-size-xl);
 }
 
 .c-alert {
@@ -1074,6 +1075,27 @@ code[class^=language]::-webkit-scrollbar-thumb {
 
 .c-code-bottom-anim path[class^=triangle] {
   fill: var(--code-bottom-anim);
+}
+
+ul.c-list-arrow {
+  list-style-type: none;
+}
+
+.c-list-arrow li {
+  position: relative;
+  list-style-type: none;
+}
+
+.c-list-arrow li::before {
+  content: "";
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 5px 0 5px 10px;
+  border-color: transparent transparent transparent #007bff;
+  margin-right: 10px;
 }
 
 /* Core Styles */

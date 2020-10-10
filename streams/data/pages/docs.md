@@ -9,7 +9,12 @@ references:
 ---
 
 
+
 <div class="o-feature-list">
+    <div class="text-center my-12">
+        <h1>Documentation</h1>
+        Everything you need to know about the Streams platform.
+    </div>
     <div class="grid grid-cols-3 col-gap-8 ">
         <div class="col-span-1">
             <h2>Welcome!</h2>
@@ -27,7 +32,7 @@ references:
                     <p>
                         Start here if you are new to the Streams platform or Laravel.
                     </p>
-                    <ul class="grid grid-cols-2 col-gap-8">
+                    <ul class="grid grid-cols-2 col-gap-8 c-list-arrow">
                         <li class="">
                             <a href="docs/introduction">Introduction</a>
                         </li>
@@ -53,7 +58,7 @@ references:
                         Know what you are looking for already? Dive right in to our core packages.
                     </p>
     
-                    <ul>
+                    <ul class="c-list-arrow">
                         <li><a href="docs/core/introduction">Streams Core</a></li>
                         <li><a href="docs/ui/introduction">Streams UI</a></li>
                         <li><a href="docs/api/introduction">Streams API</a></li>
@@ -75,6 +80,21 @@ references:
     </div>
 </div>
 
+<div class="o-changemynametosomethingsmart p-8 pt-1" style="background:#eee;">
+    <h2>Community Resources</h2>
+    <p>
+        The core team and community work together.
+    </p>
+    <ul class="c-list-arrow">
+        <li><a href="https://discord.gg/vhz8NZC">Discord</a></li>
+        <li><a href="https://stackoverflow.com/search?q=laravel+streams">Stack Exchange</a></li>
+        <li><a href="https://github.com/anomalylabs">GitHub</a></li>
+        <li><a href="https://www.youtube.com/user/AIWebSystems">YouTube</a></li>
+        <li><a href="">Awesome Streams List (eventually right? lol)</a></li>
+    </ul>
+</div>
+
+
 <div class="o-changemynametosomethingsmart">
     <h2>Soon TM</h2>
     <div class="grid grid-cols-4 col-gap-4">
@@ -84,19 +104,7 @@ references:
         <div>
             <h3>Tutorials</h3>
         </div>
-        <div>
-            <h3>Community Resources</h3>
-            <p>
-                The core team and community work together.
-            </p>
-            <ul>
-                <li><a href="https://discord.gg/vhz8NZC">Discord</a></li>
-                <li><a href="https://stackoverflow.com/search?q=laravel+streams">Stack Exchange</a></li>
-                <li><a href="https://github.com/anomalylabs">GitHub</a></li>
-                <li><a href="https://www.youtube.com/user/AIWebSystems">YouTube</a></li>
-                <li><a href="">Awesome Streams List (eventually right? lol)</a></li>
-            </ul>
-        </div>
+       
         <div>
             <h3>Sponsorship</h3>
         </div>

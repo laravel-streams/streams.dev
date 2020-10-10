@@ -1,0 +1,18 @@
+ul.c-list-arrow 
+{
+    @apply list-none;
+}
+.c-list-arrow li {
+    @apply relative list-none;
+}
+.c-list-arrow li::before {
+    content: "";
+    display: inline-block;
+    position: relative;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 5px 0 5px 10px;
+    border-color: transparent transparent transparent #007bff;
+    margin-right: 10px;
+}
