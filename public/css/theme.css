@@ -661,6 +661,7 @@ video {
   --font-size-lg:1.2rem;
   --font-size-xl:2rem;
   --font-size-xxl:3rem;
+  --font-size-code:.925rem;
   --highlight-padding:0 0rem 3px;
   --width-aside: 300px;
   --width-main: calc(100% - var(--width-aside));
@@ -817,6 +818,7 @@ code {
 
 pre {
   overflow-x: auto;
+  font-size: var(--font-size-code);
   color: #eee;
   background: var(--highlightjs-bg);
   margin-top: 2rem;
