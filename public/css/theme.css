@@ -914,6 +914,7 @@ p code:not([class^=language]) {
 
 .o-feature-list h2 {
   margin-top: 0;
+  margin-bottom: 0.5rem;
   font-size: var(--font-size-xl);
 }
 
