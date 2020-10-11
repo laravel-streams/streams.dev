@@ -1163,11 +1163,9 @@ code[class^=language]::-webkit-scrollbar-thumb {
 }
 
 .c-callout {
-  border-width: 1px;
+  background-color: var(--callout-bg);
   padding: 2rem;
   height: 100%;
-  border-color: var(--callout-border);
-  background-color: var(--callout-bg);
 }
 
 .c-callout h2 {

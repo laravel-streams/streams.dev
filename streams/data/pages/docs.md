@@ -26,7 +26,7 @@ references:
             <p><a class="c-button font-bold" href="/docs/installation">Install and get started!</a></p>
         </div>
         <div class="grid xl:grid-cols-3 col-gap-8 ">
-            <div class="col-span-3 xl:col-span-2">
+            <div class="col-span-3 xl:col-span-2 bg-white c-callout ">
                 <div class="grid grid-cols-2 col-gap-8 row-gap-12">
                     <div class="col-span-3 xl:col-span-2 ">
     
