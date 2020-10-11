@@ -666,7 +666,7 @@ video {
   --highlight-padding:0 0rem 3px;
   --width-aside: 300px;
   --width-main: calc(100% - var(--width-aside));
-  --position-top-aside-menus: 153px;
+  --position-top-aside-menus: 115px;
   --callout-title-size:1.5rem;
 }
 
@@ -1178,6 +1178,12 @@ code[class^=language]::-webkit-scrollbar-thumb {
   border-radius: 0.5rem;
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
   display: flex;
+}
+
+@media (max-width: 1023px) {
+  .c-card-feature {
+    align-items: center;
+  }
 }
 
 .c-card-feature__icon {

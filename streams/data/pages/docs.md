@@ -195,7 +195,7 @@ references:
                             Videos
                         </h3>
                         <p>
-                            Lorem ipsum dolor sit amet consectetur.
+                            Learn by viewing videos.
                         </p>
                     </div>
                 </div>

@@ -3,6 +3,10 @@
     background: var(--card-feature-bg);
     min-height:100px;
     @apply p-4 rounded-lg shadow-2xl flex;
+
+    @media (max-width: 1023px) {
+        @apply items-center ;
+    }
 }
 .c-card-feature__icon
 {
