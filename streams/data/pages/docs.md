@@ -10,7 +10,7 @@ references:
 
 
 
-<div class="container mx-auto">
+<div class="container mx-auto px-4">
     <div class="o-feature-list">
         <svg class="o-feature-list__blob" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
             <path 
@@ -104,10 +104,10 @@ references:
 
 
 <div class="container mx-auto">
-    <div class="o-changemynametosomethingsmart my-20">
+    <div class="o-changemynametosomethingsmart my-20 px-4">
         <h2>Soon &trade;</h2>
-        <div class="grid grid-cols-4 col-gap-4">
-            <div>
+        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 col-gap-4 row-gap-4">
+            <div >
                 <div class="c-card-feature">
                     
                     <svg class="c-card-feature__icon c-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 131 131">
@@ -131,7 +131,7 @@ references:
                 </div>
             </div>
 
-            <div>
+            <div >
                 <div class="c-card-feature">
                     <svg class="c-card-feature__icon c-icon" xmlns="http://www.w3.org/2000/svg" data-name="Слой 1"
                         viewBox="0 0 128 128">
@@ -153,7 +153,7 @@ references:
                 </div>
             </div>
     
-            <div>
+            <div >
                 <div class="c-card-feature">
                     <svg class="c-card-feature__icon c-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 68 68">
                         <g>
@@ -177,7 +177,7 @@ references:
     
             </div>
 
-            <div>
+            <div >
                 <div class="c-card-feature">
                     <svg class="c-card-feature__icon c-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 90 90">
                         <g>
