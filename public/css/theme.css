@@ -642,7 +642,7 @@ video {
   --color-dark-opacity:1;
   --color-dark:hsla(var(--color-dark-base),6%,8%,var(--color-dark-opacity));
   --color-dark-darker:hsla(var(--color-dark-base),6%,5%,var(--color-dark-opacity));
-  --color-dark-lighter:hsla(var(--color-dark-base),6%,21%,var(--color-dark-opacity));
+  --color-dark-lighter:hsla(var(--color-dark-base),6%,11%,var(--color-dark-opacity));
   --color-light-base: 0;
   --color-light-opacity:1;
   --color-light:hsla(var(--color-light-base),0%,99%,var(--color-light-opacity));
@@ -950,9 +950,8 @@ p code:not([class^=language]) {
 }
 
 .o-footer {
-  margin-top: 5rem;
+  padding-top: 5rem;
   height: 200px;
-  background: #fafafa;
 }
 
 .c-alert {
