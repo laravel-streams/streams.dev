@@ -90,6 +90,7 @@
 
     // Component card feature 
     --card-feature-bg:var(--color-white);
+    --card-feature-bg--hover:var(--color-white);
 
     // Divider
     --divider:var(--color-accent);
@@ -141,6 +142,7 @@
     // Component card feature 
     --card-feature-bg:var(--color-dark-lighter);
     --card-feature-icon:var(--color-light);
+    --card-feature-bg--hover:var(--color-dark-darker);
 
     // Divider
     --divider:var(--color-accent);

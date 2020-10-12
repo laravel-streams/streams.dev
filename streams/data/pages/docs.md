@@ -13,7 +13,7 @@ references:
 <div class="container mx-auto px-4">
     <div class="o-feature-list">
         <svg class="o-feature-list__blob" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-            <path 
+            <path
                 d="M29.4,-29.3C43.9,-29.9,65.5,-29.1,73.5,-20.2C81.5,-11.3,75.8,5.8,70.2,22.7C64.6,39.7,59,56.6,47.3,60C35.6,63.4,17.8,53.4,1.9,50.7C-14,48.1,-27.9,52.8,-33.7,47.5C-39.4,42.2,-37,26.7,-43.4,12.8C-49.8,-1.2,-65,-13.6,-64.8,-23.2C-64.7,-32.9,-49.2,-39.7,-35.9,-39.5C-22.5,-39.3,-11.3,-32,-1.9,-29.4C7.4,-26.8,14.9,-28.7,29.4,-29.3Z"
                 transform="translate(100 100)" />
         </svg>
@@ -29,9 +29,9 @@ references:
             <div class="col-span-3 xl:col-span-2 bg-white c-callout ">
                 <div class="grid grid-cols-2 col-gap-8 row-gap-12">
                     <div class="col-span-3 xl:col-span-2 ">
-    
+
                         <h2>Getting Started</h2>
-    
+
                         <p>
                             Start here if you are new to the Laravel Streams platform or Laravel.
                         </p>
@@ -52,32 +52,33 @@ references:
                                 <a href="docs/sponsors">Sponsors</a>
                             </li>
                         </ul>
-    
+
                     </div>
                     <div class="col-span-3 xl:col-span-1 ">
                         <h2>Core Packages</h2>
-    
+
                         <p>
                             Know what you are looking for already? Dive right in to our core packages.
                         </p>
-    
+
                         <ul class="c-list-arrow">
                             <li><a href="docs/core/introduction">Streams Core</a></li>
                             <li><a href="docs/ui/introduction">Streams UI</a></li>
                             <li><a href="docs/api/introduction">Streams API</a></li>
                         </ul>
-    
+
                     </div>
                     <div class="col-span-3 xl:col-span-1">
                         <h2>Addon Documentation</h2>
-    
+
                         <p>
-                            All addons are self-documenting. You can find an exhaustive list of free and commercial addons
+                            All addons are self-documenting. You can find an exhaustive list of free and commercial
+                            addons
                             in
                             the addon
                             marketplace (soon).
                         </p>
-    
+
                     </div>
                 </div>
             </div>
@@ -96,7 +97,7 @@ references:
                     </ul>
                 </div>
             </div>
-    
+
         </div>
     </div>
 </div>
@@ -105,11 +106,10 @@ references:
 
 <div class="container mx-auto">
     <div class="o-changemynametosomethingsmart my-20 px-4">
-        <h2>Soon &trade;</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 col-gap-4 row-gap-4">
-            <div >
+            <div>
                 <div class="c-card-feature">
-                    
+
                     <svg class="c-card-feature__icon c-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 131 131">
                         <g>
                             <path
@@ -131,7 +131,7 @@ references:
                 </div>
             </div>
 
-            <div >
+            <div>
                 <div class="c-card-feature">
                     <svg class="c-card-feature__icon c-icon" xmlns="http://www.w3.org/2000/svg" data-name="Слой 1"
                         viewBox="0 0 128 128">
@@ -152,9 +152,17 @@ references:
                     </div>
                 </div>
             </div>
-    
-            <div >
-                <div class="c-card-feature">
+
+            <div>
+                <a class="c-card-feature" rel="noopener noreferrer" target="_blank" href="https://github.com/sponsors/ryanthompson">
+                    <div class="c-badge">
+                        <p class="c-badge__title">Now</p>
+                        <svg class="" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                            <path fill="#FF0066"
+                                d="M27.4,-45C39.6,-40.5,56.3,-41.3,64.9,-34.7C73.5,-28.1,73.8,-14.1,67.9,-3.4C62,7.2,49.8,14.5,40.9,20.6C32.1,26.6,26.6,31.6,20.3,36.9C14.1,42.2,7,47.9,0.2,47.6C-6.7,47.3,-13.4,41,-26,39.4C-38.5,37.7,-57,40.6,-63.1,34.8C-69.3,29,-63.1,14.5,-58,3C-52.8,-8.6,-48.6,-17.1,-43,-23.8C-37.4,-30.5,-30.3,-35.4,-22.9,-42.7C-15.5,-49.9,-7.8,-59.6,-0.1,-59.5C7.6,-59.4,15.2,-49.5,27.4,-45Z"
+                                transform="translate(100 100)" />
+                        </svg>
+                    </div>
                     <svg class="c-card-feature__icon c-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 68 68">
                         <g>
                             <path
@@ -169,23 +177,27 @@ references:
                         <h3 class="c-card-feature__title">Sponsorhip</h3>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. </p>
                     </div>
-                </div>
+                </a>
 
 
-                
-    
-    
+
+
+
             </div>
 
-            <div >
+            <div>
                 <div class="c-card-feature">
+                    
+
+
                     <svg class="c-card-feature__icon c-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 90 90">
                         <g>
                             <path
                                 d="M62.8823 16.3516h-1.454v-3.7022c0-2.3516-1.9132-4.2646-4.2647-4.2646H32.8364c-2.3515 0-4.2646 1.913-4.2646 4.2646v3.7022h-1.4541c-4.1817 0-7.5835 3.4013-7.5835 7.583v15.8037c0 4.1816 3.4018 7.584 7.5835 7.584h7.4593c1.1549 3.2165 3.7352 5.684 6.8942 6.7531v3.1507L27.2148 81.6152h7.3736l6.8828-11.7744v11.7744h7.0576V69.8408l6.8828 11.7744h7.3736L48.5288 57.2261v-3.1507c3.159-1.0691 5.7393-3.5366 6.8942-6.7531h7.4593c4.1817 0 7.5835-3.4024 7.5835-7.584V23.9346c0-4.1817-3.4018-7.583-7.5835-7.583zm0 2c3.0786 0 5.5835 2.5048 5.5835 5.583v5.7314h-7.0376V18.3516h1.4541zm5.5835 13.3144v2.9024h-7.0376V31.666h7.0376zm-37.894-19.0166c0-1.249 1.016-2.2646 2.2646-2.2646h24.3272c1.2485 0 2.2646 1.0156 2.2646 2.2646v24.3272c0 1.249-1.016 2.2646-2.2646 2.2646H32.8364c-1.2485 0-2.2646-1.0156-2.2646-2.2646V12.6494zm-2 21.919h-7.0376V31.666h7.0376v2.9024zm-1.4541-16.2168h1.454V29.666h-7.0375v-5.7314c0-3.0782 2.5049-5.583 5.5835-5.583zm6.3232 61.2636h-2.7407l10.771-18.4258v4.688l-8.0303 13.7378zm25.8589 0h-2.7407l-8.0303-13.7378v-4.688l10.771 18.4258zm-12.771 0h-3.0576v-25.072c.5023.0706 1.0115.115 1.5288.115s1.0265-.0444 1.5288-.115v25.072zM45 52.6582c-3.5892 0-6.8168-2.139-8.2673-5.336h16.5346c-1.4505 3.197-4.678 5.336-8.2673 5.336zm17.8823-7.336H27.1177c-3.0786 0-5.5835-2.5048-5.5835-5.584v-3.1698h7.0376v.4082c0 2.3515 1.913 4.2646 4.2646 4.2646h24.3272c2.3515 0 4.2646-1.913 4.2646-4.2646v-.4082h7.0376v3.1699c0 3.079-2.5049 5.584-5.5835 5.584z" />
                             <path
                                 d="M45 32.6445c4.3184 0 7.8315-3.5136 7.8315-7.832s-3.5131-7.831-7.8315-7.831-7.8315 3.5126-7.8315 7.831 3.5131 7.832 7.8315 7.832zm0-13.663c3.2153 0 5.8315 2.6162 5.8315 5.831 0 3.2158-2.6162 5.832-5.8315 5.832s-5.8315-2.6162-5.8315-5.832c0-3.2148 2.6162-5.831 5.8315-5.831z" />
-                            <path d="M45 22.497v-2c-2.6118 0-4.7368 2.125-4.7368 4.7374h2c0-1.5098 1.2275-2.7373 2.7368-2.7373z" />
+                            <path
+                                d="M45 22.497v-2c-2.6118 0-4.7368 2.125-4.7368 4.7374h2c0-1.5098 1.2275-2.7373 2.7368-2.7373z" />
                             <path
                                 d="M45 37.0635c6.7549 0 12.2505-5.4961 12.2505-12.251S51.7549 12.5625 45 12.5625s-12.2505 5.4951-12.2505 12.25S38.2451 37.0635 45 37.0635zm0-22.501c5.6523 0 10.2505 4.5977 10.2505 10.25S50.6523 35.0635 45 35.0635s-10.2505-4.5987-10.2505-10.251 4.5982-10.25 10.2505-10.25z" />
                         </g>

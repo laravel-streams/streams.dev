@@ -1,0 +1,18 @@
+.c-badge{
+    @apply absolute text-xs;
+    top:-40px;
+    right:-20px;
+}
+.c-badge__title
+{
+    @apply absolute;
+    top: 30px;
+    left: 27px;
+    color: #fff;
+    font-weight: 700;
+}
+.c-badge svg 
+{
+    width:80px;
+    height:80px;
+}

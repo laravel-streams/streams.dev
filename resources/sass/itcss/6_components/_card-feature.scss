@@ -1,21 +1,33 @@
 .c-card-feature
 {
-    background: var(--card-feature-bg);
-    min-height:100px;
-    @apply p-4 rounded-lg shadow-2xl flex;
+    min-height: 100px;
 
-    @media (max-width: 1023px) {
+    
+    transition: all 400ms ease-in-out;
+
+    background: var(--card-feature-bg);
+    @apply p-4 rounded-lg shadow-2xl flex relative;
+    
+    @media (max-width: 1023px)
+    {
         @apply items-center ;
     }
 }
+a.c-card-feature:hover
+    {
+        cursor: pointer;
+        @apply shadow-xl;
+        background: var(--card-feature-bg--hover);
+    }
 .c-card-feature__icon
 {
     width: 40px;
     min-width: 40px;
     height: 40pxs;
     min-height: 40px;
+
+    fill: var(--card-feature-icon);
     @apply mr-4;
-    fill:var(--card-feature-icon);
 }
 .c-card-feature__body
 {
