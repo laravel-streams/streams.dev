@@ -13,11 +13,15 @@ ul.c-aside-menu a {
 
 ul.c-aside-menu li.active a {
     opacity: 1;
+    font-weight: bold;
     color: var(--aside-menu-link--active);
     @apply rounded-sm;
 }
-ul.c-aside-menu li a:hover,
-ul.c-aside-menu li.active a:hover {
+ul.c-aside-menu li a:hover {
     opacity: .8;
     color: var(--aside-menu-link--hover);
+}
+ul.c-aside-menu li.active a:hover {
+    opacity: .8;
+    color: var(--aside-menu-link--active-hover);
 }

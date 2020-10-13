@@ -154,9 +154,9 @@ references:
             </div>
 
             <div>
-                <a class="c-card-feature" rel="noopener noreferrer" target="_blank" href="https://github.com/sponsors/ryanthompson">
+                <a class="c-card-feature" rel="noopener noreferrer" target="_blank" onclick="return false;" href="https://github.com/sponsors/ryanthompson">
                     <div class="c-badge">
-                        <p class="c-badge__title">Now</p>
+                        <p class="c-badge__title">New</p>
                         <svg class="" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
                             <path fill="#FF0066"
                                 d="M27.4,-45C39.6,-40.5,56.3,-41.3,64.9,-34.7C73.5,-28.1,73.8,-14.1,67.9,-3.4C62,7.2,49.8,14.5,40.9,20.6C32.1,26.6,26.6,31.6,20.3,36.9C14.1,42.2,7,47.9,0.2,47.6C-6.7,47.3,-13.4,41,-26,39.4C-38.5,37.7,-57,40.6,-63.1,34.8C-69.3,29,-63.1,14.5,-58,3C-52.8,-8.6,-48.6,-17.1,-43,-23.8C-37.4,-30.5,-30.3,-35.4,-22.9,-42.7C-15.5,-49.9,-7.8,-59.6,-0.1,-59.5C7.6,-59.4,15.2,-49.5,27.4,-45Z"
@@ -175,7 +175,7 @@ references:
                     </svg>
                     <div class="c-card-feature__body">
                         <h3 class="c-card-feature__title">Sponsorhip</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. </p>
+                        <p>Help futher open-source efforts by sponsoring the projects.</p>
                     </div>
                 </a>
 

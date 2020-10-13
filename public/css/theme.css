@@ -750,9 +750,10 @@ video {
   );
   --text: var(--color-dark);
   --bg: var(--color-light);
-  --aside-menu-link: var(--color-dark-lighter);
-  --aside-menu-link--active: var(--color-accent);
-  --aside-menu-link--hover: var(--color-accent);
+  --aside-menu-link:var(--color-dark-lighter);
+  --aside-menu-link--hover:var(--color-accent);
+  --aside-menu-link--active:#ff3c00;
+  --aside-menu-link--active-hover:purple;
   --anchor: var(--color-accent);
   --anchor--hover: var(--color-dark);
   --scrollbar-color: var(--color-accent);
@@ -792,9 +793,10 @@ video {
   );
   --text: var(--color-light);
   --bg: var(--color-dark);
-  --aside-menu-link: var(--color-light-darker);
-  --aside-menu-link--active: var(--color-accent);
-  --aside-menu-link--hover: var(--color-light-darker);
+  --aside-menu-link:var(--color-light-darker);
+  --aside-menu-link--hover:var(--color-light-darker);
+  --aside-menu-link--active:#ff3c00;
+  --aside-menu-link--active-hover:#e63600;
   --anchor: var(--color-accent);
   --anchor--hover: var(--color-light);
   --scrollbar-color: var(--color-accent);
@@ -1083,14 +1085,19 @@ ul.c-aside-menu a {
 
 ul.c-aside-menu li.active a {
   opacity: 1;
+  font-weight: bold;
   color: var(--aside-menu-link--active);
   border-radius: 0.125rem;
 }
 
-ul.c-aside-menu li a:hover,
-ul.c-aside-menu li.active a:hover {
+ul.c-aside-menu li a:hover {
   opacity: 0.8;
   color: var(--aside-menu-link--hover);
+}
+
+ul.c-aside-menu li.active a:hover {
+  opacity: 0.8;
+  color: var(--aside-menu-link--active-hover);
 }
 
 .c-aside-menu-title {
@@ -1102,6 +1109,7 @@ ul.c-aside-menu li.active a:hover {
 
 .o-aside .c-scrollbar .c-aside-menu-title:nth-child(1) {
   margin-top: 0px;
+  margin-bottom: 1.5rem;
 }
 
 .c-copy-code {
