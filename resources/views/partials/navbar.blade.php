@@ -4,7 +4,7 @@
         <div class="o-navbar__list-wrapper">
             <ul class="c-navbar c-navbar__left">
                 <li class="c-navbar__item">
-                    <a href="/docs">
+                    <a href="/">
                     <x-icon-home class="c-navbar__icon" />
                     </a>
                 </li>

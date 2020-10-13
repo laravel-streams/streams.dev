@@ -62,8 +62,11 @@
 
     // ASIDE
     --aside-menu-link:var(--color-dark-lighter);
-    --aside-menu-link--active:var(--color-accent);
     --aside-menu-link--hover:var(--color-accent);
+    //--aside-menu-link--active:var(--color-accent);
+    --aside-menu-link--active:#ff3c00;
+    //--aside-menu-link--active-hover:var(--aside-menu-link--hover);
+    --aside-menu-link--active-hover:purple;
 
     // Links
     --anchor:var(--color-accent);
@@ -113,8 +116,12 @@
 
     // ASIDE
     --aside-menu-link:var(--color-light-darker);
-    --aside-menu-link--active:var(--color-accent);
     --aside-menu-link--hover:var(--color-light-darker);
+    //--aside-menu-link--active:var(--color-accent);
+    --aside-menu-link--active:#ff3c00;
+    //--aside-menu-link--active-hover:var(--aside-menu-link--hover);
+    --aside-menu-link--active-hover:#e63600;
+
 
     // Links
     --anchor:var(--color-accent);
