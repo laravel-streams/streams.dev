@@ -175,7 +175,7 @@ references:
                     </svg>
                     <div class="c-card-feature__body">
                         <h3 class="c-card-feature__title">Sponsorhip</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. </p>
+                        <p>Help futher open-source efforts by sponsoring the projects.</p>
                     </div>
                 </a>
 
