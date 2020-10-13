@@ -1,5 +1,5 @@
 .o-navbar {
-    @apply mt-0 mb-16  sticky z-10 py-2;
+    @apply mt-0 mb-16  sticky z-10 py-2 px-3;
     backdrop-filter: blur(3px);
     top: 0px;
 
@@ -14,6 +14,9 @@
     // border-color: #fafafa;
     color: var(--navbar-text);
 }
+// .o-navbar .container {
+//     @apply px-8;
+// }
 .o-mode__dark .o-navbar {
     background: rgba(19, 21, 22, 0.9);
 }
@@ -26,11 +29,8 @@
     @apply flex place-content-between items-center;
 }
 
-
-
-// Icon styling for icons within the navbar 
-.o-navbar .c-icon 
-{
-    width:30px;
-    height:30px;
+// Icon styling for icons within the navbar
+.o-navbar .c-icon {
+    width: 30px;
+    height: 30px;
 }

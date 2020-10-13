@@ -3,8 +3,12 @@
 // generates CSS.
 
 html {
-    overflow-x: hidden;
+    
     font-size:16px;
+}
+body
+{
+    overflow-x: hidden;
 }
 * {
     outline: none;

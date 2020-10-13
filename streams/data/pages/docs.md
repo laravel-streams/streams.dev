@@ -35,7 +35,7 @@ references:
                         <p>
                             Start here if you are new to the Laravel Streams platform or Laravel.
                         </p>
-                        <ul class="grid grid-cols-2 col-gap-8 c-list-arrow">
+                        <ul class="grid md:grid-cols-2 md:col-gap-8 c-list-arrow">
                             <li class="">
                                 <a href="docs/introduction">Introduction</a>
                             </li>

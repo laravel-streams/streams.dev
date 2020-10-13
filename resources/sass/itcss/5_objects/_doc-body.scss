@@ -1,10 +1,14 @@
 .o-doc-body
 {
-    @apply ml-0 pb-64 px-8;
+    @apply ml-0 pb-64 px-4 overflow-x-hidden;
 
     p 
     {
         max-width: 65ch;
+    }
+    
+    @media (min-width: 1280px) {
+        @apply px-8;
     }
 }
 
