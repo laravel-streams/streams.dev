@@ -125,7 +125,7 @@ references:
                             Marketplace
                         </h3>
                         <p>
-                            Lorem ipsum dolor sit amet consectetur.
+                            Composer powered addon marketplace is <strong>prototyped</strong>. 
                         </p>
                     </div>
                 </div>
@@ -148,7 +148,7 @@ references:
                     </svg>
                     <div class="c-card-feature__body">
                         <h3 class="c-card-feature__title">Tutorials</h3>
-                        <p>Lorem ipsum dolor sit amet.</p>
+                        <p>Topical tutorials are currently being <strong>outlined</strong>.</p>
                     </div>
                 </div>
             </div>
@@ -207,7 +207,7 @@ references:
                             Videos
                         </h3>
                         <p>
-                            Learn by viewing videos.
+                            Video tutorials will return soon.
                         </p>
                     </div>
                 </div>
