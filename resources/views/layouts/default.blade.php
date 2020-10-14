@@ -8,11 +8,17 @@
 <body class="o-mode">
 
     @section('navigation')
-
     @show
+
     @yield('content')
 
+    
+    
+    @section('mobile-navigation')
+    
+    @show
     @include('partials/assets')
+    
 
 </body>
 

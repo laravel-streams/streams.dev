@@ -1,5 +1,5 @@
 
-ul:not(.c-list):not(.c-aside-menu):not(.c-navbar) {
+ul:not(.c-list):not(.c-aside-menu):not(.c-navbar):not(.o-mobile-menu__menu) {
     @apply list-disc my-6;
     list-style-position: inside;
     // Nested unordered list elements
