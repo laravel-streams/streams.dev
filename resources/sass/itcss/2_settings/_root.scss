@@ -163,6 +163,10 @@
 
     // Divider
     --divider: var(--color-accent);
+
+    // Mobile Menu
+    --mobile-menu-bg: var(--color-accent);
+    --mobile-menu: var(--color-white);
 }
 
 .o-mode__dark {
@@ -229,4 +233,8 @@
 
     // Divider
     --divider: var(--color-accent);
+
+    // Mobile Menu
+    --mobile-menu-bg: var(--color-accent);
+    --mobile-menu: var(--color-white);
 }

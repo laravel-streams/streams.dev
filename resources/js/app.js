@@ -2,11 +2,11 @@
 import "./src/highlight"
 import "./src/highlight-copy"
 import DarkAndLightMode from "./src/dark-light-mode"
+import MobileMenu from "./src/mobile-menu"
 
 
 import "./src/anchor"
 import "./src/tocbot"
-
 
 const bashes = document.querySelectorAll('.language-bash');
 bashes.forEach(bash => {
@@ -15,3 +15,4 @@ bashes.forEach(bash => {
 });
 
 DarkAndLightMode({ selector: '[data-streams=toggle-color-mode]' });
+MobileMenu('[data-mobile-menu-toggle]');

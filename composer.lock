@@ -873,16 +873,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v8.9.0",
+            "version": "v8.10.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "8a6bf870bcfa1597e514a9c7ee6df44db98abb54"
+                "reference": "0c80950806cd1bc6d9a7068585a12c2bfa23bdf3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/8a6bf870bcfa1597e514a9c7ee6df44db98abb54",
-                "reference": "8a6bf870bcfa1597e514a9c7ee6df44db98abb54",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/0c80950806cd1bc6d9a7068585a12c2bfa23bdf3",
+                "reference": "0c80950806cd1bc6d9a7068585a12c2bfa23bdf3",
                 "shasum": ""
             },
             "require": {
@@ -1032,7 +1032,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2020-10-06T14:22:36+00:00"
+            "time": "2020-10-13T14:20:53+00:00"
         },
         {
             "name": "laravel/scout",
@@ -2353,25 +2353,25 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-streams/streams-api.git",
-                "reference": "08381a18ca2846e2dcc0f4c3664170012059a347"
+                "reference": "d69efdbd503189ec856e790033808233be2313a9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-streams/streams-api/zipball/08381a18ca2846e2dcc0f4c3664170012059a347",
-                "reference": "08381a18ca2846e2dcc0f4c3664170012059a347",
+                "url": "https://api.github.com/repos/laravel-streams/streams-api/zipball/d69efdbd503189ec856e790033808233be2313a9",
+                "reference": "d69efdbd503189ec856e790033808233be2313a9",
                 "shasum": ""
             },
             "type": "library",
             "extra": {
                 "laravel": {
                     "providers": [
-                        "Anomaly\\Streams\\Api\\ApiServiceProvider"
+                        "Streams\\Api\\ApiServiceProvider"
                     ]
                 }
             },
             "autoload": {
                 "psr-4": {
-                    "Anomaly\\Streams\\Api\\": "src/"
+                    "Streams\\Api\\": "src/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -2385,7 +2385,7 @@
                 }
             ],
             "description": "The official REST API package for Streams.",
-            "time": "2020-10-08T06:33:29+00:00"
+            "time": "2020-10-14T15:13:27+00:00"
         },
         {
             "name": "streams/core",
@@ -2393,12 +2393,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-streams/streams-core.git",
-                "reference": "6dceb2c5a6420760d7a8cceaea277de138d27258"
+                "reference": "ca463ffff6b3013d408b6b2fb3dfbaeddab7d9e8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-streams/streams-core/zipball/6dceb2c5a6420760d7a8cceaea277de138d27258",
-                "reference": "6dceb2c5a6420760d7a8cceaea277de138d27258",
+                "url": "https://api.github.com/repos/laravel-streams/streams-core/zipball/ca463ffff6b3013d408b6b2fb3dfbaeddab7d9e8",
+                "reference": "ca463ffff6b3013d408b6b2fb3dfbaeddab7d9e8",
                 "shasum": ""
             },
             "require": {
@@ -2429,13 +2429,13 @@
             "extra": {
                 "laravel": {
                     "providers": [
-                        "Anomaly\\Streams\\Platform\\StreamsServiceProvider"
+                        "Streams\\Core\\StreamsServiceProvider"
                     ]
                 }
             },
             "autoload": {
                 "psr-4": {
-                    "Anomaly\\Streams\\Platform\\": "src/"
+                    "Streams\\Core\\": "src/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -2449,7 +2449,7 @@
                 }
             ],
             "description": "A domain-driven, code-configured, flat-file application platform for Laravel.",
-            "time": "2020-10-10T03:43:55+00:00"
+            "time": "2020-10-14T15:08:10+00:00"
         },
         {
             "name": "streams/ui",
@@ -2457,25 +2457,25 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-streams/streams-ui.git",
-                "reference": "58bfcdb1da5e9576672bc5c7162b3a42cf619101"
+                "reference": "bbb034abc265cc5832101b1637cbe3596eabbbe3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-streams/streams-ui/zipball/58bfcdb1da5e9576672bc5c7162b3a42cf619101",
-                "reference": "58bfcdb1da5e9576672bc5c7162b3a42cf619101",
+                "url": "https://api.github.com/repos/laravel-streams/streams-ui/zipball/bbb034abc265cc5832101b1637cbe3596eabbbe3",
+                "reference": "bbb034abc265cc5832101b1637cbe3596eabbbe3",
                 "shasum": ""
             },
             "type": "library",
             "extra": {
                 "laravel": {
                     "providers": [
-                        "Anomaly\\Streams\\Ui\\UiServiceProvider"
+                        "Streams\\Ui\\UiServiceProvider"
                     ]
                 }
             },
             "autoload": {
                 "psr-4": {
-                    "Anomaly\\Streams\\Ui\\": "src/"
+                    "Streams\\Ui\\": "src/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -2489,7 +2489,7 @@
                 }
             ],
             "description": "The official UI package for Laravel Streams.",
-            "time": "2020-10-09T15:11:58+00:00"
+            "time": "2020-10-14T15:13:40+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -4927,16 +4927,16 @@
         },
         {
             "name": "facade/ignition",
-            "version": "2.3.8",
+            "version": "2.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/facade/ignition.git",
-                "reference": "e8fed9c382cd1d02b5606688576a35619afdf82c"
+                "reference": "9fc6c3d3de5271a1b94cff19dce2c9295abf0ffa"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/facade/ignition/zipball/e8fed9c382cd1d02b5606688576a35619afdf82c",
-                "reference": "e8fed9c382cd1d02b5606688576a35619afdf82c",
+                "url": "https://api.github.com/repos/facade/ignition/zipball/9fc6c3d3de5271a1b94cff19dce2c9295abf0ffa",
+                "reference": "9fc6c3d3de5271a1b94cff19dce2c9295abf0ffa",
                 "shasum": ""
             },
             "require": {
@@ -4995,7 +4995,7 @@
                 "laravel",
                 "page"
             ],
-            "time": "2020-10-01T23:01:14+00:00"
+            "time": "2020-10-14T08:59:59+00:00"
         },
         {
             "name": "facade/ignition-contracts",

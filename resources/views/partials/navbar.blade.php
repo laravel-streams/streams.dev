@@ -15,6 +15,13 @@
                         <x-icon-color class="c-navbar__icon" />
                     </a>
                 </li>
+                @if(Request::segment(1)=="docs" && Request::segment(2))
+                <li class="c-navbar__item">
+                    <a data-mobile-menu-toggle class="block md:hidden">
+                        <x-icon-hamburger class="c-navbar__icon" />
+                    </a>
+                </li>
+                @endif
             </ul>
         </div>
     </div>
