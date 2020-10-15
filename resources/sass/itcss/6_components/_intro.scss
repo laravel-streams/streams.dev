@@ -1,5 +1,8 @@
 .c-intro {
-    @apply text-left pt-16;
+    @apply text-left pt-4;
+    @media (min-width: 768px) {
+        @apply pt-16
+    }
 }
 
 // .c-intro__body h1 {

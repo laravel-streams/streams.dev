@@ -13,5 +13,8 @@
     // Code..
 }
 .c-navbar__right {
-    // Code..
+    @apply flex;
+}
+.c-navbar__right li{
+@apply ml-2
 }

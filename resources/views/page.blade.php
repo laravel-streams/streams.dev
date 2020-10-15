@@ -6,7 +6,7 @@
 
 
     <div class="o-page-body w-12/12">
-        {!! $entry->body !!}
+        {!! View::parse($entry->body) !!}
     </div>
 
 <div class="o-footer">

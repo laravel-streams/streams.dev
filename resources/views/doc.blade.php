@@ -2,6 +2,12 @@
 @section('navigation')
 @include('partials.navbar')
 @endsection
+@section('mobile-navigation')
+@include('partials/mobile-menu')
+@endsection
+
+
+
 @section('content')
 
 <div class="container mx-auto">
@@ -9,9 +15,6 @@
         @include('partials.docs.aside')
 
         <div class="o-doc-body w-full md:w-9/12 xl:w-8/12">
-
-
-
             @if($entry->intro)
 
             @include('partials.docs.intro')

@@ -1,0 +1,47 @@
+.o-mobile-menu {
+    background: var(--mobile-menu-bg);
+    width: 250px;
+    height: 100vh;
+    @apply fixed top-0 right-0 z-50;
+    transform: translateX(102%);
+    transition: transform 200ms ease-in-out;
+}
+.o-mobile-menu
+{
+    li,a,h3 
+    {
+        color:var(--mobile-menu);
+    }
+}
+.o-mobile-menu.o-mobile-menu--active {
+    transform: translateX(0%);
+}
+.o-mobile-menu ul 
+{
+    @apply my-2;
+   list-style-type: none !important;
+}
+.o-mobile-menu h3{
+    @apply text-base;
+}
+.o-mobile-menu li {
+    @apply text-sm;
+}
+.o-mobile-menu h3
+{
+    @apply mt-4 mb-2;
+}
+.o-mobile-menu li h3 a
+{
+    opacity:1;
+}
+.o-mobile-menu li a
+{
+    opacity:.755;
+}
+.o-mobile-menu li.active a
+{
+    color:inherit;
+    opacity:1;
+    @apply font-bold;
+}
