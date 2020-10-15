@@ -3,6 +3,7 @@
 return [
 
     'applications' => [
+        
         'french' => [
             'match' => '*streams.*lang=fr*',
             'config' => [
