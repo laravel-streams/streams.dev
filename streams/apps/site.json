@@ -2,7 +2,8 @@
     "data": {
         "match": "*",
         "config": {
-            "app.name": "Laravel Streams"
+            "app.name": "Laravel Streams",
+            "app.locale": "en"
         }
     }
 }
