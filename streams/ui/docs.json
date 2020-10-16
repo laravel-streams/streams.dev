@@ -11,15 +11,13 @@
             "delete"
         ],
         "options": {
-            "title": "Example Title",
-            "description": "Example Description",
             "order_by": {
                 "category": "asc"
             }
         },
         "buttons": {
             "edit": {
-                "href": "ui/{stream.handle}/form/{entry.id}"
+                "href": "cp/{stream.handle}/{entry.id}"
             },
             "view": {
                 "target": "_blank",
@@ -28,9 +26,6 @@
         }
     },
     "form": {
-        "options": {
-            "title": "Example Title",
-            "description": "Example Description"
-        }
+        "options": {}
     }
 }

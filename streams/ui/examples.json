@@ -13,7 +13,7 @@
         "options": {},
         "buttons": {
             "edit": {
-                "href": "ui/{stream.handle}/form/{entry.id}"
+                "href": "cp/{stream.handle}/{entry.id}"
             },
             "view": {
                 "target": "_blank",
