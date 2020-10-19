@@ -1,5 +1,6 @@
 {
     "name": "examples",
+    "translatable": true,
     "routes.view": "examples/{id}",
     "source": {
         "path": "examples"

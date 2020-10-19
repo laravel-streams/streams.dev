@@ -13,6 +13,7 @@ example_date: '2020-10-05'
 example_time: '15:38:33'
 example_range: 39
 ---
+
 title: {{ dump($entry->expand('title')) }} // Should be StringValue
 
 
