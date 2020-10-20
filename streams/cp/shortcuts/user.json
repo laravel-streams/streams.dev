@@ -1,0 +1,8 @@
+{
+    "data": {
+        "image": "https://source.unsplash.com/hoS3dzgpHzw/256x256",
+        "attributes": {
+            "onClick": "alert('Need dropdown component. Which is like buttons/group');"
+        }
+    }
+}

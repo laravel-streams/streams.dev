@@ -1,5 +1,9 @@
 {
     "table": {
+        "views": {
+            "all": {},
+            "trash": {}
+        },
         "filters": {
             "title": {}
         },
