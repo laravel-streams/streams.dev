@@ -11,7 +11,7 @@
         "sort": "integer",
         "title": "text",
         "intro": "textarea",
-        "body": "text|markdown",
+        "body": "markdown",
         "category": {
             "type": "text",
             "config": {
@@ -46,7 +46,8 @@
                     "done": "Done"
                 }
             }
-        }
+        },
+        "enabled": "integer"
     },
     "ui": "@streams/ui/docs.json"
 }
