@@ -24,7 +24,7 @@
         },
         "buttons": {
             "edit": {
-                "href": "cp/{stream.handle}/{entry.id}"
+                "href": "admin/{stream.handle}/update/{entry.id}"
             },
             "view": {
                 "target": "_blank",
