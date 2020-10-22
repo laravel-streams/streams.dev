@@ -1,11 +1,12 @@
 ---
 title: Introduction
-intro: Welcome to the Streams platform!
+intro: 'Welcome to the Streams platform!'
 sort: 0
 stage: review
-enabled: true
+enabled: 1
+test: $2y$10$3PbTHiSEZ6De9aYZKG5O0Op39WEVcFhSEyViNKkIFSwtmLCKVcTz2
+category: ''
 ---
-
 The Streams platform is a new breed of CMS. We call it a data management system (DMS).
 
 Streams is separated into individual packages so you can pick the features that best suits your project.
