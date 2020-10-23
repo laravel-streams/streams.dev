@@ -16,7 +16,7 @@ class AuthenticateApi
     public function handle($request, \Closure $next)
     {
         if (!in_array(Request::ip(), ['127.0.0.1', '::1'])) {
-            return redirect(403);
+            return abort(403);
         }
 
         return $next($request);
