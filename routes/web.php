@@ -12,6 +12,5 @@
 */
 
 use Illuminate\Support\Facades\Route;
-use Streams\Core\Support\Facades\Streams;
 
 Route::streams('/', 'welcome');
