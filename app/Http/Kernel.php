@@ -3,6 +3,7 @@
 namespace App\Http;
 
 use App\Http\Middleware\AuthenticateApi;
+use App\Http\Middleware\AuthenticateCp;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -42,6 +43,10 @@ class Kernel extends HttpKernel
             'throttle:60,1',
             'bindings',
             AuthenticateApi::class,
+        ],
+        
+        'cp' => [
+            AuthenticateCp::class,
         ],
     ];
 
