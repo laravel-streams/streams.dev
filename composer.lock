@@ -508,24 +508,24 @@
         },
         {
             "name": "fideloper/proxy",
-            "version": "4.4.0",
+            "version": "4.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/fideloper/TrustedProxy.git",
-                "reference": "9beebf48a1c344ed67c1d36bb1b8709db7c3c1a8"
+                "reference": "c073b2bd04d1c90e04dc1b787662b558dd65ade0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/fideloper/TrustedProxy/zipball/9beebf48a1c344ed67c1d36bb1b8709db7c3c1a8",
-                "reference": "9beebf48a1c344ed67c1d36bb1b8709db7c3c1a8",
+                "url": "https://api.github.com/repos/fideloper/TrustedProxy/zipball/c073b2bd04d1c90e04dc1b787662b558dd65ade0",
+                "reference": "c073b2bd04d1c90e04dc1b787662b558dd65ade0",
                 "shasum": ""
             },
             "require": {
-                "illuminate/contracts": "^5.0|^6.0|^7.0|^8.0",
+                "illuminate/contracts": "^5.0|^6.0|^7.0|^8.0|^9.0",
                 "php": ">=5.4.0"
             },
             "require-dev": {
-                "illuminate/http": "^5.0|^6.0|^7.0|^8.0",
+                "illuminate/http": "^5.0|^6.0|^7.0|^8.0|^9.0",
                 "mockery/mockery": "^1.0",
                 "phpunit/phpunit": "^6.0"
             },
@@ -558,7 +558,7 @@
                 "proxy",
                 "trusted proxy"
             ],
-            "time": "2020-06-23T01:36:47+00:00"
+            "time": "2020-10-22T13:48:01+00:00"
         },
         {
             "name": "graham-campbell/result-type",
@@ -1595,16 +1595,16 @@
         },
         {
             "name": "nesbot/carbon",
-            "version": "2.41.3",
+            "version": "2.41.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/briannesbitt/Carbon.git",
-                "reference": "e148788eeae9b9b7b87996520358b86faad37b52"
+                "reference": "6571aec754a648ef476a8d8f57993f7bc965afe4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/e148788eeae9b9b7b87996520358b86faad37b52",
-                "reference": "e148788eeae9b9b7b87996520358b86faad37b52",
+                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/6571aec754a648ef476a8d8f57993f7bc965afe4",
+                "reference": "6571aec754a648ef476a8d8f57993f7bc965afe4",
                 "shasum": ""
             },
             "require": {
@@ -1670,7 +1670,7 @@
                 "datetime",
                 "time"
             ],
-            "time": "2020-10-12T20:36:09+00:00"
+            "time": "2020-10-22T07:28:05+00:00"
         },
         {
             "name": "nicmart/string-template",
@@ -2353,12 +2353,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-streams/streams-api.git",
-                "reference": "d69efdbd503189ec856e790033808233be2313a9"
+                "reference": "b9d65c0b614c82c9fe9ee1ae2c8d9655b5f69985"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-streams/streams-api/zipball/d69efdbd503189ec856e790033808233be2313a9",
-                "reference": "d69efdbd503189ec856e790033808233be2313a9",
+                "url": "https://api.github.com/repos/laravel-streams/streams-api/zipball/b9d65c0b614c82c9fe9ee1ae2c8d9655b5f69985",
+                "reference": "b9d65c0b614c82c9fe9ee1ae2c8d9655b5f69985",
                 "shasum": ""
             },
             "type": "library",
@@ -2385,7 +2385,7 @@
                 }
             ],
             "description": "The official REST API package for Streams.",
-            "time": "2020-10-14T15:13:27+00:00"
+            "time": "2020-10-23T04:02:25+00:00"
         },
         {
             "name": "streams/core",
@@ -2393,12 +2393,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-streams/streams-core.git",
-                "reference": "c417269ee90995c42475444d074c3ae6ed5c24f6"
+                "reference": "ea46472ffb73293fe9581ee179a7092fee5256ab"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-streams/streams-core/zipball/c417269ee90995c42475444d074c3ae6ed5c24f6",
-                "reference": "c417269ee90995c42475444d074c3ae6ed5c24f6",
+                "url": "https://api.github.com/repos/laravel-streams/streams-core/zipball/ea46472ffb73293fe9581ee179a7092fee5256ab",
+                "reference": "ea46472ffb73293fe9581ee179a7092fee5256ab",
                 "shasum": ""
             },
             "require": {
@@ -2449,7 +2449,7 @@
                 }
             ],
             "description": "A domain-driven, code-configured, flat-file application platform for Laravel.",
-            "time": "2020-10-21T07:17:27+00:00"
+            "time": "2020-10-23T04:03:59+00:00"
         },
         {
             "name": "streams/ui",
@@ -2457,12 +2457,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-streams/streams-ui.git",
-                "reference": "d43e7ba0625d1549a67cfd7acea302f9dbd2c053"
+                "reference": "eadf0bfa1e140915c9c07f2c018cbd456a197ba2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-streams/streams-ui/zipball/d43e7ba0625d1549a67cfd7acea302f9dbd2c053",
-                "reference": "d43e7ba0625d1549a67cfd7acea302f9dbd2c053",
+                "url": "https://api.github.com/repos/laravel-streams/streams-ui/zipball/eadf0bfa1e140915c9c07f2c018cbd456a197ba2",
+                "reference": "eadf0bfa1e140915c9c07f2c018cbd456a197ba2",
                 "shasum": ""
             },
             "require": {
@@ -2492,7 +2492,7 @@
                 }
             ],
             "description": "The official UI package for Laravel Streams.",
-            "time": "2020-10-21T07:17:15+00:00"
+            "time": "2020-10-23T02:44:40+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -4876,22 +4876,22 @@
         },
         {
             "name": "facade/flare-client-php",
-            "version": "1.3.6",
+            "version": "1.3.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/facade/flare-client-php.git",
-                "reference": "451fadf38e9f635e7f8e1f5b3cf5c9eb82f11799"
+                "reference": "fd688d3c06658f2b3b5f7bb19f051ee4ddf02492"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/facade/flare-client-php/zipball/451fadf38e9f635e7f8e1f5b3cf5c9eb82f11799",
-                "reference": "451fadf38e9f635e7f8e1f5b3cf5c9eb82f11799",
+                "url": "https://api.github.com/repos/facade/flare-client-php/zipball/fd688d3c06658f2b3b5f7bb19f051ee4ddf02492",
+                "reference": "fd688d3c06658f2b3b5f7bb19f051ee4ddf02492",
                 "shasum": ""
             },
             "require": {
                 "facade/ignition-contracts": "~1.0",
                 "illuminate/pipeline": "^5.5|^6.0|^7.0|^8.0",
-                "php": "^7.1",
+                "php": "^7.1|^8.0",
                 "symfony/http-foundation": "^3.3|^4.1|^5.0",
                 "symfony/mime": "^3.4|^4.0|^5.1",
                 "symfony/var-dumper": "^3.4|^4.0|^5.0"
@@ -4927,7 +4927,7 @@
                 "flare",
                 "reporting"
             ],
-            "time": "2020-09-18T06:35:11+00:00"
+            "time": "2020-10-21T16:02:39+00:00"
         },
         {
             "name": "facade/ignition",

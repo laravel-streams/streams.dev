@@ -47,7 +47,7 @@
                 }
             }
         },
-        "enabled": "integer"
+        "enabled": "boolean"
     },
     "ui": "@streams/ui/docs.json"
 }
