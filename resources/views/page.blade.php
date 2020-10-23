@@ -6,7 +6,7 @@
 
 
     <div class="o-page-body w-12/12">
-        {!! View::parse($entry->body) !!}
+        {!! Str::markdown(View::parse($entry->body, compact('entry'))) !!}
     </div>
 
 <div class="o-footer">

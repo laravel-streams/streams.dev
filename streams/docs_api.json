@@ -5,6 +5,6 @@
     "description": "Documentation for all things contained in the API package.",
     "notes": "",
     "source": {
-        "path": "vendor/anomaly/streams-api/docs"
+        "path": "vendor/streams/api/docs"
     }
 }
