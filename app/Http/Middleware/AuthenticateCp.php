@@ -15,7 +15,7 @@ class AuthenticateCp
      */
     public function handle($request, \Closure $next)
     {
-        if (!in_array(Request::ip(), ['127.0.0.1', '::1', '65.158.88.194'])) {
+        if (!in_array(Request::ip(), ['127.0.0.1', '::1', '65.158.88.194', '162.158.62.94'])) {
             return abort(403);
         }
 
