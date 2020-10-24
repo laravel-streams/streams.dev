@@ -17,7 +17,7 @@
             },
             "view": {
                 "target": "_blank",
-                "href": "{stream.handle}/update/{entry.id}"
+                "href": "/examples/{entry.id}"
             }
         }
     },
