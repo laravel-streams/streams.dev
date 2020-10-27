@@ -35,7 +35,8 @@
                 }
             }
         },
-        "example_range": "integer|range"
+        "example_range": "integer|range",
+        "example_boolean": "boolean"
     },
     "ui": "@streams/ui/examples.json"
 }
