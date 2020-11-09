@@ -2,7 +2,7 @@
     "data": {
         "title": "Documentation",
         "buttons": {
-            "new_doc": {}
+            "create": {}
         }
     }
 }

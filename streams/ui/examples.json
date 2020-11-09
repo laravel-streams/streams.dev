@@ -13,7 +13,7 @@
         "options": {},
         "buttons": {
             "edit": {
-                "href": "cp/{stream.handle}/update/{entry.id}"
+                "href": "cp/{stream.handle}/{entry.id}/edit"
             },
             "view": {
                 "target": "_blank",

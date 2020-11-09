@@ -13,12 +13,12 @@
     "ui": {
         "table": {
             "columns": [
-                "entry.id",
+                "id",
                 "email"
             ],
             "buttons": {
                 "edit": {
-                    "href": "cp/users/update/{entry.id}"
+                    "href": "cp/users/{entry.id}/edit"
                 }
             }
         },

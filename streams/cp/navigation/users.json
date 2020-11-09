@@ -2,7 +2,7 @@
     "data": {
         "title": "Users",
         "buttons": {
-            "new_user": {}
+            "create": {}
         }
     }
 }
