@@ -3,8 +3,10 @@
         "image": "https://source.unsplash.com/hoS3dzgpHzw/256x256",
         "dropdown": {
             "profile": {
-                "text": "Your Profile",
-                "href": "/profile"
+                "text": "Visit Website",
+                "href": "/",
+                "target": "_blank"
+                
             },
             "logout": {
                 "text": "Logout",
