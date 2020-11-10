@@ -1,8 +1,16 @@
 {
     "data": {
         "image": "https://source.unsplash.com/hoS3dzgpHzw/256x256",
-        "attributes": {
-            "onClick": "alert('Need dropdown component. Which is like buttons/group');"
+        "dropdown": {
+            "profile": {
+                "text": "Your Profile",
+                "href": "/profile"
+            },
+            "logout": {
+                "text": "Logout",
+                "href": "/logout",
+                "target": "_blank"
+            }
         }
     }
 }
