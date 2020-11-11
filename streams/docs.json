@@ -7,6 +7,9 @@
     "source": {
         "path": "docs"
     },
+    "rules": {
+        "id": "required"
+    },
     "fields": {
         "sort": "integer",
         "title": "text",
