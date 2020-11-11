@@ -10,6 +10,17 @@
 
 @section('content')
 
+<div class="fixed inline-block bottom-0 right-0 pb-2 pr-2 text-xs opacity-25">
+    {{ number_format(microtime(true) - Request::server('REQUEST_TIME_FLOAT'), 2) . ' s' }}&nbsp;|&nbsp;
+    @php
+        $size = memory_get_usage(true);
+
+        $unit = ['b', 'kb', 'mb', 'gb', 'tb', 'pb'];
+
+        echo round($size / pow(1024, ($i = floor(log($size, 1024)))), 2) . ' ' . $unit[$i];
+    @endphp
+</div>
+
 <div class="container mx-auto">
     <div class="flex flex-wrap min-h-screen mx-auto">
         @include('partials.docs.aside')
