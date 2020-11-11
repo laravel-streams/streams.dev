@@ -46,7 +46,7 @@ class Kernel extends HttpKernel
         ],
         
         'cp' => [
-            AuthenticateCp::class,
+            //AuthenticateCp::class,
         ],
     ];
 
