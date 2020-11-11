@@ -1,6 +1,5 @@
 .env
 .coverage
-.php_cs.cache
 /bin
 /core
 /build
