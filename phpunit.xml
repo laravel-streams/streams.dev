@@ -10,14 +10,20 @@
          stopOnFailure="false"
 >
     <testsuites>
-        <testsuite name="Streams Core">
-            <directory suffix="Test.php">./vendor/anomaly/streams-core/tests</directory>
-        </testsuite>
         <testsuite name="Application">
             <directory suffix="Test.php">./tests</directory>
         </testsuite>
-        <testsuite name="Packages">
-            <directory suffix="Test.php">./vendor/anomaly/*/tests</directory>
+        <testsuite name="Streams">
+            <directory suffix="Test.php">./vendor/streams/*/tests</directory>
+        </testsuite>
+        <testsuite name="Streams Core">
+            <directory suffix="Test.php">./vendor/streams/core/tests</directory>
+        </testsuite>
+        <testsuite name="Streams API">
+            <directory suffix="Test.php">./vendor/streams/api/tests</directory>
+        </testsuite>
+        <testsuite name="Streams UI">
+            <directory suffix="Test.php">./vendor/streams/ui/tests</directory>
         </testsuite>
     </testsuites>
 
