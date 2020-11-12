@@ -8,7 +8,13 @@
     "fields": {
         "uername": "slug",
         "email": "string",
-        "password": "hash"
+        "password": "hash",
+        "relative": {
+            "type": "relationship",
+            "config": {
+                "related": "users"
+            }
+        }
     },
     "ui": {
         "table": {
