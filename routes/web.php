@@ -14,3 +14,5 @@
 use Illuminate\Support\Facades\Route;
 
 Route::streams('/', 'welcome');
+
+Route::redirect('discord', 'https://discord.gg/Sh79MvV');
