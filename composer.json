@@ -15,10 +15,10 @@
         }
     ],
     "require": {
-        "streams/core": "2.0.x-dev",
+        "blade-ui-kit/blade-icons": "^0.4.5",
         "streams/api": "1.0.x-dev",
-        "streams/ui": "1.0.x-dev",
-        "blade-ui-kit/blade-icons": "^0.4.5"
+        "streams/core": "2.0.x-dev",
+        "streams/ui": "1.0.x-dev"
     },
     "require-dev": {
         "streams/dev": "1.0.x-dev",
