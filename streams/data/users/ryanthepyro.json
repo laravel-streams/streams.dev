@@ -4,7 +4,7 @@
     "data": {
         "email": "ryan@streams.dev",
         "password": "$2y$10$4LKzOQgflsLAt6ZUrmP2uuU0sIBHkVcLDLI0knkzBBZYFAEeiAI/K",
-        "uername": "ryanthepyro",
-        "relative": "demo_user"
+        "username": "ryanthepyro",
+        "role": "admin"
     }
 }

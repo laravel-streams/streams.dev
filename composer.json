@@ -21,6 +21,7 @@
         "blade-ui-kit/blade-icons": "^0.4.5"
     },
     "require-dev": {
+        "streams/dev": "1.0.x-dev",
         "barryvdh/laravel-debugbar": "^3.3",
         "fzaninotto/faker": "^1.9",
         "facade/ignition": "^2.0",

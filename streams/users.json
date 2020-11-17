@@ -6,13 +6,13 @@
     "routes.view": "users/{id}",
     "config.key_name": "username",
     "fields": {
-        "uername": "slug",
+        "username": "slug",
         "email": "string",
         "password": "hash",
-        "relative": {
+        "role": {
             "type": "relationship",
             "config": {
-                "related": "users"
+                "related": "roles"
             }
         }
     },

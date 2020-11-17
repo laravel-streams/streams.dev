@@ -1,0 +1,20 @@
+{
+    "name": "roles",
+    "translatable": true,
+    "source.format": "json",
+    "fields": {
+        "name": "string"
+    },
+    "ui": {
+        "table": {
+            "columns": [
+                "id",
+                "name"
+            ],
+            "buttons": {
+                "edit": {}
+            }
+        },
+        "form": {}
+    }
+}
