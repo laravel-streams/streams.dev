@@ -12,9 +12,7 @@
         ],
         "options": {},
         "buttons": {
-            "edit": {
-                "href": "cp/{stream.handle}/{entry.id}/edit"
-            },
+            "edit": {},
             "view": {
                 "target": "_blank",
                 "href": "/examples/{entry.id}"

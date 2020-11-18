@@ -23,9 +23,7 @@
             }
         },
         "buttons": {
-            "edit": {
-                "href": "/cp/{stream.handle}/{entry.id}/edit"
-            },
+            "edit": {},
             "view": {
                 "target": "_blank",
                 "href": "/{stream.url_prefix}/{entry.id}"
