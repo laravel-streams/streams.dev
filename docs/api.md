@@ -1,10 +1,10 @@
 ---
+sort: 20
 title: 'API Readiness'
-category: core_concepts
 intro: ''
+category: core_concepts
 stage: review
 enabled: true
-sort: 20
 ---
 ## Introduction
 
