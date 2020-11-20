@@ -19,5 +19,14 @@
             }
         }
     },
-    "form": {}
+    "form": {
+        "fields": {
+            "id": {
+                "width": 2
+            },
+            "example_title": {
+                "width": 2
+            }
+        }
+    }
 }
