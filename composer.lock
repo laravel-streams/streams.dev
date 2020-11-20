@@ -2347,12 +2347,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-streams/streams-core.git",
-                "reference": "26f82cb96bc12732e4c1114983448e5a86d1f3b4"
+                "reference": "d28310498429596b9a1293f927e78b83a69c5657"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-streams/streams-core/zipball/26f82cb96bc12732e4c1114983448e5a86d1f3b4",
-                "reference": "26f82cb96bc12732e4c1114983448e5a86d1f3b4",
+                "url": "https://api.github.com/repos/laravel-streams/streams-core/zipball/d28310498429596b9a1293f927e78b83a69c5657",
+                "reference": "d28310498429596b9a1293f927e78b83a69c5657",
                 "shasum": ""
             },
             "require": {
@@ -2403,7 +2403,7 @@
                 }
             ],
             "description": "A domain-driven, code-configured, flat-file application platform for Laravel.",
-            "time": "2020-11-18T09:55:01+00:00"
+            "time": "2020-11-20T06:26:32+00:00"
         },
         {
             "name": "streams/ui",
@@ -2411,12 +2411,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-streams/streams-ui.git",
-                "reference": "c979050e2635233bfa32edba81b4ee58be209f05"
+                "reference": "937473271a6da9266405c2b4c36041ea49bcc852"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-streams/streams-ui/zipball/c979050e2635233bfa32edba81b4ee58be209f05",
-                "reference": "c979050e2635233bfa32edba81b4ee58be209f05",
+                "url": "https://api.github.com/repos/laravel-streams/streams-ui/zipball/937473271a6da9266405c2b4c36041ea49bcc852",
+                "reference": "937473271a6da9266405c2b4c36041ea49bcc852",
                 "shasum": ""
             },
             "require": {
@@ -2446,7 +2446,7 @@
                 }
             ],
             "description": "The official UI package for Laravel Streams.",
-            "time": "2020-11-18T09:54:54+00:00"
+            "time": "2020-11-20T06:26:38+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
