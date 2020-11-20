@@ -24,7 +24,7 @@
             ],
             "buttons": {
                 "edit": {
-                    "href": "cp/users/{entry.id}/edit"
+                    "href": "{route.prefix}/users/{entry.id}/edit"
                 }
             }
         },
