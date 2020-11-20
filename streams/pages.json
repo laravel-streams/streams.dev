@@ -1,6 +1,9 @@
 {
     "slug": "pages",
-    "routes.view": "/{id}",
+    "routes.view": {
+        "uri": "/{id}",
+        "defer": true
+    },
     "template": "page",
     "rules": {
         "title": "required"
