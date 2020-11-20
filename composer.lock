@@ -2411,12 +2411,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-streams/streams-ui.git",
-                "reference": "937473271a6da9266405c2b4c36041ea49bcc852"
+                "reference": "d32c2fd1f827f3ab4ea27e3ead71248d9c19ebe5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-streams/streams-ui/zipball/937473271a6da9266405c2b4c36041ea49bcc852",
-                "reference": "937473271a6da9266405c2b4c36041ea49bcc852",
+                "url": "https://api.github.com/repos/laravel-streams/streams-ui/zipball/d32c2fd1f827f3ab4ea27e3ead71248d9c19ebe5",
+                "reference": "d32c2fd1f827f3ab4ea27e3ead71248d9c19ebe5",
                 "shasum": ""
             },
             "require": {
@@ -2446,7 +2446,7 @@
                 }
             ],
             "description": "The official UI package for Laravel Streams.",
-            "time": "2020-11-20T06:26:38+00:00"
+            "time": "2020-11-20T07:08:28+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",

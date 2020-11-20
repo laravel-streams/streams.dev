@@ -1,0 +1,9 @@
+{
+    "data": {
+        "match": "*/admin*",
+        "config": {
+            "app.name": "Laravel Streams - Admin",
+            "app.locale": "en"
+        }
+    }
+}
