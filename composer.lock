@@ -755,16 +755,16 @@
         },
         {
             "name": "jaybizzle/crawler-detect",
-            "version": "v1.2.102",
+            "version": "v1.2.103",
             "source": {
                 "type": "git",
                 "url": "https://github.com/JayBizzle/Crawler-Detect.git",
-                "reference": "346cfd72d11bb41f15e82654e532dc55360612ac"
+                "reference": "3efa2860959cc971f17624b40bf0699823f9d0f3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/JayBizzle/Crawler-Detect/zipball/346cfd72d11bb41f15e82654e532dc55360612ac",
-                "reference": "346cfd72d11bb41f15e82654e532dc55360612ac",
+                "url": "https://api.github.com/repos/JayBizzle/Crawler-Detect/zipball/3efa2860959cc971f17624b40bf0699823f9d0f3",
+                "reference": "3efa2860959cc971f17624b40bf0699823f9d0f3",
                 "shasum": ""
             },
             "require": {
@@ -799,7 +799,7 @@
                 "crawlerdetect",
                 "php crawler detect"
             ],
-            "time": "2020-11-04T19:23:01+00:00"
+            "time": "2020-11-23T19:49:25+00:00"
         },
         {
             "name": "jenssegers/agent",
@@ -2253,55 +2253,6 @@
             "time": "2020-08-18T17:17:46+00:00"
         },
         {
-            "name": "spatie/yaml-front-matter",
-            "version": "2.0.5",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/spatie/yaml-front-matter.git",
-                "reference": "efb5170a92216b8d2f40874301db8eb51b8e73cc"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/spatie/yaml-front-matter/zipball/efb5170a92216b8d2f40874301db8eb51b8e73cc",
-                "reference": "efb5170a92216b8d2f40874301db8eb51b8e73cc",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.0",
-                "symfony/yaml": "^3.0|^4.0|^5.0"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "^6.5"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Spatie\\YamlFrontMatter\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Sebastian De Deyne",
-                    "email": "sebastian@spatie.be",
-                    "homepage": "https://spatie.be",
-                    "role": "Developer"
-                }
-            ],
-            "description": "A to the point yaml front matter parser",
-            "homepage": "https://github.com/sebastiandedeyne/yaml-front-matter",
-            "keywords": [
-                "front matter",
-                "jekyll",
-                "spatie",
-                "yaml"
-            ],
-            "time": "2019-12-02T20:50:50+00:00"
-        },
-        {
             "name": "streams/api",
             "version": "1.0.x-dev",
             "source": {
@@ -2347,12 +2298,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-streams/streams-core.git",
-                "reference": "d28310498429596b9a1293f927e78b83a69c5657"
+                "reference": "8d70496627d70f42c4565df4b6233a519881b243"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-streams/streams-core/zipball/d28310498429596b9a1293f927e78b83a69c5657",
-                "reference": "d28310498429596b9a1293f927e78b83a69c5657",
+                "url": "https://api.github.com/repos/laravel-streams/streams-core/zipball/8d70496627d70f42c4565df4b6233a519881b243",
+                "reference": "8d70496627d70f42c4565df4b6233a519881b243",
                 "shasum": ""
             },
             "require": {
@@ -2368,7 +2319,7 @@
                 "misd/linkify": "1.1.*",
                 "mrclay/jsmin-php": "^2.4",
                 "nicmart/string-template": "^0.1",
-                "spatie/yaml-front-matter": "^2.0",
+                "symfony/yaml": "^3.0|^4.0|^5.0",
                 "tmarois/filebase": "^1.0",
                 "tubalmartin/cssmin": "^4.0"
             },
@@ -2403,7 +2354,7 @@
                 }
             ],
             "description": "A domain-driven, code-configured, flat-file application platform for Laravel.",
-            "time": "2020-11-20T06:26:32+00:00"
+            "time": "2020-11-24T06:06:58+00:00"
         },
         {
             "name": "streams/ui",
@@ -2411,12 +2362,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-streams/streams-ui.git",
-                "reference": "d32c2fd1f827f3ab4ea27e3ead71248d9c19ebe5"
+                "reference": "a0460bfb891619d32c7281ba0b62debb0652227d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-streams/streams-ui/zipball/d32c2fd1f827f3ab4ea27e3ead71248d9c19ebe5",
-                "reference": "d32c2fd1f827f3ab4ea27e3ead71248d9c19ebe5",
+                "url": "https://api.github.com/repos/laravel-streams/streams-ui/zipball/a0460bfb891619d32c7281ba0b62debb0652227d",
+                "reference": "a0460bfb891619d32c7281ba0b62debb0652227d",
                 "shasum": ""
             },
             "require": {
@@ -2446,7 +2397,7 @@
                 }
             ],
             "description": "The official UI package for Laravel Streams.",
-            "time": "2020-11-20T07:08:28+00:00"
+            "time": "2020-11-24T06:25:24+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",

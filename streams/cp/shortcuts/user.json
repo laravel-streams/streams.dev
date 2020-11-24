@@ -1,18 +1,15 @@
 {
-    "data": {
-        "image": "https://source.unsplash.com/hoS3dzgpHzw/256x256",
-        "dropdown": {
-            "profile": {
-                "text": "Visit Website",
-                "href": "/",
-                "target": "_blank"
-                
-            },
-            "logout": {
-                "text": "Logout",
-                "href": "/logout",
-                "target": "_blank"
-            }
+    "image": "https://source.unsplash.com/hoS3dzgpHzw/256x256",
+    "dropdown": {
+        "profile": {
+            "text": "Visit Website",
+            "href": "/",
+            "target": "_blank"
+        },
+        "logout": {
+            "text": "Logout",
+            "href": "/logout",
+            "target": "_blank"
         }
     }
 }
