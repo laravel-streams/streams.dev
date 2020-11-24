@@ -1,8 +1,6 @@
 {
-    "data": {
-        "title": "Users",
-        "buttons": {
-            "create": {}
-        }
+    "title": "Users",
+    "buttons": {
+        "create": {}
     }
 }

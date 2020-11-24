@@ -1,6 +1,4 @@
 {
-    "data": {
-        "parent": "docs",
-        "title": "Streams Core"
-    }
+    "parent": "docs",
+    "title": "Streams Core"
 }

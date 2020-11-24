@@ -1,8 +1,6 @@
 {
-    "data": {
-        "title": "Documentation",
-        "buttons": {
-            "create": {}
-        }
+    "title": "Documentation",
+    "buttons": {
+        "create": {}
     }
 }
