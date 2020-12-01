@@ -875,16 +875,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v8.16.1",
+            "version": "v8.17.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "f7dfc22e6c42e9ed4dda14c05814349af6943206"
+                "reference": "09bd79531d3f958f02fa34f1f14197b1716ef29b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/f7dfc22e6c42e9ed4dda14c05814349af6943206",
-                "reference": "f7dfc22e6c42e9ed4dda14c05814349af6943206",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/09bd79531d3f958f02fa34f1f14197b1716ef29b",
+                "reference": "09bd79531d3f958f02fa34f1f14197b1716ef29b",
                 "shasum": ""
             },
             "require": {
@@ -1034,7 +1034,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2020-11-25T15:01:02+00:00"
+            "time": "2020-12-01T15:01:58+00:00"
         },
         {
             "name": "laravel/scout",
@@ -2301,12 +2301,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-streams/streams-core.git",
-                "reference": "8d70496627d70f42c4565df4b6233a519881b243"
+                "reference": "10b0cab570631f24322f1cce23d78a8dcd1d919c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-streams/streams-core/zipball/8d70496627d70f42c4565df4b6233a519881b243",
-                "reference": "8d70496627d70f42c4565df4b6233a519881b243",
+                "url": "https://api.github.com/repos/laravel-streams/streams-core/zipball/10b0cab570631f24322f1cce23d78a8dcd1d919c",
+                "reference": "10b0cab570631f24322f1cce23d78a8dcd1d919c",
                 "shasum": ""
             },
             "require": {
@@ -2357,7 +2357,7 @@
                 }
             ],
             "description": "A domain-driven, code-configured, flat-file application platform for Laravel.",
-            "time": "2020-11-24T06:06:58+00:00"
+            "time": "2020-12-01T22:15:29+00:00"
         },
         {
             "name": "streams/ui",
@@ -2365,12 +2365,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-streams/streams-ui.git",
-                "reference": "39b751c40a86bbe16551dfca1a844af6637f7921"
+                "reference": "02cb35cc0acbec46a20e852fe734bcebb3355aca"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-streams/streams-ui/zipball/39b751c40a86bbe16551dfca1a844af6637f7921",
-                "reference": "39b751c40a86bbe16551dfca1a844af6637f7921",
+                "url": "https://api.github.com/repos/laravel-streams/streams-ui/zipball/02cb35cc0acbec46a20e852fe734bcebb3355aca",
+                "reference": "02cb35cc0acbec46a20e852fe734bcebb3355aca",
                 "shasum": ""
             },
             "require": {
@@ -2400,7 +2400,7 @@
                 }
             ],
             "description": "The official UI package for Laravel Streams.",
-            "time": "2020-11-24T22:40:57+00:00"
+            "time": "2020-12-01T22:15:19+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -6221,16 +6221,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "9.4.3",
+            "version": "9.4.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "9fa359ff5ddaa5eb2be2bedb08a6a5787a5807ab"
+                "reference": "6535e637961f0829832621dc1b7308c2d24a799e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/9fa359ff5ddaa5eb2be2bedb08a6a5787a5807ab",
-                "reference": "9fa359ff5ddaa5eb2be2bedb08a6a5787a5807ab",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/6535e637961f0829832621dc1b7308c2d24a799e",
+                "reference": "6535e637961f0829832621dc1b7308c2d24a799e",
                 "shasum": ""
             },
             "require": {
@@ -6306,7 +6306,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2020-11-10T12:53:30+00:00"
+            "time": "2020-12-01T04:58:47+00:00"
         },
         {
             "name": "psy/psysh",
