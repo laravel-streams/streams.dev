@@ -12,7 +12,8 @@
                 "sortable": false
             },
             "category": {},
-            "stage": {}
+            "stage": {},
+            "enabled": {}
         },
         "actions": [
             "delete"
