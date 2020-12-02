@@ -5,12 +5,12 @@
             "trash": {}
         },
         "filters": {
-            "title": {}
+            "title": {
+                "placeholder": "Example"
+            }
         },
         "columns": {
-            "title": {
-                "sortable": false
-            },
+            "title": {},
             "category": {},
             "stage": {},
             "enabled": {}
