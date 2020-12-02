@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0034168650059e45322552bd1b57ddd9",
+    "content-hash": "5c808026a46b8d556ef2163af91ceac1",
     "packages": [
         {
             "name": "blade-ui-kit/blade-heroicons",
@@ -927,16 +927,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v8.17.0",
+            "version": "v8.17.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "09bd79531d3f958f02fa34f1f14197b1716ef29b"
+                "reference": "7618102c4864ac1f1f791c966c0e9a86949d9b83"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/09bd79531d3f958f02fa34f1f14197b1716ef29b",
-                "reference": "09bd79531d3f958f02fa34f1f14197b1716ef29b",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/7618102c4864ac1f1f791c966c0e9a86949d9b83",
+                "reference": "7618102c4864ac1f1f791c966c0e9a86949d9b83",
                 "shasum": ""
             },
             "require": {
@@ -1086,7 +1086,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2020-12-01T15:01:58+00:00"
+            "time": "2020-12-02T06:08:43+00:00"
         },
         {
             "name": "laravel/scout",
@@ -2417,12 +2417,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-streams/streams-ui.git",
-                "reference": "bf5e91f5f644639fcd89c475b9d6ada4c07385ae"
+                "reference": "5b19b6bf38443928cb5ac87e6ce18ad82b3ef6dd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-streams/streams-ui/zipball/bf5e91f5f644639fcd89c475b9d6ada4c07385ae",
-                "reference": "bf5e91f5f644639fcd89c475b9d6ada4c07385ae",
+                "url": "https://api.github.com/repos/laravel-streams/streams-ui/zipball/5b19b6bf38443928cb5ac87e6ce18ad82b3ef6dd",
+                "reference": "5b19b6bf38443928cb5ac87e6ce18ad82b3ef6dd",
                 "shasum": ""
             },
             "require": {
@@ -2453,7 +2453,7 @@
                 }
             ],
             "description": "The official UI package for Laravel Streams.",
-            "time": "2020-12-02T06:09:40+00:00"
+            "time": "2020-12-02T06:24:54+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
