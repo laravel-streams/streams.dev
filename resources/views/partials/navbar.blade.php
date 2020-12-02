@@ -5,20 +5,20 @@
             <ul class="c-navbar c-navbar__left">
                 <li class="c-navbar__item">
                     <a href="/">
-                    <x-icon-home class="c-navbar__icon" />
+                        <x-heroicon-o-home class="c-navbar__icon" />
                     </a>
                 </li>
             </ul>
             <ul class="c-navbar c-navbar__right">
                 <li class="c-navbar__item">
                     <a href="/docs/introduction" data-streams="toggle-color-mode">
-                        <x-icon-color class="c-navbar__icon" />
+                        <x-heroicon-o-color-swatch class="c-navbar__icon" />
                     </a>
                 </li>
                 @if(Request::segment(1)=="docs" && Request::segment(2))
                 <li class="c-navbar__item">
                     <a data-mobile-menu-toggle class="block md:hidden">
-                        <x-icon-hamburger class="c-navbar__icon" />
+                        <x-heroicon-o-menu-alt-1 class="c-navbar__icon" />
                     </a>
                 </li>
                 @endif
