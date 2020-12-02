@@ -22,7 +22,7 @@
         "intro": "textarea",
         "body": "markdown",
         "category": {
-            "type": "text",
+            "type": "select",
             "config": {
                 "options": {
                     "introduction": "Introduction",
