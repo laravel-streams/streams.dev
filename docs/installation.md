@@ -14,7 +14,7 @@ enabled: true
 When creating a new Streams project, the [core](/docs/core/introduction), [ui](/docs/ui/introduction), and [api](/docs/api/introduction) packages are all included by default.
 
 ```bash
-composer create-project streams/streams example.local --prefer-dist --stability=dev
+composer create-project streams/streams example.local --stability=dev
 ```
 
 ### Local Development Server
