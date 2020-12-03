@@ -22,7 +22,7 @@ echo "Deploying application..."
     # Clear cache/optimize
     php artisan optimize
 
-    # Reload PHP to update opcache
+    # Reload PHP to update opcache?
     # echo "" | sudo -S service php74 reload
     
 # Exit maintenance mode
