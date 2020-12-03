@@ -15,8 +15,6 @@ class AuthenticateCp
      */
     public function handle($request, \Closure $next)
     {
-        dump(Request::ips());
-        dd(config('streams.whitelist', []));
         if (!in_array(Request::ip(), config('streams.whitelist', []))) {
             return abort(403);
         }
