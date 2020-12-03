@@ -1,6 +1,6 @@
 set -e
 
-vendor/bin/phpunit
+bin/phpunit
 
 (git push) || true
 
