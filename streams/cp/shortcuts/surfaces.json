@@ -1,0 +1,5 @@
+{
+    "sort_order": 2,
+    "icon": "heroicon-o-eye",
+    "attributes.@click": "$dispatch('show-surfaces')"
+}
