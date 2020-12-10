@@ -11,7 +11,10 @@
         "id": "required"
     },
     "fields": {
-        "id": "string",
+        "id": {
+            "type": "string",
+            "name": "field.id"
+        },
         "sort": {
             "type": "integer",
             "rules": [
