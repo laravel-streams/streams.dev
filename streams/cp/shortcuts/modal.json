@@ -1,0 +1,5 @@
+{
+    "sort_order": 3,
+    "icon": "heroicon-o-duplicate",
+    "attributes.@click": "$dispatch('show-modal')"
+}
