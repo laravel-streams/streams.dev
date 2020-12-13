@@ -2355,12 +2355,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-streams/streams-core.git",
-                "reference": "ce61d15b547ca2019abbd79af8bf3deb663fa837"
+                "reference": "3718f071e370b258a9689fa06383027b68dddb39"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-streams/streams-core/zipball/ce61d15b547ca2019abbd79af8bf3deb663fa837",
-                "reference": "ce61d15b547ca2019abbd79af8bf3deb663fa837",
+                "url": "https://api.github.com/repos/laravel-streams/streams-core/zipball/3718f071e370b258a9689fa06383027b68dddb39",
+                "reference": "3718f071e370b258a9689fa06383027b68dddb39",
                 "shasum": ""
             },
             "require": {
@@ -2389,6 +2389,9 @@
             },
             "type": "library",
             "extra": {
+                "branch-alias": {
+                    "dev-master": "2.x-dev"
+                },
                 "laravel": {
                     "providers": [
                         "Streams\\Core\\StreamsServiceProvider"
@@ -2411,7 +2414,7 @@
                 }
             ],
             "description": "A domain-driven, code-configured, flat-file application platform for Laravel.",
-            "time": "2020-12-02T23:50:59+00:00"
+            "time": "2020-12-11T04:51:13+00:00"
         },
         {
             "name": "streams/ui",
@@ -2419,12 +2422,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-streams/streams-ui.git",
-                "reference": "78d41b9baa1443b242a1fbaa6c2930be8a571913"
+                "reference": "118c318818154af36d2a67e536156b7124820f7b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-streams/streams-ui/zipball/78d41b9baa1443b242a1fbaa6c2930be8a571913",
-                "reference": "78d41b9baa1443b242a1fbaa6c2930be8a571913",
+                "url": "https://api.github.com/repos/laravel-streams/streams-ui/zipball/118c318818154af36d2a67e536156b7124820f7b",
+                "reference": "118c318818154af36d2a67e536156b7124820f7b",
                 "shasum": ""
             },
             "require": {
@@ -2458,7 +2461,7 @@
                 }
             ],
             "description": "The official UI package for Laravel Streams.",
-            "time": "2020-12-10T09:28:22+00:00"
+            "time": "2020-12-11T03:21:17+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -5307,16 +5310,16 @@
         },
         {
             "name": "fzaninotto/faker",
-            "version": "v1.9.1",
+            "version": "v1.9.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/fzaninotto/Faker.git",
-                "reference": "fc10d778e4b84d5bd315dad194661e091d307c6f"
+                "reference": "848d8125239d7dbf8ab25cb7f054f1a630e68c2e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/fzaninotto/Faker/zipball/fc10d778e4b84d5bd315dad194661e091d307c6f",
-                "reference": "fc10d778e4b84d5bd315dad194661e091d307c6f",
+                "url": "https://api.github.com/repos/fzaninotto/Faker/zipball/848d8125239d7dbf8ab25cb7f054f1a630e68c2e",
+                "reference": "848d8125239d7dbf8ab25cb7f054f1a630e68c2e",
                 "shasum": ""
             },
             "require": {
@@ -5354,7 +5357,7 @@
                 "fixtures"
             ],
             "abandoned": true,
-            "time": "2019-12-12T13:22:17+00:00"
+            "time": "2020-12-11T09:56:16+00:00"
         },
         {
             "name": "hamcrest/hamcrest-php",

@@ -19,7 +19,7 @@ $suffix = '';
 @endphp
 @endif
 
-<aside class="w-3/12 xl:w-2/12 hidden md:block md:pl-4 xl:pl-0">
+<aside class="w-3/12 xl:w-2/12 hidden md:block md:pl-4 xl:pl-0 pb-12">
 
     <div class="o-aside">
         <div class="c-scrollbar">
