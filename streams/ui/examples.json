@@ -22,10 +22,16 @@
     "form": {
         "fields": {
             "id": {
-                "width": 2
+                "width": 6
             },
             "example_title": {
-                "width": 2
+                "width": 6
+            },
+            "example_date": {
+                "width": 6
+            },
+            "example_time": {
+                "width": 6
             }
         }
     }

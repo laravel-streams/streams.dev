@@ -36,7 +36,15 @@
             }
         },
         "example_range": "integer|range",
-        "example_boolean": "boolean"
+        "example_boolean": "boolean",
+        "example_image": "image",
+        "example_file": "file",
+        "example_relationship": {
+            "type": "relationship",
+            "config": {
+                "related": "docs"
+            }
+        }
     },
     "ui": "@streams/ui/examples.json"
 }
