@@ -13,7 +13,12 @@
         "example_markdown": "markdown",
         "body": "markdown",
         "example_datetime": "datetime",
-        "example_date": "date",
+        "example_date": {
+            "type": "date",
+            "rules": [
+                "before:now"
+            ]
+        },
         "example_time": "time",
         "example_color": "color",
         "example_select": {

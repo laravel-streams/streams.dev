@@ -2,7 +2,7 @@
 __created_at: 1608143450
 __updated_at: 1608143450
 example_title: 'Simple Users'
-example_datetime: '2020-12-16 21:20:37'
+example_datetime: '2020-12-22 05:46:29'
 example_textarea: 'A simple description will do.'
 example_content: 'Some content'
 example_color: '#8147eb'
@@ -10,8 +10,8 @@ example_slug: simple-website
 example_select: hard
 example_radio: third
 example_markdown: "# Yay!\r\nStyles are no longer colliding here :-)"
-example_date: '2020-12-16'
-example_time: '21:20:37'
+example_date: '2020-12-20'
+example_time: '22:00:00'
 example_range: 39
 example_boolean: true
 example_image: resources/img/deftones.jpg
