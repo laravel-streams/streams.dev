@@ -1,6 +1,9 @@
 {
     "private": true,
     "scripts": {
+        "core": "cd vendor/streams/core && npm",
+        "ui": "cd vendor/streams/ui && npm",
+        "clean": "rimraf ./node_modules ./package-lock.json vendor/streams/*/node_modules vendor/streams/*/package-lock.json",
         "dev": "npm run development",
         "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
         "watch": "npm run development -- --watch",
@@ -12,6 +15,8 @@
     "devDependencies": {
         "anchor-js": "^4.2.2",
         "axios": "^0.19",
+        "npm-run-all": "^4.1.5",
+        "rimraf": "^3.0.2",
         "browser-sync": "^2.26.12",
         "browser-sync-webpack-plugin": "^2.2.2",
         "cross-env": "^7.0",

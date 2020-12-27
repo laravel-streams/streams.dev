@@ -6,9 +6,11 @@
     },
     "template": "page",
     "rules": {
+        "id": "required",
         "title": "required"
     },
     "fields": {
+        "id": "slug",
         "title": {
             "type": "text"
         },

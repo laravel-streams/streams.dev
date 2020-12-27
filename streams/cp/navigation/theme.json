@@ -1,0 +1,9 @@
+{
+    "title": "Theme Settings",
+    "route": {
+        "stream": "theme",
+        "entry": "settings",
+        "ui.component": "form",
+        "ui.cp": true
+    }
+}

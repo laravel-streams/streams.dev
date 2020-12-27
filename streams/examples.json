@@ -7,12 +7,18 @@
     },
     "fields": {
         "example_title": "text",
+        "example_decimal": "decimal",
         "example_slug": "slug",
         "example_textarea": "textarea",
         "example_markdown": "markdown",
         "body": "markdown",
         "example_datetime": "datetime",
-        "example_date": "date",
+        "example_date": {
+            "type": "date",
+            "rules": [
+                "before:now"
+            ]
+        },
         "example_time": "time",
         "example_color": "color",
         "example_select": {
@@ -36,7 +42,15 @@
             }
         },
         "example_range": "integer|range",
-        "example_boolean": "boolean"
+        "example_boolean": "boolean",
+        "example_image": "image",
+        "example_file": "file",
+        "example_relationship": {
+            "type": "relationship",
+            "config": {
+                "related": "docs"
+            }
+        }
     },
     "ui": "@streams/ui/examples.json"
 }

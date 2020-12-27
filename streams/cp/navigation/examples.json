@@ -1,4 +1,7 @@
 {
     "title": "Examples",
-    "sort": 99
+    "sort": 99,
+    "buttons": {
+        "create": {}
+    }
 }
