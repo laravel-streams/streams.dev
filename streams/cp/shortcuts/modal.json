@@ -1,5 +1,5 @@
 {
     "sort_order": 3,
     "icon": "heroicon-o-duplicate",
-    "attributes.@click": "$dispatch('show-modal')"
+    "attributes.@click": "$dispatch('show-modal', {url: 'https://streams.local:8890/admin/ui/docs_core/form/default?id=changelog'})"
 }
