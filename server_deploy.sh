@@ -19,6 +19,9 @@ echo "Deploying application..."
     # Restart queue workers
     php artisan queue:restart
 
+    # Publish public assets
+    php artisan vendor:publish --tag=public
+
     # Clear cache/optimize
     php artisan optimize
 
