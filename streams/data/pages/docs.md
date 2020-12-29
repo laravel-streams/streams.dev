@@ -19,11 +19,12 @@ references:
         </svg>
         <div class="text-center my-20 lg:w-9/12 xl:w-7/12 mx-auto">
             <h1>Laravel Streams Documentation</h1>
-            <p>The Laravel Streams platform is a collection of highly extensible, purist Laravel packages that assist
-                developers by
-                reducing
-                work around data-modeling, UI, APIs, and more.</p>
-            <p><a class="c-button font-bold" href="/docs/installation">Install and get started!</a></p>
+            <p class="text-lg w-9/10 m-auto">A platform for building, managing, and interacting with data-driven applications.</p>
+            <p>
+                <a class="c-button font-bold" href="/docs/installation">Install and get started!</a>
+                <br>
+                <a href="/docs/introduction#what-is-laravel-streams" class="text-sm italic">What is Laravel Streams?</a>
+            </p>
         </div>
         <div class="grid xl:grid-cols-3 col-gap-8 ">
             <div class="col-span-3 xl:col-span-2 bg-white c-callout ">
@@ -49,7 +50,7 @@ references:
                                 <a href="docs/contributing">Contributing</a>
                             </li>
                             <li class="">
-                                <a href="docs/sponsors">Sponsors</a>
+                                <a href="https://github.com/sponsors/ryanthompson" target="_blank">Sponsors</a>
                             </li>
                         </ul>
 
