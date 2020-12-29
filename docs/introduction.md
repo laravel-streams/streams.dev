@@ -8,6 +8,10 @@ enabled: 1
 
 Laravel Streams is a system of interoperable PHP packages that act as a standardized platform to build, manage, and interact with Laravel applications. It is a new breed of CMS. We call it a data management system (DMS); It behaves like an application *generator* but carries almost no overhead. 
 
+### Motivation
+
+- Here
+
 ### Use Cases
 
 As a data-centric application engine, Laravel Streams is well suited to build nearly anything.
