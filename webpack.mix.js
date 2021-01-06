@@ -6,10 +6,11 @@ require('laravel-streams-mix-extension')
 mix
     .js('resources/js/app.js', 'js')
     .sass('resources/sass/theme.scss', 'css')
-    .streamify({
-        some: 'config',
-        can: 'be',
-        here: 'foo'
+    .streams({
+        packages: [
+            'streams/core',
+            'streams/ui',
+        ]
     });
 
 mix.options({

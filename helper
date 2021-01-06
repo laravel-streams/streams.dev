@@ -10,12 +10,25 @@ _watch() {
 
 _link(){
     cd vendor/streams
-    rm -rf core ui dev
+    rm -rf core ui
     ln -s ../../packages/streams/core core
     ln -s ../../packages/streams/ui ui
-    ln -s ../../packages/streams/dev dev
 }
 
+_bootstrap(){
+    git clone git@github.com:laravel-streams/streams-core packages/streams/core
+    git clone git@github.com:laravel-streams/streams-ui packages/streams/ui
+}
+
+_switch-packages-feature(){
+    _bootstrap
+    WD=$PWD
+    cd $WD/packages/streams/core
+    git checkout feature/webpack-mix-root-based-bundling
+
+    cd $WD/packages/streams/ui
+    git checkout feature/webpack-mix-root-based-bundling
+}
 
 
 _$*
