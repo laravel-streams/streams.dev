@@ -1,5 +1,5 @@
 {
-    "compileOnSave": false,
+    "compileOnSave": true,
     "compilerOptions": {
         "target": "es6",
         "module": "commonjs",
@@ -22,24 +22,19 @@
         "noFallthroughCasesInSwitch": false,
         "allowSyntheticDefaultImports": true,
         "esModuleInterop": true,
-        "sourceMap": true,
-        "inlineSourceMap": false,
+        "sourceMap": false,
+        "inlineSourceMap": true,
         "inlineSources": false,
         "experimentalDecorators": true,
         "emitDecoratorMetadata": true,
         "baseUrl": ".",
+        "outDir": "lib",
         "paths": {
         }
     },
     "include": [
-        "globals.d.ts",
-        "generate-scss-variables-exports.ts",
-        "ExtraTemplatedPathsPlugin.ts",
-        "test.ts",
-        "utils.ts",
-        "tabledata.ts",
-        "webpack.config.ts",
-        "webpack-dev-server.ts"
+        "src",
+        "src/index.ts"
     ],
     "exclude": [
         "node_modules",
