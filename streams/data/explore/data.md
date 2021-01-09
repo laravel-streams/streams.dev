@@ -1,7 +1,12 @@
 ---
-title: Data is our thing.
+title: Data
 links:
-    # - text: New Install
-    #   href: /explore/features
+    - text: Modeling
+      href: #/explore/features
+    - text: API
+      href: #/explore/api
+    - text: Back to Features
+      href: /explore/features
+      type: link
 ---
 Data modeling is where Laravel Streams begins. 

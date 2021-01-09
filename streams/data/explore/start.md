@@ -4,10 +4,10 @@ links:
     - text: New Install
       href: /explore/features
     - text: Existing Project
-      href: /explore/enhancing
+      href: /explore/existing
       type: secondary
     - text: It's complicated.
       href: /explore/organizing
       type: link
 ---
-Laravel Streams is designed to be self-contained and carry as <strong>little technical debt</strong> as possible. Our core services are organized into bolt-on composer packages and designed to be ran next to anything, or entirely on their own.
+Laravel Streams is a **system of interconnected packages** and is designed to carry as **little technical debt** as possible. Our core services are organized into bolt-on composer packages and can be to be ran next to anything, or entirely on their own.
