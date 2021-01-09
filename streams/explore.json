@@ -17,6 +17,9 @@
         },
         "links": {
             "type": "array"
+        },
+        "menu": {
+            "type": "array"
         }
     }
 }
