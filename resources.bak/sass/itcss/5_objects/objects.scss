@@ -1,0 +1,13 @@
+// Objects — class-based selectors which define undecorated design patterns,
+// for example media object known from OOCSS such as list, radio-button.
+// The Daniel Fornell’s codepen https://codepen.io/collection/DmzVOM/ shows
+// you a list of objects designed using this architecture.
+@import "./mode";
+@import "./navbar";
+@import "./doc-body";
+@import "./page-body";
+@import "./aside";
+
+@import "./feature-list";
+@import "./footer";
+@import "./mobile-menu";

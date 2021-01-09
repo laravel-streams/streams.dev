@@ -1,0 +1,24 @@
+.o-doc-body
+{
+    @apply ml-0 pb-64 px-4 overflow-hidden;
+
+    p 
+    {
+        max-width: 65ch;
+    }
+    
+    @media (min-width: 1280px) {
+        @apply px-8;
+    }
+}
+
+// We want the content to be more narrow, this is were we control that.
+// Any element that has to be narrow like the text, include it in a not.
+.o-doc-body *:not(code):not(pre):not(.c-copy-code):not(.c-copy-code__icon):not(.c-intro):not(.c-intro__wave):not(span),
+pre.language-bash
+{
+    @media (min-width: 1280px)
+    {
+       // 
+    }
+}

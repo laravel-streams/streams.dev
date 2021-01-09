@@ -1,0 +1,31 @@
+// Generic — reset and/or normalize styles, box-sizing definition, etc. It is
+// important to note that this is the first layer of the triangle that
+// generates CSS.
+
+html {
+    
+    font-size:14px;
+    @media (min-width: 1024px) {
+    font-size:16px;    
+    }
+    
+}
+body
+{
+    overflow-x: hidden;
+}
+* {
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+    color: var(--text);
+    
+}
+
+@import "./anchor";
+@import "./list";
+@import "./typography.scss";
+
+
+
+
+

@@ -1,0 +1,240 @@
+:root {
+    // Colors
+    --color-dark-base: 210;
+    --color-dark-opacity: 1;
+    --color-dark: hsla(
+        var(--color-dark-base),
+        6%,
+        8%,
+        var(--color-dark-opacity)
+    );
+    --color-dark-darker: hsla(
+        var(--color-dark-base),
+        6%,
+        5%,
+        var(--color-dark-opacity)
+    );
+    --color-dark-lighter: hsla(
+        var(--color-dark-base),
+        6%,
+        11%,
+        var(--color-dark-opacity)
+    );
+
+    --color-light-base: 0;
+    --color-light-opacity: 1;
+    --color-light: hsla(
+        var(--color-light-base),
+        0%,
+        99%,
+        var(--color-light-opacity)
+    );
+    --color-light-darker: hsla(
+        var(--color-light-base),
+        0%,
+        90%,
+        var(--color-light-opacity)
+    );
+    --color-light-lighter: hsla(
+        var(--color-light-base),
+        0%,
+        100%,
+        var(--color-light-opacity)
+    );
+
+    --color-accent-base: 278;
+    --color-accent-opacity: 1;
+    --color-accent: hsla(
+        var(--color-accent-base),
+        68%,
+        52%,
+        var(--color-accent-opacity)
+    );
+    --color-accent-darker: hsla(
+        var(--color-accent-base),
+        63%,
+        35%,
+        var(--color-accent-opacity)
+    );
+    --color-accent-lighter: hsla(
+        var(--color-accent-base),
+        63%,
+        65%,
+        var(--color-accent-opacity)
+    );
+
+    --color-white: #fff;
+
+    // Font weights
+    --font-weight-normal: 300;
+    --font-weight-bold: 700;
+
+    // Font sizes
+    --font-size-xs: 0.75rem;
+    --font-size-sm: 0.875rem;
+    --font-size-base: 1.1rem;
+    --font-size-lg: 1.2rem;
+    --font-size-xl: 1.6rem;
+    --font-size-xxl: 2.3rem;
+    --font-size-code: 0.925rem;
+
+    @media (min-width: 768px) {
+        --font-size-xs: 0.75rem;
+        --font-size-sm: 0.875rem;
+        --font-size-base: 1.1rem;
+        --font-size-lg: 1.2rem;
+        --font-size-xl: 2rem;
+        --font-size-xxl: 3rem;
+        --font-size-code: 0.925rem;
+    }
+
+    // Hljs
+    --highlight-padding: 0 0rem 3px;
+
+    // Widths
+    --width-aside: 300px;
+    --width-main: calc(100% - var(--width-aside));
+
+    --position-top-aside-menus: 115px;
+
+    // Component Callout Global
+    --callout-title-size: 1.5rem;
+}
+
+.o-mode__light {
+    --color-accent-base: 211;
+    --color-accent-opacity: 1;
+    --color-accent: hsla(
+        var(--color-accent-base),
+        100%,
+        68%,
+        var(--color-accent-opacity)
+    );
+    --color-accent-darker: hsla(
+        var(--color-accent-base),
+        100%,
+        35%,
+        var(--color-accent-opacity)
+    );
+    --color-accent-lighter: hsla(
+        var(--color-accent-base),
+        100%,
+        65%,
+        var(--color-accent-opacity)
+    );
+
+    --text: var(--color-dark);
+    --bg: var(--color-light);
+
+    // ASIDE
+    --aside-menu-link:var(--color-dark-lighter);
+    --aside-menu-link--hover:var(--color-accent);
+    //--aside-menu-link--active:var(--color-accent);
+    --aside-menu-link--active:#ff3c00;
+    //--aside-menu-link--active-hover:var(--aside-menu-link--hover);
+    --aside-menu-link--active-hover:purple;
+
+    // Links
+    --anchor: var(--color-accent);
+    --anchor--hover: var(--color-dark);
+
+    // Scrollbar
+    --scrollbar-color: var(--color-accent);
+    --scrollbar-bg: var(--color-dark-lighter);
+
+    // Highlight and code blocks
+    --highlightjs-bg: var(--color-dark);
+    --code-in-text-color: var(--color-light);
+    --code-in-text-bg: var(--color-dark);
+
+    // Top navigation
+    --navbar-text: var(--color-dark);
+
+    // Bottom animation
+    --code-bottom-anim: hsla(0, 0%, 85%, 0.4);
+
+    // Component Callout
+    --callout-border: var(--color-light-darker);
+    --callout-bg: var(--color-light-lighter);
+
+    // Component card feature
+    --card-feature-bg: var(--color-white);
+    --card-feature-bg--hover: var(--color-white);
+
+    // Divider
+    --divider: var(--color-accent);
+
+    // Mobile Menu
+    --mobile-menu-bg: var(--color-accent);
+    --mobile-menu: var(--color-white);
+}
+
+.o-mode__dark {
+    --color-accent-base: 321;
+    --color-accent-opacity: 1;
+    --color-accent: hsla(
+        var(--color-accent-base),
+        68%,
+        52%,
+        var(--color-accent-opacity)
+    );
+    --color-accent-darker: hsla(
+        var(--color-accent-base),
+        63%,
+        35%,
+        var(--color-accent-opacity)
+    );
+    --color-accent-lighter: hsla(
+        var(--color-accent-base),
+        63%,
+        65%,
+        var(--color-accent-opacity)
+    );
+
+    --text: var(--color-light);
+    --bg: var(--color-dark);
+
+    // ASIDE
+    --aside-menu-link:var(--color-light-darker);
+    --aside-menu-link--hover:var(--color-light-darker);
+    //--aside-menu-link--active:var(--color-accent);
+    --aside-menu-link--active:#ff3c00;
+    //--aside-menu-link--active-hover:var(--aside-menu-link--hover);
+    --aside-menu-link--active-hover:#e63600;
+
+
+    // Links
+    --anchor: var(--color-accent);
+    --anchor--hover: var(--color-light);
+
+    // Scrollbar
+    --scrollbar-color: var(--color-accent);
+    --scrollbar-bg: var(--color-dark);
+
+    // Highlight and code blocks
+    --highlightjs-bg: var(--color-dark-darker);
+    --code-in-text-color: var(--color-light-darker);
+    --code-in-text-bg: var(--color-dark-lighter);
+
+    // Top navigation
+    --navbar-text: var(--color-light);
+
+    // Bottom animation
+    --code-bottom-anim: hsla(var(--color-accent-base), 63%, 50%, 0.2);
+
+    // Component Callout
+    --callout-border: var(--color-dark-lighter);
+    --callout-bg: var(--color-dark-lighter);
+
+    // Component card feature
+    --card-feature-bg: var(--color-dark-lighter);
+    --card-feature-icon: var(--color-light);
+    --card-feature-bg--hover: var(--color-dark-darker);
+
+    // Divider
+    --divider: var(--color-accent);
+
+    // Mobile Menu
+    --mobile-menu-bg: var(--color-accent);
+    --mobile-menu: var(--color-white);
+}

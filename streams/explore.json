@@ -1,0 +1,22 @@
+{
+    "name": "explore",
+    "description": "Explore the feature, functions, and operating principles of Laravel Streams.",
+    "routes.view": {
+        "uri": "/explore/{id}"
+    },
+    "source.format": "md",
+    "fields": {
+        "id": "slug",
+        "title": "string",
+        "body": "markdown",
+        "parent": {
+            "type": "relationship",
+            "config": {
+                "related": "explore"
+            }
+        },
+        "links": {
+            "type": "array"
+        }
+    }
+}
