@@ -1,6 +1,8 @@
 ---
 title: What kind of support does your existing project need?
 menu:
+    - text: Adding new features
+      href: #/explore/enhancing
     - text: I need to add an API
       href: /explore/api
     - text: Modeling data not supported by Eloquent

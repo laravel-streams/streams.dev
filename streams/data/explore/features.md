@@ -9,6 +9,9 @@ menu:
       href: /explore/api
     - text: CLI Interface
       href: #explore/cli
+    - text: Bespoke Functionality
+      href: #explore/cli
+      type: secondary
     # - text: I want to explore more.
     #   href: #explore/more
     #   type: link
