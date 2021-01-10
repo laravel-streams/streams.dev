@@ -1,6 +1,6 @@
 ---
 title: Test your project or idea against Laravel Streams.
-links:
+options:
     - text: Ok, let's do it!
       href: /explore/start
     - text: No, thanks.

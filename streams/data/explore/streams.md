@@ -17,4 +17,4 @@ links:
       type: link
 ---
 
-Our primary mission is to **abstract and standardize data** in a way that maximizes openness and accessibility and radically minimizes overall technical debt.
+Laravel Streams uses JSON configuration files to represent your various data models. We call each of these "domains" a Stream, hence our namesake. 

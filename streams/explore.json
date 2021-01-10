@@ -15,6 +15,9 @@
                 "related": "explore"
             }
         },
+        "options": {
+            "type": "array"
+        },
         "links": {
             "type": "array"
         },

@@ -1,6 +1,6 @@
 ---
 title: User Interface
-links:
+options:
     - text: Control Panel
       href: #/explore/cp
     - text: Back to Features

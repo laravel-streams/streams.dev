@@ -1,6 +1,11 @@
 @extends('layouts/explore')
 
 @section('content')
+<style>
+    main .body-text p:not(first-of-type) {
+        margin-top: 2rem;
+    }
+</style>
 <div class="flex flex-wrap min-h-screen">
     <main class="xs:w-full w-2/3 mx-auto p-10">
         
@@ -8,7 +13,7 @@
             {{ $entry->title }}
         </h1>
 
-        <div class="text-2xl leading-10 mt-14">
+        <div class="text-2xl leading-10 mt-14 body-text">
             {!! Str::markdown(View::parse($entry->body, compact('entry'))) !!}
         </div>
 
@@ -29,9 +34,9 @@
         </div>    
         @endif
 
-        @if ($entry->links)
+        @if ($entry->options)
         <div class="mt-16 space-x-4">
-            @foreach ((array) $entry->links as $link)
+            @foreach ((array) $entry->options as $link)
             @switch(Arr::get($link, 'type', 'btn'))
                 @case('link')
                     <a href="{{ $link['href'] }}" class="px-3 py-3 font-bold text-2xl text-black hover:text-gray-400 transition duration-200 ease-in-out">{{ $link['text'] }}</a>
@@ -44,6 +49,15 @@
             @endswitch
             @endforeach
         </div>
+        @endif
+
+        @if ($entry->links)
+        <div class="mt-12 text-center text-sm">
+            <strong class="text-gray-600">More resources:</strong> 
+            @foreach ((array) $entry->links as $item)
+            <a href="{{ $item['href'] }}" target="{{ Arr::get($item, 'target', '_self') }}" class="font-regular hover:underline text-gray-600 hover:text-gray-800 transition duration-200 ease-in-out">{{ $item['text'] }}</a>{{ $loop->last ? '' : ', ' }}
+            @endforeach
+        </div>    
         @endif
 
     </main>

@@ -1,13 +1,13 @@
 ---
 title: Would you like to explore a new Laravel project or an existing one?
-links:
+options:
     - text: New Install
-      href: /explore/features
+      href: /explore/new
     - text: Existing Project
       href: /explore/existing
       type: secondary
     - text: It's complicated.
-      href: /explore/organizing
+      href: mailto:ryan@streams.dev
       type: link
 ---
 Laravel Streams is a **system of interconnected packages** and is designed to carry as **little technical debt** as possible. Our core services are organized into bolt-on composer packages and can be to be ran next to anything, or entirely on their own.

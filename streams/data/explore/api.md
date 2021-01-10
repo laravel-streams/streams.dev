@@ -1,6 +1,6 @@
 ---
 title: REST API
-links:
+options:
     - text: Back to Features
       href: /explore/features
       type: link
