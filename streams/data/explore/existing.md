@@ -7,7 +7,10 @@ menu:
       href: /explore/api
     - text: Modeling data not supported by Eloquent
       href: /explore/data
-    - text: Something else.
-      href: #explore/more
-      type: link
+    - text: Explore Features
+      href: /explore/features
+      type: secondary
 ---
+Laravel Streams is system of utilities first. Built to be added to any Laravel with minimal effort and cost. 
+
+What do you need to accomplish with your existing project?
