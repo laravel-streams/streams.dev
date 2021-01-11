@@ -1,0 +1,67 @@
+{
+    "template": "doc",
+    "url_prefix": "docs",
+    "routes.view": "docs/{id}",
+    "description": "The main entry point to project and component documentation.",
+    "notes": "This is looking good. Ready for discussion. Idea is to introduce primary focuses of Streams which overview and then hand off to various aspects of the core packages (core, ui, api, and possibly code/dev)",
+    "source": {
+        "path": "docs"
+    },
+    "rules": {
+        "id": "required"
+    },
+    "fields": {
+        "id": {
+            "type": "string",
+            "name": "field.id",
+            "rules": {
+                "regex": "/[a-z0-9\\-\\_]/"
+            }
+        },
+        "sort": {
+            "type": "integer",
+            "rules": [
+                "required",
+                "min:0",
+                "regex:/[0-9]{2,3}/"
+            ]
+        },
+        "title": "text",
+        "intro": "textarea",
+        "body": "markdown",
+        "category": {
+            "type": "select",
+            "config": {
+                "options": {
+                    "introduction": "Introduction",
+                    "getting_started": "Getting Started",
+                    "core_concepts": "Core Concepts",
+                    "basics": "The Basics",
+                    "laravel": "Laravel",
+                    "streams": "Streams",
+                    "database": "Database",
+                    "templating": "Templating",
+                    "frontend": "Frontend",
+                    "security": "Security",
+                    "advanced": "Advanced",
+                    "developers": "Developers"
+                }
+            }
+        },
+        "stage": {
+            "type": "select",
+            "default": "outlining",
+            "config": {
+                "options": {
+                    "outlining": "Outlining",
+                    "drafting": "Drafting",
+                    "editing": "Editing",
+                    "review": "Review",
+                    "done": "Done"
+                }
+            }
+        },
+        "enabled": "boolean"
+    },
+    "ui": "@streams/ui/docs.json"
+}

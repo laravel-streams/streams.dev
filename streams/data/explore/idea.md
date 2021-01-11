@@ -1,10 +1,10 @@
 ---
-title: Test your project or idea against Laravel Streams.
+title: Explore your project or idea with Laravel Streams.
 options:
     - text: Ok, let's do it!
       href: /explore/start
     - text: No, thanks.
-      href: /explore
+      href: https://twitter.com/Laravel_Streams/status/1316150189825101824
       type: link
 ---
 

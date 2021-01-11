@@ -17,6 +17,8 @@ When creating a new Streams project, the [core](/docs/core/introduction), [ui](/
 composer create-project streams/streams example.local --stability=dev
 ```
 
+> There is no installer as there is no traditional database requirement.
+
 ### Local Development Server
 
 If you have PHP installed locally and you would like to use PHP's built-in development server to serve your application, you may use the `serve` Artisan command. This command will start a development server at [http://localhost:8000](http://localhost:8000):
