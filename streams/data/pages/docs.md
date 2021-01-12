@@ -1,6 +1,6 @@
 ---
-title: Documentation
-intro: Everything you need to know about the Streams platform.
+title: Getting started with Laravel Streams.
+intro: Everything you need to know to get up and running with Laravel Streams.
 enabled: true
 sort: 14
 references:

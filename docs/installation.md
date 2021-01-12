@@ -2,7 +2,7 @@
 sort: 1
 title: Installation
 category: getting_started
-intro: Streams can be installed as a new blank project or added to an existing Laravel application.
+intro: Learn how to get Laravel Streams up and running.
 stage: review
 enabled: true
 ---

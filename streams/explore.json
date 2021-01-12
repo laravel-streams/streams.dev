@@ -4,6 +4,7 @@
     "routes.view": {
         "uri": "/explore/{id}"
     },
+    "translatable": true,
     "source.format": "md",
     "fields": {
         "id": "slug",
