@@ -16,4 +16,4 @@ links:
 ---
 Laravel Streams is a **system of interconnected packages** designed to carry as **little technical debt** as possible. For this reason, we organize our core features into composer packages.
 
-Whether you end up using this software or not, we believe you can save time and headache by aligning with our way of organizing and defining your project's parameters. 
+<!-- Whether you end up using this software or not, we believe you can save time and headache by aligning with our way of organizing and defining your project's parameters.  -->

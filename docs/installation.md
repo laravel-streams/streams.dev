@@ -7,6 +7,18 @@ stage: review
 enabled: true
 ---
 
+## Server Requirements
+    
+To run Laravel Streams you will need to meet [Laravel server requirements](https://laravel.com/docs/deployment#server-requirements).
+
+### Supported Image Libraries
+
+Please ensure one of the following libraries is installed in order to support [image manipulation](/docs/core/images).
+
+- GD Library
+- Imagick PHP extension
+
+
 ## Downloading Streams
 
 ### Via Composer Create-Project

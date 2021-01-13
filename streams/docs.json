@@ -1,6 +1,7 @@
 {
     "template": "doc",
     "url_prefix": "docs",
+    "source.format": "md",
     "routes.view": "docs/{id}",
     "description": "The main entry point to project and component documentation.",
     "notes": "This is looking good. Ready for discussion. Idea is to introduce primary focuses of Streams which overview and then hand off to various aspects of the core packages (core, ui, api, and possibly code/dev)",

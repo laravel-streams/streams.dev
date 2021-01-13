@@ -9,7 +9,6 @@ references:
 ---
 
 
-
 <div class="container mx-auto px-4">
     <div class="o-feature-list">
         <svg class="o-feature-list__blob" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
