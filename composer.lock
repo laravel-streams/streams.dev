@@ -927,16 +927,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v8.21.0",
+            "version": "v8.22.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "a61cab167c35f465a923737ee6e6fb99cd5fde88"
+                "reference": "5c70991b96c5722afed541a996479b5112654c8b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/a61cab167c35f465a923737ee6e6fb99cd5fde88",
-                "reference": "a61cab167c35f465a923737ee6e6fb99cd5fde88",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/5c70991b96c5722afed541a996479b5112654c8b",
+                "reference": "5c70991b96c5722afed541a996479b5112654c8b",
                 "shasum": ""
             },
             "require": {
@@ -1086,20 +1086,20 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2021-01-05T15:43:10+00:00"
+            "time": "2021-01-13T13:37:56+00:00"
         },
         {
             "name": "laravel/scout",
-            "version": "v8.5.3",
+            "version": "v8.5.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/scout.git",
-                "reference": "3cb9a6e66f58f61ed1adf66c138034e496c60d3f"
+                "reference": "bcc1ee3837d1384a200acc5ade75e312d6ededd6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/scout/zipball/3cb9a6e66f58f61ed1adf66c138034e496c60d3f",
-                "reference": "3cb9a6e66f58f61ed1adf66c138034e496c60d3f",
+                "url": "https://api.github.com/repos/laravel/scout/zipball/bcc1ee3837d1384a200acc5ade75e312d6ededd6",
+                "reference": "bcc1ee3837d1384a200acc5ade75e312d6ededd6",
                 "shasum": ""
             },
             "require": {
@@ -1151,7 +1151,7 @@
                 "laravel",
                 "search"
             ],
-            "time": "2021-01-05T16:53:44+00:00"
+            "time": "2021-01-12T17:18:41+00:00"
         },
         {
             "name": "laravelcollective/html",
@@ -2447,12 +2447,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-streams/streams-api.git",
-                "reference": "beda29c63a20d1d3d6914d7a4d6d3aac511d8926"
+                "reference": "0e1a7e9d1a3242ba504955ac62a1bb5b600ec0a7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-streams/streams-api/zipball/beda29c63a20d1d3d6914d7a4d6d3aac511d8926",
-                "reference": "beda29c63a20d1d3d6914d7a4d6d3aac511d8926",
+                "url": "https://api.github.com/repos/laravel-streams/streams-api/zipball/0e1a7e9d1a3242ba504955ac62a1bb5b600ec0a7",
+                "reference": "0e1a7e9d1a3242ba504955ac62a1bb5b600ec0a7",
                 "shasum": ""
             },
             "type": "library",
@@ -2482,7 +2482,7 @@
                 }
             ],
             "description": "The official REST API package for Streams.",
-            "time": "2021-01-04T15:31:46+00:00"
+            "time": "2021-01-09T08:04:02+00:00"
         },
         {
             "name": "streams/core",
@@ -2490,12 +2490,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-streams/streams-core.git",
-                "reference": "683f793dae95c5427dbdb25751c7ebec6d6be6d7"
+                "reference": "af54cf1f94dd8f5a2470c3c68cc1e6a1d3fc28a6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-streams/streams-core/zipball/683f793dae95c5427dbdb25751c7ebec6d6be6d7",
-                "reference": "683f793dae95c5427dbdb25751c7ebec6d6be6d7",
+                "url": "https://api.github.com/repos/laravel-streams/streams-core/zipball/af54cf1f94dd8f5a2470c3c68cc1e6a1d3fc28a6",
+                "reference": "af54cf1f94dd8f5a2470c3c68cc1e6a1d3fc28a6",
                 "shasum": ""
             },
             "require": {
@@ -2549,7 +2549,7 @@
                 }
             ],
             "description": "A domain-driven, code-configured, flat-file application platform for Laravel.",
-            "time": "2021-01-08T05:39:37+00:00"
+            "time": "2021-01-13T06:56:58+00:00"
         },
         {
             "name": "streams/ui",
@@ -2557,12 +2557,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-streams/streams-ui.git",
-                "reference": "047e104b3bc675a9c6b81453e3d8e9599a3113f6"
+                "reference": "e307f166ea5082f9f857a2514c33f7359504f979"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-streams/streams-ui/zipball/047e104b3bc675a9c6b81453e3d8e9599a3113f6",
-                "reference": "047e104b3bc675a9c6b81453e3d8e9599a3113f6",
+                "url": "https://api.github.com/repos/laravel-streams/streams-ui/zipball/e307f166ea5082f9f857a2514c33f7359504f979",
+                "reference": "e307f166ea5082f9f857a2514c33f7359504f979",
                 "shasum": ""
             },
             "require": {
@@ -2596,20 +2596,20 @@
                 }
             ],
             "description": "The official UI package for Laravel Streams.",
-            "time": "2021-01-08T08:06:20+00:00"
+            "time": "2021-01-10T02:26:03+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
-            "version": "v6.2.4",
+            "version": "v6.2.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/swiftmailer/swiftmailer.git",
-                "reference": "56f0ab23f54c4ccbb0d5dcc67ff8552e0c98d59e"
+                "reference": "698a6a9f54d7eb321274de3ad19863802c879fb7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/swiftmailer/swiftmailer/zipball/56f0ab23f54c4ccbb0d5dcc67ff8552e0c98d59e",
-                "reference": "56f0ab23f54c4ccbb0d5dcc67ff8552e0c98d59e",
+                "url": "https://api.github.com/repos/swiftmailer/swiftmailer/zipball/698a6a9f54d7eb321274de3ad19863802c879fb7",
+                "reference": "698a6a9f54d7eb321274de3ad19863802c879fb7",
                 "shasum": ""
             },
             "require": {
@@ -2657,7 +2657,7 @@
                 "mail",
                 "mailer"
             ],
-            "time": "2020-12-08T18:02:06+00:00"
+            "time": "2021-01-12T09:35:59+00:00"
         },
         {
             "name": "symfony/console",
