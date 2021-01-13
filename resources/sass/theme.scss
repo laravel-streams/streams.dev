@@ -6,3 +6,10 @@
 svg {
     max-width: 100%;
 }
+
+.doc-body {
+
+    h2 {
+        @apply text-3xl leading-none font-extrabold tracking-tight text-gray-900 mt-6 mb-6;
+    }
+}

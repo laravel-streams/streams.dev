@@ -7,7 +7,7 @@
 
     <div class="pb-10">
         
-        <h1 class="text-4xl sm:text-6xl lg:text-7xl leading-none font-extrabold tracking-tight text-gray-900 mt-6 mb-8">
+        <h1 class="text-4xl sm:text-6xl lg:text-7xl leading-none font-extrabold tracking-tight text-gray-900 mt-8 mb-8">
             {{ $entry->title }}
         </h1>
         
@@ -17,7 +17,9 @@
         </p>
         @endif
 
-        {!! Str::markdown(View::parse($entry->body)) !!}
+        <div class="doc-body">
+            {!! Str::markdown(View::parse($entry->body)) !!}
+        </div>
     </div>
 </div>
 @endsection
