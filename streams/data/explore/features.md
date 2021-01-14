@@ -29,3 +29,5 @@ links:
     - text: Streams API
       href: /docs/api
 ---
+
+Say something here about how these are shaped around our <a href="/explore/values" class="font-bold">vision and principles</a>.

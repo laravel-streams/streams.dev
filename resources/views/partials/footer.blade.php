@@ -4,7 +4,7 @@
 
     <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
 
-      <div class="mt-8 border-t_ border-gray-700 pt-8 md:flex md:items-center md:justify-between">
+      <div class="md:flex md:items-center md:justify-between">
         <div class="flex space-x-6 md:order-2">
           
             <a href="https://www.instagram.com/RyanThePyro/" target="_blank" class="text-gray-400 hover:text-gray-300">
