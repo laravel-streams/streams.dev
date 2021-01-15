@@ -37,4 +37,8 @@ svg {
     :not(pre) > code[class*=language-], pre[class*=language-] {
         @apply my-16 inline-block;
     }
+
+    ul {
+        @apply list-disc ml-5 my-8;
+    }
 }
