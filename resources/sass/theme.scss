@@ -19,10 +19,22 @@ svg {
     }
 
     h2 {
-        @apply text-4xl mt-6 mb-6;
+        @apply text-4xl mt-8 mb-8;
     }
 
     h3 {
-        @apply text-3xl mt-6 mb-6 text-gray-700;
+        @apply text-3xl mt-8 mb-8 text-gray-700;
+    }
+
+    h2,
+    h3,
+    h4,
+    h5,
+    p {
+        @apply w-3/4;
+    }
+
+    :not(pre) > code[class*=language-], pre[class*=language-] {
+        @apply my-16 inline-block;
     }
 }

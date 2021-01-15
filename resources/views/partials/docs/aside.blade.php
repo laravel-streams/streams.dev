@@ -12,8 +12,8 @@
 
         <ul class="mt-10">
             @foreach ($docs->where('category', null) as $page)
-            <li {{ ($page->id == $entry->id) ? 'class="text-red"' : '' }}>
-                <a href="{{$page->id}}" class="text-gray-500">{{ $page->title }}</a>
+            <li>
+                <a href="{{$page->id}}" class="{{ ($page->id == $entry->id) ? 'text-red-500 font-bold' : 'text-gray-500' }}">{{ $page->title }}</a>
                 {{-- <strong>[{{ $page->stage ?: 'outlining' }}]</strong> --}}
             </li>
             @endforeach
@@ -31,8 +31,8 @@
             </p>
             <ul class="mt-2">
                 @foreach ($pages as $page)
-                <li {{ ($page->id == $entry->id) ? 'class="active"' : '' }}>
-                    <a href="{{$page->id}}" class="text-gray-500">{{ $page->title }}</a>
+                <li>
+                    <a href="{{$page->id}}" class="{{ ($page->id == $entry->id) ? 'text-red-500 font-bold' : 'text-gray-500' }}">{{ $page->title }}</a>
                     {{-- <strong>[{{ $page->stage ?: 'outlining' }}]</strong> --}}
                 </li>
                 @endforeach
