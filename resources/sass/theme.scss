@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+@import "prism";
+
 // Do yer thing.
 svg {
     max-width: 100%;
