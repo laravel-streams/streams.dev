@@ -35,7 +35,7 @@ svg {
     }
 
     :not(pre) > code[class*=language-], pre[class*=language-] {
-        @apply my-16 inline-block;
+        @apply my-16;
     }
 
     ul {
