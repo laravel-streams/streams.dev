@@ -1422,12 +1422,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/RyanThompson/undraw.git",
-                "reference": "fb7a1e0e4dffd70bbcaa4e906fda4a680ad7291e"
+                "reference": "43b3853a3e849fe680a30f25cbc3002607d4d262"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/RyanThompson/undraw/zipball/fb7a1e0e4dffd70bbcaa4e906fda4a680ad7291e",
-                "reference": "fb7a1e0e4dffd70bbcaa4e906fda4a680ad7291e",
+                "url": "https://api.github.com/repos/RyanThompson/undraw/zipball/43b3853a3e849fe680a30f25cbc3002607d4d262",
+                "reference": "43b3853a3e849fe680a30f25cbc3002607d4d262",
                 "shasum": ""
             },
             "require": {
@@ -1501,7 +1501,7 @@
             "support": {
                 "source": "https://github.com/RyanThompson/undraw/tree/patch-1"
             },
-            "time": "2020-12-31T05:45:03+00:00"
+            "time": "2021-01-14T20:53:21+00:00"
         },
         {
             "name": "misd/linkify",
@@ -2447,12 +2447,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-streams/streams-api.git",
-                "reference": "0e1a7e9d1a3242ba504955ac62a1bb5b600ec0a7"
+                "reference": "bbdaef8dac74b44ef1b2c8b773b07df110a02fc0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-streams/streams-api/zipball/0e1a7e9d1a3242ba504955ac62a1bb5b600ec0a7",
-                "reference": "0e1a7e9d1a3242ba504955ac62a1bb5b600ec0a7",
+                "url": "https://api.github.com/repos/laravel-streams/streams-api/zipball/bbdaef8dac74b44ef1b2c8b773b07df110a02fc0",
+                "reference": "bbdaef8dac74b44ef1b2c8b773b07df110a02fc0",
                 "shasum": ""
             },
             "type": "library",
@@ -2482,7 +2482,7 @@
                 }
             ],
             "description": "The official REST API package for Streams.",
-            "time": "2021-01-09T08:04:02+00:00"
+            "time": "2021-01-13T23:03:11+00:00"
         },
         {
             "name": "streams/core",
@@ -2490,12 +2490,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-streams/streams-core.git",
-                "reference": "af54cf1f94dd8f5a2470c3c68cc1e6a1d3fc28a6"
+                "reference": "e26eb3c8fd63d1df400b6cd319cbb14940f8db18"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-streams/streams-core/zipball/af54cf1f94dd8f5a2470c3c68cc1e6a1d3fc28a6",
-                "reference": "af54cf1f94dd8f5a2470c3c68cc1e6a1d3fc28a6",
+                "url": "https://api.github.com/repos/laravel-streams/streams-core/zipball/e26eb3c8fd63d1df400b6cd319cbb14940f8db18",
+                "reference": "e26eb3c8fd63d1df400b6cd319cbb14940f8db18",
                 "shasum": ""
             },
             "require": {
@@ -2549,7 +2549,7 @@
                 }
             ],
             "description": "A domain-driven, code-configured, flat-file application platform for Laravel.",
-            "time": "2021-01-13T06:56:58+00:00"
+            "time": "2021-01-13T22:24:32+00:00"
         },
         {
             "name": "streams/ui",
@@ -6111,16 +6111,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "9.5.0",
+            "version": "9.5.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "8e16c225d57c3d6808014df6b1dd7598d0a5bbbe"
+                "reference": "e7bdf4085de85a825f4424eae52c99a1cec2f360"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/8e16c225d57c3d6808014df6b1dd7598d0a5bbbe",
-                "reference": "8e16c225d57c3d6808014df6b1dd7598d0a5bbbe",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/e7bdf4085de85a825f4424eae52c99a1cec2f360",
+                "reference": "e7bdf4085de85a825f4424eae52c99a1cec2f360",
                 "shasum": ""
             },
             "require": {
@@ -6196,20 +6196,20 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2020-12-04T05:05:53+00:00"
+            "time": "2021-01-17T07:42:25+00:00"
         },
         {
             "name": "psy/psysh",
-            "version": "v0.10.5",
+            "version": "v0.10.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bobthecow/psysh.git",
-                "reference": "7c710551d4a2653afa259c544508dc18a9098956"
+                "reference": "6f990c19f91729de8b31e639d6e204ea59f19cf3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bobthecow/psysh/zipball/7c710551d4a2653afa259c544508dc18a9098956",
-                "reference": "7c710551d4a2653afa259c544508dc18a9098956",
+                "url": "https://api.github.com/repos/bobthecow/psysh/zipball/6f990c19f91729de8b31e639d6e204ea59f19cf3",
+                "reference": "6f990c19f91729de8b31e639d6e204ea59f19cf3",
                 "shasum": ""
             },
             "require": {
@@ -6238,7 +6238,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "0.10.x-dev"
+                    "dev-main": "0.10.x-dev"
                 }
             },
             "autoload": {
@@ -6268,7 +6268,7 @@
                 "interactive",
                 "shell"
             ],
-            "time": "2020-12-04T02:51:30+00:00"
+            "time": "2021-01-18T15:53:43+00:00"
         },
         {
             "name": "sebastian/cli-parser",
