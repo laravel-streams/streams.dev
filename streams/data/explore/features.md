@@ -15,13 +15,15 @@ menu:
     - text: Third-party PHP Packages
       href: #explore/cli
       type: secondary
-    - text: Are you interested in code generation?
-      href: #explore/cli
-      type: link
+    # - text: Are you interested in code generation?
+    #   href: #explore/cli
+    #   type: link
     # - text: I want to explore more.
     #   href: #explore/more
     #   type: link
 links:
+    - text: Introduction
+      href: /docs/introduction
     - text: Streams Core
       href: /docs/core
     - text: Streams UI
@@ -29,5 +31,4 @@ links:
     - text: Streams API
       href: /docs/api
 ---
-
-Say something here about how these are shaped around our <a href="/explore/values" class="font-bold">vision and principles</a>.
+Our primary mission is to **abstract and standardize data** in a way that maximizes openness and accessibility and radically minimizes overall technical debt.

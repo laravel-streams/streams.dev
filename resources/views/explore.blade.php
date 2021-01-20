@@ -22,13 +22,13 @@
             @foreach ((array) $entry->menu as $item)
             @switch(Arr::get($item, 'type', 'btn'))
                 @case('link')
-                    <a href="{{ $item['href'] }}" class="px-6 py-3 block font-bold text-2xl text-black hover:text-gray-400 transition duration-200 ease-in-out">{{ $item['text'] }}</a>
+                    <a href="{{ $item['href'] }}" target="{{ Arr::get($item, 'target', '_self') }}" class="px-6 py-3 block font-bold text-2xl text-black hover:text-gray-400 transition duration-200 ease-in-out">{{ $item['text'] }}</a>
                     @break
                 @case('secondary')
-                    <a href="{{ $item['href'] }}" class="px-6 py-3 mb-4 block rounded-3xl font-bold text-2xl bg-gray-200 hover:bg-gray-300 text-black outline-none focus:outline-none hover:shadow-md transition duration-200 ease-in-out">{{ $item['text'] }}</a>
+                    <a href="{{ $item['href'] }}" target="{{ Arr::get($item, 'target', '_self') }}" class="px-6 py-3 mb-4 block rounded-3xl font-bold text-2xl bg-gray-200 hover:bg-gray-300 text-black outline-none focus:outline-none hover:shadow-md transition duration-200 ease-in-out">{{ $item['text'] }}</a>
                     @break
                 @default
-                    <a href="{{ $item['href'] }}" class="px-6 py-3 mb-4 block rounded-3xl font-bold text-2xl bg-black hover:bg-gray-800 text-white outline-none focus:outline-none hover:shadow-md transition duration-200 ease-in-out">{{ $item['text'] }}</a>
+                    <a href="{{ $item['href'] }}" target="{{ Arr::get($item, 'target', '_self') }}" class="px-6 py-3 mb-4 block rounded-3xl font-bold text-2xl bg-black hover:bg-gray-800 text-white outline-none focus:outline-none hover:shadow-md transition duration-200 ease-in-out">{{ $item['text'] }}</a>
             @endswitch
             @endforeach
         </div>    
@@ -39,13 +39,13 @@
             @foreach ((array) $entry->options as $link)
             @switch(Arr::get($link, 'type', 'btn'))
                 @case('link')
-                    <a href="{{ $link['href'] }}" class="px-3 py-3 font-bold text-2xl text-black hover:text-gray-400 transition duration-200 ease-in-out">{{ $link['text'] }}</a>
+                    <a href="{{ $link['href'] }}" target="{{ Arr::get($link, 'target', '_self') }}" class="px-3 py-3 font-bold text-2xl text-black hover:text-gray-400 transition duration-200 ease-in-out">{{ $link['text'] }}</a>
                     @break
                 @case('secondary')
-                    <a href="{{ $link['href'] }}" class="px-6 py-3 rounded-3xl font-bold text-2xl bg-gray-200 hover:bg-gray-300 text-black outline-none focus:outline-none hover:shadow-md transition duration-200 ease-in-out">{{ $link['text'] }}</a>                    
+                    <a href="{{ $link['href'] }}" target="{{ Arr::get($link, 'target', '_self') }}" class="px-6 py-3 rounded-3xl font-bold text-2xl bg-gray-200 hover:bg-gray-300 text-black outline-none focus:outline-none hover:shadow-md transition duration-200 ease-in-out">{{ $link['text'] }}</a>                    
                     @break
                 @default
-                    <a href="{{ $link['href'] }}" class="px-6 py-3 rounded-3xl font-bold text-2xl bg-black hover:bg-gray-800 text-white outline-none focus:outline-none hover:shadow-md transition duration-200 ease-in-out">{{ $link['text'] }}</a>                    
+                    <a href="{{ $link['href'] }}" target="{{ Arr::get($link, 'target', '_self') }}" class="px-6 py-3 rounded-3xl font-bold text-2xl bg-black hover:bg-gray-800 text-white outline-none focus:outline-none hover:shadow-md transition duration-200 ease-in-out">{{ $link['text'] }}</a>                    
             @endswitch
             @endforeach
         </div>

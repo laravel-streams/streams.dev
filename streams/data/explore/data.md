@@ -1,10 +1,11 @@
 ---
 title: Data is where we begin.
 menu:
-    - text: Describing data with Streams.
-      href: #/explore/features
-    - text: Explore our database support.
-      href: #/explore/features
+    - text: Streams Documentation
+      href: /docs/core/streams
+      target: _blank
+    - text: Database Support
+      href: /docs/core/sources
     - text: Back to Features
       href: /explore/features
       type: link
@@ -19,7 +20,4 @@ links:
       href: /docs/core/streams#defining-streams
       type: link
 ---
-
-Our primary mission is to **abstract and standardize data** in a way that maximizes openness and accessibility and radically minimizes overall technical debt.
-
 Laravel Streams uses JSON configuration files to represent your various data models. We call each of these "domains" a Stream, hence our namesake. 

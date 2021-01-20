@@ -6,13 +6,13 @@ enabled: 1
 ---
 ## What is Laravel Streams?
 
-Laravel Streams is an open-source **system of interconnected packages** which provides fundamental application standards like data modeling, an API, UI, and more. 
+Laravel Streams is an open-source **system of interconnected packages** which provides fundamental application standards like data modeling, an API, user interface, and more. 
 
 Our primary mission is to **abstract and standardize data** in a way that maximizes openness and accessibility and radically minimizes overall technical debt in using it.
 
 ### Motivation
 
-The ever-changing and widening landscape of web applications, websites, and the like, have stressed the traditions and ideology of popular CMS options. This project results from the complete deconstruction of that paradigm and establishes a new one built upon new fundamental values and principles.
+The ever-changing and widening landscape of web applications, websites, and the like, have stressed the traditions and ideology of popular CMS options. After digging into our own CMS engine we discovered that the problem is in the CMS paradigm. This project results from the complete deconstruction of that paradigm and establishes a new one built upon new fundamental values and principles.
 
 ### Use Cases
 
@@ -35,7 +35,7 @@ Laravel Streams focuses primarily on basic JSON descriptions of your data. We ca
 {
     "name": "Music",
     "fields": {
-	"id": "slug",
+	    "id": "slug",
         "title": "string",
         "mp3": "file",
         "artist": {

@@ -6,8 +6,8 @@ options:
     - text: Existing Project
       href: /explore/existing
       type: secondary
-    - text: It's complicated.
-      href: mailto:ryan@streams.dev
-      type: link
+    # - text: It's complicated.
+    #   href: mailto:ryan@streams.dev
+    #   type: link
 ---
-Laravel Streams is a **system of interconnected packages** and is designed to carry as **little technical debt** as possible. Our core services are organized into composer packages and can be to be ran next to anything, or entirely on their own.
+Laravel Streams is a **system of interconnected packages** and is designed to carry as **little technical debt** as possible. Our core services are organized into composer packages and can be to be ran within an existing project, or entirely on their own.
