@@ -11,6 +11,6 @@ menu:
       href: /explore/features
       type: secondary
 ---
-Laravel Streams is system of utilities first. Built to be added to any Laravel with minimal effort and cost. 
+Laravel Streams is system of utilities first. Fundamental tools that can be added to any Laravel project with minimal effort. 
 
-What do you need to accomplish with your existing project?
+What do you need help with for your existing project?

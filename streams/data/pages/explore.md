@@ -96,7 +96,7 @@ references:
                         <li><a href="https://discord.gg/vhz8NZC">Discord</a></li>
                         <li><a href="https://stackoverflow.com/search?q=laravel+streams">Stack Exchange</a></li>
                         <li><a href="https://github.com/anomalylabs">GitHub</a></li>
-                        <li><a href="https://www.youtube.com/user/AIWebSystems">YouTube</a></li>
+                        <li><a href="https://www.youtube.com/channel/UC4a-uVtWOHNCduY5T7_Q4wA">YouTube</a></li>
                         <li><a href="">Awesome Streams List (eventually right? lol)</a></li>
                     </ul>
                 </div>
