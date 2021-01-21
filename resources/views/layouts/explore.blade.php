@@ -5,14 +5,16 @@
     @include('partials/head')
 </head>
 
-<body>
+<body class="flex flex-col min-h-screen">
+
     @include('partials/header')
 
-    <div id="app">
+    <div id="app" class="flex-grow">
         @yield('content')
     </div>
     
     @include('partials/footer')
     @include('partials/assets')
+
 </body>
 </html>

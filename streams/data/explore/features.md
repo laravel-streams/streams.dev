@@ -7,13 +7,13 @@ menu:
       href: /explore/ui
     - text: REST API
       href: /explore/api
-    - text: CLI Interface
-      href: #explore/cli
+    # - text: CLI Interface
+    #   href: /explore/cli
     - text: Bespoke Functionality
-      href: #explore/cli
+      href: /explore/bespoke
       type: secondary
     - text: Third-party PHP Packages
-      href: #explore/cli
+      href: /explore/packages
       type: secondary
     # - text: Are you interested in code generation?
     #   href: #explore/cli
@@ -30,5 +30,7 @@ links:
       href: /docs/ui
     - text: Streams API
       href: /docs/api
+    # - text: Streams CLI
+    #   href: /docs/cli
 ---
-Our primary mission is to **abstract and standardize data** in a way that maximizes openness and accessibility and radically minimizes overall technical debt.
+Our primary mission is to **abstract and standardize data** in a way that maximizes openness and accessibility and radically minimizes overall technical debt. All of our features are built upon the fundamental structure of your data.

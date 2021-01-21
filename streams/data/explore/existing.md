@@ -3,6 +3,7 @@ title: What kind of support does your existing project need?
 menu:
     - text: Tell us on Discord
       href: /discord
+      target: _blank
     - text: Explore Features
       href: /explore/features
       type: secondary

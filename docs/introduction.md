@@ -85,5 +85,5 @@ Know what you are looking for already? Dive right into our core packages.
 
 - [Discord](https://discord.gg/vhz8NZC)
 - [Stack Exchange](https://stackoverflow.com/search?q=laravel+streams)
-- [GitHub](https://github.com/anomalylabs/streams)
+- [GitHub](https://github.com/laravel-streams/streams)
 - [YouTube](https://www.youtube.com/channel/UC4a-uVtWOHNCduY5T7_Q4wA)
