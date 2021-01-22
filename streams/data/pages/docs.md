@@ -59,6 +59,7 @@ references:
                             <li><a href="docs/core/introduction">Streams Core</a></li>
                             <li><a href="docs/ui/introduction">Streams UI</a></li>
                             <li><a href="docs/api/introduction">Streams API</a></li>
+                            <li><a href="docs/cli/introduction">Streams CLI</a></li>
                         </ul>
 
                     </div>

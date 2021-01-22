@@ -1,8 +1,8 @@
 {
     "name": "users",
     "source": {
-        "type": "database",
-        "table": "users"
+        "type": "file",
+        "format": "csv"
     },
     "fields": {
         "id": "number",
