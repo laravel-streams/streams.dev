@@ -7,3 +7,9 @@
 /coverage
 /node_modules
 /bower_components
+/addons/*/.git
+.idea
+.phpunit.result.cache
+.phpstorm.meta.php
+_ide_helper.php
+yarn.lock

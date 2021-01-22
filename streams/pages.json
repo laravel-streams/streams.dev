@@ -1,20 +1,22 @@
 {
-    "slug": "pages",
+    "handle": "pages",
+    "source.format": "md",
+    "translatable": {
+        "de": {
+            "source.path": "streams/data/pages/de"
+        }
+    },
     "routes.view": {
         "uri": "/{id}",
         "defer": true
     },
     "template": "page",
     "rules": {
+        "id": "required",
         "title": "required"
     },
     "fields": {
-        "title": {
-            "type": "text"
-        },
-        "intro": "textarea",
-        "body": "text|textarea",
-        "sort": "integer"
-    },
-    "source.format": "md"
+        "id": "slug",
+        "path": "string"
+    }
 }

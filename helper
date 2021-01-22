@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+_watch() {
+   inotifywait -m vendor/streams/*/resources/public -r -e modify,create,moved_to |
+        while read path action file; do
+            echo "${action}: ${path}'"
+            php artisan vendor:publish --tag=public --force
+        done
+}
+
+_link(){
+    cd vendor/streams
+    rm -rf core ui dev
+    ln -s ../../packages/streams/core core
+    ln -s ../../packages/streams/ui ui
+    ln -s ../../packages/streams/dev dev
+}
+
+
+
+_$*
