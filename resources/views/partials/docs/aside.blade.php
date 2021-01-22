@@ -1,67 +1,59 @@
 @php
-$areas = ['docs' => 'Streams', 'core' => 'Core', 'ui' => 'UI'];
+    $docs = $stream->entries()->where('enabled', true)->orderBy('sort', 'asc')->get();
 @endphp
 
-@if (count(request()->segments()) == 3 && request()->segment(2) == 'core')
-@php
-$docs = Streams::entries('docs_core')->where('enabled', true)->orderBy('sort', 'asc')->get();
-$suffix = '/core';
-@endphp
-@elseif (count(request()->segments()) == 3 && request()->segment(2) == 'ui')
-@php
-$docs = Streams::entries('docs_ui')->where('enabled', true)->orderBy('sort', 'asc')->get();
-$suffix = '/ui';
-@endphp
-@else
-@php
-$docs = Streams::entries('docs')->where('enabled', true)->orderBy('sort', 'asc')->get();
-$suffix = '';
-@endphp
-@endif
+<aside class="w-5/12 text-black py-10 pl-20">
 
-<aside class="w-3/12 xl:w-2/12 hidden md:block md:pl-4 xl:pl-0 pb-12">
-
-    <div class="o-aside">
-        <div class="c-scrollbar">
+    <div>
             
-            <p class="c-aside-menu-title">
-                <a  href="/docs">Docs Home</a>
-            </p>
+        <p>
+            <a href="/docs">Documentation</a>
+        </p>
 
-            <ul class="c-aside-menu">
-                @foreach ($stream->entries()->where('enabled', true)->orderBy('sort', 'ASC')->where('category',
-                null)->get() as $page)
-                <li {{ ($page->id == $entry->id) ? 'class=active' : '' }}>
-                    <a href="{{$page->id}}">{{ $page->title }}</a>
-                    {{-- <strong>[{{ $page->stage ?: 'outlining' }}]</strong> --}}
-                </li>
-                @endforeach
-            </ul>
+        <ul class="mt-10">
+            @foreach ($docs->where('category', null) as $page)
+            <li>
+                <a href="{{$page->id}}" class="{{ ($page->id == $entry->id) ? 'text-red-500 font-bold' : 'text-gray-500' }}">{{ $page->title }}</a>
+                {{-- <strong>[{{ $page->stage ?: 'outlining' }}]</strong> --}}
+            </li>
+            @endforeach
+        </ul>
 
-            @foreach ($stream->fields->category->config['options'] as $category => $label)
+        @foreach ($stream->fields->category->config['options'] as $category => $label)
 
             @php
-            $pages = $stream->entries()->where('enabled', true)->orderBy('sort', 'ASC')->where('category',
-            $category)->get()
+            $pages = $docs->where('category', $category);
             @endphp
 
             @if ($pages->isNotEmpty())
-            <p class="c-aside-menu-title">
+            <p class="mt-5 font-bold uppercase">
                 {{ $label }}
             </p>
-            <ul class="c-aside-menu">
+            <ul class="mt-2">
                 @foreach ($pages as $page)
-                <li {{ ($page->id == $entry->id) ? 'class=active' : '' }}>
-                    <a href="{{$page->id}}">{{ $page->title }}</a>
+                <li>
+                    <a href="{{$page->id}}" class="{{ ($page->id == $entry->id) ? 'text-red-500 font-bold' : 'text-gray-500' }}">{{ $page->title }}</a>
                     {{-- <strong>[{{ $page->stage ?: 'outlining' }}]</strong> --}}
                 </li>
                 @endforeach
             </ul>
             @endif
 
-            @endforeach
+        @endforeach
 
-        </div>
     </div>
+
+    <div class="flex-shrink-0 flex mt-5 px-2 space-y-1 pl-0">
+        <div class="text-black dark:text-white opacity-25 text-xs">
+            {{ number_format(microtime(true) - Request::server('REQUEST_TIME_FLOAT'), 2) . ' s' }}&nbsp;|&nbsp;
+            @php
+            $size = memory_get_usage(true);
+    
+            $unit = ['b', 'kb', 'mb', 'gb', 'tb', 'pb'];
+    
+            echo round($size / pow(1024, ($i = floor(log($size, 1024)))), 2) . ' ' . $unit[$i];
+            @endphp
+        </div>
+    </div>   
 
 </aside>

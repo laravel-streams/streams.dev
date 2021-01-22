@@ -3,29 +3,23 @@
 // generates CSS.
 
 html {
-    
-    font-size:14px;
-    @media (min-width: 1024px) {
-    font-size:16px;    
-    }
-    
-}
-body
-{
     overflow-x: hidden;
 }
-* {
-    outline: none;
-    -webkit-tap-highlight-color: transparent;
-    color: var(--text);
-    
+
+ul:not(.c-list) {
+    @apply list-disc my-6;
+
+    // Nested unordered list elements
+    li ul {
+        @apply my-1 ml-6;
+    }
 }
 
-@import "./anchor";
-@import "./list";
-@import "./typography.scss";
-
-
-
-
-
+a:not(.c-link){
+    @apply text-link;
+}
+* 
+{
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+}
