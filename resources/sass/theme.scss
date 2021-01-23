@@ -36,6 +36,11 @@ svg {
 
     p {
         @apply mb-4;
+
+        a {
+            border-bottom-width: 1px;
+            @apply font-bold border-black border-dotted;
+        }
     }
 
     :not(pre) > code[class*=language-], pre[class*=language-] {
