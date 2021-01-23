@@ -30,7 +30,7 @@
         "title": {
             "type": "text"
         },
-        "intro": "textarea",
+        "intro": "string|textarea",
         "body": "markdown",
         "category": {
             "type": "select",
