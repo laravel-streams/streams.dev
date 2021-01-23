@@ -5,7 +5,7 @@ bin/phpunit
 (git push) || true
 
 git checkout production
-git merge master
+git merge master -m "Sending"
 
 git push origin production
 
