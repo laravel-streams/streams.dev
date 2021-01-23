@@ -18,6 +18,7 @@ Published configuration files reside in `config/streams/`.
 ├── config/streams/
 │   ├── core.php
 │   ├── api.php
+│   ├── cli.php
 │   └── ui.php
 ```
 
