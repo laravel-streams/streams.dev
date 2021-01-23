@@ -5,7 +5,7 @@
     
     @include('partials.docs.aside')
 
-    <div class="flex-grow pb-10 pr-20">
+    <div class="w-9/12 flex-grow pb-10 pr-20">
         
         <h1 class="text-4xl sm:text-6xl lg:text-7xl leading-none font-extrabold tracking-tight text-gray-900 mt-8 mb-8">
             {{ $entry->title }}
