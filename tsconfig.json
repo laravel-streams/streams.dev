@@ -5,7 +5,7 @@
         "module": "esnext",
         "moduleResolution": "node",
         "lib": [
-            "es5","es6","es7","es2018","es2018.promise","dom",
+            "es5", "es6", "es7", "es2018", "es2018.promise", "dom",
             "esnext",
             "dom",
             "dom.iterable",
@@ -23,25 +23,25 @@
         "noUnusedLocals": false,
         "emitDecoratorMetadata": true,
         "experimentalDecorators": true,
-        "allowSyntheticDefaultImports": true,
         "esModuleInterop": true,
         "suppressExcessPropertyErrors": true,
         "noStrictGenericChecks": false,
         "noImplicitUseStrict": true,
         "jsx": "preserve",
+        "importHelpers": true,
         "declaration": true,
         "declarationMap": false,
         "declarationDir": "resources/public/js",
         "typeRoots": [
-            "node_modules/@types",
-            "../../node_modules/@types",
+            "node_modules/@types"
         ],
-        "outDir": "resources/public/js"
+        "baseUrl": ".",
+        "outDir": "public/js"
     },
     "exclude": [
         "node_modules"
     ],
     "include": [
-        "resources/ts"
+        "resources/js/src"
     ]
 }

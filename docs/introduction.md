@@ -1,53 +1,89 @@
 ---
 title: Introduction
-intro: 'Welcome to the Streams platform!'
 sort: 0
 stage: review
 enabled: 1
-test: $2y$10$3PbTHiSEZ6De9aYZKG5O0Op39WEVcFhSEyViNKkIFSwtmLCKVcTz2
-category: ''
 ---
-The Streams platform is a new breed of CMS. We call it a data management system (DMS).
+## What is Laravel Streams?
 
-Streams is separated into individual packages so you can pick the features that best suits your project.
+Laravel Streams is an open-source **system of interconnected packages** which provides fundamental application standards like data modeling, an API, user interface, and more. 
 
-## Principle Concerns
+Our primary mission is to **abstract and standardize data** in a way that maximizes openness and accessibility and radically minimizes overall technical debt in using it.
 
-The Streams platform focuses on these fundamental areas of application development.
+### Motivation
+
+The ever-changing and widening landscape of web applications, websites, and the like, have stressed the traditions and ideology of popular CMS options. After digging into our own CMS engine we discovered that the problem is in the CMS paradigm. This project results from the complete deconstruction of that paradigm and establishes a new one built upon new fundamental values and principles.
+
+### Use Cases
+
+Laravel Streams is well suited to build a wide variety of applications:
+
+- Websites
+- Prototyping
+- PWA Backbone
+- Headless CMS
+- Integrated CMS
+- Application Core
+- Development Automation
+
+## How does it work?
+
+Laravel Streams focuses primarily on basic JSON descriptions of your data. We call them **streams**.
+
+```json
+// streams/music.json
+{
+    "name": "Music",
+    "fields": {
+	    "id": "slug",
+        "title": "string",
+        "mp3": "file",
+        "artist": {
+            "type": "relationship",
+            "stream": "artist"
+        }
+    }
+}
+```
+
+By default, Laravel Streams leverages a flat-file database engine. All databases supported by Laravel are inherently supported. An adapter interface allows you to tap into any data source you need.
+
+### Building Upon Data
+
+By building upon data structure, we can use stream configurations to help drastically reduce the time required to do things like:
+
+- Validating the data.
+- CRUD'ing the data via a fluent and extensive API.
+- Generate code from stream configurations.
+- Generate stream configurations from data.
+- Serving and consuming the data via API.
+- Building comprehensive control panels.
+- Generating quality, fake data.
+
+### Principle Concerns
+
+Laravel Streams focuses on abstracting these fundamental areas of application development.
 
 - [Data Modeling](streams)
 - [Laravel Enhancement](core)
 - [Frontend Development](frontend)
 - [User Interface](ui)
 - [API Readiness](api)
-
-## Use Cases
-
-The Streams platform is well suited to build darn-near anything you can think of with Laravel.
-
-- Websites
-- Headless CMS
-- Integrated CMS
-- Application Core
-- PWA Backbone
-- Prototyping
+- [CLI Interface](cli)
 
 ## Core Packages
 
-Know what you are looking for already? Dive right in to our core packages.
+Know what you are looking for already? Dive right into our core packages.
 
 - [Streams Core](core/introduction)
 - [Streams UI](ui/introduction)
 - [Streams API](api/introduction)
+- [Streams CLI](cli/introduction)
 
-## Popular Resources
-
-- [Installing](installation) - Installing and updating Streams & add-ons.
-<!-- - [Addons](/addons) - Explore addons available for the Streams platform. -->
 
 ## Community Resources
 
 - [Discord](https://discord.gg/vhz8NZC)
 - [Stack Exchange](https://stackoverflow.com/search?q=laravel+streams)
-- [GitHub](https://github.com/anomalylabs/streams)
-<!-- - [YouTube](https://www.youtube.com/user/AIWebSystems) -->
+- [GitHub](https://github.com/laravel-streams/streams)
+- [YouTube](https://www.youtube.com/channel/UC4a-uVtWOHNCduY5T7_Q4wA)

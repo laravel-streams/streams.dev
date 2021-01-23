@@ -1,18 +1,18 @@
 {
     "name": "users",
-    "template": "user",
-    "translatable": true,
-    "source.format": "json",
-    "routes.view": "users/{id}",
-    "config.key_name": "username",
+    "source": {
+        "type": "file",
+        "format": "csv"
+    },
     "fields": {
-        "username": "slug",
-        "email": "string",
+        "id": "number",
+        "name": "string",
+        "email": "email",
         "password": "hash",
-        "role": {
+        "relative": {
             "type": "relationship",
             "config": {
-                "related": "roles"
+                "related": "users"
             }
         }
     },
@@ -24,7 +24,7 @@
             ],
             "buttons": {
                 "edit": {
-                    "href": "{route.prefix}/users/{entry.id}/edit"
+                    "href": "cp/users/{entry.id}/edit"
                 }
             }
         },

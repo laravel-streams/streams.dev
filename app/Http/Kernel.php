@@ -2,8 +2,8 @@
 
 namespace App\Http;
 
-use App\Http\Middleware\AuthenticateApi;
 use App\Http\Middleware\AuthenticateCp;
+use App\Http\Middleware\AuthenticateApi;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -46,7 +46,7 @@ class Kernel extends HttpKernel
         ],
         
         'cp' => [
-            //AuthenticateCp::class,
+            AuthenticateCp::class,
         ],
     ];
 

@@ -1,5 +1,0 @@
-{
-    "sort_order": 2,
-    "icon": "heroicon-o-eye",
-    "attributes.@click": "$dispatch('show-surfaces', {url: '{route.prefix}/ui/docs_core/form/default?id=changelog'})"
-}

@@ -7,8 +7,8 @@ echo "Deploying application..."
 (php artisan down --message 'This app is being (quickly!) updated. Please try again in one moment.') || true
     
     # Update codebase
-    git fetch origin deploy
-    git reset --hard origin/deploy
+    git fetch origin production
+    git reset --hard origin/production
 
     # Install dependencies based on lock file
     composer install --no-interaction --prefer-dist --optimize-autoloader
@@ -18,9 +18,6 @@ echo "Deploying application..."
 
     # Restart queue workers
     php artisan queue:restart
-
-    # Publish public assets
-    php artisan vendor:publish --tag=public
 
     # Clear cache/optimize
     php artisan optimize

@@ -1,8 +1,5 @@
 {
-    "data": {
-        "config": {
-            "app.name": "Laravel Streams",
-            "app.locale": "en"
-        }
+    "config": {
+        "app.name": "Laravel Streams"
     }
 }

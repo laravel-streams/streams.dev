@@ -8,6 +8,14 @@ _watch() {
         done
 }
 
+_link(){
+    cd vendor/streams
+    rm -rf core ui dev
+    ln -s ../../packages/streams/core core
+    ln -s ../../packages/streams/ui ui
+    ln -s ../../packages/streams/dev dev
+}
+
 
 
 _$*

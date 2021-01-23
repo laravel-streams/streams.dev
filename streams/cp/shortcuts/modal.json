@@ -1,5 +1,0 @@
-{
-    "sort_order": 3,
-    "icon": "heroicon-o-duplicate",
-    "attributes.@click": "$dispatch('show-modal', {url: '{route.prefix}/ui/docs_core/form/default?id=changelog'})"
-}
