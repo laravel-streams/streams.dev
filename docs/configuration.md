@@ -16,9 +16,9 @@ Published configuration files reside in `config/streams/`.
 
 ``` files
 ├── config/streams/
-│   ├── foo.php
-│   ├── bar.php
-│   └── baz.php
+│   ├── core.php
+│   ├── api.php
+│   └── ui.php
 ```
 
 #### Publishing Configuration
