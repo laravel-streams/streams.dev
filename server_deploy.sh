@@ -4,7 +4,7 @@ set -e
 echo "Deploying application..."
 
 # Enter maintenance mode
-(php artisan down --message 'This app is being (quickly!) updated. Please try again in one moment.') || true
+(php artisan down || true
     
     # Update codebase
     git fetch origin production
