@@ -15,6 +15,9 @@ menu:
     - text: Third-party PHP Packages
       href: /explore/packages
       type: secondary
+    - text: Open Source
+      href: /explore/open-source
+      type: secondary
     # - text: Are you interested in code generation?
     #   href: #explore/cli
     #   type: link
