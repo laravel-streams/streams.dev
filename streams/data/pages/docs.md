@@ -33,9 +33,6 @@ references:
                                 <a href="docs/introduction">Introduction</a>
                             </li>
                             <li>
-                                <a href="docs/requirements">Requirements</a>
-                            </li>
-                            <li>
                                 <a href="docs/installation">Installation</a>
                             </li>
                             <li>
