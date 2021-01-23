@@ -7,8 +7,7 @@ echo "Deploying application..."
 (php artisan down || true)
     
     # Update codebase
-    git checkout production
-    git pull origin/production
+    git pull 
 
     # Install dependencies based on lock file
     composer install --no-interaction --prefer-dist --optimize-autoloader
