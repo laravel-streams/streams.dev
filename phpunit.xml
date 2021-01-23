@@ -21,9 +21,6 @@
         <testsuite name="Application">
             <directory suffix="Test.php">./tests</directory>
         </testsuite>
-        <testsuite name="Laravel Streams">
-            <directory suffix="Test.php">./vendor/streams/*/tests</directory>
-        </testsuite>
     </testsuites>
 
     <php>
