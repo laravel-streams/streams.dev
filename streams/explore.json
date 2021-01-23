@@ -25,5 +25,17 @@
         "menu": {
             "type": "array"
         }
+    },
+    "ui": {
+        "tables": {
+            "default": {
+                "buttons": {
+                    "view": {
+                        "href": "/explore/{entry.id}",
+                        "target": "_blank"
+                    }
+                }
+            }
+        }
     }
 }

@@ -59,6 +59,7 @@ references:
                             <li><a href="docs/core/introduction">Streams Core</a></li>
                             <li><a href="docs/ui/introduction">Streams UI</a></li>
                             <li><a href="docs/api/introduction">Streams API</a></li>
+                            <li><a href="docs/cli/introduction">Streams CLI</a></li>
                         </ul>
 
                     </div>
@@ -80,27 +81,6 @@ references:
                 </div>
             </div>
 
-        </div>
-    </div>
-</div>
-
-
-
-<div class="container mx-auto">
-    <div class="o-changemynametosomethingsmart my-20 px-4">
-        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 col-gap-4 row-gap-4">
-            <div>
-                <div class="c-card-feature">
-                    <div class="c-card-feature__body">
-                        <h3 class="c-card-feature__title">
-                            Marketplace
-                        </h3>
-                        <p>
-                            Composer powered addon marketplace is <strong>prototyped</strong>. 
-                        </p>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
 </div>
