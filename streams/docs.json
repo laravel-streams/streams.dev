@@ -30,7 +30,6 @@
         "title": {
             "type": "text"
         },
-        "intro": "textarea",
         "body": "markdown",
         "category": {
             "type": "select",
@@ -58,7 +57,7 @@
                 "options": {
                     "outlining": "Outlining",
                     "drafting": "Drafting",
-                    "editing": "Editing",
+                    "editing": "Editing", 
                     "review": "Review",
                     "done": "Done"
                 }
