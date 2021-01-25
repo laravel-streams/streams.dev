@@ -13,6 +13,9 @@
         "select": "foo",
         "textarea": "Textarea value.\r\n\r\nNew lines.",
         "slug": "textarea-value-new-lines",
-        "toggle": true
+        "toggle": true,
+        "relationship": "api",
+        "file": "streams\/data\/uploads\/Scan.jpeg",
+        "image": "streams\/data\/uploads\/Scan.jpeg"
     }
 }

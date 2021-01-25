@@ -87,6 +87,20 @@
             "config": {
                 "related": "explore"
             }
+        },
+        "file": {
+            "type": "file",
+            "label": "File Input",
+            "config": {
+                "path": "streams/data/uploads"
+            }
+        },
+        "image": {
+            "type": "image",
+            "label": "Image Input",
+            "config": {
+                "path": "streams/data/uploads/img"
+            }
         }
     }
 }
