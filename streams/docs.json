@@ -30,10 +30,6 @@
         "title": {
             "type": "text"
         },
-<<<<<<< HEAD
-        "intro": "string|textarea",
-=======
->>>>>>> c500f226df3459bc480696a0fd7187c0df013814
         "body": "markdown",
         "category": {
             "type": "select",
