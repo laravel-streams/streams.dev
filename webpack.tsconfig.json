@@ -32,6 +32,8 @@
         "outDir": "out"
     },
     "include": [
+        "vendor/streams/core/lib",
+        "vendor/streams/ui/lib"
     ],
     "exclude": [
     ]

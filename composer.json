@@ -51,6 +51,8 @@
     "extra": {
         "dont-discover": []
     },
+    "prefer-stable": true,
+    "minimum-stability": "dev",
     "config": {
         "bin-dir": "bin",
         "preferred-stable": false,

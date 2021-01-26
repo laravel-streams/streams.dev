@@ -22,15 +22,20 @@
         "noFallthroughCasesInSwitch": false,
         "allowSyntheticDefaultImports": true,
         "esModuleInterop": true,
-        "sourceMap": false,
-        "inlineSourceMap": true,
+        "sourceMap": true,
+        "inlineSourceMap": false,
         "inlineSources": false,
         "experimentalDecorators": true,
         "emitDecoratorMetadata": true,
         "baseUrl": ".",
         "outDir": "lib",
         "paths": {
-        }
+        },
+        "typeRoots": [
+            "./types",
+            "node_modules/@types",
+            "../../node_modules/@types"
+        ]
     },
     "include": [
         "src",

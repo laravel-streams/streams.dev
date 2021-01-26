@@ -1,18 +1,72 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
+'use strict';
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : {'default': mod};
+};
+Object.defineProperty(exports, '__esModule', {value: true});
 exports.LaravelStreamExtension = void 0;
-const path_1 = require("path");
+const path_1 = require('path');
+const mini_css_extract_plugin_1 = __importDefault(require('mini-css-extract-plugin'));
+const lodash_1 = __importDefault(require('lodash'));
+const fs_1 = require('fs');
 const isDev = process.env.NODE_ENV === 'development';
+
+class Vendors {
+    static has(val) {
+        return this.vendors.includes(val.toString());
+    }
+
+    static add(val) {
+        this.vendors.push(val.toString());
+        this.vendors = lodash_1.default.uniq(this.vendors);
+        return this;
+    }
+
+    static clear(val) {
+        let [prefix, name] = val.toString().split('/');
+        if ( this.vendors.includes(prefix) ) {
+            return name;
+        }
+        return val;
+    }
+
+    static scan(packages) {
+        for (const pkg of packages) {
+            let [vendor, name] = pkg.split('/', 2);
+            this.add(vendor);
+        }
+    }
+}
+
+Vendors.vendors = [];
+
 class Prefix {
-    static val(val) { return this.pre(val); }
+    static set(val) {
+        this.value = val;
+    }
+
+    static val(val) {
+        return this.pre(val);
+    }
     ;
-    static has(val) { return val.toString().startsWith(this.value); }
+
+    static has(val) {
+        return val.toString().startsWith(this.value);
+    }
     ;
-    static clear(val) { return val.toString().slice(this.value.length); }
-    static toString() { return this.value; }
-    static pre(val) { return this.value + val; }
+
+    static clear(val) {
+        return val.toString().slice(this.value.length);
+    }
+
+    static toString() {
+        return this.value;
+    }
+
+    static pre(val) {
+        return this.value + val;
+    }
 } //@formatter:on
-Prefix.value = '';
+Prefix.value = 'streams/';
 const config = {
     devtool: isDev ? 'hidden-source-map' : false,
     resolve: {
@@ -30,114 +84,211 @@ const config = {
     },
     output: {},
 };
+
 class LaravelStreamExtension {
-    babelConfig() {
-        return {
-            babelrc: false,
-            // configFile    : false,
-            // cacheDirectory: false, //wp.isDev,
-            compact: !isDev,
-            sourceMaps: isDev,
-            comments: isDev,
-            presets: [['@babel/preset-env']],
-            plugins: [
-                ['import', {
-                        libraryName: 'lodash',
-                        libraryDirectory: '',
-                        camel2DashComponentName: false,
-                    }],
-                '@babel/plugin-syntax-dynamic-import',
-            ],
-        };
-    }
     boot() {
         return undefined;
     }
+
     dependencies() {
         return undefined;
     }
-    mix() {
-        return {};
-    }
+
+    // public mix(): Record<string, Component> {
+    //     return {};
+    // }
     name() {
-        return 'streamify';
+        return 'streams';
     }
-    register(...args) {
+
+    webpackEntry(entry) {
+        Vendors.scan(this.options.packages);
+        for (const pkg of this.packages) {
+            entry.structure[pkg.name] = pkg.entry;
+        }
         return;
     }
+
+    register(options) {
+        this.options = options;
+        this.packages = options.packages.map(name => {
+            const path = (...filepath) => path_1.resolve(`vendor/${name}`, ...filepath);
+            const has = (...filepath) => fs_1.existsSync(path(...filepath));
+            const read = (...filepath) => fs_1.readFileSync(path(...filepath), 'utf8');
+            const write = (data, ...filepath) => fs_1.writeFileSync(path(...filepath), data, 'utf8');
+            return {
+                name,
+                path,
+                has,
+                read,
+                write,
+                entry       : path(`lib/index.ts`),
+                prefix      : Vendors.clear(name),
+                tailwindPath: path(`tailwind.config.js`),
+                tailwind    : has('tailwind.config.js'),
+            };
+        });
+        return;
+    }
+
     webpackConfig(config) {
-        config.entry = {
-            [Prefix + 'core']: path_1.resolve('packages/streams/core/lib/index.ts'),
-            [Prefix + 'ui']: path_1.resolve('packages/streams/ui/lib/index.ts'),
+        var _a;
+        let rules = (_a = config.module) === null || _a === void 0 ? void 0 : _a.rules;
+        let scssRule = rules.find(rule => rule.test.toString() === '/\\.scss$/');
+        let originalScssRule = lodash_1.default.cloneDeep(scssRule);
+        for (const pkg of this.packages) {
+            if ( pkg.tailwind ) {
+                if ( Array.isArray(scssRule.exclude) ) {
+                    scssRule.exclude.push(pkg.path());
+                }
+                pkg.scssRule = lodash_1.default.cloneDeep(scssRule);
+                pkg.scssRule.include = pkg.path();
+                pkg.scssRule.oneOf
+                    .filter(oneOf => Array.isArray(oneOf.use))
+                    .forEach(oneOf => {
+                        var _a, _b;
+                        let postCssLoader = oneOf.use.find(use => use.loader === 'postcss-loader');
+                        let plugins = (_b = (_a = postCssLoader === null || postCssLoader === void 0 ? void 0 : postCssLoader.options) === null || _a === void 0 ? void 0 : _a.postcssOptions) === null || _b === void 0 ? void 0 : _b.plugins;
+                        if ( Array.isArray(plugins) ) {
+                            let index = plugins.findIndex(plugin => plugin.postcssPlugin === 'tailwind');
+                            if ( index ) {
+                                plugins[index] = require('tailwindcss')(pkg.path('tailwind.config.js'));
+                            }
+                        }
+                    });
+                config.module.rules.push(pkg.scssRule);
+            }
+        }
+        let markdownRule = rules.find(rule => rule.test.toString().endsWith('markdown.scss'));
+        if ( markdownRule ) {
+            let loader = markdownRule.use.find(l => {
+                var _a;
+                return ((_a = l) === null || _a === void 0 ? void 0 : _a.loader) === 'postcss-loader';
+            });
+            let plugins = loader.options.postcssOptions.plugins;
+        }
+        let path = 'vendor';
+        scssRule.oneOf.forEach(one => {
+            let use = one === null || one === void 0 ? void 0 : one.use;
+            if ( use ) {
+                use.shift();
+                use.unshift({loader: mini_css_extract_plugin_1.default.loader});
+            }
+        });
+        let miniCssExtractPlugin = config.plugins.find(plugin => plugin.constructor.name === 'MiniCssExtractPlugin');
+        miniCssExtractPlugin.options.filename = (chunk) => {
+            let c = chunk.chunk;
+            if ( Vendors.has(c.name) ) {
+                c.name = Vendors.clear(c.name);
+            }
+            if ( 'runtime' in c && Vendors.has(c.runtime) ) {
+                return `${path}/${Vendors.clear(c.runtime)}/css/[name].css`;
+            }
+            return '[name].css';
         };
-        config.output = Object.assign(Object.assign({}, config.output), { path: path_1.resolve('public'), 
-            // filename                             : /** @param  {webpack.ChunkData} chunk */(chunk) => {
-            //     let c = chunk.chunk;
-            //
-            //     if ( Prefix.has(c.name) ) {
-            //         c.name = Prefix.clear(c.name);
-            //     }
-            //     if ( Prefix.has(c.runtime) ) {
-            //         return `/vendor/streams/${Prefix.clear(c.runtime)}/js/[name].js`;
-            //     }
-            //     // for (const group of c._groups.values()) {
-            //     //     let entry = c.runtime.substr('streams:'.length);
-            //     //     group.name;
-            //     //     continue;
-            //     // }
-            //     return '[name].js';
-            //
-            // },
-            // chunkFilename                        : /** @param  {webpack.ChunkData} chunk */(chunk) => {
-            //     let c = chunk.chunk;
-            //     if ( Prefix.has(c.runtime) ) {
-            //         c.runtime = Prefix.clear(c.runtime);
-            //         return `/vendor/streams/${c.runtime}/js/chunk.[name].js`;
-            //     }
-            //     return 'chunk.[name].js';
-            // },
-            library: ['streams'], publicPath: 'public/streams/', libraryTarget: 'window', devtoolFallbackModuleFilenameTemplate: 'webpack:///[resource-path]?[hash]', devtoolModuleFilenameTemplate: info => {
+        miniCssExtractPlugin.options.chunkFilename = (chunk) => {
+            let c = chunk.chunk;
+            if ( 'runtime' in c && Vendors.has(c.runtime) ) {
+                let runtime = Vendors.clear(c.runtime);
+                return `${path}/${runtime}/css/chunk.[name].css`;
+            }
+            return 'chunk.[name].css';
+        };
+        config.output = Object.assign(Object.assign({}, config.output), {
+            path                                 : path_1.resolve('public'),
+            filename                             : (chunk) => {
+                let c = chunk.chunk;
+                if ( Vendors.has(c.name) ) {
+                    c.name = Vendors.clear(c.name);
+                }
+                if ( 'runtime' in c && Vendors.has(c.runtime) ) {
+                    return `${path}/${Vendors.clear(c.runtime)}/js/[name].js`;
+                }
+                // for (const group of c._groups.values()) {
+                //     let entry = c.runtime.substr('streams:'.length);
+                //     group.name;
+                //     continue;
+                // }
+                return '[name].js';
+            },
+            chunkFilename                        : (chunk) => {
+                let c = chunk.chunk;
+                if ( 'runtime' in c && Vendors.has(c.runtime) ) {
+                    let runtime = Vendors.clear(c.runtime);
+                    return `${path}/${runtime}/js/chunk.[name].js`;
+                }
+                return 'chunk.[name].js';
+            },
+            library                              : ['streams', '[name]'],
+            publicPath                           : '/',
+            libraryTarget                        : 'window',
+            devtoolFallbackModuleFilenameTemplate: 'webpack:///[resource-path]?[hash]',
+            devtoolModuleFilenameTemplate        : info => {
                 var $filename = 'sources://' + info.resourcePath;
                 $filename = 'webpack:///' + info.resourcePath; // +'?' + info.hash;
-                if (info.resourcePath.match(/\.vue$/) && !info.allLoaders.match(/type=script/) && !info.query.match(/type=script/)) {
+                if ( info.resourcePath.match(/\.vue$/) && !info.allLoaders.match(/type=script/) && !info.query.match(/type=script/) ) {
                     $filename = 'webpack-generated:///' + info.resourcePath; // + '?' + info.hash;
                 }
                 return $filename;
-            } });
+            }
+        });
+        config.resolve.extensions.push(...['.ts', '.tsx', '.scss']);
     }
-    webpackEntry(entry) {
-        return;
-    }
+
+    // public webpackEntry(entry: any): void {
+    //     return ;
+    // }
     webpackPlugins() {
         return [];
     }
+
+    babelConfig() {
+        return {
+            // babelrc   : false,
+            // // configFile    : false,
+            // // cacheDirectory: false, //wp.isDev,
+            // compact   : !isDev,
+            // sourceMaps: isDev,
+            // comments  : isDev,
+            // presets   : [ '@babel/preset-env' ],
+            // plugins   : [
+            //     [ 'import', {
+            //         libraryName            : 'lodash',
+            //         libraryDirectory       : '',
+            //         camel2DashComponentName: false,
+            //     } ],
+            //     '@babel/plugin-syntax-dynamic-import',
+            // ],
+        };
+    }
+
     webpackRules() {
         return [
             {
-                test: /\.tsx?$/,
+                test   : /\.tsx?$/,
                 exclude: /node_modules\//,
-                use: [{
-                        loader: 'babel-loader',
-                    }, {
-                        loader: 'ts-loader',
-                        options: {
-                            appendTsxSuffixTo: [/.vue$/],
-                            configFile: 'tsconfig.json',
-                            transpileOnly: true,
-                            // experimentalWatchApi: true,
-                            // happyPackMode       : true,
-                            compilerOptions: {
-                                target: 'es5',
-                                module: 'esnext',
-                                importHelpers: true,
-                                sourceMap: isDev,
-                                removeComments: !isDev,
-                            },
+                use    : [{
+                    loader : 'ts-loader',
+                    options: {
+                        appendTsxSuffixTo: [/.vue$/],
+                        configFile       : 'webpack.tsconfig.json',
+                        transpileOnly    : true,
+                        // experimentalWatchApi: true,
+                        // happyPackMode       : true,
+                        compilerOptions: {
+                            target        : 'es6',
+                            module        : 'esnext',
+                            importHelpers : true,
+                            sourceMap     : isDev,
+                            removeComments: !isDev,
                         },
-                    }],
+                    },
+                }],
             },
         ];
     }
 }
+
 exports.LaravelStreamExtension = LaravelStreamExtension;
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiTGFyYXZlbFN0cmVhbUV4dGVuc2lvbi5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIi4uL3NyYy9MYXJhdmVsU3RyZWFtRXh0ZW5zaW9uLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7OztBQUtBLCtCQUE2RDtBQUU3RCxNQUFNLEtBQUssR0FBRyxPQUFPLENBQUMsR0FBRyxDQUFDLFFBQVEsS0FBSyxhQUFhLENBQUM7QUFHckQsTUFBTSxNQUFNO0lBRVIsTUFBTSxDQUFDLEdBQUcsQ0FBQyxHQUFHLElBQUUsT0FBTyxJQUFJLENBQUMsR0FBRyxDQUFDLEdBQUcsQ0FBQyxDQUFBLENBQUEsQ0FBQztJQUFBLENBQUM7SUFDdEMsTUFBTSxDQUFDLEdBQUcsQ0FBQyxHQUFHLElBQUcsT0FBTyxHQUFHLENBQUMsUUFBUSxFQUFFLENBQUMsVUFBVSxDQUFDLElBQUksQ0FBQyxLQUFLLENBQUMsQ0FBQyxDQUFBLENBQUM7SUFBQSxDQUFDO0lBQ2hFLE1BQU0sQ0FBQyxLQUFLLENBQUMsR0FBRyxJQUFHLE9BQU8sR0FBRyxDQUFDLFFBQVEsRUFBRSxDQUFDLEtBQUssQ0FBQyxJQUFJLENBQUMsS0FBSyxDQUFDLE1BQU0sQ0FBQyxDQUFDLENBQUEsQ0FBQztJQUNuRSxNQUFNLENBQUMsUUFBUSxLQUFJLE9BQU8sSUFBSSxDQUFDLEtBQUssQ0FBQyxDQUFBLENBQUM7SUFDdEMsTUFBTSxDQUFDLEdBQUcsQ0FBQyxHQUFHLElBQUcsT0FBTyxJQUFJLENBQUMsS0FBSyxHQUFHLEdBQUcsQ0FBQyxDQUFBLENBQUM7RUFDN0MsZUFBZTtBQU5MLFlBQUssR0FBRyxFQUFFLENBQUM7QUFRdEIsTUFBTSxNQUFNLEdBQTBCO0lBQ2xDLE9BQU8sRUFBSSxLQUFLLENBQUMsQ0FBQyxDQUFDLG1CQUFtQixDQUFDLENBQUMsQ0FBQyxLQUFLO0lBQzlDLE9BQU8sRUFBSTtRQUNQLFFBQVEsRUFBSSxJQUFJO1FBQ2hCLFVBQVUsRUFBRSxDQUFFLEtBQUssRUFBRSxNQUFNLEVB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
+exports.default = LaravelStreamExtension;
+//# sourceMappingURL=LaravelStreamExtension.js.map

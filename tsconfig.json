@@ -29,7 +29,10 @@
         "emitDecoratorMetadata": true,
         "baseUrl": ".",
         "paths": {
-        }
+        },
+        "typeRoots": [
+            "node_modules/@types"
+        ]
     },
     "include": [
         "globals.d.ts",
