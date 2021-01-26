@@ -16,8 +16,8 @@
     ],
     "require": {
         "streams/api": "1.0.x-dev",
-        "streams/core": "2.0.x-dev",
-        "streams/ui": "1.0.x-dev"
+        "streams/core": "dev-feature/webpack-mix-root-based-bundling",
+        "streams/ui": "dev-feature/webpack-mix-root-based-bundling"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.3",
