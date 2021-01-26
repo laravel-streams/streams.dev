@@ -3,10 +3,13 @@ import mix                                         from 'laravel-mix';
 import { ClassComponent, Dependency }              from 'laravel-mix/types/component';
 import { TransformOptions }                        from 'babel-core';
 import * as webpack                                from 'webpack';
+import { RuleSetRule }                             from 'webpack';
 import { resolve }                                 from 'path';
 import MiniCssExtractPlugin                        from 'mini-css-extract-plugin';
 import _                                           from 'lodash';
 import { existsSync, readFileSync, writeFileSync } from 'fs';
+import sass                                        from 'sass';
+import * as postcss                                from 'postcss';
 
 declare interface LoaderItem {
     loader: string;
@@ -15,12 +18,44 @@ declare interface LoaderItem {
     type: null | string;
 }
 
+declare interface LoaderItemSass extends LoaderItem {
+    loader: 'sass-loader'
+    options: sass.Options
+}
+
+declare interface LoaderItemPostcss extends LoaderItem {
+    loader: 'postcss-loader'
+    options: PostcssOptions
+}
+
+declare interface PostcssOptions<PLUGIN = postcss.Plugin> {
+    /**
+     * Options to pass through to `Postcss`.
+     */
+    postcssOptions?: postcss.ProcessOptions & {
+        plugins: PLUGIN[]
+    }
+    /**
+     * Enables/Disables PostCSS parser support in 'CSS-in-JS' (https://github.com/postcss/postcss-loader#execute)
+     */
+    execute?: boolean;
+    /**
+     * Enables/Disables generation of source maps (https://github.com/postcss/postcss-loader#sourcemap)
+     */
+    sourceMap?: boolean;
+}
+
 const isDev = process.env.NODE_ENV === 'development';
 
 class Vendors {
     static vendors: string[] = [];
 
-    static has(val) {return this.vendors.includes(val.toString());}
+    static has(val) {
+        if ( val.toString().includes('/') ) {
+            val = val.toString().split('/')[ 0 ];
+        }
+        return this.vendors.includes(val.toString());
+    }
 
     static add(val) {
         this.vendors.push(val.toString());
@@ -98,14 +133,114 @@ export interface LaravelStreamExtensionPacakge {
     write(data, ...parts): void
 }
 
+
 export interface LaravelStreamExtensionOptions {
-    packages: Array<string>
+    packages?: Array<string>
+    tailwind?: boolean
 }
 
 export class LaravelStreamExtension implements ClassComponent {
     public passive: boolean;
     options: LaravelStreamExtensionOptions;
     packages: LaravelStreamExtensionPacakge[];
+
+    public webpackConfig(config: webpack.Configuration): void {
+
+        let rules = (config.module?.rules as webpack.RuleSetRule[]);
+
+        if ( this.options.tailwind ) {
+            this.applyInvidualPackageTailwindConfigs(config);
+        }
+        let markdownRule = rules.find(rule => rule.test.toString().endsWith('markdown.scss'));
+        if ( markdownRule ) {
+            let loader  = (markdownRule.use as { loader: string, options: any }[]).find(l => (l as any)?.loader === 'postcss-loader');
+            let plugins = loader.options.postcssOptions.plugins;
+        }
+        let path     = 'vendor';
+        let scssRule = rules.find(rule => rule.test.toString() === '/\\.scss$/');
+        scssRule.oneOf.forEach(one => {
+            let use = (one?.use as { loader: string, options?: any }[]);
+            if ( use ) {
+                use.shift();
+                use.unshift({ loader: MiniCssExtractPlugin.loader });
+            }
+        });
+        let miniCssExtractPlugin: { options: MiniCssExtractPlugin.PluginOptions } = config.plugins.find(plugin => plugin.constructor.name === 'MiniCssExtractPlugin') as any;
+        miniCssExtractPlugin.options.filename                                     = (chunk) => {
+            let c = chunk.chunk;
+            if ( Vendors.has(c.name) ) {
+                c.name = Vendors.clear(c.name);
+            }
+            if ( 'runtime' in c && Vendors.has(c.runtime) ) {
+                return `${path}/${c.runtime}/css/[name].css`;
+            }
+            return '[name].css';
+        };
+        (miniCssExtractPlugin.options.chunkFilename as any)                       = (chunk) => {
+            let c = chunk.chunk;
+            if ( 'runtime' in c && Vendors.has(c.runtime) ) {
+                let runtime = Vendors.clear(c.runtime);
+                return `${path}/${c.runtime}/css/chunk.[name].css`;
+            }
+            return 'chunk.[name].css';
+        };
+
+        config.output                   = {
+            ...config.output,
+
+            path         : resolve('public'),
+            filename     : (chunk) => {
+                let c = chunk.chunk;
+
+                if ( Vendors.has(c.name) ) {
+                    c.name = Vendors.clear(c.name);
+                }
+                if ( 'runtime' in c && Vendors.has(c.runtime) ) {
+                    return `${path}/${c.runtime}/js/[name].js`;
+                }
+                // for (const group of c._groups.values()) {
+                //     let entry = c.runtime.substr('streams:'.length);
+                //     group.name;
+                //     continue;
+                // }
+                return '[name].js';
+
+            },
+            chunkFilename: (chunk) => {
+                let c = chunk.chunk;
+                if ( 'runtime' in c && Vendors.has(c.runtime) ) {
+                    let runtime = Vendors.clear(c.runtime);
+                    return `${path}/${c.runtime}/js/chunk.[name].js`;
+                }
+                return 'chunk.[name].js';
+            },
+
+            library                              : [ 'streams', '[name]' ],
+            publicPath                           : '/',
+            libraryTarget                        : 'window',
+            devtoolFallbackModuleFilenameTemplate: 'webpack:///[resource-path]?[hash]',
+            devtoolModuleFilenameTemplate        : info => {
+                var $filename = 'sources://' + info.resourcePath;
+                $filename     = 'webpack:///' + info.resourcePath; // +'?' + info.hash;
+                if ( info.resourcePath.match(/\.vue$/) && !info.allLoaders.match(/type=script/) && !info.query.match(/type=script/) ) {
+                    $filename = 'webpack-generated:///' + info.resourcePath; // + '?' + info.hash;
+                }
+                return $filename;
+            },
+        };
+        config.optimization.splitChunks = {
+            cacheGroups: {
+                vendors: {
+                    name    : 'vendors',
+                    test    : /[\\/]node_modules[\\/](inversify|reflect-metadata|core-js|axios|tapable|util|lodash|element-ui|tslib|process|debug|regenerator-runtime|@babel\/runtime)/,
+                    enforce : true,
+                    chunks  : 'initial',
+                    filename: `${path}/streams-vendors.js`,
+                },
+            },
+        };
+        config.resolve.extensions.push(...[ '.ts', '.tsx', '.scss' ]);
+    }
 
     public boot(): void {
         return undefined;
@@ -150,10 +285,8 @@ export class LaravelStreamExtension implements ClassComponent {
         return;
     }
 
-    public webpackConfig(config: webpack.Configuration): void {
-
-        let rules            = (config.module?.rules as webpack.RuleSetRule[]);
-        let scssRule         = rules.find(rule => rule.test.toString() === '/\\.scss$/');
+    private applyInvidualPackageTailwindConfigs(config: webpack.Configuration): void {
+        let scssRule         = (config.module.rules as RuleSetRule[]).find(rule => rule.test.toString() === '/\\.scss$/');
         let originalScssRule = _.cloneDeep(scssRule);
         for ( const pkg of this.packages ) {
             if ( pkg.tailwind ) {
@@ -163,9 +296,9 @@ export class LaravelStreamExtension implements ClassComponent {
                 pkg.scssRule         = _.cloneDeep(scssRule);
                 pkg.scssRule.include = pkg.path();
                 pkg.scssRule.oneOf
-                    .filter(oneOf => Array.isArray(oneOf.use as Array<LoaderItem>))
+                    .filter(oneOf => Array.isArray(oneOf.use as Array<LoaderItemPostcss>))
                     .forEach(oneOf => {
-                        let postCssLoader = (oneOf.use as Array<LoaderItem>).find(use => use.loader === 'postcss-loader');
+                        let postCssLoader = (oneOf.use as Array<LoaderItemPostcss>).find(use => use.loader === 'postcss-loader');
                         let plugins       = postCssLoader?.options?.postcssOptions?.plugins;
                         if ( Array.isArray(plugins) ) {
                             let index = plugins.findIndex(plugin => plugin.postcssPlugin === 'tailwind');
@@ -177,83 +310,6 @@ export class LaravelStreamExtension implements ClassComponent {
                 config.module.rules.push(pkg.scssRule);
             }
         }
-        let markdownRule = rules.find(rule => rule.test.toString().endsWith('markdown.scss'));
-        if ( markdownRule ) {
-            let loader  = (markdownRule.use as { loader: string, options: any }[]).find(l => (l as any)?.loader === 'postcss-loader');
-            let plugins = loader.options.postcssOptions.plugins;
-        }
-        let path = 'vendor';
-        scssRule.oneOf.forEach(one => {
-            let use = (one?.use as { loader: string, options?: any }[]);
-            if ( use ) {
-                use.shift();
-                use.unshift({ loader: MiniCssExtractPlugin.loader });
-            }
-        });
-        let miniCssExtractPlugin: { options: MiniCssExtractPlugin.PluginOptions } = config.plugins.find(plugin => plugin.constructor.name === 'MiniCssExtractPlugin') as any;
-        miniCssExtractPlugin.options.filename                                     = (chunk) => {
-            let c = chunk.chunk;
-            if ( Vendors.has(c.name) ) {
-                c.name = Vendors.clear(c.name);
-            }
-            if ( 'runtime' in c && Vendors.has(c.runtime) ) {
-                return `${path}/${Vendors.clear(c.runtime)}/css/[name].css`;
-            }
-            return '[name].css';
-        };
-        (miniCssExtractPlugin.options.chunkFilename as any)                       = (chunk) => {
-            let c = chunk.chunk;
-            if ( 'runtime' in c && Vendors.has(c.runtime) ) {
-                let runtime = Vendors.clear(c.runtime);
-                return `${path}/${runtime}/css/chunk.[name].css`;
-            }
-            return 'chunk.[name].css';
-        };
-
-        config.output = {
-            ...config.output,
-
-            path         : resolve('public'),
-            filename     : (chunk) => {
-                let c = chunk.chunk;
-
-                if ( Vendors.has(c.name) ) {
-                    c.name = Vendors.clear(c.name);
-                }
-                if ( 'runtime' in c && Vendors.has(c.runtime) ) {
-                    return `${path}/${Vendors.clear(c.runtime)}/js/[name].js`;
-                }
-                // for (const group of c._groups.values()) {
-                //     let entry = c.runtime.substr('streams:'.length);
-                //     group.name;
-                //     continue;
-                // }
-                return '[name].js';
-
-            },
-            chunkFilename: (chunk) => {
-                let c = chunk.chunk;
-                if ( 'runtime' in c && Vendors.has(c.runtime) ) {
-                    let runtime = Vendors.clear(c.runtime);
-                    return `${path}/${runtime}/js/chunk.[name].js`;
-                }
-                return 'chunk.[name].js';
-            },
-
-            library                              : [ 'streams', '[name]' ],
-            publicPath                           : '/',
-            libraryTarget                        : 'window',
-            devtoolFallbackModuleFilenameTemplate: 'webpack:///[resource-path]?[hash]',
-            devtoolModuleFilenameTemplate        : info => {
-                var $filename = 'sources://' + info.resourcePath;
-                $filename     = 'webpack:///' + info.resourcePath; // +'?' + info.hash;
-                if ( info.resourcePath.match(/\.vue$/) && !info.allLoaders.match(/type=script/) && !info.query.match(/type=script/) ) {
-                    $filename = 'webpack-generated:///' + info.resourcePath; // + '?' + info.hash;
-                }
-                return $filename;
-            },
-        };
-        config.resolve.extensions.push(...[ '.ts', '.tsx', '.scss' ]);
     }
 
     // public webpackEntry(entry: any): void {
