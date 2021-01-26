@@ -29,6 +29,15 @@
     "ui": {
         "tables": {
             "default": {
+                "views": {
+                    "all": {}
+                },
+                "columns": {
+                    "id": {
+                        "heading": "ID"
+                    },
+                    "title": {}
+                },
                 "buttons": {
                     "view": {
                         "href": "/explore/{entry.id}",
