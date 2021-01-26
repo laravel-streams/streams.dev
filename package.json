@@ -2,7 +2,7 @@
     "private": true,
     "workspaces": {
         "packages": [
-            "packages/streams/*",
+            "vendor/streams/*",
             "packages/laravel-streams-mix-extension"
         ]
     },
