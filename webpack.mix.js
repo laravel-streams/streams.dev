@@ -6,6 +6,7 @@ require('laravel-streams-mix-extension')
 mix
     .js('resources/js/app.js', 'js')
     .streams({
+        outputPath: 'vendor',
         packages: [
             'streams/core',
             'streams/ui',
