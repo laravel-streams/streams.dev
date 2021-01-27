@@ -12,7 +12,7 @@ _watch() {
 
 _link(){
     cd $MYDIR/vendor/streams
-    rm -rf core ui
+    rm -rf core ui api
     ln -s $MYDIR/packages/streams/core core
     ln -s $MYDIR/packages/streams/ui ui
     ln -s $MYDIR/packages/streams/api api
@@ -34,8 +34,8 @@ _switch-packages-feature(){
     cd $MYDIR/packages/streams/ui
     git checkout feature/webpack-mix-root-based-bundling
 
-    #cd $MYDIR/packages/streams/api
-    #git checkout feature/webpack-mix-root-based-bundling
+    cd $MYDIR/packages/streams/api
+    git checkout feature/webpack-mix-root-based-bundling
 }
 
 _bootstrap(){
