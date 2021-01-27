@@ -36,47 +36,11 @@ class Vendors {
     }
 }
 Vendors.vendors = [];
-class Prefix {
-    static set(val) { this.value = val; }
-    static val(val) { return this.pre(val); }
-    ;
-    static has(val) { return val.toString().startsWith(this.value); }
-    ;
-    static clear(val) { return val.toString().slice(this.value.length); }
-    static toString() { return this.value; }
-    static pre(val) { return this.value + val; }
-} //@formatter:on
-Prefix.value = 'streams/';
-const config = {
-    devtool: isDev ? 'hidden-source-map' : false,
-    resolve: {
-        symlinks: true,
-        extensions: ['.js', '.vue', '.json', '.web.ts', '.ts', '.web.tsx', '.tsx', '.styl', '.less', '.scss', '.stylus', '.css', '.mjs', '.web.js', '.json', '.web.jsx', '.jsx'],
-        mainFields: ['module', 'browser', 'main'],
-        mainFiles: ['index', 'index.ts', 'index.tsx'],
-    },
-    module: {},
-    plugins: [
-        require('@tailwindcss/ui'),
-    ],
-    externals: {
-        '@streams/core': ['streams', 'core'],
-    },
-    output: {},
-};
 class LaravelStreamExtension {
     webpackConfig(config) {
         var _a;
+        let path = this.options.outputPath;
         let rules = (_a = config.module) === null || _a === void 0 ? void 0 : _a.rules;
-        if (this.options.tailwind) {
-            this.applyInvidualPackageTailwindConfigs(config);
-        }
-        let markdownRule = rules.find(rule => rule.test.toString().endsWith('markdown.scss'));
-        if (markdownRule) {
-            let loader = markdownRule.use.find(l => { var _a; return ((_a = l) === null || _a === void 0 ? void 0 : _a.loader) === 'postcss-loader'; });
-            let plugins = loader.options.postcssOptions.plugins;
-        }
-        let path = 'vendor';
         let scssRule = rules.find(rule => rule.test.toString() === '/\\.scss$/');
         scssRule.oneOf.forEach(one => {
             let use = one === null || one === void 0 ? void 0 : one.use;
@@ -176,38 +140,9 @@ class LaravelStreamExtension {
                 name, path, has, read, write,
                 entry: path(`lib/index.ts`),
                 prefix: Vendors.clear(name),
-                tailwindPath: path(`tailwind.config.js`),
-                tailwind: has('tailwind.config.js'),
             };
         });
         return;
-    }
-    applyInvidualPackageTailwindConfigs(config) {
-        let scssRule = config.module.rules.find(rule => rule.test.toString() === '/\\.scss$/');
-        let originalScssRule = lodash_1.default.cloneDeep(scssRule);
-        for (const pkg of this.packages) {
-            if (pkg.tailwind) {
-                if (Array.isArray(scssRule.exclude)) {
-                    scssRule.exclude.push(pkg.path());
-                }
-                pkg.scssRule = lodash_1.default.cloneDeep(scssRule);
-                pkg.scssRule.include = pkg.path();
-                pkg.scssRule.oneOf
-                    .filter(oneOf => Array.isArray(oneOf.use))
-                    .forEach(oneOf => {
-                    var _a, _b;
-                    let postCssLoader = oneOf.use.find(use => use.loader === 'postcss-loader');
-                    let plugins = (_b = (_a = postCssLoader === null || postCssLoader === void 0 ? void 0 : postCssLoader.options) === null || _a === void 0 ? void 0 : _a.postcssOptions) === null || _b === void 0 ? void 0 : _b.plugins;
-                    if (Array.isArray(plugins)) {
-                        let index = plugins.findIndex(plugin => plugin.postcssPlugin === 'tailwind');
-                        if (index) {
-                            plugins[index] = require('tailwindcss')(pkg.path('tailwind.config.js'));
-                        }
-                    }
-                });
-                config.module.rules.push(pkg.scssRule);
-            }
-        }
     }
     // public webpackEntry(entry: any): void {
     //     return ;

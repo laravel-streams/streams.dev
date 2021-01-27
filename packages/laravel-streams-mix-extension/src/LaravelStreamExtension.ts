@@ -3,7 +3,6 @@ import mix                                         from 'laravel-mix';
 import { ClassComponent, Dependency }              from 'laravel-mix/types/component';
 import { TransformOptions }                        from 'babel-core';
 import * as webpack                                from 'webpack';
-import { RuleSetRule }                             from 'webpack';
 import { resolve }                                 from 'path';
 import MiniCssExtractPlugin                        from 'mini-css-extract-plugin';
 import _                                           from 'lodash';
@@ -79,49 +78,11 @@ class Vendors {
     }
 }
 
-class Prefix {//@formatter:off
-    static value = 'streams/';
-    static set(val){this.value=val;}
-    static val(val){return this.pre(val)};
-    static has(val) {return val.toString().startsWith(this.value);};
-    static clear(val) {return val.toString().slice(this.value.length);}
-    static toString() {return this.value;}
-    static pre(val) {return this.value + val;}
-}//@formatter:on
-
-const config: webpack.Configuration = {
-    devtool  : isDev ? 'hidden-source-map' : false,
-    resolve  : {
-        symlinks  : true,
-        extensions: [ '.js', '.vue', '.json', '.web.ts', '.ts', '.web.tsx', '.tsx', '.styl', '.less', '.scss', '.stylus', '.css', '.mjs', '.web.js', '.json', '.web.jsx', '.jsx' ],
-        mainFields: [ 'module', 'browser', 'main' ],
-        mainFiles : [ 'index', 'index.ts', 'index.tsx' ],
-    },
-    module   : {},
-    plugins  : [
-        require('@tailwindcss/ui'),
-        // {
-        //     apply(compiler) {
-        //         compiler.hooks.entryOption.tap('streams',(ctx, entry) => {
-        //             let imports = entry['/index']['import'];
-        //             entry['/index']['import'] = imports.reverse();
-        //         });
-        //     }
-        // }
-    ],
-    externals: {
-        '@streams/core': [ 'streams', 'core' ],
-    },
-    output   : {},
-
-};
 
 export interface LaravelStreamExtensionPacakge {
     name: string
     entry: string
     prefix: string
-    tailwindPath: string
-    tailwind: boolean
     scssRule?: webpack.RuleSetRule
 
     path(...parts): string
@@ -136,7 +97,7 @@ export interface LaravelStreamExtensionPacakge {
 
 export interface LaravelStreamExtensionOptions {
     packages?: Array<string>
-    tailwind?: boolean
+    outputPath?: string
 }
 
 export class LaravelStreamExtension implements ClassComponent {
@@ -145,18 +106,9 @@ export class LaravelStreamExtension implements ClassComponent {
     packages: LaravelStreamExtensionPacakge[];
 
     public webpackConfig(config: webpack.Configuration): void {
+        let path = this.options.outputPath;
 
         let rules = (config.module?.rules as webpack.RuleSetRule[]);
-
-        if ( this.options.tailwind ) {
-            this.applyInvidualPackageTailwindConfigs(config);
-        }
-        let markdownRule = rules.find(rule => rule.test.toString().endsWith('markdown.scss'));
-        if ( markdownRule ) {
-            let loader  = (markdownRule.use as { loader: string, options: any }[]).find(l => (l as any)?.loader === 'postcss-loader');
-            let plugins = loader.options.postcssOptions.plugins;
-        }
-        let path     = 'vendor';
         let scssRule = rules.find(rule => rule.test.toString() === '/\\.scss$/');
         scssRule.oneOf.forEach(one => {
             let use = (one?.use as { loader: string, options?: any }[]);
@@ -277,40 +229,12 @@ export class LaravelStreamExtension implements ClassComponent {
                 name, path, has, read, write,
                 entry       : path(`lib/index.ts`),
                 prefix      : Vendors.clear(name),
-                tailwindPath: path(`tailwind.config.js`),
-                tailwind    : has('tailwind.config.js'),
             };
         });
 
         return;
     }
 
-    private applyInvidualPackageTailwindConfigs(config: webpack.Configuration): void {
-        let scssRule         = (config.module.rules as RuleSetRule[]).find(rule => rule.test.toString() === '/\\.scss$/');
-        let originalScssRule = _.cloneDeep(scssRule);
-        for ( const pkg of this.packages ) {
-            if ( pkg.tailwind ) {
-                if ( Array.isArray(scssRule.exclude) ) {
-                    scssRule.exclude.push(pkg.path());
-                }
-                pkg.scssRule         = _.cloneDeep(scssRule);
-                pkg.scssRule.include = pkg.path();
-                pkg.scssRule.oneOf
-                    .filter(oneOf => Array.isArray(oneOf.use as Array<LoaderItemPostcss>))
-                    .forEach(oneOf => {
-                        let postCssLoader = (oneOf.use as Array<LoaderItemPostcss>).find(use => use.loader === 'postcss-loader');
-                        let plugins       = postCssLoader?.options?.postcssOptions?.plugins;
-                        if ( Array.isArray(plugins) ) {
-                            let index = plugins.findIndex(plugin => plugin.postcssPlugin === 'tailwind');
-                            if ( index ) {
-                                plugins[ index ] = require('tailwindcss')(pkg.path('tailwind.config.js'));
-                            }
-                        }
-                    });
-                config.module.rules.push(pkg.scssRule);
-            }
-        }
-    }
 
     // public webpackEntry(entry: any): void {
     //     return ;
