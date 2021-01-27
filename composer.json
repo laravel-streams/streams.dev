@@ -15,7 +15,8 @@
         }
     ],
     "require": {
-        "streams/api": "1.0.x-dev",
+        "owenvoke/blade-fontawesome": "^1.6",
+        "streams/api": "dev-feature/webpack-mix-root-based-bundling@dev",
         "streams/core": "dev-feature/webpack-mix-root-based-bundling@dev",
         "streams/ui": "dev-feature/webpack-mix-root-based-bundling@dev"
     },
