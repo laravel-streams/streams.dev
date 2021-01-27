@@ -15,13 +15,16 @@ _link(){
     rm -rf core ui
     ln -s $MYDIR/packages/streams/core core
     ln -s $MYDIR/packages/streams/ui ui
+    ln -s $MYDIR/packages/streams/api api
 }
 
 _clone(){
     rm -rf $MYDIR/packages/streams/core
     rm -rf $MYDIR/packages/streams/ui
+    rm -rf $MYDIR/packages/streams/api
     git clone git@github.com:laravel-streams/streams-core $MYDIR/packages/streams/core
     git clone git@github.com:laravel-streams/streams-ui $MYDIR/packages/streams/ui
+    git clone git@github.com:laravel-streams/streams-api $MYDIR/packages/streams/api
 }
 
 _switch-packages-feature(){
@@ -30,6 +33,9 @@ _switch-packages-feature(){
 
     cd $MYDIR/packages/streams/ui
     git checkout feature/webpack-mix-root-based-bundling
+
+    #cd $MYDIR/packages/streams/api
+    #git checkout feature/webpack-mix-root-based-bundling
 }
 
 _bootstrap(){
