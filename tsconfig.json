@@ -29,9 +29,7 @@
         "noImplicitUseStrict": true,
         "jsx": "preserve",
         "importHelpers": true,
-        "declaration": true,
-        "declarationMap": false,
-        "declarationDir": "resources/public/js",
+        "declaration": false,
         "typeRoots": [
             "node_modules/@types"
         ],
@@ -42,6 +40,6 @@
         "node_modules"
     ],
     "include": [
-        "resources/js/src"
+        "resources/ts"
     ]
 }
