@@ -1,0 +1,21 @@
+{
+    "test": {
+        "text": "Test Text",
+        "color": "#eb2424",
+        "date": "2021-01-20",
+        "datetime": "2021-01-21 13:45:00",
+        "decimal": 1.1,
+        "integer": 1,
+        "radio": "bar",
+        "time": "08:45:00",
+        "markdown": "# Norwex\r\nHas serums?",
+        "range": 77,
+        "select": "foo",
+        "textarea": "Textarea value.\r\n\r\nNew lines.",
+        "slug": "textarea-value-new-lines",
+        "toggle": true,
+        "relationship": "api",
+        "file": "streams\/data\/uploads\/Scan.jpeg",
+        "image": "streams\/data\/uploads\/img\/Screen Shot 2021-01-21 at 1.06.53 AM.png"
+    }
+}

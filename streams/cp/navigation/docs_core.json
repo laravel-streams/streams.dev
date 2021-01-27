@@ -1,4 +1,5 @@
 {
+    "title": "Core",
     "parent": "docs",
-    "title": "Streams Core"
+    "sort": 99
 }

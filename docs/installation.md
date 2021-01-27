@@ -2,10 +2,22 @@
 sort: 1
 title: Installation
 category: getting_started
-intro: Streams can be installed as a new blank project or added to an existing Laravel application.
+intro: Learn how to get Laravel Streams up and running.
 stage: review
 enabled: true
 ---
+
+## Server Requirements
+    
+To run Laravel Streams you will need to meet [Laravel server requirements](https://laravel.com/docs/deployment#server-requirements).
+
+### Supported Image Libraries
+
+Please ensure one of the following libraries is installed in order to support [image manipulation](/docs/core/images).
+
+- GD Library
+- Imagick PHP extension
+
 
 ## Downloading Streams
 
@@ -16,6 +28,8 @@ When creating a new Streams project, the [core](/docs/core/introduction), [ui](/
 ```bash
 composer create-project streams/streams example.local --stability=dev
 ```
+
+> There is no installer as there is no traditional database requirement.
 
 ### Local Development Server
 

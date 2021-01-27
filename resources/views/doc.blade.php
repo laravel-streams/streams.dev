@@ -1,44 +1,25 @@
 @extends('layouts/default')
-@section('navigation')
-@include('partials.navbar')
-@endsection
-@section('mobile-navigation')
-@include('partials/mobile-menu')
-@endsection
-
-
 
 @section('content')
+<div class="flex min-h-screen">
+    
+    @include('partials.docs.aside')
 
-<div class="fixed inline-block bottom-0 right-0 pb-2 pr-2 text-xs opacity-25">
-    {{ number_format(microtime(true) - Request::server('REQUEST_TIME_FLOAT'), 2) . ' s' }}&nbsp;|&nbsp;
-    @php
-        $size = memory_get_usage(true);
+    <div class="w-9/12 flex-grow pb-10 pr-20">
+        
+        <h1 class="text-4xl sm:text-6xl lg:text-7xl leading-none font-extrabold tracking-tight text-gray-900 mt-8 mb-8">
+            {{ $entry->title }}
+        </h1>
+        
+        @if ($entry->intro)
+        <p class="text-2xl tracking-tight mb-10">
+            {!! Str::markdown($entry->intro) !!}
+        </p>
+        @endif
 
-        $unit = ['b', 'kb', 'mb', 'gb', 'tb', 'pb'];
-
-        echo round($size / pow(1024, ($i = floor(log($size, 1024)))), 2) . ' ' . $unit[$i];
-    @endphp
-</div>
-
-<div class="container mx-auto">
-    <div class="flex flex-wrap min-h-screen mx-auto">
-        @include('partials.docs.aside')
-
-        <div class="o-doc-body w-full md:w-9/12 xl:w-8/12">
-            @if($entry->intro)
-
-            @include('partials.docs.intro')
-
-            @else
-            <h1>
-                {{ $entry->title }}
-            </h1>
-            @endif
+        <div class="doc-body">
             {!! Str::markdown(View::parse($entry->body)) !!}
-            @include('partials.code-bottom-anim')
         </div>
-        @include('partials.docs.toc')
     </div>
 </div>
 @endsection

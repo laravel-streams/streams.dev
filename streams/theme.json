@@ -1,8 +1,0 @@
-{
-    "source.format": "json",
-    "fields": {
-        "name": "text",
-        "primary": "color",
-        "accent": "color"
-    }
-}

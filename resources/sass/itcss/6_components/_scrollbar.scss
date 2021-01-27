@@ -1,15 +1,13 @@
 body,
 .c-scrollbar,
 code[class^="language"] {
-    --scrollbar:var(--scrollbar-color);
-    --scrollbar-bkg:var(--scrollbar-bg);
-    --scrollbar-width:5px;
-    --scrollbar-height:1px;
+    --scrollbar-color:#666;
+    --scrollbar-bkg-color:#282828;
     scrollbar-width: thin; /* "auto" or "thin"  */
-    scrollbar-color: var(--scrollbar) var(--scrollbar-bkg); /* scroll thumb & track */
+    scrollbar-color: var(--scrollbar-color) var(--scrollbar-bkg-color);; /* scroll thumb & track */
     &::-webkit-scrollbar {
-        width: var(--scrollbar-width);
-        height: var(--scrollbar-height);
+        width: 2px;
+        height: 2px;
     }
     // &::-webkit-scrollbar {
     //     width: 5px;
@@ -18,21 +16,13 @@ code[class^="language"] {
     
     &::-webkit-scrollbar-track {
         border-radius: 0;
-        background: var(--scrollbar-bkg);
+        background: var(--scrollbar-bkg-color);
     }
     
     &::-webkit-scrollbar-thumb {
         border-radius: 0;
-        background: var(--scrollbar);
+        background: var(--scrollbar-color);
     }
 }
 
 
-
-// TODO: Temp thing
-.w-aside__scrollbar
-{
-    overflow-y: auto;
-    max-height: 100vh;
-    min-height: 100vh;;
-}
