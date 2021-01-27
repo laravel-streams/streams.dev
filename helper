@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+MYDIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+
 _watch() {
    inotifywait -m vendor/streams/*/resources/public -r -e modify,create,moved_to |
         while read path action file; do
@@ -9,26 +11,31 @@ _watch() {
 }
 
 _link(){
-    cd vendor/streams
+    cd $MYDIR/vendor/streams
     rm -rf core ui
-    ln -s ../../packages/streams/core core
-    ln -s ../../packages/streams/ui ui
+    ln -s $MYDIR/packages/streams/core core
+    ln -s $MYDIR/packages/streams/ui ui
 }
 
-_bootstrap(){
-    git clone git@github.com:laravel-streams/streams-core packages/streams/core
-    git clone git@github.com:laravel-streams/streams-ui packages/streams/ui
+_clone(){
+    rm -rf $MYDIR/packages/streams/core
+    rm -rf $MYDIR/packages/streams/ui
+    git clone git@github.com:laravel-streams/streams-core $MYDIR/packages/streams/core
+    git clone git@github.com:laravel-streams/streams-ui $MYDIR/packages/streams/ui
 }
 
 _switch-packages-feature(){
-    _bootstrap
-    WD=$PWD
-    cd $WD/packages/streams/core
+    cd $MYDIR/packages/streams/core
     git checkout feature/webpack-mix-root-based-bundling
 
-    cd $WD/packages/streams/ui
+    cd $MYDIR/packages/streams/ui
     git checkout feature/webpack-mix-root-based-bundling
 }
 
+_bootstrap(){
+    _clone
+    _switch-packages-feature
+    _link
+}
 
 _$*
