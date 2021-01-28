@@ -21,6 +21,10 @@ class Vendors {
         this.vendors = lodash_1.default.uniq(this.vendors);
         return this;
     }
+    static prefix(val) {
+        let [prefix] = val.toString().split('/', 1);
+        return prefix;
+    }
     static clear(val) {
         let [prefix, name] = val.toString().split('/');
         if (this.vendors.includes(prefix)) {
@@ -37,6 +41,33 @@ class Vendors {
 }
 Vendors.vendors = [];
 class LaravelStreamExtension {
+    name() {
+        return 'streams';
+    }
+    register(options) {
+        this.options = Object.assign({ packages: [], outputPath: 'vendor', applyOptimization: true }, options);
+        Vendors.scan(this.options.packages);
+        this.packages = options.packages.map(name => {
+            const path = (...filepath) => path_1.resolve(`vendor/${name}`, ...filepath);
+            const has = (...filepath) => fs_1.existsSync(path(...filepath));
+            const read = (...filepath) => fs_1.readFileSync(path(...filepath), 'utf8');
+            const write = (data, ...filepath) => fs_1.writeFileSync(path(...filepath), data, 'utf8');
+            return {
+                name, path, has, read, write,
+                entry: path(`lib/index.ts`),
+                prefix: Vendors.prefix(name),
+                entryName: Vendors.clear(name),
+                package: require(path('package.json'))
+            };
+        });
+        return;
+    }
+    webpackEntry(entry) {
+        for (const pkg of this.packages) {
+            entry.structure[pkg.name] = pkg.entry;
+        }
+        return;
+    }
     webpackConfig(config) {
         var _a;
         let path = this.options.outputPath;
@@ -74,7 +105,7 @@ class LaravelStreamExtension {
                     c.name = Vendors.clear(c.name);
                 }
                 if ('runtime' in c && Vendors.has(c.runtime)) {
-                    return `${path}/${c.runtime}/js/[name].js`;
+                    return `${path}/${c.runtime}/js/${Vendors.clear(c.name)}.js`;
                 }
                 // for (const group of c._groups.values()) {
                 //     let entry = c.runtime.substr('streams:'.length);
@@ -85,7 +116,6 @@ class LaravelStreamExtension {
             }, chunkFilename: (chunk) => {
                 let c = chunk.chunk;
                 if ('runtime' in c && Vendors.has(c.runtime)) {
-                    let runtime = Vendors.clear(c.runtime);
                     return `${path}/${c.runtime}/js/chunk.[name].js`;
                 }
                 return 'chunk.[name].js';
@@ -97,17 +127,10 @@ class LaravelStreamExtension {
                 }
                 return $filename;
             } });
-        config.optimization.splitChunks = {
-            cacheGroups: {
-                vendors: {
-                    name: 'vendors',
-                    test: /[\\/]node_modules[\\/](inversify|reflect-metadata|core-js|axios|tapable|util|lodash|element-ui|tslib|process|debug|regenerator-runtime|@babel\/runtime)/,
-                    enforce: true,
-                    chunks: 'initial',
-                    filename: `${path}/streams-vendors.js`,
-                },
-            },
-        };
+        config.externals = config.externals || {};
+        this.packages.forEach(pkg => {
+            config.externals[pkg.package.name] = ['streams', pkg.entryName];
+        });
         config.resolve.extensions.push(...['.ts', '.tsx', '.scss']);
     }
     boot() {
@@ -119,31 +142,6 @@ class LaravelStreamExtension {
     // public mix(): Record<string, Component> {
     //     return {};
     // }
-    name() {
-        return 'streams';
-    }
-    webpackEntry(entry) {
-        Vendors.scan(this.options.packages);
-        for (const pkg of this.packages) {
-            entry.structure[pkg.name] = pkg.entry;
-        }
-        return;
-    }
-    register(options) {
-        this.options = options;
-        this.packages = options.packages.map(name => {
-            const path = (...filepath) => path_1.resolve(`vendor/${name}`, ...filepath);
-            const has = (...filepath) => fs_1.existsSync(path(...filepath));
-            const read = (...filepath) => fs_1.readFileSync(path(...filepath), 'utf8');
-            const write = (data, ...filepath) => fs_1.writeFileSync(path(...filepath), data, 'utf8');
-            return {
-                name, path, has, read, write,
-                entry: path(`lib/index.ts`),
-                prefix: Vendors.clear(name),
-            };
-        });
-        return;
-    }
     // public webpackEntry(entry: any): void {
     //     return ;
     // }
@@ -174,7 +172,29 @@ class LaravelStreamExtension {
             {
                 test: /\.tsx?$/,
                 exclude: /node_modules\//,
-                use: [{
+                use: [
+                    //     {
+                    //     loader: 'babel-loader',
+                    //     options: {
+                    //
+                    //         babelrc   : false,
+                    //         configFile    : false,
+                    //         cacheDirectory: false,
+                    //         compact   : !isDev,
+                    //         sourceMaps: isDev,
+                    //         comments  : isDev,
+                    //         // presets   : [ ['@babel/preset-env'] ],
+                    //         plugins   : [
+                    //             [ 'import', {
+                    //                 libraryName            : 'lodash',
+                    //                 libraryDirectory       : '',
+                    //                 camel2DashComponentName: false,
+                    //             } ],
+                    //             '@babel/plugin-syntax-dynamic-import',
+                    //         ],
+                    //     }
+                    // },
+                    {
                         loader: 'ts-loader',
                         options: {
                             appendTsxSuffixTo: [/.vue$/],
@@ -185,12 +205,13 @@ class LaravelStreamExtension {
                             compilerOptions: {
                                 target: 'es6',
                                 module: 'esnext',
-                                importHelpers: true,
+                                importHelpers: false,
                                 sourceMap: isDev,
                                 removeComments: !isDev,
                             },
                         },
-                    }],
+                    }
+                ],
             },
         ];
     }
