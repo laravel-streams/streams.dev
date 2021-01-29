@@ -2473,15 +2473,15 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-streams/streams-api.git",
-                "reference": "e9942ab2a2e73422f1861ac222a742c5346f3ceb"
+                "reference": "03f2399d6a26088fde0ea69c9891159b2e662b23"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-streams/streams-api/zipball/e9942ab2a2e73422f1861ac222a742c5346f3ceb",
-                "reference": "e9942ab2a2e73422f1861ac222a742c5346f3ceb",
+                "url": "https://api.github.com/repos/laravel-streams/streams-api/zipball/03f2399d6a26088fde0ea69c9891159b2e662b23",
+                "reference": "03f2399d6a26088fde0ea69c9891159b2e662b23",
                 "shasum": ""
             },
-            "type": "library",
+            "type": "streams-addon",
             "extra": {
                 "branch-alias": {
                     "dev-master": "1.x-dev"
@@ -2508,11 +2508,7 @@
                 }
             ],
             "description": "The official REST API package for Streams.",
-            "support": {
-                "issues": "https://github.com/laravel-streams/streams-api/issues",
-                "source": "https://github.com/laravel-streams/streams-api/tree/1.0"
-            },
-            "time": "2021-01-27T23:08:19+00:00"
+            "time": "2021-01-29T07:01:49+00:00"
         },
         {
             "name": "streams/core",
@@ -2520,12 +2516,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-streams/streams-core.git",
-                "reference": "a8192730fb5ce73be12cd6874d40f33f379350e8"
+                "reference": "0890235d03d2cfc8725d6e3443db3212d9434cad"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-streams/streams-core/zipball/a8192730fb5ce73be12cd6874d40f33f379350e8",
-                "reference": "a8192730fb5ce73be12cd6874d40f33f379350e8",
+                "url": "https://api.github.com/repos/laravel-streams/streams-core/zipball/0890235d03d2cfc8725d6e3443db3212d9434cad",
+                "reference": "0890235d03d2cfc8725d6e3443db3212d9434cad",
                 "shasum": ""
             },
             "require": {
@@ -2579,7 +2575,7 @@
                 }
             ],
             "description": "A domain-driven, code-configured, flat-file application platform for Laravel.",
-            "time": "2021-01-29T03:48:00+00:00"
+            "time": "2021-01-29T18:19:52+00:00"
         },
         {
             "name": "streams/ui",
@@ -2587,12 +2583,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-streams/streams-ui.git",
-                "reference": "2bb9f2e6de5e0b098f7602bf064791318538b1b2"
+                "reference": "bd431f4f7a9bafbb15396010d431a1ff3e1d701d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-streams/streams-ui/zipball/2bb9f2e6de5e0b098f7602bf064791318538b1b2",
-                "reference": "2bb9f2e6de5e0b098f7602bf064791318538b1b2",
+                "url": "https://api.github.com/repos/laravel-streams/streams-ui/zipball/bd431f4f7a9bafbb15396010d431a1ff3e1d701d",
+                "reference": "bd431f4f7a9bafbb15396010d431a1ff3e1d701d",
                 "shasum": ""
             },
             "require": {
@@ -2626,7 +2622,7 @@
                 }
             ],
             "description": "The official UI package for Laravel Streams.",
-            "time": "2021-01-29T03:41:34+00:00"
+            "time": "2021-01-29T18:47:00+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
