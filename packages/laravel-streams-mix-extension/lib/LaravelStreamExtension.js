@@ -173,27 +173,26 @@ class LaravelStreamExtension {
                 test: /\.tsx?$/,
                 exclude: /node_modules\//,
                 use: [
-                    //     {
-                    //     loader: 'babel-loader',
-                    //     options: {
-                    //
-                    //         babelrc   : false,
-                    //         configFile    : false,
-                    //         cacheDirectory: false,
-                    //         compact   : !isDev,
-                    //         sourceMaps: isDev,
-                    //         comments  : isDev,
-                    //         // presets   : [ ['@babel/preset-env'] ],
-                    //         plugins   : [
-                    //             [ 'import', {
-                    //                 libraryName            : 'lodash',
-                    //                 libraryDirectory       : '',
-                    //                 camel2DashComponentName: false,
-                    //             } ],
-                    //             '@babel/plugin-syntax-dynamic-import',
-                    //         ],
-                    //     }
-                    // },
+                    {
+                        loader: 'babel-loader',
+                        options: {
+                            babelrc: false,
+                            configFile: false,
+                            cacheDirectory: false,
+                            compact: !isDev,
+                            sourceMaps: isDev,
+                            comments: isDev,
+                            // presets   : [ ['@babel/preset-env'] ],
+                            plugins: [
+                                ['import', {
+                                        libraryName: 'lodash',
+                                        libraryDirectory: '',
+                                        camel2DashComponentName: false,
+                                    }],
+                                '@babel/plugin-syntax-dynamic-import',
+                            ],
+                        }
+                    },
                     {
                         loader: 'ts-loader',
                         options: {
