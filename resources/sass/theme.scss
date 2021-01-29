@@ -26,6 +26,10 @@ svg {
         @apply text-3xl mt-8 mb-8;
     }
 
+    h4 {
+        @apply text-2xl mt-4 mb-4;
+    }
+
     h2,
     h3,
     h4,
@@ -43,11 +47,50 @@ svg {
         }
     }
 
-    :not(pre) > code[class*=language-], pre[class*=language-] {
+    .anchorjs-link {
+        opacity: .25;
+
+        &:hover {
+            opacity: .5;
+        }
+    }
+
+    :not(pre)>code[class*=language-],
+    pre[class*=language-] {
         @apply my-16;
     }
 
     ul {
         @apply list-disc ml-5 my-8;
+    }
+}
+
+.ls-doc__toc {
+    position: fixed;
+
+    ol {
+
+        &.is-collapsed {
+            display: none;
+        }
+
+        li {
+            a {
+                font-weight: bold;
+
+                &.is-active-link {
+                    @apply text-red-500;
+                }
+            }
+
+            ol {
+                margin-left: .5rem;
+
+                a {
+                    font-size: .85rem;
+                    font-weight: normal;
+                }
+            }
+        }
     }
 }

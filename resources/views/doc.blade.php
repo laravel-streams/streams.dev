@@ -1,11 +1,11 @@
 @extends('layouts/default')
 
 @section('content')
-<div class="flex min-h-screen">
+<div class="ls-doc flex min-h-screen">
     
     @include('partials.docs.aside')
 
-    <div class="w-9/12 flex-grow pb-10 pr-20">
+    <div class="ls-doc__content w-7/12 flex-grow pb-10 pr-4">
         
         <h1 class="text-4xl sm:text-6xl lg:text-7xl leading-none font-extrabold tracking-tight text-gray-900 mt-8 mb-8">
             {{ $entry->title }}
@@ -21,5 +21,7 @@
             {!! Str::markdown(View::parse($entry->body)) !!}
         </div>
     </div>
+
+    @include('partials.docs.toc')
 </div>
 @endsection
