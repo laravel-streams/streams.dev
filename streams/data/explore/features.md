@@ -18,6 +18,9 @@ menu:
     - text: Open Source
       href: /explore/open-source
       type: secondary
+    - text: Multi-Tenancy
+      href: /explore/multi-tenancy
+      type: link
     # - text: Are you interested in code generation?
     #   href: #explore/cli
     #   type: link
