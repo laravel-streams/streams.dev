@@ -46,7 +46,10 @@ svg {
 
     p {
         @apply mb-4;
+    }
 
+    p,
+    ul {
         a {
             border-bottom-width: 1px;
             @apply font-bold border-black border-dotted;
