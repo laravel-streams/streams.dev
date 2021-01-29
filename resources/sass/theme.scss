@@ -36,6 +36,12 @@ svg {
     h5,
     p {
         @apply w-3/4;
+
+        > code {
+            padding-top: .1rem;
+            padding-bottom: .1rem;
+            @apply bg-gray-200 px-1;
+        }
     }
 
     p {
