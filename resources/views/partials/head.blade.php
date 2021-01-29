@@ -21,7 +21,7 @@
     @endif
 </title>
 
-{{-- { favicons("public::vendor/anomaly/theme/flow/img/favicon.png") } --}}
+<link rel="icon" type="image/png" href="/img/favicon.png"/>
 
 {{-- @include('streams::partials.constants') --}}
 
