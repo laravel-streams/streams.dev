@@ -10,7 +10,9 @@ class Controller extends BaseController
     public function index($stream)
     {
         return Streams::make($stream)
-            ->table()
-            ->render();
+            ->table([
+                'options.cp_enabled' => true,
+            ])
+            ->response();
     }
 }
