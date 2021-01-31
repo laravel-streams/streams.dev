@@ -4,6 +4,10 @@
         "status": false,
         "text": "3000+ files"
     },
+    "uncached": {
+        "status": false,
+        "text": "0.8s"
+    },
     "localization": {
         "status": null,
         "text": "Yes/Opinionated"
