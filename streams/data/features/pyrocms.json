@@ -1,0 +1,19 @@
+{
+    "name": "PyroCMS",
+    "footprint": {
+        "status": false,
+        "text": "3000+ files"
+    },
+    "localization": {
+        "status": null,
+        "text": "Yes/Opinionated"
+    },
+    "flatfile": {
+        "status": false,
+        "text": "No/Not Supported"
+    },
+    "addons": {
+        "status": null,
+        "text": "Yes/Opinionated"
+    }
+}

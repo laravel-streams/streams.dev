@@ -1,0 +1,19 @@
+{
+    "name": "Laravel Streams",
+    "footprint": {
+        "status": true,
+        "text": "~300 files"
+    },
+    "localization": {
+        "status": true,
+        "text": "Yes/Extensible"
+    },
+    "flatfile": {
+        "status": true,
+        "text": "Yes/Extensible"
+    },
+    "addons": {
+        "status": true,
+        "text": "Yes/Packages"
+    }
+}
