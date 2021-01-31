@@ -59,7 +59,7 @@ export class AppServiceProvider extends ServiceProvider {
             // Where to grab the headings to build the table of contents.
             contentSelector: '.doc-body',
             // Which headings to grab inside of the contentSelector element.
-            headingSelector: 'h2,h3',
+            headingSelector: 'h2,h3,h5',
             // Headings that match the ignoreSelector will be skipped.
             ignoreSelector: '.toc-ignore',
             // For headings inside relative or absolute positioned containers within content.

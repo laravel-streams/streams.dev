@@ -72,6 +72,15 @@ svg {
     ul {
         @apply list-disc ml-5 my-8;
     }
+
+    table {
+        th {
+            @apply text-left p-1;
+        }
+        td {
+            @apply text-left p-1;
+        }
+    }
 }
 
 .ls-doc__toc {

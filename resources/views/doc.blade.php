@@ -11,14 +11,14 @@
             {{ $entry->title }}
         </h1>
         
-        @if ($entry->intro)
+        {{-- @if ($entry->intro)
         <p class="text-2xl tracking-tight mb-10">
             {!! Str::markdown($entry->intro) !!}
         </p>
-        @endif
+        @endif --}}
 
         <div class="doc-body">
-            {!! Str::markdown(View::parse($entry->body)) !!}
+            {!! $entry->body()->render() !!}
         </div>
     </div>
 
