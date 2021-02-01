@@ -1,5 +1,10 @@
 {
     "default": {
-        "spacing": 2
+        "density": 2,
+        "radius": 0.5,
+
+        "topbar_bg_color": "#cccccc",
+        
+        "sidebar_bg_color": "#4E42D9"
     }
 }
