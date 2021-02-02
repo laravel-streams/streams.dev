@@ -4,7 +4,7 @@
     "dropdown": {
         "profile": {
             "text": "Visit Website",
-            "href": "/",
+            "attributes.href": "/",
             "target": "_blank"
         }
     }
