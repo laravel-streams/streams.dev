@@ -1,0 +1,6 @@
+{
+    "match": "*/cp.themes/*/edit",
+    "config": {
+        "streams.ui.cp.theme": "{request.segments.2}"
+    }
+}

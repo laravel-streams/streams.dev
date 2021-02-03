@@ -24,9 +24,8 @@ The Streams platform helps you take Laravel basics further to do more with less.
 - [Support](core/support)
 <!-- - Policies -->
 <!-- - Events -->
-- Schedules
-- [Providers](core/providers)
-- Middleware
+- [Service Providers](core/providers)
+- [Multi-Tenancy](core/applications)
 
 ### Addon Packages
 

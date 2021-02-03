@@ -1,10 +1,11 @@
 module.exports = {
     purge: {
-        enabled: false,
+        enabled: true,
         content: [
-            './resources/views/**/*.html',
-            './resources/js/**/*.vue',
-            './resources/js/**/*.js',
+            './storage/framework/views/*.php',
+            './resources/**/*.blade.php',
+            './docs/*.md',
+            './vendor/streams/**/docs/*.md',
         ],
         options: {
             whitelist: [],

@@ -1,0 +1,12 @@
+{
+    "handle": "features",
+    "description": "",
+    "fields": {
+        "id": "slug",
+        "footprint": "array",
+        "uncached": "array",
+        "localization": "array",
+        "flatfile": "array",
+        "addons": "array"
+    }
+}

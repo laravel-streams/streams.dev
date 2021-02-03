@@ -45,6 +45,9 @@
                     "templating": "Templating",
                     "frontend": "Frontend",
                     "security": "Security",
+                    "control_panel": "Control Panel",
+                    "tables": "Tables",
+                    "forms": "Forms",
                     "advanced": "Advanced",
                     "developers": "Developers"
                 }

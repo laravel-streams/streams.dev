@@ -1,7 +1,0 @@
-{
-    "locale": "de",
-    "match": "*?locale=de",
-    "config": {
-        "app.name": "Willkommen bei Laravel Streams"
-    }
-}

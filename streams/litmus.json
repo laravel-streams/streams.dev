@@ -102,5 +102,15 @@
                 "path": "streams/data/uploads/img"
             }
         }
+    },
+
+    "ui": {
+        "tables": {
+            "default": {
+                "buttons": {
+                    "edit": {}
+                }
+            }
+        }
     }
 }

@@ -4,22 +4,22 @@
     "dropdown": {
         "docs": {
             "text": "Documentation",
-            "href": "https://streams.dev/docs",
+            "attributes.href": "https://streams.dev/docs",
             "target": "_blank"
         },
         "discord": {
             "text": "Discord",
-            "href": "https://discord.gg/vhz8NZC",
+            "attributes.href": "https://discord.gg/vhz8NZC",
             "target": "_blank"
         },
         "issues": {
             "text": "Issue Tracker",
-            "href": "https://github.com/laravel-streams/streams/issues",
+            "attributes.href": "https://github.com/laravel-streams/streams/issues",
             "target": "_blank"
         },
         "so": {
             "text": "Stack Overflow",
-            "href": "https://stackoverflow.com/search?q=laravel+streams&tab=newest",
+            "attributes.href": "https://stackoverflow.com/search?q=laravel+streams&tab=newest",
             "target": "_blank"
         }
     }
