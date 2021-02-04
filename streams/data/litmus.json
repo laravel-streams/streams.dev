@@ -24,6 +24,7 @@
         "checkboxes": [
             "bar",
             "baz"
-        ]
+        ],
+        "boolean": false
     }
 }
