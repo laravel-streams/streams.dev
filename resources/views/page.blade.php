@@ -3,7 +3,7 @@
 @section('content')
 <div class="flex flex-wrap min-h-screen">
     <main class="xs:w-full mx-auto p-10">
-        {!! Str::markdown(View::parse($entry->body, compact('entry'))) !!}
+        {!! View::parse($entry->body, compact('entry'))->render() !!}
     </main>
 </div>
 @endsection
