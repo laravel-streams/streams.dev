@@ -83,7 +83,7 @@ Know what you are looking for already? Dive right into our core packages.
 
 ## Community Resources
 
-- [Discord](https://discord.gg/vhz8NZC)
-- [Stack Exchange](https://stackoverflow.com/search?q=laravel+streams)
-- [GitHub](https://github.com/laravel-streams/streams)
-- [YouTube](https://www.youtube.com/channel/UC4a-uVtWOHNCduY5T7_Q4wA)
+- <a href="https://discord.gg/vhz8NZC" rel="noreferrer noopener">Discord</a>
+- <a href="https://stackoverflow.com/search?q=laravel+streams" rel="noreferrer noopener">Stack Exchange</a>
+- <a href="https://github.com/laravel-streams/streams" rel="noreferrer noopener">GitHub</a>
+- <a href="https://www.youtube.com/channel/UC4a-uVtWOHNCduY5T7_Q4wA" rel="noreferrer noopener">YouTube</a>
