@@ -1,5 +1,10 @@
 {
     "private": true,
+    "workspaces": [
+        "vendor/streams/core",
+        "vendor/streams/api",
+        "vendor/streams/ui"
+    ],
     "scripts": {
         "dev": "npm run development",
         "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress  --config=node_modules/laravel-mix/setup/webpack.config.js",
@@ -12,6 +17,7 @@
         "axios": "^0.21.1",
         "cross-env": "^7.0",
         "laravel-mix": "^6.0.9",
+        "postcss": "^8.1",
         "resolve-url-loader": "^3.1.2",
         "sass": "^1.27.0",
         "sass-loader": "^8.0.0",
@@ -26,7 +32,8 @@
         "clipboard": "^2.0.6",
         "prismjs": "^1.23.0",
         "tailwindcss": "^2.0.0",
-        "tocbot": "^4.12.1"
+        "tocbot": "^4.12.1",
+        "yarn": "^1.22.10"
     },
     "name": "streams.dev"
 }
