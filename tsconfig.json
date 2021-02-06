@@ -31,7 +31,7 @@
         "importHelpers": true,
         "declaration": true,
         "declarationMap": false,
-        "declarationDir": "resources/public/js",
+        "declarationDir": "public/js",
         "typeRoots": [
             "node_modules/@types"
         ],
