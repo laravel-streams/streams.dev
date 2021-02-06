@@ -1,7 +1,7 @@
 const mix = require('laravel-mix');
 const tailwindcss = require('tailwindcss');
 
-//require('laravel-streams-mix-extension');
+require('@laravel-streams/mix-extension');
 
 mix
     .ts('resources/js/app.ts', 'js')
