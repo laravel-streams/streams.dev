@@ -6,6 +6,12 @@ require('@laravel-streams/mix-extension');
 mix
     .ts('resources/js/app.ts', 'js')
     .sass('resources/scss/theme.scss', 'css')
+    .streams({
+        "packages": [
+            "streams/streams-core",
+            "streams/streams-ui"
+        ]
+    })
     .options({
         processCssUrls: false,
         postCss: [tailwindcss('./tailwind.config.js')],
