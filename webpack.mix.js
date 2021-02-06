@@ -4,6 +4,7 @@ const tailwindcss = require('tailwindcss');
 require('laravel-streams-mix-extension');
 
 mix
+    .sass('resources/scss/theme.scss', 'css')
     .ts('resources/js/app.ts', 'js')
     .options({
         processCssUrls: false,
