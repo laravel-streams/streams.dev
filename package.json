@@ -1,9 +1,7 @@
 {
     "private": true,
     "workspaces": [
-        "vendor/streams/core",
-        "vendor/streams/api",
-        "vendor/streams/ui"
+        "vendor/streams/core"
     ],
     "scripts": {
         "dev": "npm run development",
@@ -15,7 +13,7 @@
     },
     "devDependencies": {
         "axios": "^0.21.1",
-        "cross-env": "^6.0",
+        "cross-env": "^7.0",
         "laravel-mix": "^6.0.9",
         "postcss": "^8.1",
         "resolve-url-loader": "^3.1.2",
@@ -26,7 +24,7 @@
         "vue-template-compiler": "^2.6.12"
     },
     "dependencies": {
-        "@laravel-streams/mix-extension": "^0.0.1",
+        "@laravel-streams/mix-extension": "^0.0",
         "@streams/core": "file:vendor/streams/core",
         "alpinejs": "^2.7.3",
         "anchor-js": "^4.3.0",

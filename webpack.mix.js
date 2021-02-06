@@ -8,8 +8,7 @@ mix
     .sass('resources/scss/theme.scss', 'css')
     .streams({
         "packages": [
-            "streams/core",
-            "streams/ui"
+            "streams/core"
         ]
     })
     .options({
