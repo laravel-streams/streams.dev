@@ -1,5 +1,6 @@
-{!! Assets::tag('/vendor/streams/core/js/index.js') !!}
-{!! Assets::tag('/vendor/streams/api/js/index.js') !!}
+{!! Assets::tag('/vendor/streams/core/js/core.js') !!}
+{!! Assets::tag('/vendor/streams/api/js/core.js') !!}
+{!! Assets::tag('/vendor/streams/ui/cdjs/index.js') !!}
 
 {!! Assets::tag('/js/app.js') !!}
 
