@@ -1,5 +1,5 @@
 const mix = require('laravel-mix');
-require('laravel-streams-mix-extension');
+require('@laravel-streams/mix-extension');
 const {BundleAnalyzerPlugin} = require('webpack-bundle-analyzer');
 
 mix
