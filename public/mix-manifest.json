@@ -1,5 +1,8 @@
 {
     "/js/app.js": "/js/app.js",
+    "/vendor/streams/api/js/api.js": "/vendor/streams/api/js/api.js",
     "/vendor/streams/core/js/core.js": "/vendor/streams/core/js/core.js",
+    "/vendor/streams/ui/css/ui.css": "/vendor/streams/ui/css/ui.css",
+    "/vendor/streams/ui/js/ui.js": "/vendor/streams/ui/js/ui.js",
     "/css/theme.css": "/css/theme.css"
 }

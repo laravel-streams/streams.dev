@@ -1,6 +1,6 @@
 {{-- partials.metadata --}}
 <meta charset="utf-8">
-    
+
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta http-equiv="Content-Language" content="{{ config('app.locale') }}">
@@ -21,7 +21,7 @@
     @endif
 </title>
 
-<link rel="icon" type="image/png" href="/img/favicon.png"/>
+{{-- { favicons("public::vendor/anomaly/theme/flow/img/favicon.png") } --}}
 
 {{-- @include('streams::partials.constants') --}}
 

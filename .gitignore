@@ -13,3 +13,6 @@
 .phpstorm.meta.php
 _ide_helper.php
 yarn.lock
+.tmp
+yarn-error.log
+.run

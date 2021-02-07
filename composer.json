@@ -15,31 +15,24 @@
         }
     ],
     "require": {
-        "blade-ui-kit/blade-heroicons": "^0.3",
         "owenvoke/blade-fontawesome": "^1.6",
-        "maartenpaauw/undraw": "dev-patch-1",
-        "blade-ui-kit/blade-icons": "^0.5",
-        "streams/core": "2.0.x-dev",
-        "streams/api": "1.0.x-dev",
-        "streams/ui": "1.0.x-dev"
+        "streams/api": "dev-feature/webpack-mix-root-based-bundling@dev",
+        "streams/core": "dev-feature/webpack-mix-root-based-bundling@dev",
+        "streams/ui": "dev-feature/webpack-mix-root-based-bundling@dev"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.3",
-        "facade/ignition": "^2.0",
+        "streams/cli": "1.0.x-dev",
         "fzaninotto/faker": "^1.9",
-        "laravel/tinker": "^2.2",
+        "facade/ignition": "^2.0",
         "mockery/mockery": "^1.3",
-        "phpunit/phpunit": "^9.0",
-        "streams/cli": "1.0.x-dev"
+        "laravel/tinker": "^2.2",
+        "phpunit/phpunit": "^9.0"
     },
     "repositories": [
         {
             "type": "composer",
             "url": "https://packages.pyrocms.com"
-        },
-        {
-            "type": "vcs",
-            "url": "https://github.com/RyanThompson/undraw"
         }
     ],
     "autoload": {
@@ -53,12 +46,14 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Tests\\": "tests/"
+            "": "tests/"
         }
     },
     "extra": {
         "dont-discover": []
     },
+    "prefer-stable": true,
+    "minimum-stability": "dev",
     "config": {
         "bin-dir": "bin",
         "preferred-stable": false,
@@ -75,7 +70,7 @@
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
             "@php artisan package:discover --ansi",
             "@php artisan clear --ansi",
-            "@php artisan vendor:publish --ansi --tag=public",
+            "@php artisan vendor:publish --ansi --tag=assets",
             "@php artisan queue:restart --ansi"
         ],
         "post-root-package-install": [

@@ -8,3 +8,9 @@ If you discover any security related issues, please email ryan@pyrocms.com inste
 
 
 ## Install
+
+```
+composer install
+npm install
+
+``
