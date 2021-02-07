@@ -1,9 +1,18 @@
-import mix                                                       from 'laravel-mix';
+import api                                                       from 'laravel-mix';
 import { LaravelStreamExtension, LaravelStreamExtensionOptions } from './LaravelStreamExtension';
 
 const extension = new LaravelStreamExtension();
-mix.extend('streams', extension);
+api.extend('streams', extension);
 export {
     LaravelStreamExtensionOptions,
 };
+
 export default LaravelStreamExtension;
+
+declare global {
+    var mix: typeof api & {
+        streams(options:LaravelStreamExtensionOptions)
+    }
+}
+
+
