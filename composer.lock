@@ -2554,10 +2554,6 @@
                 }
             ],
             "description": "The official REST API package for Streams.",
-            "support": {
-                "issues": "https://github.com/laravel-streams/streams-api/issues",
-                "source": "https://github.com/laravel-streams/streams-api/tree/feature/webpack-mix-root-based-bundling"
-            },
             "time": "2021-01-29T02:49:43+00:00"
         },
         {
@@ -2625,10 +2621,6 @@
                 }
             ],
             "description": "A domain-driven, code-configured, flat-file application platform for Laravel.",
-            "support": {
-                "issues": "https://github.com/laravel-streams/streams-core/issues",
-                "source": "https://github.com/laravel-streams/streams-core/tree/feature/webpack-mix-root-based-bundling"
-            },
             "time": "2021-01-29T02:49:43+00:00"
         },
         {
@@ -7483,10 +7475,6 @@
                 }
             ],
             "description": "The Laravel Streams CLI application interface.",
-            "support": {
-                "issues": "https://github.com/laravel-streams/streams-cli/issues",
-                "source": "https://github.com/laravel-streams/streams-cli/tree/1.0"
-            },
             "time": "2021-02-04T04:38:46+00:00"
         },
         {
