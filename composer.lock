@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c65f4903788f7af9273aad78621aa5fb",
+    "content-hash": "88eea2ade932783eb8359e008ad2d796",
     "packages": [
         {
             "name": "blade-ui-kit/blade-heroicons",
@@ -2358,19 +2358,19 @@
         },
         {
             "name": "streams/api",
-            "version": "dev-feature/webpack-mix-root-based-bundling",
+            "version": "1.0.x-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-streams/streams-api.git",
-                "reference": "4b7fbac7f19f38be0d479853773ae5f33c4dd62b"
+                "reference": "2a57a3a4621e5c1e7142947941b1664f1973d533"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-streams/streams-api/zipball/4b7fbac7f19f38be0d479853773ae5f33c4dd62b",
-                "reference": "4b7fbac7f19f38be0d479853773ae5f33c4dd62b",
+                "url": "https://api.github.com/repos/laravel-streams/streams-api/zipball/2a57a3a4621e5c1e7142947941b1664f1973d533",
+                "reference": "2a57a3a4621e5c1e7142947941b1664f1973d533",
                 "shasum": ""
             },
-            "type": "library",
+            "type": "streams-addon",
             "extra": {
                 "branch-alias": {
                     "dev-master": "1.x-dev"
@@ -2397,20 +2397,20 @@
                 }
             ],
             "description": "The official REST API package for Streams.",
-            "time": "2021-01-29T02:49:43+00:00"
+            "time": "2021-02-07T17:00:44+00:00"
         },
         {
             "name": "streams/core",
-            "version": "dev-feature/webpack-mix-root-based-bundling",
+            "version": "2.0.x-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-streams/streams-core.git",
-                "reference": "de4c97e38a0586492e916d7a99d50ebb7f32c3e4"
+                "reference": "ab0d0c2e6757934a4e268970613e8482c7dbed61"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-streams/streams-core/zipball/de4c97e38a0586492e916d7a99d50ebb7f32c3e4",
-                "reference": "de4c97e38a0586492e916d7a99d50ebb7f32c3e4",
+                "url": "https://api.github.com/repos/laravel-streams/streams-core/zipball/ab0d0c2e6757934a4e268970613e8482c7dbed61",
+                "reference": "ab0d0c2e6757934a4e268970613e8482c7dbed61",
                 "shasum": ""
             },
             "require": {
@@ -2464,27 +2464,27 @@
                 }
             ],
             "description": "A domain-driven, code-configured, flat-file application platform for Laravel.",
-            "time": "2021-01-29T02:49:43+00:00"
+            "time": "2021-02-06T22:40:43+00:00"
         },
         {
             "name": "streams/ui",
-            "version": "dev-feature/webpack-mix-root-based-bundling",
+            "version": "1.0.x-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-streams/streams-ui.git",
-                "reference": "53a713f622c179af8022dcff52b439d8c6dc1e54"
+                "reference": "b848fe7ab32993c597ee7a53757153012ea0da20"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-streams/streams-ui/zipball/53a713f622c179af8022dcff52b439d8c6dc1e54",
-                "reference": "53a713f622c179af8022dcff52b439d8c6dc1e54",
+                "url": "https://api.github.com/repos/laravel-streams/streams-ui/zipball/b848fe7ab32993c597ee7a53757153012ea0da20",
+                "reference": "b848fe7ab32993c597ee7a53757153012ea0da20",
                 "shasum": ""
             },
             "require": {
                 "blade-ui-kit/blade-heroicons": "^0.3",
                 "blade-ui-kit/blade-icons": "^0.5"
             },
-            "type": "library",
+            "type": "streams-addon",
             "extra": {
                 "branch-alias": {
                     "dev-master": "1.x-dev"
@@ -2511,7 +2511,7 @@
                 }
             ],
             "description": "The official UI package for Laravel Streams.",
-            "time": "2021-02-07T01:55:08+00:00"
+            "time": "2021-02-07T17:03:23+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -7130,9 +7130,6 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "streams/api": 20,
-        "streams/core": 20,
-        "streams/ui": 20,
         "streams/cli": 20
     },
     "prefer-stable": true,
