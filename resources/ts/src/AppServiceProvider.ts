@@ -15,7 +15,7 @@ export class AppServiceProvider extends ServiceProvider {
     }
 
     public boot() {
-
+alert();
         /**
          * Setup the code examples
          */

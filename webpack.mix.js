@@ -1,17 +1,16 @@
 const mix = require('laravel-mix');
+require('@laravel-streams/mix-extension');
 const {BundleAnalyzerPlugin} = require('webpack-bundle-analyzer');
 
-require('@laravel-streams/mix-extension');
-
 mix
-    .js('resources/ts/app.ts', 'js')
+    .ts('resources/ts/app.ts', 'js')
     .sass('resources/scss/theme.scss', 'css')
     .streams({
         outputPath: 'vendor',
         packages  : [
-            'streams/api',
             'streams/core',
-            'streams/ui',
+            //'streams/api',
+            //'streams/ui',
         ]
     })
     .options({

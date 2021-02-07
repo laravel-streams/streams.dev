@@ -2393,16 +2393,17 @@ var AppServiceProvider = /*#__PURE__*/function (_ServiceProvider) {
 
   _createClass(AppServiceProvider, [{
     key: "register",
-    value: function register() {// this.app.factory('modal', () => {
-      //     return Modals;
+    value: function register() {//     return Modals;
       // });
     }
   }, {
     key: "boot",
     value: function boot() {
+      alert();
       /**
        * Setup the code examples
        */
+
       var examples = Array.prototype.slice.call(document.querySelectorAll('pre > code'));
       examples.forEach(function (code, index) {
         code.setAttribute('id', 'code-' + (index + 1));
