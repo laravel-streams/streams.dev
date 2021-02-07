@@ -26,6 +26,7 @@
         "@types/prismjs": "^1.16.2",
         "@types/terser-webpack-plugin": "^5.0.2",
         "@types/webpack-bundle-analyzer": "^3.9.0",
+        "alpinejs": "^2.8.0",
         "anchor-js": "^4.3.0",
         "autoprefixer": "^10.2.4",
         "axios": "^0.21",

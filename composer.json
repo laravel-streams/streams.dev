@@ -16,9 +16,9 @@
     ],
     "require": {
         "owenvoke/blade-fontawesome": "^1.6",
-        "streams/api": "dev-feature/webpack-mix-root-based-bundling@dev",
-        "streams/core": "dev-feature/webpack-mix-root-based-bundling@dev",
-        "streams/ui": "dev-feature/webpack-mix-root-based-bundling@dev"
+        "streams/core": "^2.0",
+        "streams/api": "^1.0",
+        "streams/ui": "^1.0"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.3",
