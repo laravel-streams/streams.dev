@@ -2405,12 +2405,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-streams/streams-core.git",
-                "reference": "ab0d0c2e6757934a4e268970613e8482c7dbed61"
+                "reference": "d0a81bf4502337b3604bca76b0d14d76da1cc84a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-streams/streams-core/zipball/ab0d0c2e6757934a4e268970613e8482c7dbed61",
-                "reference": "ab0d0c2e6757934a4e268970613e8482c7dbed61",
+                "url": "https://api.github.com/repos/laravel-streams/streams-core/zipball/d0a81bf4502337b3604bca76b0d14d76da1cc84a",
+                "reference": "d0a81bf4502337b3604bca76b0d14d76da1cc84a",
                 "shasum": ""
             },
             "require": {
@@ -2464,7 +2464,7 @@
                 }
             ],
             "description": "A domain-driven, code-configured, flat-file application platform for Laravel.",
-            "time": "2021-02-06T22:40:43+00:00"
+            "time": "2021-02-08T05:07:07+00:00"
         },
         {
             "name": "streams/ui",
