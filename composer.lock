@@ -2362,12 +2362,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-streams/streams-api.git",
-                "reference": "2a57a3a4621e5c1e7142947941b1664f1973d533"
+                "reference": "7e6fbf3f645c37ba9e736c008d35fba2b1b4a178"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-streams/streams-api/zipball/2a57a3a4621e5c1e7142947941b1664f1973d533",
-                "reference": "2a57a3a4621e5c1e7142947941b1664f1973d533",
+                "url": "https://api.github.com/repos/laravel-streams/streams-api/zipball/7e6fbf3f645c37ba9e736c008d35fba2b1b4a178",
+                "reference": "7e6fbf3f645c37ba9e736c008d35fba2b1b4a178",
                 "shasum": ""
             },
             "type": "streams-addon",
@@ -2397,7 +2397,7 @@
                 }
             ],
             "description": "The official REST API package for Streams.",
-            "time": "2021-02-07T17:00:44+00:00"
+            "time": "2021-02-08T05:33:09+00:00"
         },
         {
             "name": "streams/core",
@@ -2405,12 +2405,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-streams/streams-core.git",
-                "reference": "d0a81bf4502337b3604bca76b0d14d76da1cc84a"
+                "reference": "2d44d2c58c6f58b0d337a17c20296091f0cbcd14"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-streams/streams-core/zipball/d0a81bf4502337b3604bca76b0d14d76da1cc84a",
-                "reference": "d0a81bf4502337b3604bca76b0d14d76da1cc84a",
+                "url": "https://api.github.com/repos/laravel-streams/streams-core/zipball/2d44d2c58c6f58b0d337a17c20296091f0cbcd14",
+                "reference": "2d44d2c58c6f58b0d337a17c20296091f0cbcd14",
                 "shasum": ""
             },
             "require": {
@@ -2464,7 +2464,7 @@
                 }
             ],
             "description": "A domain-driven, code-configured, flat-file application platform for Laravel.",
-            "time": "2021-02-08T05:07:07+00:00"
+            "time": "2021-02-08T05:36:11+00:00"
         },
         {
             "name": "streams/ui",
