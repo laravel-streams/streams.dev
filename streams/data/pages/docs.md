@@ -11,7 +11,7 @@ references:
 
 <div class="mx-auto px-4">
 
-    <h1 class="text-4xl sm:text-6xl lg:text-7xl leading-none font-extrabold tracking-tight text-center w-3/5 text-gray-900 mt-10 sm:mt-14 sm:mb-10 mx-auto">
+    <h1 class="text-4xl sm:text-6xl lg:text-7xl leading-none font-extrabold tracking-tight text-center w-3/5 text-gray-900 mt-10 sm:mt-14 sm:mb-10 mx-auto" style="max-width: 880px;">
         {{ $entry->title }}
     </h1>
 
