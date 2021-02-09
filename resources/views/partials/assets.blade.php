@@ -1,15 +1,16 @@
-{!! Assets::tag('/vendor/streams/core/js/core.js') !!}
+{!! Assets::tag('/vendor/streams/core/js/index.js') !!}
 {{-- {!! Assets::tag('/vendor/streams/ui/js/index.js') !!} --}}
 {{-- {!! Assets::tag('/vendor/streams/api/js/api.js') !!} --}}
 
 {!! Assets::tag('/js/app.js') !!}
 
 <script>
+
     window.streams.core.app.bootstrap({
         providers: [
             window.streams.core.StreamsServiceProvider,
             //window.streams.api.ApiServiceProvider,
-            window.app.AppServiceProvider
+            window.AppServiceProvider
         ]
     }).then(app => {
         return app.boot();

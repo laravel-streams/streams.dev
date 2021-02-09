@@ -1,58 +1,22 @@
 const mix = require('laravel-mix');
-require('@laravel-streams/mix-extension');
-const {BundleAnalyzerPlugin} = require('webpack-bundle-analyzer');
 
 mix
-    .ts('resources/ts/app.ts', 'js')
     .sass('resources/scss/theme.scss', 'css')
-    .streams({
-        outputPath: 'vendor',
-        packages  : [
-            'streams/core',
-            //'streams/api',
-            //'streams/ui',
-        ]
-    })
+    .js('resources/js/app.js', 'js')
     .options({
         processCssUrls: false,
         postCss       : [
             require('tailwindcss')('./tailwind.config.js'), // for resources/sass/theme.scss
             require('autoprefixer')
-        ],
-        terser        : {
-            terserOptions: {
-                keep_classnames: true,
-                keep_fnames    : true,
-            }
-        },
+        ]
     })
     .webpackConfig({
-        plugins: [
-            new BundleAnalyzerPlugin({
-                analyzerMode: 'static',
-                openAnalyzer: false,
-                defaultSizes: 'stat'
-            })
-        ]
+        externals: {
+            '@streams/core': ['streams', 'core'],
+            'axios': ['streams', 'core', 'axios'],
+        },
+        // output: {
+        //     library: ['app'],
+        //     libraryTarget: 'window',
+        // }
     });
-
-if ( mix.inProduction() ) {
-    mix
-        .webpackConfig({
-            optimization: {
-                moduleIds  : 'named',
-                chunkIds   : 'named',
-                splitChunks: {
-                    cacheGroups: {
-                        vendor: {
-                            name  : 'vendor/streams-vendors',
-                            test  : /[\\/]node_modules[\\/]/,
-                            chunks: 'initial',
-                        },
-                    }
-                }
-            }
-        })
-        .sourceMaps()
-        .version();
-}
