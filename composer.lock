@@ -2743,12 +2743,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-streams/streams-core.git",
-                "reference": "55ad62d2beeebb829a2b7f37e919a5b5cbe21fd4"
+                "reference": "359c9707b65b7c19616cc1f3a81f6871541adbe4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-streams/streams-core/zipball/55ad62d2beeebb829a2b7f37e919a5b5cbe21fd4",
-                "reference": "55ad62d2beeebb829a2b7f37e919a5b5cbe21fd4",
+                "url": "https://api.github.com/repos/laravel-streams/streams-core/zipball/359c9707b65b7c19616cc1f3a81f6871541adbe4",
+                "reference": "359c9707b65b7c19616cc1f3a81f6871541adbe4",
                 "shasum": ""
             },
             "require": {
@@ -2807,7 +2807,7 @@
                 "issues": "https://github.com/laravel-streams/streams-core/issues",
                 "source": "https://github.com/laravel-streams/streams-core/tree/2.0"
             },
-            "time": "2021-02-16T22:23:07+00:00"
+            "time": "2021-02-17T05:39:06+00:00"
         },
         {
             "name": "streams/ui",
