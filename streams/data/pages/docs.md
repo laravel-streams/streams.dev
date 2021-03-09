@@ -1,5 +1,5 @@
 ---
-title: Getting started with Laravel Streams.
+title: Getting started with Laravel Streams!!!
 intro: Everything you need to know to get up and running with Laravel Streams.
 enabled: true
 sort: 14

@@ -1,9 +1,12 @@
 ---
+__created_at: 1615267655
+__updated_at: 1615267655
 title: Introduction
 sort: 0
 stage: review
 enabled: 1
 ---
+
 ## What is Laravel Streams?
 
 Laravel Streams is an open-source **system of interconnected packages** which provides fundamental application standards like data modeling, an API, user interface, and more. 
