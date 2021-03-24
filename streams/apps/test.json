@@ -1,0 +1,6 @@
+{
+    "match": "*?test*",
+    "config": {
+        "app.name": "TEST"
+    }
+}

@@ -12,18 +12,6 @@
 */
 
 use Illuminate\Support\Facades\Route;
-use Streams\Core\Support\Facades\Application;
-use Streams\Core\Support\Facades\Transformer;
 
 Route::streams('/', 'welcome');
-
-Route::get('test', function () {
-
-    Transformer::transform(Application::active(), [
-        'config' => [
-            'app.name' => 'TEST',
-        ]
-    ]);
-});
-
 Route::redirect('discord', 'https://discord.gg/Sh79MvV');
