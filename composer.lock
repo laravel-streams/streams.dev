@@ -2743,12 +2743,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-streams/streams-core.git",
-                "reference": "de2756c6e368d1481f4d530ff8615d6d2efc376c"
+                "reference": "f01925c749bcc8303b26b6ce1142d9a58d424dec"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-streams/streams-core/zipball/de2756c6e368d1481f4d530ff8615d6d2efc376c",
-                "reference": "de2756c6e368d1481f4d530ff8615d6d2efc376c",
+                "url": "https://api.github.com/repos/laravel-streams/streams-core/zipball/f01925c749bcc8303b26b6ce1142d9a58d424dec",
+                "reference": "f01925c749bcc8303b26b6ce1142d9a58d424dec",
                 "shasum": ""
             },
             "require": {
@@ -2807,7 +2807,7 @@
                 "issues": "https://github.com/laravel-streams/streams-core/issues",
                 "source": "https://github.com/laravel-streams/streams-core/tree/2.0"
             },
-            "time": "2021-03-24T04:52:08+00:00"
+            "time": "2021-03-25T06:21:12+00:00"
         },
         {
             "name": "streams/ui",
@@ -5818,16 +5818,16 @@
         },
         {
             "name": "facade/ignition",
-            "version": "2.5.14",
+            "version": "2.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/facade/ignition.git",
-                "reference": "17097f7a83e200d90d1cf9f4d1b35c1001513a47"
+                "reference": "4be10a998815f77952b9eb983fb0b64c8a4defbb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/facade/ignition/zipball/17097f7a83e200d90d1cf9f4d1b35c1001513a47",
-                "reference": "17097f7a83e200d90d1cf9f4d1b35c1001513a47",
+                "url": "https://api.github.com/repos/facade/ignition/zipball/4be10a998815f77952b9eb983fb0b64c8a4defbb",
+                "reference": "4be10a998815f77952b9eb983fb0b64c8a4defbb",
                 "shasum": ""
             },
             "require": {
@@ -5891,7 +5891,7 @@
                 "issues": "https://github.com/facade/ignition/issues",
                 "source": "https://github.com/facade/ignition"
             },
-            "time": "2021-03-04T08:48:01+00:00"
+            "time": "2021-03-24T18:58:31+00:00"
         },
         {
             "name": "facade/ignition-contracts",

@@ -39,7 +39,6 @@
                     "getting_started": "Getting Started",
                     "core_concepts": "Core Concepts",
                     "basics": "The Basics",
-                    "laravel": "Laravel",
                     "streams": "Streams",
                     "database": "Database",
                     "templating": "Templating",
@@ -48,8 +47,9 @@
                     "control_panel": "Control Panel",
                     "tables": "Tables",
                     "forms": "Forms",
-                    "advanced": "Advanced",
-                    "developers": "Developers"
+                    "laravel": "Laravel",
+                    "developers": "Developers",
+                    "advanced": "Advanced"
                 }
             }
         },
