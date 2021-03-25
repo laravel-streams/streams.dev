@@ -1,6 +1,11 @@
 {
-    "match": "*?test*",
+    "match": "de.*",
     "config": {
-        "app.name": "TEST"
+        "app.name": "Dah!"
+    },
+    "streams": {
+        "pages": {
+            "source.path": "streams/data/pages/de"
+        }
     }
 }

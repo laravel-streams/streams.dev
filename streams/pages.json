@@ -1,6 +1,7 @@
 {
     "handle": "pages",
     "source.format": "md",
+    "source.path": "streams/data/pages/{app.locale}",
     "translatable": {
         "de": {
             "source.path": "streams/data/pages/de"

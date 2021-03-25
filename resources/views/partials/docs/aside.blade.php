@@ -7,7 +7,7 @@
     <div>
             
         <p>
-            <a href="/docs">Documentation <x-heroicon-o-home class="inline-block h-4 w-4 leading-5"/></a>
+            <a href="/docs">Documentation <x-heroicon-o-home class="inline-block h-4 w-4" style="margin-bottom: 0.25rem;"/></a>
         </p>
 
         <ul class="mt-10">
