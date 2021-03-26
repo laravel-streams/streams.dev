@@ -37,8 +37,8 @@
                 "options": {
                     "introduction": "Introduction",
                     "getting_started": "Getting Started",
-                    "core_concepts": "Core Concepts",
                     "basics": "The Basics",
+                    "core_concepts": "Core Concepts",
                     "streams": "Streams",
                     "database": "Database",
                     "templating": "Templating",

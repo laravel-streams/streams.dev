@@ -1,11 +1,11 @@
 {
-    "match": "de.*",
+    "match": "*.streams.local*",
     "config": {
         "app.name": "Dah!"
     },
     "streams": {
         "pages": {
-            "source.path": "streams/data/pages/de"
+            "source.path": "streams/data/pages/{request.parsed.domain.0}"
         }
     }
 }

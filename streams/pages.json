@@ -1,12 +1,7 @@
 {
     "handle": "pages",
     "source.format": "md",
-    "source.path": "streams/data/pages",
-    "translatable": {
-        "de": {
-            "source.path": "streams/data/pages/de"
-        }
-    },
+    
     "routes.view": {
         "uri": "/{id}",
         "defer": true
