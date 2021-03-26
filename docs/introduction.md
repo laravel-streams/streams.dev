@@ -43,7 +43,7 @@ Laravel Streams focuses primarily on basic JSON descriptions of your data. We ca
         "mp3": "file",
         "artist": {
             "type": "relationship",
-            "stream": "artist"
+            "related": "artist"
         }
     }
 }

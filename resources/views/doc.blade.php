@@ -11,11 +11,9 @@
             {{ $entry->title }}
         </h1>
         
-        {{-- @if ($entry->intro)
-        <p class="text-2xl tracking-tight mb-10">
-            {!! Str::markdown($entry->intro) !!}
-        </p>
-        @endif --}}
+        @if ($entry->intro)
+        <p class="text-2xl tracking-tight mb-10 opacity-40">{{ $entry->intro }}</p>
+        @endif
 
         <div class="doc-body">
             {!! $entry->body()->render() !!}

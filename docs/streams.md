@@ -9,15 +9,15 @@ sort: 0
 
 ## Introduction
 
-Data modeling is a fundamental aspect of building with the Streams platform.
+Data modeling is *the* fundamental function of Streams Core. The rest of the platform builds upon streams' data and structure.
 
-- [Data Modeling Introduction](core/introduction#data-modeling)
+- [Streams Core](core/introduction)
 
 ### Domain Information
 
 The Streams platform leans heavily on domain-driven design (DDD). We call these domain abstractions `streams`, hence our namesake.
 
-An example could be configuring a domain model (a stream) for a website's pages, users of an application, or feedback submissions from a form.
+**An example could be configuring a domain model (a stream) for a website's pages, users of an application, or feedback submissions from a form.** Anything anywhere can be defined by a stream.
 
 - [Defining Streams](/docs/core/streams#defining-streams)
 
