@@ -15,7 +15,7 @@
                         <x-heroicon-o-search class="h-6 w-6 inline z-2 relative ml-2 -mr-9 -mt-0.5 opacity-50" />
                         <input type="search" x-model="q" placeholder="Search" class="bg-gray-100 px-6 py-3 rounded-lg pl-10 w-96" @focus="search()" @keyup.debounce.250="search()">
                     </div>
-                    <div class="absolute z-10 left-0 right-0 m-0 bg-white shadow-xl border-2 border-black rounded overflow-y-scroll" style="max-height: calc(100vh - 100px)" x-show="results.length">
+                    <div class="absolute z-10 left-0 right-0 m-0 bg-white shadow-xl border-2 border-black rounded overflow-y-scroll" style="max-height: calc(100vh - 100px)" x-show="results.length" x-cloak>
                         <ul x-model="results">
                             <template x-for="(result, index) in results" :key="index">
                             <li>
