@@ -30,7 +30,7 @@ Route::get('/search', function () {
 
     $words = explode(' ', $q);
 
-    $streams = ['docs', 'docs_core', 'docs_ui', 'docs_api'];
+    $streams = ['docs', 'docs_core', 'docs_ui', 'docs_api', 'docs_cli'];
 
     foreach ($streams as $stream) {
 
@@ -41,7 +41,7 @@ Route::get('/search', function () {
         Streams::entries($stream)
             ->where('title', 'like', $q)
             ->where('enabled', true)
-            ->limit(50)
+            ->limit(15)
             ->get()
             ->each($callback);
     }
@@ -55,7 +55,7 @@ Route::get('/search', function () {
         Streams::entries($stream)
             ->where('body', 'like', $q)
             ->where('enabled', true)
-            ->limit(50)
+            ->limit(15)
             ->get()
             ->each($callback);
     }
@@ -71,7 +71,7 @@ Route::get('/search', function () {
                 ->where('enabled', true)
                 ->where('title', 'like', $word)
                 ->orWhere('body', 'like', $word)
-                ->limit(50)
+                ->limit(15)
                 ->get()
                 ->each($callback);
         }
