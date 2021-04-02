@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Request;
 
 class AuthenticateApi
@@ -15,8 +16,8 @@ class AuthenticateApi
      */
     public function handle($request, \Closure $next)
     {
-        if (!in_array($ip = Request::ip(), ['127.0.0.1', '::1'])) {
-            return abort(403, "The IP [{$ip}] is not allowed.");
+        if (Request::get('token') !== Config::get('streams.api.token')) {
+            return abort(403);
         }
 
         return $next($request);

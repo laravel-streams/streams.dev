@@ -49,6 +49,7 @@
         return {
             q: null,
             results: [],
+            token: "{{ Config::get('streams.api.token') }}",
             search: function () {
 
                 // if (!this.q.length) {
@@ -64,7 +65,7 @@
 
                 var xmlHttp = new XMLHttpRequest();
 
-                xmlHttp.open('GET', '/api/search?q=' + this.q, false );
+                xmlHttp.open('GET', '/api/search?q=' + this.q + '&token=' + this.token, false );
                 
                 xmlHttp.send(null);
 
