@@ -1,4 +1,5 @@
 {
+    "name": "Core Documentation",
     "extends": "docs",
     "url_prefix": "docs/core",
     "routes.view": {

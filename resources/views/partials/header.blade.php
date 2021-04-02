@@ -10,35 +10,27 @@
 
             <div class="hidden lg:flex items-center justify-center antialiased lg:ml-20 pt-1">
 
-                {{-- <div class="relative" x-data="{show: false}">
-                    <a href="#" class="flex items-center justify-center mr-10 text-base text-gray-700 text-opacity-90 font-medium tracking-tight hover:text-cool-gray-600 transition duration-150 ease-in-out" x-on:click="show == true ? show = false : show = true; return false;" x-on:click.away="show = false">
-                        Demo
-                        <x-fas-chevron-down class="h-3 ml-2"/>
-                    </a>
-                    
-                    <div class="absolute origin-top-left left-0 mt-2 w-48 rounded-md border-2 border-primary z-5" x-show="show">
-                        <div class="py-1 rounded-md bg-white">
-                            <a class="block px-4 py-2 text-sm text-black dark:text-white hover:bg-black hover:text-white transition ease-in-out duration-150" href="/api/streams">API</a>
-                            <a class="block px-4 py-2 text-sm text-black dark:text-white hover:bg-black hover:text-white transition ease-in-out duration-150" href="/tinker">Sandbox</a>
-                            <a class="block px-4 py-2 text-sm text-black dark:text-white hover:bg-black hover:text-white transition ease-in-out duration-150" href="/cp">Control Panel</a>
-                        </div>
+                <div x-data="searchComponent()" @click.away="close()" class="bg-white relative">
+                    <div>
+                        <x-heroicon-o-search class="h-6 w-6 inline z-2 relative ml-2 -mr-9 -mt-0.5 opacity-50" />
+                        <input type="search" x-model="q" placeholder="Search" class="bg-gray-100 px-6 py-3 rounded-lg pl-10 w-96" @focus="search()" @keyup.debounce.250="search()">
                     </div>
-                </div> --}}
-
-                {{-- <div class="relative" x-data="{show: false}">
-                    <a href="#" class="flex items-center justify-center mr-10 text-base text-gray-700 text-opacity-90 font-medium tracking-tight hover:text-cool-gray-600 transition duration-150 ease-in-out" x-on:click="show == true ? show = false : show = true; return false;" x-on:click.away="show = false">
-                        Community
-                        <x-fas-chevron-down class="h-3 ml-2"/>
-                    </a>
-                    
-                    <div class="absolute origin-top-left left-0 mt-2 w-48 rounded-md border-2 border-primary z-5" x-show="show">
-                        <div class="py-1 rounded-md bg-white">
-                            <a class="block px-4 py-2 text-sm text-black dark:text-white hover:bg-black hover:text-white transition ease-in-out duration-150" href="https://discord.gg/vhz8NZC" target="_blank">Discord</a>
-                            <a class="block px-4 py-2 text-sm text-black dark:text-white hover:bg-black hover:text-white transition ease-in-out duration-150" href="https://github.com/laravel-streams/streams" target="_blank">GitHub</a>
-                            <a class="block px-4 py-2 text-sm text-black dark:text-white hover:bg-black hover:text-white transition ease-in-out duration-150" href="https://stackoverflow.com/search?q=laravel+streams" target="_blank">Stack Exchange</a>
-                        </div>
+                    <div class="absolute z-10 left-0 right-0 m-0 bg-white shadow-xl border-2 border-black rounded overflow-y-scroll" style="max-height: calc(100vh - 100px)" x-show="results.length">
+                        <ul x-model="results">
+                            <template x-for="(result, index) in results" :key="index">
+                            <li>
+                                <a x-bind:href="result.href" class="block p-3 m-3 hover:bg-gray-100 rounded-lg">
+                                    <strong x-text="result.title"></strong>
+                                    <br>
+                                    <small class="font-mono" x-text="result.breadcrumb"></small>
+                                    <br>
+                                    <small x-text="result.intro"></small>
+                                </a>
+                            </li>
+                            </template>
+                        </ul>
                     </div>
-                </div> --}}
+                </div>
 
             </div>
         </div>
@@ -51,3 +43,37 @@
     </div>
 
 </head>
+
+<script>
+    const searchComponent = function () {
+        return {
+            q: null,
+            results: [],
+            search: function () {
+
+                // if (!this.q.length) {
+                //     this.results = [];
+                // }
+
+                if (this.q.length < 3) {
+
+                    this.results = [];
+
+                    return;
+                }
+
+                var xmlHttp = new XMLHttpRequest();
+
+                xmlHttp.open('GET', '/api/search?q=' + this.q, false );
+                
+                xmlHttp.send(null);
+
+                this.results = JSON.parse(xmlHttp.responseText);
+            },
+            close: function () {
+                this.q = null;
+                this.results = [];
+            }
+        }
+    }
+</script>
