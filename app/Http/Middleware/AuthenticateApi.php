@@ -15,8 +15,8 @@ class AuthenticateApi
      */
     public function handle($request, \Closure $next)
     {
-        if (!in_array(Request::ip(), ['127.0.0.1', '::1'])) {
-            return abort(403);
+        if (!in_array($ip = Request::ip(), ['127.0.0.1', '::1'])) {
+            return abort(403, "The IP [{$ip}] is not allowed.");
         }
 
         return $next($request);
