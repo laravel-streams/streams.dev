@@ -18,7 +18,7 @@ class AuthenticateApi
     public function handle($request, \Closure $next)
     {
         if (in_array(App::environment(), ['local', 'testing'])) {
-            return abort(403);
+            return $next($request);
         }
 
         if (Request::get('token') !== Config::get('streams.api.token')) {
