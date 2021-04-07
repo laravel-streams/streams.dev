@@ -27,22 +27,22 @@ export class AppServiceProvider extends ServiceProvider {
 
             code.setAttribute('id', 'code-' + (index + 1));
 
-            Prism.highlightElement(code);
+            let copy = document.createElement('button');
 
-            // let copy = document.createElement('button');
+            copy.textContent = 'copy';
+            copy.setAttribute('data-clipboard-target', '#code-' + (index + 1));
+            copy.classList.add('copy-to-clipboard');
 
-            // copy.textContent = 'copy';
-            // copy.setAttribute('data-clipboard-target', '#code-' + (index + 1));
-            // copy.classList.add('copy-to-clipboard');
+            code.parentNode.insertBefore(copy, code.nextSibling);
 
-            // code.parentNode.insertBefore(copy, code.nextSibling);
+            let clipboard = new Clipboard('.copy-to-clipboard');
 
-            // let clipboard = new ClipboardJS('.copy-to-clipboard');
-
-            // clipboard.on('success', function (event) {
-            //     event.trigger.classList.add('copied');
-            // });
+            clipboard.on('success', function (event) {
+                event.trigger.classList.add('copied');
+            });
         });
+
+        Prism.highlightAll();
 
         const anchors = new AnchorJS();
 
