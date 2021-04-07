@@ -5,7 +5,6 @@ enabled: true
 sort: 14
 ---
 
-
 <div class="mx-auto px-4">
 
     <h1 class="text-4xl sm:text-6xl lg:text-5xl leading-none font-extrabold tracking-tight w-3/5 text-gray-900 mt-10 sm:mt-14 sm:mb-10" style="max-width: 880px;">

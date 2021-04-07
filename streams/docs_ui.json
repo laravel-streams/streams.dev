@@ -4,7 +4,7 @@
     "url_prefix": "docs/ui",
     "routes.view": "docs/ui/{id}",
     "description": "Documentation for all things contained in the UI package.",
-    "notes": "This is looking good. Ready for discussion.",
+    "project": "streams-ui",
     "source": {
         "path": "vendor/streams/ui/docs"
     }

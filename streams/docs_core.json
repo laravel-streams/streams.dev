@@ -7,7 +7,7 @@
         "csrf": false
     },
     "description": "Documentation for all things contained in the core package.",
-    "notes": "This is looking good. Ready for discussion.",
+    "project": "streams-core",
     "source": {
         "path": "vendor/streams/core/docs"
     }
