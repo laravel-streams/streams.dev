@@ -3,9 +3,6 @@ title: Documentation
 intro: Everything you need to know to get up and running with Laravel Streams.
 enabled: true
 sort: 14
-references:
-- https://docs.djangoproject.com/en/3.1/
-- https://craftcms.com/docs/3.x/
 ---
 
 
