@@ -9,6 +9,10 @@ svg {
     max-width: 100%;
 }
 
+[x-cloak] {
+    display: none !important;
+}
+
 .doc-body {
 
     h2,

@@ -110,6 +110,8 @@ From within your project, use Composer to update individual packages:
 
 ```bash
 composer update streams/core --with-dependencies
+composer update streams/api --with-dependencies
+composer update streams/ui --with-dependencies
 ```
 
 You can, of course, update your entire project using `composer update`.

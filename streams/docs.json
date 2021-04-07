@@ -1,4 +1,5 @@
 {
+    "name": "Documentation",
     "template": "doc",
     "url_prefix": "docs",
     "source.format": "md",
