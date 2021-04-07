@@ -1,2 +1,7108 @@
-/*! For license information please see app.js.LICENSE.txt */
-(()=>{var e={757:(e,t,n)=>{e.exports=n(666)},443:function(e){e.exports=function(){"use strict";function e(e,t,n){return t in e?Object.defineProperty(e,t,{value:n,enumerable:!0,configurable:!0,writable:!0}):e[t]=n,e}function t(e,t){var n=Object.keys(e);if(Object.getOwnPropertySymbols){var r=Object.getOwnPropertySymbols(e);t&&(r=r.filter((function(t){return Object.getOwnPropertyDescriptor(e,t).enumerable}))),n.push.apply(n,r)}return n}function n(n){for(var r=1;r<arguments.length;r++){var i=null!=arguments[r]?arguments[r]:{};r%2?t(Object(i),!0).forEach((function(t){e(n,t,i[t])})):Object.getOwnPropertyDescriptors?Object.defineProperties(n,Object.getOwnPropertyDescriptors(i)):t(Object(i)).forEach((function(e){Object.defineProperty(n,e,Object.getOwnPropertyDescriptor(i,e))}))}return n}function r(){return new Promise((e=>{"loading"==document.readyState?document.addEventListener("DOMContentLoaded",e):e()}))}function i(e){return Array.from(new Set(e))}function o(){return navigator.userAgent.includes("Node.js")||navigator.userAgent.includes("jsdom")}function a(e,t){return e==t}function s(e,t){"template"!==e.tagName.toLowerCase()?console.warn(`Alpine: [${t}] directive should only be added to <template> tags. See https://github.com/alpinejs/alpine#${t}`):1!==e.content.childElementCount&&console.warn(`Alpine: <template> tag with [${t}] encountered with multiple element roots. Make sure <template> only has a single child element.`)}function l(e){return e.replace(/([a-z])([A-Z])/g,"$1-$2").replace(/[_\s]/,"-").toLowerCase()}function c(e){return e.toLowerCase().replace(/-(\w)/g,((e,t)=>t.toUpperCase()))}function u(e,t){if(!1===t(e))return;let n=e.firstElementChild;for(;n;)u(n,t),n=n.nextElementSibling}function d(e,t){var n;return function(){var r=this,i=arguments,o=function(){n=null,e.apply(r,i)};clearTimeout(n),n=setTimeout(o,t)}}const f=(e,t,n)=>{if(console.warn(`Alpine Error: "${n}"\n\nExpression: "${t}"\nElement:`,e),!o())throw n};function h(e,{el:t,expression:n}){try{const r=e();return r instanceof Promise?r.catch((e=>f(t,n,e))):r}catch(e){f(t,n,e)}}function p(e,t,n,r={}){return h((()=>"function"==typeof t?t.call(n):new Function(["$data",...Object.keys(r)],`var __alpine_result; with($data) { __alpine_result = ${t} }; return __alpine_result`)(n,...Object.values(r))),{el:e,expression:t})}function m(e,t,n,r={}){return h((()=>{if("function"==typeof t)return Promise.resolve(t.call(n,r.$event));let e=Function;if(e=Object.getPrototypeOf((async function(){})).constructor,Object.keys(n).includes(t)){let e=new Function(["dataContext",...Object.keys(r)],`with(dataContext) { return ${t} }`)(n,...Object.values(r));return"function"==typeof e?Promise.resolve(e.call(n,r.$event)):Promise.resolve()}return Promise.resolve(new e(["dataContext",...Object.keys(r)],`with(dataContext) { ${t} }`)(n,...Object.values(r)))}),{el:e,expression:t})}const g=/^x-(on|bind|data|text|html|model|if|for|show|cloak|transition|ref|spread)\b/;function A(e){const t=w(e.name);return g.test(t)}function y(e,t,n){let r=Array.from(e.attributes).filter(A).map(b),i=r.filter((e=>"spread"===e.type))[0];if(i){let n=p(e,i.expression,t.$data);r=r.concat(Object.entries(n).map((([e,t])=>b({name:e,value:t}))))}return n?r.filter((e=>e.type===n)):v(r)}function v(e){let t=["bind","model","show","catch-all"];return e.sort(((e,n)=>{let r=-1===t.indexOf(e.type)?"catch-all":e.type,i=-1===t.indexOf(n.type)?"catch-all":n.type;return t.indexOf(r)-t.indexOf(i)}))}function b({name:e,value:t}){const n=w(e),r=n.match(g),i=n.match(/:([a-zA-Z0-9\-:]+)/),o=n.match(/\.[^.\]]+(?=[^\]]*$)/g)||[];return{type:r?r[1]:null,value:i?i[1]:null,modifiers:o.map((e=>e.replace(".",""))),expression:t}}function x(e){return["disabled","checked","required","readonly","hidden","open","selected","autofocus","itemscope","multiple","novalidate","allowfullscreen","allowpaymentrequest","formnovalidate","autoplay","controls","loop","muted","playsinline","default","ismap","reversed","async","defer","nomodule"].includes(e)}function w(e){return e.startsWith("@")?e.replace("@","x-on:"):e.startsWith(":")?e.replace(":","x-bind:"):e}function k(e,t=Boolean){return e.split(" ").filter(t)}const E="in",_="out",S="cancelled";function C(e,t,n,r,i=!1){if(i)return t();if(e.__x_transition&&e.__x_transition.type===E)return;const o=y(e,r,"transition"),a=y(e,r,"show")[0];if(a&&a.modifiers.includes("transition")){let r=a.modifiers;if(r.includes("out")&&!r.includes("in"))return t();const i=r.includes("in")&&r.includes("out");r=i?r.filter(((e,t)=>t<r.indexOf("out"))):r,L(e,r,t,n)}else o.some((e=>["enter","enter-start","enter-end"].includes(e.value)))?N(e,r,o,t,n):t()}function O(e,t,n,r,i=!1){if(i)return t();if(e.__x_transition&&e.__x_transition.type===_)return;const o=y(e,r,"transition"),a=y(e,r,"show")[0];if(a&&a.modifiers.includes("transition")){let r=a.modifiers;if(r.includes("in")&&!r.includes("out"))return t();const i=r.includes("in")&&r.includes("out");r=i?r.filter(((e,t)=>t>r.indexOf("out"))):r,j(e,r,i,t,n)}else o.some((e=>["leave","leave-start","leave-end"].includes(e.value)))?$(e,r,o,t,n):t()}function L(e,t,n,r){F(e,t,n,(()=>{}),r,{duration:T(t,"duration",150),origin:T(t,"origin","center"),first:{opacity:0,scale:T(t,"scale",95)},second:{opacity:1,scale:100}},E)}function j(e,t,n,r,i){F(e,t,(()=>{}),r,i,{duration:n?T(t,"duration",150):T(t,"duration",150)/2,origin:T(t,"origin","center"),first:{opacity:1,scale:100},second:{opacity:0,scale:T(t,"scale",95)}},_)}function T(e,t,n){if(-1===e.indexOf(t))return n;const r=e[e.indexOf(t)+1];if(!r)return n;if("scale"===t&&!M(r))return n;if("duration"===t){let e=r.match(/([0-9]+)ms/);if(e)return e[1]}return"origin"===t&&["top","right","left","center","bottom"].includes(e[e.indexOf(t)+2])?[r,e[e.indexOf(t)+2]].join(" "):r}function F(e,t,n,r,i,o,a){e.__x_transition&&e.__x_transition.cancel&&e.__x_transition.cancel();const s=e.style.opacity,l=e.style.transform,c=e.style.transformOrigin,u=!t.includes("opacity")&&!t.includes("scale"),d=u||t.includes("opacity"),f=u||t.includes("scale"),h={start(){d&&(e.style.opacity=o.first.opacity),f&&(e.style.transform=`scale(${o.first.scale/100})`)},during(){f&&(e.style.transformOrigin=o.origin),e.style.transitionProperty=[d?"opacity":"",f?"transform":""].join(" ").trim(),e.style.transitionDuration=o.duration/1e3+"s",e.style.transitionTimingFunction="cubic-bezier(0.4, 0.0, 0.2, 1)"},show(){n()},end(){d&&(e.style.opacity=o.second.opacity),f&&(e.style.transform=`scale(${o.second.scale/100})`)},hide(){r()},cleanup(){d&&(e.style.opacity=s),f&&(e.style.transform=l),f&&(e.style.transformOrigin=c),e.style.transitionProperty=null,e.style.transitionDuration=null,e.style.transitionTimingFunction=null}};R(e,h,a,i)}const P=(e,t,n)=>"function"==typeof e?n.evaluateReturnExpression(t,e):e;function N(e,t,n,r,i){D(e,k(P((n.find((e=>"enter"===e.value))||{expression:""}).expression,e,t)),k(P((n.find((e=>"enter-start"===e.value))||{expression:""}).expression,e,t)),k(P((n.find((e=>"enter-end"===e.value))||{expression:""}).expression,e,t)),r,(()=>{}),E,i)}function $(e,t,n,r,i){D(e,k(P((n.find((e=>"leave"===e.value))||{expression:""}).expression,e,t)),k(P((n.find((e=>"leave-start"===e.value))||{expression:""}).expression,e,t)),k(P((n.find((e=>"leave-end"===e.value))||{expression:""}).expression,e,t)),(()=>{}),r,_,i)}function D(e,t,n,r,i,o,a,s){e.__x_transition&&e.__x_transition.cancel&&e.__x_transition.cancel();const l=e.__x_original_classes||[],c={start(){e.classList.add(...n)},during(){e.classList.add(...t)},show(){i()},end(){e.classList.remove(...n.filter((e=>!l.includes(e)))),e.classList.add(...r)},hide(){o()},cleanup(){e.classList.remove(...t.filter((e=>!l.includes(e)))),e.classList.remove(...r.filter((e=>!l.includes(e))))}};R(e,c,a,s)}function R(e,t,n,r){const i=I((()=>{t.hide(),e.isConnected&&t.cleanup(),delete e.__x_transition}));e.__x_transition={type:n,cancel:I((()=>{r(S),i()})),finish:i,nextFrame:null},t.start(),t.during(),e.__x_transition.nextFrame=requestAnimationFrame((()=>{let n=1e3*Number(getComputedStyle(e).transitionDuration.replace(/,.*/,"").replace("s",""));0===n&&(n=1e3*Number(getComputedStyle(e).animationDuration.replace("s",""))),t.show(),e.__x_transition.nextFrame=requestAnimationFrame((()=>{t.end(),setTimeout(e.__x_transition.finish,n)}))}))}function M(e){return!Array.isArray(e)&&!isNaN(e)}function I(e){let t=!1;return function(){t||(t=!0,e.apply(this,arguments))}}function q(e,t,n,r,i){s(t,"x-for");let o=z("function"==typeof n?e.evaluateReturnExpression(t,n):n),a=Q(e,t,o,i),l=t;a.forEach(((n,s)=>{let c=B(o,n,s,a,i()),u=H(e,t,s,c),d=Y(l.nextElementSibling,u);d?(delete d.__x_for_key,d.__x_for=c,e.updateElements(d,(()=>d.__x_for))):(d=G(t,l),C(d,(()=>{}),(()=>{}),e,r),d.__x_for=c,e.initializeElements(d,(()=>d.__x_for))),l=d,l.__x_for_key=u})),U(l,e)}function z(e){let t=/,([^,\}\]]*)(?:,([^,\}\]]*))?$/,n=/^\(|\)$/g,r=/([\s\S]*?)\s+(?:in|of)\s+([\s\S]*)/,i=e.match(r);if(!i)return;let o={};o.items=i[2].trim();let a=i[1].trim().replace(n,""),s=a.match(t);return s?(o.item=a.replace(t,"").trim(),o.index=s[1].trim(),s[2]&&(o.collection=s[2].trim())):o.item=a,o}function B(e,t,r,i,o){let a=o?n({},o):{};return a[e.item]=t,e.index&&(a[e.index]=r),e.collection&&(a[e.collection]=i),a}function H(e,t,n,r){let i=y(t,e,"bind").filter((e=>"key"===e.value))[0];return i?e.evaluateReturnExpression(t,i.expression,(()=>r)):n}function Q(e,t,n,r){let i=y(t,e,"if")[0];if(i&&!e.evaluateReturnExpression(t,i.expression))return[];let o=e.evaluateReturnExpression(t,n.items,r);return M(o)&&o>0&&(o=Array.from(Array(o).keys(),(e=>e+1))),o}function G(e,t){let n=document.importNode(e.content,!0);return t.parentElement.insertBefore(n,t.nextElementSibling),t.nextElementSibling}function Y(e,t){if(!e)return;if(void 0===e.__x_for_key)return;if(e.__x_for_key===t)return e;let n=e;for(;n;){if(n.__x_for_key===t)return n.parentElement.insertBefore(n,e);n=!(!n.nextElementSibling||void 0===n.nextElementSibling.__x_for_key)&&n.nextElementSibling}}function U(e,t){for(var n=!(!e.nextElementSibling||void 0===e.nextElementSibling.__x_for_key)&&e.nextElementSibling;n;){let e=n,r=n.nextElementSibling;O(n,(()=>{e.remove()}),(()=>{}),t),n=!(!r||void 0===r.__x_for_key)&&r}}function W(e,t,n,r,o,s,l){var u=e.evaluateReturnExpression(t,r,o);if("value"===n){if(Ye.ignoreFocusedForValueBinding&&document.activeElement.isSameNode(t))return;if(void 0===u&&r.match(/\./)&&(u=""),"radio"===t.type)void 0===t.attributes.value&&"bind"===s?t.value=u:"bind"!==s&&(t.checked=a(t.value,u));else if("checkbox"===t.type)"boolean"==typeof u||[null,void 0].includes(u)||"bind"!==s?"bind"!==s&&(Array.isArray(u)?t.checked=u.some((e=>a(e,t.value))):t.checked=!!u):t.value=String(u);else if("SELECT"===t.tagName)Z(t,u);else{if(t.value===u)return;t.value=u}}else if("class"===n)if(Array.isArray(u)){const e=t.__x_original_classes||[];t.setAttribute("class",i(e.concat(u)).join(" "))}else if("object"==typeof u)Object.keys(u).sort(((e,t)=>u[e]-u[t])).forEach((e=>{u[e]?k(e).forEach((e=>t.classList.add(e))):k(e).forEach((e=>t.classList.remove(e)))}));else{const e=t.__x_original_classes||[],n=u?k(u):[];t.setAttribute("class",i(e.concat(n)).join(" "))}else n=l.includes("camel")?c(n):n,[null,void 0,!1].includes(u)?t.removeAttribute(n):x(n)?J(t,n,n):J(t,n,u)}function J(e,t,n){e.getAttribute(t)!=n&&e.setAttribute(t,n)}function Z(e,t){const n=[].concat(t).map((e=>e+""));Array.from(e.options).forEach((e=>{e.selected=n.includes(e.value||e.text)}))}function K(e,t,n){void 0===t&&n.match(/\./)&&(t=""),e.textContent=t}function X(e,t,n,r){t.innerHTML=e.evaluateReturnExpression(t,n,r)}function V(e,t,n,r,i=!1){const o=()=>{t.style.display="none",t.__x_is_shown=!1},a=()=>{1===t.style.length&&"none"===t.style.display?t.removeAttribute("style"):t.style.removeProperty("display"),t.__x_is_shown=!0};if(!0===i)return void(n?a():o());const s=(r,i)=>{n?(("none"===t.style.display||t.__x_transition)&&C(t,(()=>{a()}),i,e),r((()=>{}))):"none"!==t.style.display?O(t,(()=>{r((()=>{o()}))}),i,e):r((()=>{}))};r.includes("immediate")?s((e=>e()),(()=>{})):(e.showDirectiveLastElement&&!e.showDirectiveLastElement.contains(t)&&e.executeAndClearRemainingShowDirectiveStack(),e.showDirectiveStack.push(s),e.showDirectiveLastElement=t)}function ee(e,t,n,r,i){s(t,"x-if");const o=t.nextElementSibling&&!0===t.nextElementSibling.__x_inserted_me;if(!n||o&&!t.__x_transition)!n&&o&&O(t.nextElementSibling,(()=>{t.nextElementSibling.remove()}),(()=>{}),e,r);else{const n=document.importNode(t.content,!0);t.parentElement.insertBefore(n,t.nextElementSibling),C(t.nextElementSibling,(()=>{}),(()=>{}),e,r),e.initializeElements(t.nextElementSibling,i),t.nextElementSibling.__x_inserted_me=!0}}function te(e,t,n,r,i,o={}){const a={passive:r.includes("passive")};if(r.includes("camel")&&(n=c(n)),r.includes("away")){let s=l=>{t.contains(l.target)||t.offsetWidth<1&&t.offsetHeight<1||(ne(e,i,l,o),r.includes("once")&&document.removeEventListener(n,s,a))};document.addEventListener(n,s,a)}else{let s=r.includes("window")?window:r.includes("document")?document:t,l=c=>{s!==window&&s!==document||document.body.contains(t)?re(n)&&ie(c,r)||(r.includes("prevent")&&c.preventDefault(),r.includes("stop")&&c.stopPropagation(),r.includes("self")&&c.target!==t)||ne(e,i,c,o).then((e=>{!1===e?c.preventDefault():r.includes("once")&&s.removeEventListener(n,l,a)})):s.removeEventListener(n,l,a)};if(r.includes("debounce")){let e=r[r.indexOf("debounce")+1]||"invalid-wait",t=M(e.split("ms")[0])?Number(e.split("ms")[0]):250;l=d(l,t)}s.addEventListener(n,l,a)}}function ne(e,t,r,i){return e.evaluateCommandExpression(r.target,t,(()=>n(n({},i()),{},{$event:r})))}function re(e){return["keydown","keyup"].includes(e)}function ie(e,t){let n=t.filter((e=>!["window","document","prevent","stop"].includes(e)));if(n.includes("debounce")){let e=n.indexOf("debounce");n.splice(e,M((n[e+1]||"invalid-wait").split("ms")[0])?2:1)}if(0===n.length)return!1;if(1===n.length&&n[0]===oe(e.key))return!1;const r=["ctrl","shift","alt","meta","cmd","super"].filter((e=>n.includes(e)));return n=n.filter((e=>!r.includes(e))),!(r.length>0&&r.filter((t=>("cmd"!==t&&"super"!==t||(t="meta"),e[`${t}Key`]))).length===r.length&&n[0]===oe(e.key))}function oe(e){switch(e){case"/":return"slash";case" ":case"Spacebar":return"space";default:return e&&l(e)}}function ae(e,t,r,i,o){var a="select"===t.tagName.toLowerCase()||["checkbox","radio"].includes(t.type)||r.includes("lazy")?"change":"input";te(e,t,a,r,`${i} = rightSideOfExpression($event, ${i})`,(()=>n(n({},o()),{},{rightSideOfExpression:se(t,r,i)})))}function se(e,t,n){return"radio"===e.type&&(e.hasAttribute("name")||e.setAttribute("name",n)),(n,r)=>{if(n instanceof CustomEvent&&n.detail)return n.detail;if("checkbox"===e.type){if(Array.isArray(r)){const e=t.includes("number")?le(n.target.value):n.target.value;return n.target.checked?r.concat([e]):r.filter((t=>!a(t,e)))}return n.target.checked}if("select"===e.tagName.toLowerCase()&&e.multiple)return t.includes("number")?Array.from(n.target.selectedOptions).map((e=>le(e.value||e.text))):Array.from(n.target.selectedOptions).map((e=>e.value||e.text));{const e=n.target.value;return t.includes("number")?le(e):t.includes("trim")?e.trim():e}}}function le(e){const t=e?parseFloat(e):null;return M(t)?t:e}const{isArray:ce}=Array,{getPrototypeOf:ue,create:de,defineProperty:fe,defineProperties:he,isExtensible:pe,getOwnPropertyDescriptor:me,getOwnPropertyNames:ge,getOwnPropertySymbols:Ae,preventExtensions:ye,hasOwnProperty:ve}=Object,{push:be,concat:xe,map:we}=Array.prototype;function ke(e){return void 0===e}function Ee(e){return"function"==typeof e}function _e(e){return"object"==typeof e}const Se=new WeakMap;function Ce(e,t){Se.set(e,t)}const Oe=e=>Se.get(e)||e;function Le(e,t){return e.valueIsObservable(t)?e.getProxy(t):t}function je(e){return ve.call(e,"value")&&(e.value=Oe(e.value)),e}function Te(e,t,n){xe.call(ge(n),Ae(n)).forEach((r=>{let i=me(n,r);i.configurable||(i=ze(e,i,Le)),fe(t,r,i)})),ye(t)}class Fe{constructor(e,t){this.originalTarget=t,this.membrane=e}get(e,t){const{originalTarget:n,membrane:r}=this,i=n[t],{valueObserved:o}=r;return o(n,t),r.getProxy(i)}set(e,t,n){const{originalTarget:r,membrane:{valueMutated:i}}=this;return r[t]!==n?(r[t]=n,i(r,t)):"length"===t&&ce(r)&&i(r,t),!0}deleteProperty(e,t){const{originalTarget:n,membrane:{valueMutated:r}}=this;return delete n[t],r(n,t),!0}apply(e,t,n){}construct(e,t,n){}has(e,t){const{originalTarget:n,membrane:{valueObserved:r}}=this;return r(n,t),t in n}ownKeys(e){const{originalTarget:t}=this;return xe.call(ge(t),Ae(t))}isExtensible(e){const t=pe(e);if(!t)return t;const{originalTarget:n,membrane:r}=this,i=pe(n);return i||Te(r,e,n),i}setPrototypeOf(e,t){}getPrototypeOf(e){const{originalTarget:t}=this;return ue(t)}getOwnPropertyDescriptor(e,t){const{originalTarget:n,membrane:r}=this,{valueObserved:i}=this.membrane;i(n,t);let o=me(n,t);if(ke(o))return o;const a=me(e,t);return ke(a)?(o=ze(r,o,Le),o.configurable||fe(e,t,o),o):a}preventExtensions(e){const{originalTarget:t,membrane:n}=this;return Te(n,e,t),ye(t),!0}defineProperty(e,t,n){const{originalTarget:r,membrane:i}=this,{valueMutated:o}=i,{configurable:a}=n;if(ve.call(n,"writable")&&!ve.call(n,"value")){const e=me(r,t);n.value=e.value}return fe(r,t,je(n)),!1===a&&fe(e,t,ze(i,n,Le)),o(r,t),!0}}function Pe(e,t){return e.valueIsObservable(t)?e.getReadOnlyProxy(t):t}class Ne{constructor(e,t){this.originalTarget=t,this.membrane=e}get(e,t){const{membrane:n,originalTarget:r}=this,i=r[t],{valueObserved:o}=n;return o(r,t),n.getReadOnlyProxy(i)}set(e,t,n){return!1}deleteProperty(e,t){return!1}apply(e,t,n){}construct(e,t,n){}has(e,t){const{originalTarget:n,membrane:{valueObserved:r}}=this;return r(n,t),t in n}ownKeys(e){const{originalTarget:t}=this;return xe.call(ge(t),Ae(t))}setPrototypeOf(e,t){}getOwnPropertyDescriptor(e,t){const{originalTarget:n,membrane:r}=this,{valueObserved:i}=r;i(n,t);let o=me(n,t);if(ke(o))return o;const a=me(e,t);return ke(a)?(o=ze(r,o,Pe),ve.call(o,"set")&&(o.set=void 0),o.configurable||fe(e,t,o),o):a}preventExtensions(e){return!1}defineProperty(e,t,n){return!1}}function $e(e){let t;return ce(e)?t=[]:_e(e)&&(t={}),t}const De=Object.prototype;function Re(e){if(null===e)return!1;if("object"!=typeof e)return!1;if(ce(e))return!0;const t=ue(e);return t===De||null===t||null===ue(t)}const Me=(e,t)=>{},Ie=(e,t)=>{},qe=e=>e;function ze(e,t,n){const{set:r,get:i}=t;return ve.call(t,"value")?t.value=n(e,t.value):(ke(i)||(t.get=function(){return n(e,i.call(Oe(this)))}),ke(r)||(t.set=function(t){r.call(Oe(this),e.unwrapProxy(t))})),t}class Be{constructor(e){if(this.valueDistortion=qe,this.valueMutated=Ie,this.valueObserved=Me,this.valueIsObservable=Re,this.objectGraph=new WeakMap,!ke(e)){const{valueDistortion:t,valueMutated:n,valueObserved:r,valueIsObservable:i}=e;this.valueDistortion=Ee(t)?t:qe,this.valueMutated=Ee(n)?n:Ie,this.valueObserved=Ee(r)?r:Me,this.valueIsObservable=Ee(i)?i:Re}}getProxy(e){const t=Oe(e),n=this.valueDistortion(t);if(this.valueIsObservable(n)){const r=this.getReactiveState(t,n);return r.readOnly===e?e:r.reactive}return n}getReadOnlyProxy(e){e=Oe(e);const t=this.valueDistortion(e);return this.valueIsObservable(t)?this.getReactiveState(e,t).readOnly:t}unwrapProxy(e){return Oe(e)}getReactiveState(e,t){const{objectGraph:n}=this;let r=n.get(t);if(r)return r;const i=this;return r={get reactive(){const n=new Fe(i,t),r=new Proxy($e(t),n);return Ce(r,e),fe(this,"reactive",{value:r}),r},get readOnly(){const n=new Ne(i,t),r=new Proxy($e(t),n);return Ce(r,e),fe(this,"readOnly",{value:r}),r}},n.set(t,r),r}}function He(e,t){let n=new Be({valueMutated(e,n){t(e,n)}});return{data:n.getProxy(e),membrane:n}}function Qe(e,t){let n=e.unwrapProxy(t),r={};return Object.keys(n).forEach((e=>{["$el","$refs","$nextTick","$watch"].includes(e)||(r[e]=n[e])})),r}class Ge{constructor(e,t=null){this.$el=e;const n=this.$el.getAttribute("x-data"),r=""===n?"{}":n,i=this.$el.getAttribute("x-init");let o={$el:this.$el},a=t?t.$el:this.$el;Object.entries(Ye.magicProperties).forEach((([e,t])=>{Object.defineProperty(o,`$${e}`,{get:function(){return t(a)}})})),this.unobservedData=t?t.getUnobservedData():p(e,r,o);let{membrane:s,data:l}=this.wrapDataInObservable(this.unobservedData);var c;this.$data=l,this.membrane=s,this.unobservedData.$el=this.$el,this.unobservedData.$refs=this.getRefsProxy(),this.nextTickStack=[],this.unobservedData.$nextTick=e=>{this.nextTickStack.push(e)},this.watchers={},this.unobservedData.$watch=(e,t)=>{this.watchers[e]||(this.watchers[e]=[]),this.watchers[e].push(t)},Object.entries(Ye.magicProperties).forEach((([e,t])=>{Object.defineProperty(this.unobservedData,`$${e}`,{get:function(){return t(a,this.$el)}})})),this.showDirectiveStack=[],this.showDirectiveLastElement,t||Ye.onBeforeComponentInitializeds.forEach((e=>e(this))),i&&!t&&(this.pauseReactivity=!0,c=this.evaluateReturnExpression(this.$el,i),this.pauseReactivity=!1),this.initializeElements(this.$el),this.listenForNewElementsToInitialize(),"function"==typeof c&&c.call(this.$data),t||setTimeout((()=>{Ye.onComponentInitializeds.forEach((e=>e(this)))}),0)}getUnobservedData(){return Qe(this.membrane,this.$data)}wrapDataInObservable(e){var t=this;let n=d((function(){t.updateElements(t.$el)}),0);return He(e,((e,r)=>{t.watchers[r]?t.watchers[r].forEach((t=>t(e[r]))):Array.isArray(e)?Object.keys(t.watchers).forEach((n=>{let i=n.split(".");"length"!==r&&i.reduce(((r,i)=>(Object.is(e,r[i])&&t.watchers[n].forEach((t=>t(e))),r[i])),t.unobservedData)})):Object.keys(t.watchers).filter((e=>e.includes("."))).forEach((n=>{let i=n.split(".");r===i[i.length-1]&&i.reduce(((i,o)=>(Object.is(e,i)&&t.watchers[n].forEach((t=>t(e[r]))),i[o])),t.unobservedData)})),t.pauseReactivity||n()}))}walkAndSkipNestedComponents(e,t,n=(()=>{})){u(e,(e=>e.hasAttribute("x-data")&&!e.isSameNode(this.$el)?(e.__x||n(e),!1):t(e)))}initializeElements(e,t=(()=>{})){this.walkAndSkipNestedComponents(e,(e=>void 0===e.__x_for_key&&void 0===e.__x_inserted_me&&void this.initializeElement(e,t)),(e=>{e.__x=new Ge(e)})),this.executeAndClearRemainingShowDirectiveStack(),this.executeAndClearNextTickStack(e)}initializeElement(e,t){e.hasAttribute("class")&&y(e,this).length>0&&(e.__x_original_classes=k(e.getAttribute("class"))),this.registerListeners(e,t),this.resolveBoundAttributes(e,!0,t)}updateElements(e,t=(()=>{})){this.walkAndSkipNestedComponents(e,(e=>{if(void 0!==e.__x_for_key&&!e.isSameNode(this.$el))return!1;this.updateElement(e,t)}),(e=>{e.__x=new Ge(e)})),this.executeAndClearRemainingShowDirectiveStack(),this.executeAndClearNextTickStack(e)}executeAndClearNextTickStack(e){e===this.$el&&this.nextTickStack.length>0&&requestAnimationFrame((()=>{for(;this.nextTickStack.length>0;)this.nextTickStack.shift()()}))}executeAndClearRemainingShowDirectiveStack(){this.showDirectiveStack.reverse().map((e=>new Promise(((t,n)=>{e(t,n)})))).reduce(((e,t)=>e.then((()=>t.then((e=>{e()}))))),Promise.resolve((()=>{}))).catch((e=>{if(e!==S)throw e})),this.showDirectiveStack=[],this.showDirectiveLastElement=void 0}updateElement(e,t){this.resolveBoundAttributes(e,!1,t)}registerListeners(e,t){y(e,this).forEach((({type:n,value:r,modifiers:i,expression:o})=>{switch(n){case"on":te(this,e,r,i,o,t);break;case"model":ae(this,e,i,o,t)}}))}resolveBoundAttributes(e,t=!1,n){let r=y(e,this);r.forEach((({type:i,value:o,modifiers:a,expression:s})=>{switch(i){case"model":W(this,e,"value",s,n,i,a);break;case"bind":if("template"===e.tagName.toLowerCase()&&"key"===o)return;W(this,e,o,s,n,i,a);break;case"text":var l=this.evaluateReturnExpression(e,s,n);K(e,l,s);break;case"html":X(this,e,s,n);break;case"show":l=this.evaluateReturnExpression(e,s,n),V(this,e,l,a,t);break;case"if":if(r.some((e=>"for"===e.type)))return;l=this.evaluateReturnExpression(e,s,n),ee(this,e,l,t,n);break;case"for":q(this,e,s,t,n);break;case"cloak":e.removeAttribute("x-cloak")}}))}evaluateReturnExpression(e,t,r=(()=>{})){return p(e,t,this.$data,n(n({},r()),{},{$dispatch:this.getDispatchFunction(e)}))}evaluateCommandExpression(e,t,r=(()=>{})){return m(e,t,this.$data,n(n({},r()),{},{$dispatch:this.getDispatchFunction(e)}))}getDispatchFunction(e){return(t,n={})=>{e.dispatchEvent(new CustomEvent(t,{detail:n,bubbles:!0}))}}listenForNewElementsToInitialize(){const e=this.$el,t={childList:!0,attributes:!0,subtree:!0};new MutationObserver((e=>{for(let t=0;t<e.length;t++){const n=e[t].target.closest("[x-data]");if(n&&n.isSameNode(this.$el)){if("attributes"===e[t].type&&"x-data"===e[t].attributeName){const n=e[t].target.getAttribute("x-data")||"{}",r=p(this.$el,n,{$el:this.$el});Object.keys(r).forEach((e=>{this.$data[e]!==r[e]&&(this.$data[e]=r[e])}))}e[t].addedNodes.length>0&&e[t].addedNodes.forEach((e=>{1!==e.nodeType||e.__x_inserted_me||(!e.matches("[x-data]")||e.__x?this.initializeElements(e):e.__x=new Ge(e))}))}}})).observe(e,t)}getRefsProxy(){var e=this;return new Proxy({},{get(t,n){return"$isAlpineProxy"===n||(e.walkAndSkipNestedComponents(e.$el,(e=>{e.hasAttribute("x-ref")&&e.getAttribute("x-ref")===n&&(r=e)})),r);var r}})}}const Ye={version:"2.8.0",pauseMutationObserver:!1,magicProperties:{},onComponentInitializeds:[],onBeforeComponentInitializeds:[],ignoreFocusedForValueBinding:!1,start:async function(){o()||await r(),this.discoverComponents((e=>{this.initializeComponent(e)})),document.addEventListener("turbolinks:load",(()=>{this.discoverUninitializedComponents((e=>{this.initializeComponent(e)}))})),this.listenForNewUninitializedComponentsAtRunTime()},discoverComponents:function(e){document.querySelectorAll("[x-data]").forEach((t=>{e(t)}))},discoverUninitializedComponents:function(e,t=null){const n=(t||document).querySelectorAll("[x-data]");Array.from(n).filter((e=>void 0===e.__x)).forEach((t=>{e(t)}))},listenForNewUninitializedComponentsAtRunTime:function(){const e=document.querySelector("body"),t={childList:!0,attributes:!0,subtree:!0};new MutationObserver((e=>{if(!this.pauseMutationObserver)for(let t=0;t<e.length;t++)e[t].addedNodes.length>0&&e[t].addedNodes.forEach((e=>{1===e.nodeType&&(e.parentElement&&e.parentElement.closest("[x-data]")||this.discoverUninitializedComponents((e=>{this.initializeComponent(e)}),e.parentElement))}))})).observe(e,t)},initializeComponent:function(e){if(!e.__x)try{e.__x=new Ge(e)}catch(e){setTimeout((()=>{throw e}),0)}},clone:function(e,t){t.__x||(t.__x=new Ge(t,e))},addMagicProperty:function(e,t){this.magicProperties[e]=t},onComponentInitialized:function(e){this.onComponentInitializeds.push(e)},onBeforeComponentInitialized:function(e){this.onBeforeComponentInitializeds.push(e)}};return o()||(window.Alpine=Ye,window.deferLoadingAlpine?window.deferLoadingAlpine((function(){window.Alpine.start()})):window.Alpine.start()),Ye}()},303:function(e,t){var n,r,i;!function(o,a){"use strict";r=[],void 0===(i="function"==typeof(n=function(){function e(e){function t(e){e.icon=Object.prototype.hasOwnProperty.call(e,"icon")?e.icon:"",e.visible=Object.prototype.hasOwnProperty.call(e,"visible")?e.visible:"hover",e.placement=Object.prototype.hasOwnProperty.call(e,"placement")?e.placement:"right",e.ariaLabel=Object.prototype.hasOwnProperty.call(e,"ariaLabel")?e.ariaLabel:"Anchor",e.class=Object.prototype.hasOwnProperty.call(e,"class")?e.class:"",e.base=Object.prototype.hasOwnProperty.call(e,"base")?e.base:"",e.truncate=Object.prototype.hasOwnProperty.call(e,"truncate")?Math.floor(e.truncate):64,e.titleText=Object.prototype.hasOwnProperty.call(e,"titleText")?e.titleText:""}function n(e){var t;if("string"==typeof e||e instanceof String)t=[].slice.call(document.querySelectorAll(e));else{if(!(Array.isArray(e)||e instanceof NodeList))throw new TypeError("The selector provided to AnchorJS was invalid.");t=[].slice.call(e)}return t}function r(){if(null===document.head.querySelector("style.anchorjs")){var e,t=document.createElement("style"),n=".anchorjs-link{opacity:0;text-decoration:none;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}",r=":hover>.anchorjs-link,.anchorjs-link:focus{opacity:1}",i='@font-face{font-family:anchorjs-icons;src:url(data:n/a;base64,AAEAAAALAIAAAwAwT1MvMg8yG2cAAAE4AAAAYGNtYXDp3gC3AAABpAAAAExnYXNwAAAAEAAAA9wAAAAIZ2x5ZlQCcfwAAAH4AAABCGhlYWQHFvHyAAAAvAAAADZoaGVhBnACFwAAAPQAAAAkaG10eASAADEAAAGYAAAADGxvY2EACACEAAAB8AAAAAhtYXhwAAYAVwAAARgAAAAgbmFtZQGOH9cAAAMAAAAAunBvc3QAAwAAAAADvAAAACAAAQAAAAEAAHzE2p9fDzz1AAkEAAAAAADRecUWAAAAANQA6R8AAAAAAoACwAAAAAgAAgAAAAAAAAABAAADwP/AAAACgAAA/9MCrQABAAAAAAAAAAAAAAAAAAAAAwABAAAAAwBVAAIAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAMCQAGQAAUAAAKZAswAAACPApkCzAAAAesAMwEJAAAAAAAAAAAAAAAAAAAAARAAAAAAAAAAAAAAAAAAAAAAQAAg//0DwP/AAEADwABAAAAAAQAAAAAAAAAAAAAAIAAAAAAAAAIAAAACgAAxAAAAAwAAAAMAAAAcAAEAAwAAABwAAwABAAAAHAAEADAAAAAIAAgAAgAAACDpy//9//8AAAAg6cv//f///+EWNwADAAEAAAAAAAAAAAAAAAAACACEAAEAAAAAAAAAAAAAAAAxAAACAAQARAKAAsAAKwBUAAABIiYnJjQ3NzY2MzIWFxYUBwcGIicmNDc3NjQnJiYjIgYHBwYUFxYUBwYGIwciJicmNDc3NjIXFhQHBwYUFxYWMzI2Nzc2NCcmNDc2MhcWFAcHBgYjARQGDAUtLXoWOR8fORYtLTgKGwoKCjgaGg0gEhIgDXoaGgkJBQwHdR85Fi0tOAobCgoKOBoaDSASEiANehoaCQkKGwotLXoWOR8BMwUFLYEuehYXFxYugC44CQkKGwo4GkoaDQ0NDXoaShoKGwoFBe8XFi6ALjgJCQobCjgaShoNDQ0NehpKGgobCgoKLYEuehYXAAAADACWAAEAAAAAAAEACAAAAAEAAAAAAAIAAwAIAAEAAAAAAAMACAAAAAEAAAAAAAQACAAAAAEAAAAAAAUAAQALAAEAAAAAAAYACAAAAAMAAQQJAAEAEAAMAAMAAQQJAAIABgAcAAMAAQQJAAMAEAAMAAMAAQQJAAQAEAAMAAMAAQQJAAUAAgAiAAMAAQQJAAYAEAAMYW5jaG9yanM0MDBAAGEAbgBjAGgAbwByAGoAcwA0ADAAMABAAAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAH//wAP) format("truetype")}',o="[data-anchorjs-icon]::after{content:attr(data-anchorjs-icon)}";t.className="anchorjs",t.appendChild(document.createTextNode("")),void 0===(e=document.head.querySelector('[rel="stylesheet"],style'))?document.head.appendChild(t):document.head.insertBefore(t,e),t.sheet.insertRule(n,t.sheet.cssRules.length),t.sheet.insertRule(r,t.sheet.cssRules.length),t.sheet.insertRule(o,t.sheet.cssRules.length),t.sheet.insertRule(i,t.sheet.cssRules.length)}}this.options=e||{},this.elements=[],t(this.options),this.isTouchDevice=function(){return Boolean("ontouchstart"in window||window.TouchEvent||window.DocumentTouch&&document instanceof DocumentTouch)},this.add=function(e){var i,o,a,s,l,c,u,d,f,h,p,m,g=[];if(t(this.options),"touch"===(p=this.options.visible)&&(p=this.isTouchDevice()?"always":"hover"),e||(e="h2, h3, h4, h5, h6"),0===(i=n(e)).length)return this;for(r(),o=document.querySelectorAll("[id]"),a=[].map.call(o,(function(e){return e.id})),l=0;l<i.length;l++)if(this.hasAnchorJSLink(i[l]))g.push(l);else{if(i[l].hasAttribute("id"))s=i[l].getAttribute("id");else if(i[l].hasAttribute("data-anchor-id"))s=i[l].getAttribute("data-anchor-id");else{f=d=this.urlify(i[l].textContent),u=0;do{void 0!==c&&(f=d+"-"+u),c=a.indexOf(f),u+=1}while(-1!==c);c=void 0,a.push(f),i[l].setAttribute("id",f),s=f}(h=document.createElement("a")).className="anchorjs-link "+this.options.class,h.setAttribute("aria-label",this.options.ariaLabel),h.setAttribute("data-anchorjs-icon",this.options.icon),this.options.titleText&&(h.title=this.options.titleText),m=document.querySelector("base")?window.location.pathname+window.location.search:"",m=this.options.base||m,h.href=m+"#"+s,"always"===p&&(h.style.opacity="1"),""===this.options.icon&&(h.style.font="1em/1 anchorjs-icons","left"===this.options.placement&&(h.style.lineHeight="inherit")),"left"===this.options.placement?(h.style.position="absolute",h.style.marginLeft="-1em",h.style.paddingRight=".5em",i[l].insertBefore(h,i[l].firstChild)):(h.style.paddingLeft=".375em",i[l].appendChild(h))}for(l=0;l<g.length;l++)i.splice(g[l]-l,1);return this.elements=this.elements.concat(i),this},this.remove=function(e){for(var t,r,i=n(e),o=0;o<i.length;o++)(r=i[o].querySelector(".anchorjs-link"))&&(-1!==(t=this.elements.indexOf(i[o]))&&this.elements.splice(t,1),i[o].removeChild(r));return this},this.removeAll=function(){this.remove(this.elements)},this.urlify=function(e){var n=document.createElement("textarea");n.innerHTML=e,e=n.value;var r=/[& +$,:;=?@"#{}|^~[`%!'<>\]./()*\\\n\t\b\v\u00A0]/g;return this.options.truncate||t(this.options),e.trim().replace(/'/gi,"").replace(r,"-").replace(/-{2,}/g,"-").substring(0,this.options.truncate).replace(/^-+|-+$/gm,"").toLowerCase()},this.hasAnchorJSLink=function(e){var t=e.firstChild&&(" "+e.firstChild.className+" ").indexOf(" anchorjs-link ")>-1,n=e.lastChild&&(" "+e.lastChild.className+" ").indexOf(" anchorjs-link ")>-1;return t||n||!1}}return e})?n.apply(t,r):n)||(e.exports=i)}()},383:(e,t,n)=>{"use strict";n(443);var r=n(757),i=n.n(r),o=n(660),a=n.n(o),s=n(303),l=n.n(s),c=n(152),u=n.n(c),d=n(866);function f(e){return(f="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e})(e)}function h(e,t,n,r,i,o,a){try{var s=e[o](a),l=s.value}catch(e){return void n(e)}s.done?t(l):Promise.resolve(l).then(r,i)}function p(e){return function(){var t=this,n=arguments;return new Promise((function(r,i){var o=e.apply(t,n);function a(e){h(o,r,i,a,s,"next",e)}function s(e){h(o,r,i,a,s,"throw",e)}a(void 0)}))}}function m(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}function g(e,t){for(var n=0;n<t.length;n++){var r=t[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(e,r.key,r)}}function A(e,t){return(A=Object.setPrototypeOf||function(e,t){return e.__proto__=t,e})(e,t)}function y(e){var t=function(){if("undefined"==typeof Reflect||!Reflect.construct)return!1;if(Reflect.construct.sham)return!1;if("function"==typeof Proxy)return!0;try{return Date.prototype.toString.call(Reflect.construct(Date,[],(function(){}))),!0}catch(e){return!1}}();return function(){var n,r=b(e);if(t){var i=b(this).constructor;n=Reflect.construct(r,arguments,i)}else n=r.apply(this,arguments);return v(this,n)}}function v(e,t){return!t||"object"!==f(t)&&"function"!=typeof t?function(e){if(void 0===e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return e}(e):t}function b(e){return(b=Object.setPrototypeOf?Object.getPrototypeOf:function(e){return e.__proto__||Object.getPrototypeOf(e)})(e)}var x=function(e){!function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function");e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,writable:!0,configurable:!0}}),t&&A(e,t)}(f,e);var t,n,r,o,s,c=y(f);function f(){return m(this,f),c.apply(this,arguments)}return t=f,(n=[{key:"register",value:(s=p(i().mark((function e(){return i().wrap((function(e){for(;;)switch(e.prev=e.next){case 0:case"end":return e.stop()}}),e)}))),function(){return s.apply(this,arguments)})},{key:"boot",value:(o=p(i().mark((function e(){var t;return i().wrap((function(e){for(;;)switch(e.prev=e.next){case 0:Array.prototype.slice.call(document.querySelectorAll("pre > code")).forEach((function(e,t){e.setAttribute("id","code-"+(t+1));var n=document.createElement("button");n.textContent="copy",n.setAttribute("data-clipboard-target","#code-"+(t+1)),n.classList.add("copy-to-clipboard"),e.parentNode.insertBefore(n,e.nextSibling),new(u())(".copy-to-clipboard").on("success",(function(e){e.trigger.classList.add("copied")}))})),a().highlightAll(),(t=new(l())).options={placement:"left"},t.add(".doc-body h2, .doc-body h3, .doc-body h4"),d.init({tocSelector:".ls-doc__toc",contentSelector:".doc-body",headingSelector:"h2,h3,h5",ignoreSelector:".toc-ignore",hasInnerContainers:!1,linkClass:"toc-link",collapseDepth:5,scrollSmooth:!0,scrollSmoothDuration:0,headingsOffset:1,throttleTimeout:50,positionFixedSelector:null,positionFixedClass:"is-position-fixed",fixedSidebarOffset:"auto",includeHtml:!1,scrollContainer:null,skipRendering:!1});case 7:case"end":return e.stop()}}),e)}))),function(){return o.apply(this,arguments)})}])&&g(t.prototype,n),r&&g(t,r),f}(streams.core.ServiceProvider);window.AppServiceProvider=x},152:function(e){var t;t=function(){return function(e){var t={};function n(r){if(t[r])return t[r].exports;var i=t[r]={i:r,l:!1,exports:{}};return e[r].call(i.exports,i,i.exports,n),i.l=!0,i.exports}return n.m=e,n.c=t,n.d=function(e,t,r){n.o(e,t)||Object.defineProperty(e,t,{enumerable:!0,get:r})},n.r=function(e){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})},n.t=function(e,t){if(1&t&&(e=n(e)),8&t)return e;if(4&t&&"object"==typeof e&&e&&e.__esModule)return e;var r=Object.create(null);if(n.r(r),Object.defineProperty(r,"default",{enumerable:!0,value:e}),2&t&&"string"!=typeof e)for(var i in e)n.d(r,i,function(t){return e[t]}.bind(null,i));return r},n.n=function(e){var t=e&&e.__esModule?function(){return e.default}:function(){return e};return n.d(t,"a",t),t},n.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},n.p="",n(n.s=6)}([function(e,t){e.exports=function(e){var t;if("SELECT"===e.nodeName)e.focus(),t=e.value;else if("INPUT"===e.nodeName||"TEXTAREA"===e.nodeName){var n=e.hasAttribute("readonly");n||e.setAttribute("readonly",""),e.select(),e.setSelectionRange(0,e.value.length),n||e.removeAttribute("readonly"),t=e.value}else{e.hasAttribute("contenteditable")&&e.focus();var r=window.getSelection(),i=document.createRange();i.selectNodeContents(e),r.removeAllRanges(),r.addRange(i),t=r.toString()}return t}},function(e,t){function n(){}n.prototype={on:function(e,t,n){var r=this.e||(this.e={});return(r[e]||(r[e]=[])).push({fn:t,ctx:n}),this},once:function(e,t,n){var r=this;function i(){r.off(e,i),t.apply(n,arguments)}return i._=t,this.on(e,i,n)},emit:function(e){for(var t=[].slice.call(arguments,1),n=((this.e||(this.e={}))[e]||[]).slice(),r=0,i=n.length;r<i;r++)n[r].fn.apply(n[r].ctx,t);return this},off:function(e,t){var n=this.e||(this.e={}),r=n[e],i=[];if(r&&t)for(var o=0,a=r.length;o<a;o++)r[o].fn!==t&&r[o].fn._!==t&&i.push(r[o]);return i.length?n[e]=i:delete n[e],this}},e.exports=n,e.exports.TinyEmitter=n},function(e,t,n){var r=n(3),i=n(4);e.exports=function(e,t,n){if(!e&&!t&&!n)throw new Error("Missing required arguments");if(!r.string(t))throw new TypeError("Second argument must be a String");if(!r.fn(n))throw new TypeError("Third argument must be a Function");if(r.node(e))return function(e,t,n){return e.addEventListener(t,n),{destroy:function(){e.removeEventListener(t,n)}}}(e,t,n);if(r.nodeList(e))return function(e,t,n){return Array.prototype.forEach.call(e,(function(e){e.addEventListener(t,n)})),{destroy:function(){Array.prototype.forEach.call(e,(function(e){e.removeEventListener(t,n)}))}}}(e,t,n);if(r.string(e))return function(e,t,n){return i(document.body,e,t,n)}(e,t,n);throw new TypeError("First argument must be a String, HTMLElement, HTMLCollection, or NodeList")}},function(e,t){t.node=function(e){return void 0!==e&&e instanceof HTMLElement&&1===e.nodeType},t.nodeList=function(e){var n=Object.prototype.toString.call(e);return void 0!==e&&("[object NodeList]"===n||"[object HTMLCollection]"===n)&&"length"in e&&(0===e.length||t.node(e[0]))},t.string=function(e){return"string"==typeof e||e instanceof String},t.fn=function(e){return"[object Function]"===Object.prototype.toString.call(e)}},function(e,t,n){var r=n(5);function i(e,t,n,r,i){var a=o.apply(this,arguments);return e.addEventListener(n,a,i),{destroy:function(){e.removeEventListener(n,a,i)}}}function o(e,t,n,i){return function(n){n.delegateTarget=r(n.target,t),n.delegateTarget&&i.call(e,n)}}e.exports=function(e,t,n,r,o){return"function"==typeof e.addEventListener?i.apply(null,arguments):"function"==typeof n?i.bind(null,document).apply(null,arguments):("string"==typeof e&&(e=document.querySelectorAll(e)),Array.prototype.map.call(e,(function(e){return i(e,t,n,r,o)})))}},function(e,t){if("undefined"!=typeof Element&&!Element.prototype.matches){var n=Element.prototype;n.matches=n.matchesSelector||n.mozMatchesSelector||n.msMatchesSelector||n.oMatchesSelector||n.webkitMatchesSelector}e.exports=function(e,t){for(;e&&9!==e.nodeType;){if("function"==typeof e.matches&&e.matches(t))return e;e=e.parentNode}}},function(e,t,n){"use strict";n.r(t);var r=n(0),i=n.n(r),o="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e},a=function(){function e(e,t){for(var n=0;n<t.length;n++){var r=t[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(e,r.key,r)}}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),s=function(){function e(t){!function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,e),this.resolveOptions(t),this.initSelection()}return a(e,[{key:"resolveOptions",value:function(){var e=arguments.length>0&&void 0!==arguments[0]?arguments[0]:{};this.action=e.action,this.container=e.container,this.emitter=e.emitter,this.target=e.target,this.text=e.text,this.trigger=e.trigger,this.selectedText=""}},{key:"initSelection",value:function(){this.text?this.selectFake():this.target&&this.selectTarget()}},{key:"selectFake",value:function(){var e=this,t="rtl"==document.documentElement.getAttribute("dir");this.removeFake(),this.fakeHandlerCallback=function(){return e.removeFake()},this.fakeHandler=this.container.addEventListener("click",this.fakeHandlerCallback)||!0,this.fakeElem=document.createElement("textarea"),this.fakeElem.style.fontSize="12pt",this.fakeElem.style.border="0",this.fakeElem.style.padding="0",this.fakeElem.style.margin="0",this.fakeElem.style.position="absolute",this.fakeElem.style[t?"right":"left"]="-9999px";var n=window.pageYOffset||document.documentElement.scrollTop;this.fakeElem.style.top=n+"px",this.fakeElem.setAttribute("readonly",""),this.fakeElem.value=this.text,this.container.appendChild(this.fakeElem),this.selectedText=i()(this.fakeElem),this.copyText()}},{key:"removeFake",value:function(){this.fakeHandler&&(this.container.removeEventListener("click",this.fakeHandlerCallback),this.fakeHandler=null,this.fakeHandlerCallback=null),this.fakeElem&&(this.container.removeChild(this.fakeElem),this.fakeElem=null)}},{key:"selectTarget",value:function(){this.selectedText=i()(this.target),this.copyText()}},{key:"copyText",value:function(){var e=void 0;try{e=document.execCommand(this.action)}catch(t){e=!1}this.handleResult(e)}},{key:"handleResult",value:function(e){this.emitter.emit(e?"success":"error",{action:this.action,text:this.selectedText,trigger:this.trigger,clearSelection:this.clearSelection.bind(this)})}},{key:"clearSelection",value:function(){this.trigger&&this.trigger.focus(),document.activeElement.blur(),window.getSelection().removeAllRanges()}},{key:"destroy",value:function(){this.removeFake()}},{key:"action",set:function(){var e=arguments.length>0&&void 0!==arguments[0]?arguments[0]:"copy";if(this._action=e,"copy"!==this._action&&"cut"!==this._action)throw new Error('Invalid "action" value, use either "copy" or "cut"')},get:function(){return this._action}},{key:"target",set:function(e){if(void 0!==e){if(!e||"object"!==(void 0===e?"undefined":o(e))||1!==e.nodeType)throw new Error('Invalid "target" value, use a valid Element');if("copy"===this.action&&e.hasAttribute("disabled"))throw new Error('Invalid "target" attribute. Please use "readonly" instead of "disabled" attribute');if("cut"===this.action&&(e.hasAttribute("readonly")||e.hasAttribute("disabled")))throw new Error('Invalid "target" attribute. You can\'t cut text from elements with "readonly" or "disabled" attributes');this._target=e}},get:function(){return this._target}}]),e}(),l=n(1),c=n.n(l),u=n(2),d=n.n(u),f="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e},h=function(){function e(e,t){for(var n=0;n<t.length;n++){var r=t[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(e,r.key,r)}}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),p=function(e){function t(e,n){!function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,t);var r=function(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}(this,(t.__proto__||Object.getPrototypeOf(t)).call(this));return r.resolveOptions(n),r.listenClick(e),r}return function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}(t,e),h(t,[{key:"resolveOptions",value:function(){var e=arguments.length>0&&void 0!==arguments[0]?arguments[0]:{};this.action="function"==typeof e.action?e.action:this.defaultAction,this.target="function"==typeof e.target?e.target:this.defaultTarget,this.text="function"==typeof e.text?e.text:this.defaultText,this.container="object"===f(e.container)?e.container:document.body}},{key:"listenClick",value:function(e){var t=this;this.listener=d()(e,"click",(function(e){return t.onClick(e)}))}},{key:"onClick",value:function(e){var t=e.delegateTarget||e.currentTarget;this.clipboardAction&&(this.clipboardAction=null),this.clipboardAction=new s({action:this.action(t),target:this.target(t),text:this.text(t),container:this.container,trigger:t,emitter:this})}},{key:"defaultAction",value:function(e){return m("action",e)}},{key:"defaultTarget",value:function(e){var t=m("target",e);if(t)return document.querySelector(t)}},{key:"defaultText",value:function(e){return m("text",e)}},{key:"destroy",value:function(){this.listener.destroy(),this.clipboardAction&&(this.clipboardAction.destroy(),this.clipboardAction=null)}}],[{key:"isSupported",value:function(){var e=arguments.length>0&&void 0!==arguments[0]?arguments[0]:["copy","cut"],t="string"==typeof e?[e]:e,n=!!document.queryCommandSupported;return t.forEach((function(e){n=n&&!!document.queryCommandSupported(e)})),n}}]),t}(c.a);function m(e,t){var n="data-clipboard-"+e;if(t.hasAttribute(n))return t.getAttribute(n)}t.default=p}]).default},e.exports=t()},194:()=>{},660:(e,t,n)=>{var r=function(e){var t=/\blang(?:uage)?-([\w-]+)\b/i,n=0,r={manual:e.Prism&&e.Prism.manual,disableWorkerMessageHandler:e.Prism&&e.Prism.disableWorkerMessageHandler,util:{encode:function e(t){return t instanceof i?new i(t.type,e(t.content),t.alias):Array.isArray(t)?t.map(e):t.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/\u00a0/g," ")},type:function(e){return Object.prototype.toString.call(e).slice(8,-1)},objId:function(e){return e.__id||Object.defineProperty(e,"__id",{value:++n}),e.__id},clone:function e(t,n){var i,o;switch(n=n||{},r.util.type(t)){case"Object":if(o=r.util.objId(t),n[o])return n[o];for(var a in i={},n[o]=i,t)t.hasOwnProperty(a)&&(i[a]=e(t[a],n));return i;case"Array":return o=r.util.objId(t),n[o]?n[o]:(i=[],n[o]=i,t.forEach((function(t,r){i[r]=e(t,n)})),i);default:return t}},getLanguage:function(e){for(;e&&!t.test(e.className);)e=e.parentElement;return e?(e.className.match(t)||[,"none"])[1].toLowerCase():"none"},currentScript:function(){if("undefined"==typeof document)return null;if("currentScript"in document)return document.currentScript;try{throw new Error}catch(r){var e=(/at [^(\r\n]*\((.*):.+:.+\)$/i.exec(r.stack)||[])[1];if(e){var t=document.getElementsByTagName("script");for(var n in t)if(t[n].src==e)return t[n]}return null}},isActive:function(e,t,n){for(var r="no-"+t;e;){var i=e.classList;if(i.contains(t))return!0;if(i.contains(r))return!1;e=e.parentElement}return!!n}},languages:{extend:function(e,t){var n=r.util.clone(r.languages[e]);for(var i in t)n[i]=t[i];return n},insertBefore:function(e,t,n,i){var o=(i=i||r.languages)[e],a={};for(var s in o)if(o.hasOwnProperty(s)){if(s==t)for(var l in n)n.hasOwnProperty(l)&&(a[l]=n[l]);n.hasOwnProperty(s)||(a[s]=o[s])}var c=i[e];return i[e]=a,r.languages.DFS(r.languages,(function(t,n){n===c&&t!=e&&(this[t]=a)})),a},DFS:function e(t,n,i,o){o=o||{};var a=r.util.objId;for(var s in t)if(t.hasOwnProperty(s)){n.call(t,s,t[s],i||s);var l=t[s],c=r.util.type(l);"Object"!==c||o[a(l)]?"Array"!==c||o[a(l)]||(o[a(l)]=!0,e(l,n,s,o)):(o[a(l)]=!0,e(l,n,null,o))}}},plugins:{},highlightAll:function(e,t){r.highlightAllUnder(document,e,t)},highlightAllUnder:function(e,t,n){var i={callback:n,container:e,selector:'code[class*="language-"], [class*="language-"] code, code[class*="lang-"], [class*="lang-"] code'};r.hooks.run("before-highlightall",i),i.elements=Array.prototype.slice.apply(i.container.querySelectorAll(i.selector)),r.hooks.run("before-all-elements-highlight",i);for(var o,a=0;o=i.elements[a++];)r.highlightElement(o,!0===t,i.callback)},highlightElement:function(n,i,o){var a=r.util.getLanguage(n),s=r.languages[a];n.className=n.className.replace(t,"").replace(/\s+/g," ")+" language-"+a;var l=n.parentElement;l&&"pre"===l.nodeName.toLowerCase()&&(l.className=l.className.replace(t,"").replace(/\s+/g," ")+" language-"+a);var c={element:n,language:a,grammar:s,code:n.textContent};function u(e){c.highlightedCode=e,r.hooks.run("before-insert",c),c.element.innerHTML=c.highlightedCode,r.hooks.run("after-highlight",c),r.hooks.run("complete",c),o&&o.call(c.element)}if(r.hooks.run("before-sanity-check",c),!c.code)return r.hooks.run("complete",c),void(o&&o.call(c.element));if(r.hooks.run("before-highlight",c),c.grammar)if(i&&e.Worker){var d=new Worker(r.filename);d.onmessage=function(e){u(e.data)},d.postMessage(JSON.stringify({language:c.language,code:c.code,immediateClose:!0}))}else u(r.highlight(c.code,c.grammar,c.language));else u(r.util.encode(c.code))},highlight:function(e,t,n){var o={code:e,grammar:t,language:n};return r.hooks.run("before-tokenize",o),o.tokens=r.tokenize(o.code,o.grammar),r.hooks.run("after-tokenize",o),i.stringify(r.util.encode(o.tokens),o.language)},tokenize:function(e,t){var n=t.rest;if(n){for(var r in n)t[r]=n[r];delete t.rest}var i=new s;return l(i,i.head,e),a(e,i,t,i.head,0),function(e){var t=[],n=e.head.next;for(;n!==e.tail;)t.push(n.value),n=n.next;return t}(i)},hooks:{all:{},add:function(e,t){var n=r.hooks.all;n[e]=n[e]||[],n[e].push(t)},run:function(e,t){var n=r.hooks.all[e];if(n&&n.length)for(var i,o=0;i=n[o++];)i(t)}},Token:i};function i(e,t,n,r){this.type=e,this.content=t,this.alias=n,this.length=0|(r||"").length}function o(e,t,n,r){e.lastIndex=t;var i=e.exec(n);if(i&&r&&i[1]){var o=i[1].length;i.index+=o,i[0]=i[0].slice(o)}return i}function a(e,t,n,s,u,d){for(var f in n)if(n.hasOwnProperty(f)&&n[f]){var h=n[f];h=Array.isArray(h)?h:[h];for(var p=0;p<h.length;++p){if(d&&d.cause==f+","+p)return;var m=h[p],g=m.inside,A=!!m.lookbehind,y=!!m.greedy,v=m.alias;if(y&&!m.pattern.global){var b=m.pattern.toString().match(/[imsuy]*$/)[0];m.pattern=RegExp(m.pattern.source,b+"g")}for(var x=m.pattern||m,w=s.next,k=u;w!==t.tail&&!(d&&k>=d.reach);k+=w.value.length,w=w.next){var E=w.value;if(t.length>e.length)return;if(!(E instanceof i)){var _,S=1;if(y){if(!(_=o(x,k,e,A)))break;var C=_.index,O=_.index+_[0].length,L=k;for(L+=w.value.length;C>=L;)L+=(w=w.next).value.length;if(k=L-=w.value.length,w.value instanceof i)continue;for(var j=w;j!==t.tail&&(L<O||"string"==typeof j.value);j=j.next)S++,L+=j.value.length;S--,E=e.slice(k,L),_.index-=k}else if(!(_=o(x,0,E,A)))continue;C=_.index;var T=_[0],F=E.slice(0,C),P=E.slice(C+T.length),N=k+E.length;d&&N>d.reach&&(d.reach=N);var $=w.prev;F&&($=l(t,$,F),k+=F.length),c(t,$,S),w=l(t,$,new i(f,g?r.tokenize(T,g):T,v,T)),P&&l(t,w,P),S>1&&a(e,t,n,w.prev,k,{cause:f+","+p,reach:N})}}}}}function s(){var e={value:null,prev:null,next:null},t={value:null,prev:e,next:null};e.next=t,this.head=e,this.tail=t,this.length=0}function l(e,t,n){var r=t.next,i={value:n,prev:t,next:r};return t.next=i,r.prev=i,e.length++,i}function c(e,t,n){for(var r=t.next,i=0;i<n&&r!==e.tail;i++)r=r.next;t.next=r,r.prev=t,e.length-=i}if(e.Prism=r,i.stringify=function e(t,n){if("string"==typeof t)return t;if(Array.isArray(t)){var i="";return t.forEach((function(t){i+=e(t,n)})),i}var o={type:t.type,content:e(t.content,n),tag:"span",classes:["token",t.type],attributes:{},language:n},a=t.alias;a&&(Array.isArray(a)?Array.prototype.push.apply(o.classes,a):o.classes.push(a)),r.hooks.run("wrap",o);var s="";for(var l in o.attributes)s+=" "+l+'="'+(o.attributes[l]||"").replace(/"/g,"&quot;")+'"';return"<"+o.tag+' class="'+o.classes.join(" ")+'"'+s+">"+o.content+"</"+o.tag+">"},!e.document)return e.addEventListener?(r.disableWorkerMessageHandler||e.addEventListener("message",(function(t){var n=JSON.parse(t.data),i=n.language,o=n.code,a=n.immediateClose;e.postMessage(r.highlight(o,r.languages[i],i)),a&&e.close()}),!1),r):r;var u=r.util.currentScript();function d(){r.manual||r.highlightAll()}if(u&&(r.filename=u.src,u.hasAttribute("data-manual")&&(r.manual=!0)),!r.manual){var f=document.readyState;"loading"===f||"interactive"===f&&u&&u.defer?document.addEventListener("DOMContentLoaded",d):window.requestAnimationFrame?window.requestAnimationFrame(d):window.setTimeout(d,16)}return r}("undefined"!=typeof window?window:"undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?self:{});e.exports&&(e.exports=r),void 0!==n.g&&(n.g.Prism=r),r.languages.markup={comment:/<!--[\s\S]*?-->/,prolog:/<\?[\s\S]+?\?>/,doctype:{pattern:/<!DOCTYPE(?:[^>"'[\]]|"[^"]*"|'[^']*')+(?:\[(?:[^<"'\]]|"[^"]*"|'[^']*'|<(?!!--)|<!--(?:[^-]|-(?!->))*-->)*\]\s*)?>/i,greedy:!0,inside:{"internal-subset":{pattern:/(\[)[\s\S]+(?=\]>$)/,lookbehind:!0,greedy:!0,inside:null},string:{pattern:/"[^"]*"|'[^']*'/,greedy:!0},punctuation:/^<!|>$|[[\]]/,"doctype-tag":/^DOCTYPE/,name:/[^\s<>'"]+/}},cdata:/<!\[CDATA\[[\s\S]*?]]>/i,tag:{pattern:/<\/?(?!\d)[^\s>\/=$<%]+(?:\s(?:\s*[^\s>\/=]+(?:\s*=\s*(?:"[^"]*"|'[^']*'|[^\s'">=]+(?=[\s>]))|(?=[\s/>])))+)?\s*\/?>/,greedy:!0,inside:{tag:{pattern:/^<\/?[^\s>\/]+/,inside:{punctuation:/^<\/?/,namespace:/^[^\s>\/:]+:/}},"attr-value":{pattern:/=\s*(?:"[^"]*"|'[^']*'|[^\s'">=]+)/,inside:{punctuation:[{pattern:/^=/,alias:"attr-equals"},/"|'/]}},punctuation:/\/?>/,"attr-name":{pattern:/[^\s>\/]+/,inside:{namespace:/^[^\s>\/:]+:/}}}},entity:[{pattern:/&[\da-z]{1,8};/i,alias:"named-entity"},/&#x?[\da-f]{1,8};/i]},r.languages.markup.tag.inside["attr-value"].inside.entity=r.languages.markup.entity,r.languages.markup.doctype.inside["internal-subset"].inside=r.languages.markup,r.hooks.add("wrap",(function(e){"entity"===e.type&&(e.attributes.title=e.content.replace(/&amp;/,"&"))})),Object.defineProperty(r.languages.markup.tag,"addInlined",{value:function(e,t){var n={};n["language-"+t]={pattern:/(^<!\[CDATA\[)[\s\S]+?(?=\]\]>$)/i,lookbehind:!0,inside:r.languages[t]},n.cdata=/^<!\[CDATA\[|\]\]>$/i;var i={"included-cdata":{pattern:/<!\[CDATA\[[\s\S]*?\]\]>/i,inside:n}};i["language-"+t]={pattern:/[\s\S]+/,inside:r.languages[t]};var o={};o[e]={pattern:RegExp(/(<__[^>]*>)(?:<!\[CDATA\[(?:[^\]]|\](?!\]>))*\]\]>|(?!<!\[CDATA\[)[\s\S])*?(?=<\/__>)/.source.replace(/__/g,(function(){return e})),"i"),lookbehind:!0,greedy:!0,inside:i},r.languages.insertBefore("markup","cdata",o)}}),r.languages.html=r.languages.markup,r.languages.mathml=r.languages.markup,r.languages.svg=r.languages.markup,r.languages.xml=r.languages.extend("markup",{}),r.languages.ssml=r.languages.xml,r.languages.atom=r.languages.xml,r.languages.rss=r.languages.xml,function(e){var t=/("|')(?:\\(?:\r\n|[\s\S])|(?!\1)[^\\\r\n])*\1/;e.languages.css={comment:/\/\*[\s\S]*?\*\//,atrule:{pattern:/@[\w-](?:[^;{\s]|\s+(?![\s{]))*(?:;|(?=\s*\{))/,inside:{rule:/^@[\w-]+/,"selector-function-argument":{pattern:/(\bselector\s*\(\s*(?![\s)]))(?:[^()\s]|\s+(?![\s)])|\((?:[^()]|\([^()]*\))*\))+(?=\s*\))/,lookbehind:!0,alias:"selector"},keyword:{pattern:/(^|[^\w-])(?:and|not|only|or)(?![\w-])/,lookbehind:!0}}},url:{pattern:RegExp("\\burl\\((?:"+t.source+"|"+/(?:[^\\\r\n()"']|\\[\s\S])*/.source+")\\)","i"),greedy:!0,inside:{function:/^url/i,punctuation:/^\(|\)$/,string:{pattern:RegExp("^"+t.source+"$"),alias:"url"}}},selector:RegExp("[^{}\\s](?:[^{};\"'\\s]|\\s+(?![\\s{])|"+t.source+")*(?=\\s*\\{)"),string:{pattern:t,greedy:!0},property:/(?!\s)[-_a-z\xA0-\uFFFF](?:(?!\s)[-\w\xA0-\uFFFF])*(?=\s*:)/i,important:/!important\b/i,function:/[-a-z0-9]+(?=\()/i,punctuation:/[(){};:,]/},e.languages.css.atrule.inside.rest=e.languages.css;var n=e.languages.markup;n&&(n.tag.addInlined("style","css"),e.languages.insertBefore("inside","attr-value",{"style-attr":{pattern:/(^|["'\s])style\s*=\s*(?:"[^"]*"|'[^']*')/i,lookbehind:!0,inside:{"attr-value":{pattern:/=\s*(?:"[^"]*"|'[^']*'|[^\s'">=]+)/,inside:{style:{pattern:/(["'])[\s\S]+(?=["']$)/,lookbehind:!0,alias:"language-css",inside:e.languages.css},punctuation:[{pattern:/^=/,alias:"attr-equals"},/"|'/]}},"attr-name":/^style/i}}},n.tag))}(r),r.languages.clike={comment:[{pattern:/(^|[^\\])\/\*[\s\S]*?(?:\*\/|$)/,lookbehind:!0,greedy:!0},{pattern:/(^|[^\\:])\/\/.*/,lookbehind:!0,greedy:!0}],string:{pattern:/(["'])(?:\\(?:\r\n|[\s\S])|(?!\1)[^\\\r\n])*\1/,greedy:!0},"class-name":{pattern:/(\b(?:class|interface|extends|implements|trait|instanceof|new)\s+|\bcatch\s+\()[\w.\\]+/i,lookbehind:!0,inside:{punctuation:/[.\\]/}},keyword:/\b(?:if|else|while|do|for|return|in|instanceof|function|new|try|throw|catch|finally|null|break|continue)\b/,boolean:/\b(?:true|false)\b/,function:/\w+(?=\()/,number:/\b0x[\da-f]+\b|(?:\b\d+(?:\.\d*)?|\B\.\d+)(?:e[+-]?\d+)?/i,operator:/[<>]=?|[!=]=?=?|--?|\+\+?|&&?|\|\|?|[?*/~^%]/,punctuation:/[{}[\];(),.:]/},r.languages.javascript=r.languages.extend("clike",{"class-name":[r.languages.clike["class-name"],{pattern:/(^|[^$\w\xA0-\uFFFF])(?!\s)[_$A-Z\xA0-\uFFFF](?:(?!\s)[$\w\xA0-\uFFFF])*(?=\.(?:prototype|constructor))/,lookbehind:!0}],keyword:[{pattern:/((?:^|})\s*)(?:catch|finally)\b/,lookbehind:!0},{pattern:/(^|[^.]|\.\.\.\s*)\b(?:as|async(?=\s*(?:function\b|\(|[$\w\xA0-\uFFFF]|$))|await|break|case|class|const|continue|debugger|default|delete|do|else|enum|export|extends|for|from|function|(?:get|set)(?=\s*[\[$\w\xA0-\uFFFF])|if|implements|import|in|instanceof|interface|let|new|null|of|package|private|protected|public|return|static|super|switch|this|throw|try|typeof|undefined|var|void|while|with|yield)\b/,lookbehind:!0}],function:/#?(?!\s)[_$a-zA-Z\xA0-\uFFFF](?:(?!\s)[$\w\xA0-\uFFFF])*(?=\s*(?:\.\s*(?:apply|bind|call)\s*)?\()/,number:/\b(?:(?:0[xX](?:[\dA-Fa-f](?:_[\dA-Fa-f])?)+|0[bB](?:[01](?:_[01])?)+|0[oO](?:[0-7](?:_[0-7])?)+)n?|(?:\d(?:_\d)?)+n|NaN|Infinity)\b|(?:\b(?:\d(?:_\d)?)+\.?(?:\d(?:_\d)?)*|\B\.(?:\d(?:_\d)?)+)(?:[Ee][+-]?(?:\d(?:_\d)?)+)?/,operator:/--|\+\+|\*\*=?|=>|&&=?|\|\|=?|[!=]==|<<=?|>>>?=?|[-+*/%&|^!=<>]=?|\.{3}|\?\?=?|\?\.?|[~:]/}),r.languages.javascript["class-name"][0].pattern=/(\b(?:class|interface|extends|implements|instanceof|new)\s+)[\w.\\]+/,r.languages.insertBefore("javascript","keyword",{regex:{pattern:/((?:^|[^$\w\xA0-\uFFFF."'\])\s]|\b(?:return|yield))\s*)\/(?:\[(?:[^\]\\\r\n]|\\.)*]|\\.|[^/\\\[\r\n])+\/[gimyus]{0,6}(?=(?:\s|\/\*(?:[^*]|\*(?!\/))*\*\/)*(?:$|[\r\n,.;:})\]]|\/\/))/,lookbehind:!0,greedy:!0,inside:{"regex-source":{pattern:/^(\/)[\s\S]+(?=\/[a-z]*$)/,lookbehind:!0,alias:"language-regex",inside:r.languages.regex},"regex-flags":/[a-z]+$/,"regex-delimiter":/^\/|\/$/}},"function-variable":{pattern:/#?(?!\s)[_$a-zA-Z\xA0-\uFFFF](?:(?!\s)[$\w\xA0-\uFFFF])*(?=\s*[=:]\s*(?:async\s*)?(?:\bfunction\b|(?:\((?:[^()]|\([^()]*\))*\)|(?!\s)[_$a-zA-Z\xA0-\uFFFF](?:(?!\s)[$\w\xA0-\uFFFF])*)\s*=>))/,alias:"function"},parameter:[{pattern:/(function(?:\s+(?!\s)[_$a-zA-Z\xA0-\uFFFF](?:(?!\s)[$\w\xA0-\uFFFF])*)?\s*\(\s*)(?!\s)(?:[^()\s]|\s+(?![\s)])|\([^()]*\))+(?=\s*\))/,lookbehind:!0,inside:r.languages.javascript},{pattern:/(?!\s)[_$a-zA-Z\xA0-\uFFFF](?:(?!\s)[$\w\xA0-\uFFFF])*(?=\s*=>)/i,inside:r.languages.javascript},{pattern:/(\(\s*)(?!\s)(?:[^()\s]|\s+(?![\s)])|\([^()]*\))+(?=\s*\)\s*=>)/,lookbehind:!0,inside:r.languages.javascript},{pattern:/((?:\b|\s|^)(?!(?:as|async|await|break|case|catch|class|const|continue|debugger|default|delete|do|else|enum|export|extends|finally|for|from|function|get|if|implements|import|in|instanceof|interface|let|new|null|of|package|private|protected|public|return|set|static|super|switch|this|throw|try|typeof|undefined|var|void|while|with|yield)(?![$\w\xA0-\uFFFF]))(?:(?!\s)[_$a-zA-Z\xA0-\uFFFF](?:(?!\s)[$\w\xA0-\uFFFF])*\s*)\(\s*|\]\s*\(\s*)(?!\s)(?:[^()\s]|\s+(?![\s)])|\([^()]*\))+(?=\s*\)\s*\{)/,lookbehind:!0,inside:r.languages.javascript}],constant:/\b[A-Z](?:[A-Z_]|\dx?)*\b/}),r.languages.insertBefore("javascript","string",{"template-string":{pattern:/`(?:\\[\s\S]|\${(?:[^{}]|{(?:[^{}]|{[^}]*})*})+}|(?!\${)[^\\`])*`/,greedy:!0,inside:{"template-punctuation":{pattern:/^`|`$/,alias:"string"},interpolation:{pattern:/((?:^|[^\\])(?:\\{2})*)\${(?:[^{}]|{(?:[^{}]|{[^}]*})*})+}/,lookbehind:!0,inside:{"interpolation-punctuation":{pattern:/^\${|}$/,alias:"punctuation"},rest:r.languages.javascript}},string:/[\s\S]+/}}}),r.languages.markup&&r.languages.markup.tag.addInlined("script","javascript"),r.languages.js=r.languages.javascript,function(){if("undefined"!=typeof self&&self.Prism&&self.document){Element.prototype.matches||(Element.prototype.matches=Element.prototype.msMatchesSelector||Element.prototype.webkitMatchesSelector);var e=window.Prism,t={js:"javascript",py:"python",rb:"ruby",ps1:"powershell",psm1:"powershell",sh:"bash",bat:"batch",h:"c",tex:"latex"},n="data-src-status",r="loading",i="loaded",o='pre[data-src]:not([data-src-status="loaded"]):not([data-src-status="loading"])',a=/\blang(?:uage)?-([\w-]+)\b/i;e.hooks.add("before-highlightall",(function(e){e.selector+=", "+o})),e.hooks.add("before-sanity-check",(function(a){var s=a.element;if(s.matches(o)){a.code="",s.setAttribute(n,r);var c=s.appendChild(document.createElement("CODE"));c.textContent="Loading…";var u=s.getAttribute("data-src"),d=a.language;if("none"===d){var f=(/\.(\w+)$/.exec(u)||[,"none"])[1];d=t[f]||f}l(c,d),l(s,d);var h=e.plugins.autoloader;h&&h.loadLanguages(d);var p=new XMLHttpRequest;p.open("GET",u,!0),p.onreadystatechange=function(){var t,r;4==p.readyState&&(p.status<400&&p.responseText?(s.setAttribute(n,i),c.textContent=p.responseText,e.highlightElement(c)):(s.setAttribute(n,"failed"),p.status>=400?c.textContent=(t=p.status,r=p.statusText,"✖ Error "+t+" while fetching file: "+r):c.textContent="✖ Error: File does not exist or is empty"))},p.send(null)}})),e.plugins.fileHighlight={highlight:function(t){for(var n,r=(t||document).querySelectorAll(o),i=0;n=r[i++];)e.highlightElement(n)}};var s=!1;e.fileHighlight=function(){s||(console.warn("Prism.fileHighlight is deprecated. Use `Prism.plugins.fileHighlight.highlight` instead."),s=!0),e.plugins.fileHighlight.highlight.apply(this,arguments)}}function l(e,t){var n=e.className;n=n.replace(a," ")+" language-"+t,e.className=n.replace(/\s+/g," ").trim()}}()},666:e=>{var t=function(e){"use strict";var t,n=Object.prototype,r=n.hasOwnProperty,i="function"==typeof Symbol?Symbol:{},o=i.iterator||"@@iterator",a=i.asyncIterator||"@@asyncIterator",s=i.toStringTag||"@@toStringTag";function l(e,t,n){return Object.defineProperty(e,t,{value:n,enumerable:!0,configurable:!0,writable:!0}),e[t]}try{l({},"")}catch(e){l=function(e,t,n){return e[t]=n}}function c(e,t,n,r){var i=t&&t.prototype instanceof g?t:g,o=Object.create(i.prototype),a=new O(r||[]);return o._invoke=function(e,t,n){var r=d;return function(i,o){if(r===h)throw new Error("Generator is already running");if(r===p){if("throw"===i)throw o;return j()}for(n.method=i,n.arg=o;;){var a=n.delegate;if(a){var s=_(a,n);if(s){if(s===m)continue;return s}}if("next"===n.method)n.sent=n._sent=n.arg;else if("throw"===n.method){if(r===d)throw r=p,n.arg;n.dispatchException(n.arg)}else"return"===n.method&&n.abrupt("return",n.arg);r=h;var l=u(e,t,n);if("normal"===l.type){if(r=n.done?p:f,l.arg===m)continue;return{value:l.arg,done:n.done}}"throw"===l.type&&(r=p,n.method="throw",n.arg=l.arg)}}}(e,n,a),o}function u(e,t,n){try{return{type:"normal",arg:e.call(t,n)}}catch(e){return{type:"throw",arg:e}}}e.wrap=c;var d="suspendedStart",f="suspendedYield",h="executing",p="completed",m={};function g(){}function A(){}function y(){}var v={};v[o]=function(){return this};var b=Object.getPrototypeOf,x=b&&b(b(L([])));x&&x!==n&&r.call(x,o)&&(v=x);var w=y.prototype=g.prototype=Object.create(v);function k(e){["next","throw","return"].forEach((function(t){l(e,t,(function(e){return this._invoke(t,e)}))}))}function E(e,t){function n(i,o,a,s){var l=u(e[i],e,o);if("throw"!==l.type){var c=l.arg,d=c.value;return d&&"object"==typeof d&&r.call(d,"__await")?t.resolve(d.__await).then((function(e){n("next",e,a,s)}),(function(e){n("throw",e,a,s)})):t.resolve(d).then((function(e){c.value=e,a(c)}),(function(e){return n("throw",e,a,s)}))}s(l.arg)}var i;this._invoke=function(e,r){function o(){return new t((function(t,i){n(e,r,t,i)}))}return i=i?i.then(o,o):o()}}function _(e,n){var r=e.iterator[n.method];if(r===t){if(n.delegate=null,"throw"===n.method){if(e.iterator.return&&(n.method="return",n.arg=t,_(e,n),"throw"===n.method))return m;n.method="throw",n.arg=new TypeError("The iterator does not provide a 'throw' method")}return m}var i=u(r,e.iterator,n.arg);if("throw"===i.type)return n.method="throw",n.arg=i.arg,n.delegate=null,m;var o=i.arg;return o?o.done?(n[e.resultName]=o.value,n.next=e.nextLoc,"return"!==n.method&&(n.method="next",n.arg=t),n.delegate=null,m):o:(n.method="throw",n.arg=new TypeError("iterator result is not an object"),n.delegate=null,m)}function S(e){var t={tryLoc:e[0]};1 in e&&(t.catchLoc=e[1]),2 in e&&(t.finallyLoc=e[2],t.afterLoc=e[3]),this.tryEntries.push(t)}function C(e){var t=e.completion||{};t.type="normal",delete t.arg,e.completion=t}function O(e){this.tryEntries=[{tryLoc:"root"}],e.forEach(S,this),this.reset(!0)}function L(e){if(e){var n=e[o];if(n)return n.call(e);if("function"==typeof e.next)return e;if(!isNaN(e.length)){var i=-1,a=function n(){for(;++i<e.length;)if(r.call(e,i))return n.value=e[i],n.done=!1,n;return n.value=t,n.done=!0,n};return a.next=a}}return{next:j}}function j(){return{value:t,done:!0}}return A.prototype=w.constructor=y,y.constructor=A,A.displayName=l(y,s,"GeneratorFunction"),e.isGeneratorFunction=function(e){var t="function"==typeof e&&e.constructor;return!!t&&(t===A||"GeneratorFunction"===(t.displayName||t.name))},e.mark=function(e){return Object.setPrototypeOf?Object.setPrototypeOf(e,y):(e.__proto__=y,l(e,s,"GeneratorFunction")),e.prototype=Object.create(w),e},e.awrap=function(e){return{__await:e}},k(E.prototype),E.prototype[a]=function(){return this},e.AsyncIterator=E,e.async=function(t,n,r,i,o){void 0===o&&(o=Promise);var a=new E(c(t,n,r,i),o);return e.isGeneratorFunction(n)?a:a.next().then((function(e){return e.done?e.value:a.next()}))},k(w),l(w,s,"Generator"),w[o]=function(){return this},w.toString=function(){return"[object Generator]"},e.keys=function(e){var t=[];for(var n in e)t.push(n);return t.reverse(),function n(){for(;t.length;){var r=t.pop();if(r in e)return n.value=r,n.done=!1,n}return n.done=!0,n}},e.values=L,O.prototype={constructor:O,reset:function(e){if(this.prev=0,this.next=0,this.sent=this._sent=t,this.done=!1,this.delegate=null,this.method="next",this.arg=t,this.tryEntries.forEach(C),!e)for(var n in this)"t"===n.charAt(0)&&r.call(this,n)&&!isNaN(+n.slice(1))&&(this[n]=t)},stop:function(){this.done=!0;var e=this.tryEntries[0].completion;if("throw"===e.type)throw e.arg;return this.rval},dispatchException:function(e){if(this.done)throw e;var n=this;function i(r,i){return s.type="throw",s.arg=e,n.next=r,i&&(n.method="next",n.arg=t),!!i}for(var o=this.tryEntries.length-1;o>=0;--o){var a=this.tryEntries[o],s=a.completion;if("root"===a.tryLoc)return i("end");if(a.tryLoc<=this.prev){var l=r.call(a,"catchLoc"),c=r.call(a,"finallyLoc");if(l&&c){if(this.prev<a.catchLoc)return i(a.catchLoc,!0);if(this.prev<a.finallyLoc)return i(a.finallyLoc)}else if(l){if(this.prev<a.catchLoc)return i(a.catchLoc,!0)}else{if(!c)throw new Error("try statement without catch or finally");if(this.prev<a.finallyLoc)return i(a.finallyLoc)}}}},abrupt:function(e,t){for(var n=this.tryEntries.length-1;n>=0;--n){var i=this.tryEntries[n];if(i.tryLoc<=this.prev&&r.call(i,"finallyLoc")&&this.prev<i.finallyLoc){var o=i;break}}o&&("break"===e||"continue"===e)&&o.tryLoc<=t&&t<=o.finallyLoc&&(o=null);var a=o?o.completion:{};return a.type=e,a.arg=t,o?(this.method="next",this.next=o.finallyLoc,m):this.complete(a)},complete:function(e,t){if("throw"===e.type)throw e.arg;return"break"===e.type||"continue"===e.type?this.next=e.arg:"return"===e.type?(this.rval=this.arg=e.arg,this.method="return",this.next="end"):"normal"===e.type&&t&&(this.next=t),m},finish:function(e){for(var t=this.tryEntries.length-1;t>=0;--t){var n=this.tryEntries[t];if(n.finallyLoc===e)return this.complete(n.completion,n.afterLoc),C(n),m}},catch:function(e){for(var t=this.tryEntries.length-1;t>=0;--t){var n=this.tryEntries[t];if(n.tryLoc===e){var r=n.completion;if("throw"===r.type){var i=r.arg;C(n)}return i}}throw new Error("illegal catch attempt")},delegateYield:function(e,n,r){return this.delegate={iterator:L(e),resultName:n,nextLoc:r},"next"===this.method&&(this.arg=t),m}},e}(e.exports);try{regeneratorRuntime=t}catch(e){Function("r","regeneratorRuntime = r")(t)}},557:e=>{e.exports=function(e){var t=[].forEach,n=[].some,r=document.body,i=!0,o=" ";function a(n,r){var i=r.appendChild(function(n){var r=document.createElement("li"),i=document.createElement("a");e.listItemClass&&r.setAttribute("class",e.listItemClass);e.onClick&&(i.onclick=e.onClick);e.includeHtml&&n.childNodes.length?t.call(n.childNodes,(function(e){i.appendChild(e.cloneNode(!0))})):i.textContent=n.textContent;return i.setAttribute("href",e.basePath+"#"+n.id),i.setAttribute("class",e.linkClass+o+"node-name--"+n.nodeName+o+e.extraLinkClasses),r.appendChild(i),r}(n));if(n.children.length){var l=s(n.isCollapsed);n.children.forEach((function(e){a(e,l)})),i.appendChild(l)}}function s(t){var n=e.orderedList?"ol":"ul",r=document.createElement(n),i=e.listClass+o+e.extraListClasses;return t&&(i+=o+e.collapsibleClass,i+=o+e.isCollapsedClass),r.setAttribute("class",i),r}function l(t){var n=0;return t!==document.querySelector(e.contentSelector&&null!=t)&&(n=t.offsetTop,e.hasInnerContainers&&(n+=l(t.offsetParent))),n}function c(t){return-1!==t.className.indexOf(e.collapsibleClass)&&-1!==t.className.indexOf(e.isCollapsedClass)?(t.className=t.className.split(o+e.isCollapsedClass).join(""),c(t.parentNode.parentNode)):t}return{enableTocAnimation:function(){i=!0},disableTocAnimation:function(t){var n=t.target||t.srcElement;"string"==typeof n.className&&-1!==n.className.indexOf(e.linkClass)&&(i=!1)},render:function(e,t){var n=s(!1);t.forEach((function(e){a(e,n)}));var r=document.querySelector(e);if(null!==r)return r.firstChild&&r.removeChild(r.firstChild),0===t.length?r:r.appendChild(n)},updateToc:function(a){var s;s=e.scrollContainer&&document.querySelector(e.scrollContainer)?document.querySelector(e.scrollContainer).scrollTop:document.documentElement.scrollTop||r.scrollTop,e.positionFixedSelector&&function(){var t;t=e.scrollContainer&&document.querySelector(e.scrollContainer)?document.querySelector(e.scrollContainer).scrollTop:document.documentElement.scrollTop||r.scrollTop;var n=document.querySelector(e.positionFixedSelector);"auto"===e.fixedSidebarOffset&&(e.fixedSidebarOffset=document.querySelector(e.tocSelector).offsetTop),t>e.fixedSidebarOffset?-1===n.className.indexOf(e.positionFixedClass)&&(n.className+=o+e.positionFixedClass):n.className=n.className.split(o+e.positionFixedClass).join("")}();var u,d=a;if(i&&null!==document.querySelector(e.tocSelector)&&d.length>0){n.call(d,(function(t,n){return l(t)>s+e.headingsOffset+10?(u=d[0===n?n:n-1],!0):n===d.length-1?(u=d[d.length-1],!0):void 0}));var f=document.querySelector(e.tocSelector).querySelectorAll("."+e.linkClass);t.call(f,(function(t){t.className=t.className.split(o+e.activeLinkClass).join("")}));var h=document.querySelector(e.tocSelector).querySelectorAll("."+e.listItemClass);t.call(h,(function(t){t.className=t.className.split(o+e.activeListItemClass).join("")}));var p=document.querySelector(e.tocSelector).querySelector("."+e.linkClass+".node-name--"+u.nodeName+'[href="'+e.basePath+"#"+u.id.replace(/([ #;&,.+*~':"!^$[\]()=>|/@])/g,"\\$1")+'"]');-1===p.className.indexOf(e.activeLinkClass)&&(p.className+=o+e.activeLinkClass);var m=p.parentNode;m&&-1===m.className.indexOf(e.activeListItemClass)&&(m.className+=o+e.activeListItemClass);var g=document.querySelector(e.tocSelector).querySelectorAll("."+e.listClass+"."+e.collapsibleClass);t.call(g,(function(t){-1===t.className.indexOf(e.isCollapsedClass)&&(t.className+=o+e.isCollapsedClass)})),p.nextSibling&&-1!==p.nextSibling.className.indexOf(e.isCollapsedClass)&&(p.nextSibling.className=p.nextSibling.className.split(o+e.isCollapsedClass).join("")),c(p.parentNode.parentNode)}}}}},340:e=>{e.exports={tocSelector:".js-toc",contentSelector:".js-toc-content",headingSelector:"h1, h2, h3",ignoreSelector:".js-toc-ignore",hasInnerContainers:!1,linkClass:"toc-link",extraLinkClasses:"",activeLinkClass:"is-active-link",listClass:"toc-list",extraListClasses:"",isCollapsedClass:"is-collapsed",collapsibleClass:"is-collapsible",listItemClass:"toc-list-item",activeListItemClass:"is-active-li",collapseDepth:0,scrollSmooth:!0,scrollSmoothDuration:420,scrollSmoothOffset:0,scrollEndCallback:function(e){},headingsOffset:1,throttleTimeout:50,positionFixedSelector:null,positionFixedClass:"is-position-fixed",fixedSidebarOffset:"auto",includeHtml:!1,onClick:function(e){},orderedList:!0,scrollContainer:null,skipRendering:!1,headingLabelCallback:!1,ignoreHiddenElements:!1,headingObjectCallback:null,basePath:"",disableTocScrollSync:!1}},866:function(e,t,n){var r,i,o,a;a=void 0!==n.g?n.g:this.window||this.global,i=[],r=function(e){"use strict";var t,r,i,o=n(340),a={},s={},l=n(557),c=n(620),u=n(693),d=!!(e&&e.document&&e.document.querySelector&&e.addEventListener);if("undefined"!=typeof window||d){var f=Object.prototype.hasOwnProperty;return s.destroy=function(){if(!a.skipRendering)try{document.querySelector(a.tocSelector).innerHTML=""}catch(e){console.warn("Element not found: "+a.tocSelector)}a.scrollContainer&&document.querySelector(a.scrollContainer)?(document.querySelector(a.scrollContainer).removeEventListener("scroll",this._scrollListener,!1),document.querySelector(a.scrollContainer).removeEventListener("resize",this._scrollListener,!1),t&&document.querySelector(a.scrollContainer).removeEventListener("click",this._clickListener,!1)):(document.removeEventListener("scroll",this._scrollListener,!1),document.removeEventListener("resize",this._scrollListener,!1),t&&document.removeEventListener("click",this._clickListener,!1))},s.init=function(e){if(d&&(a=h(o,e||{}),this.options=a,this.state={},a.scrollSmooth&&(a.duration=a.scrollSmoothDuration,a.offset=a.scrollSmoothOffset,s.scrollSmooth=n(764).initSmoothScrolling(a)),t=l(a),r=c(a),this._buildHtml=t,this._parseContent=r,s.destroy(),null!==(i=r.selectHeadings(a.contentSelector,a.headingSelector)))){var f=r.nestHeadingsArray(i).nest;a.skipRendering||t.render(a.tocSelector,f),this._scrollListener=p((function(e){t.updateToc(i),!a.disableTocScrollSync&&u(a);var n=e&&e.target&&e.target.scrollingElement&&0===e.target.scrollingElement.scrollTop;(e&&(0===e.eventPhase||null===e.currentTarget)||n)&&(t.updateToc(i),a.scrollEndCallback&&a.scrollEndCallback(e))}),a.throttleTimeout),this._scrollListener(),a.scrollContainer&&document.querySelector(a.scrollContainer)?(document.querySelector(a.scrollContainer).addEventListener("scroll",this._scrollListener,!1),document.querySelector(a.scrollContainer).addEventListener("resize",this._scrollListener,!1)):(document.addEventListener("scroll",this._scrollListener,!1),document.addEventListener("resize",this._scrollListener,!1));var m=null;return this._clickListener=p((function(e){a.scrollSmooth&&t.disableTocAnimation(e),t.updateToc(i),m&&clearTimeout(m),m=setTimeout((function(){t.enableTocAnimation()}),a.scrollSmoothDuration)}),a.throttleTimeout),a.scrollContainer&&document.querySelector(a.scrollContainer)?document.querySelector(a.scrollContainer).addEventListener("click",this._clickListener,!1):document.addEventListener("click",this._clickListener,!1),this}},s.refresh=function(e){s.destroy(),s.init(e||this.options)},e.tocbot=s,s}function h(){for(var e={},t=0;t<arguments.length;t++){var n=arguments[t];for(var r in n)f.call(n,r)&&(e[r]=n[r])}return e}function p(e,t,n){var r,i;return t||(t=250),function(){var o=n||this,a=+new Date,s=arguments;r&&a<r+t?(clearTimeout(i),i=setTimeout((function(){r=a,e.apply(o,s)}),t)):(r=a,e.apply(o,s))}}}(a),void 0===(o="function"==typeof r?r.apply(t,i):r)||(e.exports=o)},620:e=>{e.exports=function(e){var t=[].reduce;function n(e){return e[e.length-1]}function r(e){return+e.nodeName.split("H").join("")}function i(t){if(!(t instanceof window.HTMLElement))return t;if(e.ignoreHiddenElements&&(!t.offsetHeight||!t.offsetParent))return null;var n={id:t.id,children:[],nodeName:t.nodeName,headingLevel:r(t),textContent:e.headingLabelCallback?String(e.headingLabelCallback(t.textContent)):t.textContent.trim()};return e.includeHtml&&(n.childNodes=t.childNodes),e.headingObjectCallback?e.headingObjectCallback(n,t):n}return{nestHeadingsArray:function(r){return t.call(r,(function(t,r){var o=i(r);return o&&function(t,r){for(var o=i(t),a=o.headingLevel,s=r,l=n(s),c=a-(l?l.headingLevel:0);c>0;)(l=n(s))&&void 0!==l.children&&(s=l.children),c--;a>=e.collapseDepth&&(o.isCollapsed=!0),s.push(o)}(o,t.nest),t}),{nest:[]})},selectHeadings:function(t,n){var r=n;e.ignoreSelector&&(r=n.split(",").map((function(t){return t.trim()+":not("+e.ignoreSelector+")"})));try{return document.querySelector(t).querySelectorAll(r)}catch(e){return console.warn("Element not found: "+t),null}}}}},764:(e,t)=>{t.initSmoothScrolling=function(e){document.documentElement.style;var t=e.duration,n=e.offset,r=location.hash?i(location.href):location.href;function i(e){return e.slice(0,e.lastIndexOf("#"))}document.body.addEventListener("click",(function(o){var a;"a"!==(a=o.target).tagName.toLowerCase()||!(a.hash.length>0||"#"===a.href.charAt(a.href.length-1))||i(a.href)!==r&&i(a.href)+"#"!==r||o.target.className.indexOf("no-smooth-scroll")>-1||"#"===o.target.href.charAt(o.target.href.length-2)&&"!"===o.target.href.charAt(o.target.href.length-1)||-1===o.target.className.indexOf(e.linkClass)||function(e,t){var n,r,i=window.pageYOffset,o={duration:t.duration,offset:t.offset||0,callback:t.callback,easing:t.easing||d},a=document.querySelector('[id="'+decodeURI(e).split("#").join("")+'"]'),s="string"==typeof e?o.offset+(e?a&&a.getBoundingClientRect().top||0:-(document.documentElement.scrollTop||document.body.scrollTop)):e,l="function"==typeof o.duration?o.duration(s):o.duration;function c(e){r=e-n,window.scrollTo(0,o.easing(r,i,s,l)),r<l?requestAnimationFrame(c):u()}function u(){window.scrollTo(0,i+s),"function"==typeof o.callback&&o.callback()}function d(e,t,n,r){return(e/=r/2)<1?n/2*e*e+t:-n/2*(--e*(e-2)-1)+t}requestAnimationFrame((function(e){n=e,c(e)}))}(o.target.hash,{duration:t,offset:n,callback:function(){var e,t;e=o.target.hash,(t=document.getElementById(e.substring(1)))&&(/^(?:a|select|input|button|textarea)$/i.test(t.tagName)||(t.tabIndex=-1),t.focus())}})}),!1)}},693:e=>{e.exports=function(e){var t=document.querySelector(e.tocSelector);if(t&&t.scrollHeight>t.clientHeight){var n=t.querySelector("."+e.activeListItemClass);n&&(t.scrollTop=n.offsetTop)}}}},t={};function n(r){if(t[r])return t[r].exports;var i=t[r]={exports:{}};return e[r].call(i.exports,i,i.exports,n),i.exports}n.m=e,n.x=e=>{},n.n=e=>{var t=e&&e.__esModule?()=>e.default:()=>e;return n.d(t,{a:t}),t},n.d=(e,t)=>{for(var r in t)n.o(t,r)&&!n.o(e,r)&&Object.defineProperty(e,r,{enumerable:!0,get:t[r]})},n.g=function(){if("object"==typeof globalThis)return globalThis;try{return this||new Function("return this")()}catch(e){if("object"==typeof window)return window}}(),n.o=(e,t)=>Object.prototype.hasOwnProperty.call(e,t),(()=>{var e={773:0},t=[[383],[194]],r=e=>{},i=(i,o)=>{for(var a,s,[l,c,u,d]=o,f=0,h=[];f<l.length;f++)s=l[f],n.o(e,s)&&e[s]&&h.push(e[s][0]),e[s]=0;for(a in c)n.o(c,a)&&(n.m[a]=c[a]);for(u&&u(n),i&&i(o);h.length;)h.shift()();return d&&t.push.apply(t,d),r()},o=self.webpackChunk=self.webpackChunk||[];function a(){for(var r,i=0;i<t.length;i++){for(var o=t[i],a=!0,s=1;s<o.length;s++){var l=o[s];0!==e[l]&&(a=!1)}a&&(t.splice(i--,1),r=n(n.s=o[0]))}return 0===t.length&&(n.x(),n.x=e=>{}),r}o.forEach(i.bind(null,0)),o.push=i.bind(null,o.push.bind(o));var s=n.x;n.x=()=>(n.x=s||(e=>{}),(r=a)())})(),n.x()})();
+/******/ (() => { // webpackBootstrap
+/******/ 	var __webpack_modules__ = ({
+
+/***/ "./node_modules/@babel/runtime/regenerator/index.js":
+/*!**********************************************************!*\
+  !*** ./node_modules/@babel/runtime/regenerator/index.js ***!
+  \**********************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+module.exports = __webpack_require__(/*! regenerator-runtime */ "./node_modules/regenerator-runtime/runtime.js");
+
+
+/***/ }),
+
+/***/ "./node_modules/alpinejs/dist/alpine.js":
+/*!**********************************************!*\
+  !*** ./node_modules/alpinejs/dist/alpine.js ***!
+  \**********************************************/
+/***/ (function(module) {
+
+(function (global, factory) {
+   true ? module.exports = factory() :
+  0;
+}(this, (function () { 'use strict';
+
+  function _defineProperty(obj, key, value) {
+    if (key in obj) {
+      Object.defineProperty(obj, key, {
+        value: value,
+        enumerable: true,
+        configurable: true,
+        writable: true
+      });
+    } else {
+      obj[key] = value;
+    }
+
+    return obj;
+  }
+
+  function ownKeys(object, enumerableOnly) {
+    var keys = Object.keys(object);
+
+    if (Object.getOwnPropertySymbols) {
+      var symbols = Object.getOwnPropertySymbols(object);
+      if (enumerableOnly) symbols = symbols.filter(function (sym) {
+        return Object.getOwnPropertyDescriptor(object, sym).enumerable;
+      });
+      keys.push.apply(keys, symbols);
+    }
+
+    return keys;
+  }
+
+  function _objectSpread2(target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i] != null ? arguments[i] : {};
+
+      if (i % 2) {
+        ownKeys(Object(source), true).forEach(function (key) {
+          _defineProperty(target, key, source[key]);
+        });
+      } else if (Object.getOwnPropertyDescriptors) {
+        Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));
+      } else {
+        ownKeys(Object(source)).forEach(function (key) {
+          Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
+        });
+      }
+    }
+
+    return target;
+  }
+
+  // Thanks @stimulus:
+  // https://github.com/stimulusjs/stimulus/blob/master/packages/%40stimulus/core/src/application.ts
+  function domReady() {
+    return new Promise(resolve => {
+      if (document.readyState == "loading") {
+        document.addEventListener("DOMContentLoaded", resolve);
+      } else {
+        resolve();
+      }
+    });
+  }
+  function arrayUnique(array) {
+    return Array.from(new Set(array));
+  }
+  function isTesting() {
+    return navigator.userAgent.includes("Node.js") || navigator.userAgent.includes("jsdom");
+  }
+  function checkedAttrLooseCompare(valueA, valueB) {
+    return valueA == valueB;
+  }
+  function warnIfMalformedTemplate(el, directive) {
+    if (el.tagName.toLowerCase() !== 'template') {
+      console.warn(`Alpine: [${directive}] directive should only be added to <template> tags. See https://github.com/alpinejs/alpine#${directive}`);
+    } else if (el.content.childElementCount !== 1) {
+      console.warn(`Alpine: <template> tag with [${directive}] encountered with multiple element roots. Make sure <template> only has a single child element.`);
+    }
+  }
+  function kebabCase(subject) {
+    return subject.replace(/([a-z])([A-Z])/g, '$1-$2').replace(/[_\s]/, '-').toLowerCase();
+  }
+  function camelCase(subject) {
+    return subject.toLowerCase().replace(/-(\w)/g, (match, char) => char.toUpperCase());
+  }
+  function walk(el, callback) {
+    if (callback(el) === false) return;
+    let node = el.firstElementChild;
+
+    while (node) {
+      walk(node, callback);
+      node = node.nextElementSibling;
+    }
+  }
+  function debounce(func, wait) {
+    var timeout;
+    return function () {
+      var context = this,
+          args = arguments;
+
+      var later = function later() {
+        timeout = null;
+        func.apply(context, args);
+      };
+
+      clearTimeout(timeout);
+      timeout = setTimeout(later, wait);
+    };
+  }
+
+  const handleError = (el, expression, error) => {
+    console.warn(`Alpine Error: "${error}"\n\nExpression: "${expression}"\nElement:`, el);
+
+    if (!isTesting()) {
+      throw error;
+    }
+  };
+
+  function tryCatch(cb, {
+    el,
+    expression
+  }) {
+    try {
+      const value = cb();
+      return value instanceof Promise ? value.catch(e => handleError(el, expression, e)) : value;
+    } catch (e) {
+      handleError(el, expression, e);
+    }
+  }
+
+  function saferEval(el, expression, dataContext, additionalHelperVariables = {}) {
+    return tryCatch(() => {
+      if (typeof expression === 'function') {
+        return expression.call(dataContext);
+      }
+
+      return new Function(['$data', ...Object.keys(additionalHelperVariables)], `var __alpine_result; with($data) { __alpine_result = ${expression} }; return __alpine_result`)(dataContext, ...Object.values(additionalHelperVariables));
+    }, {
+      el,
+      expression
+    });
+  }
+  function saferEvalNoReturn(el, expression, dataContext, additionalHelperVariables = {}) {
+    return tryCatch(() => {
+      if (typeof expression === 'function') {
+        return Promise.resolve(expression.call(dataContext, additionalHelperVariables['$event']));
+      }
+
+      let AsyncFunction = Function;
+      /* MODERN-ONLY:START */
+
+      AsyncFunction = Object.getPrototypeOf(async function () {}).constructor;
+      /* MODERN-ONLY:END */
+      // For the cases when users pass only a function reference to the caller: `x-on:click="foo"`
+      // Where "foo" is a function. Also, we'll pass the function the event instance when we call it.
+
+      if (Object.keys(dataContext).includes(expression)) {
+        let methodReference = new Function(['dataContext', ...Object.keys(additionalHelperVariables)], `with(dataContext) { return ${expression} }`)(dataContext, ...Object.values(additionalHelperVariables));
+
+        if (typeof methodReference === 'function') {
+          return Promise.resolve(methodReference.call(dataContext, additionalHelperVariables['$event']));
+        } else {
+          return Promise.resolve();
+        }
+      }
+
+      return Promise.resolve(new AsyncFunction(['dataContext', ...Object.keys(additionalHelperVariables)], `with(dataContext) { ${expression} }`)(dataContext, ...Object.values(additionalHelperVariables)));
+    }, {
+      el,
+      expression
+    });
+  }
+  const xAttrRE = /^x-(on|bind|data|text|html|model|if|for|show|cloak|transition|ref|spread)\b/;
+  function isXAttr(attr) {
+    const name = replaceAtAndColonWithStandardSyntax(attr.name);
+    return xAttrRE.test(name);
+  }
+  function getXAttrs(el, component, type) {
+    let directives = Array.from(el.attributes).filter(isXAttr).map(parseHtmlAttribute); // Get an object of directives from x-spread.
+
+    let spreadDirective = directives.filter(directive => directive.type === 'spread')[0];
+
+    if (spreadDirective) {
+      let spreadObject = saferEval(el, spreadDirective.expression, component.$data); // Add x-spread directives to the pile of existing directives.
+
+      directives = directives.concat(Object.entries(spreadObject).map(([name, value]) => parseHtmlAttribute({
+        name,
+        value
+      })));
+    }
+
+    if (type) return directives.filter(i => i.type === type);
+    return sortDirectives(directives);
+  }
+
+  function sortDirectives(directives) {
+    let directiveOrder = ['bind', 'model', 'show', 'catch-all'];
+    return directives.sort((a, b) => {
+      let typeA = directiveOrder.indexOf(a.type) === -1 ? 'catch-all' : a.type;
+      let typeB = directiveOrder.indexOf(b.type) === -1 ? 'catch-all' : b.type;
+      return directiveOrder.indexOf(typeA) - directiveOrder.indexOf(typeB);
+    });
+  }
+
+  function parseHtmlAttribute({
+    name,
+    value
+  }) {
+    const normalizedName = replaceAtAndColonWithStandardSyntax(name);
+    const typeMatch = normalizedName.match(xAttrRE);
+    const valueMatch = normalizedName.match(/:([a-zA-Z0-9\-:]+)/);
+    const modifiers = normalizedName.match(/\.[^.\]]+(?=[^\]]*$)/g) || [];
+    return {
+      type: typeMatch ? typeMatch[1] : null,
+      value: valueMatch ? valueMatch[1] : null,
+      modifiers: modifiers.map(i => i.replace('.', '')),
+      expression: value
+    };
+  }
+  function isBooleanAttr(attrName) {
+    // As per HTML spec table https://html.spec.whatwg.org/multipage/indices.html#attributes-3:boolean-attribute
+    // Array roughly ordered by estimated usage
+    const booleanAttributes = ['disabled', 'checked', 'required', 'readonly', 'hidden', 'open', 'selected', 'autofocus', 'itemscope', 'multiple', 'novalidate', 'allowfullscreen', 'allowpaymentrequest', 'formnovalidate', 'autoplay', 'controls', 'loop', 'muted', 'playsinline', 'default', 'ismap', 'reversed', 'async', 'defer', 'nomodule'];
+    return booleanAttributes.includes(attrName);
+  }
+  function replaceAtAndColonWithStandardSyntax(name) {
+    if (name.startsWith('@')) {
+      return name.replace('@', 'x-on:');
+    } else if (name.startsWith(':')) {
+      return name.replace(':', 'x-bind:');
+    }
+
+    return name;
+  }
+  function convertClassStringToArray(classList, filterFn = Boolean) {
+    return classList.split(' ').filter(filterFn);
+  }
+  const TRANSITION_TYPE_IN = 'in';
+  const TRANSITION_TYPE_OUT = 'out';
+  const TRANSITION_CANCELLED = 'cancelled';
+  function transitionIn(el, show, reject, component, forceSkip = false) {
+    // We don't want to transition on the initial page load.
+    if (forceSkip) return show();
+
+    if (el.__x_transition && el.__x_transition.type === TRANSITION_TYPE_IN) {
+      // there is already a similar transition going on, this was probably triggered by
+      // a change in a different property, let's just leave the previous one doing its job
+      return;
+    }
+
+    const attrs = getXAttrs(el, component, 'transition');
+    const showAttr = getXAttrs(el, component, 'show')[0]; // If this is triggered by a x-show.transition.
+
+    if (showAttr && showAttr.modifiers.includes('transition')) {
+      let modifiers = showAttr.modifiers; // If x-show.transition.out, we'll skip the "in" transition.
+
+      if (modifiers.includes('out') && !modifiers.includes('in')) return show();
+      const settingBothSidesOfTransition = modifiers.includes('in') && modifiers.includes('out'); // If x-show.transition.in...out... only use "in" related modifiers for this transition.
+
+      modifiers = settingBothSidesOfTransition ? modifiers.filter((i, index) => index < modifiers.indexOf('out')) : modifiers;
+      transitionHelperIn(el, modifiers, show, reject); // Otherwise, we can assume x-transition:enter.
+    } else if (attrs.some(attr => ['enter', 'enter-start', 'enter-end'].includes(attr.value))) {
+      transitionClassesIn(el, component, attrs, show, reject);
+    } else {
+      // If neither, just show that damn thing.
+      show();
+    }
+  }
+  function transitionOut(el, hide, reject, component, forceSkip = false) {
+    // We don't want to transition on the initial page load.
+    if (forceSkip) return hide();
+
+    if (el.__x_transition && el.__x_transition.type === TRANSITION_TYPE_OUT) {
+      // there is already a similar transition going on, this was probably triggered by
+      // a change in a different property, let's just leave the previous one doing its job
+      return;
+    }
+
+    const attrs = getXAttrs(el, component, 'transition');
+    const showAttr = getXAttrs(el, component, 'show')[0];
+
+    if (showAttr && showAttr.modifiers.includes('transition')) {
+      let modifiers = showAttr.modifiers;
+      if (modifiers.includes('in') && !modifiers.includes('out')) return hide();
+      const settingBothSidesOfTransition = modifiers.includes('in') && modifiers.includes('out');
+      modifiers = settingBothSidesOfTransition ? modifiers.filter((i, index) => index > modifiers.indexOf('out')) : modifiers;
+      transitionHelperOut(el, modifiers, settingBothSidesOfTransition, hide, reject);
+    } else if (attrs.some(attr => ['leave', 'leave-start', 'leave-end'].includes(attr.value))) {
+      transitionClassesOut(el, component, attrs, hide, reject);
+    } else {
+      hide();
+    }
+  }
+  function transitionHelperIn(el, modifiers, showCallback, reject) {
+    // Default values inspired by: https://material.io/design/motion/speed.html#duration
+    const styleValues = {
+      duration: modifierValue(modifiers, 'duration', 150),
+      origin: modifierValue(modifiers, 'origin', 'center'),
+      first: {
+        opacity: 0,
+        scale: modifierValue(modifiers, 'scale', 95)
+      },
+      second: {
+        opacity: 1,
+        scale: 100
+      }
+    };
+    transitionHelper(el, modifiers, showCallback, () => {}, reject, styleValues, TRANSITION_TYPE_IN);
+  }
+  function transitionHelperOut(el, modifiers, settingBothSidesOfTransition, hideCallback, reject) {
+    // Make the "out" transition .5x slower than the "in". (Visually better)
+    // HOWEVER, if they explicitly set a duration for the "out" transition,
+    // use that.
+    const duration = settingBothSidesOfTransition ? modifierValue(modifiers, 'duration', 150) : modifierValue(modifiers, 'duration', 150) / 2;
+    const styleValues = {
+      duration: duration,
+      origin: modifierValue(modifiers, 'origin', 'center'),
+      first: {
+        opacity: 1,
+        scale: 100
+      },
+      second: {
+        opacity: 0,
+        scale: modifierValue(modifiers, 'scale', 95)
+      }
+    };
+    transitionHelper(el, modifiers, () => {}, hideCallback, reject, styleValues, TRANSITION_TYPE_OUT);
+  }
+
+  function modifierValue(modifiers, key, fallback) {
+    // If the modifier isn't present, use the default.
+    if (modifiers.indexOf(key) === -1) return fallback; // If it IS present, grab the value after it: x-show.transition.duration.500ms
+
+    const rawValue = modifiers[modifiers.indexOf(key) + 1];
+    if (!rawValue) return fallback;
+
+    if (key === 'scale') {
+      // Check if the very next value is NOT a number and return the fallback.
+      // If x-show.transition.scale, we'll use the default scale value.
+      // That is how a user opts out of the opacity transition.
+      if (!isNumeric(rawValue)) return fallback;
+    }
+
+    if (key === 'duration') {
+      // Support x-show.transition.duration.500ms && duration.500
+      let match = rawValue.match(/([0-9]+)ms/);
+      if (match) return match[1];
+    }
+
+    if (key === 'origin') {
+      // Support chaining origin directions: x-show.transition.top.right
+      if (['top', 'right', 'left', 'center', 'bottom'].includes(modifiers[modifiers.indexOf(key) + 2])) {
+        return [rawValue, modifiers[modifiers.indexOf(key) + 2]].join(' ');
+      }
+    }
+
+    return rawValue;
+  }
+
+  function transitionHelper(el, modifiers, hook1, hook2, reject, styleValues, type) {
+    // clear the previous transition if exists to avoid caching the wrong styles
+    if (el.__x_transition) {
+      el.__x_transition.cancel && el.__x_transition.cancel();
+    } // If the user set these style values, we'll put them back when we're done with them.
+
+
+    const opacityCache = el.style.opacity;
+    const transformCache = el.style.transform;
+    const transformOriginCache = el.style.transformOrigin; // If no modifiers are present: x-show.transition, we'll default to both opacity and scale.
+
+    const noModifiers = !modifiers.includes('opacity') && !modifiers.includes('scale');
+    const transitionOpacity = noModifiers || modifiers.includes('opacity');
+    const transitionScale = noModifiers || modifiers.includes('scale'); // These are the explicit stages of a transition (same stages for in and for out).
+    // This way you can get a birds eye view of the hooks, and the differences
+    // between them.
+
+    const stages = {
+      start() {
+        if (transitionOpacity) el.style.opacity = styleValues.first.opacity;
+        if (transitionScale) el.style.transform = `scale(${styleValues.first.scale / 100})`;
+      },
+
+      during() {
+        if (transitionScale) el.style.transformOrigin = styleValues.origin;
+        el.style.transitionProperty = [transitionOpacity ? `opacity` : ``, transitionScale ? `transform` : ``].join(' ').trim();
+        el.style.transitionDuration = `${styleValues.duration / 1000}s`;
+        el.style.transitionTimingFunction = `cubic-bezier(0.4, 0.0, 0.2, 1)`;
+      },
+
+      show() {
+        hook1();
+      },
+
+      end() {
+        if (transitionOpacity) el.style.opacity = styleValues.second.opacity;
+        if (transitionScale) el.style.transform = `scale(${styleValues.second.scale / 100})`;
+      },
+
+      hide() {
+        hook2();
+      },
+
+      cleanup() {
+        if (transitionOpacity) el.style.opacity = opacityCache;
+        if (transitionScale) el.style.transform = transformCache;
+        if (transitionScale) el.style.transformOrigin = transformOriginCache;
+        el.style.transitionProperty = null;
+        el.style.transitionDuration = null;
+        el.style.transitionTimingFunction = null;
+      }
+
+    };
+    transition(el, stages, type, reject);
+  }
+
+  const ensureStringExpression = (expression, el, component) => {
+    return typeof expression === 'function' ? component.evaluateReturnExpression(el, expression) : expression;
+  };
+
+  function transitionClassesIn(el, component, directives, showCallback, reject) {
+    const enter = convertClassStringToArray(ensureStringExpression((directives.find(i => i.value === 'enter') || {
+      expression: ''
+    }).expression, el, component));
+    const enterStart = convertClassStringToArray(ensureStringExpression((directives.find(i => i.value === 'enter-start') || {
+      expression: ''
+    }).expression, el, component));
+    const enterEnd = convertClassStringToArray(ensureStringExpression((directives.find(i => i.value === 'enter-end') || {
+      expression: ''
+    }).expression, el, component));
+    transitionClasses(el, enter, enterStart, enterEnd, showCallback, () => {}, TRANSITION_TYPE_IN, reject);
+  }
+  function transitionClassesOut(el, component, directives, hideCallback, reject) {
+    const leave = convertClassStringToArray(ensureStringExpression((directives.find(i => i.value === 'leave') || {
+      expression: ''
+    }).expression, el, component));
+    const leaveStart = convertClassStringToArray(ensureStringExpression((directives.find(i => i.value === 'leave-start') || {
+      expression: ''
+    }).expression, el, component));
+    const leaveEnd = convertClassStringToArray(ensureStringExpression((directives.find(i => i.value === 'leave-end') || {
+      expression: ''
+    }).expression, el, component));
+    transitionClasses(el, leave, leaveStart, leaveEnd, () => {}, hideCallback, TRANSITION_TYPE_OUT, reject);
+  }
+  function transitionClasses(el, classesDuring, classesStart, classesEnd, hook1, hook2, type, reject) {
+    // clear the previous transition if exists to avoid caching the wrong classes
+    if (el.__x_transition) {
+      el.__x_transition.cancel && el.__x_transition.cancel();
+    }
+
+    const originalClasses = el.__x_original_classes || [];
+    const stages = {
+      start() {
+        el.classList.add(...classesStart);
+      },
+
+      during() {
+        el.classList.add(...classesDuring);
+      },
+
+      show() {
+        hook1();
+      },
+
+      end() {
+        // Don't remove classes that were in the original class attribute.
+        el.classList.remove(...classesStart.filter(i => !originalClasses.includes(i)));
+        el.classList.add(...classesEnd);
+      },
+
+      hide() {
+        hook2();
+      },
+
+      cleanup() {
+        el.classList.remove(...classesDuring.filter(i => !originalClasses.includes(i)));
+        el.classList.remove(...classesEnd.filter(i => !originalClasses.includes(i)));
+      }
+
+    };
+    transition(el, stages, type, reject);
+  }
+  function transition(el, stages, type, reject) {
+    const finish = once(() => {
+      stages.hide(); // Adding an "isConnected" check, in case the callback
+      // removed the element from the DOM.
+
+      if (el.isConnected) {
+        stages.cleanup();
+      }
+
+      delete el.__x_transition;
+    });
+    el.__x_transition = {
+      // Set transition type so we can avoid clearing transition if the direction is the same
+      type: type,
+      // create a callback for the last stages of the transition so we can call it
+      // from different point and early terminate it. Once will ensure that function
+      // is only called one time.
+      cancel: once(() => {
+        reject(TRANSITION_CANCELLED);
+        finish();
+      }),
+      finish,
+      // This store the next animation frame so we can cancel it
+      nextFrame: null
+    };
+    stages.start();
+    stages.during();
+    el.__x_transition.nextFrame = requestAnimationFrame(() => {
+      // Note: Safari's transitionDuration property will list out comma separated transition durations
+      // for every single transition property. Let's grab the first one and call it a day.
+      let duration = Number(getComputedStyle(el).transitionDuration.replace(/,.*/, '').replace('s', '')) * 1000;
+
+      if (duration === 0) {
+        duration = Number(getComputedStyle(el).animationDuration.replace('s', '')) * 1000;
+      }
+
+      stages.show();
+      el.__x_transition.nextFrame = requestAnimationFrame(() => {
+        stages.end();
+        setTimeout(el.__x_transition.finish, duration);
+      });
+    });
+  }
+  function isNumeric(subject) {
+    return !Array.isArray(subject) && !isNaN(subject);
+  } // Thanks @vuejs
+  // https://github.com/vuejs/vue/blob/4de4649d9637262a9b007720b59f80ac72a5620c/src/shared/util.js
+
+  function once(callback) {
+    let called = false;
+    return function () {
+      if (!called) {
+        called = true;
+        callback.apply(this, arguments);
+      }
+    };
+  }
+
+  function handleForDirective(component, templateEl, expression, initialUpdate, extraVars) {
+    warnIfMalformedTemplate(templateEl, 'x-for');
+    let iteratorNames = typeof expression === 'function' ? parseForExpression(component.evaluateReturnExpression(templateEl, expression)) : parseForExpression(expression);
+    let items = evaluateItemsAndReturnEmptyIfXIfIsPresentAndFalseOnElement(component, templateEl, iteratorNames, extraVars); // As we walk the array, we'll also walk the DOM (updating/creating as we go).
+
+    let currentEl = templateEl;
+    items.forEach((item, index) => {
+      let iterationScopeVariables = getIterationScopeVariables(iteratorNames, item, index, items, extraVars());
+      let currentKey = generateKeyForIteration(component, templateEl, index, iterationScopeVariables);
+      let nextEl = lookAheadForMatchingKeyedElementAndMoveItIfFound(currentEl.nextElementSibling, currentKey); // If we haven't found a matching key, insert the element at the current position.
+
+      if (!nextEl) {
+        nextEl = addElementInLoopAfterCurrentEl(templateEl, currentEl); // And transition it in if it's not the first page load.
+
+        transitionIn(nextEl, () => {}, () => {}, component, initialUpdate);
+        nextEl.__x_for = iterationScopeVariables;
+        component.initializeElements(nextEl, () => nextEl.__x_for); // Otherwise update the element we found.
+      } else {
+        // Temporarily remove the key indicator to allow the normal "updateElements" to work.
+        delete nextEl.__x_for_key;
+        nextEl.__x_for = iterationScopeVariables;
+        component.updateElements(nextEl, () => nextEl.__x_for);
+      }
+
+      currentEl = nextEl;
+      currentEl.__x_for_key = currentKey;
+    });
+    removeAnyLeftOverElementsFromPreviousUpdate(currentEl, component);
+  } // This was taken from VueJS 2.* core. Thanks Vue!
+
+  function parseForExpression(expression) {
+    let forIteratorRE = /,([^,\}\]]*)(?:,([^,\}\]]*))?$/;
+    let stripParensRE = /^\(|\)$/g;
+    let forAliasRE = /([\s\S]*?)\s+(?:in|of)\s+([\s\S]*)/;
+    let inMatch = expression.match(forAliasRE);
+    if (!inMatch) return;
+    let res = {};
+    res.items = inMatch[2].trim();
+    let item = inMatch[1].trim().replace(stripParensRE, '');
+    let iteratorMatch = item.match(forIteratorRE);
+
+    if (iteratorMatch) {
+      res.item = item.replace(forIteratorRE, '').trim();
+      res.index = iteratorMatch[1].trim();
+
+      if (iteratorMatch[2]) {
+        res.collection = iteratorMatch[2].trim();
+      }
+    } else {
+      res.item = item;
+    }
+
+    return res;
+  }
+
+  function getIterationScopeVariables(iteratorNames, item, index, items, extraVars) {
+    // We must create a new object, so each iteration has a new scope
+    let scopeVariables = extraVars ? _objectSpread2({}, extraVars) : {};
+    scopeVariables[iteratorNames.item] = item;
+    if (iteratorNames.index) scopeVariables[iteratorNames.index] = index;
+    if (iteratorNames.collection) scopeVariables[iteratorNames.collection] = items;
+    return scopeVariables;
+  }
+
+  function generateKeyForIteration(component, el, index, iterationScopeVariables) {
+    let bindKeyAttribute = getXAttrs(el, component, 'bind').filter(attr => attr.value === 'key')[0]; // If the dev hasn't specified a key, just return the index of the iteration.
+
+    if (!bindKeyAttribute) return index;
+    return component.evaluateReturnExpression(el, bindKeyAttribute.expression, () => iterationScopeVariables);
+  }
+
+  function evaluateItemsAndReturnEmptyIfXIfIsPresentAndFalseOnElement(component, el, iteratorNames, extraVars) {
+    let ifAttribute = getXAttrs(el, component, 'if')[0];
+
+    if (ifAttribute && !component.evaluateReturnExpression(el, ifAttribute.expression)) {
+      return [];
+    }
+
+    let items = component.evaluateReturnExpression(el, iteratorNames.items, extraVars); // This adds support for the `i in n` syntax.
+
+    if (isNumeric(items) && items > 0) {
+      items = Array.from(Array(items).keys(), i => i + 1);
+    }
+
+    return items;
+  }
+
+  function addElementInLoopAfterCurrentEl(templateEl, currentEl) {
+    let clone = document.importNode(templateEl.content, true);
+    currentEl.parentElement.insertBefore(clone, currentEl.nextElementSibling);
+    return currentEl.nextElementSibling;
+  }
+
+  function lookAheadForMatchingKeyedElementAndMoveItIfFound(nextEl, currentKey) {
+    if (!nextEl) return; // If we are already past the x-for generated elements, we don't need to look ahead.
+
+    if (nextEl.__x_for_key === undefined) return; // If the the key's DO match, no need to look ahead.
+
+    if (nextEl.__x_for_key === currentKey) return nextEl; // If they don't, we'll look ahead for a match.
+    // If we find it, we'll move it to the current position in the loop.
+
+    let tmpNextEl = nextEl;
+
+    while (tmpNextEl) {
+      if (tmpNextEl.__x_for_key === currentKey) {
+        return tmpNextEl.parentElement.insertBefore(tmpNextEl, nextEl);
+      }
+
+      tmpNextEl = tmpNextEl.nextElementSibling && tmpNextEl.nextElementSibling.__x_for_key !== undefined ? tmpNextEl.nextElementSibling : false;
+    }
+  }
+
+  function removeAnyLeftOverElementsFromPreviousUpdate(currentEl, component) {
+    var nextElementFromOldLoop = currentEl.nextElementSibling && currentEl.nextElementSibling.__x_for_key !== undefined ? currentEl.nextElementSibling : false;
+
+    while (nextElementFromOldLoop) {
+      let nextElementFromOldLoopImmutable = nextElementFromOldLoop;
+      let nextSibling = nextElementFromOldLoop.nextElementSibling;
+      transitionOut(nextElementFromOldLoop, () => {
+        nextElementFromOldLoopImmutable.remove();
+      }, () => {}, component);
+      nextElementFromOldLoop = nextSibling && nextSibling.__x_for_key !== undefined ? nextSibling : false;
+    }
+  }
+
+  function handleAttributeBindingDirective(component, el, attrName, expression, extraVars, attrType, modifiers) {
+    var value = component.evaluateReturnExpression(el, expression, extraVars);
+
+    if (attrName === 'value') {
+      if (Alpine.ignoreFocusedForValueBinding && document.activeElement.isSameNode(el)) return; // If nested model key is undefined, set the default value to empty string.
+
+      if (value === undefined && expression.match(/\./)) {
+        value = '';
+      }
+
+      if (el.type === 'radio') {
+        // Set radio value from x-bind:value, if no "value" attribute exists.
+        // If there are any initial state values, radio will have a correct
+        // "checked" value since x-bind:value is processed before x-model.
+        if (el.attributes.value === undefined && attrType === 'bind') {
+          el.value = value;
+        } else if (attrType !== 'bind') {
+          el.checked = checkedAttrLooseCompare(el.value, value);
+        }
+      } else if (el.type === 'checkbox') {
+        // If we are explicitly binding a string to the :value, set the string,
+        // If the value is a boolean, leave it alone, it will be set to "on"
+        // automatically.
+        if (typeof value !== 'boolean' && ![null, undefined].includes(value) && attrType === 'bind') {
+          el.value = String(value);
+        } else if (attrType !== 'bind') {
+          if (Array.isArray(value)) {
+            // I'm purposely not using Array.includes here because it's
+            // strict, and because of Numeric/String mis-casting, I
+            // want the "includes" to be "fuzzy".
+            el.checked = value.some(val => checkedAttrLooseCompare(val, el.value));
+          } else {
+            el.checked = !!value;
+          }
+        }
+      } else if (el.tagName === 'SELECT') {
+        updateSelect(el, value);
+      } else {
+        if (el.value === value) return;
+        el.value = value;
+      }
+    } else if (attrName === 'class') {
+      if (Array.isArray(value)) {
+        const originalClasses = el.__x_original_classes || [];
+        el.setAttribute('class', arrayUnique(originalClasses.concat(value)).join(' '));
+      } else if (typeof value === 'object') {
+        // Sorting the keys / class names by their boolean value will ensure that
+        // anything that evaluates to `false` and needs to remove classes is run first.
+        const keysSortedByBooleanValue = Object.keys(value).sort((a, b) => value[a] - value[b]);
+        keysSortedByBooleanValue.forEach(classNames => {
+          if (value[classNames]) {
+            convertClassStringToArray(classNames).forEach(className => el.classList.add(className));
+          } else {
+            convertClassStringToArray(classNames).forEach(className => el.classList.remove(className));
+          }
+        });
+      } else {
+        const originalClasses = el.__x_original_classes || [];
+        const newClasses = value ? convertClassStringToArray(value) : [];
+        el.setAttribute('class', arrayUnique(originalClasses.concat(newClasses)).join(' '));
+      }
+    } else {
+      attrName = modifiers.includes('camel') ? camelCase(attrName) : attrName; // If an attribute's bound value is null, undefined or false, remove the attribute
+
+      if ([null, undefined, false].includes(value)) {
+        el.removeAttribute(attrName);
+      } else {
+        isBooleanAttr(attrName) ? setIfChanged(el, attrName, attrName) : setIfChanged(el, attrName, value);
+      }
+    }
+  }
+
+  function setIfChanged(el, attrName, value) {
+    if (el.getAttribute(attrName) != value) {
+      el.setAttribute(attrName, value);
+    }
+  }
+
+  function updateSelect(el, value) {
+    const arrayWrappedValue = [].concat(value).map(value => {
+      return value + '';
+    });
+    Array.from(el.options).forEach(option => {
+      option.selected = arrayWrappedValue.includes(option.value || option.text);
+    });
+  }
+
+  function handleTextDirective(el, output, expression) {
+    // If nested model key is undefined, set the default value to empty string.
+    if (output === undefined && expression.match(/\./)) {
+      output = '';
+    }
+
+    el.textContent = output;
+  }
+
+  function handleHtmlDirective(component, el, expression, extraVars) {
+    el.innerHTML = component.evaluateReturnExpression(el, expression, extraVars);
+  }
+
+  function handleShowDirective(component, el, value, modifiers, initialUpdate = false) {
+    const hide = () => {
+      el.style.display = 'none';
+      el.__x_is_shown = false;
+    };
+
+    const show = () => {
+      if (el.style.length === 1 && el.style.display === 'none') {
+        el.removeAttribute('style');
+      } else {
+        el.style.removeProperty('display');
+      }
+
+      el.__x_is_shown = true;
+    };
+
+    if (initialUpdate === true) {
+      if (value) {
+        show();
+      } else {
+        hide();
+      }
+
+      return;
+    }
+
+    const handle = (resolve, reject) => {
+      if (value) {
+        if (el.style.display === 'none' || el.__x_transition) {
+          transitionIn(el, () => {
+            show();
+          }, reject, component);
+        }
+
+        resolve(() => {});
+      } else {
+        if (el.style.display !== 'none') {
+          transitionOut(el, () => {
+            resolve(() => {
+              hide();
+            });
+          }, reject, component);
+        } else {
+          resolve(() => {});
+        }
+      }
+    }; // The working of x-show is a bit complex because we need to
+    // wait for any child transitions to finish before hiding
+    // some element. Also, this has to be done recursively.
+    // If x-show.immediate, foregoe the waiting.
+
+
+    if (modifiers.includes('immediate')) {
+      handle(finish => finish(), () => {});
+      return;
+    } // x-show is encountered during a DOM tree walk. If an element
+    // we encounter is NOT a child of another x-show element we
+    // can execute the previous x-show stack (if one exists).
+
+
+    if (component.showDirectiveLastElement && !component.showDirectiveLastElement.contains(el)) {
+      component.executeAndClearRemainingShowDirectiveStack();
+    }
+
+    component.showDirectiveStack.push(handle);
+    component.showDirectiveLastElement = el;
+  }
+
+  function handleIfDirective(component, el, expressionResult, initialUpdate, extraVars) {
+    warnIfMalformedTemplate(el, 'x-if');
+    const elementHasAlreadyBeenAdded = el.nextElementSibling && el.nextElementSibling.__x_inserted_me === true;
+
+    if (expressionResult && (!elementHasAlreadyBeenAdded || el.__x_transition)) {
+      const clone = document.importNode(el.content, true);
+      el.parentElement.insertBefore(clone, el.nextElementSibling);
+      transitionIn(el.nextElementSibling, () => {}, () => {}, component, initialUpdate);
+      component.initializeElements(el.nextElementSibling, extraVars);
+      el.nextElementSibling.__x_inserted_me = true;
+    } else if (!expressionResult && elementHasAlreadyBeenAdded) {
+      transitionOut(el.nextElementSibling, () => {
+        el.nextElementSibling.remove();
+      }, () => {}, component, initialUpdate);
+    }
+  }
+
+  function registerListener(component, el, event, modifiers, expression, extraVars = {}) {
+    const options = {
+      passive: modifiers.includes('passive')
+    };
+
+    if (modifiers.includes('camel')) {
+      event = camelCase(event);
+    }
+
+    if (modifiers.includes('away')) {
+      let handler = e => {
+        // Don't do anything if the click came from the element or within it.
+        if (el.contains(e.target)) return; // Don't do anything if this element isn't currently visible.
+
+        if (el.offsetWidth < 1 && el.offsetHeight < 1) return; // Now that we are sure the element is visible, AND the click
+        // is from outside it, let's run the expression.
+
+        runListenerHandler(component, expression, e, extraVars);
+
+        if (modifiers.includes('once')) {
+          document.removeEventListener(event, handler, options);
+        }
+      }; // Listen for this event at the root level.
+
+
+      document.addEventListener(event, handler, options);
+    } else {
+      let listenerTarget = modifiers.includes('window') ? window : modifiers.includes('document') ? document : el;
+
+      let handler = e => {
+        // Remove this global event handler if the element that declared it
+        // has been removed. It's now stale.
+        if (listenerTarget === window || listenerTarget === document) {
+          if (!document.body.contains(el)) {
+            listenerTarget.removeEventListener(event, handler, options);
+            return;
+          }
+        }
+
+        if (isKeyEvent(event)) {
+          if (isListeningForASpecificKeyThatHasntBeenPressed(e, modifiers)) {
+            return;
+          }
+        }
+
+        if (modifiers.includes('prevent')) e.preventDefault();
+        if (modifiers.includes('stop')) e.stopPropagation(); // If the .self modifier isn't present, or if it is present and
+        // the target element matches the element we are registering the
+        // event on, run the handler
+
+        if (!modifiers.includes('self') || e.target === el) {
+          const returnValue = runListenerHandler(component, expression, e, extraVars);
+          returnValue.then(value => {
+            if (value === false) {
+              e.preventDefault();
+            } else {
+              if (modifiers.includes('once')) {
+                listenerTarget.removeEventListener(event, handler, options);
+              }
+            }
+          });
+        }
+      };
+
+      if (modifiers.includes('debounce')) {
+        let nextModifier = modifiers[modifiers.indexOf('debounce') + 1] || 'invalid-wait';
+        let wait = isNumeric(nextModifier.split('ms')[0]) ? Number(nextModifier.split('ms')[0]) : 250;
+        handler = debounce(handler, wait);
+      }
+
+      listenerTarget.addEventListener(event, handler, options);
+    }
+  }
+
+  function runListenerHandler(component, expression, e, extraVars) {
+    return component.evaluateCommandExpression(e.target, expression, () => {
+      return _objectSpread2(_objectSpread2({}, extraVars()), {}, {
+        '$event': e
+      });
+    });
+  }
+
+  function isKeyEvent(event) {
+    return ['keydown', 'keyup'].includes(event);
+  }
+
+  function isListeningForASpecificKeyThatHasntBeenPressed(e, modifiers) {
+    let keyModifiers = modifiers.filter(i => {
+      return !['window', 'document', 'prevent', 'stop'].includes(i);
+    });
+
+    if (keyModifiers.includes('debounce')) {
+      let debounceIndex = keyModifiers.indexOf('debounce');
+      keyModifiers.splice(debounceIndex, isNumeric((keyModifiers[debounceIndex + 1] || 'invalid-wait').split('ms')[0]) ? 2 : 1);
+    } // If no modifier is specified, we'll call it a press.
+
+
+    if (keyModifiers.length === 0) return false; // If one is passed, AND it matches the key pressed, we'll call it a press.
+
+    if (keyModifiers.length === 1 && keyModifiers[0] === keyToModifier(e.key)) return false; // The user is listening for key combinations.
+
+    const systemKeyModifiers = ['ctrl', 'shift', 'alt', 'meta', 'cmd', 'super'];
+    const selectedSystemKeyModifiers = systemKeyModifiers.filter(modifier => keyModifiers.includes(modifier));
+    keyModifiers = keyModifiers.filter(i => !selectedSystemKeyModifiers.includes(i));
+
+    if (selectedSystemKeyModifiers.length > 0) {
+      const activelyPressedKeyModifiers = selectedSystemKeyModifiers.filter(modifier => {
+        // Alias "cmd" and "super" to "meta"
+        if (modifier === 'cmd' || modifier === 'super') modifier = 'meta';
+        return e[`${modifier}Key`];
+      }); // If all the modifiers selected are pressed, ...
+
+      if (activelyPressedKeyModifiers.length === selectedSystemKeyModifiers.length) {
+        // AND the remaining key is pressed as well. It's a press.
+        if (keyModifiers[0] === keyToModifier(e.key)) return false;
+      }
+    } // We'll call it NOT a valid keypress.
+
+
+    return true;
+  }
+
+  function keyToModifier(key) {
+    switch (key) {
+      case '/':
+        return 'slash';
+
+      case ' ':
+      case 'Spacebar':
+        return 'space';
+
+      default:
+        return key && kebabCase(key);
+    }
+  }
+
+  function registerModelListener(component, el, modifiers, expression, extraVars) {
+    // If the element we are binding to is a select, a radio, or checkbox
+    // we'll listen for the change event instead of the "input" event.
+    var event = el.tagName.toLowerCase() === 'select' || ['checkbox', 'radio'].includes(el.type) || modifiers.includes('lazy') ? 'change' : 'input';
+    const listenerExpression = `${expression} = rightSideOfExpression($event, ${expression})`;
+    registerListener(component, el, event, modifiers, listenerExpression, () => {
+      return _objectSpread2(_objectSpread2({}, extraVars()), {}, {
+        rightSideOfExpression: generateModelAssignmentFunction(el, modifiers, expression)
+      });
+    });
+  }
+
+  function generateModelAssignmentFunction(el, modifiers, expression) {
+    if (el.type === 'radio') {
+      // Radio buttons only work properly when they share a name attribute.
+      // People might assume we take care of that for them, because
+      // they already set a shared "x-model" attribute.
+      if (!el.hasAttribute('name')) el.setAttribute('name', expression);
+    }
+
+    return (event, currentValue) => {
+      // Check for event.detail due to an issue where IE11 handles other events as a CustomEvent.
+      if (event instanceof CustomEvent && event.detail) {
+        return event.detail;
+      } else if (el.type === 'checkbox') {
+        // If the data we are binding to is an array, toggle its value inside the array.
+        if (Array.isArray(currentValue)) {
+          const newValue = modifiers.includes('number') ? safeParseNumber(event.target.value) : event.target.value;
+          return event.target.checked ? currentValue.concat([newValue]) : currentValue.filter(el => !checkedAttrLooseCompare(el, newValue));
+        } else {
+          return event.target.checked;
+        }
+      } else if (el.tagName.toLowerCase() === 'select' && el.multiple) {
+        return modifiers.includes('number') ? Array.from(event.target.selectedOptions).map(option => {
+          const rawValue = option.value || option.text;
+          return safeParseNumber(rawValue);
+        }) : Array.from(event.target.selectedOptions).map(option => {
+          return option.value || option.text;
+        });
+      } else {
+        const rawValue = event.target.value;
+        return modifiers.includes('number') ? safeParseNumber(rawValue) : modifiers.includes('trim') ? rawValue.trim() : rawValue;
+      }
+    };
+  }
+
+  function safeParseNumber(rawValue) {
+    const number = rawValue ? parseFloat(rawValue) : null;
+    return isNumeric(number) ? number : rawValue;
+  }
+
+  /**
+   * Copyright (C) 2017 salesforce.com, inc.
+   */
+  const { isArray } = Array;
+  const { getPrototypeOf, create: ObjectCreate, defineProperty: ObjectDefineProperty, defineProperties: ObjectDefineProperties, isExtensible, getOwnPropertyDescriptor, getOwnPropertyNames, getOwnPropertySymbols, preventExtensions, hasOwnProperty, } = Object;
+  const { push: ArrayPush, concat: ArrayConcat, map: ArrayMap, } = Array.prototype;
+  function isUndefined(obj) {
+      return obj === undefined;
+  }
+  function isFunction(obj) {
+      return typeof obj === 'function';
+  }
+  function isObject(obj) {
+      return typeof obj === 'object';
+  }
+  const proxyToValueMap = new WeakMap();
+  function registerProxy(proxy, value) {
+      proxyToValueMap.set(proxy, value);
+  }
+  const unwrap = (replicaOrAny) => proxyToValueMap.get(replicaOrAny) || replicaOrAny;
+
+  function wrapValue(membrane, value) {
+      return membrane.valueIsObservable(value) ? membrane.getProxy(value) : value;
+  }
+  /**
+   * Unwrap property descriptors will set value on original descriptor
+   * We only need to unwrap if value is specified
+   * @param descriptor external descrpitor provided to define new property on original value
+   */
+  function unwrapDescriptor(descriptor) {
+      if (hasOwnProperty.call(descriptor, 'value')) {
+          descriptor.value = unwrap(descriptor.value);
+      }
+      return descriptor;
+  }
+  function lockShadowTarget(membrane, shadowTarget, originalTarget) {
+      const targetKeys = ArrayConcat.call(getOwnPropertyNames(originalTarget), getOwnPropertySymbols(originalTarget));
+      targetKeys.forEach((key) => {
+          let descriptor = getOwnPropertyDescriptor(originalTarget, key);
+          // We do not need to wrap the descriptor if configurable
+          // Because we can deal with wrapping it when user goes through
+          // Get own property descriptor. There is also a chance that this descriptor
+          // could change sometime in the future, so we can defer wrapping
+          // until we need to
+          if (!descriptor.configurable) {
+              descriptor = wrapDescriptor(membrane, descriptor, wrapValue);
+          }
+          ObjectDefineProperty(shadowTarget, key, descriptor);
+      });
+      preventExtensions(shadowTarget);
+  }
+  class ReactiveProxyHandler {
+      constructor(membrane, value) {
+          this.originalTarget = value;
+          this.membrane = membrane;
+      }
+      get(shadowTarget, key) {
+          const { originalTarget, membrane } = this;
+          const value = originalTarget[key];
+          const { valueObserved } = membrane;
+          valueObserved(originalTarget, key);
+          return membrane.getProxy(value);
+      }
+      set(shadowTarget, key, value) {
+          const { originalTarget, membrane: { valueMutated } } = this;
+          const oldValue = originalTarget[key];
+          if (oldValue !== value) {
+              originalTarget[key] = value;
+              valueMutated(originalTarget, key);
+          }
+          else if (key === 'length' && isArray(originalTarget)) {
+              // fix for issue #236: push will add the new index, and by the time length
+              // is updated, the internal length is already equal to the new length value
+              // therefore, the oldValue is equal to the value. This is the forking logic
+              // to support this use case.
+              valueMutated(originalTarget, key);
+          }
+          return true;
+      }
+      deleteProperty(shadowTarget, key) {
+          const { originalTarget, membrane: { valueMutated } } = this;
+          delete originalTarget[key];
+          valueMutated(originalTarget, key);
+          return true;
+      }
+      apply(shadowTarget, thisArg, argArray) {
+          /* No op */
+      }
+      construct(target, argArray, newTarget) {
+          /* No op */
+      }
+      has(shadowTarget, key) {
+          const { originalTarget, membrane: { valueObserved } } = this;
+          valueObserved(originalTarget, key);
+          return key in originalTarget;
+      }
+      ownKeys(shadowTarget) {
+          const { originalTarget } = this;
+          return ArrayConcat.call(getOwnPropertyNames(originalTarget), getOwnPropertySymbols(originalTarget));
+      }
+      isExtensible(shadowTarget) {
+          const shadowIsExtensible = isExtensible(shadowTarget);
+          if (!shadowIsExtensible) {
+              return shadowIsExtensible;
+          }
+          const { originalTarget, membrane } = this;
+          const targetIsExtensible = isExtensible(originalTarget);
+          if (!targetIsExtensible) {
+              lockShadowTarget(membrane, shadowTarget, originalTarget);
+          }
+          return targetIsExtensible;
+      }
+      setPrototypeOf(shadowTarget, prototype) {
+      }
+      getPrototypeOf(shadowTarget) {
+          const { originalTarget } = this;
+          return getPrototypeOf(originalTarget);
+      }
+      getOwnPropertyDescriptor(shadowTarget, key) {
+          const { originalTarget, membrane } = this;
+          const { valueObserved } = this.membrane;
+          // keys looked up via hasOwnProperty need to be reactive
+          valueObserved(originalTarget, key);
+          let desc = getOwnPropertyDescriptor(originalTarget, key);
+          if (isUndefined(desc)) {
+              return desc;
+          }
+          const shadowDescriptor = getOwnPropertyDescriptor(shadowTarget, key);
+          if (!isUndefined(shadowDescriptor)) {
+              return shadowDescriptor;
+          }
+          // Note: by accessing the descriptor, the key is marked as observed
+          // but access to the value, setter or getter (if available) cannot observe
+          // mutations, just like regular methods, in which case we just do nothing.
+          desc = wrapDescriptor(membrane, desc, wrapValue);
+          if (!desc.configurable) {
+              // If descriptor from original target is not configurable,
+              // We must copy the wrapped descriptor over to the shadow target.
+              // Otherwise, proxy will throw an invariant error.
+              // This is our last chance to lock the value.
+              // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy/handler/getOwnPropertyDescriptor#Invariants
+              ObjectDefineProperty(shadowTarget, key, desc);
+          }
+          return desc;
+      }
+      preventExtensions(shadowTarget) {
+          const { originalTarget, membrane } = this;
+          lockShadowTarget(membrane, shadowTarget, originalTarget);
+          preventExtensions(originalTarget);
+          return true;
+      }
+      defineProperty(shadowTarget, key, descriptor) {
+          const { originalTarget, membrane } = this;
+          const { valueMutated } = membrane;
+          const { configurable } = descriptor;
+          // We have to check for value in descriptor
+          // because Object.freeze(proxy) calls this method
+          // with only { configurable: false, writeable: false }
+          // Additionally, method will only be called with writeable:false
+          // if the descriptor has a value, as opposed to getter/setter
+          // So we can just check if writable is present and then see if
+          // value is present. This eliminates getter and setter descriptors
+          if (hasOwnProperty.call(descriptor, 'writable') && !hasOwnProperty.call(descriptor, 'value')) {
+              const originalDescriptor = getOwnPropertyDescriptor(originalTarget, key);
+              descriptor.value = originalDescriptor.value;
+          }
+          ObjectDefineProperty(originalTarget, key, unwrapDescriptor(descriptor));
+          if (configurable === false) {
+              ObjectDefineProperty(shadowTarget, key, wrapDescriptor(membrane, descriptor, wrapValue));
+          }
+          valueMutated(originalTarget, key);
+          return true;
+      }
+  }
+
+  function wrapReadOnlyValue(membrane, value) {
+      return membrane.valueIsObservable(value) ? membrane.getReadOnlyProxy(value) : value;
+  }
+  class ReadOnlyHandler {
+      constructor(membrane, value) {
+          this.originalTarget = value;
+          this.membrane = membrane;
+      }
+      get(shadowTarget, key) {
+          const { membrane, originalTarget } = this;
+          const value = originalTarget[key];
+          const { valueObserved } = membrane;
+          valueObserved(originalTarget, key);
+          return membrane.getReadOnlyProxy(value);
+      }
+      set(shadowTarget, key, value) {
+          return false;
+      }
+      deleteProperty(shadowTarget, key) {
+          return false;
+      }
+      apply(shadowTarget, thisArg, argArray) {
+          /* No op */
+      }
+      construct(target, argArray, newTarget) {
+          /* No op */
+      }
+      has(shadowTarget, key) {
+          const { originalTarget, membrane: { valueObserved } } = this;
+          valueObserved(originalTarget, key);
+          return key in originalTarget;
+      }
+      ownKeys(shadowTarget) {
+          const { originalTarget } = this;
+          return ArrayConcat.call(getOwnPropertyNames(originalTarget), getOwnPropertySymbols(originalTarget));
+      }
+      setPrototypeOf(shadowTarget, prototype) {
+      }
+      getOwnPropertyDescriptor(shadowTarget, key) {
+          const { originalTarget, membrane } = this;
+          const { valueObserved } = membrane;
+          // keys looked up via hasOwnProperty need to be reactive
+          valueObserved(originalTarget, key);
+          let desc = getOwnPropertyDescriptor(originalTarget, key);
+          if (isUndefined(desc)) {
+              return desc;
+          }
+          const shadowDescriptor = getOwnPropertyDescriptor(shadowTarget, key);
+          if (!isUndefined(shadowDescriptor)) {
+              return shadowDescriptor;
+          }
+          // Note: by accessing the descriptor, the key is marked as observed
+          // but access to the value or getter (if available) cannot be observed,
+          // just like regular methods, in which case we just do nothing.
+          desc = wrapDescriptor(membrane, desc, wrapReadOnlyValue);
+          if (hasOwnProperty.call(desc, 'set')) {
+              desc.set = undefined; // readOnly membrane does not allow setters
+          }
+          if (!desc.configurable) {
+              // If descriptor from original target is not configurable,
+              // We must copy the wrapped descriptor over to the shadow target.
+              // Otherwise, proxy will throw an invariant error.
+              // This is our last chance to lock the value.
+              // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy/handler/getOwnPropertyDescriptor#Invariants
+              ObjectDefineProperty(shadowTarget, key, desc);
+          }
+          return desc;
+      }
+      preventExtensions(shadowTarget) {
+          return false;
+      }
+      defineProperty(shadowTarget, key, descriptor) {
+          return false;
+      }
+  }
+  function createShadowTarget(value) {
+      let shadowTarget = undefined;
+      if (isArray(value)) {
+          shadowTarget = [];
+      }
+      else if (isObject(value)) {
+          shadowTarget = {};
+      }
+      return shadowTarget;
+  }
+  const ObjectDotPrototype = Object.prototype;
+  function defaultValueIsObservable(value) {
+      // intentionally checking for null
+      if (value === null) {
+          return false;
+      }
+      // treat all non-object types, including undefined, as non-observable values
+      if (typeof value !== 'object') {
+          return false;
+      }
+      if (isArray(value)) {
+          return true;
+      }
+      const proto = getPrototypeOf(value);
+      return (proto === ObjectDotPrototype || proto === null || getPrototypeOf(proto) === null);
+  }
+  const defaultValueObserved = (obj, key) => {
+      /* do nothing */
+  };
+  const defaultValueMutated = (obj, key) => {
+      /* do nothing */
+  };
+  const defaultValueDistortion = (value) => value;
+  function wrapDescriptor(membrane, descriptor, getValue) {
+      const { set, get } = descriptor;
+      if (hasOwnProperty.call(descriptor, 'value')) {
+          descriptor.value = getValue(membrane, descriptor.value);
+      }
+      else {
+          if (!isUndefined(get)) {
+              descriptor.get = function () {
+                  // invoking the original getter with the original target
+                  return getValue(membrane, get.call(unwrap(this)));
+              };
+          }
+          if (!isUndefined(set)) {
+              descriptor.set = function (value) {
+                  // At this point we don't have a clear indication of whether
+                  // or not a valid mutation will occur, we don't have the key,
+                  // and we are not sure why and how they are invoking this setter.
+                  // Nevertheless we preserve the original semantics by invoking the
+                  // original setter with the original target and the unwrapped value
+                  set.call(unwrap(this), membrane.unwrapProxy(value));
+              };
+          }
+      }
+      return descriptor;
+  }
+  class ReactiveMembrane {
+      constructor(options) {
+          this.valueDistortion = defaultValueDistortion;
+          this.valueMutated = defaultValueMutated;
+          this.valueObserved = defaultValueObserved;
+          this.valueIsObservable = defaultValueIsObservable;
+          this.objectGraph = new WeakMap();
+          if (!isUndefined(options)) {
+              const { valueDistortion, valueMutated, valueObserved, valueIsObservable } = options;
+              this.valueDistortion = isFunction(valueDistortion) ? valueDistortion : defaultValueDistortion;
+              this.valueMutated = isFunction(valueMutated) ? valueMutated : defaultValueMutated;
+              this.valueObserved = isFunction(valueObserved) ? valueObserved : defaultValueObserved;
+              this.valueIsObservable = isFunction(valueIsObservable) ? valueIsObservable : defaultValueIsObservable;
+          }
+      }
+      getProxy(value) {
+          const unwrappedValue = unwrap(value);
+          const distorted = this.valueDistortion(unwrappedValue);
+          if (this.valueIsObservable(distorted)) {
+              const o = this.getReactiveState(unwrappedValue, distorted);
+              // when trying to extract the writable version of a readonly
+              // we return the readonly.
+              return o.readOnly === value ? value : o.reactive;
+          }
+          return distorted;
+      }
+      getReadOnlyProxy(value) {
+          value = unwrap(value);
+          const distorted = this.valueDistortion(value);
+          if (this.valueIsObservable(distorted)) {
+              return this.getReactiveState(value, distorted).readOnly;
+          }
+          return distorted;
+      }
+      unwrapProxy(p) {
+          return unwrap(p);
+      }
+      getReactiveState(value, distortedValue) {
+          const { objectGraph, } = this;
+          let reactiveState = objectGraph.get(distortedValue);
+          if (reactiveState) {
+              return reactiveState;
+          }
+          const membrane = this;
+          reactiveState = {
+              get reactive() {
+                  const reactiveHandler = new ReactiveProxyHandler(membrane, distortedValue);
+                  // caching the reactive proxy after the first time it is accessed
+                  const proxy = new Proxy(createShadowTarget(distortedValue), reactiveHandler);
+                  registerProxy(proxy, value);
+                  ObjectDefineProperty(this, 'reactive', { value: proxy });
+                  return proxy;
+              },
+              get readOnly() {
+                  const readOnlyHandler = new ReadOnlyHandler(membrane, distortedValue);
+                  // caching the readOnly proxy after the first time it is accessed
+                  const proxy = new Proxy(createShadowTarget(distortedValue), readOnlyHandler);
+                  registerProxy(proxy, value);
+                  ObjectDefineProperty(this, 'readOnly', { value: proxy });
+                  return proxy;
+              }
+          };
+          objectGraph.set(distortedValue, reactiveState);
+          return reactiveState;
+      }
+  }
+  /** version: 0.26.0 */
+
+  function wrap(data, mutationCallback) {
+
+    let membrane = new ReactiveMembrane({
+      valueMutated(target, key) {
+        mutationCallback(target, key);
+      }
+
+    });
+    return {
+      data: membrane.getProxy(data),
+      membrane: membrane
+    };
+  }
+  function unwrap$1(membrane, observable) {
+    let unwrappedData = membrane.unwrapProxy(observable);
+    let copy = {};
+    Object.keys(unwrappedData).forEach(key => {
+      if (['$el', '$refs', '$nextTick', '$watch'].includes(key)) return;
+      copy[key] = unwrappedData[key];
+    });
+    return copy;
+  }
+
+  class Component {
+    constructor(el, componentForClone = null) {
+      this.$el = el;
+      const dataAttr = this.$el.getAttribute('x-data');
+      const dataExpression = dataAttr === '' ? '{}' : dataAttr;
+      const initExpression = this.$el.getAttribute('x-init');
+      let dataExtras = {
+        $el: this.$el
+      };
+      let canonicalComponentElementReference = componentForClone ? componentForClone.$el : this.$el;
+      Object.entries(Alpine.magicProperties).forEach(([name, callback]) => {
+        Object.defineProperty(dataExtras, `$${name}`, {
+          get: function get() {
+            return callback(canonicalComponentElementReference);
+          }
+        });
+      });
+      this.unobservedData = componentForClone ? componentForClone.getUnobservedData() : saferEval(el, dataExpression, dataExtras);
+      // Construct a Proxy-based observable. This will be used to handle reactivity.
+
+      let {
+        membrane,
+        data
+      } = this.wrapDataInObservable(this.unobservedData);
+      this.$data = data;
+      this.membrane = membrane; // After making user-supplied data methods reactive, we can now add
+      // our magic properties to the original data for access.
+
+      this.unobservedData.$el = this.$el;
+      this.unobservedData.$refs = this.getRefsProxy();
+      this.nextTickStack = [];
+
+      this.unobservedData.$nextTick = callback => {
+        this.nextTickStack.push(callback);
+      };
+
+      this.watchers = {};
+
+      this.unobservedData.$watch = (property, callback) => {
+        if (!this.watchers[property]) this.watchers[property] = [];
+        this.watchers[property].push(callback);
+      };
+      /* MODERN-ONLY:START */
+      // We remove this piece of code from the legacy build.
+      // In IE11, we have already defined our helpers at this point.
+      // Register custom magic properties.
+
+
+      Object.entries(Alpine.magicProperties).forEach(([name, callback]) => {
+        Object.defineProperty(this.unobservedData, `$${name}`, {
+          get: function get() {
+            return callback(canonicalComponentElementReference, this.$el);
+          }
+        });
+      });
+      /* MODERN-ONLY:END */
+
+      this.showDirectiveStack = [];
+      this.showDirectiveLastElement;
+      componentForClone || Alpine.onBeforeComponentInitializeds.forEach(callback => callback(this));
+      var initReturnedCallback; // If x-init is present AND we aren't cloning (skip x-init on clone)
+
+      if (initExpression && !componentForClone) {
+        // We want to allow data manipulation, but not trigger DOM updates just yet.
+        // We haven't even initialized the elements with their Alpine bindings. I mean c'mon.
+        this.pauseReactivity = true;
+        initReturnedCallback = this.evaluateReturnExpression(this.$el, initExpression);
+        this.pauseReactivity = false;
+      } // Register all our listeners and set all our attribute bindings.
+
+
+      this.initializeElements(this.$el); // Use mutation observer to detect new elements being added within this component at run-time.
+      // Alpine's just so darn flexible amirite?
+
+      this.listenForNewElementsToInitialize();
+
+      if (typeof initReturnedCallback === 'function') {
+        // Run the callback returned from the "x-init" hook to allow the user to do stuff after
+        // Alpine's got it's grubby little paws all over everything.
+        initReturnedCallback.call(this.$data);
+      }
+
+      componentForClone || setTimeout(() => {
+        Alpine.onComponentInitializeds.forEach(callback => callback(this));
+      }, 0);
+    }
+
+    getUnobservedData() {
+      return unwrap$1(this.membrane, this.$data);
+    }
+
+    wrapDataInObservable(data) {
+      var self = this;
+      let updateDom = debounce(function () {
+        self.updateElements(self.$el);
+      }, 0);
+      return wrap(data, (target, key) => {
+        if (self.watchers[key]) {
+          // If there's a watcher for this specific key, run it.
+          self.watchers[key].forEach(callback => callback(target[key]));
+        } else if (Array.isArray(target)) {
+          // Arrays are special cases, if any of the items change, we consider the array as mutated.
+          Object.keys(self.watchers).forEach(fullDotNotationKey => {
+            let dotNotationParts = fullDotNotationKey.split('.'); // Ignore length mutations since they would result in duplicate calls.
+            // For example, when calling push, we would get a mutation for the item's key
+            // and a second mutation for the length property.
+
+            if (key === 'length') return;
+            dotNotationParts.reduce((comparisonData, part) => {
+              if (Object.is(target, comparisonData[part])) {
+                self.watchers[fullDotNotationKey].forEach(callback => callback(target));
+              }
+
+              return comparisonData[part];
+            }, self.unobservedData);
+          });
+        } else {
+          // Let's walk through the watchers with "dot-notation" (foo.bar) and see
+          // if this mutation fits any of them.
+          Object.keys(self.watchers).filter(i => i.includes('.')).forEach(fullDotNotationKey => {
+            let dotNotationParts = fullDotNotationKey.split('.'); // If this dot-notation watcher's last "part" doesn't match the current
+            // key, then skip it early for performance reasons.
+
+            if (key !== dotNotationParts[dotNotationParts.length - 1]) return; // Now, walk through the dot-notation "parts" recursively to find
+            // a match, and call the watcher if one's found.
+
+            dotNotationParts.reduce((comparisonData, part) => {
+              if (Object.is(target, comparisonData)) {
+                // Run the watchers.
+                self.watchers[fullDotNotationKey].forEach(callback => callback(target[key]));
+              }
+
+              return comparisonData[part];
+            }, self.unobservedData);
+          });
+        } // Don't react to data changes for cases like the `x-created` hook.
+
+
+        if (self.pauseReactivity) return;
+        updateDom();
+      });
+    }
+
+    walkAndSkipNestedComponents(el, callback, initializeComponentCallback = () => {}) {
+      walk(el, el => {
+        // We've hit a component.
+        if (el.hasAttribute('x-data')) {
+          // If it's not the current one.
+          if (!el.isSameNode(this.$el)) {
+            // Initialize it if it's not.
+            if (!el.__x) initializeComponentCallback(el); // Now we'll let that sub-component deal with itself.
+
+            return false;
+          }
+        }
+
+        return callback(el);
+      });
+    }
+
+    initializeElements(rootEl, extraVars = () => {}) {
+      this.walkAndSkipNestedComponents(rootEl, el => {
+        // Don't touch spawns from for loop
+        if (el.__x_for_key !== undefined) return false; // Don't touch spawns from if directives
+
+        if (el.__x_inserted_me !== undefined) return false;
+        this.initializeElement(el, extraVars);
+      }, el => {
+        el.__x = new Component(el);
+      });
+      this.executeAndClearRemainingShowDirectiveStack();
+      this.executeAndClearNextTickStack(rootEl);
+    }
+
+    initializeElement(el, extraVars) {
+      // To support class attribute merging, we have to know what the element's
+      // original class attribute looked like for reference.
+      if (el.hasAttribute('class') && getXAttrs(el, this).length > 0) {
+        el.__x_original_classes = convertClassStringToArray(el.getAttribute('class'));
+      }
+
+      this.registerListeners(el, extraVars);
+      this.resolveBoundAttributes(el, true, extraVars);
+    }
+
+    updateElements(rootEl, extraVars = () => {}) {
+      this.walkAndSkipNestedComponents(rootEl, el => {
+        // Don't touch spawns from for loop (and check if the root is actually a for loop in a parent, don't skip it.)
+        if (el.__x_for_key !== undefined && !el.isSameNode(this.$el)) return false;
+        this.updateElement(el, extraVars);
+      }, el => {
+        el.__x = new Component(el);
+      });
+      this.executeAndClearRemainingShowDirectiveStack();
+      this.executeAndClearNextTickStack(rootEl);
+    }
+
+    executeAndClearNextTickStack(el) {
+      // Skip spawns from alpine directives
+      if (el === this.$el && this.nextTickStack.length > 0) {
+        // We run the tick stack after the next frame to allow any
+        // running transitions to pass the initial show stage.
+        requestAnimationFrame(() => {
+          while (this.nextTickStack.length > 0) {
+            this.nextTickStack.shift()();
+          }
+        });
+      }
+    }
+
+    executeAndClearRemainingShowDirectiveStack() {
+      // The goal here is to start all the x-show transitions
+      // and build a nested promise chain so that elements
+      // only hide when the children are finished hiding.
+      this.showDirectiveStack.reverse().map(handler => {
+        return new Promise((resolve, reject) => {
+          handler(resolve, reject);
+        });
+      }).reduce((promiseChain, promise) => {
+        return promiseChain.then(() => {
+          return promise.then(finishElement => {
+            finishElement();
+          });
+        });
+      }, Promise.resolve(() => {})).catch(e => {
+        if (e !== TRANSITION_CANCELLED) throw e;
+      }); // We've processed the handler stack. let's clear it.
+
+      this.showDirectiveStack = [];
+      this.showDirectiveLastElement = undefined;
+    }
+
+    updateElement(el, extraVars) {
+      this.resolveBoundAttributes(el, false, extraVars);
+    }
+
+    registerListeners(el, extraVars) {
+      getXAttrs(el, this).forEach(({
+        type,
+        value,
+        modifiers,
+        expression
+      }) => {
+        switch (type) {
+          case 'on':
+            registerListener(this, el, value, modifiers, expression, extraVars);
+            break;
+
+          case 'model':
+            registerModelListener(this, el, modifiers, expression, extraVars);
+            break;
+        }
+      });
+    }
+
+    resolveBoundAttributes(el, initialUpdate = false, extraVars) {
+      let attrs = getXAttrs(el, this);
+      attrs.forEach(({
+        type,
+        value,
+        modifiers,
+        expression
+      }) => {
+        switch (type) {
+          case 'model':
+            handleAttributeBindingDirective(this, el, 'value', expression, extraVars, type, modifiers);
+            break;
+
+          case 'bind':
+            // The :key binding on an x-for is special, ignore it.
+            if (el.tagName.toLowerCase() === 'template' && value === 'key') return;
+            handleAttributeBindingDirective(this, el, value, expression, extraVars, type, modifiers);
+            break;
+
+          case 'text':
+            var output = this.evaluateReturnExpression(el, expression, extraVars);
+            handleTextDirective(el, output, expression);
+            break;
+
+          case 'html':
+            handleHtmlDirective(this, el, expression, extraVars);
+            break;
+
+          case 'show':
+            var output = this.evaluateReturnExpression(el, expression, extraVars);
+            handleShowDirective(this, el, output, modifiers, initialUpdate);
+            break;
+
+          case 'if':
+            // If this element also has x-for on it, don't process x-if.
+            // We will let the "x-for" directive handle the "if"ing.
+            if (attrs.some(i => i.type === 'for')) return;
+            var output = this.evaluateReturnExpression(el, expression, extraVars);
+            handleIfDirective(this, el, output, initialUpdate, extraVars);
+            break;
+
+          case 'for':
+            handleForDirective(this, el, expression, initialUpdate, extraVars);
+            break;
+
+          case 'cloak':
+            el.removeAttribute('x-cloak');
+            break;
+        }
+      });
+    }
+
+    evaluateReturnExpression(el, expression, extraVars = () => {}) {
+      return saferEval(el, expression, this.$data, _objectSpread2(_objectSpread2({}, extraVars()), {}, {
+        $dispatch: this.getDispatchFunction(el)
+      }));
+    }
+
+    evaluateCommandExpression(el, expression, extraVars = () => {}) {
+      return saferEvalNoReturn(el, expression, this.$data, _objectSpread2(_objectSpread2({}, extraVars()), {}, {
+        $dispatch: this.getDispatchFunction(el)
+      }));
+    }
+
+    getDispatchFunction(el) {
+      return (event, detail = {}) => {
+        el.dispatchEvent(new CustomEvent(event, {
+          detail,
+          bubbles: true
+        }));
+      };
+    }
+
+    listenForNewElementsToInitialize() {
+      const targetNode = this.$el;
+      const observerOptions = {
+        childList: true,
+        attributes: true,
+        subtree: true
+      };
+      const observer = new MutationObserver(mutations => {
+        for (let i = 0; i < mutations.length; i++) {
+          // Filter out mutations triggered from child components.
+          const closestParentComponent = mutations[i].target.closest('[x-data]');
+          if (!(closestParentComponent && closestParentComponent.isSameNode(this.$el))) continue;
+
+          if (mutations[i].type === 'attributes' && mutations[i].attributeName === 'x-data') {
+            const xAttr = mutations[i].target.getAttribute('x-data') || '{}';
+            const rawData = saferEval(this.$el, xAttr, {
+              $el: this.$el
+            });
+            Object.keys(rawData).forEach(key => {
+              if (this.$data[key] !== rawData[key]) {
+                this.$data[key] = rawData[key];
+              }
+            });
+          }
+
+          if (mutations[i].addedNodes.length > 0) {
+            mutations[i].addedNodes.forEach(node => {
+              if (node.nodeType !== 1 || node.__x_inserted_me) return;
+
+              if (node.matches('[x-data]') && !node.__x) {
+                node.__x = new Component(node);
+                return;
+              }
+
+              this.initializeElements(node);
+            });
+          }
+        }
+      });
+      observer.observe(targetNode, observerOptions);
+    }
+
+    getRefsProxy() {
+      var self = this;
+      var refObj = {};
+      // One of the goals of this is to not hold elements in memory, but rather re-evaluate
+      // the DOM when the system needs something from it. This way, the framework is flexible and
+      // friendly to outside DOM changes from libraries like Vue/Livewire.
+      // For this reason, I'm using an "on-demand" proxy to fake a "$refs" object.
+
+      return new Proxy(refObj, {
+        get(object, property) {
+          if (property === '$isAlpineProxy') return true;
+          var ref; // We can't just query the DOM because it's hard to filter out refs in
+          // nested components.
+
+          self.walkAndSkipNestedComponents(self.$el, el => {
+            if (el.hasAttribute('x-ref') && el.getAttribute('x-ref') === property) {
+              ref = el;
+            }
+          });
+          return ref;
+        }
+
+      });
+    }
+
+  }
+
+  const Alpine = {
+    version: "2.8.0",
+    pauseMutationObserver: false,
+    magicProperties: {},
+    onComponentInitializeds: [],
+    onBeforeComponentInitializeds: [],
+    ignoreFocusedForValueBinding: false,
+    start: async function start() {
+      if (!isTesting()) {
+        await domReady();
+      }
+
+      this.discoverComponents(el => {
+        this.initializeComponent(el);
+      }); // It's easier and more performant to just support Turbolinks than listen
+      // to MutationObserver mutations at the document level.
+
+      document.addEventListener("turbolinks:load", () => {
+        this.discoverUninitializedComponents(el => {
+          this.initializeComponent(el);
+        });
+      });
+      this.listenForNewUninitializedComponentsAtRunTime();
+    },
+    discoverComponents: function discoverComponents(callback) {
+      const rootEls = document.querySelectorAll('[x-data]');
+      rootEls.forEach(rootEl => {
+        callback(rootEl);
+      });
+    },
+    discoverUninitializedComponents: function discoverUninitializedComponents(callback, el = null) {
+      const rootEls = (el || document).querySelectorAll('[x-data]');
+      Array.from(rootEls).filter(el => el.__x === undefined).forEach(rootEl => {
+        callback(rootEl);
+      });
+    },
+    listenForNewUninitializedComponentsAtRunTime: function listenForNewUninitializedComponentsAtRunTime() {
+      const targetNode = document.querySelector('body');
+      const observerOptions = {
+        childList: true,
+        attributes: true,
+        subtree: true
+      };
+      const observer = new MutationObserver(mutations => {
+        if (this.pauseMutationObserver) return;
+
+        for (let i = 0; i < mutations.length; i++) {
+          if (mutations[i].addedNodes.length > 0) {
+            mutations[i].addedNodes.forEach(node => {
+              // Discard non-element nodes (like line-breaks)
+              if (node.nodeType !== 1) return; // Discard any changes happening within an existing component.
+              // They will take care of themselves.
+
+              if (node.parentElement && node.parentElement.closest('[x-data]')) return;
+              this.discoverUninitializedComponents(el => {
+                this.initializeComponent(el);
+              }, node.parentElement);
+            });
+          }
+        }
+      });
+      observer.observe(targetNode, observerOptions);
+    },
+    initializeComponent: function initializeComponent(el) {
+      if (!el.__x) {
+        // Wrap in a try/catch so that we don't prevent other components
+        // from initializing when one component contains an error.
+        try {
+          el.__x = new Component(el);
+        } catch (error) {
+          setTimeout(() => {
+            throw error;
+          }, 0);
+        }
+      }
+    },
+    clone: function clone(component, newEl) {
+      if (!newEl.__x) {
+        newEl.__x = new Component(newEl, component);
+      }
+    },
+    addMagicProperty: function addMagicProperty(name, callback) {
+      this.magicProperties[name] = callback;
+    },
+    onComponentInitialized: function onComponentInitialized(callback) {
+      this.onComponentInitializeds.push(callback);
+    },
+    onBeforeComponentInitialized: function onBeforeComponentInitialized(callback) {
+      this.onBeforeComponentInitializeds.push(callback);
+    }
+  };
+
+  if (!isTesting()) {
+    window.Alpine = Alpine;
+
+    if (window.deferLoadingAlpine) {
+      window.deferLoadingAlpine(function () {
+        window.Alpine.start();
+      });
+    } else {
+      window.Alpine.start();
+    }
+  }
+
+  return Alpine;
+
+})));
+
+
+/***/ }),
+
+/***/ "./node_modules/anchor-js/anchor.js":
+/*!******************************************!*\
+  !*** ./node_modules/anchor-js/anchor.js ***!
+  \******************************************/
+/***/ (function(module, exports) {
+
+var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* eslint-env amd */
+/* globals module:false */
+
+// https://github.com/umdjs/umd/blob/master/templates/returnExports.js
+(function (root, factory) {
+  'use strict';
+
+  if (true) {
+    // AMD. Register as an anonymous module.
+    !(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory),
+		__WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ?
+		(__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__),
+		__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+  } else {}
+}(this, function () {
+  'use strict';
+
+  function AnchorJS(options) {
+    this.options = options || {};
+    this.elements = [];
+
+    /**
+     * Assigns options to the internal options object, and provides defaults.
+     * @param {Object} opts - Options object
+     */
+    function _applyRemainingDefaultOptions(opts) {
+      opts.icon = Object.prototype.hasOwnProperty.call(opts, 'icon') ? opts.icon : '\ue9cb'; // Accepts characters (and also URLs?), like  '#', '¶', '❡', or '§'.
+      opts.visible = Object.prototype.hasOwnProperty.call(opts, 'visible') ? opts.visible : 'hover'; // Also accepts 'always' & 'touch'
+      opts.placement = Object.prototype.hasOwnProperty.call(opts, 'placement') ? opts.placement : 'right'; // Also accepts 'left'
+      opts.ariaLabel = Object.prototype.hasOwnProperty.call(opts, 'ariaLabel') ? opts.ariaLabel : 'Anchor'; // Accepts any text.
+      opts.class = Object.prototype.hasOwnProperty.call(opts, 'class') ? opts.class : ''; // Accepts any class name.
+      opts.base = Object.prototype.hasOwnProperty.call(opts, 'base') ? opts.base : ''; // Accepts any base URI.
+      // Using Math.floor here will ensure the value is Number-cast and an integer.
+      opts.truncate = Object.prototype.hasOwnProperty.call(opts, 'truncate') ? Math.floor(opts.truncate) : 64; // Accepts any value that can be typecast to a number.
+      opts.titleText = Object.prototype.hasOwnProperty.call(opts, 'titleText') ? opts.titleText : ''; // Accepts any text.
+    }
+
+    _applyRemainingDefaultOptions(this.options);
+
+    /**
+     * Checks to see if this device supports touch. Uses criteria pulled from Modernizr:
+     * https://github.com/Modernizr/Modernizr/blob/da22eb27631fc4957f67607fe6042e85c0a84656/feature-detects/touchevents.js#L40
+     * @return {Boolean} - true if the current device supports touch.
+     */
+    this.isTouchDevice = function() {
+      return Boolean('ontouchstart' in window || window.TouchEvent || window.DocumentTouch && document instanceof DocumentTouch);
+    };
+
+    /**
+     * Add anchor links to page elements.
+     * @param  {String|Array|Nodelist} selector - A CSS selector for targeting the elements you wish to add anchor links
+     *                                            to. Also accepts an array or nodeList containing the relavant elements.
+     * @return {this}                           - The AnchorJS object
+     */
+    this.add = function(selector) {
+      var elements,
+          elsWithIds,
+          idList,
+          elementID,
+          i,
+          index,
+          count,
+          tidyText,
+          newTidyText,
+          anchor,
+          visibleOptionToUse,
+          hrefBase,
+          indexesToDrop = [];
+
+      // We reapply options here because somebody may have overwritten the default options object when setting options.
+      // For example, this overwrites all options but visible:
+      //
+      // anchors.options = { visible: 'always'; }
+      _applyRemainingDefaultOptions(this.options);
+
+      visibleOptionToUse = this.options.visible;
+      if (visibleOptionToUse === 'touch') {
+        visibleOptionToUse = this.isTouchDevice() ? 'always' : 'hover';
+      }
+
+      // Provide a sensible default selector, if none is given.
+      if (!selector) {
+        selector = 'h2, h3, h4, h5, h6';
+      }
+
+      elements = _getElements(selector);
+
+      if (elements.length === 0) {
+        return this;
+      }
+
+      _addBaselineStyles();
+
+      // We produce a list of existing IDs so we don't generate a duplicate.
+      elsWithIds = document.querySelectorAll('[id]');
+      idList = [].map.call(elsWithIds, function(el) {
+        return el.id;
+      });
+
+      for (i = 0; i < elements.length; i++) {
+        if (this.hasAnchorJSLink(elements[i])) {
+          indexesToDrop.push(i);
+          continue;
+        }
+
+        if (elements[i].hasAttribute('id')) {
+          elementID = elements[i].getAttribute('id');
+        } else if (elements[i].hasAttribute('data-anchor-id')) {
+          elementID = elements[i].getAttribute('data-anchor-id');
+        } else {
+          tidyText = this.urlify(elements[i].textContent);
+
+          // Compare our generated ID to existing IDs (and increment it if needed)
+          // before we add it to the page.
+          newTidyText = tidyText;
+          count = 0;
+          do {
+            if (index !== undefined) {
+              newTidyText = tidyText + '-' + count;
+            }
+
+            index = idList.indexOf(newTidyText);
+            count += 1;
+          } while (index !== -1);
+
+          index = undefined;
+          idList.push(newTidyText);
+
+          elements[i].setAttribute('id', newTidyText);
+          elementID = newTidyText;
+        }
+
+        // The following code efficiently builds this DOM structure:
+        // `<a class="anchorjs-link ${this.options.class}"
+        //     aria-label="${this.options.ariaLabel}"
+        //     data-anchorjs-icon="${this.options.icon}"
+        //     title="${this.options.titleText}"
+        //     href="this.options.base#${elementID}">
+        // </a>;`
+        anchor = document.createElement('a');
+        anchor.className = 'anchorjs-link ' + this.options.class;
+        anchor.setAttribute('aria-label', this.options.ariaLabel);
+        anchor.setAttribute('data-anchorjs-icon', this.options.icon);
+        if (this.options.titleText) {
+          anchor.title = this.options.titleText;
+        }
+
+        // Adjust the href if there's a <base> tag. See https://github.com/bryanbraun/anchorjs/issues/98
+        hrefBase = document.querySelector('base') ? window.location.pathname + window.location.search : '';
+        hrefBase = this.options.base || hrefBase;
+        anchor.href = hrefBase + '#' + elementID;
+
+        if (visibleOptionToUse === 'always') {
+          anchor.style.opacity = '1';
+        }
+
+        if (this.options.icon === '\ue9cb') {
+          anchor.style.font = '1em/1 anchorjs-icons';
+
+          // We set lineHeight = 1 here because the `anchorjs-icons` font family could otherwise affect the
+          // height of the heading. This isn't the case for icons with `placement: left`, so we restore
+          // line-height: inherit in that case, ensuring they remain positioned correctly. For more info,
+          // see https://github.com/bryanbraun/anchorjs/issues/39.
+          if (this.options.placement === 'left') {
+            anchor.style.lineHeight = 'inherit';
+          }
+        }
+
+        if (this.options.placement === 'left') {
+          anchor.style.position = 'absolute';
+          anchor.style.marginLeft = '-1em';
+          anchor.style.paddingRight = '.5em';
+          elements[i].insertBefore(anchor, elements[i].firstChild);
+        } else { // if the option provided is `right` (or anything else).
+          anchor.style.paddingLeft = '.375em';
+          elements[i].appendChild(anchor);
+        }
+      }
+
+      for (i = 0; i < indexesToDrop.length; i++) {
+        elements.splice(indexesToDrop[i] - i, 1);
+      }
+
+      this.elements = this.elements.concat(elements);
+
+      return this;
+    };
+
+    /**
+     * Removes all anchorjs-links from elements targeted by the selector.
+     * @param  {String|Array|Nodelist} selector - A CSS selector string targeting elements with anchor links,
+     *                                            OR a nodeList / array containing the DOM elements.
+     * @return {this}                           - The AnchorJS object
+     */
+    this.remove = function(selector) {
+      var index,
+          domAnchor,
+          elements = _getElements(selector);
+
+      for (var i = 0; i < elements.length; i++) {
+        domAnchor = elements[i].querySelector('.anchorjs-link');
+        if (domAnchor) {
+          // Drop the element from our main list, if it's in there.
+          index = this.elements.indexOf(elements[i]);
+          if (index !== -1) {
+            this.elements.splice(index, 1);
+          }
+
+          // Remove the anchor from the DOM.
+          elements[i].removeChild(domAnchor);
+        }
+      }
+
+      return this;
+    };
+
+    /**
+     * Removes all anchorjs links. Mostly used for tests.
+     */
+    this.removeAll = function() {
+      this.remove(this.elements);
+    };
+
+    /**
+     * Urlify - Refine text so it makes a good ID.
+     *
+     * To do this, we remove apostrophes, replace non-safe characters with hyphens,
+     * remove extra hyphens, truncate, trim hyphens, and make lowercase.
+     *
+     * @param  {String} text - Any text. Usually pulled from the webpage element we are linking to.
+     * @return {String}      - hyphen-delimited text for use in IDs and URLs.
+     */
+    this.urlify = function(text) {
+      // Decode HTML characters such as '&nbsp;' first.
+      var textareaElement = document.createElement('textarea');
+      textareaElement.innerHTML = text;
+      text = textareaElement.value;
+
+      // Regex for finding the non-safe URL characters (many need escaping):
+      //   & +$,:;=?@"#{}|^~[`%!'<>]./()*\ (newlines, tabs, backspace, vertical tabs, and non-breaking space)
+      var nonsafeChars = /[& +$,:;=?@"#{}|^~[`%!'<>\]./()*\\\n\t\b\v\u00A0]/g,
+          urlText;
+
+      // The reason we include this _applyRemainingDefaultOptions is so urlify can be called independently,
+      // even after setting options. This can be useful for tests or other applications.
+      if (!this.options.truncate) {
+        _applyRemainingDefaultOptions(this.options);
+      }
+
+      // Note: we trim hyphens after truncating because truncating can cause dangling hyphens.
+      // Example string:                      // " ⚡⚡ Don't forget: URL fragments should be i18n-friendly, hyphenated, short, and clean."
+      urlText = text.trim()                   // "⚡⚡ Don't forget: URL fragments should be i18n-friendly, hyphenated, short, and clean."
+        .replace(/'/gi, '')                   // "⚡⚡ Dont forget: URL fragments should be i18n-friendly, hyphenated, short, and clean."
+        .replace(nonsafeChars, '-')           // "⚡⚡-Dont-forget--URL-fragments-should-be-i18n-friendly--hyphenated--short--and-clean-"
+        .replace(/-{2,}/g, '-')               // "⚡⚡-Dont-forget-URL-fragments-should-be-i18n-friendly-hyphenated-short-and-clean-"
+        .substring(0, this.options.truncate)  // "⚡⚡-Dont-forget-URL-fragments-should-be-i18n-friendly-hyphenated-"
+        .replace(/^-+|-+$/gm, '')             // "⚡⚡-Dont-forget-URL-fragments-should-be-i18n-friendly-hyphenated"
+        .toLowerCase();                       // "⚡⚡-dont-forget-url-fragments-should-be-i18n-friendly-hyphenated"
+
+      return urlText;
+    };
+
+    /**
+     * Determines if this element already has an AnchorJS link on it.
+     * Uses this technique: http://stackoverflow.com/a/5898748/1154642
+     * @param    {HTMLElement}  el - a DOM node
+     * @return   {Boolean}     true/false
+     */
+    this.hasAnchorJSLink = function(el) {
+      var hasLeftAnchor = el.firstChild && (' ' + el.firstChild.className + ' ').indexOf(' anchorjs-link ') > -1,
+          hasRightAnchor = el.lastChild && (' ' + el.lastChild.className + ' ').indexOf(' anchorjs-link ') > -1;
+
+      return hasLeftAnchor || hasRightAnchor || false;
+    };
+
+    /**
+     * Turns a selector, nodeList, or array of elements into an array of elements (so we can use array methods).
+     * It also throws errors on any other inputs. Used to handle inputs to .add and .remove.
+     * @param  {String|Array|Nodelist} input - A CSS selector string targeting elements with anchor links,
+     *                                         OR a nodeList / array containing the DOM elements.
+     * @return {Array} - An array containing the elements we want.
+     */
+    function _getElements(input) {
+      var elements;
+      if (typeof input === 'string' || input instanceof String) {
+        // See https://davidwalsh.name/nodelist-array for the technique transforming nodeList -> Array.
+        elements = [].slice.call(document.querySelectorAll(input));
+      // I checked the 'input instanceof NodeList' test in IE9 and modern browsers and it worked for me.
+      } else if (Array.isArray(input) || input instanceof NodeList) {
+        elements = [].slice.call(input);
+      } else {
+        throw new TypeError('The selector provided to AnchorJS was invalid.');
+      }
+
+      return elements;
+    }
+
+    /**
+     * _addBaselineStyles
+     * Adds baseline styles to the page, used by all AnchorJS links irregardless of configuration.
+     */
+    function _addBaselineStyles() {
+      // We don't want to add global baseline styles if they've been added before.
+      if (document.head.querySelector('style.anchorjs') !== null) {
+        return;
+      }
+
+      var style = document.createElement('style'),
+          linkRule =
+          '.anchorjs-link{'                        +
+            'opacity:0;'                           +
+            'text-decoration:none;'                +
+            '-webkit-font-smoothing:antialiased;'  +
+            '-moz-osx-font-smoothing:grayscale'    +
+          '}',
+          hoverRule =
+          ':hover>.anchorjs-link,'                 +
+          '.anchorjs-link:focus{'                  +
+            'opacity:1'                            +
+          '}',
+          anchorjsLinkFontFace =
+          '@font-face{'                            +
+            'font-family:anchorjs-icons;'          + // Icon from icomoon; 10px wide & 10px tall; 2 empty below & 4 above
+            'src:url(data:n/a;base64,AAEAAAALAIAAAwAwT1MvMg8yG2cAAAE4AAAAYGNtYXDp3gC3AAABpAAAAExnYXNwAAAAEAAAA9wAAAAIZ2x5ZlQCcfwAAAH4AAABCGhlYWQHFvHyAAAAvAAAADZoaGVhBnACFwAAAPQAAAAkaG10eASAADEAAAGYAAAADGxvY2EACACEAAAB8AAAAAhtYXhwAAYAVwAAARgAAAAgbmFtZQGOH9cAAAMAAAAAunBvc3QAAwAAAAADvAAAACAAAQAAAAEAAHzE2p9fDzz1AAkEAAAAAADRecUWAAAAANQA6R8AAAAAAoACwAAAAAgAAgAAAAAAAAABAAADwP/AAAACgAAA/9MCrQABAAAAAAAAAAAAAAAAAAAAAwABAAAAAwBVAAIAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAMCQAGQAAUAAAKZAswAAACPApkCzAAAAesAMwEJAAAAAAAAAAAAAAAAAAAAARAAAAAAAAAAAAAAAAAAAAAAQAAg//0DwP/AAEADwABAAAAAAQAAAAAAAAAAAAAAIAAAAAAAAAIAAAACgAAxAAAAAwAAAAMAAAAcAAEAAwAAABwAAwABAAAAHAAEADAAAAAIAAgAAgAAACDpy//9//8AAAAg6cv//f///+EWNwADAAEAAAAAAAAAAAAAAAAACACEAAEAAAAAAAAAAAAAAAAxAAACAAQARAKAAsAAKwBUAAABIiYnJjQ3NzY2MzIWFxYUBwcGIicmNDc3NjQnJiYjIgYHBwYUFxYUBwYGIwciJicmNDc3NjIXFhQHBwYUFxYWMzI2Nzc2NCcmNDc2MhcWFAcHBgYjARQGDAUtLXoWOR8fORYtLTgKGwoKCjgaGg0gEhIgDXoaGgkJBQwHdR85Fi0tOAobCgoKOBoaDSASEiANehoaCQkKGwotLXoWOR8BMwUFLYEuehYXFxYugC44CQkKGwo4GkoaDQ0NDXoaShoKGwoFBe8XFi6ALjgJCQobCjgaShoNDQ0NehpKGgobCgoKLYEuehYXAAAADACWAAEAAAAAAAEACAAAAAEAAAAAAAIAAwAIAAEAAAAAAAMACAAAAAEAAAAAAAQACAAAAAEAAAAAAAUAAQALAAEAAAAAAAYACAAAAAMAAQQJAAEAEAAMAAMAAQQJAAIABgAcAAMAAQQJAAMAEAAMAAMAAQQJAAQAEAAMAAMAAQQJAAUAAgAiAAMAAQQJAAYAEAAMYW5jaG9yanM0MDBAAGEAbgBjAGgAbwByAGoAcwA0ADAAMABAAAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAH//wAP) format("truetype")' +
+          '}',
+          pseudoElContent =
+          '[data-anchorjs-icon]::after{'           +
+            'content:attr(data-anchorjs-icon)'     +
+          '}',
+          firstStyleEl;
+
+      style.className = 'anchorjs';
+      style.appendChild(document.createTextNode('')); // Necessary for Webkit.
+
+      // We place it in the head with the other style tags, if possible, so as to
+      // not look out of place. We insert before the others so these styles can be
+      // overridden if necessary.
+      firstStyleEl = document.head.querySelector('[rel="stylesheet"],style');
+      if (firstStyleEl === undefined) {
+        document.head.appendChild(style);
+      } else {
+        document.head.insertBefore(style, firstStyleEl);
+      }
+
+      style.sheet.insertRule(linkRule, style.sheet.cssRules.length);
+      style.sheet.insertRule(hoverRule, style.sheet.cssRules.length);
+      style.sheet.insertRule(pseudoElContent, style.sheet.cssRules.length);
+      style.sheet.insertRule(anchorjsLinkFontFace, style.sheet.cssRules.length);
+    }
+  }
+
+  return AnchorJS;
+}));
+
+
+/***/ }),
+
+/***/ "./resources/js/app.js":
+/*!*****************************!*\
+  !*** ./resources/js/app.js ***!
+  \*****************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var alpinejs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! alpinejs */ "./node_modules/alpinejs/dist/alpine.js");
+/* harmony import */ var alpinejs__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(alpinejs__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _src_AppServiceProvider__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./src/AppServiceProvider */ "./resources/js/src/AppServiceProvider.js");
+
+
+window.AppServiceProvider = _src_AppServiceProvider__WEBPACK_IMPORTED_MODULE_1__.AppServiceProvider;
+
+/***/ }),
+
+/***/ "./resources/js/src/AppServiceProvider.js":
+/*!************************************************!*\
+  !*** ./resources/js/src/AppServiceProvider.js ***!
+  \************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "AppServiceProvider": () => (/* binding */ AppServiceProvider)
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var prismjs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! prismjs */ "./node_modules/prismjs/prism.js");
+/* harmony import */ var prismjs__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(prismjs__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var anchor_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! anchor-js */ "./node_modules/anchor-js/anchor.js");
+/* harmony import */ var anchor_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(anchor_js__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var clipboard__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! clipboard */ "./node_modules/clipboard/dist/clipboard.js");
+/* harmony import */ var clipboard__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(clipboard__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var tocbot__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! tocbot */ "./node_modules/tocbot/src/js/index.js");
+/* harmony import */ var tocbot__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(tocbot__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _streams_core__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @streams/core */ "@streams/core");
+/* harmony import */ var _streams_core__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_streams_core__WEBPACK_IMPORTED_MODULE_5__);
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+
+
+
+
+
+var AppServiceProvider = /*#__PURE__*/function (_ServiceProvider) {
+  _inherits(AppServiceProvider, _ServiceProvider);
+
+  var _super = _createSuper(AppServiceProvider);
+
+  function AppServiceProvider() {
+    _classCallCheck(this, AppServiceProvider);
+
+    return _super.apply(this, arguments);
+  }
+
+  _createClass(AppServiceProvider, [{
+    key: "register",
+    value: function () {
+      var _register = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee);
+      }));
+
+      function register() {
+        return _register.apply(this, arguments);
+      }
+
+      return register;
+    }()
+  }, {
+    key: "boot",
+    value: function () {
+      var _boot = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
+        var examples, anchors;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                /**
+                 * Setup the code examples
+                 */
+                examples = Array.prototype.slice.call(document.querySelectorAll('pre > code'));
+                examples.forEach(function (code, index) {
+                  code.setAttribute('id', 'code-' + (index + 1));
+                  var copy = document.createElement('button');
+                  copy.textContent = 'copy';
+                  copy.setAttribute('data-clipboard-target', '#code-' + (index + 1));
+                  copy.classList.add('copy-to-clipboard');
+                  code.parentNode.insertBefore(copy, code.nextSibling);
+                  var clipboard = new (clipboard__WEBPACK_IMPORTED_MODULE_3___default())('.copy-to-clipboard');
+                  clipboard.on('success', function (event) {
+                    event.trigger.classList.add('copied');
+                  });
+                });
+                prismjs__WEBPACK_IMPORTED_MODULE_1___default().highlightAll();
+                anchors = new (anchor_js__WEBPACK_IMPORTED_MODULE_2___default())();
+                anchors.options = {
+                  placement: 'left'
+                };
+                anchors.add('.doc-body h2, .doc-body h3, .doc-body h4');
+                tocbot__WEBPACK_IMPORTED_MODULE_4__.init({
+                  // Where to render the table of contents.
+                  tocSelector: '.ls-doc__toc',
+                  // Where to grab the headings to build the table of contents.
+                  contentSelector: '.doc-body',
+                  // Which headings to grab inside of the contentSelector element.
+                  headingSelector: 'h2,h3,h5',
+                  // Headings that match the ignoreSelector will be skipped.
+                  ignoreSelector: '.toc-ignore',
+                  // For headings inside relative or absolute positioned containers within content.
+                  hasInnerContainers: false,
+                  // Main class to add to links.
+                  linkClass: 'toc-link',
+                  // The sections that are hidden will open
+                  // and close as you scroll to headings within them.
+                  collapseDepth: 5,
+                  // Smooth scrolling enabled.
+                  scrollSmooth: true,
+                  // Smooth scroll duration.
+                  scrollSmoothDuration: 0,
+                  // Callback for scroll end.
+                  // Can also be used to account for scroll height discrepancies from the use of css scroll-padding-top
+                  headingsOffset: 1,
+                  // Timeout between events firing to make sure it's
+                  // not too rapid (for performance reasons).
+                  throttleTimeout: 50,
+                  // Element to add the positionFixedClass to.
+                  positionFixedSelector: null,
+                  // Fixed position class to add to make sidebar fixed after scrolling
+                  // down past the fixedSidebarOffset.
+                  positionFixedClass: 'is-position-fixed',
+                  // fixedSidebarOffset can be any number but by default is set
+                  // to auto which sets the fixedSidebarOffset to the sidebar
+                  // element's offsetTop from the top of the document on init.
+                  fixedSidebarOffset: 'auto',
+                  // includeHtml can be set to true to include the HTML markup from the
+                  // heading node instead of just including the textContent.
+                  includeHtml: false,
+                  // If there is a fixed article scroll container, set to calculate titles' offset
+                  scrollContainer: null,
+                  // prevent ToC DOM rendering if it's already rendered by an external system
+                  skipRendering: false
+                });
+
+              case 7:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2);
+      }));
+
+      function boot() {
+        return _boot.apply(this, arguments);
+      }
+
+      return boot;
+    }()
+  }]);
+
+  return AppServiceProvider;
+}(_streams_core__WEBPACK_IMPORTED_MODULE_5__.ServiceProvider);
+
+/***/ }),
+
+/***/ "./node_modules/clipboard/dist/clipboard.js":
+/*!**************************************************!*\
+  !*** ./node_modules/clipboard/dist/clipboard.js ***!
+  \**************************************************/
+/***/ (function(module) {
+
+/*!
+ * clipboard.js v2.0.6
+ * https://clipboardjs.com/
+ * 
+ * Licensed MIT © Zeno Rocha
+ */
+(function webpackUniversalModuleDefinition(root, factory) {
+	if(true)
+		module.exports = factory();
+	else {}
+})(this, function() {
+return /******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+/******/
+/******/ 	// The require function
+/******/ 	function __nested_webpack_require_637__(moduleId) {
+/******/
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId]) {
+/******/ 			return installedModules[moduleId].exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			i: moduleId,
+/******/ 			l: false,
+/******/ 			exports: {}
+/******/ 		};
+/******/
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __nested_webpack_require_637__);
+/******/
+/******/ 		// Flag the module as loaded
+/******/ 		module.l = true;
+/******/
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/
+/******/
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__nested_webpack_require_637__.m = modules;
+/******/
+/******/ 	// expose the module cache
+/******/ 	__nested_webpack_require_637__.c = installedModules;
+/******/
+/******/ 	// define getter function for harmony exports
+/******/ 	__nested_webpack_require_637__.d = function(exports, name, getter) {
+/******/ 		if(!__nested_webpack_require_637__.o(exports, name)) {
+/******/ 			Object.defineProperty(exports, name, { enumerable: true, get: getter });
+/******/ 		}
+/******/ 	};
+/******/
+/******/ 	// define __esModule on exports
+/******/ 	__nested_webpack_require_637__.r = function(exports) {
+/******/ 		if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 			Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 		}
+/******/ 		Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 	};
+/******/
+/******/ 	// create a fake namespace object
+/******/ 	// mode & 1: value is a module id, require it
+/******/ 	// mode & 2: merge all properties of value into the ns
+/******/ 	// mode & 4: return value when already ns object
+/******/ 	// mode & 8|1: behave like require
+/******/ 	__nested_webpack_require_637__.t = function(value, mode) {
+/******/ 		if(mode & 1) value = __nested_webpack_require_637__(value);
+/******/ 		if(mode & 8) return value;
+/******/ 		if((mode & 4) && typeof value === 'object' && value && value.__esModule) return value;
+/******/ 		var ns = Object.create(null);
+/******/ 		__nested_webpack_require_637__.r(ns);
+/******/ 		Object.defineProperty(ns, 'default', { enumerable: true, value: value });
+/******/ 		if(mode & 2 && typeof value != 'string') for(var key in value) __nested_webpack_require_637__.d(ns, key, function(key) { return value[key]; }.bind(null, key));
+/******/ 		return ns;
+/******/ 	};
+/******/
+/******/ 	// getDefaultExport function for compatibility with non-harmony modules
+/******/ 	__nested_webpack_require_637__.n = function(module) {
+/******/ 		var getter = module && module.__esModule ?
+/******/ 			function getDefault() { return module['default']; } :
+/******/ 			function getModuleExports() { return module; };
+/******/ 		__nested_webpack_require_637__.d(getter, 'a', getter);
+/******/ 		return getter;
+/******/ 	};
+/******/
+/******/ 	// Object.prototype.hasOwnProperty.call
+/******/ 	__nested_webpack_require_637__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+/******/
+/******/ 	// __webpack_public_path__
+/******/ 	__nested_webpack_require_637__.p = "";
+/******/
+/******/
+/******/ 	// Load entry module and return exports
+/******/ 	return __nested_webpack_require_637__(__nested_webpack_require_637__.s = 6);
+/******/ })
+/************************************************************************/
+/******/ ([
+/* 0 */
+/***/ (function(module, exports) {
+
+function select(element) {
+    var selectedText;
+
+    if (element.nodeName === 'SELECT') {
+        element.focus();
+
+        selectedText = element.value;
+    }
+    else if (element.nodeName === 'INPUT' || element.nodeName === 'TEXTAREA') {
+        var isReadOnly = element.hasAttribute('readonly');
+
+        if (!isReadOnly) {
+            element.setAttribute('readonly', '');
+        }
+
+        element.select();
+        element.setSelectionRange(0, element.value.length);
+
+        if (!isReadOnly) {
+            element.removeAttribute('readonly');
+        }
+
+        selectedText = element.value;
+    }
+    else {
+        if (element.hasAttribute('contenteditable')) {
+            element.focus();
+        }
+
+        var selection = window.getSelection();
+        var range = document.createRange();
+
+        range.selectNodeContents(element);
+        selection.removeAllRanges();
+        selection.addRange(range);
+
+        selectedText = selection.toString();
+    }
+
+    return selectedText;
+}
+
+module.exports = select;
+
+
+/***/ }),
+/* 1 */
+/***/ (function(module, exports) {
+
+function E () {
+  // Keep this empty so it's easier to inherit from
+  // (via https://github.com/lipsmack from https://github.com/scottcorgan/tiny-emitter/issues/3)
+}
+
+E.prototype = {
+  on: function (name, callback, ctx) {
+    var e = this.e || (this.e = {});
+
+    (e[name] || (e[name] = [])).push({
+      fn: callback,
+      ctx: ctx
+    });
+
+    return this;
+  },
+
+  once: function (name, callback, ctx) {
+    var self = this;
+    function listener () {
+      self.off(name, listener);
+      callback.apply(ctx, arguments);
+    };
+
+    listener._ = callback
+    return this.on(name, listener, ctx);
+  },
+
+  emit: function (name) {
+    var data = [].slice.call(arguments, 1);
+    var evtArr = ((this.e || (this.e = {}))[name] || []).slice();
+    var i = 0;
+    var len = evtArr.length;
+
+    for (i; i < len; i++) {
+      evtArr[i].fn.apply(evtArr[i].ctx, data);
+    }
+
+    return this;
+  },
+
+  off: function (name, callback) {
+    var e = this.e || (this.e = {});
+    var evts = e[name];
+    var liveEvents = [];
+
+    if (evts && callback) {
+      for (var i = 0, len = evts.length; i < len; i++) {
+        if (evts[i].fn !== callback && evts[i].fn._ !== callback)
+          liveEvents.push(evts[i]);
+      }
+    }
+
+    // Remove event from queue to prevent memory leak
+    // Suggested by https://github.com/lazd
+    // Ref: https://github.com/scottcorgan/tiny-emitter/commit/c6ebfaa9bc973b33d110a84a307742b7cf94c953#commitcomment-5024910
+
+    (liveEvents.length)
+      ? e[name] = liveEvents
+      : delete e[name];
+
+    return this;
+  }
+};
+
+module.exports = E;
+module.exports.TinyEmitter = E;
+
+
+/***/ }),
+/* 2 */
+/***/ (function(module, exports, __nested_webpack_require_6836__) {
+
+var is = __nested_webpack_require_6836__(3);
+var delegate = __nested_webpack_require_6836__(4);
+
+/**
+ * Validates all params and calls the right
+ * listener function based on its target type.
+ *
+ * @param {String|HTMLElement|HTMLCollection|NodeList} target
+ * @param {String} type
+ * @param {Function} callback
+ * @return {Object}
+ */
+function listen(target, type, callback) {
+    if (!target && !type && !callback) {
+        throw new Error('Missing required arguments');
+    }
+
+    if (!is.string(type)) {
+        throw new TypeError('Second argument must be a String');
+    }
+
+    if (!is.fn(callback)) {
+        throw new TypeError('Third argument must be a Function');
+    }
+
+    if (is.node(target)) {
+        return listenNode(target, type, callback);
+    }
+    else if (is.nodeList(target)) {
+        return listenNodeList(target, type, callback);
+    }
+    else if (is.string(target)) {
+        return listenSelector(target, type, callback);
+    }
+    else {
+        throw new TypeError('First argument must be a String, HTMLElement, HTMLCollection, or NodeList');
+    }
+}
+
+/**
+ * Adds an event listener to a HTML element
+ * and returns a remove listener function.
+ *
+ * @param {HTMLElement} node
+ * @param {String} type
+ * @param {Function} callback
+ * @return {Object}
+ */
+function listenNode(node, type, callback) {
+    node.addEventListener(type, callback);
+
+    return {
+        destroy: function() {
+            node.removeEventListener(type, callback);
+        }
+    }
+}
+
+/**
+ * Add an event listener to a list of HTML elements
+ * and returns a remove listener function.
+ *
+ * @param {NodeList|HTMLCollection} nodeList
+ * @param {String} type
+ * @param {Function} callback
+ * @return {Object}
+ */
+function listenNodeList(nodeList, type, callback) {
+    Array.prototype.forEach.call(nodeList, function(node) {
+        node.addEventListener(type, callback);
+    });
+
+    return {
+        destroy: function() {
+            Array.prototype.forEach.call(nodeList, function(node) {
+                node.removeEventListener(type, callback);
+            });
+        }
+    }
+}
+
+/**
+ * Add an event listener to a selector
+ * and returns a remove listener function.
+ *
+ * @param {String} selector
+ * @param {String} type
+ * @param {Function} callback
+ * @return {Object}
+ */
+function listenSelector(selector, type, callback) {
+    return delegate(document.body, selector, type, callback);
+}
+
+module.exports = listen;
+
+
+/***/ }),
+/* 3 */
+/***/ (function(module, exports) {
+
+/**
+ * Check if argument is a HTML element.
+ *
+ * @param {Object} value
+ * @return {Boolean}
+ */
+exports.node = function(value) {
+    return value !== undefined
+        && value instanceof HTMLElement
+        && value.nodeType === 1;
+};
+
+/**
+ * Check if argument is a list of HTML elements.
+ *
+ * @param {Object} value
+ * @return {Boolean}
+ */
+exports.nodeList = function(value) {
+    var type = Object.prototype.toString.call(value);
+
+    return value !== undefined
+        && (type === '[object NodeList]' || type === '[object HTMLCollection]')
+        && ('length' in value)
+        && (value.length === 0 || exports.node(value[0]));
+};
+
+/**
+ * Check if argument is a string.
+ *
+ * @param {Object} value
+ * @return {Boolean}
+ */
+exports.string = function(value) {
+    return typeof value === 'string'
+        || value instanceof String;
+};
+
+/**
+ * Check if argument is a function.
+ *
+ * @param {Object} value
+ * @return {Boolean}
+ */
+exports.fn = function(value) {
+    var type = Object.prototype.toString.call(value);
+
+    return type === '[object Function]';
+};
+
+
+/***/ }),
+/* 4 */
+/***/ (function(module, exports, __nested_webpack_require_10434__) {
+
+var closest = __nested_webpack_require_10434__(5);
+
+/**
+ * Delegates event to a selector.
+ *
+ * @param {Element} element
+ * @param {String} selector
+ * @param {String} type
+ * @param {Function} callback
+ * @param {Boolean} useCapture
+ * @return {Object}
+ */
+function _delegate(element, selector, type, callback, useCapture) {
+    var listenerFn = listener.apply(this, arguments);
+
+    element.addEventListener(type, listenerFn, useCapture);
+
+    return {
+        destroy: function() {
+            element.removeEventListener(type, listenerFn, useCapture);
+        }
+    }
+}
+
+/**
+ * Delegates event to a selector.
+ *
+ * @param {Element|String|Array} [elements]
+ * @param {String} selector
+ * @param {String} type
+ * @param {Function} callback
+ * @param {Boolean} useCapture
+ * @return {Object}
+ */
+function delegate(elements, selector, type, callback, useCapture) {
+    // Handle the regular Element usage
+    if (typeof elements.addEventListener === 'function') {
+        return _delegate.apply(null, arguments);
+    }
+
+    // Handle Element-less usage, it defaults to global delegation
+    if (typeof type === 'function') {
+        // Use `document` as the first parameter, then apply arguments
+        // This is a short way to .unshift `arguments` without running into deoptimizations
+        return _delegate.bind(null, document).apply(null, arguments);
+    }
+
+    // Handle Selector-based usage
+    if (typeof elements === 'string') {
+        elements = document.querySelectorAll(elements);
+    }
+
+    // Handle Array-like based usage
+    return Array.prototype.map.call(elements, function (element) {
+        return _delegate(element, selector, type, callback, useCapture);
+    });
+}
+
+/**
+ * Finds closest match and invokes callback.
+ *
+ * @param {Element} element
+ * @param {String} selector
+ * @param {String} type
+ * @param {Function} callback
+ * @return {Function}
+ */
+function listener(element, selector, type, callback) {
+    return function(e) {
+        e.delegateTarget = closest(e.target, selector);
+
+        if (e.delegateTarget) {
+            callback.call(element, e);
+        }
+    }
+}
+
+module.exports = delegate;
+
+
+/***/ }),
+/* 5 */
+/***/ (function(module, exports) {
+
+var DOCUMENT_NODE_TYPE = 9;
+
+/**
+ * A polyfill for Element.matches()
+ */
+if (typeof Element !== 'undefined' && !Element.prototype.matches) {
+    var proto = Element.prototype;
+
+    proto.matches = proto.matchesSelector ||
+                    proto.mozMatchesSelector ||
+                    proto.msMatchesSelector ||
+                    proto.oMatchesSelector ||
+                    proto.webkitMatchesSelector;
+}
+
+/**
+ * Finds the closest parent that matches a selector.
+ *
+ * @param {Element} element
+ * @param {String} selector
+ * @return {Function}
+ */
+function closest (element, selector) {
+    while (element && element.nodeType !== DOCUMENT_NODE_TYPE) {
+        if (typeof element.matches === 'function' &&
+            element.matches(selector)) {
+          return element;
+        }
+        element = element.parentNode;
+    }
+}
+
+module.exports = closest;
+
+
+/***/ }),
+/* 6 */
+/***/ (function(module, __webpack_exports__, __nested_webpack_require_13563__) {
+
+"use strict";
+__nested_webpack_require_13563__.r(__webpack_exports__);
+
+// EXTERNAL MODULE: ./node_modules/select/src/select.js
+var src_select = __nested_webpack_require_13563__(0);
+var select_default = /*#__PURE__*/__nested_webpack_require_13563__.n(src_select);
+
+// CONCATENATED MODULE: ./src/clipboard-action.js
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+
+
+/**
+ * Inner class which performs selection from either `text` or `target`
+ * properties and then executes copy or cut operations.
+ */
+
+var clipboard_action_ClipboardAction = function () {
+    /**
+     * @param {Object} options
+     */
+    function ClipboardAction(options) {
+        _classCallCheck(this, ClipboardAction);
+
+        this.resolveOptions(options);
+        this.initSelection();
+    }
+
+    /**
+     * Defines base properties passed from constructor.
+     * @param {Object} options
+     */
+
+
+    _createClass(ClipboardAction, [{
+        key: 'resolveOptions',
+        value: function resolveOptions() {
+            var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+
+            this.action = options.action;
+            this.container = options.container;
+            this.emitter = options.emitter;
+            this.target = options.target;
+            this.text = options.text;
+            this.trigger = options.trigger;
+
+            this.selectedText = '';
+        }
+
+        /**
+         * Decides which selection strategy is going to be applied based
+         * on the existence of `text` and `target` properties.
+         */
+
+    }, {
+        key: 'initSelection',
+        value: function initSelection() {
+            if (this.text) {
+                this.selectFake();
+            } else if (this.target) {
+                this.selectTarget();
+            }
+        }
+
+        /**
+         * Creates a fake textarea element, sets its value from `text` property,
+         * and makes a selection on it.
+         */
+
+    }, {
+        key: 'selectFake',
+        value: function selectFake() {
+            var _this = this;
+
+            var isRTL = document.documentElement.getAttribute('dir') == 'rtl';
+
+            this.removeFake();
+
+            this.fakeHandlerCallback = function () {
+                return _this.removeFake();
+            };
+            this.fakeHandler = this.container.addEventListener('click', this.fakeHandlerCallback) || true;
+
+            this.fakeElem = document.createElement('textarea');
+            // Prevent zooming on iOS
+            this.fakeElem.style.fontSize = '12pt';
+            // Reset box model
+            this.fakeElem.style.border = '0';
+            this.fakeElem.style.padding = '0';
+            this.fakeElem.style.margin = '0';
+            // Move element out of screen horizontally
+            this.fakeElem.style.position = 'absolute';
+            this.fakeElem.style[isRTL ? 'right' : 'left'] = '-9999px';
+            // Move element to the same position vertically
+            var yPosition = window.pageYOffset || document.documentElement.scrollTop;
+            this.fakeElem.style.top = yPosition + 'px';
+
+            this.fakeElem.setAttribute('readonly', '');
+            this.fakeElem.value = this.text;
+
+            this.container.appendChild(this.fakeElem);
+
+            this.selectedText = select_default()(this.fakeElem);
+            this.copyText();
+        }
+
+        /**
+         * Only removes the fake element after another click event, that way
+         * a user can hit `Ctrl+C` to copy because selection still exists.
+         */
+
+    }, {
+        key: 'removeFake',
+        value: function removeFake() {
+            if (this.fakeHandler) {
+                this.container.removeEventListener('click', this.fakeHandlerCallback);
+                this.fakeHandler = null;
+                this.fakeHandlerCallback = null;
+            }
+
+            if (this.fakeElem) {
+                this.container.removeChild(this.fakeElem);
+                this.fakeElem = null;
+            }
+        }
+
+        /**
+         * Selects the content from element passed on `target` property.
+         */
+
+    }, {
+        key: 'selectTarget',
+        value: function selectTarget() {
+            this.selectedText = select_default()(this.target);
+            this.copyText();
+        }
+
+        /**
+         * Executes the copy operation based on the current selection.
+         */
+
+    }, {
+        key: 'copyText',
+        value: function copyText() {
+            var succeeded = void 0;
+
+            try {
+                succeeded = document.execCommand(this.action);
+            } catch (err) {
+                succeeded = false;
+            }
+
+            this.handleResult(succeeded);
+        }
+
+        /**
+         * Fires an event based on the copy operation result.
+         * @param {Boolean} succeeded
+         */
+
+    }, {
+        key: 'handleResult',
+        value: function handleResult(succeeded) {
+            this.emitter.emit(succeeded ? 'success' : 'error', {
+                action: this.action,
+                text: this.selectedText,
+                trigger: this.trigger,
+                clearSelection: this.clearSelection.bind(this)
+            });
+        }
+
+        /**
+         * Moves focus away from `target` and back to the trigger, removes current selection.
+         */
+
+    }, {
+        key: 'clearSelection',
+        value: function clearSelection() {
+            if (this.trigger) {
+                this.trigger.focus();
+            }
+            document.activeElement.blur();
+            window.getSelection().removeAllRanges();
+        }
+
+        /**
+         * Sets the `action` to be performed which can be either 'copy' or 'cut'.
+         * @param {String} action
+         */
+
+    }, {
+        key: 'destroy',
+
+
+        /**
+         * Destroy lifecycle.
+         */
+        value: function destroy() {
+            this.removeFake();
+        }
+    }, {
+        key: 'action',
+        set: function set() {
+            var action = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'copy';
+
+            this._action = action;
+
+            if (this._action !== 'copy' && this._action !== 'cut') {
+                throw new Error('Invalid "action" value, use either "copy" or "cut"');
+            }
+        }
+
+        /**
+         * Gets the `action` property.
+         * @return {String}
+         */
+        ,
+        get: function get() {
+            return this._action;
+        }
+
+        /**
+         * Sets the `target` property using an element
+         * that will be have its content copied.
+         * @param {Element} target
+         */
+
+    }, {
+        key: 'target',
+        set: function set(target) {
+            if (target !== undefined) {
+                if (target && (typeof target === 'undefined' ? 'undefined' : _typeof(target)) === 'object' && target.nodeType === 1) {
+                    if (this.action === 'copy' && target.hasAttribute('disabled')) {
+                        throw new Error('Invalid "target" attribute. Please use "readonly" instead of "disabled" attribute');
+                    }
+
+                    if (this.action === 'cut' && (target.hasAttribute('readonly') || target.hasAttribute('disabled'))) {
+                        throw new Error('Invalid "target" attribute. You can\'t cut text from elements with "readonly" or "disabled" attributes');
+                    }
+
+                    this._target = target;
+                } else {
+                    throw new Error('Invalid "target" value, use a valid Element');
+                }
+            }
+        }
+
+        /**
+         * Gets the `target` property.
+         * @return {String|HTMLElement}
+         */
+        ,
+        get: function get() {
+            return this._target;
+        }
+    }]);
+
+    return ClipboardAction;
+}();
+
+/* harmony default export */ var clipboard_action = (clipboard_action_ClipboardAction);
+// EXTERNAL MODULE: ./node_modules/tiny-emitter/index.js
+var tiny_emitter = __nested_webpack_require_13563__(1);
+var tiny_emitter_default = /*#__PURE__*/__nested_webpack_require_13563__.n(tiny_emitter);
+
+// EXTERNAL MODULE: ./node_modules/good-listener/src/listen.js
+var listen = __nested_webpack_require_13563__(2);
+var listen_default = /*#__PURE__*/__nested_webpack_require_13563__.n(listen);
+
+// CONCATENATED MODULE: ./src/clipboard.js
+var clipboard_typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+var clipboard_createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function clipboard_classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+
+
+
+
+/**
+ * Base class which takes one or more elements, adds event listeners to them,
+ * and instantiates a new `ClipboardAction` on each click.
+ */
+
+var clipboard_Clipboard = function (_Emitter) {
+    _inherits(Clipboard, _Emitter);
+
+    /**
+     * @param {String|HTMLElement|HTMLCollection|NodeList} trigger
+     * @param {Object} options
+     */
+    function Clipboard(trigger, options) {
+        clipboard_classCallCheck(this, Clipboard);
+
+        var _this = _possibleConstructorReturn(this, (Clipboard.__proto__ || Object.getPrototypeOf(Clipboard)).call(this));
+
+        _this.resolveOptions(options);
+        _this.listenClick(trigger);
+        return _this;
+    }
+
+    /**
+     * Defines if attributes would be resolved using internal setter functions
+     * or custom functions that were passed in the constructor.
+     * @param {Object} options
+     */
+
+
+    clipboard_createClass(Clipboard, [{
+        key: 'resolveOptions',
+        value: function resolveOptions() {
+            var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+
+            this.action = typeof options.action === 'function' ? options.action : this.defaultAction;
+            this.target = typeof options.target === 'function' ? options.target : this.defaultTarget;
+            this.text = typeof options.text === 'function' ? options.text : this.defaultText;
+            this.container = clipboard_typeof(options.container) === 'object' ? options.container : document.body;
+        }
+
+        /**
+         * Adds a click event listener to the passed trigger.
+         * @param {String|HTMLElement|HTMLCollection|NodeList} trigger
+         */
+
+    }, {
+        key: 'listenClick',
+        value: function listenClick(trigger) {
+            var _this2 = this;
+
+            this.listener = listen_default()(trigger, 'click', function (e) {
+                return _this2.onClick(e);
+            });
+        }
+
+        /**
+         * Defines a new `ClipboardAction` on each click event.
+         * @param {Event} e
+         */
+
+    }, {
+        key: 'onClick',
+        value: function onClick(e) {
+            var trigger = e.delegateTarget || e.currentTarget;
+
+            if (this.clipboardAction) {
+                this.clipboardAction = null;
+            }
+
+            this.clipboardAction = new clipboard_action({
+                action: this.action(trigger),
+                target: this.target(trigger),
+                text: this.text(trigger),
+                container: this.container,
+                trigger: trigger,
+                emitter: this
+            });
+        }
+
+        /**
+         * Default `action` lookup function.
+         * @param {Element} trigger
+         */
+
+    }, {
+        key: 'defaultAction',
+        value: function defaultAction(trigger) {
+            return getAttributeValue('action', trigger);
+        }
+
+        /**
+         * Default `target` lookup function.
+         * @param {Element} trigger
+         */
+
+    }, {
+        key: 'defaultTarget',
+        value: function defaultTarget(trigger) {
+            var selector = getAttributeValue('target', trigger);
+
+            if (selector) {
+                return document.querySelector(selector);
+            }
+        }
+
+        /**
+         * Returns the support of the given action, or all actions if no action is
+         * given.
+         * @param {String} [action]
+         */
+
+    }, {
+        key: 'defaultText',
+
+
+        /**
+         * Default `text` lookup function.
+         * @param {Element} trigger
+         */
+        value: function defaultText(trigger) {
+            return getAttributeValue('text', trigger);
+        }
+
+        /**
+         * Destroy lifecycle.
+         */
+
+    }, {
+        key: 'destroy',
+        value: function destroy() {
+            this.listener.destroy();
+
+            if (this.clipboardAction) {
+                this.clipboardAction.destroy();
+                this.clipboardAction = null;
+            }
+        }
+    }], [{
+        key: 'isSupported',
+        value: function isSupported() {
+            var action = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : ['copy', 'cut'];
+
+            var actions = typeof action === 'string' ? [action] : action;
+            var support = !!document.queryCommandSupported;
+
+            actions.forEach(function (action) {
+                support = support && !!document.queryCommandSupported(action);
+            });
+
+            return support;
+        }
+    }]);
+
+    return Clipboard;
+}(tiny_emitter_default.a);
+
+/**
+ * Helper function to retrieve attribute value.
+ * @param {String} suffix
+ * @param {Element} element
+ */
+
+
+function getAttributeValue(suffix, element) {
+    var attribute = 'data-clipboard-' + suffix;
+
+    if (!element.hasAttribute(attribute)) {
+        return;
+    }
+
+    return element.getAttribute(attribute);
+}
+
+/* harmony default export */ var clipboard = __webpack_exports__["default"] = (clipboard_Clipboard);
+
+/***/ })
+/******/ ])["default"];
+});
+
+/***/ }),
+
+/***/ "./resources/scss/theme.scss":
+/*!***********************************!*\
+  !*** ./resources/scss/theme.scss ***!
+  \***********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ }),
+
+/***/ "./node_modules/prismjs/prism.js":
+/*!***************************************!*\
+  !*** ./node_modules/prismjs/prism.js ***!
+  \***************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+
+/* **********************************************
+     Begin prism-core.js
+********************************************** */
+
+/// <reference lib="WebWorker"/>
+
+var _self = (typeof window !== 'undefined')
+	? window   // if in browser
+	: (
+		(typeof WorkerGlobalScope !== 'undefined' && self instanceof WorkerGlobalScope)
+		? self // if in worker
+		: {}   // if in node js
+	);
+
+/**
+ * Prism: Lightweight, robust, elegant syntax highlighting
+ *
+ * @license MIT <https://opensource.org/licenses/MIT>
+ * @author Lea Verou <https://lea.verou.me>
+ * @namespace
+ * @public
+ */
+var Prism = (function (_self){
+
+// Private helper vars
+var lang = /\blang(?:uage)?-([\w-]+)\b/i;
+var uniqueId = 0;
+
+
+var _ = {
+	/**
+	 * By default, Prism will attempt to highlight all code elements (by calling {@link Prism.highlightAll}) on the
+	 * current page after the page finished loading. This might be a problem if e.g. you wanted to asynchronously load
+	 * additional languages or plugins yourself.
+	 *
+	 * By setting this value to `true`, Prism will not automatically highlight all code elements on the page.
+	 *
+	 * You obviously have to change this value before the automatic highlighting started. To do this, you can add an
+	 * empty Prism object into the global scope before loading the Prism script like this:
+	 *
+	 * ```js
+	 * window.Prism = window.Prism || {};
+	 * Prism.manual = true;
+	 * // add a new <script> to load Prism's script
+	 * ```
+	 *
+	 * @default false
+	 * @type {boolean}
+	 * @memberof Prism
+	 * @public
+	 */
+	manual: _self.Prism && _self.Prism.manual,
+	disableWorkerMessageHandler: _self.Prism && _self.Prism.disableWorkerMessageHandler,
+
+	/**
+	 * A namespace for utility methods.
+	 *
+	 * All function in this namespace that are not explicitly marked as _public_ are for __internal use only__ and may
+	 * change or disappear at any time.
+	 *
+	 * @namespace
+	 * @memberof Prism
+	 */
+	util: {
+		encode: function encode(tokens) {
+			if (tokens instanceof Token) {
+				return new Token(tokens.type, encode(tokens.content), tokens.alias);
+			} else if (Array.isArray(tokens)) {
+				return tokens.map(encode);
+			} else {
+				return tokens.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/\u00a0/g, ' ');
+			}
+		},
+
+		/**
+		 * Returns the name of the type of the given value.
+		 *
+		 * @param {any} o
+		 * @returns {string}
+		 * @example
+		 * type(null)      === 'Null'
+		 * type(undefined) === 'Undefined'
+		 * type(123)       === 'Number'
+		 * type('foo')     === 'String'
+		 * type(true)      === 'Boolean'
+		 * type([1, 2])    === 'Array'
+		 * type({})        === 'Object'
+		 * type(String)    === 'Function'
+		 * type(/abc+/)    === 'RegExp'
+		 */
+		type: function (o) {
+			return Object.prototype.toString.call(o).slice(8, -1);
+		},
+
+		/**
+		 * Returns a unique number for the given object. Later calls will still return the same number.
+		 *
+		 * @param {Object} obj
+		 * @returns {number}
+		 */
+		objId: function (obj) {
+			if (!obj['__id']) {
+				Object.defineProperty(obj, '__id', { value: ++uniqueId });
+			}
+			return obj['__id'];
+		},
+
+		/**
+		 * Creates a deep clone of the given object.
+		 *
+		 * The main intended use of this function is to clone language definitions.
+		 *
+		 * @param {T} o
+		 * @param {Record<number, any>} [visited]
+		 * @returns {T}
+		 * @template T
+		 */
+		clone: function deepClone(o, visited) {
+			visited = visited || {};
+
+			var clone, id;
+			switch (_.util.type(o)) {
+				case 'Object':
+					id = _.util.objId(o);
+					if (visited[id]) {
+						return visited[id];
+					}
+					clone = /** @type {Record<string, any>} */ ({});
+					visited[id] = clone;
+
+					for (var key in o) {
+						if (o.hasOwnProperty(key)) {
+							clone[key] = deepClone(o[key], visited);
+						}
+					}
+
+					return /** @type {any} */ (clone);
+
+				case 'Array':
+					id = _.util.objId(o);
+					if (visited[id]) {
+						return visited[id];
+					}
+					clone = [];
+					visited[id] = clone;
+
+					(/** @type {Array} */(/** @type {any} */(o))).forEach(function (v, i) {
+						clone[i] = deepClone(v, visited);
+					});
+
+					return /** @type {any} */ (clone);
+
+				default:
+					return o;
+			}
+		},
+
+		/**
+		 * Returns the Prism language of the given element set by a `language-xxxx` or `lang-xxxx` class.
+		 *
+		 * If no language is set for the element or the element is `null` or `undefined`, `none` will be returned.
+		 *
+		 * @param {Element} element
+		 * @returns {string}
+		 */
+		getLanguage: function (element) {
+			while (element && !lang.test(element.className)) {
+				element = element.parentElement;
+			}
+			if (element) {
+				return (element.className.match(lang) || [, 'none'])[1].toLowerCase();
+			}
+			return 'none';
+		},
+
+		/**
+		 * Returns the script element that is currently executing.
+		 *
+		 * This does __not__ work for line script element.
+		 *
+		 * @returns {HTMLScriptElement | null}
+		 */
+		currentScript: function () {
+			if (typeof document === 'undefined') {
+				return null;
+			}
+			if ('currentScript' in document && 1 < 2 /* hack to trip TS' flow analysis */) {
+				return /** @type {any} */ (document.currentScript);
+			}
+
+			// IE11 workaround
+			// we'll get the src of the current script by parsing IE11's error stack trace
+			// this will not work for inline scripts
+
+			try {
+				throw new Error();
+			} catch (err) {
+				// Get file src url from stack. Specifically works with the format of stack traces in IE.
+				// A stack will look like this:
+				//
+				// Error
+				//    at _.util.currentScript (http://localhost/components/prism-core.js:119:5)
+				//    at Global code (http://localhost/components/prism-core.js:606:1)
+
+				var src = (/at [^(\r\n]*\((.*):.+:.+\)$/i.exec(err.stack) || [])[1];
+				if (src) {
+					var scripts = document.getElementsByTagName('script');
+					for (var i in scripts) {
+						if (scripts[i].src == src) {
+							return scripts[i];
+						}
+					}
+				}
+				return null;
+			}
+		},
+
+		/**
+		 * Returns whether a given class is active for `element`.
+		 *
+		 * The class can be activated if `element` or one of its ancestors has the given class and it can be deactivated
+		 * if `element` or one of its ancestors has the negated version of the given class. The _negated version_ of the
+		 * given class is just the given class with a `no-` prefix.
+		 *
+		 * Whether the class is active is determined by the closest ancestor of `element` (where `element` itself is
+		 * closest ancestor) that has the given class or the negated version of it. If neither `element` nor any of its
+		 * ancestors have the given class or the negated version of it, then the default activation will be returned.
+		 *
+		 * In the paradoxical situation where the closest ancestor contains __both__ the given class and the negated
+		 * version of it, the class is considered active.
+		 *
+		 * @param {Element} element
+		 * @param {string} className
+		 * @param {boolean} [defaultActivation=false]
+		 * @returns {boolean}
+		 */
+		isActive: function (element, className, defaultActivation) {
+			var no = 'no-' + className;
+
+			while (element) {
+				var classList = element.classList;
+				if (classList.contains(className)) {
+					return true;
+				}
+				if (classList.contains(no)) {
+					return false;
+				}
+				element = element.parentElement;
+			}
+			return !!defaultActivation;
+		}
+	},
+
+	/**
+	 * This namespace contains all currently loaded languages and the some helper functions to create and modify languages.
+	 *
+	 * @namespace
+	 * @memberof Prism
+	 * @public
+	 */
+	languages: {
+		/**
+		 * Creates a deep copy of the language with the given id and appends the given tokens.
+		 *
+		 * If a token in `redef` also appears in the copied language, then the existing token in the copied language
+		 * will be overwritten at its original position.
+		 *
+		 * ## Best practices
+		 *
+		 * Since the position of overwriting tokens (token in `redef` that overwrite tokens in the copied language)
+		 * doesn't matter, they can technically be in any order. However, this can be confusing to others that trying to
+		 * understand the language definition because, normally, the order of tokens matters in Prism grammars.
+		 *
+		 * Therefore, it is encouraged to order overwriting tokens according to the positions of the overwritten tokens.
+		 * Furthermore, all non-overwriting tokens should be placed after the overwriting ones.
+		 *
+		 * @param {string} id The id of the language to extend. This has to be a key in `Prism.languages`.
+		 * @param {Grammar} redef The new tokens to append.
+		 * @returns {Grammar} The new language created.
+		 * @public
+		 * @example
+		 * Prism.languages['css-with-colors'] = Prism.languages.extend('css', {
+		 *     // Prism.languages.css already has a 'comment' token, so this token will overwrite CSS' 'comment' token
+		 *     // at its original position
+		 *     'comment': { ... },
+		 *     // CSS doesn't have a 'color' token, so this token will be appended
+		 *     'color': /\b(?:red|green|blue)\b/
+		 * });
+		 */
+		extend: function (id, redef) {
+			var lang = _.util.clone(_.languages[id]);
+
+			for (var key in redef) {
+				lang[key] = redef[key];
+			}
+
+			return lang;
+		},
+
+		/**
+		 * Inserts tokens _before_ another token in a language definition or any other grammar.
+		 *
+		 * ## Usage
+		 *
+		 * This helper method makes it easy to modify existing languages. For example, the CSS language definition
+		 * not only defines CSS highlighting for CSS documents, but also needs to define highlighting for CSS embedded
+		 * in HTML through `<style>` elements. To do this, it needs to modify `Prism.languages.markup` and add the
+		 * appropriate tokens. However, `Prism.languages.markup` is a regular JavaScript object literal, so if you do
+		 * this:
+		 *
+		 * ```js
+		 * Prism.languages.markup.style = {
+		 *     // token
+		 * };
+		 * ```
+		 *
+		 * then the `style` token will be added (and processed) at the end. `insertBefore` allows you to insert tokens
+		 * before existing tokens. For the CSS example above, you would use it like this:
+		 *
+		 * ```js
+		 * Prism.languages.insertBefore('markup', 'cdata', {
+		 *     'style': {
+		 *         // token
+		 *     }
+		 * });
+		 * ```
+		 *
+		 * ## Special cases
+		 *
+		 * If the grammars of `inside` and `insert` have tokens with the same name, the tokens in `inside`'s grammar
+		 * will be ignored.
+		 *
+		 * This behavior can be used to insert tokens after `before`:
+		 *
+		 * ```js
+		 * Prism.languages.insertBefore('markup', 'comment', {
+		 *     'comment': Prism.languages.markup.comment,
+		 *     // tokens after 'comment'
+		 * });
+		 * ```
+		 *
+		 * ## Limitations
+		 *
+		 * The main problem `insertBefore` has to solve is iteration order. Since ES2015, the iteration order for object
+		 * properties is guaranteed to be the insertion order (except for integer keys) but some browsers behave
+		 * differently when keys are deleted and re-inserted. So `insertBefore` can't be implemented by temporarily
+		 * deleting properties which is necessary to insert at arbitrary positions.
+		 *
+		 * To solve this problem, `insertBefore` doesn't actually insert the given tokens into the target object.
+		 * Instead, it will create a new object and replace all references to the target object with the new one. This
+		 * can be done without temporarily deleting properties, so the iteration order is well-defined.
+		 *
+		 * However, only references that can be reached from `Prism.languages` or `insert` will be replaced. I.e. if
+		 * you hold the target object in a variable, then the value of the variable will not change.
+		 *
+		 * ```js
+		 * var oldMarkup = Prism.languages.markup;
+		 * var newMarkup = Prism.languages.insertBefore('markup', 'comment', { ... });
+		 *
+		 * assert(oldMarkup !== Prism.languages.markup);
+		 * assert(newMarkup === Prism.languages.markup);
+		 * ```
+		 *
+		 * @param {string} inside The property of `root` (e.g. a language id in `Prism.languages`) that contains the
+		 * object to be modified.
+		 * @param {string} before The key to insert before.
+		 * @param {Grammar} insert An object containing the key-value pairs to be inserted.
+		 * @param {Object<string, any>} [root] The object containing `inside`, i.e. the object that contains the
+		 * object to be modified.
+		 *
+		 * Defaults to `Prism.languages`.
+		 * @returns {Grammar} The new grammar object.
+		 * @public
+		 */
+		insertBefore: function (inside, before, insert, root) {
+			root = root || /** @type {any} */ (_.languages);
+			var grammar = root[inside];
+			/** @type {Grammar} */
+			var ret = {};
+
+			for (var token in grammar) {
+				if (grammar.hasOwnProperty(token)) {
+
+					if (token == before) {
+						for (var newToken in insert) {
+							if (insert.hasOwnProperty(newToken)) {
+								ret[newToken] = insert[newToken];
+							}
+						}
+					}
+
+					// Do not insert token which also occur in insert. See #1525
+					if (!insert.hasOwnProperty(token)) {
+						ret[token] = grammar[token];
+					}
+				}
+			}
+
+			var old = root[inside];
+			root[inside] = ret;
+
+			// Update references in other language definitions
+			_.languages.DFS(_.languages, function(key, value) {
+				if (value === old && key != inside) {
+					this[key] = ret;
+				}
+			});
+
+			return ret;
+		},
+
+		// Traverse a language definition with Depth First Search
+		DFS: function DFS(o, callback, type, visited) {
+			visited = visited || {};
+
+			var objId = _.util.objId;
+
+			for (var i in o) {
+				if (o.hasOwnProperty(i)) {
+					callback.call(o, i, o[i], type || i);
+
+					var property = o[i],
+					    propertyType = _.util.type(property);
+
+					if (propertyType === 'Object' && !visited[objId(property)]) {
+						visited[objId(property)] = true;
+						DFS(property, callback, null, visited);
+					}
+					else if (propertyType === 'Array' && !visited[objId(property)]) {
+						visited[objId(property)] = true;
+						DFS(property, callback, i, visited);
+					}
+				}
+			}
+		}
+	},
+
+	plugins: {},
+
+	/**
+	 * This is the most high-level function in Prism’s API.
+	 * It fetches all the elements that have a `.language-xxxx` class and then calls {@link Prism.highlightElement} on
+	 * each one of them.
+	 *
+	 * This is equivalent to `Prism.highlightAllUnder(document, async, callback)`.
+	 *
+	 * @param {boolean} [async=false] Same as in {@link Prism.highlightAllUnder}.
+	 * @param {HighlightCallback} [callback] Same as in {@link Prism.highlightAllUnder}.
+	 * @memberof Prism
+	 * @public
+	 */
+	highlightAll: function(async, callback) {
+		_.highlightAllUnder(document, async, callback);
+	},
+
+	/**
+	 * Fetches all the descendants of `container` that have a `.language-xxxx` class and then calls
+	 * {@link Prism.highlightElement} on each one of them.
+	 *
+	 * The following hooks will be run:
+	 * 1. `before-highlightall`
+	 * 2. `before-all-elements-highlight`
+	 * 3. All hooks of {@link Prism.highlightElement} for each element.
+	 *
+	 * @param {ParentNode} container The root element, whose descendants that have a `.language-xxxx` class will be highlighted.
+	 * @param {boolean} [async=false] Whether each element is to be highlighted asynchronously using Web Workers.
+	 * @param {HighlightCallback} [callback] An optional callback to be invoked on each element after its highlighting is done.
+	 * @memberof Prism
+	 * @public
+	 */
+	highlightAllUnder: function(container, async, callback) {
+		var env = {
+			callback: callback,
+			container: container,
+			selector: 'code[class*="language-"], [class*="language-"] code, code[class*="lang-"], [class*="lang-"] code'
+		};
+
+		_.hooks.run('before-highlightall', env);
+
+		env.elements = Array.prototype.slice.apply(env.container.querySelectorAll(env.selector));
+
+		_.hooks.run('before-all-elements-highlight', env);
+
+		for (var i = 0, element; element = env.elements[i++];) {
+			_.highlightElement(element, async === true, env.callback);
+		}
+	},
+
+	/**
+	 * Highlights the code inside a single element.
+	 *
+	 * The following hooks will be run:
+	 * 1. `before-sanity-check`
+	 * 2. `before-highlight`
+	 * 3. All hooks of {@link Prism.highlight}. These hooks will be run by an asynchronous worker if `async` is `true`.
+	 * 4. `before-insert`
+	 * 5. `after-highlight`
+	 * 6. `complete`
+	 *
+	 * Some the above hooks will be skipped if the element doesn't contain any text or there is no grammar loaded for
+	 * the element's language.
+	 *
+	 * @param {Element} element The element containing the code.
+	 * It must have a class of `language-xxxx` to be processed, where `xxxx` is a valid language identifier.
+	 * @param {boolean} [async=false] Whether the element is to be highlighted asynchronously using Web Workers
+	 * to improve performance and avoid blocking the UI when highlighting very large chunks of code. This option is
+	 * [disabled by default](https://prismjs.com/faq.html#why-is-asynchronous-highlighting-disabled-by-default).
+	 *
+	 * Note: All language definitions required to highlight the code must be included in the main `prism.js` file for
+	 * asynchronous highlighting to work. You can build your own bundle on the
+	 * [Download page](https://prismjs.com/download.html).
+	 * @param {HighlightCallback} [callback] An optional callback to be invoked after the highlighting is done.
+	 * Mostly useful when `async` is `true`, since in that case, the highlighting is done asynchronously.
+	 * @memberof Prism
+	 * @public
+	 */
+	highlightElement: function(element, async, callback) {
+		// Find language
+		var language = _.util.getLanguage(element);
+		var grammar = _.languages[language];
+
+		// Set language on the element, if not present
+		element.className = element.className.replace(lang, '').replace(/\s+/g, ' ') + ' language-' + language;
+
+		// Set language on the parent, for styling
+		var parent = element.parentElement;
+		if (parent && parent.nodeName.toLowerCase() === 'pre') {
+			parent.className = parent.className.replace(lang, '').replace(/\s+/g, ' ') + ' language-' + language;
+		}
+
+		var code = element.textContent;
+
+		var env = {
+			element: element,
+			language: language,
+			grammar: grammar,
+			code: code
+		};
+
+		function insertHighlightedCode(highlightedCode) {
+			env.highlightedCode = highlightedCode;
+
+			_.hooks.run('before-insert', env);
+
+			env.element.innerHTML = env.highlightedCode;
+
+			_.hooks.run('after-highlight', env);
+			_.hooks.run('complete', env);
+			callback && callback.call(env.element);
+		}
+
+		_.hooks.run('before-sanity-check', env);
+
+		if (!env.code) {
+			_.hooks.run('complete', env);
+			callback && callback.call(env.element);
+			return;
+		}
+
+		_.hooks.run('before-highlight', env);
+
+		if (!env.grammar) {
+			insertHighlightedCode(_.util.encode(env.code));
+			return;
+		}
+
+		if (async && _self.Worker) {
+			var worker = new Worker(_.filename);
+
+			worker.onmessage = function(evt) {
+				insertHighlightedCode(evt.data);
+			};
+
+			worker.postMessage(JSON.stringify({
+				language: env.language,
+				code: env.code,
+				immediateClose: true
+			}));
+		}
+		else {
+			insertHighlightedCode(_.highlight(env.code, env.grammar, env.language));
+		}
+	},
+
+	/**
+	 * Low-level function, only use if you know what you’re doing. It accepts a string of text as input
+	 * and the language definitions to use, and returns a string with the HTML produced.
+	 *
+	 * The following hooks will be run:
+	 * 1. `before-tokenize`
+	 * 2. `after-tokenize`
+	 * 3. `wrap`: On each {@link Token}.
+	 *
+	 * @param {string} text A string with the code to be highlighted.
+	 * @param {Grammar} grammar An object containing the tokens to use.
+	 *
+	 * Usually a language definition like `Prism.languages.markup`.
+	 * @param {string} language The name of the language definition passed to `grammar`.
+	 * @returns {string} The highlighted HTML.
+	 * @memberof Prism
+	 * @public
+	 * @example
+	 * Prism.highlight('var foo = true;', Prism.languages.javascript, 'javascript');
+	 */
+	highlight: function (text, grammar, language) {
+		var env = {
+			code: text,
+			grammar: grammar,
+			language: language
+		};
+		_.hooks.run('before-tokenize', env);
+		env.tokens = _.tokenize(env.code, env.grammar);
+		_.hooks.run('after-tokenize', env);
+		return Token.stringify(_.util.encode(env.tokens), env.language);
+	},
+
+	/**
+	 * This is the heart of Prism, and the most low-level function you can use. It accepts a string of text as input
+	 * and the language definitions to use, and returns an array with the tokenized code.
+	 *
+	 * When the language definition includes nested tokens, the function is called recursively on each of these tokens.
+	 *
+	 * This method could be useful in other contexts as well, as a very crude parser.
+	 *
+	 * @param {string} text A string with the code to be highlighted.
+	 * @param {Grammar} grammar An object containing the tokens to use.
+	 *
+	 * Usually a language definition like `Prism.languages.markup`.
+	 * @returns {TokenStream} An array of strings and tokens, a token stream.
+	 * @memberof Prism
+	 * @public
+	 * @example
+	 * let code = `var foo = 0;`;
+	 * let tokens = Prism.tokenize(code, Prism.languages.javascript);
+	 * tokens.forEach(token => {
+	 *     if (token instanceof Prism.Token && token.type === 'number') {
+	 *         console.log(`Found numeric literal: ${token.content}`);
+	 *     }
+	 * });
+	 */
+	tokenize: function(text, grammar) {
+		var rest = grammar.rest;
+		if (rest) {
+			for (var token in rest) {
+				grammar[token] = rest[token];
+			}
+
+			delete grammar.rest;
+		}
+
+		var tokenList = new LinkedList();
+		addAfter(tokenList, tokenList.head, text);
+
+		matchGrammar(text, tokenList, grammar, tokenList.head, 0);
+
+		return toArray(tokenList);
+	},
+
+	/**
+	 * @namespace
+	 * @memberof Prism
+	 * @public
+	 */
+	hooks: {
+		all: {},
+
+		/**
+		 * Adds the given callback to the list of callbacks for the given hook.
+		 *
+		 * The callback will be invoked when the hook it is registered for is run.
+		 * Hooks are usually directly run by a highlight function but you can also run hooks yourself.
+		 *
+		 * One callback function can be registered to multiple hooks and the same hook multiple times.
+		 *
+		 * @param {string} name The name of the hook.
+		 * @param {HookCallback} callback The callback function which is given environment variables.
+		 * @public
+		 */
+		add: function (name, callback) {
+			var hooks = _.hooks.all;
+
+			hooks[name] = hooks[name] || [];
+
+			hooks[name].push(callback);
+		},
+
+		/**
+		 * Runs a hook invoking all registered callbacks with the given environment variables.
+		 *
+		 * Callbacks will be invoked synchronously and in the order in which they were registered.
+		 *
+		 * @param {string} name The name of the hook.
+		 * @param {Object<string, any>} env The environment variables of the hook passed to all callbacks registered.
+		 * @public
+		 */
+		run: function (name, env) {
+			var callbacks = _.hooks.all[name];
+
+			if (!callbacks || !callbacks.length) {
+				return;
+			}
+
+			for (var i=0, callback; callback = callbacks[i++];) {
+				callback(env);
+			}
+		}
+	},
+
+	Token: Token
+};
+_self.Prism = _;
+
+
+// Typescript note:
+// The following can be used to import the Token type in JSDoc:
+//
+//   @typedef {InstanceType<import("./prism-core")["Token"]>} Token
+
+/**
+ * Creates a new token.
+ *
+ * @param {string} type See {@link Token#type type}
+ * @param {string | TokenStream} content See {@link Token#content content}
+ * @param {string|string[]} [alias] The alias(es) of the token.
+ * @param {string} [matchedStr=""] A copy of the full string this token was created from.
+ * @class
+ * @global
+ * @public
+ */
+function Token(type, content, alias, matchedStr) {
+	/**
+	 * The type of the token.
+	 *
+	 * This is usually the key of a pattern in a {@link Grammar}.
+	 *
+	 * @type {string}
+	 * @see GrammarToken
+	 * @public
+	 */
+	this.type = type;
+	/**
+	 * The strings or tokens contained by this token.
+	 *
+	 * This will be a token stream if the pattern matched also defined an `inside` grammar.
+	 *
+	 * @type {string | TokenStream}
+	 * @public
+	 */
+	this.content = content;
+	/**
+	 * The alias(es) of the token.
+	 *
+	 * @type {string|string[]}
+	 * @see GrammarToken
+	 * @public
+	 */
+	this.alias = alias;
+	// Copy of the full string this token was created from
+	this.length = (matchedStr || '').length | 0;
+}
+
+/**
+ * A token stream is an array of strings and {@link Token Token} objects.
+ *
+ * Token streams have to fulfill a few properties that are assumed by most functions (mostly internal ones) that process
+ * them.
+ *
+ * 1. No adjacent strings.
+ * 2. No empty strings.
+ *
+ *    The only exception here is the token stream that only contains the empty string and nothing else.
+ *
+ * @typedef {Array<string | Token>} TokenStream
+ * @global
+ * @public
+ */
+
+/**
+ * Converts the given token or token stream to an HTML representation.
+ *
+ * The following hooks will be run:
+ * 1. `wrap`: On each {@link Token}.
+ *
+ * @param {string | Token | TokenStream} o The token or token stream to be converted.
+ * @param {string} language The name of current language.
+ * @returns {string} The HTML representation of the token or token stream.
+ * @memberof Token
+ * @static
+ */
+Token.stringify = function stringify(o, language) {
+	if (typeof o == 'string') {
+		return o;
+	}
+	if (Array.isArray(o)) {
+		var s = '';
+		o.forEach(function (e) {
+			s += stringify(e, language);
+		});
+		return s;
+	}
+
+	var env = {
+		type: o.type,
+		content: stringify(o.content, language),
+		tag: 'span',
+		classes: ['token', o.type],
+		attributes: {},
+		language: language
+	};
+
+	var aliases = o.alias;
+	if (aliases) {
+		if (Array.isArray(aliases)) {
+			Array.prototype.push.apply(env.classes, aliases);
+		} else {
+			env.classes.push(aliases);
+		}
+	}
+
+	_.hooks.run('wrap', env);
+
+	var attributes = '';
+	for (var name in env.attributes) {
+		attributes += ' ' + name + '="' + (env.attributes[name] || '').replace(/"/g, '&quot;') + '"';
+	}
+
+	return '<' + env.tag + ' class="' + env.classes.join(' ') + '"' + attributes + '>' + env.content + '</' + env.tag + '>';
+};
+
+/**
+ * @param {RegExp} pattern
+ * @param {number} pos
+ * @param {string} text
+ * @param {boolean} lookbehind
+ * @returns {RegExpExecArray | null}
+ */
+function matchPattern(pattern, pos, text, lookbehind) {
+	pattern.lastIndex = pos;
+	var match = pattern.exec(text);
+	if (match && lookbehind && match[1]) {
+		// change the match to remove the text matched by the Prism lookbehind group
+		var lookbehindLength = match[1].length;
+		match.index += lookbehindLength;
+		match[0] = match[0].slice(lookbehindLength);
+	}
+	return match;
+}
+
+/**
+ * @param {string} text
+ * @param {LinkedList<string | Token>} tokenList
+ * @param {any} grammar
+ * @param {LinkedListNode<string | Token>} startNode
+ * @param {number} startPos
+ * @param {RematchOptions} [rematch]
+ * @returns {void}
+ * @private
+ *
+ * @typedef RematchOptions
+ * @property {string} cause
+ * @property {number} reach
+ */
+function matchGrammar(text, tokenList, grammar, startNode, startPos, rematch) {
+	for (var token in grammar) {
+		if (!grammar.hasOwnProperty(token) || !grammar[token]) {
+			continue;
+		}
+
+		var patterns = grammar[token];
+		patterns = Array.isArray(patterns) ? patterns : [patterns];
+
+		for (var j = 0; j < patterns.length; ++j) {
+			if (rematch && rematch.cause == token + ',' + j) {
+				return;
+			}
+
+			var patternObj = patterns[j],
+				inside = patternObj.inside,
+				lookbehind = !!patternObj.lookbehind,
+				greedy = !!patternObj.greedy,
+				alias = patternObj.alias;
+
+			if (greedy && !patternObj.pattern.global) {
+				// Without the global flag, lastIndex won't work
+				var flags = patternObj.pattern.toString().match(/[imsuy]*$/)[0];
+				patternObj.pattern = RegExp(patternObj.pattern.source, flags + 'g');
+			}
+
+			/** @type {RegExp} */
+			var pattern = patternObj.pattern || patternObj;
+
+			for ( // iterate the token list and keep track of the current token/string position
+				var currentNode = startNode.next, pos = startPos;
+				currentNode !== tokenList.tail;
+				pos += currentNode.value.length, currentNode = currentNode.next
+			) {
+
+				if (rematch && pos >= rematch.reach) {
+					break;
+				}
+
+				var str = currentNode.value;
+
+				if (tokenList.length > text.length) {
+					// Something went terribly wrong, ABORT, ABORT!
+					return;
+				}
+
+				if (str instanceof Token) {
+					continue;
+				}
+
+				var removeCount = 1; // this is the to parameter of removeBetween
+				var match;
+
+				if (greedy) {
+					match = matchPattern(pattern, pos, text, lookbehind);
+					if (!match) {
+						break;
+					}
+
+					var from = match.index;
+					var to = match.index + match[0].length;
+					var p = pos;
+
+					// find the node that contains the match
+					p += currentNode.value.length;
+					while (from >= p) {
+						currentNode = currentNode.next;
+						p += currentNode.value.length;
+					}
+					// adjust pos (and p)
+					p -= currentNode.value.length;
+					pos = p;
+
+					// the current node is a Token, then the match starts inside another Token, which is invalid
+					if (currentNode.value instanceof Token) {
+						continue;
+					}
+
+					// find the last node which is affected by this match
+					for (
+						var k = currentNode;
+						k !== tokenList.tail && (p < to || typeof k.value === 'string');
+						k = k.next
+					) {
+						removeCount++;
+						p += k.value.length;
+					}
+					removeCount--;
+
+					// replace with the new match
+					str = text.slice(pos, p);
+					match.index -= pos;
+				} else {
+					match = matchPattern(pattern, 0, str, lookbehind);
+					if (!match) {
+						continue;
+					}
+				}
+
+				var from = match.index,
+					matchStr = match[0],
+					before = str.slice(0, from),
+					after = str.slice(from + matchStr.length);
+
+				var reach = pos + str.length;
+				if (rematch && reach > rematch.reach) {
+					rematch.reach = reach;
+				}
+
+				var removeFrom = currentNode.prev;
+
+				if (before) {
+					removeFrom = addAfter(tokenList, removeFrom, before);
+					pos += before.length;
+				}
+
+				removeRange(tokenList, removeFrom, removeCount);
+
+				var wrapped = new Token(token, inside ? _.tokenize(matchStr, inside) : matchStr, alias, matchStr);
+				currentNode = addAfter(tokenList, removeFrom, wrapped);
+
+				if (after) {
+					addAfter(tokenList, currentNode, after);
+				}
+
+				if (removeCount > 1) {
+					// at least one Token object was removed, so we have to do some rematching
+					// this can only happen if the current pattern is greedy
+					matchGrammar(text, tokenList, grammar, currentNode.prev, pos, {
+						cause: token + ',' + j,
+						reach: reach
+					});
+				}
+			}
+		}
+	}
+}
+
+/**
+ * @typedef LinkedListNode
+ * @property {T} value
+ * @property {LinkedListNode<T> | null} prev The previous node.
+ * @property {LinkedListNode<T> | null} next The next node.
+ * @template T
+ * @private
+ */
+
+/**
+ * @template T
+ * @private
+ */
+function LinkedList() {
+	/** @type {LinkedListNode<T>} */
+	var head = { value: null, prev: null, next: null };
+	/** @type {LinkedListNode<T>} */
+	var tail = { value: null, prev: head, next: null };
+	head.next = tail;
+
+	/** @type {LinkedListNode<T>} */
+	this.head = head;
+	/** @type {LinkedListNode<T>} */
+	this.tail = tail;
+	this.length = 0;
+}
+
+/**
+ * Adds a new node with the given value to the list.
+ * @param {LinkedList<T>} list
+ * @param {LinkedListNode<T>} node
+ * @param {T} value
+ * @returns {LinkedListNode<T>} The added node.
+ * @template T
+ */
+function addAfter(list, node, value) {
+	// assumes that node != list.tail && values.length >= 0
+	var next = node.next;
+
+	var newNode = { value: value, prev: node, next: next };
+	node.next = newNode;
+	next.prev = newNode;
+	list.length++;
+
+	return newNode;
+}
+/**
+ * Removes `count` nodes after the given node. The given node will not be removed.
+ * @param {LinkedList<T>} list
+ * @param {LinkedListNode<T>} node
+ * @param {number} count
+ * @template T
+ */
+function removeRange(list, node, count) {
+	var next = node.next;
+	for (var i = 0; i < count && next !== list.tail; i++) {
+		next = next.next;
+	}
+	node.next = next;
+	next.prev = node;
+	list.length -= i;
+}
+/**
+ * @param {LinkedList<T>} list
+ * @returns {T[]}
+ * @template T
+ */
+function toArray(list) {
+	var array = [];
+	var node = list.head.next;
+	while (node !== list.tail) {
+		array.push(node.value);
+		node = node.next;
+	}
+	return array;
+}
+
+
+if (!_self.document) {
+	if (!_self.addEventListener) {
+		// in Node.js
+		return _;
+	}
+
+	if (!_.disableWorkerMessageHandler) {
+		// In worker
+		_self.addEventListener('message', function (evt) {
+			var message = JSON.parse(evt.data),
+				lang = message.language,
+				code = message.code,
+				immediateClose = message.immediateClose;
+
+			_self.postMessage(_.highlight(code, _.languages[lang], lang));
+			if (immediateClose) {
+				_self.close();
+			}
+		}, false);
+	}
+
+	return _;
+}
+
+// Get current script and highlight
+var script = _.util.currentScript();
+
+if (script) {
+	_.filename = script.src;
+
+	if (script.hasAttribute('data-manual')) {
+		_.manual = true;
+	}
+}
+
+function highlightAutomaticallyCallback() {
+	if (!_.manual) {
+		_.highlightAll();
+	}
+}
+
+if (!_.manual) {
+	// If the document state is "loading", then we'll use DOMContentLoaded.
+	// If the document state is "interactive" and the prism.js script is deferred, then we'll also use the
+	// DOMContentLoaded event because there might be some plugins or languages which have also been deferred and they
+	// might take longer one animation frame to execute which can create a race condition where only some plugins have
+	// been loaded when Prism.highlightAll() is executed, depending on how fast resources are loaded.
+	// See https://github.com/PrismJS/prism/issues/2102
+	var readyState = document.readyState;
+	if (readyState === 'loading' || readyState === 'interactive' && script && script.defer) {
+		document.addEventListener('DOMContentLoaded', highlightAutomaticallyCallback);
+	} else {
+		if (window.requestAnimationFrame) {
+			window.requestAnimationFrame(highlightAutomaticallyCallback);
+		} else {
+			window.setTimeout(highlightAutomaticallyCallback, 16);
+		}
+	}
+}
+
+return _;
+
+})(_self);
+
+if ( true && module.exports) {
+	module.exports = Prism;
+}
+
+// hack for components to work correctly in node.js
+if (typeof __webpack_require__.g !== 'undefined') {
+	__webpack_require__.g.Prism = Prism;
+}
+
+// some additional documentation/types
+
+/**
+ * The expansion of a simple `RegExp` literal to support additional properties.
+ *
+ * @typedef GrammarToken
+ * @property {RegExp} pattern The regular expression of the token.
+ * @property {boolean} [lookbehind=false] If `true`, then the first capturing group of `pattern` will (effectively)
+ * behave as a lookbehind group meaning that the captured text will not be part of the matched text of the new token.
+ * @property {boolean} [greedy=false] Whether the token is greedy.
+ * @property {string|string[]} [alias] An optional alias or list of aliases.
+ * @property {Grammar} [inside] The nested grammar of this token.
+ *
+ * The `inside` grammar will be used to tokenize the text value of each token of this kind.
+ *
+ * This can be used to make nested and even recursive language definitions.
+ *
+ * Note: This can cause infinite recursion. Be careful when you embed different languages or even the same language into
+ * each another.
+ * @global
+ * @public
+*/
+
+/**
+ * @typedef Grammar
+ * @type {Object<string, RegExp | GrammarToken | Array<RegExp | GrammarToken>>}
+ * @property {Grammar} [rest] An optional grammar object that will be appended to this grammar.
+ * @global
+ * @public
+ */
+
+/**
+ * A function which will invoked after an element was successfully highlighted.
+ *
+ * @callback HighlightCallback
+ * @param {Element} element The element successfully highlighted.
+ * @returns {void}
+ * @global
+ * @public
+*/
+
+/**
+ * @callback HookCallback
+ * @param {Object<string, any>} env The environment variables of the hook.
+ * @returns {void}
+ * @global
+ * @public
+ */
+
+
+/* **********************************************
+     Begin prism-markup.js
+********************************************** */
+
+Prism.languages.markup = {
+	'comment': /<!--[\s\S]*?-->/,
+	'prolog': /<\?[\s\S]+?\?>/,
+	'doctype': {
+		// https://www.w3.org/TR/xml/#NT-doctypedecl
+		pattern: /<!DOCTYPE(?:[^>"'[\]]|"[^"]*"|'[^']*')+(?:\[(?:[^<"'\]]|"[^"]*"|'[^']*'|<(?!!--)|<!--(?:[^-]|-(?!->))*-->)*\]\s*)?>/i,
+		greedy: true,
+		inside: {
+			'internal-subset': {
+				pattern: /(\[)[\s\S]+(?=\]>$)/,
+				lookbehind: true,
+				greedy: true,
+				inside: null // see below
+			},
+			'string': {
+				pattern: /"[^"]*"|'[^']*'/,
+				greedy: true
+			},
+			'punctuation': /^<!|>$|[[\]]/,
+			'doctype-tag': /^DOCTYPE/,
+			'name': /[^\s<>'"]+/
+		}
+	},
+	'cdata': /<!\[CDATA\[[\s\S]*?]]>/i,
+	'tag': {
+		pattern: /<\/?(?!\d)[^\s>\/=$<%]+(?:\s(?:\s*[^\s>\/=]+(?:\s*=\s*(?:"[^"]*"|'[^']*'|[^\s'">=]+(?=[\s>]))|(?=[\s/>])))+)?\s*\/?>/,
+		greedy: true,
+		inside: {
+			'tag': {
+				pattern: /^<\/?[^\s>\/]+/,
+				inside: {
+					'punctuation': /^<\/?/,
+					'namespace': /^[^\s>\/:]+:/
+				}
+			},
+			'attr-value': {
+				pattern: /=\s*(?:"[^"]*"|'[^']*'|[^\s'">=]+)/,
+				inside: {
+					'punctuation': [
+						{
+							pattern: /^=/,
+							alias: 'attr-equals'
+						},
+						/"|'/
+					]
+				}
+			},
+			'punctuation': /\/?>/,
+			'attr-name': {
+				pattern: /[^\s>\/]+/,
+				inside: {
+					'namespace': /^[^\s>\/:]+:/
+				}
+			}
+
+		}
+	},
+	'entity': [
+		{
+			pattern: /&[\da-z]{1,8};/i,
+			alias: 'named-entity'
+		},
+		/&#x?[\da-f]{1,8};/i
+	]
+};
+
+Prism.languages.markup['tag'].inside['attr-value'].inside['entity'] =
+	Prism.languages.markup['entity'];
+Prism.languages.markup['doctype'].inside['internal-subset'].inside = Prism.languages.markup;
+
+// Plugin to make entity title show the real entity, idea by Roman Komarov
+Prism.hooks.add('wrap', function (env) {
+
+	if (env.type === 'entity') {
+		env.attributes['title'] = env.content.replace(/&amp;/, '&');
+	}
+});
+
+Object.defineProperty(Prism.languages.markup.tag, 'addInlined', {
+	/**
+	 * Adds an inlined language to markup.
+	 *
+	 * An example of an inlined language is CSS with `<style>` tags.
+	 *
+	 * @param {string} tagName The name of the tag that contains the inlined language. This name will be treated as
+	 * case insensitive.
+	 * @param {string} lang The language key.
+	 * @example
+	 * addInlined('style', 'css');
+	 */
+	value: function addInlined(tagName, lang) {
+		var includedCdataInside = {};
+		includedCdataInside['language-' + lang] = {
+			pattern: /(^<!\[CDATA\[)[\s\S]+?(?=\]\]>$)/i,
+			lookbehind: true,
+			inside: Prism.languages[lang]
+		};
+		includedCdataInside['cdata'] = /^<!\[CDATA\[|\]\]>$/i;
+
+		var inside = {
+			'included-cdata': {
+				pattern: /<!\[CDATA\[[\s\S]*?\]\]>/i,
+				inside: includedCdataInside
+			}
+		};
+		inside['language-' + lang] = {
+			pattern: /[\s\S]+/,
+			inside: Prism.languages[lang]
+		};
+
+		var def = {};
+		def[tagName] = {
+			pattern: RegExp(/(<__[^>]*>)(?:<!\[CDATA\[(?:[^\]]|\](?!\]>))*\]\]>|(?!<!\[CDATA\[)[\s\S])*?(?=<\/__>)/.source.replace(/__/g, function () { return tagName; }), 'i'),
+			lookbehind: true,
+			greedy: true,
+			inside: inside
+		};
+
+		Prism.languages.insertBefore('markup', 'cdata', def);
+	}
+});
+
+Prism.languages.html = Prism.languages.markup;
+Prism.languages.mathml = Prism.languages.markup;
+Prism.languages.svg = Prism.languages.markup;
+
+Prism.languages.xml = Prism.languages.extend('markup', {});
+Prism.languages.ssml = Prism.languages.xml;
+Prism.languages.atom = Prism.languages.xml;
+Prism.languages.rss = Prism.languages.xml;
+
+
+/* **********************************************
+     Begin prism-css.js
+********************************************** */
+
+(function (Prism) {
+
+	var string = /("|')(?:\\(?:\r\n|[\s\S])|(?!\1)[^\\\r\n])*\1/;
+
+	Prism.languages.css = {
+		'comment': /\/\*[\s\S]*?\*\//,
+		'atrule': {
+			pattern: /@[\w-](?:[^;{\s]|\s+(?![\s{]))*(?:;|(?=\s*\{))/,
+			inside: {
+				'rule': /^@[\w-]+/,
+				'selector-function-argument': {
+					pattern: /(\bselector\s*\(\s*(?![\s)]))(?:[^()\s]|\s+(?![\s)])|\((?:[^()]|\([^()]*\))*\))+(?=\s*\))/,
+					lookbehind: true,
+					alias: 'selector'
+				},
+				'keyword': {
+					pattern: /(^|[^\w-])(?:and|not|only|or)(?![\w-])/,
+					lookbehind: true
+				}
+				// See rest below
+			}
+		},
+		'url': {
+			// https://drafts.csswg.org/css-values-3/#urls
+			pattern: RegExp('\\burl\\((?:' + string.source + '|' + /(?:[^\\\r\n()"']|\\[\s\S])*/.source + ')\\)', 'i'),
+			greedy: true,
+			inside: {
+				'function': /^url/i,
+				'punctuation': /^\(|\)$/,
+				'string': {
+					pattern: RegExp('^' + string.source + '$'),
+					alias: 'url'
+				}
+			}
+		},
+		'selector': RegExp('[^{}\\s](?:[^{};"\'\\s]|\\s+(?![\\s{])|' + string.source + ')*(?=\\s*\\{)'),
+		'string': {
+			pattern: string,
+			greedy: true
+		},
+		'property': /(?!\s)[-_a-z\xA0-\uFFFF](?:(?!\s)[-\w\xA0-\uFFFF])*(?=\s*:)/i,
+		'important': /!important\b/i,
+		'function': /[-a-z0-9]+(?=\()/i,
+		'punctuation': /[(){};:,]/
+	};
+
+	Prism.languages.css['atrule'].inside.rest = Prism.languages.css;
+
+	var markup = Prism.languages.markup;
+	if (markup) {
+		markup.tag.addInlined('style', 'css');
+
+		Prism.languages.insertBefore('inside', 'attr-value', {
+			'style-attr': {
+				pattern: /(^|["'\s])style\s*=\s*(?:"[^"]*"|'[^']*')/i,
+				lookbehind: true,
+				inside: {
+					'attr-value': {
+						pattern: /=\s*(?:"[^"]*"|'[^']*'|[^\s'">=]+)/,
+						inside: {
+							'style': {
+								pattern: /(["'])[\s\S]+(?=["']$)/,
+								lookbehind: true,
+								alias: 'language-css',
+								inside: Prism.languages.css
+							},
+							'punctuation': [
+								{
+									pattern: /^=/,
+									alias: 'attr-equals'
+								},
+								/"|'/
+							]
+						}
+					},
+					'attr-name': /^style/i
+				}
+			}
+		}, markup.tag);
+	}
+
+}(Prism));
+
+
+/* **********************************************
+     Begin prism-clike.js
+********************************************** */
+
+Prism.languages.clike = {
+	'comment': [
+		{
+			pattern: /(^|[^\\])\/\*[\s\S]*?(?:\*\/|$)/,
+			lookbehind: true,
+			greedy: true
+		},
+		{
+			pattern: /(^|[^\\:])\/\/.*/,
+			lookbehind: true,
+			greedy: true
+		}
+	],
+	'string': {
+		pattern: /(["'])(?:\\(?:\r\n|[\s\S])|(?!\1)[^\\\r\n])*\1/,
+		greedy: true
+	},
+	'class-name': {
+		pattern: /(\b(?:class|interface|extends|implements|trait|instanceof|new)\s+|\bcatch\s+\()[\w.\\]+/i,
+		lookbehind: true,
+		inside: {
+			'punctuation': /[.\\]/
+		}
+	},
+	'keyword': /\b(?:if|else|while|do|for|return|in|instanceof|function|new|try|throw|catch|finally|null|break|continue)\b/,
+	'boolean': /\b(?:true|false)\b/,
+	'function': /\w+(?=\()/,
+	'number': /\b0x[\da-f]+\b|(?:\b\d+(?:\.\d*)?|\B\.\d+)(?:e[+-]?\d+)?/i,
+	'operator': /[<>]=?|[!=]=?=?|--?|\+\+?|&&?|\|\|?|[?*/~^%]/,
+	'punctuation': /[{}[\];(),.:]/
+};
+
+
+/* **********************************************
+     Begin prism-javascript.js
+********************************************** */
+
+Prism.languages.javascript = Prism.languages.extend('clike', {
+	'class-name': [
+		Prism.languages.clike['class-name'],
+		{
+			pattern: /(^|[^$\w\xA0-\uFFFF])(?!\s)[_$A-Z\xA0-\uFFFF](?:(?!\s)[$\w\xA0-\uFFFF])*(?=\.(?:prototype|constructor))/,
+			lookbehind: true
+		}
+	],
+	'keyword': [
+		{
+			pattern: /((?:^|})\s*)(?:catch|finally)\b/,
+			lookbehind: true
+		},
+		{
+			pattern: /(^|[^.]|\.\.\.\s*)\b(?:as|async(?=\s*(?:function\b|\(|[$\w\xA0-\uFFFF]|$))|await|break|case|class|const|continue|debugger|default|delete|do|else|enum|export|extends|for|from|function|(?:get|set)(?=\s*[\[$\w\xA0-\uFFFF])|if|implements|import|in|instanceof|interface|let|new|null|of|package|private|protected|public|return|static|super|switch|this|throw|try|typeof|undefined|var|void|while|with|yield)\b/,
+			lookbehind: true
+		},
+	],
+	// Allow for all non-ASCII characters (See http://stackoverflow.com/a/2008444)
+	'function': /#?(?!\s)[_$a-zA-Z\xA0-\uFFFF](?:(?!\s)[$\w\xA0-\uFFFF])*(?=\s*(?:\.\s*(?:apply|bind|call)\s*)?\()/,
+	'number': /\b(?:(?:0[xX](?:[\dA-Fa-f](?:_[\dA-Fa-f])?)+|0[bB](?:[01](?:_[01])?)+|0[oO](?:[0-7](?:_[0-7])?)+)n?|(?:\d(?:_\d)?)+n|NaN|Infinity)\b|(?:\b(?:\d(?:_\d)?)+\.?(?:\d(?:_\d)?)*|\B\.(?:\d(?:_\d)?)+)(?:[Ee][+-]?(?:\d(?:_\d)?)+)?/,
+	'operator': /--|\+\+|\*\*=?|=>|&&=?|\|\|=?|[!=]==|<<=?|>>>?=?|[-+*/%&|^!=<>]=?|\.{3}|\?\?=?|\?\.?|[~:]/
+});
+
+Prism.languages.javascript['class-name'][0].pattern = /(\b(?:class|interface|extends|implements|instanceof|new)\s+)[\w.\\]+/;
+
+Prism.languages.insertBefore('javascript', 'keyword', {
+	'regex': {
+		pattern: /((?:^|[^$\w\xA0-\uFFFF."'\])\s]|\b(?:return|yield))\s*)\/(?:\[(?:[^\]\\\r\n]|\\.)*]|\\.|[^/\\\[\r\n])+\/[gimyus]{0,6}(?=(?:\s|\/\*(?:[^*]|\*(?!\/))*\*\/)*(?:$|[\r\n,.;:})\]]|\/\/))/,
+		lookbehind: true,
+		greedy: true,
+		inside: {
+			'regex-source': {
+				pattern: /^(\/)[\s\S]+(?=\/[a-z]*$)/,
+				lookbehind: true,
+				alias: 'language-regex',
+				inside: Prism.languages.regex
+			},
+			'regex-flags': /[a-z]+$/,
+			'regex-delimiter': /^\/|\/$/
+		}
+	},
+	// This must be declared before keyword because we use "function" inside the look-forward
+	'function-variable': {
+		pattern: /#?(?!\s)[_$a-zA-Z\xA0-\uFFFF](?:(?!\s)[$\w\xA0-\uFFFF])*(?=\s*[=:]\s*(?:async\s*)?(?:\bfunction\b|(?:\((?:[^()]|\([^()]*\))*\)|(?!\s)[_$a-zA-Z\xA0-\uFFFF](?:(?!\s)[$\w\xA0-\uFFFF])*)\s*=>))/,
+		alias: 'function'
+	},
+	'parameter': [
+		{
+			pattern: /(function(?:\s+(?!\s)[_$a-zA-Z\xA0-\uFFFF](?:(?!\s)[$\w\xA0-\uFFFF])*)?\s*\(\s*)(?!\s)(?:[^()\s]|\s+(?![\s)])|\([^()]*\))+(?=\s*\))/,
+			lookbehind: true,
+			inside: Prism.languages.javascript
+		},
+		{
+			pattern: /(?!\s)[_$a-zA-Z\xA0-\uFFFF](?:(?!\s)[$\w\xA0-\uFFFF])*(?=\s*=>)/i,
+			inside: Prism.languages.javascript
+		},
+		{
+			pattern: /(\(\s*)(?!\s)(?:[^()\s]|\s+(?![\s)])|\([^()]*\))+(?=\s*\)\s*=>)/,
+			lookbehind: true,
+			inside: Prism.languages.javascript
+		},
+		{
+			pattern: /((?:\b|\s|^)(?!(?:as|async|await|break|case|catch|class|const|continue|debugger|default|delete|do|else|enum|export|extends|finally|for|from|function|get|if|implements|import|in|instanceof|interface|let|new|null|of|package|private|protected|public|return|set|static|super|switch|this|throw|try|typeof|undefined|var|void|while|with|yield)(?![$\w\xA0-\uFFFF]))(?:(?!\s)[_$a-zA-Z\xA0-\uFFFF](?:(?!\s)[$\w\xA0-\uFFFF])*\s*)\(\s*|\]\s*\(\s*)(?!\s)(?:[^()\s]|\s+(?![\s)])|\([^()]*\))+(?=\s*\)\s*\{)/,
+			lookbehind: true,
+			inside: Prism.languages.javascript
+		}
+	],
+	'constant': /\b[A-Z](?:[A-Z_]|\dx?)*\b/
+});
+
+Prism.languages.insertBefore('javascript', 'string', {
+	'template-string': {
+		pattern: /`(?:\\[\s\S]|\${(?:[^{}]|{(?:[^{}]|{[^}]*})*})+}|(?!\${)[^\\`])*`/,
+		greedy: true,
+		inside: {
+			'template-punctuation': {
+				pattern: /^`|`$/,
+				alias: 'string'
+			},
+			'interpolation': {
+				pattern: /((?:^|[^\\])(?:\\{2})*)\${(?:[^{}]|{(?:[^{}]|{[^}]*})*})+}/,
+				lookbehind: true,
+				inside: {
+					'interpolation-punctuation': {
+						pattern: /^\${|}$/,
+						alias: 'punctuation'
+					},
+					rest: Prism.languages.javascript
+				}
+			},
+			'string': /[\s\S]+/
+		}
+	}
+});
+
+if (Prism.languages.markup) {
+	Prism.languages.markup.tag.addInlined('script', 'javascript');
+}
+
+Prism.languages.js = Prism.languages.javascript;
+
+
+/* **********************************************
+     Begin prism-file-highlight.js
+********************************************** */
+
+(function () {
+	if (typeof self === 'undefined' || !self.Prism || !self.document) {
+		return;
+	}
+
+	// https://developer.mozilla.org/en-US/docs/Web/API/Element/matches#Polyfill
+	if (!Element.prototype.matches) {
+		Element.prototype.matches = Element.prototype.msMatchesSelector || Element.prototype.webkitMatchesSelector;
+	}
+
+	var Prism = window.Prism;
+
+	var LOADING_MESSAGE = 'Loading…';
+	var FAILURE_MESSAGE = function (status, message) {
+		return '✖ Error ' + status + ' while fetching file: ' + message;
+	};
+	var FAILURE_EMPTY_MESSAGE = '✖ Error: File does not exist or is empty';
+
+	var EXTENSIONS = {
+		'js': 'javascript',
+		'py': 'python',
+		'rb': 'ruby',
+		'ps1': 'powershell',
+		'psm1': 'powershell',
+		'sh': 'bash',
+		'bat': 'batch',
+		'h': 'c',
+		'tex': 'latex'
+	};
+
+	var STATUS_ATTR = 'data-src-status';
+	var STATUS_LOADING = 'loading';
+	var STATUS_LOADED = 'loaded';
+	var STATUS_FAILED = 'failed';
+
+	var SELECTOR = 'pre[data-src]:not([' + STATUS_ATTR + '="' + STATUS_LOADED + '"])'
+		+ ':not([' + STATUS_ATTR + '="' + STATUS_LOADING + '"])';
+
+	var lang = /\blang(?:uage)?-([\w-]+)\b/i;
+
+	/**
+	 * Sets the Prism `language-xxxx` or `lang-xxxx` class to the given language.
+	 *
+	 * @param {HTMLElement} element
+	 * @param {string} language
+	 * @returns {void}
+	 */
+	function setLanguageClass(element, language) {
+		var className = element.className;
+		className = className.replace(lang, ' ') + ' language-' + language;
+		element.className = className.replace(/\s+/g, ' ').trim();
+	}
+
+
+	Prism.hooks.add('before-highlightall', function (env) {
+		env.selector += ', ' + SELECTOR;
+	});
+
+	Prism.hooks.add('before-sanity-check', function (env) {
+		var pre = /** @type {HTMLPreElement} */ (env.element);
+		if (pre.matches(SELECTOR)) {
+			env.code = ''; // fast-path the whole thing and go to complete
+
+			pre.setAttribute(STATUS_ATTR, STATUS_LOADING); // mark as loading
+
+			// add code element with loading message
+			var code = pre.appendChild(document.createElement('CODE'));
+			code.textContent = LOADING_MESSAGE;
+
+			var src = pre.getAttribute('data-src');
+
+			var language = env.language;
+			if (language === 'none') {
+				// the language might be 'none' because there is no language set;
+				// in this case, we want to use the extension as the language
+				var extension = (/\.(\w+)$/.exec(src) || [, 'none'])[1];
+				language = EXTENSIONS[extension] || extension;
+			}
+
+			// set language classes
+			setLanguageClass(code, language);
+			setLanguageClass(pre, language);
+
+			// preload the language
+			var autoloader = Prism.plugins.autoloader;
+			if (autoloader) {
+				autoloader.loadLanguages(language);
+			}
+
+			// load file
+			var xhr = new XMLHttpRequest();
+			xhr.open('GET', src, true);
+			xhr.onreadystatechange = function () {
+				if (xhr.readyState == 4) {
+					if (xhr.status < 400 && xhr.responseText) {
+						// mark as loaded
+						pre.setAttribute(STATUS_ATTR, STATUS_LOADED);
+
+						// highlight code
+						code.textContent = xhr.responseText;
+						Prism.highlightElement(code);
+
+					} else {
+						// mark as failed
+						pre.setAttribute(STATUS_ATTR, STATUS_FAILED);
+
+						if (xhr.status >= 400) {
+							code.textContent = FAILURE_MESSAGE(xhr.status, xhr.statusText);
+						} else {
+							code.textContent = FAILURE_EMPTY_MESSAGE;
+						}
+					}
+				}
+			};
+			xhr.send(null);
+		}
+	});
+
+	Prism.plugins.fileHighlight = {
+		/**
+		 * Executes the File Highlight plugin for all matching `pre` elements under the given container.
+		 *
+		 * Note: Elements which are already loaded or currently loading will not be touched by this method.
+		 *
+		 * @param {ParentNode} [container=document]
+		 */
+		highlight: function highlight(container) {
+			var elements = (container || document).querySelectorAll(SELECTOR);
+
+			for (var i = 0, element; element = elements[i++];) {
+				Prism.highlightElement(element);
+			}
+		}
+	};
+
+	var logged = false;
+	/** @deprecated Use `Prism.plugins.fileHighlight.highlight` instead. */
+	Prism.fileHighlight = function () {
+		if (!logged) {
+			console.warn('Prism.fileHighlight is deprecated. Use `Prism.plugins.fileHighlight.highlight` instead.');
+			logged = true;
+		}
+		Prism.plugins.fileHighlight.highlight.apply(this, arguments);
+	}
+
+})();
+
+
+/***/ }),
+
+/***/ "./node_modules/regenerator-runtime/runtime.js":
+/*!*****************************************************!*\
+  !*** ./node_modules/regenerator-runtime/runtime.js ***!
+  \*****************************************************/
+/***/ ((module) => {
+
+/**
+ * Copyright (c) 2014-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+var runtime = (function (exports) {
+  "use strict";
+
+  var Op = Object.prototype;
+  var hasOwn = Op.hasOwnProperty;
+  var undefined; // More compressible than void 0.
+  var $Symbol = typeof Symbol === "function" ? Symbol : {};
+  var iteratorSymbol = $Symbol.iterator || "@@iterator";
+  var asyncIteratorSymbol = $Symbol.asyncIterator || "@@asyncIterator";
+  var toStringTagSymbol = $Symbol.toStringTag || "@@toStringTag";
+
+  function define(obj, key, value) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+    return obj[key];
+  }
+  try {
+    // IE 8 has a broken Object.defineProperty that only works on DOM objects.
+    define({}, "");
+  } catch (err) {
+    define = function(obj, key, value) {
+      return obj[key] = value;
+    };
+  }
+
+  function wrap(innerFn, outerFn, self, tryLocsList) {
+    // If outerFn provided and outerFn.prototype is a Generator, then outerFn.prototype instanceof Generator.
+    var protoGenerator = outerFn && outerFn.prototype instanceof Generator ? outerFn : Generator;
+    var generator = Object.create(protoGenerator.prototype);
+    var context = new Context(tryLocsList || []);
+
+    // The ._invoke method unifies the implementations of the .next,
+    // .throw, and .return methods.
+    generator._invoke = makeInvokeMethod(innerFn, self, context);
+
+    return generator;
+  }
+  exports.wrap = wrap;
+
+  // Try/catch helper to minimize deoptimizations. Returns a completion
+  // record like context.tryEntries[i].completion. This interface could
+  // have been (and was previously) designed to take a closure to be
+  // invoked without arguments, but in all the cases we care about we
+  // already have an existing method we want to call, so there's no need
+  // to create a new function object. We can even get away with assuming
+  // the method takes exactly one argument, since that happens to be true
+  // in every case, so we don't have to touch the arguments object. The
+  // only additional allocation required is the completion record, which
+  // has a stable shape and so hopefully should be cheap to allocate.
+  function tryCatch(fn, obj, arg) {
+    try {
+      return { type: "normal", arg: fn.call(obj, arg) };
+    } catch (err) {
+      return { type: "throw", arg: err };
+    }
+  }
+
+  var GenStateSuspendedStart = "suspendedStart";
+  var GenStateSuspendedYield = "suspendedYield";
+  var GenStateExecuting = "executing";
+  var GenStateCompleted = "completed";
+
+  // Returning this object from the innerFn has the same effect as
+  // breaking out of the dispatch switch statement.
+  var ContinueSentinel = {};
+
+  // Dummy constructor functions that we use as the .constructor and
+  // .constructor.prototype properties for functions that return Generator
+  // objects. For full spec compliance, you may wish to configure your
+  // minifier not to mangle the names of these two functions.
+  function Generator() {}
+  function GeneratorFunction() {}
+  function GeneratorFunctionPrototype() {}
+
+  // This is a polyfill for %IteratorPrototype% for environments that
+  // don't natively support it.
+  var IteratorPrototype = {};
+  IteratorPrototype[iteratorSymbol] = function () {
+    return this;
+  };
+
+  var getProto = Object.getPrototypeOf;
+  var NativeIteratorPrototype = getProto && getProto(getProto(values([])));
+  if (NativeIteratorPrototype &&
+      NativeIteratorPrototype !== Op &&
+      hasOwn.call(NativeIteratorPrototype, iteratorSymbol)) {
+    // This environment has a native %IteratorPrototype%; use it instead
+    // of the polyfill.
+    IteratorPrototype = NativeIteratorPrototype;
+  }
+
+  var Gp = GeneratorFunctionPrototype.prototype =
+    Generator.prototype = Object.create(IteratorPrototype);
+  GeneratorFunction.prototype = Gp.constructor = GeneratorFunctionPrototype;
+  GeneratorFunctionPrototype.constructor = GeneratorFunction;
+  GeneratorFunction.displayName = define(
+    GeneratorFunctionPrototype,
+    toStringTagSymbol,
+    "GeneratorFunction"
+  );
+
+  // Helper for defining the .next, .throw, and .return methods of the
+  // Iterator interface in terms of a single ._invoke method.
+  function defineIteratorMethods(prototype) {
+    ["next", "throw", "return"].forEach(function(method) {
+      define(prototype, method, function(arg) {
+        return this._invoke(method, arg);
+      });
+    });
+  }
+
+  exports.isGeneratorFunction = function(genFun) {
+    var ctor = typeof genFun === "function" && genFun.constructor;
+    return ctor
+      ? ctor === GeneratorFunction ||
+        // For the native GeneratorFunction constructor, the best we can
+        // do is to check its .name property.
+        (ctor.displayName || ctor.name) === "GeneratorFunction"
+      : false;
+  };
+
+  exports.mark = function(genFun) {
+    if (Object.setPrototypeOf) {
+      Object.setPrototypeOf(genFun, GeneratorFunctionPrototype);
+    } else {
+      genFun.__proto__ = GeneratorFunctionPrototype;
+      define(genFun, toStringTagSymbol, "GeneratorFunction");
+    }
+    genFun.prototype = Object.create(Gp);
+    return genFun;
+  };
+
+  // Within the body of any async function, `await x` is transformed to
+  // `yield regeneratorRuntime.awrap(x)`, so that the runtime can test
+  // `hasOwn.call(value, "__await")` to determine if the yielded value is
+  // meant to be awaited.
+  exports.awrap = function(arg) {
+    return { __await: arg };
+  };
+
+  function AsyncIterator(generator, PromiseImpl) {
+    function invoke(method, arg, resolve, reject) {
+      var record = tryCatch(generator[method], generator, arg);
+      if (record.type === "throw") {
+        reject(record.arg);
+      } else {
+        var result = record.arg;
+        var value = result.value;
+        if (value &&
+            typeof value === "object" &&
+            hasOwn.call(value, "__await")) {
+          return PromiseImpl.resolve(value.__await).then(function(value) {
+            invoke("next", value, resolve, reject);
+          }, function(err) {
+            invoke("throw", err, resolve, reject);
+          });
+        }
+
+        return PromiseImpl.resolve(value).then(function(unwrapped) {
+          // When a yielded Promise is resolved, its final value becomes
+          // the .value of the Promise<{value,done}> result for the
+          // current iteration.
+          result.value = unwrapped;
+          resolve(result);
+        }, function(error) {
+          // If a rejected Promise was yielded, throw the rejection back
+          // into the async generator function so it can be handled there.
+          return invoke("throw", error, resolve, reject);
+        });
+      }
+    }
+
+    var previousPromise;
+
+    function enqueue(method, arg) {
+      function callInvokeWithMethodAndArg() {
+        return new PromiseImpl(function(resolve, reject) {
+          invoke(method, arg, resolve, reject);
+        });
+      }
+
+      return previousPromise =
+        // If enqueue has been called before, then we want to wait until
+        // all previous Promises have been resolved before calling invoke,
+        // so that results are always delivered in the correct order. If
+        // enqueue has not been called before, then it is important to
+        // call invoke immediately, without waiting on a callback to fire,
+        // so that the async generator function has the opportunity to do
+        // any necessary setup in a predictable way. This predictability
+        // is why the Promise constructor synchronously invokes its
+        // executor callback, and why async functions synchronously
+        // execute code before the first await. Since we implement simple
+        // async functions in terms of async generators, it is especially
+        // important to get this right, even though it requires care.
+        previousPromise ? previousPromise.then(
+          callInvokeWithMethodAndArg,
+          // Avoid propagating failures to Promises returned by later
+          // invocations of the iterator.
+          callInvokeWithMethodAndArg
+        ) : callInvokeWithMethodAndArg();
+    }
+
+    // Define the unified helper method that is used to implement .next,
+    // .throw, and .return (see defineIteratorMethods).
+    this._invoke = enqueue;
+  }
+
+  defineIteratorMethods(AsyncIterator.prototype);
+  AsyncIterator.prototype[asyncIteratorSymbol] = function () {
+    return this;
+  };
+  exports.AsyncIterator = AsyncIterator;
+
+  // Note that simple async functions are implemented on top of
+  // AsyncIterator objects; they just return a Promise for the value of
+  // the final result produced by the iterator.
+  exports.async = function(innerFn, outerFn, self, tryLocsList, PromiseImpl) {
+    if (PromiseImpl === void 0) PromiseImpl = Promise;
+
+    var iter = new AsyncIterator(
+      wrap(innerFn, outerFn, self, tryLocsList),
+      PromiseImpl
+    );
+
+    return exports.isGeneratorFunction(outerFn)
+      ? iter // If outerFn is a generator, return the full iterator.
+      : iter.next().then(function(result) {
+          return result.done ? result.value : iter.next();
+        });
+  };
+
+  function makeInvokeMethod(innerFn, self, context) {
+    var state = GenStateSuspendedStart;
+
+    return function invoke(method, arg) {
+      if (state === GenStateExecuting) {
+        throw new Error("Generator is already running");
+      }
+
+      if (state === GenStateCompleted) {
+        if (method === "throw") {
+          throw arg;
+        }
+
+        // Be forgiving, per 25.3.3.3.3 of the spec:
+        // https://people.mozilla.org/~jorendorff/es6-draft.html#sec-generatorresume
+        return doneResult();
+      }
+
+      context.method = method;
+      context.arg = arg;
+
+      while (true) {
+        var delegate = context.delegate;
+        if (delegate) {
+          var delegateResult = maybeInvokeDelegate(delegate, context);
+          if (delegateResult) {
+            if (delegateResult === ContinueSentinel) continue;
+            return delegateResult;
+          }
+        }
+
+        if (context.method === "next") {
+          // Setting context._sent for legacy support of Babel's
+          // function.sent implementation.
+          context.sent = context._sent = context.arg;
+
+        } else if (context.method === "throw") {
+          if (state === GenStateSuspendedStart) {
+            state = GenStateCompleted;
+            throw context.arg;
+          }
+
+          context.dispatchException(context.arg);
+
+        } else if (context.method === "return") {
+          context.abrupt("return", context.arg);
+        }
+
+        state = GenStateExecuting;
+
+        var record = tryCatch(innerFn, self, context);
+        if (record.type === "normal") {
+          // If an exception is thrown from innerFn, we leave state ===
+          // GenStateExecuting and loop back for another invocation.
+          state = context.done
+            ? GenStateCompleted
+            : GenStateSuspendedYield;
+
+          if (record.arg === ContinueSentinel) {
+            continue;
+          }
+
+          return {
+            value: record.arg,
+            done: context.done
+          };
+
+        } else if (record.type === "throw") {
+          state = GenStateCompleted;
+          // Dispatch the exception by looping back around to the
+          // context.dispatchException(context.arg) call above.
+          context.method = "throw";
+          context.arg = record.arg;
+        }
+      }
+    };
+  }
+
+  // Call delegate.iterator[context.method](context.arg) and handle the
+  // result, either by returning a { value, done } result from the
+  // delegate iterator, or by modifying context.method and context.arg,
+  // setting context.delegate to null, and returning the ContinueSentinel.
+  function maybeInvokeDelegate(delegate, context) {
+    var method = delegate.iterator[context.method];
+    if (method === undefined) {
+      // A .throw or .return when the delegate iterator has no .throw
+      // method always terminates the yield* loop.
+      context.delegate = null;
+
+      if (context.method === "throw") {
+        // Note: ["return"] must be used for ES3 parsing compatibility.
+        if (delegate.iterator["return"]) {
+          // If the delegate iterator has a return method, give it a
+          // chance to clean up.
+          context.method = "return";
+          context.arg = undefined;
+          maybeInvokeDelegate(delegate, context);
+
+          if (context.method === "throw") {
+            // If maybeInvokeDelegate(context) changed context.method from
+            // "return" to "throw", let that override the TypeError below.
+            return ContinueSentinel;
+          }
+        }
+
+        context.method = "throw";
+        context.arg = new TypeError(
+          "The iterator does not provide a 'throw' method");
+      }
+
+      return ContinueSentinel;
+    }
+
+    var record = tryCatch(method, delegate.iterator, context.arg);
+
+    if (record.type === "throw") {
+      context.method = "throw";
+      context.arg = record.arg;
+      context.delegate = null;
+      return ContinueSentinel;
+    }
+
+    var info = record.arg;
+
+    if (! info) {
+      context.method = "throw";
+      context.arg = new TypeError("iterator result is not an object");
+      context.delegate = null;
+      return ContinueSentinel;
+    }
+
+    if (info.done) {
+      // Assign the result of the finished delegate to the temporary
+      // variable specified by delegate.resultName (see delegateYield).
+      context[delegate.resultName] = info.value;
+
+      // Resume execution at the desired location (see delegateYield).
+      context.next = delegate.nextLoc;
+
+      // If context.method was "throw" but the delegate handled the
+      // exception, let the outer generator proceed normally. If
+      // context.method was "next", forget context.arg since it has been
+      // "consumed" by the delegate iterator. If context.method was
+      // "return", allow the original .return call to continue in the
+      // outer generator.
+      if (context.method !== "return") {
+        context.method = "next";
+        context.arg = undefined;
+      }
+
+    } else {
+      // Re-yield the result returned by the delegate method.
+      return info;
+    }
+
+    // The delegate iterator is finished, so forget it and continue with
+    // the outer generator.
+    context.delegate = null;
+    return ContinueSentinel;
+  }
+
+  // Define Generator.prototype.{next,throw,return} in terms of the
+  // unified ._invoke helper method.
+  defineIteratorMethods(Gp);
+
+  define(Gp, toStringTagSymbol, "Generator");
+
+  // A Generator should always return itself as the iterator object when the
+  // @@iterator function is called on it. Some browsers' implementations of the
+  // iterator prototype chain incorrectly implement this, causing the Generator
+  // object to not be returned from this call. This ensures that doesn't happen.
+  // See https://github.com/facebook/regenerator/issues/274 for more details.
+  Gp[iteratorSymbol] = function() {
+    return this;
+  };
+
+  Gp.toString = function() {
+    return "[object Generator]";
+  };
+
+  function pushTryEntry(locs) {
+    var entry = { tryLoc: locs[0] };
+
+    if (1 in locs) {
+      entry.catchLoc = locs[1];
+    }
+
+    if (2 in locs) {
+      entry.finallyLoc = locs[2];
+      entry.afterLoc = locs[3];
+    }
+
+    this.tryEntries.push(entry);
+  }
+
+  function resetTryEntry(entry) {
+    var record = entry.completion || {};
+    record.type = "normal";
+    delete record.arg;
+    entry.completion = record;
+  }
+
+  function Context(tryLocsList) {
+    // The root entry object (effectively a try statement without a catch
+    // or a finally block) gives us a place to store values thrown from
+    // locations where there is no enclosing try statement.
+    this.tryEntries = [{ tryLoc: "root" }];
+    tryLocsList.forEach(pushTryEntry, this);
+    this.reset(true);
+  }
+
+  exports.keys = function(object) {
+    var keys = [];
+    for (var key in object) {
+      keys.push(key);
+    }
+    keys.reverse();
+
+    // Rather than returning an object with a next method, we keep
+    // things simple and return the next function itself.
+    return function next() {
+      while (keys.length) {
+        var key = keys.pop();
+        if (key in object) {
+          next.value = key;
+          next.done = false;
+          return next;
+        }
+      }
+
+      // To avoid creating an additional object, we just hang the .value
+      // and .done properties off the next function object itself. This
+      // also ensures that the minifier will not anonymize the function.
+      next.done = true;
+      return next;
+    };
+  };
+
+  function values(iterable) {
+    if (iterable) {
+      var iteratorMethod = iterable[iteratorSymbol];
+      if (iteratorMethod) {
+        return iteratorMethod.call(iterable);
+      }
+
+      if (typeof iterable.next === "function") {
+        return iterable;
+      }
+
+      if (!isNaN(iterable.length)) {
+        var i = -1, next = function next() {
+          while (++i < iterable.length) {
+            if (hasOwn.call(iterable, i)) {
+              next.value = iterable[i];
+              next.done = false;
+              return next;
+            }
+          }
+
+          next.value = undefined;
+          next.done = true;
+
+          return next;
+        };
+
+        return next.next = next;
+      }
+    }
+
+    // Return an iterator with no values.
+    return { next: doneResult };
+  }
+  exports.values = values;
+
+  function doneResult() {
+    return { value: undefined, done: true };
+  }
+
+  Context.prototype = {
+    constructor: Context,
+
+    reset: function(skipTempReset) {
+      this.prev = 0;
+      this.next = 0;
+      // Resetting context._sent for legacy support of Babel's
+      // function.sent implementation.
+      this.sent = this._sent = undefined;
+      this.done = false;
+      this.delegate = null;
+
+      this.method = "next";
+      this.arg = undefined;
+
+      this.tryEntries.forEach(resetTryEntry);
+
+      if (!skipTempReset) {
+        for (var name in this) {
+          // Not sure about the optimal order of these conditions:
+          if (name.charAt(0) === "t" &&
+              hasOwn.call(this, name) &&
+              !isNaN(+name.slice(1))) {
+            this[name] = undefined;
+          }
+        }
+      }
+    },
+
+    stop: function() {
+      this.done = true;
+
+      var rootEntry = this.tryEntries[0];
+      var rootRecord = rootEntry.completion;
+      if (rootRecord.type === "throw") {
+        throw rootRecord.arg;
+      }
+
+      return this.rval;
+    },
+
+    dispatchException: function(exception) {
+      if (this.done) {
+        throw exception;
+      }
+
+      var context = this;
+      function handle(loc, caught) {
+        record.type = "throw";
+        record.arg = exception;
+        context.next = loc;
+
+        if (caught) {
+          // If the dispatched exception was caught by a catch block,
+          // then let that catch block handle the exception normally.
+          context.method = "next";
+          context.arg = undefined;
+        }
+
+        return !! caught;
+      }
+
+      for (var i = this.tryEntries.length - 1; i >= 0; --i) {
+        var entry = this.tryEntries[i];
+        var record = entry.completion;
+
+        if (entry.tryLoc === "root") {
+          // Exception thrown outside of any try block that could handle
+          // it, so set the completion value of the entire function to
+          // throw the exception.
+          return handle("end");
+        }
+
+        if (entry.tryLoc <= this.prev) {
+          var hasCatch = hasOwn.call(entry, "catchLoc");
+          var hasFinally = hasOwn.call(entry, "finallyLoc");
+
+          if (hasCatch && hasFinally) {
+            if (this.prev < entry.catchLoc) {
+              return handle(entry.catchLoc, true);
+            } else if (this.prev < entry.finallyLoc) {
+              return handle(entry.finallyLoc);
+            }
+
+          } else if (hasCatch) {
+            if (this.prev < entry.catchLoc) {
+              return handle(entry.catchLoc, true);
+            }
+
+          } else if (hasFinally) {
+            if (this.prev < entry.finallyLoc) {
+              return handle(entry.finallyLoc);
+            }
+
+          } else {
+            throw new Error("try statement without catch or finally");
+          }
+        }
+      }
+    },
+
+    abrupt: function(type, arg) {
+      for (var i = this.tryEntries.length - 1; i >= 0; --i) {
+        var entry = this.tryEntries[i];
+        if (entry.tryLoc <= this.prev &&
+            hasOwn.call(entry, "finallyLoc") &&
+            this.prev < entry.finallyLoc) {
+          var finallyEntry = entry;
+          break;
+        }
+      }
+
+      if (finallyEntry &&
+          (type === "break" ||
+           type === "continue") &&
+          finallyEntry.tryLoc <= arg &&
+          arg <= finallyEntry.finallyLoc) {
+        // Ignore the finally entry if control is not jumping to a
+        // location outside the try/catch block.
+        finallyEntry = null;
+      }
+
+      var record = finallyEntry ? finallyEntry.completion : {};
+      record.type = type;
+      record.arg = arg;
+
+      if (finallyEntry) {
+        this.method = "next";
+        this.next = finallyEntry.finallyLoc;
+        return ContinueSentinel;
+      }
+
+      return this.complete(record);
+    },
+
+    complete: function(record, afterLoc) {
+      if (record.type === "throw") {
+        throw record.arg;
+      }
+
+      if (record.type === "break" ||
+          record.type === "continue") {
+        this.next = record.arg;
+      } else if (record.type === "return") {
+        this.rval = this.arg = record.arg;
+        this.method = "return";
+        this.next = "end";
+      } else if (record.type === "normal" && afterLoc) {
+        this.next = afterLoc;
+      }
+
+      return ContinueSentinel;
+    },
+
+    finish: function(finallyLoc) {
+      for (var i = this.tryEntries.length - 1; i >= 0; --i) {
+        var entry = this.tryEntries[i];
+        if (entry.finallyLoc === finallyLoc) {
+          this.complete(entry.completion, entry.afterLoc);
+          resetTryEntry(entry);
+          return ContinueSentinel;
+        }
+      }
+    },
+
+    "catch": function(tryLoc) {
+      for (var i = this.tryEntries.length - 1; i >= 0; --i) {
+        var entry = this.tryEntries[i];
+        if (entry.tryLoc === tryLoc) {
+          var record = entry.completion;
+          if (record.type === "throw") {
+            var thrown = record.arg;
+            resetTryEntry(entry);
+          }
+          return thrown;
+        }
+      }
+
+      // The context.catch method must only be called with a location
+      // argument that corresponds to a known catch block.
+      throw new Error("illegal catch attempt");
+    },
+
+    delegateYield: function(iterable, resultName, nextLoc) {
+      this.delegate = {
+        iterator: values(iterable),
+        resultName: resultName,
+        nextLoc: nextLoc
+      };
+
+      if (this.method === "next") {
+        // Deliberately forget the last sent value so that we don't
+        // accidentally pass it on to the delegate.
+        this.arg = undefined;
+      }
+
+      return ContinueSentinel;
+    }
+  };
+
+  // Regardless of whether this script is executing as a CommonJS module
+  // or not, return the runtime object so that we can declare the variable
+  // regeneratorRuntime in the outer scope, which allows this module to be
+  // injected easily by `bin/regenerator --include-runtime script.js`.
+  return exports;
+
+}(
+  // If this script is executing as a CommonJS module, use module.exports
+  // as the regeneratorRuntime namespace. Otherwise create a new empty
+  // object. Either way, the resulting object will be used to initialize
+  // the regeneratorRuntime variable at the top of this file.
+   true ? module.exports : 0
+));
+
+try {
+  regeneratorRuntime = runtime;
+} catch (accidentalStrictMode) {
+  // This module should not be running in strict mode, so the above
+  // assignment should always work unless something is misconfigured. Just
+  // in case runtime.js accidentally runs in strict mode, we can escape
+  // strict mode using a global Function call. This could conceivably fail
+  // if a Content Security Policy forbids using Function, but in that case
+  // the proper solution is to fix the accidental strict mode problem. If
+  // you've misconfigured your bundler to force strict mode and applied a
+  // CSP to forbid Function, and you're not willing to fix either of those
+  // problems, please detail your unique predicament in a GitHub issue.
+  Function("r", "regeneratorRuntime = r")(runtime);
+}
+
+
+/***/ }),
+
+/***/ "./node_modules/tocbot/src/js/build-html.js":
+/*!**************************************************!*\
+  !*** ./node_modules/tocbot/src/js/build-html.js ***!
+  \**************************************************/
+/***/ ((module) => {
+
+/**
+ * This file is responsible for building the DOM and updating DOM state.
+ *
+ * @author Tim Scanlin
+ */
+
+module.exports = function (options) {
+  var forEach = [].forEach
+  var some = [].some
+  var body = document.body
+  var currentlyHighlighting = true
+  var SPACE_CHAR = ' '
+
+  /**
+   * Create link and list elements.
+   * @param {Object} d
+   * @param {HTMLElement} container
+   * @return {HTMLElement}
+   */
+  function createEl (d, container) {
+    var link = container.appendChild(createLink(d))
+    if (d.children.length) {
+      var list = createList(d.isCollapsed)
+      d.children.forEach(function (child) {
+        createEl(child, list)
+      })
+      link.appendChild(list)
+    }
+  }
+
+  /**
+   * Render nested heading array data into a given selector.
+   * @param {String} selector
+   * @param {Array} data
+   * @return {HTMLElement}
+   */
+  function render (selector, data) {
+    var collapsed = false
+    var container = createList(collapsed)
+
+    data.forEach(function (d) {
+      createEl(d, container)
+    })
+
+    var parent = document.querySelector(selector)
+
+    // Return if no parent is found.
+    if (parent === null) {
+      return
+    }
+
+    // Remove existing child if it exists.
+    if (parent.firstChild) {
+      parent.removeChild(parent.firstChild)
+    }
+
+    // Just return the parent and don't append the list if no links are found.
+    if (data.length === 0) {
+      return parent
+    }
+
+    // Append the Elements that have been created
+    return parent.appendChild(container)
+  }
+
+  /**
+   * Create link element.
+   * @param {Object} data
+   * @return {HTMLElement}
+   */
+  function createLink (data) {
+    var item = document.createElement('li')
+    var a = document.createElement('a')
+    if (options.listItemClass) {
+      item.setAttribute('class', options.listItemClass)
+    }
+
+    if (options.onClick) {
+      a.onclick = options.onClick
+    }
+
+    if (options.includeHtml && data.childNodes.length) {
+      forEach.call(data.childNodes, function (node) {
+        a.appendChild(node.cloneNode(true))
+      })
+    } else {
+      // Default behavior.
+      a.textContent = data.textContent
+    }
+    a.setAttribute('href', options.basePath + '#' + data.id)
+    a.setAttribute('class', options.linkClass +
+      SPACE_CHAR + 'node-name--' + data.nodeName +
+      SPACE_CHAR + options.extraLinkClasses)
+    item.appendChild(a)
+    return item
+  }
+
+  /**
+   * Create list element.
+   * @param {Boolean} isCollapsed
+   * @return {HTMLElement}
+   */
+  function createList (isCollapsed) {
+    var listElement = (options.orderedList) ? 'ol' : 'ul'
+    var list = document.createElement(listElement)
+    var classes = options.listClass +
+      SPACE_CHAR + options.extraListClasses
+    if (isCollapsed) {
+      classes += SPACE_CHAR + options.collapsibleClass
+      classes += SPACE_CHAR + options.isCollapsedClass
+    }
+    list.setAttribute('class', classes)
+    return list
+  }
+
+  /**
+   * Update fixed sidebar class.
+   * @return {HTMLElement}
+   */
+  function updateFixedSidebarClass () {
+    if (options.scrollContainer && document.querySelector(options.scrollContainer)) {
+      var top
+      top = document.querySelector(options.scrollContainer).scrollTop
+    } else {
+      top = document.documentElement.scrollTop || body.scrollTop
+    }
+    var posFixedEl = document.querySelector(options.positionFixedSelector)
+
+    if (options.fixedSidebarOffset === 'auto') {
+      options.fixedSidebarOffset = document.querySelector(options.tocSelector).offsetTop
+    }
+
+    if (top > options.fixedSidebarOffset) {
+      if (posFixedEl.className.indexOf(options.positionFixedClass) === -1) {
+        posFixedEl.className += SPACE_CHAR + options.positionFixedClass
+      }
+    } else {
+      posFixedEl.className = posFixedEl.className.split(SPACE_CHAR + options.positionFixedClass).join('')
+    }
+  }
+
+  /**
+   * Get top position of heading
+   * @param {HTMLElement}
+   * @return {integer} position
+   */
+  function getHeadingTopPos (obj) {
+    var position = 0
+    if (obj !== document.querySelector(options.contentSelector && obj != null)) {
+      position = obj.offsetTop
+      if (options.hasInnerContainers) { position += getHeadingTopPos(obj.offsetParent) }
+    }
+    return position
+  }
+
+  /**
+   * Update TOC highlighting and collpased groupings.
+   */
+  function updateToc (headingsArray) {
+    // If a fixed content container was set
+    if (options.scrollContainer && document.querySelector(options.scrollContainer)) {
+      var top
+      top = document.querySelector(options.scrollContainer).scrollTop
+    } else {
+      top = document.documentElement.scrollTop || body.scrollTop
+    }
+
+    // Add fixed class at offset
+    if (options.positionFixedSelector) {
+      updateFixedSidebarClass()
+    }
+
+    // Get the top most heading currently visible on the page so we know what to highlight.
+    var headings = headingsArray
+    var topHeader
+    // Using some instead of each so that we can escape early.
+    if (currentlyHighlighting &&
+      document.querySelector(options.tocSelector) !== null &&
+      headings.length > 0) {
+      some.call(headings, function (heading, i) {
+        if (getHeadingTopPos(heading) > top + options.headingsOffset + 10) {
+          // Don't allow negative index value.
+          var index = (i === 0) ? i : i - 1
+          topHeader = headings[index]
+          return true
+        } else if (i === headings.length - 1) {
+          // This allows scrolling for the last heading on the page.
+          topHeader = headings[headings.length - 1]
+          return true
+        }
+      })
+
+      // Remove the active class from the other tocLinks.
+      var tocLinks = document.querySelector(options.tocSelector)
+        .querySelectorAll('.' + options.linkClass)
+      forEach.call(tocLinks, function (tocLink) {
+        tocLink.className = tocLink.className.split(SPACE_CHAR + options.activeLinkClass).join('')
+      })
+      var tocLis = document.querySelector(options.tocSelector)
+        .querySelectorAll('.' + options.listItemClass)
+      forEach.call(tocLis, function (tocLi) {
+        tocLi.className = tocLi.className.split(SPACE_CHAR + options.activeListItemClass).join('')
+      })
+
+      // Add the active class to the active tocLink.
+      var activeTocLink = document.querySelector(options.tocSelector)
+        .querySelector('.' + options.linkClass +
+          '.node-name--' + topHeader.nodeName +
+          '[href="' + options.basePath + '#' + topHeader.id.replace(/([ #;&,.+*~':"!^$[\]()=>|/@])/g, '\\$1') + '"]')
+      if (activeTocLink.className.indexOf(options.activeLinkClass) === -1) {
+        activeTocLink.className += SPACE_CHAR + options.activeLinkClass
+      }
+      var li = activeTocLink.parentNode
+      if (li && li.className.indexOf(options.activeListItemClass) === -1) {
+        li.className += SPACE_CHAR + options.activeListItemClass
+      }
+
+      var tocLists = document.querySelector(options.tocSelector)
+        .querySelectorAll('.' + options.listClass + '.' + options.collapsibleClass)
+
+      // Collapse the other collapsible lists.
+      forEach.call(tocLists, function (list) {
+        if (list.className.indexOf(options.isCollapsedClass) === -1) {
+          list.className += SPACE_CHAR + options.isCollapsedClass
+        }
+      })
+
+      // Expand the active link's collapsible list and its sibling if applicable.
+      if (activeTocLink.nextSibling && activeTocLink.nextSibling.className.indexOf(options.isCollapsedClass) !== -1) {
+        activeTocLink.nextSibling.className = activeTocLink.nextSibling.className.split(SPACE_CHAR + options.isCollapsedClass).join('')
+      }
+      removeCollapsedFromParents(activeTocLink.parentNode.parentNode)
+    }
+  }
+
+  /**
+   * Remove collpased class from parent elements.
+   * @param {HTMLElement} element
+   * @return {HTMLElement}
+   */
+  function removeCollapsedFromParents (element) {
+    if (element.className.indexOf(options.collapsibleClass) !== -1 && element.className.indexOf(options.isCollapsedClass) !== -1) {
+      element.className = element.className.split(SPACE_CHAR + options.isCollapsedClass).join('')
+      return removeCollapsedFromParents(element.parentNode.parentNode)
+    }
+    return element
+  }
+
+  /**
+   * Disable TOC Animation when a link is clicked.
+   * @param {Event} event
+   */
+  function disableTocAnimation (event) {
+    var target = event.target || event.srcElement
+    if (typeof target.className !== 'string' || target.className.indexOf(options.linkClass) === -1) {
+      return
+    }
+    // Bind to tocLink clicks to temporarily disable highlighting
+    // while smoothScroll is animating.
+    currentlyHighlighting = false
+  }
+
+  /**
+   * Enable TOC Animation.
+   */
+  function enableTocAnimation () {
+    currentlyHighlighting = true
+  }
+
+  return {
+    enableTocAnimation: enableTocAnimation,
+    disableTocAnimation: disableTocAnimation,
+    render: render,
+    updateToc: updateToc
+  }
+}
+
+
+/***/ }),
+
+/***/ "./node_modules/tocbot/src/js/default-options.js":
+/*!*******************************************************!*\
+  !*** ./node_modules/tocbot/src/js/default-options.js ***!
+  \*******************************************************/
+/***/ ((module) => {
+
+module.exports = {
+  // Where to render the table of contents.
+  tocSelector: '.js-toc',
+  // Where to grab the headings to build the table of contents.
+  contentSelector: '.js-toc-content',
+  // Which headings to grab inside of the contentSelector element.
+  headingSelector: 'h1, h2, h3',
+  // Headings that match the ignoreSelector will be skipped.
+  ignoreSelector: '.js-toc-ignore',
+  // For headings inside relative or absolute positioned containers within content
+  hasInnerContainers: false,
+  // Main class to add to links.
+  linkClass: 'toc-link',
+  // Extra classes to add to links.
+  extraLinkClasses: '',
+  // Class to add to active links,
+  // the link corresponding to the top most heading on the page.
+  activeLinkClass: 'is-active-link',
+  // Main class to add to lists.
+  listClass: 'toc-list',
+  // Extra classes to add to lists.
+  extraListClasses: '',
+  // Class that gets added when a list should be collapsed.
+  isCollapsedClass: 'is-collapsed',
+  // Class that gets added when a list should be able
+  // to be collapsed but isn't necessarily collapsed.
+  collapsibleClass: 'is-collapsible',
+  // Class to add to list items.
+  listItemClass: 'toc-list-item',
+  // Class to add to active list items.
+  activeListItemClass: 'is-active-li',
+  // How many heading levels should not be collapsed.
+  // For example, number 6 will show everything since
+  // there are only 6 heading levels and number 0 will collapse them all.
+  // The sections that are hidden will open
+  // and close as you scroll to headings within them.
+  collapseDepth: 0,
+  // Smooth scrolling enabled.
+  scrollSmooth: true,
+  // Smooth scroll duration.
+  scrollSmoothDuration: 420,
+  // Smooth scroll offset.
+  scrollSmoothOffset: 0,
+  // Callback for scroll end.
+  scrollEndCallback: function (e) {},
+  // Headings offset between the headings and the top of the document (this is meant for minor adjustments).
+  headingsOffset: 1,
+  // Timeout between events firing to make sure it's
+  // not too rapid (for performance reasons).
+  throttleTimeout: 50,
+  // Element to add the positionFixedClass to.
+  positionFixedSelector: null,
+  // Fixed position class to add to make sidebar fixed after scrolling
+  // down past the fixedSidebarOffset.
+  positionFixedClass: 'is-position-fixed',
+  // fixedSidebarOffset can be any number but by default is set
+  // to auto which sets the fixedSidebarOffset to the sidebar
+  // element's offsetTop from the top of the document on init.
+  fixedSidebarOffset: 'auto',
+  // includeHtml can be set to true to include the HTML markup from the
+  // heading node instead of just including the textContent.
+  includeHtml: false,
+  // onclick function to apply to all links in toc. will be called with
+  // the event as the first parameter, and this can be used to stop,
+  // propagation, prevent default or perform action
+  onClick: function (e) {},
+  // orderedList can be set to false to generate unordered lists (ul)
+  // instead of ordered lists (ol)
+  orderedList: true,
+  // If there is a fixed article scroll container, set to calculate titles' offset
+  scrollContainer: null,
+  // prevent ToC DOM rendering if it's already rendered by an external system
+  skipRendering: false,
+  // Optional callback to change heading labels.
+  // For example it can be used to cut down and put ellipses on multiline headings you deem too long.
+  // Called each time a heading is parsed. Expects a string in return, the modified label to display.
+  // function (string) => string
+  headingLabelCallback: false,
+  // ignore headings that are hidden in DOM
+  ignoreHiddenElements: false,
+  // Optional callback to modify properties of parsed headings.
+  // The heading element is passed in node parameter and information parsed by default parser is provided in obj parameter.
+  // Function has to return the same or modified obj.
+  // The heading will be excluded from TOC if nothing is returned.
+  // function (object, HTMLElement) => object | void
+  headingObjectCallback: null,
+  // Set the base path, useful if you use a `base` tag in `head`.
+  basePath: '',
+  // Only takes affect when `tocSelector` is scrolling,
+  // keep the toc scroll position in sync with the content.
+  disableTocScrollSync: false
+}
+
+
+/***/ }),
+
+/***/ "./node_modules/tocbot/src/js/index.js":
+/*!*********************************************!*\
+  !*** ./node_modules/tocbot/src/js/index.js ***!
+  \*********************************************/
+/***/ (function(module, exports, __webpack_require__) {
+
+var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/**
+ * Tocbot
+ * Tocbot creates a toble of contents based on HTML headings on a page,
+ * this allows users to easily jump to different sections of the document.
+ * Tocbot was inspired by tocify (http://gregfranko.com/jquery.tocify.js/).
+ * The main differences are that it works natively without any need for jquery or jquery UI).
+ *
+ * @author Tim Scanlin
+ */
+
+/* globals define */
+
+(function (root, factory) {
+  if (true) {
+    !(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory(root)),
+		__WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ?
+		(__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__),
+		__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__))
+  } else {}
+})(typeof __webpack_require__.g !== 'undefined' ? __webpack_require__.g : this.window || this.global, function (root) {
+  'use strict'
+
+  // Default options.
+  var defaultOptions = __webpack_require__(/*! ./default-options.js */ "./node_modules/tocbot/src/js/default-options.js")
+  // Object to store current options.
+  var options = {}
+  // Object for public APIs.
+  var tocbot = {}
+
+  var BuildHtml = __webpack_require__(/*! ./build-html.js */ "./node_modules/tocbot/src/js/build-html.js")
+  var ParseContent = __webpack_require__(/*! ./parse-content.js */ "./node_modules/tocbot/src/js/parse-content.js")
+  var updateTocScroll = __webpack_require__(/*! ./update-toc-scroll.js */ "./node_modules/tocbot/src/js/update-toc-scroll.js")
+  // Keep these variables at top scope once options are passed in.
+  var buildHtml
+  var parseContent
+
+  // Just return if its not a browser.
+  var supports = !!root && !!root.document && !!root.document.querySelector && !!root.addEventListener // Feature test
+  if (typeof window === 'undefined' && !supports) {
+    return
+  }
+  var headingsArray
+
+  // From: https://github.com/Raynos/xtend
+  var hasOwnProperty = Object.prototype.hasOwnProperty
+  function extend () {
+    var target = {}
+    for (var i = 0; i < arguments.length; i++) {
+      var source = arguments[i]
+      for (var key in source) {
+        if (hasOwnProperty.call(source, key)) {
+          target[key] = source[key]
+        }
+      }
+    }
+    return target
+  }
+
+  // From: https://remysharp.com/2010/07/21/throttling-function-calls
+  function throttle (fn, threshhold, scope) {
+    threshhold || (threshhold = 250)
+    var last
+    var deferTimer
+    return function () {
+      var context = scope || this
+      var now = +new Date()
+      var args = arguments
+      if (last && now < last + threshhold) {
+        // hold on to it
+        clearTimeout(deferTimer)
+        deferTimer = setTimeout(function () {
+          last = now
+          fn.apply(context, args)
+        }, threshhold)
+      } else {
+        last = now
+        fn.apply(context, args)
+      }
+    }
+  }
+
+  /**
+   * Destroy tocbot.
+   */
+  tocbot.destroy = function () {
+    if (!options.skipRendering) {
+      // Clear HTML.
+      try {
+        document.querySelector(options.tocSelector).innerHTML = ''
+      } catch (e) {
+        console.warn('Element not found: ' + options.tocSelector); // eslint-disable-line
+      }
+    }
+
+    // Remove event listeners.
+    if (options.scrollContainer && document.querySelector(options.scrollContainer)) {
+      document.querySelector(options.scrollContainer).removeEventListener('scroll', this._scrollListener, false)
+      document.querySelector(options.scrollContainer).removeEventListener('resize', this._scrollListener, false)
+      if (buildHtml) {
+        document.querySelector(options.scrollContainer).removeEventListener('click', this._clickListener, false)
+      }
+    } else {
+      document.removeEventListener('scroll', this._scrollListener, false)
+      document.removeEventListener('resize', this._scrollListener, false)
+      if (buildHtml) {
+        document.removeEventListener('click', this._clickListener, false)
+      }
+    }
+  }
+
+  /**
+   * Initialize tocbot.
+   * @param {object} customOptions
+   */
+  tocbot.init = function (customOptions) {
+    // feature test
+    if (!supports) {
+      return
+    }
+
+    // Merge defaults with user options.
+    // Set to options variable at the top.
+    options = extend(defaultOptions, customOptions || {})
+    this.options = options
+    this.state = {}
+
+    // Init smooth scroll if enabled (default).
+    if (options.scrollSmooth) {
+      options.duration = options.scrollSmoothDuration
+      options.offset = options.scrollSmoothOffset
+      tocbot.scrollSmooth = __webpack_require__(/*! ./scroll-smooth */ "./node_modules/tocbot/src/js/scroll-smooth/index.js").initSmoothScrolling(options)
+    }
+
+    // Pass options to these modules.
+    buildHtml = BuildHtml(options)
+    parseContent = ParseContent(options)
+
+    // For testing purposes.
+    this._buildHtml = buildHtml
+    this._parseContent = parseContent
+
+    // Destroy it if it exists first.
+    tocbot.destroy()
+
+    // Get headings array.
+    headingsArray = parseContent.selectHeadings(options.contentSelector, options.headingSelector)
+    // Return if no headings are found.
+    if (headingsArray === null) {
+      return
+    }
+
+    // Build nested headings array.
+    var nestedHeadingsObj = parseContent.nestHeadingsArray(headingsArray)
+    var nestedHeadings = nestedHeadingsObj.nest
+
+    // Render.
+    if (!options.skipRendering) {
+      buildHtml.render(options.tocSelector, nestedHeadings)
+    }
+
+    // Update Sidebar and bind listeners.
+    this._scrollListener = throttle(function (e) {
+      buildHtml.updateToc(headingsArray)
+      !options.disableTocScrollSync && updateTocScroll(options)
+      var isTop = e && e.target && e.target.scrollingElement && e.target.scrollingElement.scrollTop === 0
+      if ((e && (e.eventPhase === 0 || e.currentTarget === null)) || isTop) {
+        buildHtml.updateToc(headingsArray)
+        if (options.scrollEndCallback) {
+          options.scrollEndCallback(e)
+        }
+      }
+    }, options.throttleTimeout)
+    this._scrollListener()
+    if (options.scrollContainer && document.querySelector(options.scrollContainer)) {
+      document.querySelector(options.scrollContainer).addEventListener('scroll', this._scrollListener, false)
+      document.querySelector(options.scrollContainer).addEventListener('resize', this._scrollListener, false)
+    } else {
+      document.addEventListener('scroll', this._scrollListener, false)
+      document.addEventListener('resize', this._scrollListener, false)
+    }
+
+    // Bind click listeners to disable animation.
+    var timeout = null
+    this._clickListener = throttle(function (event) {
+      if (options.scrollSmooth) {
+        buildHtml.disableTocAnimation(event)
+      }
+      buildHtml.updateToc(headingsArray)
+      // Timeout to re-enable the animation.
+      timeout && clearTimeout(timeout)
+      timeout = setTimeout(function () {
+        buildHtml.enableTocAnimation()
+      }, options.scrollSmoothDuration)
+    }, options.throttleTimeout)
+
+    if (options.scrollContainer && document.querySelector(options.scrollContainer)) {
+      document.querySelector(options.scrollContainer).addEventListener('click', this._clickListener, false)
+    } else {
+      document.addEventListener('click', this._clickListener, false)
+    }
+
+    return this
+  }
+
+  /**
+   * Refresh tocbot.
+   */
+  tocbot.refresh = function (customOptions) {
+    tocbot.destroy()
+    tocbot.init(customOptions || this.options)
+  }
+
+  // Make tocbot available globally.
+  root.tocbot = tocbot
+
+  return tocbot
+})
+
+
+/***/ }),
+
+/***/ "./node_modules/tocbot/src/js/parse-content.js":
+/*!*****************************************************!*\
+  !*** ./node_modules/tocbot/src/js/parse-content.js ***!
+  \*****************************************************/
+/***/ ((module) => {
+
+/**
+ * This file is responsible for parsing the content from the DOM and making
+ * sure data is nested properly.
+ *
+ * @author Tim Scanlin
+ */
+
+module.exports = function parseContent (options) {
+  var reduce = [].reduce
+
+  /**
+   * Get the last item in an array and return a reference to it.
+   * @param {Array} array
+   * @return {Object}
+   */
+  function getLastItem (array) {
+    return array[array.length - 1]
+  }
+
+  /**
+   * Get heading level for a heading dom node.
+   * @param {HTMLElement} heading
+   * @return {Number}
+   */
+  function getHeadingLevel (heading) {
+    return +heading.nodeName.split('H').join('')
+  }
+
+  /**
+   * Get important properties from a heading element and store in a plain object.
+   * @param {HTMLElement} heading
+   * @return {Object}
+   */
+  function getHeadingObject (heading) {
+    // each node is processed twice by this method because nestHeadingsArray() and addNode() calls it
+    // first time heading is real DOM node element, second time it is obj
+    // that is causing problem so I am processing only original DOM node
+    if (!(heading instanceof window.HTMLElement)) return heading
+
+    if (options.ignoreHiddenElements && (!heading.offsetHeight || !heading.offsetParent)) {
+      return null
+    }
+
+    var obj = {
+      id: heading.id,
+      children: [],
+      nodeName: heading.nodeName,
+      headingLevel: getHeadingLevel(heading),
+      textContent: options.headingLabelCallback ? String(options.headingLabelCallback(heading.textContent)) : heading.textContent.trim()
+    }
+
+    if (options.includeHtml) {
+      obj.childNodes = heading.childNodes
+    }
+
+    if (options.headingObjectCallback) {
+      return options.headingObjectCallback(obj, heading)
+    }
+
+    return obj
+  }
+
+  /**
+   * Add a node to the nested array.
+   * @param {Object} node
+   * @param {Array} nest
+   * @return {Array}
+   */
+  function addNode (node, nest) {
+    var obj = getHeadingObject(node)
+    var level = obj.headingLevel
+    var array = nest
+    var lastItem = getLastItem(array)
+    var lastItemLevel = lastItem
+      ? lastItem.headingLevel
+      : 0
+    var counter = level - lastItemLevel
+
+    while (counter > 0) {
+      lastItem = getLastItem(array)
+      if (lastItem && lastItem.children !== undefined) {
+        array = lastItem.children
+      }
+      counter--
+    }
+
+    if (level >= options.collapseDepth) {
+      obj.isCollapsed = true
+    }
+
+    array.push(obj)
+    return array
+  }
+
+  /**
+   * Select headings in content area, exclude any selector in options.ignoreSelector
+   * @param {String} contentSelector
+   * @param {Array} headingSelector
+   * @return {Array}
+   */
+  function selectHeadings (contentSelector, headingSelector) {
+    var selectors = headingSelector
+    if (options.ignoreSelector) {
+      selectors = headingSelector.split(',')
+        .map(function mapSelectors (selector) {
+          return selector.trim() + ':not(' + options.ignoreSelector + ')'
+        })
+    }
+    try {
+      return document.querySelector(contentSelector)
+        .querySelectorAll(selectors)
+    } catch (e) {
+      console.warn('Element not found: ' + contentSelector); // eslint-disable-line
+      return null
+    }
+  }
+
+  /**
+   * Nest headings array into nested arrays with 'children' property.
+   * @param {Array} headingsArray
+   * @return {Object}
+   */
+  function nestHeadingsArray (headingsArray) {
+    return reduce.call(headingsArray, function reducer (prev, curr) {
+      var currentHeading = getHeadingObject(curr)
+      if (currentHeading) {
+        addNode(currentHeading, prev.nest)
+      }
+      return prev
+    }, {
+      nest: []
+    })
+  }
+
+  return {
+    nestHeadingsArray: nestHeadingsArray,
+    selectHeadings: selectHeadings
+  }
+}
+
+
+/***/ }),
+
+/***/ "./node_modules/tocbot/src/js/scroll-smooth/index.js":
+/*!***********************************************************!*\
+  !*** ./node_modules/tocbot/src/js/scroll-smooth/index.js ***!
+  \***********************************************************/
+/***/ ((__unused_webpack_module, exports) => {
+
+/* globals location, requestAnimationFrame */
+
+exports.initSmoothScrolling = initSmoothScrolling
+
+function initSmoothScrolling (options) {
+  if (isCssSmoothSCrollSupported()) { }
+
+  var duration = options.duration
+  var offset = options.offset
+
+  var pageUrl = location.hash
+    ? stripHash(location.href)
+    : location.href
+
+  delegatedLinkHijacking()
+
+  function delegatedLinkHijacking () {
+    document.body.addEventListener('click', onClick, false)
+
+    function onClick (e) {
+      if (
+        !isInPageLink(e.target) ||
+        e.target.className.indexOf('no-smooth-scroll') > -1 ||
+        (e.target.href.charAt(e.target.href.length - 2) === '#' &&
+        e.target.href.charAt(e.target.href.length - 1) === '!') ||
+        e.target.className.indexOf(options.linkClass) === -1) {
+        return
+      }
+
+      // Don't prevent default or hash doesn't change.
+      // e.preventDefault()
+
+      jump(e.target.hash, {
+        duration: duration,
+        offset: offset,
+        callback: function () {
+          setFocus(e.target.hash)
+        }
+      })
+    }
+  }
+
+  function isInPageLink (n) {
+    return n.tagName.toLowerCase() === 'a' &&
+      (n.hash.length > 0 || n.href.charAt(n.href.length - 1) === '#') &&
+      (stripHash(n.href) === pageUrl || stripHash(n.href) + '#' === pageUrl)
+  }
+
+  function stripHash (url) {
+    return url.slice(0, url.lastIndexOf('#'))
+  }
+
+  function isCssSmoothSCrollSupported () {
+    return 'scrollBehavior' in document.documentElement.style
+  }
+
+  // Adapted from:
+  // https://www.nczonline.net/blog/2013/01/15/fixing-skip-to-content-links/
+  function setFocus (hash) {
+    var element = document.getElementById(hash.substring(1))
+
+    if (element) {
+      if (!/^(?:a|select|input|button|textarea)$/i.test(element.tagName)) {
+        element.tabIndex = -1
+      }
+
+      element.focus()
+    }
+  }
+}
+
+function jump (target, options) {
+  var start = window.pageYOffset
+  var opt = {
+    duration: options.duration,
+    offset: options.offset || 0,
+    callback: options.callback,
+    easing: options.easing || easeInOutQuad
+  }
+  // This makes ids that start with a number work: ('[id="' + decodeURI(target).split('#').join('') + '"]')
+  // DecodeURI for nonASCII hashes, they was encoded, but id was not encoded, it lead to not finding the tgt element by id.
+  // And this is for IE: document.body.scrollTop
+  var tgt = document.querySelector('[id="' + decodeURI(target).split('#').join('') + '"]')
+  var distance = typeof target === 'string'
+    ? opt.offset + (
+      target
+        ? (tgt && tgt.getBoundingClientRect().top) || 0 // handle non-existent links better.
+        : -(document.documentElement.scrollTop || document.body.scrollTop))
+    : target
+  var duration = typeof opt.duration === 'function'
+    ? opt.duration(distance)
+    : opt.duration
+  var timeStart
+  var timeElapsed
+
+  requestAnimationFrame(function (time) { timeStart = time; loop(time) })
+  function loop (time) {
+    timeElapsed = time - timeStart
+
+    window.scrollTo(0, opt.easing(timeElapsed, start, distance, duration))
+
+    if (timeElapsed < duration) { requestAnimationFrame(loop) } else { end() }
+  }
+
+  function end () {
+    window.scrollTo(0, start + distance)
+
+    if (typeof opt.callback === 'function') { opt.callback() }
+  }
+
+  // Robert Penner's easeInOutQuad - http://robertpenner.com/easing/
+  function easeInOutQuad (t, b, c, d) {
+    t /= d / 2
+    if (t < 1) return c / 2 * t * t + b
+    t--
+    return -c / 2 * (t * (t - 2) - 1) + b
+  }
+}
+
+
+/***/ }),
+
+/***/ "./node_modules/tocbot/src/js/update-toc-scroll.js":
+/*!*********************************************************!*\
+  !*** ./node_modules/tocbot/src/js/update-toc-scroll.js ***!
+  \*********************************************************/
+/***/ ((module) => {
+
+module.exports = function updateTocScroll (options) {
+  var toc = document.querySelector(options.tocSelector)
+  if (toc && toc.scrollHeight > toc.clientHeight) {
+    var activeItem = toc.querySelector('.' + options.activeListItemClass)
+    if (activeItem) {
+      toc.scrollTop = activeItem.offsetTop
+    }
+  }
+}
+
+
+/***/ }),
+
+/***/ "@streams/core":
+/*!***********************************!*\
+  !*** external ["streams","core"] ***!
+  \***********************************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = streams.core;
+
+/***/ })
+
+/******/ 	});
+/************************************************************************/
+/******/ 	// The module cache
+/******/ 	var __webpack_module_cache__ = {};
+/******/ 	
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/ 		// Check if module is in cache
+/******/ 		if(__webpack_module_cache__[moduleId]) {
+/******/ 			return __webpack_module_cache__[moduleId].exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = __webpack_module_cache__[moduleId] = {
+/******/ 			// no module.id needed
+/******/ 			// no module.loaded needed
+/******/ 			exports: {}
+/******/ 		};
+/******/ 	
+/******/ 		// Execute the module function
+/******/ 		__webpack_modules__[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/ 	
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/ 	
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = __webpack_modules__;
+/******/ 	
+/******/ 	// the startup function
+/******/ 	// It's empty as some runtime module handles the default behavior
+/******/ 	__webpack_require__.x = x => {};
+/************************************************************************/
+/******/ 	/* webpack/runtime/compat get default export */
+/******/ 	(() => {
+/******/ 		// getDefaultExport function for compatibility with non-harmony modules
+/******/ 		__webpack_require__.n = (module) => {
+/******/ 			var getter = module && module.__esModule ?
+/******/ 				() => (module['default']) :
+/******/ 				() => (module);
+/******/ 			__webpack_require__.d(getter, { a: getter });
+/******/ 			return getter;
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/define property getters */
+/******/ 	(() => {
+/******/ 		// define getter functions for harmony exports
+/******/ 		__webpack_require__.d = (exports, definition) => {
+/******/ 			for(var key in definition) {
+/******/ 				if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
+/******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
+/******/ 				}
+/******/ 			}
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/global */
+/******/ 	(() => {
+/******/ 		__webpack_require__.g = (function() {
+/******/ 			if (typeof globalThis === 'object') return globalThis;
+/******/ 			try {
+/******/ 				return this || new Function('return this')();
+/******/ 			} catch (e) {
+/******/ 				if (typeof window === 'object') return window;
+/******/ 			}
+/******/ 		})();
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/hasOwnProperty shorthand */
+/******/ 	(() => {
+/******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/make namespace object */
+/******/ 	(() => {
+/******/ 		// define __esModule on exports
+/******/ 		__webpack_require__.r = (exports) => {
+/******/ 			if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 			}
+/******/ 			Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/jsonp chunk loading */
+/******/ 	(() => {
+/******/ 		// no baseURI
+/******/ 		
+/******/ 		// object to store loaded and loading chunks
+/******/ 		// undefined = chunk not loaded, null = chunk preloaded/prefetched
+/******/ 		// Promise = chunk loading, 0 = chunk loaded
+/******/ 		var installedChunks = {
+/******/ 			"/js/app": 0
+/******/ 		};
+/******/ 		
+/******/ 		var deferredModules = [
+/******/ 			["./resources/js/app.js"],
+/******/ 			["./resources/scss/theme.scss"]
+/******/ 		];
+/******/ 		// no chunk on demand loading
+/******/ 		
+/******/ 		// no prefetching
+/******/ 		
+/******/ 		// no preloaded
+/******/ 		
+/******/ 		// no HMR
+/******/ 		
+/******/ 		// no HMR manifest
+/******/ 		
+/******/ 		var checkDeferredModules = x => {};
+/******/ 		
+/******/ 		// install a JSONP callback for chunk loading
+/******/ 		var webpackJsonpCallback = (parentChunkLoadingFunction, data) => {
+/******/ 			var [chunkIds, moreModules, runtime, executeModules] = data;
+/******/ 			// add "moreModules" to the modules object,
+/******/ 			// then flag all "chunkIds" as loaded and fire callback
+/******/ 			var moduleId, chunkId, i = 0, resolves = [];
+/******/ 			for(;i < chunkIds.length; i++) {
+/******/ 				chunkId = chunkIds[i];
+/******/ 				if(__webpack_require__.o(installedChunks, chunkId) && installedChunks[chunkId]) {
+/******/ 					resolves.push(installedChunks[chunkId][0]);
+/******/ 				}
+/******/ 				installedChunks[chunkId] = 0;
+/******/ 			}
+/******/ 			for(moduleId in moreModules) {
+/******/ 				if(__webpack_require__.o(moreModules, moduleId)) {
+/******/ 					__webpack_require__.m[moduleId] = moreModules[moduleId];
+/******/ 				}
+/******/ 			}
+/******/ 			if(runtime) runtime(__webpack_require__);
+/******/ 			if(parentChunkLoadingFunction) parentChunkLoadingFunction(data);
+/******/ 			while(resolves.length) {
+/******/ 				resolves.shift()();
+/******/ 			}
+/******/ 		
+/******/ 			// add entry modules from loaded chunk to deferred list
+/******/ 			if(executeModules) deferredModules.push.apply(deferredModules, executeModules);
+/******/ 		
+/******/ 			// run deferred modules when all chunks ready
+/******/ 			return checkDeferredModules();
+/******/ 		}
+/******/ 		
+/******/ 		var chunkLoadingGlobal = self["webpackChunk"] = self["webpackChunk"] || [];
+/******/ 		chunkLoadingGlobal.forEach(webpackJsonpCallback.bind(null, 0));
+/******/ 		chunkLoadingGlobal.push = webpackJsonpCallback.bind(null, chunkLoadingGlobal.push.bind(chunkLoadingGlobal));
+/******/ 		
+/******/ 		function checkDeferredModulesImpl() {
+/******/ 			var result;
+/******/ 			for(var i = 0; i < deferredModules.length; i++) {
+/******/ 				var deferredModule = deferredModules[i];
+/******/ 				var fulfilled = true;
+/******/ 				for(var j = 1; j < deferredModule.length; j++) {
+/******/ 					var depId = deferredModule[j];
+/******/ 					if(installedChunks[depId] !== 0) fulfilled = false;
+/******/ 				}
+/******/ 				if(fulfilled) {
+/******/ 					deferredModules.splice(i--, 1);
+/******/ 					result = __webpack_require__(__webpack_require__.s = deferredModule[0]);
+/******/ 				}
+/******/ 			}
+/******/ 			if(deferredModules.length === 0) {
+/******/ 				__webpack_require__.x();
+/******/ 				__webpack_require__.x = x => {};
+/******/ 			}
+/******/ 			return result;
+/******/ 		}
+/******/ 		var startup = __webpack_require__.x;
+/******/ 		__webpack_require__.x = () => {
+/******/ 			// reset startup function so it can be called again when more startup code is added
+/******/ 			__webpack_require__.x = startup || (x => {});
+/******/ 			return (checkDeferredModules = checkDeferredModulesImpl)();
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/************************************************************************/
+/******/ 	// run startup
+/******/ 	__webpack_require__.x();
+/******/ })()
+;

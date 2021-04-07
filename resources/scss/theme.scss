@@ -48,6 +48,18 @@ svg {
         }
     }
 
+    h1,
+    h2,
+    h3,
+    h4,
+    h5 {
+        position: relative;
+
+        a:not(.anchorjs-link) {
+            @apply border-b bottom-1 border-black hover-border-solid border-dotted;
+        }
+    }
+
     p {
         @apply mb-4;
     }
