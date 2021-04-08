@@ -61,18 +61,30 @@ By building upon data structure, we can use stream configurations to help drasti
 - Generate stream configurations from data.
 - Serving and consuming the data via API.
 - Building comprehensive control panels.
-- Generating quality, fake data.
+- Generating quality fake data.
+
+### Development Abstraction
+
+Our overarching focus is to **abstract, normalize, and optimize** systems and work required from a wide range of Laravel projects. We try and restrict this to within the lens of our core focus of data abstraction and access.
 
 ### Principle Concerns
 
-Laravel Streams focuses on abstracting these fundamental areas of application development.
+Laravel Streams focuses on these fundamental areas of application development.
 
 - [Data Modeling](streams)
-- [Laravel Enhancement](core)
+- [Laravel Development](core)
 - [Frontend Development](frontend)
 - [User Interface](ui)
 - [API Readiness](api)
 - [CLI Interface](cli)
+
+### What's Next?
+
+Time to get your feet wet.
+
+@foreach (Streams::entries('docs')->where('category', 'getting_started')->orderBy('sort', 'asc')->get() as $doc)
+- [{{$doc->link_title ?: $doc->title}}]({{$doc->id}})
+@endforeach
 
 ## Core Packages
 

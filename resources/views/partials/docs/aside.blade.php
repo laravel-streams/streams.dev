@@ -32,7 +32,7 @@
             <ul class="mt-2">
                 @foreach ($pages as $page)
                 <li>
-                    <a href="{{$page->id}}" class="{{ ($page->id == $entry->id) ? 'text-red-500 font-bold' : 'text-gray-500' }}">{{ $page->title }}</a>
+                    <a href="{{$page->id}}" class="{{ ($page->id == $entry->id) ? 'text-red-500 font-bold' : 'text-gray-500' }}">{{ $page->link_title ? $page->link_title : $page->title }}</a>
                     {{-- <strong>[{{ $page->stage ?: 'outlining' }}]</strong> --}}
                 </li>
                 @endforeach

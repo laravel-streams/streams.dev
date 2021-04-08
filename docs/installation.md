@@ -49,7 +49,7 @@ Your streams project is now ready for you to start coding.
 #### Ready to dive in?
 
 - [Data Modeling](streams)
-- [Laravel Enhancement](core)
+- [Laravel Development](core)
 - [Frontend Development](frontend)
 - [User Interface](ui)
 - [API Readiness](api)

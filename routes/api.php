@@ -66,15 +66,16 @@ Route::get('/search', function () {
             $results->put($stream . '.' . $entry->id, $entry);
         };
 
+        $query = Streams::entries($stream)
+            ->where('enabled', true);
+
         foreach ($words as $word) {
-            Streams::entries($stream)
-                ->where('enabled', true)
-                ->where('title', 'like', $word)
-                ->orWhere('body', 'like', $word)
-                ->limit(15)
-                ->get()
-                ->each($callback);
+            $query->where('body', 'like', $word);
         }
+
+        $query->limit(15)
+            ->get()
+            ->each($callback);
     }
 
     $results->each(function ($entry) {
