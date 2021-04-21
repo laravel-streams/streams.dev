@@ -1,21 +1,24 @@
 ---
-title: Explore our principles and discover how they might apply to your project.
+title: Explore our values and principles to discover how they align with you, your project, and your team.
 menu:
-    - text: Modeling
-      href: #/explore/features
-    - text: API
+    - text: Open Source
+      href: #/explore/open-source
+    - text: Utility First
       href: #/explore/api
-    - text: Back to Features
-      href: /explore/features
+    - text: Extensibility
+      href: #/explore/extensive
+      type: secondary
+    - text: Simplicity
+      href: #/explore/features
+      type: secondary
+    - text: Reusable
+      href: #/explore/reusable
+      type: secondary
+    - text: RAD Compatible
+      href: /explore/rad
       type: link
 links:
-    - text: Our Mission
-      href: /explore/mission
+    - text: Explore Features
+      href: /explore/features
       type: link
 ---
-
-Our primary mission is to **abstract and standardize data**. , interacting with, and presentation of information and to make it accessible to the widest range of developers possible.
-
-Information, is at the foundation of our every impulse. What would happen if we created a system of open technology built around **data first**. Not content, just, data. How 
-
-Simplicity is the ultimate sophistication.
