@@ -1,20 +1,14 @@
 {
     "name": "users",
     "source": {
-        "type": "file",
-        "format": "csv"
+        "type": "file"
     },
     "fields": {
         "id": "number",
         "name": "string",
         "email": "email",
         "password": "hash",
-        "relative": {
-            "type": "relationship",
-            "config": {
-                "related": "users"
-            }
-        }
+        "gitlab_user": "string"
     },
     "ui": {
         "table": {

@@ -13,6 +13,12 @@
 
 use Illuminate\Support\Facades\Route;
 
-// Route::any('test/{stream}', function ($stream) {
-//     dd($stream);
-// });
+// Route::ui('test', [
+//     //'verb' => 'get',
+//     'ui.cp' => true,
+//     'ui.cp_enabled' => true,
+//     'stream' => 'docs',
+//     'entry' => false,
+//     //'ui.component' => 'table',
+//     'view' => 'test',
+// ]);
