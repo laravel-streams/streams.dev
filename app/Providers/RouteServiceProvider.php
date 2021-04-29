@@ -36,6 +36,10 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function map()
     {
+        // Route::cp('foo/bar', [
+        //     'view' => 'test',
+        // ]);
+
         $this->mapApiRoutes();
         $this->mapWebRoutes();
     }

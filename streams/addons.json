@@ -1,0 +1,15 @@
+{
+    "name": "addons",
+    "source": {
+        "type": "self"
+    },
+    "fields": {
+        "id": "string",
+        "name": "string"
+    },
+    "data": {
+        "pyro-bridge": {
+            "name": "PyroCMS Bridge"
+        }
+    }
+}

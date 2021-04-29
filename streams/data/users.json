@@ -2,11 +2,7 @@
     "RyanThePyro": {
         "name": "Ryan Thompson",
         "email": "ryan@streams.dev",
-        "password": "test"
-    },
-    "JohnSmith": {
-        "name": "John Smith",
-        "email": "john@smith.me",
-        "password": "test2"
+        "password": "test",
+        "gitlab_user": "RyanThePyro"
     }
 }
