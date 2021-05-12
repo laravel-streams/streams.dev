@@ -17,7 +17,7 @@ class AuthenticateCp
     public function handle($request, \Closure $next)
     {
         if (in_array(Request::ip(), config('streams.whitelist', []))) {
-            //return $next($request);
+            return $next($request);
         }
 
         $key = Arr::get($_COOKIE, 'cp_key');
