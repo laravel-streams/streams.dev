@@ -31440,13 +31440,30 @@ svg {
   margin-left: 1.25rem;
 }
 
+.doc-body table {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  width: 100%;
+}
+
 .doc-body table th {
-  padding: 0.25rem;
+  --tw-bg-opacity: 1;
+  background-color: rgba(249, 250, 251, var(--tw-bg-opacity));
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
   text-align: left;
 }
 
 .doc-body table td {
-  padding: 0.25rem;
+  --tw-border-opacity: 1;
+  border-color: rgba(243, 244, 246, var(--tw-border-opacity));
+  border-bottom-width: 2px;
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
   text-align: left;
 }
 

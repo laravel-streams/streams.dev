@@ -90,11 +90,14 @@ svg {
     }
 
     table {
+        @apply w-full mt-8 mb-8;
+
         th {
-            @apply text-left p-1;
+            @apply text-left py-1 px-2 bg-gray-50;
         }
+        
         td {
-            @apply text-left p-1;
+            @apply text-left py-1 px-2 border-b-2 border-gray-100;
         }
     }
 }
