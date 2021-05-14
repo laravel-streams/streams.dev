@@ -31,7 +31,8 @@ Streams Core provides frontend support that encourages and supports best-practic
 
 These juicy tools are specifically for developers. 
 
-- [Support](core/support)
+- [Caching](core/caching)
+- [Utilities](core/support)
 - [Reusability](core/addons)
 - [Extensibility](core/extending)
-- [Multi-Everything](core/applications)
+- [Multi-Tenancy](core/applications)
