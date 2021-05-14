@@ -72,7 +72,12 @@
         "tables": {
             "default": {
                 "filters": {
-                    "title": {}
+                    "search": {
+                        "fields": [
+                            "title",
+                            "body"
+                        ]
+                    }
                 },
                 "buttons": {
                     "edit": {}

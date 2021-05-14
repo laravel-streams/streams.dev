@@ -2823,12 +2823,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-streams/streams-ui.git",
-                "reference": "012bdc000bc8fad18816fca9b04bb6aa50ee43a5"
+                "reference": "df1307f4cf1dcdad1cb781423b022eed9e9513f8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-streams/streams-ui/zipball/012bdc000bc8fad18816fca9b04bb6aa50ee43a5",
-                "reference": "012bdc000bc8fad18816fca9b04bb6aa50ee43a5",
+                "url": "https://api.github.com/repos/laravel-streams/streams-ui/zipball/df1307f4cf1dcdad1cb781423b022eed9e9513f8",
+                "reference": "df1307f4cf1dcdad1cb781423b022eed9e9513f8",
                 "shasum": ""
             },
             "require": {
@@ -2868,7 +2868,7 @@
                 "issues": "https://github.com/laravel-streams/streams-ui/issues",
                 "source": "https://github.com/laravel-streams/streams-ui/tree/1.0"
             },
-            "time": "2021-05-14T04:42:18+00:00"
+            "time": "2021-05-14T06:57:49+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
