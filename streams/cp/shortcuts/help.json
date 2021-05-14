@@ -5,22 +5,22 @@
         "docs": {
             "text": "Documentation",
             "attributes.href": "https://streams.dev/docs",
-            "target": "_blank"
+            "attributes.target": "_blank"
         },
         "discord": {
             "text": "Discord",
             "attributes.href": "https://discord.gg/vhz8NZC",
-            "target": "_blank"
+            "attributes.target": "_blank"
         },
         "issues": {
             "text": "Issue Tracker",
             "attributes.href": "https://github.com/laravel-streams/streams/issues",
-            "target": "_blank"
+            "attributes.target": "_blank"
         },
         "so": {
             "text": "Stack Overflow",
             "attributes.href": "https://stackoverflow.com/search?q=laravel+streams&tab=newest",
-            "target": "_blank"
+            "attributes.target": "_blank"
         }
     }
 }

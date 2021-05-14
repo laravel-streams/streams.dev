@@ -5,7 +5,7 @@
         "profile": {
             "text": "Visit Website",
             "attributes.href": "/",
-            "target": "_blank"
+            "attributes.target": "_blank"
         }
     }
 }
