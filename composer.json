@@ -15,9 +15,12 @@
         }
     ],
     "require": {
+        "graham-campbell/gitlab": "^5.4",
+        "guzzlehttp/guzzle": "^7.2",
+        "http-interop/http-factory-guzzle": "^1.0",
         "owenvoke/blade-fontawesome": "^1.6",
-        "streams/core": "^2.0",
         "streams/api": "^1.0",
+        "streams/core": "^2.0",
         "streams/ui": "^1.0"
     },
     "require-dev": {

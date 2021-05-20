@@ -1,8 +1,9 @@
 {
     "RyanThePyro": {
+        "id": "RyanThePyro",
         "name": "Ryan Thompson",
         "email": "ryan@streams.dev",
-        "password": "test",
+        "password": "password",
         "gitlab_user": "RyanThePyro"
     }
 }
