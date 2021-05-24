@@ -80,7 +80,11 @@
                     }
                 },
                 "buttons": {
-                    "edit": {}
+                    "edit": {},
+                    "view": {
+                        "attributes.href": "/{stream.url_prefix}/{entry.id}",
+                        "attributes.target": "__blank"
+                    }
                 }
             }
         }

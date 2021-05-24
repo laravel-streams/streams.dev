@@ -22,3 +22,7 @@ Route::ui('foo/bar', [
     'entry' => false,
     'ui.component' => 'table',
 ]);
+
+Route::streams('account/settings', [
+    'uses' => '\App\Http\Controllers\Account\ShowAccountSettings',
+]);

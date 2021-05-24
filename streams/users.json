@@ -4,7 +4,7 @@
         "type": "file"
     },
     "fields": {
-        "id": "number",
+        "id": "integer",
         "name": "string",
         "email": "email",
         "password": "hash",

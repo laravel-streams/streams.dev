@@ -15,9 +15,13 @@
         }
     ],
     "require": {
+        "graham-campbell/gitlab": "^5.4",
+        "guzzlehttp/guzzle": "^7.2",
+        "http-interop/http-factory-guzzle": "^1.0",
+        "laravel/fortify": "^1.7",
         "owenvoke/blade-fontawesome": "^1.6",
-        "streams/core": "^2.0",
         "streams/api": "^1.0",
+        "streams/core": "^2.0",
         "streams/ui": "^1.0"
     },
     "require-dev": {
@@ -27,8 +31,7 @@
         "laravel/tinker": "^2.2",
         "mockery/mockery": "^1.3",
         "phpunit/phpunit": "^9.0",
-        "spatie/laravel-web-tinker": "^1.7",
-        "streams/cli": "1.0.x-dev"
+        "spatie/laravel-web-tinker": "^1.7"
     },
     "repositories": [
         {
