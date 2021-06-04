@@ -1,18 +1,16 @@
 {
-    "name": "users",
+    "name": "keys",
     "source": {
         "type": "file"
     },
     "fields": {
-<<<<<<< HEAD
-        "id": "integer",
-=======
-        "id": "string",
->>>>>>> e63ddf31254bf8b7ad9666dfe03a97efe80592b0
+        "id": "slug",
+        "user": {
+            "type": "relationship",
+            "config.related": "users"
+        },
         "name": "string",
-        "email": "email",
-        "password": "hash",
-        "gitlab_user": "string"
+        "value": "string|textarea"
     },
     "ui": {
         "table": {
