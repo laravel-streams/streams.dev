@@ -54,9 +54,9 @@ sort: 14
 
                         <ul class="mt-4 list-disc ml-5">
                             <li><a class="border-b bottom-1 border-black hover-border-solid border-dotted" href="docs/core/introduction">Streams Core</a> <span class="text-xs font-mono">(alhpa)</span></li>
-                            <li><a class="border-b bottom-1 border-black hover-border-solid border-dotted" href="docs/api/introduction">Streams API</a> <span class="text-xs font-mono">(alhpa)</span></li>
                             <li><a class="border-b bottom-1 border-black hover-border-solid border-dotted" href="docs/ui/introduction">Streams UI</a></li>
-                            <!-- <li><a class="border-b bottom-1 border-black hover-border-solid border-dotted" href="docs/cli/introduction">Streams CLI</a></li> -->
+                            <li><a class="border-b bottom-1 border-black hover-border-solid border-dotted" href="docs/api/introduction">Streams API</a> <span class="text-xs font-mono">(alhpa)</span></li>
+                            <li><a class="border-b bottom-1 border-black hover-border-solid border-dotted" href="docs/cli/introduction">Streams CLI</a></li>
                         </ul>
 
                     </div>
