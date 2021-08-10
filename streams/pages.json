@@ -2,10 +2,6 @@
     "handle": "pages",
     "source.format": "md",
     
-    "routes.view": {
-        "uri": "/{id}",
-        "defer": true
-    },
     "template": "page",
     "rules": {
         "id": "required",

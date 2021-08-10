@@ -4,11 +4,7 @@
         "type": "file"
     },
     "fields": {
-<<<<<<< HEAD
-        "id": "integer",
-=======
         "id": "string",
->>>>>>> e63ddf31254bf8b7ad9666dfe03a97efe80592b0
         "name": "string",
         "email": "email",
         "password": "hash",
