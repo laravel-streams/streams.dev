@@ -1,18 +1,13 @@
-/* PrismJS 1.23.0
-https://prismjs.com/download.html#themes=prism-funky&languages=markup+css+clike+javascript */
+/* PrismJS 1.24.1
+https://prismjs.com/download.html#themes=prism-funky&languages=markup+css+clike+javascript+json */
 /**
  * prism.js Funky theme
  * Based on “Polyfilling the gaps” talk slides http://lea.verou.me/polyfilling-the-gaps/
  * @author Lea Verou
  */
 
- .copy-to-clipboard {
-     @apply absolute top-1 right-3 text-white opacity-50 hover:opacity-90 focus:opacity-100 focus:outline-none;
- }
-
  code[class*="language-"],
  pre[class*="language-"] {
-     position: relative;
      font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
      font-size: 1em;
      text-align: left;
@@ -135,3 +130,4 @@ https://prismjs.com/download.html#themes=prism-funky&languages=markup+css+clike+
      background-color: rgba(0, 255, 128, .3);
      display: inline;
  }
+  

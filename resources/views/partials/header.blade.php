@@ -1,15 +1,14 @@
-<head>
+<header>
 
     <div class="flex items-center justify-between px-20 py-6">
         
         <div class="flex items-center justify-center">
             
             <div class="flex items-center justify-center font-bold text-black text-3xl">
-                <a href="/">Laravel Streams</a>
-            </div>   
+                <a href="/"><img src="/img/logo.png" width="180"></a>
+            </div>
 
-            <div class="hidden lg:flex items-center justify-center antialiased lg:ml-20 pt-1">
-
+            {{-- <div class="hidden lg:flex items-center justify-center antialiased lg:ml-20 pt-1">
                 <div x-data="searchComponent()" @click.away="close()" class="bg-white relative">
                     <div>
                         <x-heroicon-o-search class="h-6 w-6 inline z-2 relative ml-2 -mr-9 -mt-0.5 opacity-50" />
@@ -31,20 +30,26 @@
                         </ul>
                     </div>
                 </div>
-
-            </div>
+            </div> --}}
         </div>
+
+        {{-- <nav>
+            <ul class="flex">
+                <li><a href="/docs" class="p-2">Documentation</a></li>
+                <li><a href="/discord" class="p-2">Discord</a></li>
+            </ul>
+        </nav> --}}
         
         <div class="hidden md:flex items-center justify-center gap-x-2">
-            <a href="/explore/idea" class="px-6 py-3 rounded-3xl font-bold bg-gray-200 hover:bg-gray-800 hover:text-white text-black outline-none focus:outline-none hover:shadow-md transition duration-200 ease-in-out">Explore</a>
-            <a href="/docs/installation" class="px-6 py-3 rounded-3xl font-bold bg-black hover:bg-gray-800 text-white outline-none focus:outline-none hover:shadow-md transition duration-200 ease-in-out">Download</a>
+            <a href="/explore/idea" class="px-6 py-3 font-bold bg-gray-200 hover:bg-gray-800 hover:text-white text-black outline-none focus:outline-none hover:shadow-md transition duration-200 ease-in-out">Explore</a>
+            <a href="/docs/installation" class="px-6 py-3 font-bold bg-black hover:bg-gray-800 text-white outline-none focus:outline-none hover:shadow-md transition duration-200 ease-in-out">Get Started <span>&#10141;</span></a>
         </div>
 
     </div>
 
-</head>
+</header>
 
-<script>
+{{-- <script>
     const searchComponent = function () {
         return {
             q: null,
@@ -77,4 +82,4 @@
             }
         }
     }
-</script>
+</script> --}}

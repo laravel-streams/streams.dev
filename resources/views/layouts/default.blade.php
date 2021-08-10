@@ -5,7 +5,7 @@
     @include('partials/head')
 </head>
 
-<body class="flex flex-col min-h-screen">
+<body>
 
     @include('partials/header')
 

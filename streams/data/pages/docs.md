@@ -19,7 +19,7 @@ sort: 14
     <div class="flex">
 
         <div class="grid gap-8">
-            <div class="col-span-3 xl:col-span-2 bg-white c-callout gap-8">
+            <div class="col-span-3 xl:col-span-2 c-callout gap-8">
                 <div class="">
                     <div class="col-span-3 xl:col-span-2 ">
 

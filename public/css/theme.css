@@ -31169,8 +31169,17 @@ video {
           animation: bounce 1s infinite;
 }
 
-/* PrismJS 1.23.0
-https://prismjs.com/download.html#themes=prism-funky&languages=markup+css+clike+javascript */
+html {
+  font-size: 20px;
+  line-height: 32px;
+}
+
+body {
+  background: #F0F0F0;
+}
+
+/* PrismJS 1.24.1
+https://prismjs.com/download.html#themes=prism-funky&languages=markup+css+clike+javascript+json */
 
 /**
  * prism.js Funky theme
@@ -31178,31 +31187,8 @@ https://prismjs.com/download.html#themes=prism-funky&languages=markup+css+clike+
  * @author Lea Verou
  */
 
-.copy-to-clipboard {
-  opacity: 0.5;
-}
-
-.copy-to-clipboard:hover{
-  opacity: 0.9;
-}
-
-.copy-to-clipboard:focus{
-  opacity: 1;
-  outline: 2px solid transparent;
-  outline-offset: 2px;
-}
-
-.copy-to-clipboard{
-  position: absolute;
-  top: 0.25rem;
-  right: 0.75rem;
-  --tw-text-opacity: 1;
-  color: rgba(255, 255, 255, var(--tw-text-opacity));
-}
-
 code[class*=language-],
 pre[class*=language-] {
-  position: relative;
   font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
   font-size: 1em;
   text-align: left;
@@ -31333,6 +31319,33 @@ svg {
 
 [x-cloak] {
   display: none !important;
+}
+
+.copy-to-clipboard {
+  opacity: 0.5;
+}
+
+.copy-to-clipboard:hover{
+  opacity: 0.9;
+}
+
+.copy-to-clipboard:focus{
+  opacity: 1;
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+}
+
+.copy-to-clipboard{
+  position: absolute;
+  top: 0.25rem;
+  right: 0.75rem;
+  --tw-text-opacity: 1;
+  color: rgba(255, 255, 255, var(--tw-text-opacity));
+}
+
+code[class*=language-],
+pre[class*=language-] {
+  position: relative;
 }
 
 .doc-body h2, .doc-body h3, .doc-body h4, .doc-body h5{

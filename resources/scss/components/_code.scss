@@ -1,0 +1,8 @@
+.copy-to-clipboard {
+    @apply absolute top-1 right-3 text-white opacity-50 hover:opacity-90 focus:opacity-100 focus:outline-none;
+}
+
+code[class*="language-"],
+pre[class*="language-"] {
+    position: relative;
+ }

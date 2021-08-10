@@ -2,16 +2,22 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+    font-size: 20px;
+    line-height: 32px;
+}
+
+body {
+    background: #F0F0F0;
+}
+
 @import "prism";
 
-// Do yer thing.
-svg {
-    max-width: 100%;
-}
+@import "utilities/reset";
+@import "vendor/alpine";
 
-[x-cloak] {
-    display: none !important;
-}
+@import "components/code";
+@import "layout/header";
 
 .doc-body {
 

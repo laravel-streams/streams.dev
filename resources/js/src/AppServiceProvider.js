@@ -1,4 +1,4 @@
-import Prism from 'prismjs';
+import Prism from '../vendor/prism';
 import AnchorJS from 'anchor-js';
 import Clipboard from 'clipboard';
 import * as tocbot from 'tocbot';
