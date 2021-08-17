@@ -4,7 +4,7 @@
       <div class="lg:text-center">
         <h2 class="text-base text-gray-600 font-semibold tracking-wide uppercase">Mission</h2>
         <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
-          Lorem ipsum dolor sit
+            Our primary mission is to **abstract and standardize data** in a way that maximizes openness and accessibility and radically minimizes overall technical debt in using it.
         </p>
         <p class="mt-4 max-w-2xl text-xl text-gray-500 lg:mx-auto">
           Lorem ipsum dolor sit amet consect adipisicing elit. Possimus magnam voluptatum cupiditate veritatis in accusamus quisquam.

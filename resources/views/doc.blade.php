@@ -5,7 +5,7 @@
     
     @include('partials.docs.aside')
 
-    <div class="ls-doc__content flex-grow pb-10 pl-8 pr-4">
+    <div class="ls-doc__content w-3/4 flex-grow pb-16 px-16">
         
         <h1 class="text-4xl sm:text-6xl lg:text-6xl leading-none font-extrabold tracking-tight text-gray-900 mt-8 mb-8">
             {{ $entry->title }}
@@ -14,6 +14,8 @@
         @if ($entry->intro)
         <p class="text-2xl tracking-tight mb-10 opacity-40">{{ $entry->intro }}</p>
         @endif
+
+        <div class="ls-doc__toc"></div>
 
         <div class="doc-body">
             {!! $entry->body()->render() !!}

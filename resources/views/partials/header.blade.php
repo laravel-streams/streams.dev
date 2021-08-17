@@ -42,7 +42,7 @@
         
         <div class="hidden md:flex items-center justify-center gap-x-2">
             <a href="/explore/idea" class="px-6 py-3 font-bold bg-gray-200 hover:bg-gray-800 hover:text-white text-black outline-none focus:outline-none hover:shadow-md transition duration-200 ease-in-out">Explore</a>
-            <a href="/docs/installation" class="px-6 py-3 font-bold bg-black hover:bg-gray-800 text-white outline-none focus:outline-none hover:shadow-md transition duration-200 ease-in-out">Get Started <span>&#10141;</span></a>
+            <a href="/docs" class="px-6 py-3 font-bold bg-black hover:bg-gray-800 text-white outline-none focus:outline-none hover:shadow-md transition duration-200 ease-in-out">Documentation <span>&#10141;</span></a>
         </div>
 
     </div>
