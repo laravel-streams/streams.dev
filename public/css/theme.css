@@ -31348,167 +31348,48 @@ pre[class*=language-] {
   position: relative;
 }
 
-.doc-body h2, .doc-body h3, .doc-body h4, .doc-body h5{
-  line-height: 1;
-  --tw-text-opacity: 1;
-  color: rgba(17, 24, 39, var(--tw-text-opacity));
-  letter-spacing: -0.025em;
+body.theme--docs {
+  background-color: var(--color-white);
 }
 
-.doc-body h2 {
-  font-size: 2.25rem;
-  line-height: 2.5rem;
-  margin-top: 2rem;
-  margin-bottom: 2rem;
-}
-
-.doc-body h3 {
-  font-size: 1.875rem;
-  line-height: 2.25rem;
-  margin-top: 2rem;
-  margin-bottom: 2rem;
-}
-
-.doc-body h4 {
-  font-size: 1.5rem;
-  line-height: 2rem;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-}
-
-.doc-body h2, .doc-body h3, .doc-body h4, .doc-body h5, .doc-body p{
-  width: 75%;
-}
-
-.doc-body h2 > code,
-.doc-body h3 > code,
-.doc-body h4 > code,
-.doc-body h5 > code,
-.doc-body p > code {
-  padding-top: 0.1rem;
-  padding-bottom: 0.1rem;
-}
-
-.doc-body h2 > code, .doc-body h3 > code, .doc-body h4 > code, .doc-body h5 > code, .doc-body p > code{
-  --tw-bg-opacity: 1;
-  background-color: rgba(229, 231, 235, var(--tw-bg-opacity));
-  padding-left: 0.25rem;
-  padding-right: 0.25rem;
-}
-
-.doc-body h1,
-.doc-body h2,
-.doc-body h3,
-.doc-body h4,
-.doc-body h5 {
-  position: relative;
-}
-
-.doc-body h1 a:not(.anchorjs-link), .doc-body h2 a:not(.anchorjs-link), .doc-body h3 a:not(.anchorjs-link), .doc-body h4 a:not(.anchorjs-link), .doc-body h5 a:not(.anchorjs-link){
-  --tw-border-opacity: 1;
-  border-color: rgba(0, 0, 0, var(--tw-border-opacity));
-  border-style: dotted;
+body.theme--docs header > div {
   border-bottom-width: 1px;
-  bottom: 0.25rem;
+  border-bottom-style: solid;
 }
 
-.doc-body h1 a:not(.anchorjs-link):hover, .doc-body h2 a:not(.anchorjs-link):hover, .doc-body h3 a:not(.anchorjs-link):hover, .doc-body h4 a:not(.anchorjs-link):hover, .doc-body h5 a:not(.anchorjs-link):hover {
-  transition: all 200ms;
-  border-style: solid;
+body.theme--docs aside {
+  border-right-width: 1px;
+  border-right-style: solid;
 }
 
-.doc-body p {
-  margin-bottom: 1rem;
+body.theme--docs .toc__container {
+  font-size: 16px;
+  line-height: 20px;
+  border-left-width: 1px;
+  border-left-style: solid;
 }
 
-.doc-body p a,
-.doc-body ul a {
-  border-bottom-width: 1px;
-}
-
-.doc-body p a, .doc-body ul a{
-  --tw-border-opacity: 1;
-  border-color: rgba(0, 0, 0, var(--tw-border-opacity));
-  border-style: dotted;
-  font-weight: 700;
-}
-
-.doc-body .anchorjs-link {
-  opacity: 0.15;
-}
-
-.doc-body .anchorjs-link:hover {
-  opacity: 0.5;
-}
-
-.doc-body :not(pre) > code[class*=language-], .doc-body pre[class*=language-]{
-  margin-top: 4rem;
-  margin-bottom: 4rem;
-}
-
-.doc-body ul {
-  list-style-type: disc;
-  margin-top: 2rem;
-  margin-bottom: 2rem;
-  margin-left: 1.25rem;
-}
-
-.doc-body table {
-  margin-top: 2rem;
-  margin-bottom: 2rem;
-  width: 100%;
-}
-
-.doc-body table th {
-  --tw-bg-opacity: 1;
-  background-color: rgba(249, 250, 251, var(--tw-bg-opacity));
-  padding-top: 0.25rem;
-  padding-bottom: 0.25rem;
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
-  text-align: left;
-}
-
-.doc-body table td {
-  --tw-border-opacity: 1;
-  border-color: rgba(243, 244, 246, var(--tw-border-opacity));
-  border-bottom-width: 2px;
-  padding-top: 0.25rem;
-  padding-bottom: 0.25rem;
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
-  text-align: left;
-}
-
-.ls-doc__toc {
+body.theme--docs .toc__container .ls-doc__toc {
   position: fixed;
 }
 
-.ls-doc__toc ol.is-collapsed {
-  display: none;
+body.theme--docs .toc__container .ls-doc__toc > .toc-list .is-active-link {
+  color: white;
+  background-color: black;
 }
 
-.ls-doc__toc ol li a {
+body.theme--docs .toc__container .ls-doc__toc > .toc-list a {
+  display: inline-block;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+body.theme--docs .toc__container .ls-doc__toc > .toc-list > li > a {
   font-weight: bold;
 }
 
-.ls-doc__toc ol li a.is-active-link {
-  --tw-text-opacity: 1;
-  color: rgba(239, 68, 68, var(--tw-text-opacity));
-}
-
-.ls-doc__toc ol li ol {
-  margin-left: 0.5rem;
-}
-
-.ls-doc__toc ol li ol a {
-  font-size: 0.85rem;
-  font-weight: normal;
-}
-
-.hover-border-solid:hover {
-  transition: all 200ms;
-  border-style: solid !important;
+body.theme--docs .toc__container .ls-doc__toc > .toc-list > ol > li > a {
+  color: red;
 }
 
 @media (min-width: 640px){

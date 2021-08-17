@@ -5,7 +5,7 @@
     @include('partials/head')
 </head>
 
-<body>
+<body class="theme--{{ request()->segment(1) }}">
 
     @include('partials/header')
 

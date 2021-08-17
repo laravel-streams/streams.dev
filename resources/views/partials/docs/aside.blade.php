@@ -2,7 +2,7 @@
     $docs = $stream->entries()->where('enabled', true)->orderBy('sort', 'asc')->get();
 @endphp
 
-<aside class="w-3/12 text-black py-10 pl-20">
+<aside class="w-72 text-black py-10 pl-16">
 
     <div>
             

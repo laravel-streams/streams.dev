@@ -1,0 +1,44 @@
+body.theme--docs {
+    background-color: var(--color-white);
+
+    header > div {
+        border-bottom-width: 1px;
+        border-bottom-style: solid;
+    }
+
+    aside {
+        border-right-width: 1px;
+        border-right-style: solid;
+    }
+
+    .toc__container {
+        font-size: 16px;
+        line-height: 20px;
+        border-left-width: 1px;
+        border-left-style: solid;
+
+        .ls-doc__toc {
+            position: fixed;
+            
+            > .toc-list {
+
+                .is-active-link {
+                    color: white;
+                    background-color: black
+                }
+                
+                a {
+                    @apply px-4 inline-block;
+                }
+
+                > li > a {
+                    font-weight: bold;
+                }
+
+                > ol > li > a {
+                    color: red;
+                }
+            }
+        }
+    }
+}

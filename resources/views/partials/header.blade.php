@@ -1,6 +1,6 @@
 <header>
 
-    <div class="flex items-center justify-between px-20 py-6">
+    <div class="flex items-center justify-between px-16 py-6">
         
         <div class="flex items-center justify-center">
             

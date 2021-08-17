@@ -1,13 +1,13 @@
-@extends('layouts/default')
+@extends('layouts.default')
 
 @section('content')
 <div class="ls-doc flex min-h-screen">
     
     @include('partials.docs.aside')
 
-    <div class="ls-doc__content w-7/12 flex-grow pb-10 pr-4">
+    <div class="ls-doc__content flex-grow pb-10 pl-8 pr-4">
         
-        <h1 class="text-4xl sm:text-6xl lg:text-7xl leading-none font-extrabold tracking-tight text-gray-900 mt-8 mb-8">
+        <h1 class="text-4xl sm:text-6xl lg:text-6xl leading-none font-extrabold tracking-tight text-gray-900 mt-8 mb-8">
             {{ $entry->title }}
         </h1>
         
@@ -24,6 +24,6 @@
         </div>
     </div>
 
-    @include('partials.docs.toc')
+    {{-- @include('partials.docs.toc') --}}
 </div>
 @endsection
