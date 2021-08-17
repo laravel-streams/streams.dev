@@ -43,8 +43,6 @@ if [ ! -d {{ $path }} ]; then
 cd {{ $path }}
 git clone {{ $repo }} --branch={{ $branch }} --depth=1 -q {{ $path }}
 echo "Repository cloned"
-ln -s {{ $path }}/storage {{ $path }}/storage
-echo "Storage directory set up"
 cp {{ $path }}/.env.example {{ $path }}/.env
 {{ $php }} {{ $path }}/artisan key:generate --ansi
 fi

@@ -48,7 +48,7 @@ class AppServiceProvider extends ServiceProvider
     {
         foreach (Streams::entries('pages')->all() as $page) {
             Route::streams($page->path, [
-                'uses' => StreamsController::class,
+                'uses' => StreamsController::class . '@handle',
                 'entry' => $page->id,
                 'stream' => 'pages',
             ]);
