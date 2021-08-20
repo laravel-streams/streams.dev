@@ -18,7 +18,9 @@
         <div class="ls-doc__toc"></div>
 
         <div class="doc-body">
-            {!! $entry->body()->render() !!}
+            @section('content')
+                {!! $entry->body()->render() !!}
+            @endsection
         </div>
 
         <div class="flex mt-12 mb-8">
@@ -26,6 +28,5 @@
         </div>
     </div>
 
-    {{-- @include('partials.docs.toc') --}}
 </div>
 @endsection

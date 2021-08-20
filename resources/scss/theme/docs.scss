@@ -19,26 +19,6 @@ body.theme--docs {
 
         .ls-doc__toc {
             position: fixed;
-            
-            > .toc-list {
-
-                .is-active-link {
-                    color: white;
-                    background-color: black
-                }
-                
-                a {
-                    @apply px-4 inline-block;
-                }
-
-                > li > a {
-                    font-weight: bold;
-                }
-
-                > ol > li > a {
-                    color: red;
-                }
-            }
         }
     }
 }

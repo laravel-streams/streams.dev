@@ -31377,25 +31377,6 @@ body.theme--docs .toc__container .ls-doc__toc {
   position: fixed;
 }
 
-body.theme--docs .toc__container .ls-doc__toc > .toc-list .is-active-link {
-  color: white;
-  background-color: black;
-}
-
-body.theme--docs .toc__container .ls-doc__toc > .toc-list a {
-  display: inline-block;
-  padding-left: 1rem;
-  padding-right: 1rem;
-}
-
-body.theme--docs .toc__container .ls-doc__toc > .toc-list > li > a {
-  font-weight: bold;
-}
-
-body.theme--docs .toc__container .ls-doc__toc > .toc-list > ol > li > a {
-  color: red;
-}
-
 @media (min-width: 640px){
   .sm\:container{
     width: 100%;

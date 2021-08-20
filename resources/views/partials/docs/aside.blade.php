@@ -1,8 +1,9 @@
 @php
+    $stream = isset($stream) ? $stream : Streams::make('docs');
     $docs = $stream->entries()->where('enabled', true)->orderBy('sort', 'asc')->get();
 @endphp
 
-<aside class="sidebar w-1/4 text-black py-10">
+<aside class="sidebar w-1/4 text-black h-100 py-10">
 
     <div class="sidebar__content pl-16">
 
