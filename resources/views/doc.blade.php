@@ -15,12 +15,10 @@
         <p class="text-2xl tracking-tight mb-10 opacity-40">{{ $entry->intro }}</p>
         @endif
 
-        <div class="ls-doc__toc"></div>
+        <div class="ls-doc__toc mb-10"></div>
 
         <div class="doc-body">
-            @section('content')
-                {!! $entry->body()->render() !!}
-            @endsection
+            {!! $entry->body()->render() !!}
         </div>
 
         <div class="flex mt-12 mb-8">

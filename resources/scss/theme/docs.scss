@@ -11,14 +11,45 @@ body.theme--docs {
         border-right-style: solid;
     }
 
-    .toc__container {
+    .ls-doc__toc {
         font-size: 16px;
         line-height: 20px;
-        border-left-width: 1px;
-        border-left-style: solid;
 
-        .ls-doc__toc {
-            position: fixed;
+        > ol {
+            > li {
+                > a {
+                    font-weight: bold;
+                }
+
+                > ol {
+                    @apply pl-2;
+                }
+            }
+        }
+    }
+
+    .doc-body {
+        
+        > h2 {
+            @apply mb-5;
+        }
+
+        > h3 {
+            @apply mb-3;
+        }
+
+        > h4 {
+            @apply mb-2;
+        }
+
+        > p {
+            max-width: 50vw;
+            
+            @apply mb-2;
+        }
+
+        > pre {
+            @apply my-5;
         }
     }
 }
