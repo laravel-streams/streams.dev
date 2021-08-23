@@ -12,10 +12,13 @@ body.theme--docs {
     }
 
     .ls-doc__toc {
+        margin: 3rem 0;
         font-size: 16px;
         line-height: 20px;
 
         > ol {
+            margin-left: -.75rem;
+
             > li {
                 > a {
                     font-weight: bold;
@@ -28,28 +31,82 @@ body.theme--docs {
         }
     }
 
+    .toc-link {
+        position: relative;
+        display: inline-block;
+        
+        padding-left: .75rem;
+        
+        padding-top: .125rem;
+        padding-bottom: .125rem;
+        
+        &:after {
+            left: 0;
+            content: "#";
+            display: none;
+            position: absolute;
+            font-weight: normal !important;
+
+            @apply text-red-500;
+        }
+
+        &:hover {
+            &:after {
+                display: inline-block;
+            }
+        }
+
+        .anchorjs-link:after {
+            @apply text-red-500;
+        }
+    }
+
     .doc-body {
         
-        > h2 {
-            @apply mb-5;
+        > h2,
+        > h4,
+        > p,
+        > ul,
+        > pre,
+        > blockquote {
+            @apply my-5;
         }
 
-        > h3 {
-            @apply mb-3;
+        h2 {
+            @apply mt-10 text-3xl font-extrabold;
         }
 
-        > h4 {
-            @apply mb-2;
+        h3 {
+            @apply mt-10 text-2xl font-extrabold;
         }
 
-        > p {
+        p {
             max-width: 50vw;
             
-            @apply mb-2;
+            a {
+                border-bottom-width: 2px;
+
+                @apply text-red-500 font-bold border-dotted border-red-500 duration-1000;
+
+                &:hover {
+                    border-bottom-style: solid;
+                }
+            }
         }
 
-        > pre {
-            @apply my-5;
+        ul {
+            margin-left: 1rem;
+            padding-left: 1rem;
+
+            li {
+                list-style: disc;
+            }
+        }
+
+        blockquote {
+            border-left-width: .5rem;
+
+            @apply p-4 border-red-500 bg-red-100;
         }
     }
 }

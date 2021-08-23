@@ -69,7 +69,7 @@ sort: 14
         {{-- <a href="/mission#your-team-and-clients-will-love-it" class="font-bold text-black border-b-2 border-black border-dotted" onmouseover="this.classList.remove('border-dotted');" onmouseout="this.classList.add('border-dotted');">Your team and clients will love it.</a> --}}</p>    
 
         <div class="mt-16 space-x-4">
-            <a href="/docs" class="px-6 py-3 font-bold text-2xl bg-black hover:bg-gray-800 text-white outline-none focus:outline-none hover:shadow-md transition duration-200 ease-in-out"><x-heroicon-o-document-duplicate class="w-6 h-6 mb-1 mr-2 inline-block" /> Documentation</a>
+            <a href="/explore/idea" class="px-6 py-3 font-bold text-2xl bg-black hover:bg-gray-800 text-white outline-none focus:outline-none hover:shadow-md transition duration-200 ease-in-out"><x-far-compass class="w-6 h-6 mb-1 mr-2 inline-block" /> Explore More</a>
         </div>
     </div>
     
@@ -86,9 +86,9 @@ sort: 14
         
         <p class="max-w-screen-lg text-lg text-gray-700 sm:text-2xl sm:leading-10 font-medium mb-10 sm:mb-11">Scale your flat-file structures to SQL and more without changing your code.</p>    
 
-        <div class="mt-16 space-x-4">
+        <!-- <div class="mt-16 space-x-4">
             <a href="/docs" class="px-6 py-3 font-bold text-2xl bg-black hover:bg-gray-800 text-white outline-none focus:outline-none hover:shadow-md transition duration-200 ease-in-out"><x-heroicon-o-document-duplicate class="w-6 h-6 mb-1 mr-2 inline-block" /> Documentation</a>
-        </div>
+        </div> -->
     </div>
     
 </div>
