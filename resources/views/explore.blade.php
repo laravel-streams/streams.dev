@@ -14,7 +14,7 @@
         </h1>
 
         <div class="text-2xl leading-10 mt-14 body-text">
-            {!! Str::markdown(View::parse($entry->body, compact('entry'))) !!}
+            {!! View::parse($entry->body, compact('entry')) !!}
         </div>
 
         @if ($entry->menu)
