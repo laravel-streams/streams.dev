@@ -33,7 +33,7 @@ composer create-project streams/streams example.local --stability=dev
 
 ### Local Development Server
 
-If you have PHP installed locally and you would like to use PHP's built-in development server to serve your application, you may use the `serve` Artisan command. This command will start a development server at [http://localhost:8000](http://localhost:8000):
+If you have PHP installed locally and you would like to use PHP's built-in development server to serve your application, you may use the **serve** Artisan command to start a development server:
 
 ```bash
 php artisan serve
@@ -60,7 +60,7 @@ You can add the Streams platform to existing Laravel projects by requiring the p
 
 ### Requiring Packages
 
-The `core` package is responsible for the meat and taters; it is the only **required** package.
+The **core** package is responsible for the meat and taters; it is the only **required** package.
 
 ```bash
 composer require streams/core
@@ -80,7 +80,7 @@ composer require streams/api
 
 #### Update Composer Scripts
 
-This step is **optional**. You may find it helpful to compare our default `scripts` below to your own and decide what you would like to include.
+This step is **optional**. You may find it helpful to compare our default **scripts** below to your own and decide what you would like to include.
 
 ```json
 // composer.json
@@ -114,4 +114,4 @@ composer update streams/api --with-dependencies
 composer update streams/ui --with-dependencies
 ```
 
-You can, of course, update your entire project using `composer update`.
+You can, of course, update your entire project using **composer update**.

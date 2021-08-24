@@ -81,16 +81,17 @@ body.theme--docs {
         }
 
         p {
-            max-width: 50vw;
-            
-            a {
-                border-bottom-width: 2px;
+            @apply w-3/5;
+        }
 
-                @apply text-red-500 font-bold border-dotted border-red-500 duration-1000;
+        p > a,
+        li > a {
+            border-bottom-width: 2px;
 
-                &:hover {
-                    border-bottom-style: solid;
-                }
+            @apply text-red-500 font-bold border-dotted border-red-500 duration-1000;
+
+            &:hover {
+                border-bottom-style: solid;
             }
         }
 

@@ -31431,11 +31431,15 @@ body.theme--docs .doc-body h3 {
 }
 
 body.theme--docs .doc-body p {
-  max-width: 50vw;
+  width: 60%;
 }
 
-body.theme--docs .doc-body p a {
+body.theme--docs .doc-body p > a,
+body.theme--docs .doc-body li > a {
   border-bottom-width: 2px;
+}
+
+body.theme--docs .doc-body p > a, body.theme--docs .doc-body li > a{
   --tw-border-opacity: 1;
   border-color: rgba(239, 68, 68, var(--tw-border-opacity));
   border-style: dotted;
@@ -31445,7 +31449,8 @@ body.theme--docs .doc-body p a {
   transition-duration: 1000ms;
 }
 
-body.theme--docs .doc-body p a:hover {
+body.theme--docs .doc-body p > a:hover,
+body.theme--docs .doc-body li > a:hover {
   border-bottom-style: solid;
 }
 
