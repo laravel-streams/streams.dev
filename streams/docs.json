@@ -1,10 +1,11 @@
 {
     "name": "Documentation",
+    "description": "The main entry point to project and component documentation.",
+
     "template": "doc",
     "url_prefix": "docs",
     "source.format": "md",
     "routes.view": "docs/{id}",
-    "description": "The main entry point to project and component documentation.",
     "project": "streams",
     "source": {
         "path": "docs"
@@ -38,8 +39,8 @@
                     "introduction": "Introduction",
                     "getting_started": "Getting Started",
                     "reference": "Reference",
-                    "basics": "The Basics",
                     "core_concepts": "Core Concepts",
+                    "basics": "The Basics",
                     "components": "Components",
                     "control_panel": "Control Panel",
                     "streams": "Streams",

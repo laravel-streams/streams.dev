@@ -31430,8 +31430,23 @@ body.theme--docs .doc-body h3 {
   margin-top: 2.5rem;
 }
 
+body.theme--docs .doc-body h4 {
+  font-weight: 800;
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  margin-top: 2rem;
+}
+
 body.theme--docs .doc-body p {
   width: 60%;
+}
+
+body.theme--docs .doc-body p > code, body.theme--docs .doc-body a > code{
+  --tw-bg-opacity: 1;
+  background-color: rgba(243, 244, 246, var(--tw-bg-opacity));
+  padding: 0.25rem;
+  --tw-text-opacity: 1;
+  color: rgba(239, 68, 68, var(--tw-text-opacity));
 }
 
 body.theme--docs .doc-body p > a,

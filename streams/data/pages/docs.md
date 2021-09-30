@@ -96,7 +96,7 @@ sort: 14
         <div class="w-1/3">
             <div class="hover:shadow-xl transition-shadow duration-1000 rounded-3xl h-full p-8 flex flex-col">
 
-                <h3 class="text-2xl leading-none font-extrabold tracking-tight text-gray-900 mb-4">2.&nbsp&nbspCore Packages</h3>
+                <h3 class="text-2xl leading-none font-extrabold tracking-tight text-gray-900 mb-4">2.&nbspPackages</h3>
                 
                 <p>Know what you are looking for already? Dive right in to our core packages. </p>
 
