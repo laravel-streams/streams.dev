@@ -46,7 +46,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        foreach (Streams::entries('pages')->all() as $page) {
+        foreach (Streams::entries('pages')->get() as $page) {
             Route::streams($page->path, [
                 'uses' => StreamsController::class . '@handle',
                 'entry' => $page->id,

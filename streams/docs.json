@@ -29,7 +29,7 @@
             ]
         },
         "title": {
-            "type": "text"
+            "type": "string"
         },
         "body": "markdown",
         "category": {
