@@ -18456,7 +18456,6 @@ video {
 }
 
 .sticky{
-  position: -webkit-sticky;
   position: sticky;
 }
 
@@ -49396,7 +49395,6 @@ body.theme--docs .doc-body blockquote {
   }
 
   .sm\:sticky{
-    position: -webkit-sticky;
     position: sticky;
   }
 
@@ -79940,7 +79938,6 @@ body.theme--docs .doc-body blockquote {
   }
 
   .md\:sticky{
-    position: -webkit-sticky;
     position: sticky;
   }
 
@@ -110484,7 +110481,6 @@ body.theme--docs .doc-body blockquote {
   }
 
   .lg\:sticky{
-    position: -webkit-sticky;
     position: sticky;
   }
 
@@ -141028,7 +141024,6 @@ body.theme--docs .doc-body blockquote {
   }
 
   .xl\:sticky{
-    position: -webkit-sticky;
     position: sticky;
   }
 
@@ -171572,7 +171567,6 @@ body.theme--docs .doc-body blockquote {
   }
 
   .\32xl\:sticky{
-    position: -webkit-sticky;
     position: sticky;
   }
 

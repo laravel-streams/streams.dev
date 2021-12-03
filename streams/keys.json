@@ -1,7 +1,9 @@
 {
     "name": "keys",
-    "source": {
-        "type": "file"
+    "config": {
+        "source": {
+            "type": "file"
+        }
     },
     "fields": {
         "id": "slug",

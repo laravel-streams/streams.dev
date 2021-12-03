@@ -4,11 +4,13 @@
 
     "template": "doc",
     "url_prefix": "docs",
-    "source.format": "md",
     "routes.view": "docs/{id}",
     "project": "streams",
-    "source": {
-        "path": "docs"
+    "config": {
+        "source": {
+            "path": "docs",
+            "format": "md"
+        }
     },
     "rules": {
         "id": "required"

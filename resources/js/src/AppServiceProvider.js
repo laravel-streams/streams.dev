@@ -3,7 +3,7 @@ import AnchorJS from 'anchor-js';
 import Clipboard from 'clipboard';
 import * as tocbot from 'tocbot';
 
-import { ServiceProvider } from '@streams/core';
+import { ServiceProvider } from '@laravel-streams/core';
 
 export class AppServiceProvider extends ServiceProvider {
 

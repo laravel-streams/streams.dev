@@ -5,7 +5,9 @@
     "routes.view": "docs/ui/{id}",
     "description": "Documentation for all things contained in the UI package.",
     "project": "streams-ui",
-    "source": {
-        "path": "vendor/streams/ui/docs"
+    "config": {
+        "source": {
+            "path": "vendor/streams/ui/docs"
+        }
     }
 }

@@ -9,7 +9,8 @@
         "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --progress --config=node_modules/laravel-mix/setup/webpack.config.js"
     },
     "dependencies": {
-        "@streams/core": "file:vendor/streams/core",
+        "@laravel-streams/api": "^1.0",
+        "@laravel-streams/core": "^1.0",
         "alpinejs": "^2.8.0",
         "anchor-js": "^4.3.0",
         "autoprefixer": "^10.2.4",

@@ -1,6 +1,6 @@
 {
     "handle": "pages",
-    "source.format": "md",
+    "config.source.format": "md",
     
     "template": "page",
     "rules": {

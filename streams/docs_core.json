@@ -8,7 +8,9 @@
     },
     "description": "Documentation for all things contained in the core package.",
     "project": "streams-core",
-    "source": {
-        "path": "vendor/streams/core/docs"
+    "config": {
+        "source": {
+            "path": "vendor/streams/core/docs"
+        }
     }
 }

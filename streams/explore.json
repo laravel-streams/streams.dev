@@ -5,7 +5,7 @@
         "uri": "/explore/{id}"
     },
     "translatable": true,
-    "source.format": "md",
+    "config.source.format": "md",
     "fields": {
         "id": "slug",
         "title": "string",

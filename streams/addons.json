@@ -1,7 +1,9 @@
 {
     "name": "addons",
-    "source": {
-        "type": "self"
+    "config": {
+        "source": {
+            "type": "self"
+        }
     },
     "fields": {
         "id": "string",
