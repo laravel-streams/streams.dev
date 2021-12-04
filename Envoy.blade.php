@@ -16,16 +16,16 @@ try {
     echo $e->getMessage();
 }
 
-$server = getenv('DEPLOY_SERVER');
-$repo = getenv('DEPLOY_REPOSITORY');
-$path = getenv('DEPLOY_PATH');
-$slack = getenv('DEPLOY_SLACK_WEBHOOK');
-$healthUrl = getenv('DEPLOY_HEALTH_CHECK');
+$server = env('DEPLOY_SERVER');
+$repo = env('DEPLOY_REPOSITORY');
+$path = env('DEPLOY_PATH');
+$slack = env('DEPLOY_SLACK_WEBHOOK');
+$healthUrl = env('DEPLOY_HEALTH_CHECK');
 
-$php = getenv('DEPLOY_PHP_BINARY') ?: 'php';
-$mysql = getenv('DEPLOY_MYSQL_BINARY') ?: 'mysql';
-$composer = getenv('DEPLOY_COMPOSER_BINARY') ?: 'composer';
-$defaultBranch = getenv('DEPLOY_DEFAULT_BRANCH') ?: 'master';
+$php = env('DEPLOY_PHP_BINARY') ?: 'php';
+$mysql = env('DEPLOY_MYSQL_BINARY') ?: 'mysql';
+$composer = env('DEPLOY_COMPOSER_BINARY') ?: 'composer';
+$defaultBranch = env('DEPLOY_DEFAULT_BRANCH') ?: 'master';
 
 if ( substr($path, 0, 1) !== '/' ) throw new Exception('Your deployment must begin with /');
 
