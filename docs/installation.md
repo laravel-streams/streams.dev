@@ -26,7 +26,7 @@ Please ensure one of the following libraries is installed in order to support [i
 When creating a new Streams project, the [core](/docs/core/introduction), [ui](/docs/ui/introduction), and [api](/docs/api/introduction) packages are all included by default.
 
 ```bash
-composer create-project streams/streams example.local --stability=dev
+composer create-project streams/streams:1.0.x-dev example.local --stability=dev
 ```
 
 > There is no installer as there is no traditional database requirement.
