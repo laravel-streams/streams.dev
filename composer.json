@@ -32,22 +32,7 @@
         "barryvdh/laravel-debugbar": "^3.3",
         "spatie/laravel-web-tinker": "^1.7"
     },
-    "repositories": [
-        {
-            "type": "path",
-            "url": "packages/streams/core",
-            "options": {
-                "symlink": true
-            }
-        },
-        {
-            "type": "path",
-            "url": "packages/streams/api",
-            "options": {
-                "symlink": true
-            }
-        }
-    ],
+    "repositories": [],
     "autoload": {
         "classmap": [
             "database/seeds",
