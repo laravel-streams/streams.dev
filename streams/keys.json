@@ -12,7 +12,7 @@
             "config.related": "users"
         },
         "name": "string",
-        "value": "string|textarea"
+        "value": "string"
     },
     "ui": {
         "table": {
