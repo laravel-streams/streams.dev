@@ -9,7 +9,7 @@ sort: 2
 
 ## Introduction
 
-Enhancing Laravel is a fundamental aspect of Streams Core. Laravel enhancement both facilitates internal core functionality and also supports developers when building their work.
+Enhancing Laravel is a fundamental aspect of Streams Core. Laravel enhancement facilitates internal core functionality and supports developers when building their work.
 
 ### Laravel Basics
 
@@ -17,8 +17,13 @@ Streams Core helps you take Laravel basics further and in less time.
 
 - [Views](core/views)
 - [Routing](core/routing)
+- [Caching](core/caching)
+- [Utilities](core/support)
 - [Security](core/security)
 - [Integration](core/providers)
+- [Extensibility](core/extending)
+- [Multi-Tenancy](core/applications)
+
 
 ### Frontend Support
 
@@ -26,13 +31,3 @@ Streams Core provides frontend support that encourages and supports best-practic
 
 - [Assets](core/assets)
 - [Images](core/images)
-
-### Developer Support
-
-These juicy tools are specifically for developers. 
-
-- [Caching](core/caching)
-- [Utilities](core/support)
-- [Reusability](core/addons)
-- [Extensibility](core/extending)
-- [Multi-Tenancy](core/applications)

@@ -16,6 +16,7 @@
     ],
     "require": {
         "http-interop/http-factory-guzzle": "^1.0",
+        "blade-ui-kit/blade-heroicons": "^1.2",
         "owenvoke/blade-fontawesome": "^1.6",
         "graham-campbell/gitlab": "^5.4",
         "guzzlehttp/guzzle": "^7.2",

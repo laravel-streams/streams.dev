@@ -10,17 +10,17 @@ enabled: 1
 
 ## What is Laravel Streams?
 
-Laravel Streams is an open-source **set of Laravel packages** which provide simple but poweful interfaces to fundamental application standards like data modeling, API interaction, UI, control panels, and more. Streams uses code-configured json files to configure your application and data structures.
+Laravel Streams is a set of open-source **Laravel packages** which provide powerful but straightforward services and interfaces that provide fundamental application standards like data modeling, API interaction, UI, control panels, and more. Streams use code-configured JSON files to configure your application and data structures.
 
 
 ### Motivation
 
-The ever-changing and widening landscape of web applications, websites, and the like, have stressed the traditions and ideology of popular CMS options. After digging into our own CMS engine we discovered that the problem is in the CMS paradigm. This project results from the complete deconstruction of that paradigm and establishes a new one built upon new fundamental values and principles.
+The ever-changing and widening landscape of web applications, websites, and the like, has stressed the traditions and ideology of popular CMS options. And, after digging into our own CMS engine, we discovered that the problem is in the CMS paradigm. This project results from the complete deconstruction of that paradigm and establishes a new one built upon new fundamental values and principles.
 
 
 ### Use Cases
 
-Laravel Streams and its components are well suited to build a wide variety of applications:
+Laravel Streams and its components are well suited to build various applications:
 
 - Websites
 - Prototyping
@@ -35,7 +35,7 @@ Laravel Streams and its components are well suited to build a wide variety of ap
 
 ## How does it work?
 
-Laravel Streams focuses primarily on basic JSON descriptions of your data. We call them **streams**.
+Laravel Streams focuses first on basic JSON descriptions of your data. We call them **streams**, hence our namesake.
 
 ```json
 // streams/music.json
@@ -61,6 +61,7 @@ By building upon data structure, we can use stream configurations to help drasti
 
 - Validating the data.
 - CRUD'ing the data via a fluent and extensive API.
+- Generate schema from stream configurations.
 - Generate code from stream configurations.
 - Generate stream configurations from data.
 - Serving and consuming the data via API.
@@ -69,7 +70,7 @@ By building upon data structure, we can use stream configurations to help drasti
 
 ### Development Abstraction
 
-Our overarching focus is to **abstract, normalize, and optimize** systems and work required from a wide range of Laravel projects. We try and restrict this to within the lens of our core focus of data abstraction and access.
+Our overarching focus is to **abstract, normalize, and optimize** development systems and the work required from many Laravel projects. We try to restrict this to our core focus of data abstraction and access.
 
 ### Principle Concerns
 
@@ -80,11 +81,10 @@ Laravel Streams focuses on these fundamental areas of application development.
 - [Frontend Development](frontend)
 - [User Interface](ui)
 - [API Readiness](api)
-- [CLI Interface](cli)
 
 ### What's Next?
 
-Time to get your feet wet.
+Time to get your feet wet!
 
 @foreach (Streams::entries('docs')->where('category', 'getting_started')->orderBy('sort', 'asc')->get() as $doc)
 - [{{$doc->link_title ?: $doc->title}}]({{$doc->id}})

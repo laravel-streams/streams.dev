@@ -10,11 +10,11 @@ references:
     - https://craftcms.com/docs/3.x/coc.html
 ---
 
-# Contribution Guide
+## Contribution Guide
 
 Thank you for considering contributing to the Streams platform! Please review the entire guide before submitting a bug report or pull request.
 
-## Bug Reports
+### Bug Reports
 
 We very much encourage pull requests, not just bug reports.
 
@@ -24,9 +24,9 @@ Remember, bug reports intend to promote collaboration with others experiencing t
 
 ## Which Repository?
 
-Please send all issues to the base [streams/streams](https://github.com/laravel-streams/streams) repository to keep them consolidated.
+Please send all *issues* to the [streams/streams](https://github.com/laravel-streams/streams) repository to help us keep them consolidated.
 
-Send all pull requests to the respective repository they apply to and the branch as described below.
+Send all *pull requests* to the respective repository they apply to and the branch as described below.
 
 ## Which Branch?
 

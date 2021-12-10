@@ -17,7 +17,7 @@ Data modeling is *the* fundamental function of Streams Core. The rest of the pla
 
 The Streams platform leans heavily on domain-driven design (DDD). We call these domain abstractions `streams`, hence our namesake.
 
-**An example could be configuring a domain model (a stream) for a website's pages, users of an application, or feedback submissions from a form.** Anything anywhere can be defined by a stream.
+**An example could be configuring a domain model (a stream) for a website's pages, users of an application, or feedback submissions from a form.** A stream can define anything anywhere.
 
 - [Defining Streams](/docs/core/streams#defining-streams)
 
@@ -29,7 +29,7 @@ If not configured otherwise, streams will utilize the built-in flat-file databas
 
 ### Domain Entities
 
-Domain entities are called `entries` within the Streams platform. A stream also defines entry attributes, or fields, that dictate the entry's properties, data-casting, and more.
+Domain entities are called `entries` within the Streams platform. A stream also defines entry attributes or fields that dictate the entry's properties, data-casting, and more.
 
 - [Stream Entries](/docs/core/entries)
 - [Entry Fields](/docs/core/fields)
@@ -37,7 +37,7 @@ Domain entities are called `entries` within the Streams platform. A stream also 
 
 ### Managing Entities
 
-The Streams platform separates methods to retrieve and store entries from the entry objects themselves, less a few convenient functions like `save` and `delete`, by using a repository pattern.
+The Streams platform separates methods to retrieve and store entries from the objects by using a repository pattern. Entries still provide some convenient methods like `save` and `delete`.
 
 - [Repositories](/docs/core/repositories)
 - [Querying Entries](/docs/core/querying)
