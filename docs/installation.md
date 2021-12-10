@@ -21,9 +21,15 @@ Please ensure one of the following libraries is installed in order to support [i
 
 ## Downloading Streams
 
-### Via Composer Create-Project
+For new projects, the fastest way to get up and running is using the [Streams starter project](https://github.com/laravel-streams/streams).
 
-When creating a new Streams project, the [core](/docs/core/introduction), [ui](/docs/ui/introduction), and [api](/docs/api/introduction) packages are all included by default.
+The starter project is simply the latest Laravel with the following dependencies installed:
+
+- [streams/core](/docs/core/introduction)
+- [streams/api](/docs/api/introduction)
+- [streams/ui](/docs/ui/introduction)
+
+### Via Composer Create-Project
 
 ```bash
 composer create-project streams/streams:1.0.x-dev example.local --stability=dev
@@ -58,7 +64,7 @@ Your streams project is now ready for you to start coding.
 
 You can add the Streams platform to existing Laravel projects by requiring the packages you need.
 
-### Requiring Packages
+### Streams Core
 
 The **core** package is responsible for the meat and taters; it is the only **required** package.
 
