@@ -42,9 +42,11 @@ sort: 14
                 <pre>
 <code class="language-json">// streams/pages.json
 {
-    "handle": "pages",
-    "source.format": "md",
-    
+    "config": {
+        "source": {
+            "format": "md"
+        }
+    },
     "template": "page",
     "rules": {
         "id": "required",
