@@ -4681,12 +4681,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-streams/streams-api.git",
-                "reference": "e9be8bd6d0507c30c616aa0d0b970afc6402dc21"
+                "reference": "d0d89d52c1915d13bffa2d144550fe78d6752562"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-streams/streams-api/zipball/e9be8bd6d0507c30c616aa0d0b970afc6402dc21",
-                "reference": "e9be8bd6d0507c30c616aa0d0b970afc6402dc21",
+                "url": "https://api.github.com/repos/laravel-streams/streams-api/zipball/d0d89d52c1915d13bffa2d144550fe78d6752562",
+                "reference": "d0d89d52c1915d13bffa2d144550fe78d6752562",
                 "shasum": ""
             },
             "require": {
@@ -4724,7 +4724,7 @@
                 "issues": "https://github.com/laravel-streams/streams-api/issues",
                 "source": "https://github.com/laravel-streams/streams-api/tree/1.0"
             },
-            "time": "2021-12-10T09:31:36+00:00"
+            "time": "2021-12-11T18:15:35+00:00"
         },
         {
             "name": "streams/core",
