@@ -4728,7 +4728,7 @@
             "dist": {
                 "type": "path",
                 "url": "packages/streams/core",
-                "reference": "16af1b80d190f3e23e4fae040ad649f1a7dde801"
+                "reference": "1ce85375f86126ab174985a09a7ed97ec4eb5690"
             },
             "require": {
                 "ezyang/htmlpurifier": "^4.0",

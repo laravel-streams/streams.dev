@@ -67,7 +67,7 @@ sort: 14
         <h2 class="text-4xl sm:text-6xl lg:text-5xl leading-none font-extrabold tracking-tight text-gray-900 mt-10 mb-8 sm:mt-14 sm:mb-10">Code Configured + Flat File</h2>
         
         <p class="max-w-screen-lg text-lg text-gray-700 sm:text-2xl sm:leading-10 font-medium mb-10 sm:mb-11">
-        Hit the ground running and rapidly build out your prototypes with code configured set up and plenty of database options including flat-file support. All with a single API.
+        Hit the ground running and rapidly build out prototypes with code-configured declarations, a unified API, and plenty of database options to choose from, including flat-file support. Then, scale to other databases without changing your code. 
         {{-- <a href="/mission#your-team-and-clients-will-love-it" class="font-bold text-black border-b-2 border-black border-dotted" onmouseover="this.classList.remove('border-dotted');" onmouseout="this.classList.add('border-dotted');">Your team and clients will love it.</a> --}}</p>    
 
         <div class="mt-16 space-x-4">
