@@ -33,6 +33,9 @@
         "title": {
             "type": "string"
         },
+        "intro": {
+            "type": "markdown"
+        },
         "body": "markdown",
         "category": {
             "type": "select",
