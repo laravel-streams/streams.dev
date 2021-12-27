@@ -20,15 +20,5 @@
         "streams-ui": {
             "name": "Streams UI"
         }
-    },
-    "ui": {
-        "tables.default": {
-            "columns": {
-                "id": {
-                    "attributes.width": "1px"
-                },
-                "name": {}
-            }
-        }
     }
 }
