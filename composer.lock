@@ -4752,12 +4752,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-streams/streams-api.git",
-                "reference": "bf3873bc1cc3607232d72f3daafde420e6a4c5ee"
+                "reference": "8073a2eb008e04c16163d53b7d03ab578c00f066"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-streams/streams-api/zipball/bf3873bc1cc3607232d72f3daafde420e6a4c5ee",
-                "reference": "bf3873bc1cc3607232d72f3daafde420e6a4c5ee",
+                "url": "https://api.github.com/repos/laravel-streams/streams-api/zipball/8073a2eb008e04c16163d53b7d03ab578c00f066",
+                "reference": "8073a2eb008e04c16163d53b7d03ab578c00f066",
                 "shasum": ""
             },
             "require": {
@@ -4800,7 +4800,7 @@
                 "issues": "https://github.com/laravel-streams/streams-api/issues",
                 "source": "https://github.com/laravel-streams/streams-api/tree/develop"
             },
-            "time": "2021-12-30T20:59:12+00:00"
+            "time": "2022-01-02T07:39:20+00:00"
         },
         {
             "name": "streams/core",
@@ -4808,12 +4808,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-streams/streams-core.git",
-                "reference": "e8ac30d084b24c296d257f8158e03435a7d74eaa"
+                "reference": "194239d774170f88bd1d2894a62a873e2f1fb1db"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-streams/streams-core/zipball/e8ac30d084b24c296d257f8158e03435a7d74eaa",
-                "reference": "e8ac30d084b24c296d257f8158e03435a7d74eaa",
+                "url": "https://api.github.com/repos/laravel-streams/streams-core/zipball/194239d774170f88bd1d2894a62a873e2f1fb1db",
+                "reference": "194239d774170f88bd1d2894a62a873e2f1fb1db",
                 "shasum": ""
             },
             "require": {
@@ -4873,7 +4873,7 @@
                 "issues": "https://github.com/laravel-streams/streams-core/issues",
                 "source": "https://github.com/laravel-streams/streams-core/tree/develop"
             },
-            "time": "2021-12-31T18:44:29+00:00"
+            "time": "2022-01-02T02:04:55+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
