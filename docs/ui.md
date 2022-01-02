@@ -16,7 +16,7 @@ Streams UI provides an extensible interface for creating any user interface your
 Streams UI provides an extensible, user-friendly, and performant control panel that gives you control of every detail.
 
 - [Control Panel](ui/cp)
-- [Theming](#todo-theming)
+- [Theming](ui/theming)
 
 ### UI Components
 

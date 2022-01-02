@@ -1,0 +1,36 @@
+{
+    "name": "Todos",
+    "handle": "todos",
+    "description": "A todos testing stream.",
+    "config": {
+        "source": {
+            "type": "self"
+        }
+    },
+    "fields": {
+        "id": {
+            "type": "uuid",
+            "required": true,
+            "unique": true,
+            "config": {
+                "default": true
+            }
+        },
+        "title": {
+            "type": "string",
+            "required": true
+        },
+        "complete": {
+            "type": "boolean",
+            "config": {
+                "default": false
+            }
+        }
+    },
+    "data": {
+        "655de760-6ba0-3f4f-ad0c-8051588ad6e2": {
+            "title": "The first todo!",
+            "complete": false
+        }
+    }
+}

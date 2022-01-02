@@ -1,27 +1,17 @@
 {
-    "name": "users",
     "config": {
         "source": {
             "type": "file"
         }
     },
+    "rules": {
+        "id": ["required"]
+    },
     "fields": {
-        "id": "string",
+        "id": "uuid",
         "name": "string",
         "email": "email",
         "password": "hash",
         "gitlab_user": "string"
-    },
-    "ui": {
-        "table": {
-            "columns": {
-                "id": {},
-                "name": {}
-            },
-            "buttons": {
-                "edit": {}
-            }
-        },
-        "form": {}
     }
 }
