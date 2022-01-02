@@ -18,10 +18,7 @@
         },
         "title": {
             "type": "string",
-            "required": true,
-            "rules": [
-                "App\\Rules\\TestRule"
-            ]
+            "required": true
         },
         "complete": {
             "type": "boolean",
