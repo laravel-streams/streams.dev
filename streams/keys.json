@@ -1,5 +1,4 @@
 {
-    "name": "keys",
     "config": {
         "source": {
             "type": "file"

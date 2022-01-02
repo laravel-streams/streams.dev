@@ -1,5 +1,4 @@
 {
-    "name": "explore",
     "description": "Explore the feature, functions, and operating principles of Laravel Streams.",
     "routes.view": {
         "uri": "/explore/{id}"
