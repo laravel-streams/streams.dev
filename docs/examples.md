@@ -9,7 +9,7 @@ enabled: true
 
 ## Todos App
 
-Todos is a simple todo application with a decoupled backend.
+A simple todos application with a decoupled backend using the [Streams API](/docs/api/introduction) and the [API Client](/docs/api/client).
 
 - [Todos Backend](https://github.com/laravel-streams/todos-backend)
 - [Todos Frontend (React)](https://github.com/laravel-streams/todos-react-app)
