@@ -2,6 +2,7 @@
     "name": "Core Documentation",
     "extends": "docs",
     "url_prefix": "docs/core",
+    "path_prefix": "vendor/streams/core/docs",
     "routes": {
         "view": {
             "uri": "docs/core/{id}",
