@@ -1,11 +1,11 @@
 {
-    "name": "Core Documentation",
+    "name": "Type Documentation",
     "extends": "docs",
-    "url_prefix": "docs/core",
-    "path_prefix": "vendor/streams/core/docs",
+    "url_prefix": "docs/core/fields",
+    "path_prefix": "vendor/streams/core/docs/types/docs",
     "routes": {
         "view": {
-            "uri": "docs/core/{id}",
+            "uri": "docs/core/fields/{id}",
             "csrf": false
         }
     },
@@ -13,7 +13,7 @@
     "project": "streams-core",
     "config": {
         "source": {
-            "path": "vendor/streams/core/docs"
+            "path": "vendor/streams/core/docs/types"
         }
     }
 }

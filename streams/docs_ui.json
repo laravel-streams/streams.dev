@@ -2,6 +2,7 @@
     "name": "UI Documentation",
     "extends": "docs",
     "url_prefix": "docs/ui",
+    "path_prefix": "vendor/streams/ui/docs",
     "routes.view": "docs/ui/{id}",
     "description": "Documentation for all things contained in the UI package.",
     "project": "streams-ui",

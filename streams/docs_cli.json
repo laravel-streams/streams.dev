@@ -2,6 +2,7 @@
     "name": "CLI Documentation",
     "extends": "docs",
     "url_prefix": "docs/cli",
+    "path_prefix": "vendor/streams/cli/docs",
     "routes.view": "docs/cli/{id}",
     "description": "Documentation for all things contained in the CLI package.",
     "project": "streams-cli",

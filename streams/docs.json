@@ -4,6 +4,7 @@
 
     "template": "doc",
     "url_prefix": "docs",
+    "path_prefix": "docs",
     "routes.view": "docs/{id}",
     "project": "streams",
     "config": {
