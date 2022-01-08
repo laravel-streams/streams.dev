@@ -1,0 +1,11 @@
+{
+    "fields": [
+        {
+            "handle": "name",
+            "type": "string",
+            "config": {
+                "default": "Ryan Thompson"
+            }
+        }
+    ]
+}
