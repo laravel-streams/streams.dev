@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a32a1bd57b399519198a05ef75cc6843",
+    "content-hash": "01f4ec0ab5d73cf3d4f013d50f02653c",
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
@@ -10562,62 +10562,6 @@
                 }
             ],
             "time": "2021-11-29T15:23:49+00:00"
-        },
-        {
-            "name": "streams/ui",
-            "version": "1.0.x-dev",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/laravel-streams/streams-ui.git",
-                "reference": "270cf711eff10b5a4b44e914e1756d0a8bd5a6ef"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/laravel-streams/streams-ui/zipball/270cf711eff10b5a4b44e914e1756d0a8bd5a6ef",
-                "reference": "270cf711eff10b5a4b44e914e1756d0a8bd5a6ef",
-                "shasum": ""
-            },
-            "require": {
-                "blade-ui-kit/blade-heroicons": "^1.2",
-                "blade-ui-kit/blade-icons": "^1.1",
-                "streams/core": "^2.0"
-            },
-            "require-dev": {
-                "friendsofphp/php-cs-fixer": "^2.19"
-            },
-            "default-branch": true,
-            "type": "streams-addon",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.x-dev"
-                },
-                "laravel": {
-                    "providers": [
-                        "Streams\\Ui\\UiServiceProvider"
-                    ]
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Streams\\Ui\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Ryan Thompson",
-                    "email": "ryan@pyrocms.com"
-                }
-            ],
-            "description": "The official UI package for Laravel Streams.",
-            "support": {
-                "issues": "https://github.com/laravel-streams/streams-ui/issues",
-                "source": "https://github.com/laravel-streams/streams-ui/tree/develop"
-            },
-            "time": "2022-01-10T08:19:25+00:00"
         },
         {
             "name": "symfony/debug",
