@@ -4,25 +4,37 @@
             "type": "file"
         }
     },
-    "fields": {
-        "id": "slug",
-        "user": {
-            "type": "relationship",
-            "config.related": "users"
-        },
-        "name": "string",
-        "value": "string"
-    },
-    "ui": {
-        "table": {
-            "columns": {
-                "id": {},
-                "name": {}
-            },
-            "buttons": {
-                "edit": {}
+    "fields": [
+        {
+            "handle": "id",
+            "type": "uuid",
+            "unique": true,
+            "required": true,
+            "config": {
+                "default": true
             }
         },
-        "form": {}
-    }
+        {
+            "handle": "user",
+            "type": "relationship",
+            "config": {
+                "related": "users"
+            }
+        },
+        {
+            "handle": "name",
+            "type": "string",
+            "unique": true,
+            "required": true
+        },
+        {
+            "handle": "value",
+            "type": "string",
+            "unique": true,
+            "required": true,
+            "config": {
+                "default": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQC3FdYRi3h5nx/LqAdh5TABVk8jraw== test@example.com"
+            }
+        }
+    ]
 }

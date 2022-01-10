@@ -1,17 +1,87 @@
 {
     "config": {
         "source": {
-            "type": "file"
+            "type": "self"
         }
     },
-    "rules": {
-        "id": ["required"]
-    },
-    "fields": {
-        "id": "uuid",
-        "name": "string",
-        "email": "email",
-        "password": "hash",
-        "gitlab_user": "string"
+    "fields": [
+        {
+            "handle": "id",
+            "type": "uuid",
+            "required": true,
+            "unique": true,
+            "config": {
+                "default": true
+            }
+        },
+        {
+            "handle": "email",
+            "type": "email",
+            "required": true,
+            "unique": true
+        },
+        {
+            "handle": "password",
+            "type": "hash",
+            "required": true
+        },
+        {
+            "handle": "profile",
+            "type": "object",
+            "config": {
+                "schemas": [
+                    {
+                        "stream": "profiles"
+                    }
+                ]
+            }
+        },
+        {
+            "handle": "keys",
+            "type": "array",
+            "config": {
+                "items": [
+                    {
+                        "stream": "keys"
+                    }
+                ],
+                "wrapper": "collection"
+            }
+        }
+    ],
+    "data": {
+        "6bab6d9d-44c8-379f-842b-16b0ebb6fd71": {
+            "email": "ryan@pyrocms.com",
+            "password": "$2y$10$YKulmxqL37lWN95MJRD8jel04yyiVXeQ7rpevTp5Y65Jirgak.BGW",
+            "profile": {
+                "@stream": "profiles",
+                "name": "Ryan Thompson"
+            }
+        },
+        "7e947900-2be1-315b-89b8-c28ae715969f": {
+            "email": "christa@pyrocms.com",
+            "password": "itsasecret",
+            "profile": {
+                "name": "Christa Thompson"
+            }
+        },
+        "aca9b3af-bd17-3dd5-8e07-142c62b09adb": {
+            "email": "field@pyrocms.com",
+            "password": "$2y$10$DwUE5YhGq6.SvnF61xxKMu0jvNr81tU.6qEGPoALzXRfubRkZDtbu",
+            "keys": [
+                {
+                    "@stream": "keys",
+                    "name": "Test Key",
+                    "id": "30094c4e-cca7-3f3e-b523-cb838a801fcc",
+                    "value": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQC3FdYRi3h5nx\/LqAdh5TABVk8jraw== test@example.com"
+                },
+                {
+                    "@stream": "keys",
+                    "name": "Another Key",
+                    "id": "2f1e2e9a-80e7-34b7-aa8e-74c0ffba27d2",
+                    "value": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQC3FdYRi3h5nx\/LqAdh5TABVk8jraw== test@example.com"
+                }
+            ]
+        }
     }
 }

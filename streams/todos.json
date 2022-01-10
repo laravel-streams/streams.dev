@@ -1,0 +1,52 @@
+{
+    "$schema": ".\/..\/bootstrap\/cache\/schema\/stream.schema.json",
+    "name": "Todos",
+    "handle": "todos",
+    "description": "A todos testing stream.",
+    "config": {
+        "source": {
+            "type": "self"
+        }
+    },
+    "fields": [
+        {
+            "handle": "id",
+            "type": "uuid",
+            "unique": true,
+            "required": true,
+            "config": {
+                "default": true
+            }
+        },
+        {
+            "handle": "title",
+            "type": "string",
+            "required": true
+        },
+        {
+            "handle": "complete",
+            "type": "boolean",
+            "config": {
+                "default": false
+            }
+        }
+    ],
+    "data": {
+        "27a303cc-2f03-3263-b169-ce6c9ebb87ef": {
+            "title": "The first todo!",
+            "complete": false
+        },
+        "655de760-6ba0-3f4f-ad0c-8051588ad6e2": {
+            "title": "Todo two",
+            "complete": false
+        },
+        "27a303ah-2f03-3263-b169-ce6c9ebb8999": {
+            "title": "Patched in!",
+            "complete": false
+        },
+        "1b7a313c-999e-33a6-bd81-4b31a492f12e": {
+            "title": "Test!",
+            "complete": false
+        }
+    }
+}

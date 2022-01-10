@@ -25,6 +25,7 @@
         "streams/core": "^2.0"
     },
     "require-dev": {
+        "streams/ui": "^1.0",
         "laravel/tinker": "^2.2",
         "facade/ignition": "^2.0",
         "mockery/mockery": "^1.3",
