@@ -41,15 +41,27 @@ Laravel Streams focuses first on basic JSON descriptions of your data. We call t
 // streams/music.json
 {
     "name": "Music",
-    "fields": {
-	    "id": "slug",
-        "title": "string",
-        "mp3": "file",
-        "artist": {
+    "fields": [
+        {
+            "handle": "id",
+            "type": "slug"
+        },
+        {
+            "handle": "title",
+            "type": "string"
+        },
+        {
+            "handle": "mp3",
+            "type": "file"
+        },
+        {
+            "handle": "artist",
             "type": "relationship",
-            "related": "artist"
+            "config": {
+                "related": "artists"
+            }
         }
-    }
+    ]
 }
 ```
 
