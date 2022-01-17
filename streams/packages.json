@@ -1,0 +1,43 @@
+{
+    "config": {
+        "source": {
+            "type": "self"
+        }
+    },
+    "fields": [
+        {
+            "handle": "id",
+            "type": "slug"
+        },
+        {
+            "handle": "name",
+            "type": "string"
+        },
+        {
+            "handle": "docs",
+            "type": "url"
+        }
+    ],
+    "data": {
+        "streams-core": {
+            "name": "Streams Core",
+            "description": "Streams Core",
+            "docs": "docs/core/introduction"
+        },
+        "streams-api": {
+            "name": "Streams API",
+            "description": "Streams API",
+            "docs": "docs/api/introduction"
+        },
+        "streams-api-client": {
+            "name": "API Client",
+            "description": "API Client",
+            "docs": "docs/api/client"
+        },
+        "streams-ui": {
+            "name": "Streams UI",
+            "description": "API Client",
+            "docs": "docs/ui/introduction"
+        }
+    }
+}

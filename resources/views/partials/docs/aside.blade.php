@@ -13,6 +13,10 @@
                 <a href="/docs">Documentation <x-heroicon-o-home class="inline-block h-4 w-4" style="margin-bottom: 0.25rem;"/></a>
             </p>
 
+            <p>
+                <a href="#" onclick="document.getElementById('packages_model').classList.toggle('hidden'); return false;">Packages <x-heroicon-o-truck class="inline-block h-4 w-4" style="margin-bottom: 0;"/></a>
+            </p>
+
             <ul class="mt-10">
                 @foreach ($docs->where('category', null) as $page)
                 <li>
