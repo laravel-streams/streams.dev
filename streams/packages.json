@@ -21,22 +21,17 @@
     "data": {
         "streams-core": {
             "name": "Streams Core",
-            "description": "Streams Core",
+            "description": "The fundamental features and utilities offered by the Streams platform.",
             "docs": "docs/core/introduction"
         },
         "streams-api": {
             "name": "Streams API",
-            "description": "Streams API",
+            "description": "A full featured, universal, and extensible RESTful API.",
             "docs": "docs/api/introduction"
-        },
-        "streams-api-client": {
-            "name": "API Client",
-            "description": "API Client",
-            "docs": "docs/api/client"
         },
         "streams-ui": {
             "name": "Streams UI",
-            "description": "API Client",
+            "description": "Extensible, user-friendly, and performant control panel and user interface utilities and services.",
             "docs": "docs/ui/introduction"
         }
     }
