@@ -212,3 +212,5 @@ sort: 14
 
 </div>
 </div>
+
+@include('partials.docs.modal')

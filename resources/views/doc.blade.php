@@ -33,4 +33,7 @@
     </div>
 
 </div>
+
+@include('partials.docs.modal')
+
 @endsection
