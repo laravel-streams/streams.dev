@@ -18,7 +18,7 @@
                 <div class="flex items-center">
                     <div class="flex flex-col ml-3">
                         <div class="font-medium leading-none">{{ $package->name }}</div>
-                        <p class="text-sm text-gray-600 leading-none mt-1">
+                        <p class="text-sm text-gray-600 mt-1" style="max-width: 16rem;">
                             {{ $package->description }}
                         </p>
                     </div>
