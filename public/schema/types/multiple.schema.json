@@ -1,0 +1,21 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "$id": "streams/schema/types/multiple.schema.json",
+    "properties": {
+        "type": {
+            "type": "string",
+            "enum": ["multiple"],
+            "not": {"enum": ["relationship"]}
+        },
+        "config": {
+            "type": "object",
+            "required": ["related"],
+            "properties": {
+                "related": {
+                    "description": "multiple",
+                    "type": "string"
+                }
+            }
+        }
+    }
+}

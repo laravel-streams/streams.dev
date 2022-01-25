@@ -1,0 +1,6 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "$id": "streams/schema/rules.schema.json",
+    "type": ["array", "string","object"],
+    "description": "Rules for the stream fields"
+}

@@ -1,0 +1,32 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "$id": "streams/schema/source.schema.json",
+    "description": "Used to define source for a stream",
+    "type": "object",
+    "properties": {
+        "format": {"$ref": "#/$defs/format"},
+        "path": {"$ref": "#/$defs/path"},
+        "type": {"$ref": "#/$defs/type"},
+        "filename": {"$ref": "#/$defs/filename"}
+    },
+    "$defs": {
+        "format": {
+            "description": "The format of the stream.",
+            "type": "string",
+            "enum": ["md","json"]
+        },
+        "path": {
+            "description": "The path of the stream.",
+            "type": "string"
+        },
+
+        "type": {
+            "type": "string",
+            "description": "The source type"
+        },
+        "filename":{
+            "type": "string",
+            "description": "The source type"
+        }
+    }
+}

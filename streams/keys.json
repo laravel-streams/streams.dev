@@ -1,7 +1,7 @@
 {
     "config": {
         "source": {
-            "type": "file"
+            "type": "self"
         }
     },
     "fields": [
@@ -33,8 +33,15 @@
             "unique": true,
             "required": true,
             "config": {
-                "default": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQC3FdYRi3h5nx/LqAdh5TABVk8jraw== test@example.com"
+                "default": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQC3FdYRi3h5nx\/LqAdh5TABVk8jraw== test@example.com"
             }
         }
-    ]
+    ],
+    "data": {
+        "454eddee-5e72-3f40-ae98-99d4bc88410a": {
+            "user": "6bab6d9d-44c8-379f-842b-16b0ebb6fd71",
+            "name": "Test Key",
+            "value": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQC3FdYRi3h5nx\/LqAdh5TABVk8jraw== test@example.com"
+        }
+    }
 }

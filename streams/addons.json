@@ -11,7 +11,8 @@
     },
     "data": {
         "pyro-bridge": {
-            "name": "PyroCMS Bridge"
+            "name": "PyroCMS Bridge",
+            "test": "Foo"
         },
         "streams-api": {
             "name": "Streams API"

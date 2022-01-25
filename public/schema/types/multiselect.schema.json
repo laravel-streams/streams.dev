@@ -1,0 +1,19 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "$id": "streams/schema/types/multiselect.schema.json",
+    "properties": {
+        "type": {
+            "type": "string",
+            "enum": ["multiselect"]
+        },
+        "config": {
+            "type": "object",
+            "properties": {
+                "options": {
+                    "description": "multiselect",
+                    "type": "object"
+                }
+            }
+        }
+    }
+}

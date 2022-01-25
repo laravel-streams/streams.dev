@@ -67,21 +67,24 @@ sort: 14
                         <li>
                             <a class="border-b bottom-1 border-black hover-border-solid border-dotted"href="docs/installation">
                                 <strong class="">Installation</strong>
-                                <!-- Options for working with Streams. -->
                             </a>
                             <span class="ml-4">&#10141;</span>
                         </li>
                         <li>
                             <a class="border-b bottom-1 border-black hover-border-solid border-dotted"href="docs/contributing">
                                 <strong class="">Contributing</strong>
-                                <!-- How to contribute to the project. -->
+                            </a>
+                            <span class="ml-4">&#10141;</span>
+                        </li>
+                        <li>
+                            <a class="border-b bottom-1 border-black hover-border-solid border-dotted"href="docs/examples">
+                                <strong class="">Examples</strong>
                             </a>
                             <span class="ml-4">&#10141;</span>
                         </li>
                         <li>
                             <a class="border-b bottom-1 border-black hover-border-solid border-dotted"href="https://github.com/sponsors/ryanthompson" target="_blank">
                                 <strong class="">Sponsors</strong>
-                                <!-- Support our projects. -->
                             </a>
                             <span class="ml-4">&#10141;</span>
                         </li>
