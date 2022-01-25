@@ -1,0 +1,20 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "$id": "streams/schema/types/relationship.schema.json",
+    "properties": {
+        "type": {
+            "type": "string",
+            "enum": ["relationship"]
+        },
+        "config": {
+            "type": "object",
+            "required": ["related"],
+            "properties": {
+                "related": {
+                    "description": "relationship",
+                    "type": "string"
+                }
+            }
+        }
+    }
+}

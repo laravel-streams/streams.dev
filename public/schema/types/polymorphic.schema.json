@@ -1,0 +1,24 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "$id": "streams/schema/types/polymorphic.schema.json",
+    "properties": {
+        "type": {
+            "type": "string",
+            "enum": ["polymorphic"]
+        },
+        "config": {
+            "type": "object",
+            "required": ["morph_type","foreign_key"],
+            "properties": {
+                "morph_type": {
+                    "description": "polymorphic",
+                    "type": "string"
+                },
+                "foreign_key": {
+                    "description": "polymorphic",
+                    "type": "string"
+                }
+            }
+        }
+    }
+}

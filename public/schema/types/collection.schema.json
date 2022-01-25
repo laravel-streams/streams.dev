@@ -1,0 +1,19 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "$id": "streams/schema/types/collection.schema.json",
+    "properties": {
+        "type": {
+            "type": "string",
+            "enum": ["collection"]
+        },
+        "config": {
+            "type": "object",
+            "properties": {
+                "abstract": {
+                    "description": "collection",
+                    "type": "string"
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,19 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "$id": "streams/schema/types/entries.schema.json",
+    "properties": {
+        "type": {
+            "type": "string",
+            "enum": ["entries"]
+        },
+        "config": {
+            "type": "object",
+            "properties": {
+                "stream": {
+                    "description": "entries",
+                    "type": "string"
+                }
+            }
+        }
+    }
+}
