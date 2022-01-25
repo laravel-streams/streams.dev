@@ -4,8 +4,8 @@ namespace App\Providers;
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
-use Streams\Core\Http\Controller\StreamsController;
 use Streams\Core\Support\Facades\Streams;
+use Streams\Core\Http\Controller\StreamsController;
 
 /**
  * Class AppServiceProvider
@@ -46,12 +46,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        foreach (Streams::entries('pages')->get() as $page) {
-            Route::streams($page->path, [
-                'uses' => StreamsController::class . '@handle',
-                'entry' => $page->id,
-                'stream' => 'pages',
-            ]);
-        }
+        //
     }
 }
