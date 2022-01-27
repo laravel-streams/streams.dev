@@ -31367,26 +31367,26 @@ body.theme--docs aside {
 
 body.theme--docs .ls-doc__toc {
   margin: 3rem 0;
-  font-size: 16px;
-  line-height: 20px;
+  line-height: 1.25;
 }
 
-body.theme--docs .ls-doc__toc > ol {
-  margin-left: -0.75rem;
+body.theme--docs .ls-doc__toc > ol > li:not(:first-of-type) {
+  margin-top: 0.5rem;
 }
 
 body.theme--docs .ls-doc__toc > ol > li > a {
   font-weight: bold;
+  text-transform: uppercase;
 }
 
 body.theme--docs .ls-doc__toc > ol > li > ol {
-  padding-left: 0.5rem;
+  padding-left: 1.5rem;
 }
 
 body.theme--docs .toc-link {
   position: relative;
   display: inline-block;
-  padding-left: 0.75rem;
+  padding-left: 1rem;
   padding-top: 0.125rem;
   padding-bottom: 0.125rem;
 }
@@ -31394,15 +31394,15 @@ body.theme--docs .toc-link {
 body.theme--docs .toc-link:after {
   left: 0;
   content: "#";
-  display: none;
   position: absolute;
   font-weight: normal !important;
   --tw-text-opacity: 1;
   color: rgba(239, 68, 68, var(--tw-text-opacity));
 }
 
-body.theme--docs .toc-link:hover:after {
-  display: inline-block;
+body.theme--docs .toc-link:hover {
+  --tw-text-opacity: 1;
+  color: rgba(239, 68, 68, var(--tw-text-opacity));
 }
 
 body.theme--docs .toc-link .anchorjs-link:after {
