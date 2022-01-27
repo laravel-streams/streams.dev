@@ -13,19 +13,24 @@ body.theme--docs {
 
     .ls-doc__toc {
         margin: 3rem 0;
-        font-size: 16px;
-        line-height: 20px;
+        //font-size: 16px;
+        line-height: 1.25;
 
         > ol {
-            margin-left: -.75rem;
 
             > li {
+
+                &:not(:first-of-type) {
+                    margin-top: .5rem;
+                }
+
                 > a {
                     font-weight: bold;
+                    text-transform: uppercase;
                 }
 
                 > ol {
-                    @apply pl-2;
+                    @apply pl-6;
                 }
             }
         }
@@ -35,7 +40,7 @@ body.theme--docs {
         position: relative;
         display: inline-block;
         
-        padding-left: .75rem;
+        padding-left: 1rem;
         
         padding-top: .125rem;
         padding-bottom: .125rem;
@@ -43,7 +48,7 @@ body.theme--docs {
         &:after {
             left: 0;
             content: "#";
-            display: none;
+            //display: none;
             position: absolute;
             font-weight: normal !important;
 
@@ -51,9 +56,10 @@ body.theme--docs {
         }
 
         &:hover {
-            &:after {
-                display: inline-block;
-            }
+            @apply text-red-500;
+            // &:after {
+            //     display: inline-block;
+            // }
         }
 
         .anchorjs-link:after {
