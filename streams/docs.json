@@ -44,7 +44,6 @@
                 "options": {
                     "introduction": "Introduction",
                     "getting_started": "Getting Started",
-                    "reference": "Reference",
                     "core_concepts": "Core Concepts",
                     "basics": "The Basics",
                     "components": "Components",
@@ -56,7 +55,8 @@
                     "security": "Security",
                     "laravel": "Laravel",
                     "developers": "Developers",
-                    "advanced": "Advanced"
+                    "advanced": "Advanced",
+                    "reference": "Reference"
                 }
             }
         },
