@@ -42,6 +42,16 @@
             "user": "6bab6d9d-44c8-379f-842b-16b0ebb6fd71",
             "name": "Test Key",
             "value": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQC3FdYRi3h5nx\/LqAdh5TABVk8jraw== test@example.com"
+        },
+        "a2f2647d-8232-403b-b266-f333c8c3f6cb": {
+            "user": "7e947900-2be1-315b-89b8-c28ae715969f",
+            "name": "Another Test",
+            "value": "Foo"
+        },
+        "2b91e2fd-fc16-4f5a-becb-5b74b07ac48d": {
+            "user": "7e947900-2be1-315b-89b8-c28ae715969f",
+            "name": "Updated Entry",
+            "value": "Foo Bar"
         }
     }
 }
