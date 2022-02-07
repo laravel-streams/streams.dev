@@ -3,7 +3,12 @@
     "extends": "docs",
     "url_prefix": "docs/ui",
     "path_prefix": "vendor/streams/ui/docs",
-    "routes.view": "docs/ui/{id}",
+    "routes": {
+        "view": {
+            "uri": "docs/ui/{id}",
+            "view": "doc"
+        }
+    },
     "description": "Documentation for all things contained in the UI package.",
     "project": "streams-ui",
     "config": {

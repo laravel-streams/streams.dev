@@ -6,7 +6,7 @@
     "routes": {
         "view": {
             "uri": "docs/core/{id}",
-            "csrf": false
+            "view": "doc"
         }
     },
     "description": "Documentation for all things contained in the core package.",
