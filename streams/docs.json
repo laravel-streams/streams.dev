@@ -5,7 +5,12 @@
     "template": "doc",
     "url_prefix": "docs",
     "path_prefix": "docs",
-    "routes.view": "docs/{id}",
+    "routes": {
+        "view": {
+            "uri": "docs/{id}",
+            "view": "doc"
+        }
+    },
     "project": "streams",
     "config": {
         "source": {
