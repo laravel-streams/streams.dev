@@ -4524,12 +4524,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-streams/streams-core.git",
-                "reference": "c3ac5b1f849ed16f96539723c486807f4b973978"
+                "reference": "1e57fec349fd6def2fd10f4f2fcbddaa05fcfafe"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-streams/streams-core/zipball/c3ac5b1f849ed16f96539723c486807f4b973978",
-                "reference": "c3ac5b1f849ed16f96539723c486807f4b973978",
+                "url": "https://api.github.com/repos/laravel-streams/streams-core/zipball/1e57fec349fd6def2fd10f4f2fcbddaa05fcfafe",
+                "reference": "1e57fec349fd6def2fd10f4f2fcbddaa05fcfafe",
                 "shasum": ""
             },
             "require": {
@@ -4554,7 +4554,8 @@
                 "friendsofphp/php-cs-fixer": "^2.19",
                 "helmich/phpunit-json-assert": "^3.1",
                 "mockery/mockery": "^1.4",
-                "phpunit/phpunit": "^9.5"
+                "phpunit/phpunit": "^9.5",
+                "streams/testing": "^1.0"
             },
             "type": "streams-addon",
             "extra": {
@@ -4588,7 +4589,7 @@
                 "issues": "https://github.com/laravel-streams/streams-core/issues",
                 "source": "https://github.com/laravel-streams/streams-core/tree/develop"
             },
-            "time": "2022-02-04T23:03:30+00:00"
+            "time": "2022-02-07T03:10:21+00:00"
         },
         {
             "name": "streams/ui",
@@ -5872,12 +5873,12 @@
                 }
             },
             "autoload": {
-                "psr-4": {
-                    "Symfony\\Polyfill\\Iconv\\": ""
-                },
                 "files": [
                     "bootstrap.php"
-                ]
+                ],
+                "psr-4": {
+                    "Symfony\\Polyfill\\Iconv\\": ""
+                }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -5952,12 +5953,12 @@
                 }
             },
             "autoload": {
-                "psr-4": {
-                    "Symfony\\Polyfill\\Intl\\Grapheme\\": ""
-                },
                 "files": [
                     "bootstrap.php"
-                ]
+                ],
+                "psr-4": {
+                    "Symfony\\Polyfill\\Intl\\Grapheme\\": ""
+                }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -6035,12 +6036,12 @@
                 }
             },
             "autoload": {
-                "psr-4": {
-                    "Symfony\\Polyfill\\Intl\\Idn\\": ""
-                },
                 "files": [
                     "bootstrap.php"
-                ]
+                ],
+                "psr-4": {
+                    "Symfony\\Polyfill\\Intl\\Idn\\": ""
+                }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -6120,12 +6121,12 @@
                 }
             },
             "autoload": {
-                "psr-4": {
-                    "Symfony\\Polyfill\\Intl\\Normalizer\\": ""
-                },
                 "files": [
                     "bootstrap.php"
                 ],
+                "psr-4": {
+                    "Symfony\\Polyfill\\Intl\\Normalizer\\": ""
+                },
                 "classmap": [
                     "Resources/stubs"
                 ]
@@ -6284,12 +6285,12 @@
                 }
             },
             "autoload": {
-                "psr-4": {
-                    "Symfony\\Polyfill\\Php72\\": ""
-                },
                 "files": [
                     "bootstrap.php"
-                ]
+                ],
+                "psr-4": {
+                    "Symfony\\Polyfill\\Php72\\": ""
+                }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -6360,12 +6361,12 @@
                 }
             },
             "autoload": {
-                "psr-4": {
-                    "Symfony\\Polyfill\\Php73\\": ""
-                },
                 "files": [
                     "bootstrap.php"
                 ],
+                "psr-4": {
+                    "Symfony\\Polyfill\\Php73\\": ""
+                },
                 "classmap": [
                     "Resources/stubs"
                 ]
@@ -6439,12 +6440,12 @@
                 }
             },
             "autoload": {
-                "psr-4": {
-                    "Symfony\\Polyfill\\Php80\\": ""
-                },
                 "files": [
                     "bootstrap.php"
                 ],
+                "psr-4": {
+                    "Symfony\\Polyfill\\Php80\\": ""
+                },
                 "classmap": [
                     "Resources/stubs"
                 ]
@@ -6522,12 +6523,12 @@
                 }
             },
             "autoload": {
-                "psr-4": {
-                    "Symfony\\Polyfill\\Php81\\": ""
-                },
                 "files": [
                     "bootstrap.php"
                 ],
+                "psr-4": {
+                    "Symfony\\Polyfill\\Php81\\": ""
+                },
                 "classmap": [
                     "Resources/stubs"
                 ]
@@ -10483,12 +10484,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-streams/streams-testing.git",
-                "reference": "7edf84167262957f0652d0b7115816823b346a31"
+                "reference": "41a5318a16edce2759f2356bd421a93682dc63eb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-streams/streams-testing/zipball/7edf84167262957f0652d0b7115816823b346a31",
-                "reference": "7edf84167262957f0652d0b7115816823b346a31",
+                "url": "https://api.github.com/repos/laravel-streams/streams-testing/zipball/41a5318a16edce2759f2356bd421a93682dc63eb",
+                "reference": "41a5318a16edce2759f2356bd421a93682dc63eb",
                 "shasum": ""
             },
             "require": {
@@ -10522,7 +10523,7 @@
                 "issues": "https://github.com/laravel-streams/streams-testing/issues",
                 "source": "https://github.com/laravel-streams/streams-testing/tree/1.0"
             },
-            "time": "2022-02-03T17:19:17+00:00"
+            "time": "2022-02-07T02:41:14+00:00"
         },
         {
             "name": "symfony/debug",
