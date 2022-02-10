@@ -39,6 +39,13 @@
     "repositories": [
         {
             "type": "path",
+            "url": "packages/streams/testing",
+            "options": {
+                "symlink": true
+            }
+        },
+        {
+            "type": "path",
             "url": "packages/streams/core",
             "options": {
                 "symlink": true
