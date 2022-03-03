@@ -66,6 +66,13 @@ body.theme--docs {
         }
     }
 
+    .ls-doc__intro {
+
+        code {
+            @apply text-red-500 bg-gray-100 font-mono;
+        }
+    }
+
     .doc-body {
         
         > h2,
