@@ -2,12 +2,6 @@
     "handle": "pages",
     "config.source.format": "md",
 
-    "routes": {
-        "view": {
-            "uri": "{entry.path}"
-        }
-    },
-    
     "template": "page",
     "rules": {
         "id": "required",

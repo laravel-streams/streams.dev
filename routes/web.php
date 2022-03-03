@@ -19,3 +19,7 @@ Route::streams('/', [
 ]);
 
 Route::redirect('discord', 'https://discord.gg/Sh79MvV');
+
+Route::streams('{entry.path}', [
+    'stream' => 'pages',
+]);
