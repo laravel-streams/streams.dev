@@ -20,16 +20,19 @@ Streams Core helps you take Laravel basics further and in less time.
 - [Caching](core/caching)
 - [Utilities](core/support)
 - [Security](core/security)
-- [Integration](core/providers)
-- [Extensibility](core/extending)
 
-### Application Support
-
-- [Multi-Tenancy](core/applications)
-  
 ### Frontend Support
 
 Streams Core provides frontend support that encourages and supports best-practices.
 
 - [Assets](core/assets)
 - [Images](core/images)
+
+### Application Support
+
+Support for building powerful and versatile Laravel products and services.
+
+<!-- - [Design Principles](core/principles) -->
+- [Addons](core/addons)
+- [Extensibility](core/extending)
+- [Multi-Tenancy](core/applications)
