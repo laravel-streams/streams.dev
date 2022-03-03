@@ -1,5 +1,5 @@
 ---
-title: Laravel Enhancement
+title: Laravel Development
 category: core_concepts
 intro: The Streams platform enhances Laravel development and workflow.
 stage: drafting
@@ -22,9 +22,11 @@ Streams Core helps you take Laravel basics further and in less time.
 - [Security](core/security)
 - [Integration](core/providers)
 - [Extensibility](core/extending)
+
+### Application Support
+
 - [Multi-Tenancy](core/applications)
-
-
+  
 ### Frontend Support
 
 Streams Core provides frontend support that encourages and supports best-practices.
