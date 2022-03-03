@@ -61,7 +61,8 @@
                     "laravel": "Laravel",
                     "developers": "Developers",
                     "advanced": "Advanced",
-                    "reference": "Reference"
+                    "reference": "Reference",
+                    "field_types": "Field Types"
                 }
             }
         },
