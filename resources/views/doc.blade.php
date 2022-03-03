@@ -17,10 +17,6 @@
             {{ $entry->title }}
         </h1>
         
-        @if ($entry->intro)
-        <div class="text-2xl tracking-tight mb-10 opacity-40">{!! $entry->intro()->parse() !!}</div>
-        @endif
-
         <div class="ls-doc__toc mb-10"></div>
 
         <div class="doc-body">

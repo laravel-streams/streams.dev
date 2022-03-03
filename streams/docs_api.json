@@ -1,5 +1,5 @@
 {
-    "name": "API Documentation",
+    "name": "Streams API",
     "extends": "docs",
     "url_prefix": "docs/api",
     "path_prefix": "vendor/streams/api/docs",
@@ -10,7 +10,7 @@
         }
     },
     "description": "Documentation for all things contained in the API package.",
-    "project": "streams-api",
+    "project": "streams/api",
     "config": {
         "source": {
             "path": "vendor/streams/api/docs"

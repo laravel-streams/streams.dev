@@ -10,14 +10,20 @@
         <div>
                 
             <p>
-                <a href="/docs">Documentation <x-heroicon-o-home class="inline-block h-4 w-4" style="margin-bottom: 0.25rem;"/></a>
+                <a href="/docs" class="{{ count(Request::segments()) < 3 ? "italic font-bold" : "" }}">Documentation <x-heroicon-o-home class="inline-block h-4 w-4" style="margin-bottom: 0.25rem;"/></a>
             </p>
 
             <p>
-                <a href="#" onclick="document.getElementById('packages_model').classList.toggle('hidden'); return false;">Packages <x-heroicon-o-truck class="inline-block h-4 w-4" style="margin-bottom: 0;"/></a>
+                <a href="#" class="{{ count(Request::segments()) > 2 ? "italic font-bold" : "" }}" onclick="document.getElementById('packages_model').classList.toggle('hidden'); return false;">Packages <x-heroicon-o-truck class="inline-block h-4 w-4" style="margin-bottom: 0;"/></a>
             </p>
 
-            <ul class="mt-10">
+            @if ($entry->stream->id == 'pages')
+            <h3 class="sidebar__title mt-7 font-bold inline-block uppercase">Laravel Streams</h3>
+            @else
+            <h3 class="sidebar__title mt-7 font-bold inline-block uppercase">{{ $entry->stream->name }}</h3>
+            @endif
+
+            <ul class="mt-2">
                 @foreach ($docs->where('category', null) as $page)
                 <li>
                     <a href="{{ request()->path() == 'docs' ? '/docs/' : '' }}{{$page->id}}" class="{{ ($page->id == $entry->id) ? 'text-red-500 font-bold' : 'text-gray-500' }}">{{ $page->link_title ? $page->link_title : $page->title }}</a>

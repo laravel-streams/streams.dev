@@ -1,5 +1,5 @@
 {
-    "name": "UI Documentation",
+    "name": "Streams UI",
     "extends": "docs",
     "url_prefix": "docs/ui",
     "path_prefix": "vendor/streams/ui/docs",
@@ -10,7 +10,7 @@
         }
     },
     "description": "Documentation for all things contained in the UI package.",
-    "project": "streams-ui",
+    "project": "streams/ui",
     "config": {
         "source": {
             "path": "vendor/streams/ui/docs"

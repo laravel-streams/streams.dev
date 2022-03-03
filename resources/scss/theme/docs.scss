@@ -9,6 +9,10 @@ body.theme--docs {
     aside {
         border-right-width: 1px;
         border-right-style: solid;
+
+        .sidebar__title {
+            transition: all 200ms;
+        }
     }
 
     .ls-doc__toc {
@@ -63,6 +67,13 @@ body.theme--docs {
 
         .anchorjs-link:after {
             @apply text-red-500;
+        }
+    }
+
+    .ls-doc__intro {
+
+        code {
+            @apply text-red-500 bg-gray-100 font-mono;
         }
     }
 
