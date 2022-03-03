@@ -17,7 +17,11 @@
                 <a href="#" class="{{ count(Request::segments()) > 2 ? "italic font-bold" : "" }}" onclick="document.getElementById('packages_model').classList.toggle('hidden'); return false;">Packages <x-heroicon-o-truck class="inline-block h-4 w-4" style="margin-bottom: 0;"/></a>
             </p>
 
-            <h3 class="mt-10 text-xl font-extrabold">{{ $entry->stream->name }}</h3>
+            @if ($entry->stream->id == 'pages')
+            <h3 class="sidebar__title mt-7 font-bold inline-block uppercase">Laravel Streams</h3>
+            @else
+            <h3 class="sidebar__title mt-7 font-bold inline-block uppercase">{{ $entry->stream->name }}</h3>
+            @endif
 
             <ul class="mt-2">
                 @foreach ($docs->where('category', null) as $page)

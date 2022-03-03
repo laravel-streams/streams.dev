@@ -31365,6 +31365,10 @@ body.theme--docs aside {
   border-right-style: solid;
 }
 
+body.theme--docs aside .sidebar__title {
+  transition: all 200ms;
+}
+
 body.theme--docs .ls-doc__toc {
   margin: 3rem 0;
   line-height: 1.25;

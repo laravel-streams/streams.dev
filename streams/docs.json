@@ -1,5 +1,5 @@
 {
-    "name": "Documentation",
+    "name": "Laravel Streams",
     "description": "The main entry point to project and component documentation.",
 
     "template": "doc",
