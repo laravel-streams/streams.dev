@@ -3,7 +3,7 @@
     $docs = $stream->entries()->where('enabled', true)->orderBy('sort', 'asc')->get();
 @endphp
 
-<aside class="sidebar w-1/4 text-black h-100 py-10">
+<aside class="sidebar w-1/4 text-black h-100 py-8">
 
     <div class="sidebar__content pl-16">
 
@@ -18,9 +18,9 @@
             </p>
 
             @if ($entry->stream->id == 'pages')
-            <h3 class="sidebar__title mt-7 font-bold inline-block uppercase">Laravel Streams</h3>
+            <h3 class="sidebar__title mt-8 font-bold inline-block uppercase">Laravel Streams</h3>
             @else
-            <h3 class="sidebar__title mt-7 font-bold inline-block uppercase">{{ $entry->stream->name }}</h3>
+            <h3 class="sidebar__title mt-8 font-bold inline-block uppercase">{{ $entry->stream->name }}</h3>
             @endif
 
             <ul class="mt-2">
