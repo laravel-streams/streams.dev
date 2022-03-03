@@ -3,7 +3,7 @@
     $docs = $stream->entries()->where('enabled', true)->orderBy('sort', 'asc')->get();
 @endphp
 
-<aside class="sidebar w-1/4 text-black h-100 py-10">
+<aside class="sidebar w-1/4 text-black h-100 py-8">
 
     <div class="sidebar__content pl-16">
 
@@ -17,10 +17,16 @@
                 <a href="#" class="{{ count(Request::segments()) > 2 ? "italic font-bold" : "" }}" onclick="document.getElementById('packages_model').classList.toggle('hidden'); return false;">Packages <x-heroicon-o-truck class="inline-block h-4 w-4" style="margin-bottom: 0;"/></a>
             </p>
 
+            <div class="relative mt-8 -ml-16">
+                <div class="absolute inset-0 flex items-center" aria-hidden="true">
+                    <div class="w-full border-t border-gray-300"></div>
+                </div>
+            </div>
+
             @if ($entry->stream->id == 'pages')
-            <h3 class="sidebar__title mt-7 font-bold inline-block uppercase">Laravel Streams</h3>
+            <h3 class="sidebar__title mt-8 font-bold inline-block uppercase">Laravel Streams</h3>
             @else
-            <h3 class="sidebar__title mt-7 font-bold inline-block uppercase">{{ $entry->stream->name }}</h3>
+            <h3 class="sidebar__title mt-8 font-bold inline-block uppercase">{{ $entry->stream->name }}</h3>
             @endif
 
             <ul class="mt-2">
