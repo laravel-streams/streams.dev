@@ -10,8 +10,8 @@ menu:
       href: /explore/features
       type: link
 links:
-    - text: Our Mission
-      href: /explore/mission
+    - text: Our Motivation
+      href: /docs/introduction#motivation
       type: link
     - text: Streams Core
       href: /explore/core
@@ -20,4 +20,6 @@ links:
       href: /docs/core/streams#defining-streams
       type: link
 ---
-Laravel Streams uses JSON configuration files to represent your various data models. We call each of these "domains" a Stream, hence our namesake. 
+Laravel Streams uses JSON configuration files to represent your various data models. We call each of these "domains" a Stream, hence our namesake.
+
+Domain driven design is fundamental to how we approach organization of features and implementing business logic.

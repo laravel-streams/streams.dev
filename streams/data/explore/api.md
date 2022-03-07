@@ -1,13 +1,13 @@
 ---
 title: REST API
-options:
-    # @todo
-    # - text: Control Panel
-    #   href: /explore/cp
+menu:
     - text: API Documentation
       href: /docs/api/introduction
+      target: _blank
     - text: API Client
       href: /docs/api/client
+      type: secondary
+      target: _blank
     - text: Back to Features
       href: /explore/features
       type: link

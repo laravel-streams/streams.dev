@@ -10,4 +10,4 @@ options:
       href: /discord
       type: link
 ---
-Laravel Streams is a system of **low-code** utilities providing an optimized foundation and workflow for **Laravel development**. Our core features are organized into **composer packages** and can be used within an existing project or entirely on their own.
+Laravel Streams is a system of **low-code** utilities providing an optimized foundation and workflow for **Laravel development**. Core features are organized into **composer packages** and can be used within an existing project or entirely on their own.

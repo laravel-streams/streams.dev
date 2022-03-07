@@ -12,4 +12,4 @@ options:
 ---
 Laravel Streams provides a utility-first UI package that can be used to quickly render UI based on your data schema.
 
-The UI package is currently still in heavy development but is ready for tinkering.
+The UI package is currently still in heavy development.
