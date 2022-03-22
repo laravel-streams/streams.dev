@@ -1,10 +1,6 @@
 ---
 title: Data is where we begin.
 menu:
-    - text: Describing data with Streams.
-      href: #/explore/features
-    - text: Explore our database support.
-      href: #/explore/features
     - text: Back to Features
       href: /explore/features
       type: link

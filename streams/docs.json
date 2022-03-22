@@ -12,6 +12,7 @@
         }
     },
     "project": "streams",
+    "github_docs": "https://github.com/laravel-streams/streams/blob/master/docs",
     "config": {
         "source": {
             "path": "docs",
@@ -81,5 +82,6 @@
         },
         "enabled": "boolean",
         "publish_at": "time"
-    }
+    },
+    "ui": "@streams/ui/docs_ui.json"
 }

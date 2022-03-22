@@ -1,9 +1,6 @@
 ---
 title: User Interface
 options:
-    # @todo
-    # - text: Control Panel
-    #   href: /explore/cp
     - text: UI Documentation
       href: /docs/ui/introduction
     - text: Back to Features

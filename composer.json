@@ -84,7 +84,9 @@
         }
     },
     "extra": {
-        "dont-discover": []
+        "laravel": {
+            "dont-discover": []
+        }
     },
     "config": {
         "bin-dir": "bin",

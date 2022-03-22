@@ -11,6 +11,7 @@
     },
     "description": "Documentation for all things contained in the UI package.",
     "project": "streams/ui",
+    "github_docs": "https://github.com/laravel-streams/streams-ui/blob/1.0/docs",
     "config": {
         "source": {
             "path": "vendor/streams/ui/docs"

@@ -1,0 +1,30 @@
+{
+    "tables": {
+        "default": {
+            "columns": {
+                "id": {
+                    "heading": "ID",
+                    "value": "id"
+                },
+                "sort": {
+                    "value": "sort"
+                },
+                "title": {
+                    "value": "title"
+                }
+            },
+            "buttons": {
+                "edit": {
+                    "text": "Edit",
+                    "href": "/cp/docs/{entry.id}/edit"
+                }
+            }
+        }
+    },
+    "buttons": {
+        "improve": {
+            "text": "Improve This Page",
+            "href": "{stream.github_docs}/blob/docs/{entry.id}.md"
+        }
+    }
+}
