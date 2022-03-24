@@ -36,7 +36,16 @@
                     "text": "Edit",
                     "handle": "edit",
                     "attributes": {
-                        "href": "/cp/docs/{entry.id}/edit"
+                        "href": "/cp/docs/{entry.id}/edit",
+                        "class": ["a-button", "-red"]
+                    }
+                },
+                {
+                    "text": "Code",
+                    "handle": "code",
+                    "attributes": {
+                        "href": "vscode://file{app.base_path}/{stream.path_prefix}/{entry.id}.md",
+                        "class": ["a-button", "-secondary"]
                     }
                 },
                 {
@@ -44,7 +53,8 @@
                     "handle": "view",
                     "attributes": {
                         "target": "_blank",
-                        "href": "/{stream.url_prefix}/{entry.id}"
+                        "href": "/{stream.url_prefix}/{entry.id}",
+                        "class": ["a-button", "-blue"]
                     }
                 }
             ]

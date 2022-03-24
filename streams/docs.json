@@ -24,7 +24,10 @@
     },
     "fields": {
         "id": {
-            "type": "string",
+            "type": "slug",
+            "config": {
+                "seperator": "_"
+            },
             "rules": ["regex:/[a-z0-9\\-\\_]/"]
         },
         "sort": {
