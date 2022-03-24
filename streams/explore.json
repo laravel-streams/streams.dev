@@ -30,9 +30,6 @@
     "ui": {
         "tables": {
             "default": {
-                "views": {
-                    "all": {}
-                },
                 "filters": [
                     {
                         "handle": "search",
@@ -43,21 +40,26 @@
                         ]
                     }
                 ],
-                "columns": {
-                    "id": {
+                "columns": [
+                    {
+                        "handle": "id",
                         "heading": "ID"
                     },
-                    "title": {}
-                },
-                "buttons": {
-                    "edit": {
+                    {
+                        "handle": "title"
+                    }
+                ],
+                "buttons": [
+                    {
+                        "handle": "edit",
                         "context": "secondary"
                     },
-                    "view": {
+                    {
+                        "handle": "view",
                         "href": "/explore/{entry.id}",
                         "target": "_blank"
                     }
-                }
+                ]
             }
         }
     }

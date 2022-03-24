@@ -40,9 +40,11 @@
     "ui": {
         "tables": {
             "default": {
-                "buttons": {
-                    "edit": {}
-                }
+                "buttons": [
+                    {
+                        "handle": "edit"
+                    }
+                ]
             }
         }
     },

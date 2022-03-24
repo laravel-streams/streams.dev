@@ -1,6 +1,11 @@
 {
     "tables": {
         "default": {
+            "views": [
+                {
+                    "handle": "all"
+                }
+            ],
             "filters": [
                 {
                     "handle": "search",
@@ -30,7 +35,17 @@
                 {
                     "text": "Edit",
                     "handle": "edit",
-                    "href": "/cp/docs/{entry.id}/edit"
+                    "attributes": {
+                        "href": "/cp/docs/{entry.id}/edit"
+                    }
+                },
+                {
+                    "text": "View",
+                    "handle": "view",
+                    "attributes": {
+                        "target": "_blank",
+                        "href": "/{entry.stream.url_prefix}/{entry.id}"
+                    }
                 }
             ]
         }
@@ -39,10 +54,10 @@
         {
             "handle": "improve",
             "text": "Improve This Page",
-            "href": "test/{request.ip}",
-            "target": "_blank",
             "attributes": {
-                "style": "margin: 1rem;"
+                "target": "_blank",
+                "style": "margin: 1rem;",
+                "url": "test/{request.ip}/{entry.id}"
             }
         }
     ]
