@@ -110,6 +110,13 @@
         }
     },
     "ui": {
+        "tables": {
+            "default": {
+                "buttons": [
+                    {"handle": "edit"}
+                ]
+            }
+        },
         "cp": {
             "section": {
                 "sort_order": -1,

@@ -57,7 +57,7 @@
             "attributes": {
                 "target": "_blank",
                 "style": "margin: 1rem;",
-                "url": "test/{request.ip}/{entry.id}"
+                "url": "{stream.github_docs}/{entry.id}.md"
             }
         }
     ]
