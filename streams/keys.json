@@ -37,6 +37,15 @@
             }
         }
     ],
+    "ui": {
+        "tables": {
+            "default": {
+                "buttons": {
+                    "edit": {}
+                }
+            }
+        }
+    },
     "data": {
         "454eddee-5e72-3f40-ae98-99d4bc88410a": {
             "user": "6bab6d9d-44c8-379f-842b-16b0ebb6fd71",

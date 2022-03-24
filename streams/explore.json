@@ -6,7 +6,9 @@
     "translatable": true,
     "config.source.format": "md",
     "fields": {
-        "id": "slug",
+        "id": {
+            "type": "slug"
+        },
         "title": "string",
         "body": "markdown",
         "parent": {
@@ -31,6 +33,16 @@
                 "views": {
                     "all": {}
                 },
+                "filters": [
+                    {
+                        "handle": "search",
+                        "fields": [
+                            "id",
+                            "title",
+                            "body"
+                        ]
+                    }
+                ],
                 "columns": {
                     "id": {
                         "heading": "ID"
@@ -38,6 +50,9 @@
                     "title": {}
                 },
                 "buttons": {
+                    "edit": {
+                        "context": "secondary"
+                    },
                     "view": {
                         "href": "/explore/{entry.id}",
                         "target": "_blank"

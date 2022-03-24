@@ -1,30 +1,49 @@
 {
     "tables": {
         "default": {
-            "columns": {
-                "id": {
+            "filters": [
+                {
+                    "handle": "search",
+                    "fields": [
+                        "id",
+                        "title",
+                        "body"
+                    ]
+                }
+            ],
+            "columns": [
+                {
+                    "handle": "id",
                     "heading": "ID",
                     "value": "id"
                 },
-                "sort": {
+                {
+                    "handle": "sort",
                     "value": "sort"
                 },
-                "title": {
+                {
+                    "handle": "title",
                     "value": "title"
                 }
-            },
-            "buttons": {
-                "edit": {
+            ],
+            "buttons": [
+                {
                     "text": "Edit",
+                    "handle": "edit",
                     "href": "/cp/docs/{entry.id}/edit"
                 }
-            }
+            ]
         }
     },
-    "buttons": {
-        "improve": {
+    "buttons": [
+        {
+            "handle": "improve",
             "text": "Improve This Page",
-            "href": "{stream.github_docs}/blob/docs/{entry.id}.md"
+            "href": "test/{request.ip}",
+            "target": "_blank",
+            "attributes": {
+                "style": "margin: 1rem;"
+            }
         }
-    }
+    ]
 }
