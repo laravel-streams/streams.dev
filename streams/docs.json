@@ -28,7 +28,6 @@
             "config": {
                 "seperator": "_"
             },
-            "rules": ["regex:/[a-z0-9\\-\\_]/"],
             "input": {
                 "type": "input"
             }
