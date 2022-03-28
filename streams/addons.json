@@ -13,7 +13,12 @@
     "fields": {
         "id": "string",
         "name": "string",
-        "composer": "object",
+        "composer": {
+            "type": "object",
+            "input": {
+                "type": "textarea"
+            }
+        },
         "repository": "string"
     },
     "data": {
