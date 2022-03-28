@@ -104,7 +104,7 @@
             }
         },
         "publish_at": {
-            "type": "time",
+            "type": "date",
             "input": {
                 "type": "date"
             }
