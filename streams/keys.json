@@ -12,6 +12,9 @@
             "required": true,
             "config": {
                 "default": true
+            },
+            "input": {
+                "type": "input"
             }
         },
         {
@@ -19,13 +22,19 @@
             "type": "relationship",
             "config": {
                 "related": "users"
+            },
+            "input": {
+                "type": "input"
             }
         },
         {
             "handle": "name",
             "type": "string",
             "unique": true,
-            "required": true
+            "required": true,
+            "input": {
+                "type": "input"
+            }
         },
         {
             "handle": "value",
@@ -34,6 +43,9 @@
             "required": true,
             "config": {
                 "default": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQC3FdYRi3h5nx\/LqAdh5TABVk8jraw== test@example.com"
+            },
+            "input": {
+                "type": "input"
             }
         }
     ],

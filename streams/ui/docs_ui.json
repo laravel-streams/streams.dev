@@ -70,5 +70,25 @@
                 "url": "{stream.github_docs}/{entry.id}.md"
             }
         }
+    ],
+    "alerts": [
+        {
+            "handle": "default",
+            "text": "This feature is in active development!",
+            "type": "default",
+            "attributes": {
+                "style": "margin: 1rem;"
+            }
+        }
+    ],
+    "avatars": [
+        {
+            "handle": "default",
+            "type": "red",
+            "img": "https://api.lorem.space/image/face?hash=92048",
+            "attributes": {
+                "style": "margin: 1rem;"
+            }
+        }
     ]
 }
