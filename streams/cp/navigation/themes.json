@@ -4,6 +4,12 @@
     "attributes.href": "@cp/cp.themes",
     "sort_order": 99,
     "buttons": [
-        {"handle": "create"}
+        {
+            "handle": "testing",
+            "text": "Test: {button.count}",
+            "attributes": {
+                "ui:click": "test"
+            }
+        }
     ]
 }

@@ -84,32 +84,32 @@ sort: 14
 
         <ul class="mt-4 list-none text-xl leading-relaxed">
             <li>
-                <a class="border-b bottom-1 border-black hover-border-solid border-dotted"href="docs/introduction">
+                <a class="hover:underline"href="docs/introduction">
                     <strong class="">Introduction</strong>
                     <!-- What is Laravel Streams? -->
                 </a>
                 <span class="ml-4">&#10141;</span>
             </li>
             <li>
-                <a class="border-b bottom-1 border-black hover-border-solid border-dotted"href="docs/installation">
+                <a class="hover:underline"href="docs/installation">
                     <strong class="">Installation</strong>
                 </a>
                 <span class="ml-4">&#10141;</span>
             </li>
             <li>
-                <a class="border-b bottom-1 border-black hover-border-solid border-dotted"href="docs/contributing">
+                <a class="hover:underline"href="docs/contributing">
                     <strong class="">Contributing</strong>
                 </a>
                 <span class="ml-4">&#10141;</span>
             </li>
             <li>
-                <a class="border-b bottom-1 border-black hover-border-solid border-dotted"href="docs/examples">
+                <a class="hover:underline"href="docs/examples">
                     <strong class="">Examples</strong>
                 </a>
                 <span class="ml-4">&#10141;</span>
             </li>
             <li>
-                <a class="border-b bottom-1 border-black hover-border-solid border-dotted"href="https://github.com/sponsors/ryanthompson" target="_blank">
+                <a class="hover:underline"href="https://github.com/sponsors/ryanthompson" target="_blank">
                     <strong class="">Sponsors</strong>
                 </a>
                 <span class="ml-4">&#10141;</span>
@@ -127,21 +127,21 @@ sort: 14
 
         <ul class="mt-4 list-none text-xl leading-relaxed">
             <li>
-                <a class="border-b bottom-1 border-black hover-border-solid border-dotted"href="docs/core/introduction">
+                <a class="hover:underline"href="docs/core/introduction">
                     <strong class="">streams/core</strong>
                     <!-- Core utilities and modeling for Streams. -->
                 </a>
                 <span class="ml-4">&#10141;</span>
             </li>
             <li>
-                <a class="border-b bottom-1 border-black hover-border-solid border-dotted"href="docs/api/introduction">
+                <a class="hover:underline"href="docs/api/introduction">
                     <strong class="">streams/api</strong>
                     <!-- A universal RESTful API for Streams. -->
                 </a>
                 <span class="ml-4">&#10141;</span>
             </li>
             <li>
-                <a class="border-b bottom-1 border-black hover-border-solid border-dotted"href="docs/ui/introduction">
+                <a class="hover:underline"href="docs/ui/introduction">
                     <strong class="">streams/ui</strong>
                     <!-- A versatile UI and control panel for Streams. -->
                 </a>
@@ -160,19 +160,19 @@ sort: 14
 
         <ul class="mt-4 list-none text-xl leading-relaxed">
             <li>
-                <a class="border-b bottom-1 border-black hover-border-solid border-dotted" href="https://discord.gg/vhz8NZC">
+                <a class="hover:underline" href="https://discord.gg/vhz8NZC">
                     Discord
                 </a>
                 <span class="ml-4">&#10141;</span>
             </li>
             <li>
-                <a class="border-b bottom-1 border-black hover-border-solid border-dotted" href="https://stackoverflow.com/search?q=laravel+streams">
+                <a class="hover:underline" href="https://stackoverflow.com/search?q=laravel+streams">
                     Stack Overflow
                 </a>
                 <span class="ml-4">&#10141;</span>
             </li>
             <li>
-                <a class="border-b bottom-1 border-black hover-border-solid border-dotted" href="https://github.com/laravel-streams">
+                <a class="hover:underline" href="https://github.com/laravel-streams">
                     GitHub
                 </a>
                 <span class="ml-4">&#10141;</span>

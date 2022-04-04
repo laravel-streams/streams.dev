@@ -1,1 +1,12 @@
-{"spacing":1,"radius":1,"light":"#e6e6e6","dark":"#000000","white":"#ffffff","black":"#000000","text":"#1f1f1f","buttons":"#ff14a9","primary":"#2f1bc5","secondary":"#363636"}
+{
+    "spacing": 1,
+    "radius": 1,
+    "light": "#f5f5f5",
+    "dark": "#000000",
+    "white": "#ffffff",
+    "black": "#000000",
+    "text": "#1f1f1f",
+    "buttons": "#ffffff",
+    "primary": "#151515",
+    "secondary": "#454545"
+}
