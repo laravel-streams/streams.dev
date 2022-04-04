@@ -12,6 +12,7 @@
 */
 
 use Illuminate\Support\Facades\Route;
+use Streams\Core\View\ViewTemplate;
 
 Route::streams('/', [
     'entry' => 'homepage',
@@ -23,3 +24,7 @@ Route::redirect('discord', 'https://discord.gg/Sh79MvV');
 Route::streams('{entry.path}', [
     'stream' => 'pages',
 ]);
+
+Route::get('/test/ui', function () {
+    return ViewTemplate::make('<x-button>Test</x-button>');
+});

@@ -5,7 +5,7 @@
         <div class="flex items-center justify-center">
             
             <div class="flex items-center justify-center font-bold text-black text-3xl">
-                <a href="/"><img src="/img/logo.png" width="180"></a>
+                <a href="/"><img src="/img/logo.png" width="240"></a>
             </div>
 
             {{-- <div class="hidden lg:flex items-center justify-center antialiased lg:ml-20 pt-1">

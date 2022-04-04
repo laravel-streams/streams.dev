@@ -10,11 +10,11 @@
         <div>
                 
             <p>
-                <a href="/docs" class="{{ count(Request::segments()) < 3 ? "italic font-bold" : "" }}">Documentation <x-heroicon-o-home class="inline-block h-4 w-4" style="margin-bottom: 0.25rem;"/></a>
+                <a href="/docs" class="{{ count(Request::segments()) < 3 ? "italic font-bold" : "" }} hover:underline">Documentation <x-heroicon-o-home class="inline-block h-4 w-4" style="margin-bottom: 0.25rem;"/></a>
             </p>
 
             <p>
-                <a href="#" class="{{ count(Request::segments()) > 2 ? "italic font-bold" : "" }}" onclick="document.getElementById('packages_model').classList.toggle('hidden'); return false;">Packages <x-heroicon-o-truck class="inline-block h-4 w-4" style="margin-bottom: 0;"/></a>
+                <a href="#" class="{{ count(Request::segments()) > 2 ? "italic font-bold" : "" }} hover:underline" onclick="document.getElementById('packages_model').classList.toggle('hidden'); return false;">Packages <x-heroicon-o-truck class="inline-block h-4 w-4" style="margin-bottom: 0;"/></a>
             </p>
 
             @if ($entry->stream->id == 'pages')
@@ -26,7 +26,7 @@
             <ul class="mt-2">
                 @foreach ($docs->where('category', null) as $page)
                 <li>
-                    <a href="{{ request()->path() == 'docs' ? '/docs/' : '' }}{{$page->id}}" class="{{ ($page->id == $entry->id) ? 'text-red-500 font-bold' : 'text-gray-500' }}">{{ $page->link_title ? $page->link_title : $page->title }}</a>
+                    <a href="{{ request()->path() == 'docs' ? '/docs/' : '' }}{{$page->id}}" class="{{ ($page->id == $entry->id) ? 'text-red-500 font-bold' : 'text-gray-500' }} hover:underline">{{ $page->link_title ? $page->link_title : $page->title }}</a>
                     {{-- <strong>[{{ $page->stage ?: 'outlining' }}]</strong> --}}
                 </li>
                 @endforeach
@@ -45,7 +45,7 @@
                 <ul class="mt-2">
                     @foreach ($pages as $page)
                     <li>
-                        <a href="{{ request()->path() == 'docs' ? '/docs/' : '' }}{{$page->id}}" class="{{ ($page->id == $entry->id) ? 'text-red-500 font-bold' : 'text-gray-500' }}">{{ $page->link_title ? $page->link_title : $page->title }}</a>
+                        <a href="{{ request()->path() == 'docs' ? '/docs/' : '' }}{{$page->id}}" class="{{ ($page->id == $entry->id) ? 'text-red-500 font-bold' : 'text-gray-500' }} hover:underline">{{ $page->link_title ? $page->link_title : $page->title }}</a>
                         {{-- <strong>[{{ $page->stage ?: 'outlining' }}]</strong> --}}
                     </li>
                     @endforeach

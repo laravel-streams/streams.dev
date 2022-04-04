@@ -12,6 +12,7 @@
         }
     },
     "project": "streams",
+    "github_docs": "https://github.com/laravel-streams/streams/blob/master/docs",
     "config": {
         "source": {
             "path": "docs",
@@ -23,14 +24,22 @@
     },
     "fields": {
         "id": {
-            "type": "string",
-            "rules": ["regex:/[a-z0-9\\-\\_]/"]
+            "type": "slug",
+            "config": {
+                "seperator": "_"
+            },
+            "input": {
+                "type": "input"
+            }
         },
         "sort": {
             "type": "integer",
             "rules": ["required", "min:0", "multiple_of:10"],
             "config": {
                 "default": 10
+            },
+            "input": {
+                "type": "integer"
             }
         },
         "title": {
@@ -38,13 +47,19 @@
             "required": true
         },
         "intro": {
-            "type": "markdown"
+            "type": "string"
         },
         "body": {
-            "type": "markdown"
+            "type": "markdown",
+            "input": {
+                "type": "markdown"
+            }
         },
         "category": {
             "type": "select",
+            "input": {
+                "type": "select"
+            },
             "config": {
                 "options": {
                     "introduction": "Introduction",
@@ -68,8 +83,11 @@
         },
         "stage": {
             "type": "select",
-            "default": "outlining",
+            "input": {
+                "type": "select"
+            },
             "config": {
+                "default": "outlining",
                 "options": {
                     "outlining": "Outlining",
                     "drafting": "Drafting",
@@ -79,7 +97,18 @@
                 }
             }
         },
-        "enabled": "boolean",
-        "publish_at": "time"
-    }
+        "enabled": {
+            "type": "boolean",
+            "input": {
+                "type": "toggle"
+            }
+        },
+        "publish_at": {
+            "type": "date",
+            "input": {
+                "type": "date"
+            }
+        }
+    },
+    "ui": "@streams/ui/docs_ui.json"
 }

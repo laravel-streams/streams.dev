@@ -1,6 +1,6 @@
 ---
 title: Laravel Streams
-intro: The ultimate Laravel development system.
+intro: The Laravel development system.
 path: /
 enabled: true
 sort: 14

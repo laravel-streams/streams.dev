@@ -14,6 +14,6 @@ links:
       href: /docs/installation
       target: _blank
 ---
-Whether you end up using this software or not, we believe you can save time and increase effectiveness by aligning with our way of organizing and defining your project's parameters.
+Save time and increase developer effectiveness by leveraging our utilities for your next project.
 
 All of our features build upon the structure of the data involved.

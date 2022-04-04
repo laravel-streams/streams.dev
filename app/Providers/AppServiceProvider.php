@@ -4,8 +4,6 @@ namespace App\Providers;
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
-use Streams\Core\Support\Facades\Streams;
-use Streams\Core\Http\Controller\StreamsController;
 
 /**
  * Class AppServiceProvider

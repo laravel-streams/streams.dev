@@ -24,7 +24,7 @@
         </div>
 
         <div class="flex mt-12 mb-8">
-            <a href="https://github.com/laravel-streams/{{$entry->stream()->project}}/blob/master/docs/{{$entry->id}}.md" target="_blank" class="hover:text-gray-700 text-gray-400 text-sm outline-none focus:outline-none transition duration-200 ease-in-out">Improve this page.</a>
+            <a href="{{$entry->stream()->github_docs}}/{{$entry->id}}.md" target="_blank" class="hover:text-gray-700 text-gray-400 text-sm outline-none focus:outline-none transition duration-200 ease-in-out">Improve this page.</a>
         </div>
     </div>
 

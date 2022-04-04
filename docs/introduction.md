@@ -10,7 +10,9 @@ enabled: 1
 
 ## What is Laravel Streams?
 
-Laravel Streams is a set of open-source **Laravel packages** which provide powerful but straightforward services and interfaces that provide fundamental application standards like **data modeling**, **API interaction**, **UI**, **control panels**, and more. Streams use code-configured JSON files to configure your application and data structures.
+Laravel Streams is a system of **low-code** utilities providing an optimized foundation and workflow for **Laravel development**.
+
+Application fundamentals like **data modeling**, **API interaction**, **UI**, **control panels**, and more are defined with code-configured JSON files and establish best-practices design principles to support your work.
 
 
 ### Motivation

@@ -4,21 +4,129 @@
             "type": "self"
         }
     },
+    "routes": [
+        {
+            "uri": "addons/{vendor}/{addon}",
+            "uses": "App\\Http\\Controllers\\ShowAddon"
+        }
+    ],
     "fields": {
         "id": "string",
         "name": "string",
+        "composer": {
+            "type": "object",
+            "input": {
+                "type": "textarea"
+            }
+        },
         "repository": "string"
     },
     "data": {
-        "pyro-bridge": {
-            "name": "PyroCMS Bridge",
-            "test": "Foo"
-        },
         "streams-api": {
-            "name": "Streams API"
+            "name": "Streams API",
+            "composer": {
+                "name": "streams/api",
+                "description": "A RESTful API for Laravel Streams.",
+                "type": "streams-addon",
+                "license": "MIT",
+                "prefer-stable": true,
+                "minimum-stability": "dev",
+                "authors": [
+                    {
+                        "name": "Ryan Thompson",
+                        "email": "ryan@streams.dev"
+                    }
+                ],
+                "require": {
+                    "streams/core": "^2.0",
+                    "justinrainbow/json-schema": "^5.2"
+                },
+                "require-dev": {
+                    "friendsofphp/php-cs-fixer": "^3.4",
+                    "streams/testing": "^1.0"
+                },
+                "autoload": {
+                    "psr-4": {
+                        "Streams\\Api\\": "src/"
+                    }
+                },
+                "autoload-dev": {
+                    "psr-4": {
+                        "Streams\\Api\\Tests\\": "tests/"
+                    }
+                },
+                "scripts": {},
+                "extra": {
+                    "branch-alias": {
+                        "dev-master": "1.x-dev",
+                        "dev-develop": "1.1.x-dev"
+                    },
+                    "laravel": {
+                        "providers": ["Streams\\Api\\ApiServiceProvider"]
+                    }
+                }
+            }
         },
         "streams-ui": {
-            "name": "Streams UI"
+            "name": "Streams UI",
+            "composer": {
+                "name": "streams/ui",
+                "type": "streams-addon",
+                "description": "A RESTful inspired UI for Laravel Streams.",
+                "license": "MIT",
+                "prefer-stable": true,
+                "minimum-stability": "dev",
+                "authors": [
+                    {
+                        "name": "Ryan Thompson",
+                        "email": "ryan@pyrocms.com"
+                    }
+                ],
+                "require": {
+                    "streams/core": "^2.0"
+                },
+                "require-dev": {
+                    "streams/testing": "^1.0"
+                },
+                "autoload": {
+                    "psr-4": {
+                        "Streams\\Ui\\": "src/"
+                    }
+                },
+                "autoload-dev": {
+                    "psr-4": {
+                        "Streams\\Ui\\Tests\\": "tests/"
+                    }
+                },
+                "config": {
+                    "bin-dir": "bin"
+                },
+                "extra": {
+                    "branch-alias": {
+                        "dev-master": "1.x-dev"
+                    },
+                    "laravel": {
+                        "providers": [
+                            "Streams\\Ui\\UiServiceProvider"
+                        ]
+                    }
+                }
+            }            
+        }
+    },
+    "ui": {
+        "tables": {
+            "default": {
+                "buttons": [
+                    {"handle": "edit"}
+                ]
+            }
+        },
+        "cp": {
+            "section": {
+                "sort_order": -1,
+                "title": "Addons"
+            }
         }
     }
 }

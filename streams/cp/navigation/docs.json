@@ -1,4 +1,14 @@
 {
     "title": "Documentation",
-    "sort": 99
+    "sort": 99,
+    "buttons": [
+        {
+            "handle": "improve",
+            "text": "View Docs",
+            "attributes": {
+                "target": "_blank",
+                "url": "/docs"
+            }
+        }
+    ]
 }

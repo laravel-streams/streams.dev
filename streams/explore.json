@@ -6,7 +6,9 @@
     "translatable": true,
     "config.source.format": "md",
     "fields": {
-        "id": "slug",
+        "id": {
+            "type": "slug"
+        },
         "title": "string",
         "body": "markdown",
         "parent": {
@@ -28,21 +30,36 @@
     "ui": {
         "tables": {
             "default": {
-                "views": {
-                    "all": {}
-                },
-                "columns": {
-                    "id": {
+                "filters": [
+                    {
+                        "handle": "search",
+                        "fields": [
+                            "id",
+                            "title",
+                            "body"
+                        ]
+                    }
+                ],
+                "columns": [
+                    {
+                        "handle": "id",
                         "heading": "ID"
                     },
-                    "title": {}
-                },
-                "buttons": {
-                    "view": {
+                    {
+                        "handle": "title"
+                    }
+                ],
+                "buttons": [
+                    {
+                        "handle": "edit",
+                        "context": "secondary"
+                    },
+                    {
+                        "handle": "view",
                         "href": "/explore/{entry.id}",
                         "target": "_blank"
                     }
-                }
+                ]
             }
         }
     }
