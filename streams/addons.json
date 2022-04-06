@@ -16,7 +16,10 @@
         "composer": {
             "type": "object",
             "input": {
-                "type": "textarea"
+                "type": "textarea",
+                "attributes": {
+                    "ui:keydown.enter": "test"
+                }
             }
         },
         "repository": "string"

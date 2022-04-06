@@ -8,7 +8,8 @@
             "handle": "testing",
             "text": "Test: {button.count}",
             "attributes": {
-                "ui:click": "test"
+                "ui:click": "test",
+                "ui:listen": "testEvent.test"
             }
         }
     ]

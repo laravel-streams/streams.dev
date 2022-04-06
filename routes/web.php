@@ -12,6 +12,7 @@
 */
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\View;
 use Streams\Core\View\ViewTemplate;
 
 Route::streams('/', [
@@ -25,6 +26,6 @@ Route::streams('{entry.path}', [
     'stream' => 'pages',
 ]);
 
-Route::get('/test/ui', function () {
-    return ViewTemplate::make('<x-button>Test</x-button>');
+Route::get('/blade/test', function () {
+    return View::make('cp');
 });
