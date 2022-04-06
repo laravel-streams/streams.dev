@@ -54,6 +54,15 @@
                 "buttons": [
                     {
                         "handle": "edit"
+                    },
+                    {
+                        "text": "View",
+                        "handle": "view",
+                        "attributes": {
+                            "target": "_blank",
+                            "href": "/{entry.path}",
+                            "class": ["a-button", "-blue"]
+                        }
                     }
                 ]
             }

@@ -1,9 +1,16 @@
 ---
 title: 'REST API'
-menu: '[{"text":"API Documentation","href":"\/docs\/api\/introduction","target":"_blank"},{"text":"API Client","href":"\/docs\/api\/client","type":"secondary","target":"_blank"},{"text":"Back to Features","href":"\/explore\/features","type":"link"}]'
-parent: null
-options: null
-links: null
+menu: 
+    - text: API Documentation,
+      href: /docs/api/introduction
+      target: _blank  
+    - text: API Client,
+      href: /docs/api/client
+      type: secondary
+      target: _blank
+    - text: Back to Features,
+      href: /explore/features
+      type: link'
 ---
 Laravel Streams provides a universal REST API package that can be used to quickly read and manage your stream-configured data.
 
