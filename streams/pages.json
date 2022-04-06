@@ -10,8 +10,53 @@
         "id": "required",
         "title": "required"
     },
-    "fields": {
-        "id": "slug",
-        "path": "string"
+    "fields": [
+        {
+            "handle": "id",
+            "type": "slug"
+        },
+        {
+            "handle": "title",
+            "type": "string"
+        },
+        {
+            "handle": "path",
+            "type": "string"
+        },
+        {
+            "handle": "enabled",
+            "type": "boolean"
+        },
+        {
+            "handle": "sort",
+            "type": "integer"
+        },
+        {
+            "handle": "body",
+            "type": "markdown",
+            "input": {
+                "type": "textarea"
+            }
+        }
+    ],
+    "ui": {
+        "cp": {
+            "section": {
+                "title": "Pages",
+                "buttons": [
+                    {"handle": "create"}
+                ]
+            }
+        },
+        "tables": [
+            {
+                "handle": "default",
+                "buttons": [
+                    {
+                        "handle": "edit"
+                    }
+                ]
+            }
+        ]
     }
 }

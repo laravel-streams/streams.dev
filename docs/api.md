@@ -1,5 +1,5 @@
 ---
-sort: 20
+sort: '20'
 stage: review
 title: 'API Readiness'
 intro: null

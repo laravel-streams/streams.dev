@@ -4,6 +4,15 @@
             "views": [
                 {
                     "handle": "all"
+                },
+                {
+                    "handle": "drafts",
+                    "filters": [
+                        {
+                            "handle": "title",
+                            "type": "input"
+                        }
+                    ]
                 }
             ],
             "filters": [

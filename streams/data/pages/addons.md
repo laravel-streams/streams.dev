@@ -1,11 +1,9 @@
 ---
 title: Addons
-intro: Everything you need to know to get up and running with Laravel Streams.
 path: addons
 enabled: true
 sort: 14
 ---
-
 <div class="flex flex-col px-16">
     
     <h1 class="w-full text-4xl sm:text-6xl lg:text-7xl leading-none font-extrabold tracking-tight text-gray-900 mt-10 mb-8 sm:mt-14 sm:mb-10">Addons</h1>
