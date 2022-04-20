@@ -1,7 +1,6 @@
 ---
 title: Frontend Development
 category: core_concepts
-intro: 
 sort: 10
 references:
     - https://statamic.dev/frontend-overview

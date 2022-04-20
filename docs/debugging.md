@@ -1,7 +1,6 @@
 ---
 title: Debugging
 category: getting_started
-intro: Debugging is an essential form of critical thinking.
 stage: review
 enabled: review
 sort: 20

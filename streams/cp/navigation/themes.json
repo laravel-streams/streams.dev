@@ -11,6 +11,14 @@
                 "ui:click": "test",
                 "ui:listen": "testEvent.test"
             }
+        },
+        {
+            "handle": "modal",
+            "text": "Open",
+            "open": true,
+            "attributes": {
+                "ui:click": "javascript:window.dispatchEvent(new Event('show-modal'));"
+            }
         }
     ]
 }

@@ -3,12 +3,16 @@ __created_at: 1607656296
 __updated_at: 1607656296
 title: Configuration
 category: getting_started
-intro: 'Streams uses Laravel config files and environment variables for application-level settings.'
 stage: review
 enabled: true
 sort: 2
 ---
-## Configuration Files
+
+## Introduction
+
+Streams uses Laravel config files and environment variables for application-level settings.
+
+### Configuration Files
 
 Published configuration files reside in `config/streams/`.
 

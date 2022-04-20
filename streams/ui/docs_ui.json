@@ -12,6 +12,9 @@
                             "handle": "title",
                             "type": "input"
                         }
+                    ],
+                    "query": [
+                        {"where": ["stage", "drafting"]}
                     ]
                 }
             ],

@@ -33,10 +33,7 @@
         },
         {
             "handle": "body",
-            "type": "markdown",
-            "input": {
-                "type": "textarea"
-            }
+            "type": "markdown"
         }
     ],
     "ui": {

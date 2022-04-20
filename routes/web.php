@@ -27,5 +27,5 @@ Route::streams('{entry.path}', [
 ]);
 
 Route::get('/blade/test', function () {
-    return View::make('cp');
+    return View::make('ui');
 });

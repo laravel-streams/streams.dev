@@ -1,7 +1,6 @@
 ---
 title: Laravel Development
 category: core_concepts
-intro: The Streams platform enhances Laravel development and workflow.
 stage: drafting
 enabled: true
 sort: 2

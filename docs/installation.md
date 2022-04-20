@@ -2,7 +2,6 @@
 sort: 1
 title: Installation
 category: getting_started
-intro: Learn how to get Laravel Streams up and running.
 stage: review
 enabled: true
 ---
@@ -23,11 +22,19 @@ Please ensure one of the following libraries is installed in order to support [i
 
 For new projects, the fastest way to get up and running is using the [Streams starter project](https://github.com/laravel-streams/streams).
 
-The starter project is simply the latest Laravel with the following dependencies installed:
+### Included Packages
+
+The starter project is simply the latest Laravel with the following addons installed:
 
 - [streams/core](/docs/core/introduction)
 - [streams/api](/docs/api/introduction)
 - [streams/ui](/docs/ui/introduction)
+
+### Dev Packages
+
+The following development tools are also included:
+
+- [Streams Testing](/docs/testing)
 
 ### Via Composer Create-Project
 

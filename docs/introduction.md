@@ -2,18 +2,20 @@
 __created_at: 1615267655
 __updated_at: 1615267655
 title: Introduction
-intro: Welcome to Laravel Streams
 sort: 0
 stage: review
 enabled: 1
 ---
 
-## What is Laravel Streams?
+Welcome to Laravel Streams!
+
+## What is Streams?
 
 Laravel Streams is a system of **low-code** utilities providing an optimized foundation and workflow for **Laravel development**.
 
 Application fundamentals like **data modeling**, **API interaction**, **UI**, **control panels**, and more are defined with code-configured JSON files and establish best-practices design principles to support your work.
 
+The Streams system leans heavily on domain-driven design (DDD). We call these domain abstractions `streams`, hence our namesake.
 
 ### Motivation
 
