@@ -13,6 +13,9 @@ links:
     - text: Installation
       href: /docs/installation
       target: _blank
+    - text: Examples
+      href: /docs/examples
+      target: _blank
 ---
 Save time and increase developer effectiveness by leveraging our utilities for your next project.
 

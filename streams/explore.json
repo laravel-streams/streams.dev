@@ -56,8 +56,10 @@
                     },
                     {
                         "handle": "view",
-                        "href": "/explore/{entry.id}",
-                        "target": "_blank"
+                        "attributes": {
+                            "href": "/explore/{entry.id}",
+                            "target": "_blank"
+                        }
                     }
                 ]
             }

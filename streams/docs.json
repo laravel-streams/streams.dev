@@ -46,9 +46,6 @@
             "type": "string",
             "required": true
         },
-        "intro": {
-            "type": "string"
-        },
         "body": {
             "type": "markdown",
             "input": {

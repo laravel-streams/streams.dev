@@ -15,7 +15,7 @@ Data modeling is *the* fundamental function of Streams Core. The rest of the pla
 
 ### Domain Information
 
-The Streams platform leans heavily on domain-driven design (DDD). We call these domain abstractions `streams`, hence our namesake.
+The Streams system leans heavily on domain-driven design (DDD). We call these domain abstractions `streams`, hence our namesake.
 
 **An example could be configuring a domain model (a stream) for a website's pages, users of an application, or feedback submissions from a form.** A stream can define anything anywhere.
 

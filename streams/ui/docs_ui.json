@@ -4,6 +4,18 @@
             "views": [
                 {
                     "handle": "all"
+                },
+                {
+                    "handle": "drafts",
+                    "filters": [
+                        {
+                            "handle": "title",
+                            "type": "input"
+                        }
+                    ],
+                    "query": [
+                        {"where": ["stage", "drafting"]}
+                    ]
                 }
             ],
             "filters": [
