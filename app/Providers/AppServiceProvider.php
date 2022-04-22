@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
+use Streams\Ui\Components\Button;
 
 /**
  * Class AppServiceProvider
@@ -44,6 +45,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        Button::macro('test', function() {
+            $this->text = 'TESTING! ' . (new \Carbon\Carbon());
+        });
     }
 }
