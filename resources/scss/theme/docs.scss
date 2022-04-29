@@ -55,25 +55,25 @@ body.theme--docs {
             position: absolute;
             font-weight: normal !important;
 
-            @apply text-red-500;
+            @apply text-accent;
         }
 
         &:hover {
-            @apply text-red-500;
+            @apply text-accent underline;
             // &:after {
             //     display: inline-block;
             // }
         }
 
         .anchorjs-link:after {
-            @apply text-red-500;
+            @apply text-accent;
         }
     }
 
     .ls-doc__intro {
 
         code {
-            @apply text-red-500 bg-gray-100 font-mono;
+            @apply text-accent bg-gray-100 font-mono;
         }
     }
 
@@ -107,7 +107,7 @@ body.theme--docs {
         p,
         a {
             > code {
-                @apply text-red-500 bg-gray-100 p-1;    
+                @apply text-accent bg-gray-100 p-1;    
             }
         }
 
@@ -115,7 +115,7 @@ body.theme--docs {
         li > a {
             border-bottom-width: 2px;
 
-            @apply text-red-500 font-bold border-dotted border-red-500 duration-1000;
+            @apply text-accent font-bold border-dotted border-accent duration-1000;
 
             &:hover {
                 border-bottom-style: solid;
@@ -134,7 +134,15 @@ body.theme--docs {
         blockquote {
             border-left-width: .5rem;
 
-            @apply p-4 border-red-500 bg-red-100;
+            @apply p-4 border-accent bg-red-100;
+        }
+
+        .anchorjs-link {
+            display: inline-block;
+
+            &:hover {
+                @apply text-accent;
+            }
         }
     }
 }

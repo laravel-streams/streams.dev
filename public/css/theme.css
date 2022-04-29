@@ -31181,6 +31181,25 @@ body {
   background-color: #F0F0F0;
 }
 
+:root {
+  --color-accent: rgb(239, 68, 68);
+}
+
+.text-accent,
+.hover\:text-accent {
+  color: var(--color-accent);
+}
+
+.border-accent,
+.hover\:border-accent {
+  border-color: var(--color-accent);
+}
+
+.bg-accent,
+.hover\:bg-accent {
+  background-color: var(--color-accent);
+}
+
 /* PrismJS 1.24.1
 https://prismjs.com/download.html#themes=prism-funky&languages=markup+css+clike+javascript+json */
 
@@ -31346,9 +31365,27 @@ svg {
   color: rgba(255, 255, 255, var(--tw-text-opacity));
 }
 
+.copy-to-clipboard:hover {
+  text-decoration: underline;
+}
+
 code[class*=language-],
 pre[class*=language-] {
   position: relative;
+}
+
+::-moz-selection {
+  --tw-bg-opacity: 1;
+  background-color: rgba(253, 230, 138, var(--tw-bg-opacity));
+  --tw-text-opacity: 1;
+  color: rgba(0, 0, 0, var(--tw-text-opacity));
+}
+
+::selection {
+  --tw-bg-opacity: 1;
+  background-color: rgba(253, 230, 138, var(--tw-bg-opacity));
+  --tw-text-opacity: 1;
+  color: rgba(0, 0, 0, var(--tw-text-opacity));
 }
 
 body.theme--docs {
@@ -31399,26 +31436,36 @@ body.theme--docs .toc-link:after {
   content: "#";
   position: absolute;
   font-weight: normal !important;
-  --tw-text-opacity: 1;
-  color: rgba(239, 68, 68, var(--tw-text-opacity));
+}
+
+body.theme--docs .toc-link:after,
+.hover\:text-accent {
+  color: var(--color-accent);
 }
 
 body.theme--docs .toc-link:hover {
-  --tw-text-opacity: 1;
-  color: rgba(239, 68, 68, var(--tw-text-opacity));
+  text-decoration: underline;
 }
 
-body.theme--docs .toc-link .anchorjs-link:after {
-  --tw-text-opacity: 1;
-  color: rgba(239, 68, 68, var(--tw-text-opacity));
+body.theme--docs .toc-link:hover,
+.hover\:text-accent {
+  color: var(--color-accent);
+}
+
+body.theme--docs .toc-link .anchorjs-link:after,
+.hover\:text-accent {
+  color: var(--color-accent);
 }
 
 body.theme--docs .ls-doc__intro code {
   --tw-bg-opacity: 1;
   background-color: rgba(243, 244, 246, var(--tw-bg-opacity));
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-  --tw-text-opacity: 1;
-  color: rgba(239, 68, 68, var(--tw-text-opacity));
+}
+
+body.theme--docs .ls-doc__intro code,
+.hover\:text-accent {
+  color: var(--color-accent);
 }
 
 body.theme--docs .doc-body > h2, body.theme--docs .doc-body > h4, body.theme--docs .doc-body > p, body.theme--docs .doc-body > ul, body.theme--docs .doc-body > pre, body.theme--docs .doc-body > blockquote{
@@ -31455,8 +31502,13 @@ body.theme--docs .doc-body p > code, body.theme--docs .doc-body a > code{
   --tw-bg-opacity: 1;
   background-color: rgba(243, 244, 246, var(--tw-bg-opacity));
   padding: 0.25rem;
-  --tw-text-opacity: 1;
-  color: rgba(239, 68, 68, var(--tw-text-opacity));
+}
+
+body.theme--docs .doc-body p > code,
+body.theme--docs .doc-body a > code,
+.hover\:text-accent,
+.hover\:text-accent {
+  color: var(--color-accent);
 }
 
 body.theme--docs .doc-body p > a,
@@ -31465,13 +31517,23 @@ body.theme--docs .doc-body li > a {
 }
 
 body.theme--docs .doc-body p > a, body.theme--docs .doc-body li > a{
-  --tw-border-opacity: 1;
-  border-color: rgba(239, 68, 68, var(--tw-border-opacity));
   border-style: dotted;
   font-weight: 700;
-  --tw-text-opacity: 1;
-  color: rgba(239, 68, 68, var(--tw-text-opacity));
   transition-duration: 1000ms;
+}
+
+body.theme--docs .doc-body p > a,
+body.theme--docs .doc-body li > a,
+.hover\:text-accent,
+.hover\:text-accent {
+  color: var(--color-accent);
+}
+
+body.theme--docs .doc-body p > a,
+body.theme--docs .doc-body li > a,
+.hover\:border-accent,
+.hover\:border-accent {
+  border-color: var(--color-accent);
 }
 
 body.theme--docs .doc-body p > a:hover,
@@ -31492,9 +31554,21 @@ body.theme--docs .doc-body blockquote {
   border-left-width: 0.5rem;
   --tw-bg-opacity: 1;
   background-color: rgba(254, 226, 226, var(--tw-bg-opacity));
-  --tw-border-opacity: 1;
-  border-color: rgba(239, 68, 68, var(--tw-border-opacity));
   padding: 1rem;
+}
+
+body.theme--docs .doc-body blockquote,
+.hover\:border-accent {
+  border-color: var(--color-accent);
+}
+
+body.theme--docs .doc-body .anchorjs-link {
+  display: inline-block;
+}
+
+body.theme--docs .doc-body .anchorjs-link:hover,
+.hover\:text-accent {
+  color: var(--color-accent);
 }
 
 @media (min-width: 640px){

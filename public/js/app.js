@@ -2355,6 +2355,9 @@ __webpack_require__.r(__webpack_exports__);
     var clipboard = new (clipboard__WEBPACK_IMPORTED_MODULE_3___default())('.copy-to-clipboard');
     clipboard.on('success', function (event) {
       event.trigger.classList.add('copied');
+      setTimeout(function () {
+        return event.trigger.classList.remove('copied');
+      }, 3000);
     });
   });
   _vendor_prism__WEBPACK_IMPORTED_MODULE_1___default().highlightAll();

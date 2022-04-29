@@ -24,7 +24,7 @@
                     </div>
                 </div>
                 <a href="{{ $package->decorate('docs') }}"
-                    class="flex-no-shrink bg-black px-5 ml-4 py-2 text-sm shadow-sm hover:shadow-lg font-medium tracking-wider border-2 border-black text-white rounded-full">Docs</a>
+                    class="flex-no-shrink bg-black px-5 ml-4 py-2 text-sm shadow-sm hover:shadow-lg hover:bg-accent hover:border-accent font-medium tracking-wider border-2 border-black text-white rounded-full">Docs</a>
             </div>
         </div>
         @endforeach

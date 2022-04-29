@@ -33,6 +33,8 @@ import * as tocbot from 'tocbot';
 
         clipboard.on('success', function (event) {
             event.trigger.classList.add('copied');
+
+            setTimeout(() => event.trigger.classList.remove('copied'), 3000);
         });
     });
 

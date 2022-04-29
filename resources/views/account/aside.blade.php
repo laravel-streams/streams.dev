@@ -12,13 +12,13 @@
 
         <ul class="mt-2">
             <li>
-                <a href="/account/settings" class="{{ Request::path() == 'account/settings' ? 'text-red-500 font-bold' : 'text-gray-500' }}">Settings</a>
+                <a href="/account/settings" class="{{ Request::path() == 'account/settings' ? 'text-accent font-bold' : 'text-gray-500' }}">Settings</a>
             </li>
             <li>
-                <a href="/account/account" class="{{ Request::path() == 'account/account' ? 'text-red-500 font-bold' : 'text-gray-500' }}">Addons</a>
+                <a href="/account/account" class="{{ Request::path() == 'account/account' ? 'text-accent font-bold' : 'text-gray-500' }}">Addons</a>
             </li>
             <li>
-                <a href="/account/keys" class="{{ Request::path() == 'account/keys' ? 'text-red-500 font-bold' : 'text-gray-500' }}">SSH Keys</a>
+                <a href="/account/keys" class="{{ Request::path() == 'account/keys' ? 'text-accent font-bold' : 'text-gray-500' }}">SSH Keys</a>
             </li>
         </ul>
 
