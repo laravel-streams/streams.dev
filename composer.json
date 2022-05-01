@@ -27,6 +27,7 @@
         "streams/ui": "^1.0"
     },
     "require-dev": {
+        "streams/dev": "^1.0",
         "laravel/tinker": "^2.2",
         "streams/testing": "^1.0",
         "facade/ignition": "^2.0",
@@ -54,6 +55,13 @@
         {
             "type": "path",
             "url": "packages/streams/api",
+            "options": {
+                "symlink": true
+            }
+        },
+        {
+            "type": "path",
+            "url": "packages/streams/dev",
             "options": {
                 "symlink": true
             }
