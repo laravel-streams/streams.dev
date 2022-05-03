@@ -30,7 +30,6 @@
         {
             "handle": "name",
             "type": "string",
-            "unique": true,
             "required": true,
             "input": {
                 "type": "input"
@@ -61,20 +60,22 @@
         }
     },
     "data": {
-        "454eddee-5e72-3f40-ae98-99d4bc88410a": {
-            "user": "6bab6d9d-44c8-379f-842b-16b0ebb6fd71",
-            "name": "Test Key",
+        "5ecb8080-7568-48bf-bcc5-ae98023f9477": {
+            "name": "Test",
             "value": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQC3FdYRi3h5nx\/LqAdh5TABVk8jraw== test@example.com"
         },
-        "a2f2647d-8232-403b-b266-f333c8c3f6cb": {
-            "user": "7e947900-2be1-315b-89b8-c28ae715969f",
-            "name": "Another Test",
-            "value": "Foo"
+        "b3ca277b-1cde-46da-a617-69156d75b9fa": {
+            "name": "Test",
+            "value": "testssss"
         },
-        "2b91e2fd-fc16-4f5a-becb-5b74b07ac48d": {
-            "user": "7e947900-2be1-315b-89b8-c28ae715969f",
-            "name": "Updated Entry",
-            "value": "Foo Bar"
+        "7ab961d1-942c-4689-93ce-5b54b9fa72ae": {
+            "name": "Test",
+            "value": "testsss"
+        },
+        "a5226d26-33a0-4f59-a2c7-d2c99dcf4dc7": {
+            "user": "ryan",
+            "name": "key",
+            "value": "vvalue"
         }
     }
 }

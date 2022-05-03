@@ -6,9 +6,11 @@ stage: outlining
 enabled: true
 ---
 
+Dig into working projects to learn more about how Laravel Streams can be used.
+
 ## Kitchen Sink
 
-This is a blank canvas with all the bells and whistles. Fun to explore but may not be fit for a new project stubb due to the bells and whistles or general configuraion.
+This project is a blank canvas with all the bells and whistles. Fun to explore but may not be fit for a new project stub due to the bells and whistles or general configuration.
 
 - [Kitchen Sink](https://github.com/laravel-streams/streams)
 

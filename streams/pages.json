@@ -48,6 +48,10 @@
         "tables": [
             {
                 "handle": "default",
+                "columns": [
+                    {"handle": "title"},
+                    {"handle": "enabled"}
+                ],
                 "buttons": [
                     {
                         "handle": "edit"
