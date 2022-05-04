@@ -1,6 +1,7 @@
 <?php
 
-use Illuminate\Foundation\Inspiring;
+use Illuminate\Support\Facades\Artisan;
+use Streams\Core\Support\Facades\Streams;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +14,6 @@ use Illuminate\Foundation\Inspiring;
 |
 */
 
-//Artisan::command('inspire', function () {
-//    $this->comment(Inspiring::quote());
-//});
+// Artisan::command('streams:describe {stream : The stream to describe.}', function () {
+//    dd(Streams::make($this->argument('stream'))->describe());
+// });
