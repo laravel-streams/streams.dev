@@ -1,0 +1,39 @@
+{
+    "name": "Cp.navigation",
+    "type": "object",
+    "properties": {
+        "id": {
+            "title": "Id",
+            "type": "string",
+            "pattern": "^[a-z0-9]+(?:[-_][a-z0-9]+)*$"
+        },
+        "svg": {
+            "title": "Svg",
+            "type": "string"
+        },
+        "icon": {
+            "title": "Icon",
+            "type": "string"
+        },
+        "image": {
+            "title": "Image",
+            "type": "string"
+        },
+        "title": {
+            "title": "Title",
+            "type": "string"
+        },
+        "parent": {
+            "title": "Parent",
+            "type": "string"
+        },
+        "dropdown": {
+            "title": "Dropdown",
+            "type": "array"
+        },
+        "active": {
+            "title": "Active",
+            "type": "boolean"
+        }
+    }
+}

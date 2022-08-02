@@ -1,0 +1,66 @@
+{
+    "name": "Cp.themes",
+    "type": "object",
+    "required": [
+        "id",
+        "spacing",
+        "radius",
+        "light",
+        "dark",
+        "white",
+        "black",
+        "text",
+        "buttons",
+        "primary",
+        "secondary"
+    ],
+    "properties": {
+        "id": {
+            "title": "Id",
+            "type": "string",
+            "pattern": "^[a-z0-9]+(?:[-_][a-z0-9]+)*$"
+        },
+        "spacing": {
+            "title": "Spacing",
+            "format": "float",
+            "type": "number"
+        },
+        "radius": {
+            "title": "Radius",
+            "format": "float",
+            "type": "number"
+        },
+        "light": {
+            "title": "Light",
+            "type": "string"
+        },
+        "dark": {
+            "title": "Dark",
+            "type": "string"
+        },
+        "white": {
+            "title": "White",
+            "type": "string"
+        },
+        "black": {
+            "title": "Black",
+            "type": "string"
+        },
+        "text": {
+            "title": "Text",
+            "type": "string"
+        },
+        "buttons": {
+            "title": "Buttons",
+            "type": "string"
+        },
+        "primary": {
+            "title": "Primary",
+            "type": "string"
+        },
+        "secondary": {
+            "title": "Secondary",
+            "type": "string"
+        }
+    }
+}

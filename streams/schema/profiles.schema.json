@@ -1,0 +1,11 @@
+{
+    "name": "Profiles",
+    "type": "object",
+    "properties": {
+        "name": {
+            "title": "Name",
+            "default": "Ryan Thompson",
+            "type": "string"
+        }
+    }
+}

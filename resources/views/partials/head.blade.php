@@ -27,4 +27,5 @@
 
 {!! View::includes('head') !!}
 
+{!! Assets::tag('/css/variables.css') !!}
 {!! Assets::tag('/css/theme.css') !!}

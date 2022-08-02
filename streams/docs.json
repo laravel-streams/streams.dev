@@ -1,18 +1,23 @@
 {
     "name": "Laravel Streams",
-    "description": "The main entry point to project and component documentation.",
+    "description": "The main project documentation.",
 
     "template": "doc",
     "url_prefix": "docs",
     "path_prefix": "docs",
-    "routes": {
-        "view": {
+
+    "routes": [
+        {
+            "handle": "view",
             "uri": "docs/{id}",
+            "stream": "docs",
             "view": "doc"
         }
-    },
+    ],
+    
     "project": "streams",
     "github_docs": "https://github.com/laravel-streams/streams/blob/master/docs",
+
     "config": {
         "source": {
             "path": "docs",
@@ -22,8 +27,9 @@
     "rules": {
         "id": "required"
     },
-    "fields": {
-        "id": {
+    "fields": [
+        {
+            "handle": "id",
             "type": "slug",
             "config": {
                 "seperator": "_"
@@ -32,7 +38,8 @@
                 "type": "input"
             }
         },
-        "sort": {
+        {
+            "handle": "sort",
             "type": "integer",
             "rules": ["required", "min:0", "multiple_of:10"],
             "config": {
@@ -42,17 +49,20 @@
                 "type": "integer"
             }
         },
-        "title": {
+        {
+            "handle": "title",
             "type": "string",
             "required": true
         },
-        "body": {
+        {
+            "handle": "body",
             "type": "markdown",
             "input": {
                 "type": "markdown"
             }
         },
-        "category": {
+        {
+            "handle": "category",
             "type": "select",
             "input": {
                 "type": "select"
@@ -78,7 +88,8 @@
                 }
             }
         },
-        "stage": {
+        {
+            "handle": "stage",
             "type": "select",
             "input": {
                 "type": "select"
@@ -94,18 +105,20 @@
                 }
             }
         },
-        "enabled": {
+        {
+            "handle": "enabled",
             "type": "boolean",
             "input": {
                 "type": "toggle"
             }
         },
-        "publish_at": {
+        {
+            "handle": "publish_at",
             "type": "date",
             "input": {
                 "type": "date"
             }
         }
-    },
+    ],
     "ui": "@streams/ui/docs_ui.json"
 }

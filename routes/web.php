@@ -13,7 +13,6 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\View;
-use Streams\Core\View\ViewTemplate;
 
 Route::streams('/', [
     'entry' => 'homepage',

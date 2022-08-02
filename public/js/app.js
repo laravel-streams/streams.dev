@@ -4511,6 +4511,19 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/scss/variables.scss":
+/*!***************************************!*\
+  !*** ./resources/scss/variables.scss ***!
+  \***************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ }),
+
 /***/ "./node_modules/tocbot/src/js/build-html.js":
 /*!**************************************************!*\
   !*** ./node_modules/tocbot/src/js/build-html.js ***!
@@ -5545,6 +5558,7 @@ module.exports = function updateTocScroll (options) {
 /******/ 		// [resolve, reject, Promise] = chunk loading, 0 = chunk loaded
 /******/ 		var installedChunks = {
 /******/ 			"/js/app": 0,
+/******/ 			"css/variables": 0,
 /******/ 			"css/theme": 0
 /******/ 		};
 /******/ 		
@@ -5595,8 +5609,9 @@ module.exports = function updateTocScroll (options) {
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
-/******/ 	__webpack_require__.O(undefined, ["css/theme"], () => (__webpack_require__("./resources/js/app.js")))
-/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["css/theme"], () => (__webpack_require__("./resources/scss/theme.scss")))
+/******/ 	__webpack_require__.O(undefined, ["css/variables","css/theme"], () => (__webpack_require__("./resources/js/app.js")))
+/******/ 	__webpack_require__.O(undefined, ["css/variables","css/theme"], () => (__webpack_require__("./resources/scss/theme.scss")))
+/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["css/variables","css/theme"], () => (__webpack_require__("./resources/scss/variables.scss")))
 /******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
 /******/ 	
 /******/ })()

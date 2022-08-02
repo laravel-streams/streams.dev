@@ -1,0 +1,32 @@
+{
+    "name": "Applications",
+    "type": "object",
+    "properties": {
+        "handle": {
+            "title": "Handle",
+            "type": "string",
+            "example": "spanish"
+        },
+        "match": {
+            "title": "Match",
+            "description": "An array of URL patterns that match this application.",
+            "type": "array",
+            "example": [
+                "es.example.com/*"
+            ]
+        },
+        "config": {
+            "title": "Config",
+            "description": "An array of configuration to be merged into existing app config.",
+            "type": "array",
+            "example": {
+                "app": {
+                    "name": "Corrientes"
+                },
+                "streams.core": {
+                    "data_path": "streams/data/es"
+                }
+            }
+        }
+    }
+}
