@@ -31174,11 +31174,11 @@ html {
 }
 
 body {
-  background: #F0F0F0;
+  background: var(--ui-color-light);
 }
 
 .bg-smoke {
-  background-color: #F0F0F0;
+  background-color: var(--ui-color-light);
 }
 
 :root {

@@ -1,7 +1,8 @@
 {
+    "$schema": "./schema/core.streams.schema.json",
     "config": {
         "source": {
-            "type": "self"
+            "type": "filebase"
         }
     },
     "routes": [
@@ -10,10 +11,21 @@
             "uses": "App\\Http\\Controllers\\ShowAddon"
         }
     ],
-    "fields": {
-        "id": "string",
-        "name": "string",
-        "composer": {
+    "fields": [
+        {
+            "handle": "id",
+            "type": "string"
+        },
+        {
+            "handle": "id",
+            "type": "string"
+        },
+        {
+            "handle": "name",
+            "type": "string"
+        },
+        {
+            "handle": "composer",
             "type": "object",
             "input": {
                 "type": "textarea",
@@ -22,8 +34,11 @@
                 }
             }
         },
-        "repository": "string"
-    },
+        {
+            "handle": "repository",
+            "type": "string"
+        }
+    ],
     "data": {
         "streams-api": {
             "name": "Streams API",

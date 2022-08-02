@@ -4,7 +4,7 @@ category: core_concepts
 intro: Incredibly flexible and entirely configurable UI features.
 stage: drafting
 enabled: true
-sort: 10
+sort: 20
 ---
 
 ## Introduction

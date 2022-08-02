@@ -13,8 +13,8 @@ sort: 14
     <ul>
     @foreach (Streams::repository('addons')->all() as $addon)
     <li>
-        <a class="text-red-500 font-bold" href="/addons/{{ $addon->composer?->name }}">{{ $addon->name }}</a>
-        <br><small>{{ $addon->composer?->name }}</small>
+        <a class="text-red-500 font-bold" href="/addons/{{ $addon->composer['name'] }}">{{ $addon->name }}</a>
+        <br><small>{{ $addon->composer['name'] }}</small>
     </li>
     @endforeach
     </ul>

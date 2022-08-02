@@ -1,0 +1,27 @@
+{
+    "name": "Cp.shortcuts",
+    "type": "object",
+    "properties": {
+        "id": {
+            "title": "Id",
+            "type": "string",
+            "pattern": "^[a-z0-9]+(?:[-_][a-z0-9]+)*$"
+        },
+        "title": {
+            "title": "Title",
+            "type": "string"
+        },
+        "icon": {
+            "title": "Icon",
+            "type": "string"
+        },
+        "svg": {
+            "title": "Svg",
+            "type": "string"
+        },
+        "dropdown": {
+            "title": "Dropdown",
+            "type": "array"
+        }
+    }
+}

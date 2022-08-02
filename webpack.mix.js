@@ -2,6 +2,7 @@ const mix = require('laravel-mix');
 
 mix
     .sass('resources/scss/theme.scss', 'css')
+    .sass('resources/scss/variables.scss', 'css')
     .js('resources/js/app.js', 'js')
     .options({
         processCssUrls: false,

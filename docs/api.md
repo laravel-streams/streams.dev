@@ -1,10 +1,10 @@
 ---
-sort: '20'
 stage: review
 title: 'API Readiness'
 category: core_concepts
 enabled: true
 publish_at: null
+sort: 10
 ---
 ## Introduction
 
