@@ -30,8 +30,11 @@
         "rimraf": "^3.0.2",
         "sass": "^1.32.6",
         "sass-loader": "^11.0.0",
-        "tailwindcss": "^2.0.2",
+        "tailwindcss": "^3.0.0",
         "tocbot": "^4.12.2",
         "webpack-bundle-analyzer": "^4.4.0"
+    },
+    "devDependencies": {
+        "@tailwindcss/forms": "^0.5.2"
     }
 }

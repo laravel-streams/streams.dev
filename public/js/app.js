@@ -5048,7 +5048,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
     if (options.scrollSmooth) {
       options.duration = options.scrollSmoothDuration
       options.offset = options.scrollSmoothOffset
-      tocbot.scrollSmooth = __webpack_require__(/*! ./scroll-smooth */ "./node_modules/tocbot/src/js/scroll-smooth/index.js").initSmoothScrolling(options)
+      tocbot.scrollSmooth = (__webpack_require__(/*! ./scroll-smooth */ "./node_modules/tocbot/src/js/scroll-smooth/index.js").initSmoothScrolling)(options)
     }
 
     // Pass options to these modules.
@@ -5594,7 +5594,7 @@ module.exports = function updateTocScroll (options) {
 /******/ 				if(__webpack_require__.o(installedChunks, chunkId) && installedChunks[chunkId]) {
 /******/ 					installedChunks[chunkId][0]();
 /******/ 				}
-/******/ 				installedChunks[chunkIds[i]] = 0;
+/******/ 				installedChunks[chunkId] = 0;
 /******/ 			}
 /******/ 			return __webpack_require__.O(result);
 /******/ 		}
