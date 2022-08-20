@@ -6,6 +6,81 @@ stage: review
 enabled: true
 ---
 
+
+
+<div class="flex">
+  <div class="bg-white rounded-lg border border-gray-200 w-96 text-gray-900">
+    <button
+      aria-current="true"
+      type="button"
+      class="
+        text-left
+        px-6
+        py-2
+        border-b border-gray-200
+        focus:outline-none focus:ring-0
+        w-full
+        rounded-t-lg
+        cursor-pointer
+      "
+    >
+      The current link item
+    </button>
+    <button
+      type="button"
+      class="
+        text-left
+        px-6
+        py-2
+        border-b border-gray-200
+        w-full
+        focus:outline-none focus:ring-0
+        transition
+        duration-500
+        cursor-pointer
+      "
+    >
+      A second link item
+    </button>
+    <button
+      type="button"
+      class="
+        text-left
+        px-6
+        py-2
+        border-b border-gray-200
+        w-full
+        focus:outline-none focus:ring-0
+        transition
+        duration-500
+        cursor-pointer
+      "
+     onclick="this.querySelector('input').checked ^=1;"> <input type="checkbox" class="rounded text-pink-500"/>
+      A third link item
+    </button>
+    <button
+      type="button"
+      class="
+        text-left
+        px-6
+        py-2
+        border-b border-gray-200
+        w-full
+        focus:outline-none focus:ring-0
+        transition
+        duration-500
+        cursor-pointer
+      "
+    >
+      A fourth link item
+    </button>
+
+  </div>
+</div>
+
+
+
+
 ## Server Requirements
     
 To run Laravel Streams you will need to meet [Laravel server requirements](https://laravel.com/docs/deployment#server-requirements).

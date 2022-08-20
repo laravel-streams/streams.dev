@@ -154,7 +154,7 @@ sort: 14
 
     <h3 class="text-2xl leading-none font-extrabold tracking-tight text-gray-900 mt-10 mb-4">3.&nbsp&nbspMore Resources</h3>
 
-    <p>Discover more resources from the core team and community.</p>
+    <p>Discover more resources from the developers and community.</p>
     
     <div class="mt-5 space-x-4">
 
