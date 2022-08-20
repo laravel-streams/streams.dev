@@ -22,7 +22,7 @@ Please ensure one of the following libraries is installed in order to support [i
 ## New Projects
 
 For new projects, the fastest way to get up and running is a new Laravel and Streams installation:
-
+<!-- @todo need other examples (laragon, homestead) -->
 ```bash
 composer create laravel/laravel newproject
 
@@ -34,35 +34,18 @@ php artisan serve
 ```
 
 
-### Included Packages
+### Additional Packages
 
-The starter project is simply the latest Laravel with the following addons installed:
+You may also want to consider using the following packages:
 
-- [streams/core](/docs/core/introduction)
 - [streams/api](/docs/api/introduction)
 - [streams/ui](/docs/ui/introduction)
 
-### Dev Packages
+<!-- ### Dev Packages
 
 The following development tools are also included:
 
-- [Streams Testing](/docs/testing)
-
-### Via Composer Create-Project
-
-```bash
-composer create-project streams/streams:1.0.x-dev example.local --stability=dev
-```
-
-> There is no installer as there is no traditional database requirement.
-
-### Local Development Server
-
-If you have PHP installed locally and you would like to use PHP's built-in development server to serve your application, you may use the **serve** Artisan command to start a development server:
-
-```bash
-php artisan serve
-```
+- [Streams Testing](/docs/testing) -->
 
 ### What's next?
 
@@ -91,44 +74,6 @@ The **core** package is responsible for the meat and taters; it is the only **re
 composer require streams/core
 ```
 
-#### To include UI features:
-
-```bash
-composer require streams/ui
-```
-
-#### To include API features:
-
-```bash
-composer require streams/api
-```
-
-#### Update Composer Scripts
-
-This step is **optional**. You may find it helpful to compare our default **scripts** below to your own and decide what you would like to include.
-
-```json
-// composer.json
-"scripts": {
-    "pre-autoload-dump": [
-        "rm -Rf bootstrap/cache/*.php"
-    ],
-    "post-autoload-dump": [
-        "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
-        "@php artisan package:discover --ansi",
-        "@php artisan clear --ansi",
-        "@php artisan vendor:publish --ansi --tag=public",
-        "@php artisan queue:restart --ansi"
-    ],
-    "post-root-package-install": [
-        "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
-    ],
-    "post-create-project-cmd": [
-        "@php artisan key:generate --ansi"
-    ]
-}
-```
-
 
 ## Updating
 From within your project, use Composer to update individual packages:
@@ -139,4 +84,4 @@ composer update streams/api --with-dependencies
 composer update streams/ui --with-dependencies
 ```
 
-You can, of course, update your entire project using **composer update**.
+You can update your entire project using **composer update**.
