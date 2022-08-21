@@ -7,80 +7,6 @@ enabled: true
 ---
 
 
-
-<div class="flex">
-  <div class="bg-white rounded-lg border border-gray-200 w-96 text-gray-900">
-    <button
-      aria-current="true"
-      type="button"
-      class="
-        text-left
-        px-6
-        py-2
-        border-b border-gray-200
-        focus:outline-none focus:ring-0
-        w-full
-        rounded-t-lg
-        cursor-pointer
-      "
-    >
-      The current link item
-    </button>
-    <button
-      type="button"
-      class="
-        text-left
-        px-6
-        py-2
-        border-b border-gray-200
-        w-full
-        focus:outline-none focus:ring-0
-        transition
-        duration-500
-        cursor-pointer
-      "
-    >
-      A second link item
-    </button>
-    <button
-      type="button"
-      class="
-        text-left
-        px-6
-        py-2
-        border-b border-gray-200
-        w-full
-        focus:outline-none focus:ring-0
-        transition
-        duration-500
-        cursor-pointer
-      "
-     onclick="this.querySelector('input').checked ^=1;"> <input type="checkbox" class="rounded text-pink-500"/>
-      A third link item
-    </button>
-    <button
-      type="button"
-      class="
-        text-left
-        px-6
-        py-2
-        border-b border-gray-200
-        w-full
-        focus:outline-none focus:ring-0
-        transition
-        duration-500
-        cursor-pointer
-      "
-    >
-      A fourth link item
-    </button>
-
-  </div>
-</div>
-
-
-
-
 ## Server Requirements
     
 To run Laravel Streams you will need to meet [Laravel server requirements](https://laravel.com/docs/deployment#server-requirements).
@@ -93,48 +19,53 @@ Please ensure one of the following libraries is installed in order to support [i
 - Imagick PHP extension
 
 
-## Downloading Streams
+## New Projects
 
-For new projects, the fastest way to get up and running is using the [Streams starter project](https://github.com/laravel-streams/streams).
-
-### Included Packages
-
-The starter project is simply the latest Laravel with the following addons installed:
-
-- [streams/core](/docs/core/introduction)
-- [streams/api](/docs/api/introduction)
-- [streams/ui](/docs/ui/introduction)
-
-### Dev Packages
-
-The following development tools are also included:
-
-- [Streams Testing](/docs/testing)
-
-### Via Composer Create-Project
-
+For new projects, the fastest way to get up and running is a new Laravel and Streams installation:
+<!-- @todo need other examples (laragon, homestead) -->
 ```bash
-composer create-project streams/streams:1.0.x-dev example.local --stability=dev
-```
+composer create laravel/laravel newproject
 
-> There is no installer as there is no traditional database requirement.
+cd newproject
 
-### Local Development Server
+composer require streams/core:2.0.x-dev
 
-If you have PHP installed locally and you would like to use PHP's built-in development server to serve your application, you may use the **serve** Artisan command to start a development server:
-
-```bash
 php artisan serve
 ```
 
-### What's next?
+Learn more about Streams Core in [documentation](/docs/core/introduction).
+
+
+### Additional Packages
+
+You may also want to consider using the following packages:
+
+- [streams/api](/docs/api/introduction)
+- [streams/ui](/docs/ui/introduction)
+
+<!-- ### Dev Packages
+
+The following development tools are also included:
+
+- [Streams Testing](/docs/testing) -->
+
+### Getting Started
 
 Your streams project is now ready for you to start coding.
 
 - [Configuration](configuration)
 - [Debugging](debugging)
 
-#### Ready to dive in?
+
+### The Basics
+
+Explore the basics of Streams by example.
+
+- [Defining Streams](how-to-define-streams)
+
+#### Fundamental Concepts
+
+Dig deeper into the fundamental concepts of Laravel Streams. 
 
 - [Data Modeling](streams)
 - [Laravel Development](core)
@@ -154,44 +85,6 @@ The **core** package is responsible for the meat and taters; it is the only **re
 composer require streams/core
 ```
 
-#### To include UI features:
-
-```bash
-composer require streams/ui
-```
-
-#### To include API features:
-
-```bash
-composer require streams/api
-```
-
-#### Update Composer Scripts
-
-This step is **optional**. You may find it helpful to compare our default **scripts** below to your own and decide what you would like to include.
-
-```json
-// composer.json
-"scripts": {
-    "pre-autoload-dump": [
-        "rm -Rf bootstrap/cache/*.php"
-    ],
-    "post-autoload-dump": [
-        "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
-        "@php artisan package:discover --ansi",
-        "@php artisan clear --ansi",
-        "@php artisan vendor:publish --ansi --tag=public",
-        "@php artisan queue:restart --ansi"
-    ],
-    "post-root-package-install": [
-        "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
-    ],
-    "post-create-project-cmd": [
-        "@php artisan key:generate --ansi"
-    ]
-}
-```
-
 
 ## Updating
 From within your project, use Composer to update individual packages:
@@ -202,4 +95,4 @@ composer update streams/api --with-dependencies
 composer update streams/ui --with-dependencies
 ```
 
-You can, of course, update your entire project using **composer update**.
+You can update your entire project using **composer update**.

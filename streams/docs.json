@@ -16,7 +16,7 @@
     ],
     
     "project": "streams",
-    "github_docs": "https://github.com/laravel-streams/streams/blob/master/docs",
+    "github_docs": "https://github.com/laravel-streams/streams.dev/blob/master/docs",
 
     "config": {
         "source": {
@@ -71,8 +71,8 @@
                 "options": {
                     "introduction": "Introduction",
                     "getting_started": "Getting Started",
-                    "core_concepts": "Core Concepts",
                     "basics": "The Basics",
+                    "core_concepts": "Core Concepts",
                     "components": "Components",
                     "control_panel": "Control Panel",
                     "streams": "Streams",
