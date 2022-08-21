@@ -33,6 +33,8 @@ composer require streams/core:2.0.x-dev
 php artisan serve
 ```
 
+Learn more about Streams Core in [documentation](/docs/core/introduction).
+
 
 ### Additional Packages
 
@@ -47,14 +49,23 @@ The following development tools are also included:
 
 - [Streams Testing](/docs/testing) -->
 
-### What's next?
+### Getting Started
 
 Your streams project is now ready for you to start coding.
 
 - [Configuration](configuration)
 - [Debugging](debugging)
 
-#### Ready to dive in?
+
+### The Basics
+
+Explore the basics of Streams by example.
+
+- [Defining Streams](how-to-define-streams)
+
+#### Fundamental Concepts
+
+Dig deeper into the fundamental concepts of Laravel Streams. 
 
 - [Data Modeling](streams)
 - [Laravel Development](core)
