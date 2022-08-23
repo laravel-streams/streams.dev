@@ -1,0 +1,20 @@
+{
+    "name": "SDK Documentation",
+    "extends": "docs",
+    "url_prefix": "docs/sdk",
+    "path_prefix": "vendor/streams/sdk/docs",
+    "routes": {
+        "view": {
+            "uri": "docs/sdk/{id}",
+            "view": "doc"
+        }
+    },
+    "description": "Documentation for all things contained in the SDK package.",
+    "project": "streams-sdk",
+    "github_docs": "https://github.com/laravel-streams/streams-sdk/blob/1.0/docs",
+    "config": {
+        "source": {
+            "path": "vendor/streams/sdk/docs"
+        }
+    }
+}

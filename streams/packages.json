@@ -34,10 +34,10 @@
             "description": "Extensible, user-friendly, and performant control panel and user interface utilities and services.",
             "docs": "docs/ui/introduction"
         },
-        "streams-dev": {
-            "name": "Streams CLI",
-            "description": "CLI Tooling for Laravel Streams.",
-            "docs": "docs/cli/introduction"
+        "streams-sdk": {
+            "name": "Streams SDK",
+            "description": "Dev tooling for Laravel Streams.",
+            "docs": "docs/sdk/introduction"
         }
     }
 }

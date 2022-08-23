@@ -5,7 +5,6 @@
 /build
 /vendor
 /coverage
-/packages
 /node_modules
 /bower_components
 /addons/*/.git
