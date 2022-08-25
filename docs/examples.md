@@ -2,17 +2,17 @@
 sort: 99
 title: Examples
 category: getting_started
-stage: outlining
-enabled: false
+stage: review
+enabled: true
 ---
 
 Dig into working projects to learn more about how Laravel Streams can be used.
 
-## Kitchen Sink
+## Starter Project
 
-This project is a blank canvas with all the bells and whistles. Fun to explore but may not be fit for a new project stub due to the bells and whistles or general configuration.
+A new Laravel Streams project, ready to go.
 
-- [Kitchen Sink](https://github.com/laravel-streams/streams)
+- [Starter Project](https://github.com/laravel-streams/streams)
 
 ## Todos App
 

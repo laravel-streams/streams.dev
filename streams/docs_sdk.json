@@ -16,5 +16,24 @@
         "source": {
             "path": "vendor/streams/sdk/docs"
         }
+    },
+    "ui": {
+        "cp": {
+            "section": {
+                "parent": "docs",
+                "title": "SDK",
+                "stream": "docs_sdk",
+                "buttons": [
+                    {
+                        "handle": "improve",
+                        "text": "View Docs",
+                        "attributes": {
+                            "target": "_blank",
+                            "url": "/docs/sdk/introduction"
+                        }
+                    }
+                ]
+            }
+        }
     }
 }

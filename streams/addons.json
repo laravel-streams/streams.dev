@@ -14,29 +14,31 @@
     "fields": [
         {
             "handle": "id",
-            "type": "string"
-        },
-        {
-            "handle": "id",
-            "type": "string"
+            "type": "string",
+            "required": true,
+            "input": {
+                "type": "input",
+                "instructions": "A url-fiendly name.",
+                "placeholder": "foo-bar"
+            }
         },
         {
             "handle": "name",
-            "type": "string"
-        },
-        {
-            "handle": "composer",
-            "type": "object",
+            "type": "string",
+            "required": true,
             "input": {
-                "type": "textarea",
-                "attributes": {
-                    "ui:keydown.enter": "test"
-                }
+                "type": "input",
+                "instructions": "A short descriptive name.",
+                "placeholder": "Foo Bar Service"
             }
         },
         {
             "handle": "repository",
-            "type": "string"
+            "type": "string",
+            "rules": [
+                "required",
+                "url"
+            ]
         }
     ],
     "data": {
@@ -143,7 +145,8 @@
         "cp": {
             "section": {
                 "sort_order": -1,
-                "title": "Addons"
+                "title": "Addons",
+                "buttons": [{"handle": "create"}]
             }
         }
     }

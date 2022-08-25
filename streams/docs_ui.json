@@ -16,5 +16,14 @@
         "source": {
             "path": "vendor/streams/ui/docs"
         }
+    },
+    "ui": {
+        "cp": {
+            "section": {
+                "parent": "docs",
+                "title": "UI",
+                "stream": "docs_ui"
+            }
+        }
     }
 }
