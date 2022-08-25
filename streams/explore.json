@@ -29,6 +29,11 @@
         }
     },
     "ui": {
+        "cp": {
+            "section": {
+                "buttons": [{"handle": "create"}]
+            }
+        },
         "tables": {
             "default": {
                 "filters": [

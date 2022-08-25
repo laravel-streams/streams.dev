@@ -16,5 +16,24 @@
         "source": {
             "path": "vendor/streams/api/docs"
         }
+    },
+    "ui": {
+        "cp": {
+            "section": {
+                "title": "API",
+                "parent": "docs",
+                "stream": "docs_api",
+                "buttons": [
+                    {
+                        "handle": "improve",
+                        "text": "View Docs",
+                        "attributes": {
+                            "target": "_blank",
+                            "url": "/docs/api/introduction"
+                        }
+                    }
+                ]
+            }
+        }
     }
 }

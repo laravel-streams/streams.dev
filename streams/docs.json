@@ -14,7 +14,7 @@
             "view": "doc"
         }
     ],
-    
+
     "project": "streams",
     "github_docs": "https://github.com/laravel-streams/streams.dev/blob/master/docs",
 
@@ -120,5 +120,104 @@
             }
         }
     ],
-    "ui": "@streams/ui/docs_ui.json"
+    "ui": {
+        "tables": {
+            "default": {
+                "views": [
+                    {
+                        "handle": "all"
+                    },
+                    {
+                        "handle": "drafts",
+                        "filters": [
+                            {
+                                "handle": "title",
+                                "type": "input"
+                            }
+                        ],
+                        "query": [{ "where": ["stage", "drafting"] }]
+                    }
+                ],
+                "filters": [
+                    {
+                        "handle": "search",
+                        "fields": ["id", "title", "body"]
+                    }
+                ],
+                "columns": [
+                    {
+                        "handle": "id",
+                        "heading": "ID",
+                        "value": "id"
+                    },
+                    {
+                        "handle": "sort",
+                        "value": "sort"
+                    },
+                    {
+                        "handle": "title",
+                        "value": "title"
+                    }
+                ],
+                "buttons": [
+                    {
+                        "text": "Edit",
+                        "handle": "edit",
+                        "attributes": {
+                            "href": "/cp/{request.segments.1}/{entry.id}/edit",
+                            "class": ["a-button", "-red"]
+                        }
+                    },
+                    {
+                        "text": "Code",
+                        "handle": "code",
+                        "attributes": {
+                            "href": "vscode://file{app.base_path}/{stream.path_prefix}/{entry.id}.md",
+                            "class": ["a-button", "-secondary"]
+                        }
+                    },
+                    {
+                        "text": "View",
+                        "handle": "view",
+                        "attributes": {
+                            "target": "_blank",
+                            "href": "/{stream.url_prefix}/{entry.id}",
+                            "class": ["a-button", "-blue"]
+                        }
+                    }
+                ]
+            }
+        },
+        "buttons": [
+            {
+                "handle": "improve",
+                "text": "Improve This Page",
+                "attributes": {
+                    "target": "_blank",
+                    "style": "margin: 1rem;",
+                    "url": "{stream.github_docs}/{entry.id}.md"
+                }
+            }
+        ],
+        "alerts": [
+            {
+                "handle": "default",
+                "text": "This feature is in active development!",
+                "type": "default",
+                "attributes": {
+                    "style": "margin: 1rem;"
+                }
+            }
+        ],
+        "avatars": [
+            {
+                "handle": "default",
+                "type": "red",
+                "img": "https://api.lorem.space/image/face?hash=92048",
+                "attributes": {
+                    "style": "margin: 1rem;"
+                }
+            }
+        ]
+    }
 }
