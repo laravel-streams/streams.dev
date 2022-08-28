@@ -11,7 +11,7 @@
     "dependencies": {
         "@laravel-streams/api": "^1.0",
         "@laravel-streams/core": "^1.0",
-        "alpinejs": "^3.10.3",
+        "alpinejs": "^2.8.0",
         "anchor-js": "^4.3.0",
         "autoprefixer": "^10.2.4",
         "axios": "^0.21",

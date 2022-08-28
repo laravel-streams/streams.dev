@@ -32,6 +32,7 @@ class IndexSearch extends Command
         $docs = Streams::entries('docs')->where('enabled', true)->get()->values();
 
         $docs->each(function ($item) {
+            $item->category = $item->decorate('category')->value();
             $item->href = '/docs/' . $item->id;
             $item->package = 'Streams';
         });
@@ -43,6 +44,7 @@ class IndexSearch extends Command
             $packageDocs = Streams::entries('docs_' . $package)->where('enabled', true)->get();
 
             $packageDocs->each(function ($item) use ($package, $label) {
+                $item->category = $item->decorate('category')->value();
                 $item->href = '/docs/' . $package . '/' . $item->id;
                 $item->package = 'Streams ' . $label;
             });
