@@ -1,3 +1,5 @@
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.6.2"></script>
+
 {{-- {!! Assets::tag('/vendor/streams/core/js/index.js') !!}
 {!! Assets::tag('/vendor/streams/api/js/index.js') !!}
 {!! Assets::tag('/vendor/streams/ui/js/index.js') !!} --}}

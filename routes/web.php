@@ -13,6 +13,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\View;
+use Streams\Core\Support\Facades\Streams;
 
 Route::streams('/', [
     'entry' => 'homepage',
@@ -24,7 +25,3 @@ Route::redirect('discord', 'https://discord.gg/Sh79MvV');
 Route::streams('{entry.path}', [
     'stream' => 'pages',
 ]);
-
-Route::get('/blade/test', function () {
-    return View::make('ui');
-});

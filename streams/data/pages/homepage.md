@@ -6,6 +6,8 @@ enabled: true
 sort: 14
 ---
 
+<style type="text/css">input[type="search"] { background: none !important; }</style>
+
 <div class="flex p-20">
     
     <div>
