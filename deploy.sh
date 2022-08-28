@@ -1,6 +1,9 @@
 # Show Exceptions
 set -e
 
+# Index Search
+php artisan search:index
+
 # Run Tests
 bin/phpunit
 
