@@ -12,7 +12,7 @@
                 const options = {
                     minMatchCharLength: 3,
                     // location: 0,
-                    threshold: 0.5,
+                    threshold: 0.42,
                     // distance: 100,
                     // useExtendedSearch: false,
                     // ignoreLocation: false,
@@ -66,10 +66,12 @@
                             <template x-for="(result, index) in results" :key="index">
                                 <li>
                                     <a x-bind:href="result.item.href" class="block p-3 m-3 hover:bg-gray-100 rounded-lg">
+                                        <strong x-text="result.item.package"></strong>
+                                        <span>&nbsp;>&nbsp;</span>
                                         <strong x-text="result.item.title"></strong>
-                                        <br>
-                                        <small class="font-mono" x-text="result.item.id"></small>
-                                        <br>
+                                        <br x-show="result.item.category">
+                                        <small class="font-mono" x-text="result.item.category"></small>
+                                        <br x-show="result.item.intro">
                                         <small x-text="result.item.intro"></small>
                                     </a>
                                 </li>

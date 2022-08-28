@@ -31,27 +31,24 @@ class IndexSearch extends Command
     {
         $docs = Streams::entries('docs')->where('enabled', true)->get()->values();
 
-        $docs->each(function($item) {
-        
-            $item->body = strip_tags($item->body()->render([
-                'entry' => $item,
-            ]));
-
+        $docs->each(function ($item) {
             $item->href = '/docs/' . $item->id;
+            $item->package = 'Streams';
         });
 
-        $docsCore = Streams::entries('docs_core')->where('enabled', true)->get();
+        $packages = ['core' => 'Core', 'api' => 'API', 'ui' => 'UI', 'sdk' => 'SDK'];
 
-        $docsCore->each(function($item) {
-        
-            $item->body = strip_tags($item->body()->render([
-                'entry' => $item,
-            ]));
+        foreach ($packages as $package => $label) {
 
-            $item->href = '/docs/core/' . $item->id;
-        });
+            $packageDocs = Streams::entries('docs_' . $package)->where('enabled', true)->get();
 
-        $docs = $docs->merge($docsCore->values());
+            $packageDocs->each(function ($item) use ($package, $label) {
+                $item->href = '/docs/' . $package . '/' . $item->id;
+                $item->package = 'Streams ' . $label;
+            });
+
+            $docs = $docs->merge($packageDocs->values());
+        }
 
         file_put_contents($docsIndex = public_path('docs.json'), $docs->toJson());
 
