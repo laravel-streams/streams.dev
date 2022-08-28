@@ -1,47 +1,3 @@
-<script>
-    const searchComponent = function () {
-        return {
-            q: null,
-            results: [],
-            search: async function () {
-
-                const response = await fetch("{{ URL::to('docs.json') }}");
-                
-                const list = await response.json();
-
-                const options = {
-                    minMatchCharLength: 3,
-                    // location: 0,
-                    threshold: 0.42,
-                    // distance: 100,
-                    // useExtendedSearch: false,
-                    // ignoreLocation: false,
-                    // ignoreFieldNorm: false,
-                    // fieldNormWeight: 1,
-                    keys: [
-                        "id",
-                        "title",
-                        "intro",
-                        "body"
-                        ]
-                };
-
-                if (!this.q || this.q.length < 3) {
-                    return;
-                }
-
-                const fuse = new Fuse(list, options);
-
-                this.results = results = fuse.search(this.q);
-            },
-            close: function () {
-                this.q = null;
-                this.results = [];
-            }
-        }
-    }
-</script>
-
 <header>
 
     <div class="flex items-center justify-between px-16 py-6">
@@ -100,3 +56,48 @@
     </div>
 
 </header>
+
+<script>
+    const searchComponent = function () {
+        return {
+            q: null,
+            results: [],
+            search: async function () {
+
+                const response = await fetch("{{ URL::to('docs.json') }}");
+                
+                const list = await response.json();
+
+                const options = {
+                    minMatchCharLength: 3,
+                    // location: 0,
+                    threshold: 0.5,
+                    // distance: 100,
+                    // useExtendedSearch: false,
+                    // ignoreLocation: false,
+                    // ignoreFieldNorm: false,
+                    // fieldNormWeight: 1,
+                    keys: [
+                        "id",
+                        "title",
+                        "intro",
+                        "body"
+                        ]
+                };
+
+                if (!this.q || this.q.length < 3) {
+                    return;
+                }
+
+                const fuse = new Fuse(list, options);
+
+                this.results = results = fuse.search(this.q);
+                console.log(results);
+            },
+            close: function () {
+                this.q = null;
+                this.results = [];
+            }
+        }
+    }
+</script>
