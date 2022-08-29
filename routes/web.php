@@ -12,8 +12,6 @@
 */
 
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\View;
-use Streams\Core\Support\Facades\Streams;
 
 Route::streams('/', [
     'entry' => 'homepage',
