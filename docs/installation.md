@@ -21,27 +21,24 @@ Please ensure one of the following libraries is installed in order to support [i
 
 ## New Projects
 
-For new projects, the fastest way to get up and running is a new Laravel and Streams installation:
-<!-- @todo need other examples (laragon, homestead) -->
+For new projects, the fastest way to get up and running is the [Streams starter project](/docs/examples):
+
 ```bash
-composer create laravel/laravel newproject
+composer create-project streams/streams:1.0.x-dev
 
-cd newproject
-
-composer require streams/core:2.0.x-dev
+cd streams
 
 php artisan serve
 ```
 
-Learn more about Streams Core in [documentation](/docs/core/introduction).
+### Included Packages
 
+The following packages are installed with the starter project:
 
-### Additional Packages
-
-You may also want to consider using the following packages:
-
+- [streams/core](/docs/core/introduction)
 - [streams/api](/docs/api/introduction)
 - [streams/ui](/docs/ui/introduction)
+- [streams/sdk](/docs/sdk/introduction)
 
 <!-- ### Dev Packages
 
