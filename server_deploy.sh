@@ -13,7 +13,7 @@ echo "Deploying application..."
 
     php artisan queue:restart
 
-    php artisan optimize
+    # php artisan optimize
 
 php artisan up
 
