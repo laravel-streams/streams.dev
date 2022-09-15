@@ -20,13 +20,13 @@
         "blade-ui-kit/blade-heroicons": "^1.3",
         "owenvoke/blade-fontawesome": "^2.0",
         "streams/core": "^2.0",
-        "streams/sdk": "^1.0",
         "streams/api": "^1.0",
         "streams/ui": "^1.0"
     },
     "require-dev": {
-        "laravel/tinker": "^2.2",
+        "streams/sdk": "^1.0",
         "streams/testing": "^1.0",
+        "laravel/tinker": "^2.2",
         "phpunit/phpunit": "^9.5.10",
         "spatie/laravel-ignition": "^1.0",
         "spatie/laravel-web-tinker": "^1.7",

@@ -10,7 +10,7 @@ sort: 2
 
 Enhancing Laravel is a fundamental aspect of Streams Core. Laravel enhancement facilitates internal core functionality and supports developers when building their work.
 
-> [CLI Tooling Documentation](/docs/cli/introduction)
+> [SDK Documentation](/docs/sdk/introduction)
 
 ### Laravel Basics
 
