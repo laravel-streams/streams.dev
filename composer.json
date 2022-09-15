@@ -25,8 +25,8 @@
     },
     "require-dev": {
         "streams/sdk": "^1.0",
-        "laravel/tinker": "^2.2",
         "streams/testing": "^1.0",
+        "laravel/tinker": "^2.2",
         "phpunit/phpunit": "^9.5.10",
         "spatie/laravel-ignition": "^1.0",
         "spatie/laravel-web-tinker": "^1.7",
