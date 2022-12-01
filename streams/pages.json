@@ -12,7 +12,7 @@
             "handle": "view",
             "uri": "{uri}",
             "parse": true,
-            "template": "page"
+            "view": "page"
         }
     ],
     "fields": [
