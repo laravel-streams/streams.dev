@@ -1,48 +1,30 @@
 {
-    "name": "Navigation",
-    "handle": "navigation",
-    "description": "Navigation for the website.",
+    "name": "Pages",
+    "handle": "pages",
+    "description": "Basic pages for the website.",
     "config": {
         "source": {
-            "type": "self"
+            "format": "html"
         }
     },
-    "routes": [],
+    "routes": [
+        {
+            "handle": "view",
+            "uri": "{uri}",
+            "parse": true,
+            "template": "page"
+        }
+    ],
     "fields": [
         {
             "handle": "id",
-            "type": "integer",
+            "type": "slug",
             "required": true,
-            "unique": true,
-            "config": {
-                "default": "increment"
-            }
+            "unique": true
         },
         {
-            "handle": "icon",
-            "type": "select",
-            "required": true,
-            "config": {
-                "options": {
-                    "book": "Book",
-                    "globe": "Globe",
-                    "login": "Login",
-                    "terminal": "Terminal"
-                }
-            }
-        },
-        {
-            "handle": "title",
-            "type": "string",
-            "required": true
-        },
-        {
-            "handle": "url",
+            "handle": "body",
             "type": "string"
-        },
-        {
-            "handle": "description",
-            "type": "markdown"
         }
     ],
     "ui": {

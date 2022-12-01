@@ -1,51 +1,34 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-
-<head>
-    @include('partials.head')
-
-    @php
-    $support = [
-    'content',
-    'app',
-    'api',
-    'product',
-    'developers',
-    'team',
-    'research',
-    'prototyping',
-    'making',
-    ];
-    @endphp
-</head>
-
-<body class="pb-24 antialiased">
+---
+title: Laravel Streams
+uri: /
+---
+<div class="pb-24">
 
     <section class="pt-24">
         <div class="logo">
             {!! Assets::contents('public::img/logo.svg') !!}
         </div>
     </section>
-
+    
     <section class="container mx-auto max-w-5xl text-center pt-24 px-8">
         <div class="text-7xl font-bold leading-snug">The platform for all of your Laravel development.
         </div>
     </section>
-
+    
     <section class="container mx-auto max-w-7xl text-center pt-24 px-8">
         <p class="text-xl">Laravel Streams provides an optimized foundation and workflow for <span
                 class="font-bold">Laravel development</span>.</p>
     </section>
-
+    
     <section class="container mx-auto max-w-3xl text-center pt-24 px-8">
         <pre class="bg-black text-white p-8 rounded font-mono"><code>composer create-project streams/streams:1.0.x-dev
-
-cd streams
-
-php artisan serve</code>
-</pre>
+    
+    cd streams
+    
+    php artisan serve</code>
+    </pre>
     </section>
-
+    
     <section class="container mx-auto max-w-7xl text-center pt-24 px-8">
         <a href="/docs" class="relative px-6 py-2 group">
             <span
@@ -55,6 +38,4 @@ php artisan serve</code>
         </a>
     </section>
 
-</body>
-
-</html>
+</div>

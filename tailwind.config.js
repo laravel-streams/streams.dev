@@ -6,17 +6,13 @@ module.exports = {
     content: [
       './storage/framework/views/*.php',
       './resources/**/*.blade.php',
+      './streams/data/**/*.html',
       './docs/*.md',
     ],
     options: {
       whitelist: [],
     }
   },
-  content: [
-    './storage/framework/views/*.php',
-    './resources/**/*.blade.php',
-    './docs/*.md',
-  ],
   theme: {
     extend: {
       fontFamily: {
