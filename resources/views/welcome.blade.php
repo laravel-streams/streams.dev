@@ -14,6 +14,7 @@
     'team',
     'research',
     'prototyping',
+    'making',
     ];
     @endphp
 </head>
