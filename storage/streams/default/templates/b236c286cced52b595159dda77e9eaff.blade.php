@@ -1,7 +1,4 @@
----
-title: Laravel Streams
-uri: /
----
+
 <div class="pb-24">
 
     <section class="pt-24">

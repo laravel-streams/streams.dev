@@ -1,7 +1,4 @@
----
-title: Laravel Streams
-uri: /
----
+
 <div class="pb-24">
 
     <section class="pt-24">
@@ -10,7 +7,7 @@ uri: /
         </div>
     </section>
     
-    <section class="container mx-auto max-w-5xl text-center pt-24 px-8">
+    <section class="container mx-auto max-w-7xl text-center pt-24 px-8">
         <div class="text-7xl font-bold leading-snug">The platform for all of your Laravel development.
         </div>
     </section>
