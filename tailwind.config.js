@@ -18,7 +18,11 @@ module.exports = {
     './docs/*.md',
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        'mono': ['monospace']
+      }
+    }
   },
   plugins: [],
 }

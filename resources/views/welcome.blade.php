@@ -19,7 +19,7 @@
     @endphp
 </head>
 
-<body class="pb-24">
+<body class="pb-24 antialiased">
 
     <section class="pt-24">
         <div class="logo">
@@ -27,8 +27,8 @@
         </div>
     </section>
 
-    <section class="container mx-auto max-w-7xl text-center pt-24 px-8">
-        <div class="text-7xl font-bold uppercase">The Laravel platform for your {{ $support[array_rand($support)] }}
+    <section class="container mx-auto max-w-5xl text-center pt-24 px-8">
+        <div class="text-7xl font-bold leading-snug">The platform for all of your Laravel development.
         </div>
     </section>
 
@@ -38,7 +38,7 @@
     </section>
 
     <section class="container mx-auto max-w-3xl text-center pt-24 px-8">
-        <pre class="bg-black text-white p-4 rounded-sm"><code>composer create-project streams/streams:1.0.x-dev
+        <pre class="bg-black text-white p-8 rounded font-mono"><code>composer create-project streams/streams:1.0.x-dev
 
 cd streams
 
