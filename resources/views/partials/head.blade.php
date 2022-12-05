@@ -4,5 +4,3 @@
 <title>{{ config('app.name') }}</title>
 
 <link rel="icon" type="image/png" href="favicon.png" />
-
-@vite(['resources/js/app.js'])
