@@ -16,9 +16,9 @@ uri: /
         </div>
     </section>
     
-    <section class="container mx-auto max-w-7xl text-center pt-24 px-8">
-        <p class="text-xl">Streams provides an optimized foundation, tools, and workflow for <span
-                class="font-bold">Laravel development</span>.</p>
+    <section class="container mx-auto max-w-3xl text-center pt-24 px-8">
+        <p class="text-xl">The Streams platform provides an optimized foundation and workflow with cohesive tools and services for <span
+                class="font-bold">Laravel developers</span>.</p>
     </section>
     
     <section class="container mx-auto max-w-3xl text-center pt-24 px-8">
@@ -29,13 +29,31 @@ uri: /
     php artisan serve</code></pre>
     </section>
     
-    <section class="container mx-auto max-w-7xl text-center pt-24 px-8">
+    <!-- <section class="container mx-auto max-w-7xl text-center pt-24 px-8">
         <a href="/docs" class="relative px-6 py-2 group">
             <span
                 class="absolute inset-0 w-full h-full transition duration-300 ease-out transform translate-x-1 translate-y-1 bg-black group-hover:-translate-x-0 group-hover:-translate-y-0"></span>
             <span class="absolute inset-0 w-full h-full bg-white border-2 border-black"></span>
             <span class="relative text-black">Documentation</span>
         </a>
+    </section> -->
+
+    <section class="container mx-auto max-w-7xl text-center pt-24 px-8 grid grid-cols-4 gap-4">
+        @foreach(Streams::repository('packages')->all() as $package)
+        <div class="p-4 flex flex-col bg-gray-50 rounded hover:bg-gray-100 transition">
+            <h3 class="text-2xl mb-2">{{ $package->name }}</h3>
+            <div class="font-mono mb-2">{{ $package->composer->name }}</div>
+            <p class="text-md mb-8 flex-grow">{{ $package->composer->description }}</p>
+            <div class="pb-4">
+                <a href="/docs/{{ $package->composer->name }}" class="relative px-6 py-2 group">
+                    <span
+                        class="absolute inset-0 w-full h-full transition duration-300 ease-out transform translate-x-1 translate-y-1 bg-black group-hover:-translate-x-0 group-hover:-translate-y-0"></span>
+                    <span class="absolute inset-0 w-full h-full bg-white border-2 border-black"></span>
+                    <span class="relative text-black">Documentation</span>
+                </a>
+            </div>
+        </div>
+        @endforeach
     </section>
 
 </div>

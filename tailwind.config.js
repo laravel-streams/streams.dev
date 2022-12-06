@@ -11,6 +11,8 @@ module.exports = {
     './storage/framework/views/*.php',
     './resources/**/*.blade.php',
     './streams/data/**/*.html',
+    './streams/data/**/*.json',
+    './streams/*.json',
     './docs/*.md',
   ],
   theme: {
