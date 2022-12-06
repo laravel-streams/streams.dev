@@ -13,4 +13,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::view('/ui', 'ui');
+// Route::get('/', function () {
+//     return view('welcome');
+// });
