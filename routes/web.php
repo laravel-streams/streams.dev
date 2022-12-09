@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Streams\Core\Support\Facades\Streams;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +14,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get('docs/{vendor}/{package}', function ($vendor, $package) {
+    
+    $package = Streams::entries('packages')->where('composer.name', "$vendor/$package")->first();
+
+    dd($package);
+});
