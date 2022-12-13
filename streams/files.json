@@ -14,12 +14,12 @@
             "view": "files"
         },
         {
-            "handle": "data",
-            "uri": "files/{id}",
+            "handle": "view",
+            "uri": "files\/{id}",
             "view": "file"
         },
         {
-            "handle": "view",
+            "handle": "render",
             "uri": "file/{id}",
             "uses": "App\\Http\\Controllers\\ViewFile"
         }
@@ -36,6 +36,42 @@
         },
         {
             "handle": "path",
+            "type": "string",
+            "required": true
+        },
+        {
+            "handle": "is_dir",
+            "type": "boolean",
+            "required": true
+        },
+        {
+            "handle": "disk",
+            "type": "string",
+            "required": true
+        },
+        {
+            "handle": "name",
+            "type": "string",
+            "required": true
+        },
+        {
+            "handle": "size",
+            "type": "integer"
+        },
+        {
+            "handle": "mime_type",
+            "type": "string"
+        },
+        {
+            "handle": "visibility",
+            "type": "string"
+        },
+        {
+            "handle": "last_modified",
+            "type": "datetime"
+        },
+        {
+            "handle": "extension",
             "type": "string"
         }
     ],
@@ -66,11 +102,11 @@
                         }
                     },
                     {
-                        "handle": "view",
+                        "handle": "render",
                         "attributes": {
                             "href": "/file/{entry.id}",
                             "target": "_blank",
-                            "class": ["a-button", "-red"]
+                            "class": ["a-button", "-secondary"]
                         }
                     }
                 ],
