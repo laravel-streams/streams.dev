@@ -1,0 +1,74 @@
+{
+    "default": {
+        "id": "default",
+        "font_size": 2,
+        "spacing": 1,
+        "radius": 1,
+        "dark": "#000000",
+        "light": "#f5f5f5",
+        "primary": "#4e42d9",
+        "secondary": "#1f1f1f"
+    },
+    "dark": {
+        "id": "dark",
+        "spacing": 1,
+        "radius": 1,
+        "dark": "#b8b8b8",
+        "white": "#181818",
+        "light": "#030306",
+        "primary": "#212226",
+        "secondary": "#343833",
+        "text": "#a6a6a6",
+        "buttons": "#f5f5f5",
+        "black": "#000000"
+    },
+    "green": {
+        "id": "green",
+        "spacing": 1,
+        "radius": 1,
+        "dark": "#000000",
+        "light": "#f5f5f5",
+        "primary": "#30ad51",
+        "secondary": "#1f1f1f"
+    },
+    "blue": {
+        "id": "blue",
+        "spacing": 1,
+        "radius": 1,
+        "dark": "#000000",
+        "light": "#f5f5f5",
+        "primary": "#2C4E82",
+        "secondary": "#1f1f1f"
+    },
+    "orange": {
+        "id": "orange",
+        "spacing": 1,
+        "radius": 1,
+        "light": "#f5f5f5",
+        "dark": "#000000",
+        "primary": "#f37021",
+        "secondary": "#737478"
+    },
+    "light": {
+        "id": "light",
+        "spacing": 1,
+        "radius": 1,
+        "light": "#f5f5f5",
+        "dark": "#828282",
+        "primary": "#ffffff",
+        "secondary": "#bababa",
+        "white": "#ffffff",
+        "black": "#000000",
+        "text": "#616161",
+        "buttons": "#000000"
+    },
+    "beta3": {
+        "id": "beta3",
+        "spacing": 1,
+        "radius": 1,
+        "light": "#f5f5f5",
+        "dark": "#000000",
+        "primary": "#f2364b",
+        "secondary": "#737478"
+    }
+}

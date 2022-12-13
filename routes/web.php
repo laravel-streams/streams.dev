@@ -20,3 +20,5 @@ Route::get('docs/{vendor}/{package}', function ($vendor, $package) {
 
     dd($package);
 });
+
+Route::view('api-test', 'api');

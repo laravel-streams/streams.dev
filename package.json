@@ -15,6 +15,7 @@
         "vite": "^3.0.0"
     },
     "dependencies": {
+        "@laravel-streams/api-client": "https://github.com/laravel-streams/api-client/tarball/develop",
         "alpinejs": "^3.10.3"
     }
 }

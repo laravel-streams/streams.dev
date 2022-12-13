@@ -1,0 +1,11 @@
+{
+    "path": "test.json",
+    "is_dir": false,
+    "disk": "local",
+    "name": "test.json",
+    "size": 29,
+    "mime_type": "application\/json",
+    "visibility": "public",
+    "last_modified": 1670740196,
+    "extension": "json"
+}

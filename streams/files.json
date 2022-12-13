@@ -1,24 +1,27 @@
 {
     "name": "Files",
     "handle": "files",
-    "description": "Basic filesystem cache for the website.",
+    "description": "Basic filesystem cache.",
     "config": {
         "source": {
-            "type": "self"
+            "format": "json"
         }
     },
     "routes": [
         {
             "handle": "view",
             "uri": "files",
-            "parse": true,
             "view": "files"
         },
         {
-            "handle": "view",
-            "uri": "files\/{id}",
-            "parse": true,
+            "handle": "data",
+            "uri": "files/{id}",
             "view": "file"
+        },
+        {
+            "handle": "view",
+            "uri": "file/{id}",
+            "uses": "App\\Http\\Controllers\\ViewFile"
         }
     ],
     "fields": [
@@ -55,11 +58,19 @@
                         "handle": "edit"
                     },
                     {
-                        "handle": "view",
+                        "handle": "data",
                         "attributes": {
                             "href": "/files/{entry.id}",
                             "target": "_blank",
                             "class": ["a-button", "-secondary"]
+                        }
+                    },
+                    {
+                        "handle": "view",
+                        "attributes": {
+                            "href": "/file/{entry.id}",
+                            "target": "_blank",
+                            "class": ["a-button", "-red"]
                         }
                     }
                 ],
@@ -84,85 +95,5 @@
                 ]
             }
         ]
-    },
-    "data": {
-        "0c822f4c-ad79-4b09-8227-937fbdc8c064": {
-            "id": "0c822f4c-ad79-4b09-8227-937fbdc8c064",
-            "disk": "local",
-            "is_dir": true,
-            "path": "public",
-            "name": "public",
-            "visibility": "public",
-            "last_modified": 1670739125
-        },
-        "9c4d8bb1-2379-401d-9c0d-d814ee41ff9c": {
-            "id": "9c4d8bb1-2379-401d-9c0d-d814ee41ff9c",
-            "path": ".gitignore",
-            "is_dir": false,
-            "disk": "local",
-            "name": ".gitignore",
-            "size": 23,
-            "mime_type": false,
-            "visibility": "public",
-            "last_modified": 1669146430,
-            "extension": "gitignore"
-        },
-        "d9fec2c1-882a-49aa-9308-3dc2fc215675": {
-            "id": "d9fec2c1-882a-49aa-9308-3dc2fc215675",
-            "path": "Seinfeld_1.jpg",
-            "is_dir": false,
-            "disk": "local",
-            "name": "Seinfeld_1.jpg",
-            "size": 139843,
-            "mime_type": "image\/jpeg",
-            "visibility": "public",
-            "last_modified": 1670733171,
-            "extension": "jpg"
-        },
-        "d9fe9fc5-b3de-4218-bac9-b1b4bce2b4df": {
-            "id": "d9fe9fc5-b3de-4218-bac9-b1b4bce2b4df",
-            "path": "Seinfeld_2.gif",
-            "is_dir": false,
-            "disk": "local",
-            "name": "Seinfeld_2.gif",
-            "size": 3057075,
-            "mime_type": "image\/gif",
-            "visibility": "public",
-            "last_modified": 1670733171,
-            "extension": "gif"
-        },
-        "56a6b8e9-5dec-4cb4-b3e8-9361cdf469c3": {
-            "id": "56a6b8e9-5dec-4cb4-b3e8-9361cdf469c3",
-            "path": "public\/.gitignore",
-            "is_dir": false,
-            "disk": "local",
-            "name": ".gitignore",
-            "size": 14,
-            "mime_type": false,
-            "visibility": "public",
-            "last_modified": 1669146430,
-            "extension": "gitignore"
-        },
-        "65c95c81-3f53-41c6-8158-378ac7d17036": {
-            "id": "65c95c81-3f53-41c6-8158-378ac7d17036",
-            "disk": "local",
-            "is_dir": true,
-            "path": "public\/img",
-            "name": "img",
-            "visibility": "public",
-            "last_modified": 1670739108
-        },
-        "7921dc96-11a2-4794-8e97-cf1d100f39d0": {
-            "id": "7921dc96-11a2-4794-8e97-cf1d100f39d0",
-            "path": "test.json",
-            "is_dir": false,
-            "disk": "local",
-            "name": "test.json",
-            "size": 14,
-            "mime_type": "application\/json",
-            "visibility": "public",
-            "last_modified": 1670740120,
-            "extension": "json"
-        }
     }
 }
