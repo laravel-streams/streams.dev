@@ -1,6 +1,8 @@
 ---
 title: Laravel Streams
 uri: /
+layout: blank
+nav_disabled: true
 ---
 
 <div class="pb-24">
@@ -10,7 +12,7 @@ uri: /
 
     <section class="container mx-auto max-w-5xl text-center pt-24 px-8">
         <div class="text-7xl font-bold leading-snug">
-            Explore our unified Laravel composer packages.
+            Unified Laravel composer packages.
         </div>
     </section>
 
@@ -55,7 +57,7 @@ uri: /
         class="container mx-auto max-w-7xl text-center pt-24 px-8 flex flex-wrap justify-center"
     >
         @foreach(Streams::entries('packages')->where('type', 'IN', ['starter',
-        'example'])->get() as $package)
+        'example'])->where('enabled', true)->get() as $package)
         <div class="w-1/4 flex">
             <div
                 class="p-4 flex flex-col rounded transition border border-black m-2"
@@ -98,7 +100,7 @@ uri: /
         class="container mx-auto max-w-7xl text-center pt-24 px-8 flex flex-wrap justify-center"
     >
         @foreach(Streams::entries('packages')->where('type', 'NOT IN', ['starter',
-        'example'])->get() as $package)
+        'example'])->where('enabled', true)->get() as $package)
         <div class="w-1/4 flex">
             <div
                 class="p-4 w-full flex flex-col rounded transition border border-black m-2"

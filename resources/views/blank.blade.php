@@ -7,8 +7,6 @@
 
 <body class="antialiased">
 
-    @include('partials.topbar')
-    
     {!! View::parse($entry->body) !!}
 
     @vite(['resources/js/app.js'])

@@ -1,0 +1,31 @@
+---
+title: Addons
+uri: addons
+layout: page
+sort_order: 2
+---
+
+@php 
+$packages = Streams::entries('packages')->where('enabled', true)->orderBy('sort_order', 'ASC')->get();
+@endphp
+
+@foreach($packages->groupBy('type')->keys()->sort() as $type)
+
+@if($type)
+<h1 class="container mx-auto text-center text-4xl font-bold mt-20">{{ Str::title($type) }}</h1>
+@endif
+
+<section class="container mx-auto max-w-5xl text-center pt-24 px-8 flex flex-wrap">
+    @foreach($packages->where('type', $type) as $package)
+    <div class="w-1/4 flex">
+        <a href="/addons/{{ $package->composer->name }}" class="p-4 flex flex-col rounded transition border m-2 hover:shadow-2xl hover:border-black border-transparent">
+            <h3 class="text-2xl mb-2 font-bold">{{ $package->name }}</h3>
+            <div class="font-mono mb-2">{{ $package->composer->name }}</div>
+            <p class="text-md mb-8 flex-grow">
+                {{ $package->composer->description }}
+            </p>
+        </a>
+    </div>
+    @endforeach
+</section>
+@endforeach

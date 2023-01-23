@@ -14,11 +14,4 @@ use Streams\Core\Support\Facades\Streams;
 |
 */
 
-Route::get('docs/{vendor}/{package}', function ($vendor, $package) {
-    
-    $package = Streams::entries('packages')->where('composer.name', "$vendor/$package")->first();
-
-    dd($package);
-});
-
 Route::view('api-test', 'api');

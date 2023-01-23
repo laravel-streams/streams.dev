@@ -1,0 +1,14 @@
+---
+title: Addon
+uri: addons/{vendor}/{name}
+layout: page
+sort_order: 2
+nav_disabled: true
+---
+@php
+$addon = Streams::packages()->where('composer.name', Request::route('vendor') .'/'.Request::route('name'))->first();
+@endphp
+
+<h1 class="text-6xl">Test: {{ $addon->name }}</h1>
+
+<code><pre>{{ json_encode($addon->composer, JSON_PRETTY_PRINT) }}</pre></code>

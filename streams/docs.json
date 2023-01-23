@@ -1,7 +1,7 @@
 {
-    "name": "Pages",
-    "handle": "pages",
-    "description": "Basic pages for the website.",
+    "name": "Docs",
+    "handle": "docs",
+    "description": "Basic docs for the project.",
     "config": {
         "source": {
             "format": "html"
@@ -10,9 +10,8 @@
     "routes": [
         {
             "handle": "view",
-            "uri": "{uri}",
-            "parse": true,
-            "view": "{layout}"
+            "uri": "docs/{id}",
+            "view": "docs"
         }
     ],
     "fields": [
@@ -23,30 +22,61 @@
             "unique": true
         },
         {
+            "handle": "sort_order",
+            "type": "integer",
+            "config": {
+                "default": "increment"
+            }
+        },
+        {
+            "handle": "category",
+            "type": "string"
+        },
+        {
             "handle": "title",
             "type": "string"
         },
         {
-            "handle": "uri",
-            "type": "string"
+            "handle": "description",
+            "type": "string",
+            "input": {
+                "type": "textarea"
+            }
         },
         {
             "handle": "body",
-            "type": "string"
+            "type": "string",
+            "input": {
+                "type": "editor"
+            }
         }
     ],
     "ui": {
+        "cp": {
+            "section": {
+                "buttons": [{ "handle": "create" }]
+            }
+        },
         "tables": [
             {
                 "handle": "default",
-                "columns": [
+                "filters": [
                     {
                         "handle": "title"
                     }
                 ],
+                "columns": [{ "handle": "title" }, { "handle": "category" }],
                 "buttons": [
                     {
                         "handle": "edit"
+                    },
+                    {
+                        "handle": "view",
+                        "attributes": {
+                            "href": "/docs/{entry.id}",
+                            "target": "_blank",
+                            "class": ["a-button", "-secondary"]
+                        }
                     }
                 ]
             }
