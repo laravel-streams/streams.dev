@@ -30,6 +30,13 @@
         },
         {
             "handle": "category",
+            "type": "relationship",
+            "config": {
+                "related": "docs_categories"
+            }
+        },
+        {
+            "handle": "status",
             "type": "string"
         },
         {
@@ -65,7 +72,11 @@
                         "handle": "title"
                     }
                 ],
-                "columns": [{ "handle": "title" }, { "handle": "category" }],
+                "columns": [
+                    { "handle": "title" },
+                    { "handle": "category" },
+                    { "handle": "status" }
+                ],
                 "buttons": [
                     {
                         "handle": "edit"

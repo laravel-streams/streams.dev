@@ -1,0 +1,98 @@
+{
+    "name": "Docs Categories",
+    "handle": "docs_categories",
+    "description": "Categories for documentation.",
+    "config": {
+        "source": {
+            "type": "self"
+        }
+    },
+    "fields": [
+        {
+            "handle": "id",
+            "type": "slug",
+            "required": true,
+            "unique": true
+        },
+        {
+            "handle": "sort_order",
+            "type": "integer",
+            "config": {
+                "default": "increment"
+            }
+        },
+        {
+            "handle": "name",
+            "type": "string"
+        },
+        {
+            "handle": "description",
+            "type": "string",
+            "input": {
+                "type": "textarea"
+            }
+        }
+    ],
+    "ui": {
+        "cp": {
+            "section": {
+                "parent": "docs",
+                "title": "Categories",
+                "buttons": [
+                    {
+                        "handle": "create"
+                    }
+                ]
+            }
+        },
+        "tables": [
+            {
+                "handle": "default",
+                "filters": [
+                    {
+                        "handle": "name"
+                    }
+                ],
+                "columns": [
+                    {
+                        "handle": "name"
+                    },
+                    {
+                        "handle": "sort_order"
+                    }
+                ],
+                "buttons": [
+                    {
+                        "handle": "edit"
+                    }
+                ]
+            }
+        ]
+    },
+    "data": {
+        "getting-started": {
+            "id": "getting-started",
+            "sort_order": 1,
+            "name": "Getting Started",
+            "description": "Download, install, and start working with Streams."
+        },
+        "basics": {
+            "id": "basics",
+            "sort_order": 2,
+            "name": "The Basics",
+            "description": "Common usage, use cases, and services explored."
+        },
+        "advanced": {
+            "id": "advanced",
+            "sort_order": 3,
+            "name": "Advanced",
+            "description": "Take Streams further with advanced features."
+        },
+        "development": {
+            "sort_order": 4,
+            "id": "development",
+            "name": "Developers",
+            "description": "Advanced topics for Streams developers."
+        }
+    }
+}

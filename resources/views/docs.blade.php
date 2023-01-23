@@ -8,8 +8,18 @@
 <body class="antialiased">
 
     @include('partials.topbar')
+    
+    <main class="container mx-auto flex">
+        
+        @if (Request::segment(2))
+        @include('partials.sidebar')
+        @endif
 
-    {!! View::parse($entry->body) !!}
+        <div>
+            {!! View::parse($entry->body) !!}
+        </div>
+
+    </main>
 
     @vite(['resources/js/app.js'])
     
