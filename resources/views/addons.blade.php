@@ -5,18 +5,16 @@
     @include('partials.head')
 </head>
 
-<body class="antialiased">
+<body class="antialiased bg-slate-50">
 
     @include('partials.topbar')
     
-    <main class="container mx-auto  flex">
+    <main class="container mx-auto flex">
         
-        @if (Request::segment(2))
-        @include('partials.sidebar')
-        @endif
+        @include('partials.filters')
 
-        <div class="pt-8">
-            {!! View::parse(Str::markdown($entry->body)) !!}
+        <div>
+            {!! View::parse($entry->body) !!}
         </div>
 
     </main>

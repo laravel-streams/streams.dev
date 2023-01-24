@@ -1,6 +1,10 @@
 <aside class="w-60">
     <div class="py-4">
 
+        <a href="/docs" class="text-xl font-bold">Addons</a>
+
+        <br>
+
         <ul>
             @foreach(Streams::entries('docs_categories')->orderBy('sort_order', 'ASC')->get() as $category)
             <li class="mt-4">

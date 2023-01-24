@@ -166,7 +166,7 @@
         },
         "9b5325a8-d9e9-41e3-83a9-12148c96fb33": {
             "id": "9b5325a8-d9e9-41e3-83a9-12148c96fb33",
-            "name": "Core",
+            "name": "Streams Core",
             "composer": {
                 "name": "streams/core",
                 "type": "streams-addon",
@@ -221,7 +221,7 @@
         },
         "37827860-e930-49df-b7dc-fb881bd66557": {
             "id": "37827860-e930-49df-b7dc-fb881bd66557",
-            "name": "UI",
+            "name": "Streams UI",
             "composer": {
                 "name": "streams/ui",
                 "type": "streams-addon",
@@ -272,7 +272,7 @@
         },
         "7a4fa5f0-7d02-4fbe-8825-9af8415155af": {
             "id": "7a4fa5f0-7d02-4fbe-8825-9af8415155af",
-            "name": "API",
+            "name": "Streams API",
             "composer": {
                 "name": "streams/api",
                 "description": "A RESTful API for Laravel Streams.",
@@ -320,7 +320,7 @@
         },
         "75a5fd1f-d9f5-46fe-81a9-fe1f1ccc0129": {
             "id": "75a5fd1f-d9f5-46fe-81a9-fe1f1ccc0129",
-            "name": "SDK",
+            "name": "Streams SDK",
             "composer": {
                 "name": "streams/sdk",
                 "description": "Dev tools for Laravel + Streams.",
@@ -475,7 +475,7 @@
         },
         "a659ec13-6b73-460d-a3a6-512aa0809f43": {
             "id": "a659ec13-6b73-460d-a3a6-512aa0809f43",
-            "name": "CMS",
+            "name": "Streams CMS",
             "type": "starter",
             "enabled": true,
             "composer": {
