@@ -5,11 +5,11 @@
     @include('partials.head')
 </head>
 
-<body class="antialiased">
+<body class="antialiased bg-gray-50">
 
     @include('partials.topbar')
     
-    <main class="container mx-auto  flex">
+    <main class="container mx-auto flex mt-4">
         
         @if (Request::segment(2))
         @include('partials.sidebar')

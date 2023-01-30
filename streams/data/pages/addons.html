@@ -9,9 +9,10 @@ sort_order: 2
 $packages = Streams::entries('packages')->where('enabled', true)->orderBy('sort_order', 'ASC')->get();
 @endphp
 
-<section class="flex flex-wrap flex-grow">
+<section class="flex flex-wrap">
     @foreach($packages as $package)
-    <div class="w-1/3 p-4 m-4 bg-white rounded-sm shadow-sm hover:shadow-slate-300 hover:border-black border border-transparent border-dashed">
+    <div class="w-1/2 mb-4">
+    <div class="p-4 m-2 h-full bg-white rounded-sm shadow-sm hover:shadow-slate-300 hover:border-black border border-transparent border-dashed">
         <a title="View {{ $package->name }} addon details." href="/addons/{{ $package->composer->name }}" class="flex flex-col h-full transition">
             <h3 class="text-2xl mb-2 font-bold">
                 <span class="sr-only">Name: </span>{{ $package->name }}
@@ -19,13 +20,16 @@ $packages = Streams::entries('packages')->where('enabled', true)->orderBy('sort_
             <div class="font-mono mb-4 border-b pb-4">
                 <span class="sr-only">Package: </span>{{ $package->composer->name }}
             </div>
+            @if ($package->author)
             <div class="mb-2 font-bold">
-                <span class="lowercase text-gray-400">By</span> Fundamental LLC
+                Fundamental LLC
             </div>
+            @endif
             <p class="text-sm mb-8 flex-grow">
                 {{ $package->composer->description }}
             </p>
         </a>
+    </div>
     </div>
     @endforeach
 </section>

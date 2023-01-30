@@ -1,5 +1,5 @@
 <aside class="w-60">
-    <div class="py-4">
+    <div class="py-4 w-60">
 
         <ul>
             @foreach(Streams::entries('docs_categories')->orderBy('sort_order', 'ASC')->get() as $category)

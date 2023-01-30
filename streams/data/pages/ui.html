@@ -1,0 +1,27 @@
+---
+title: Documentation
+uri: ui
+layout: page
+sort_order: 1
+nav_disabled: true
+---
+
+<section class="container mx-auto pt-4">
+    
+    @livewire('form', [
+        'stream' => 'testing',
+        'fields' => [
+            ['field' => 'name'],
+            ['field' => 'description'],
+        ],
+    ])
+
+    @livewire('fields', [
+        'stream' => 'testing',
+        'fields' => [
+            ['field' => 'name'],
+            ['field' => 'description'],
+        ],
+    ])
+
+</section>

@@ -1,0 +1,53 @@
+{
+    "name": "Testing",
+    "handle": "testing",
+    "description": "Basic testing for the UI.",
+    "config": {
+        "source": {
+            "type": "self"
+        }
+    },
+    "fields": [
+        {
+            "handle": "id",
+            "type": "string",
+            "required": true,
+            "unique": true
+        },
+        {
+            "handle": "name",
+            "description": "Just a name.",
+            "type": "string"
+        },
+        {
+            "handle": "description",
+            "description": "Just a description.",
+            "type": "string",
+            "input": {
+                "type": "textarea"
+            }
+        }
+    ],
+    "ui": {
+        "forms": [
+            {
+                "handle": "default",
+                "buttons": [
+                    {
+                        "handle": "cancel",
+                        "class": "-secondary",
+                        "attributes": {
+                            "href": "{cp.section.url}"
+                        }
+                    }
+                ]
+            }
+        ]
+    },
+    "data": [
+        {
+            "id": "first",
+            "name": "Testing"
+        }
+    ]
+}

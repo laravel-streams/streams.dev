@@ -5,9 +5,10 @@
             <div class="h-14 w-14">
                 <img src="{!! URL::asset('img/logo.svg') !!}" alt="{{ config('app.name') }} Logo">
             </div>
-            {{-- @if (Request::path() == '/') --}}
-            <span class="font-bold text-xl hover:underline">{!! Streams::repository('pages')->findBy('uri', '/')->title !!}</span>
-            {{-- @endif --}}
+            
+            <span class="sr-only">
+                {!! Streams::repository('pages')->findBy('uri', '/')->title !!}
+            </span>
         </a>
 
         <ul class="flex flex-grow justify-end gap-10">

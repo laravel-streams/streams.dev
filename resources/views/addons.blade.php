@@ -9,7 +9,7 @@
 
     @include('partials.topbar')
     
-    <main class="container mx-auto flex">
+    <main class="container mx-auto flex mt-4">
         
         @include('partials.filters')
 

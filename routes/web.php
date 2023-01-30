@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Route;
 use Streams\Core\Support\Facades\Streams;
 
@@ -15,3 +16,9 @@ use Streams\Core\Support\Facades\Streams;
 */
 
 Route::view('api-test', 'api');
+Route::view('ui-test', 'ui');
+Route::any('form-test', function ()
+{
+    dump(Request::method());
+    dd(Request::input());
+});

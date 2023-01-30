@@ -3,19 +3,19 @@
 
 <head>
     @include('partials.head')
-
-    @livewireStyles
 </head>
 
-<body class="antialiased bg-gray-50">
+<body class="antialiased bg-gray-500 p-24">
 
-    @include('partials.topbar')
-    
-    {!! View::parse($entry->body) !!}
+    @livewireStyles
 
-    @vite(['resources/js/app.js'])
+    @livewire('form', [
+        'stream' => 'docs',
+    ])
 
     @livewireScripts
+
+    @vite(['resources/js/app.js'])
     
 </body>
 

@@ -1,0 +1,45 @@
+---
+title: Documentation
+uri: uideas
+layout: page
+sort_order: 1
+nav_disabled: true
+---
+
+<section class="container mx-auto pt-4">
+    
+    <h2 class="text-3xl mb-2 mt-8 font-extrabold">Generic Forms</h2>
+    <p class="text-gray-800 text-xl mb-2">
+        @verbatim
+        <code><pre>
+@ui('form', [
+    'url' => 'my/custom/path'
+    'template' => 'forms.my_custom_form'
+])
+
+&lt;x-form url="my/custom/path">
+// Custom stuff
+&lt;/x-form>
+        </pre></code>
+        @endverbatim
+    </p>
+
+</section>
+
+<section class="container mx-auto pt-4">
+
+    <h2 class="text-3xl mb-2 font-extrabold">Entry Forms</h2>
+    <p class="text-gray-800 text-xl mb-2 mt-8">
+        @verbatim
+        <code><pre>
+// Direct API
+Streams::make('pages')->ui('forms.default'); // Instance/__toString
+Streams::make('pages')->ui('forms.default')->render();
+
+// Directive
+@ui('pages::forms.default') // render()
+        </pre></code>
+        @endverbatim
+    </p>
+
+</section>
