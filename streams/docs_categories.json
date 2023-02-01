@@ -82,14 +82,20 @@
             "name": "The Basics",
             "description": "Common usage, use cases, and services explored."
         },
+        "frontend": {
+            "id": "frontend",
+            "sort_order": 3,
+            "name": "Frontend",
+            "description": "Frontend development and support."
+        },
         "advanced": {
             "id": "advanced",
-            "sort_order": 3,
+            "sort_order": 4,
             "name": "Advanced",
             "description": "Take Streams further with advanced features."
         },
         "development": {
-            "sort_order": 4,
+            "sort_order": 5,
             "id": "development",
             "name": "Developers",
             "description": "Advanced topics for Streams developers."

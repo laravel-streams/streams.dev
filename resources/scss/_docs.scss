@@ -1,0 +1,14 @@
+.documentation-content {
+
+    @apply prose lg:prose-lg w-full flex-grow mx-auto;
+
+    p, h1, h2, h3, h4, h5, h6 {
+        &:first-child {
+            @apply mt-6;
+        }
+    }
+
+    .w-overflow, pre {
+        @apply -mx-16;
+    }
+}

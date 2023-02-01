@@ -9,23 +9,22 @@
     },
     "fields": [
         {
-            "handle": "id",
-            "type": "string",
-            "required": true,
-            "unique": true
-        },
-        {
             "handle": "name",
             "description": "Just a name.",
-            "type": "string"
+            "instructions": "Just some instructions.",
+            "type": "string",
+            "rules": [
+                "min:5",
+                "max:20"
+            ],
+            "input": {
+                "type": "text"
+            }
         },
         {
-            "handle": "description",
-            "description": "Just a description.",
-            "type": "string",
-            "input": {
-                "type": "textarea"
-            }
+            "handle": "email",
+            "description": "Your email address.",
+            "type": "email"
         }
     ],
     "ui": {
@@ -44,10 +43,5 @@
             }
         ]
     },
-    "data": [
-        {
-            "id": "first",
-            "name": "Testing"
-        }
-    ]
+    "data": []
 }

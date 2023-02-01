@@ -2,12 +2,12 @@
     <div class="container mx-auto flex py-4 items-center">
 
         <a href="/" class="flex items-center -ml-3">
-            <div class="h-14 w-14">
+            <div class="h-14 w-14 mr-2">
                 <img src="{!! URL::asset('img/logo.svg') !!}" alt="{{ config('app.name') }} Logo">
             </div>
             
-            <span class="sr-only">
-                {!! Streams::repository('pages')->findBy('uri', '/')->title !!}
+            <span class="{{ Request::path() !== '/' ? 'sr-only' : null }} text-xl font-bold">
+                {{ config('app.name') }}
             </span>
         </a>
 

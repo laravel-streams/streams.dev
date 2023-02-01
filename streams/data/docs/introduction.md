@@ -6,24 +6,23 @@ category: getting-started
 status: ideation
 ---
 
-- Birds Eye View
-- The Lay of the Land
-- How to use the docs
-
-
-Welcome to Laravel Streams!
+👋 Welcome to Laravel Streams!
 
 ## What is Streams?
 
-Laravel Streams is a system of utilities providing an optimized foundation and workflow for **Laravel development**.
+Laravel Streams is a system of unified packages providing an optimized foundation and workflow for **Laravel development**.
 
-Application fundamentals like **data modeling**, **API interaction**, **UI**, **control panels**, and more are defined with code-configured JSON files and establish best-practices design principles to support your work.
+Application fundamentals like **data modeling**, **API interaction**, **user interfaces**, and more are defined with code-configured JSON files and establish best-practices design principles to support your work.
 
-The Streams system leans heavily on domain-driven design (DDD). We call these domain abstractions `streams`, hence our namesake.
+> The Streams system leans heavily on domain-driven design (DDD). We call these domain abstractions `streams`, hence our namesake.
+
+---
 
 ### Motivation
 
-The ever-changing and widening landscape of web applications, websites, and the like, has stressed the traditions and ideology of popular CMS options. And, after digging into our own CMS engine, we discovered that the problem is in the CMS paradigm. This project results from the complete deconstruction of that paradigm and establishes a new one built upon new fundamental values and principles.
+The ever-changing and widening landscape of web applications, websites, and the like, has stressed the traditions and ideology of popular CMS options. And, after digging into our own CMS engine, we discovered that the problem is in our CMS paradigm. This project results from the deconstruction of that paradigm and establishes a new one built upon new fundamental principles and unique goals.
+
+<!-- This stress can most evidently be seen in projects where "the CMS is the framework." Inevitably, the CMS, being indeed a CMS, can easily become an obstacle to performance, security, maintenance, technical debt, resource overhead, etc. [This project fixes that, haha] -->
 
 
 ### Use Cases

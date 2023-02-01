@@ -4,7 +4,7 @@
     "description": "Basic docs for the project.",
     "config": {
         "source": {
-            "format": "html"
+            "format": "md"
         }
     },
     "routes": [

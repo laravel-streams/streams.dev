@@ -8,20 +8,22 @@ nav_disabled: true
 
 <section class="container mx-auto pt-4">
     
-    @livewire('form', [
-        'stream' => 'testing',
-        'fields' => [
-            ['field' => 'name'],
-            ['field' => 'description'],
-        ],
-    ])
 
-    @livewire('fields', [
-        'stream' => 'testing',
-        'fields' => [
-            ['field' => 'name'],
-            ['field' => 'description'],
-        ],
-    ])
+    <x-form url="/form-test" method="get">
+        
+        <div class="flex flex-wrap space-x-4">
+            <x-field name="first_name" input.placeholder="John"/>
+            <x-field name="last_name" input.placeholder="Joe"/>
+        </div>
+
+        <div class="w-full mt-4">
+            <x-button type="submit" text="Submit"/>
+        </div>
+
+    </x-form>
 
 </section>
+
+{!! Assets::tag('/vendor/streams/ui/js/index.js') !!}
+
+UI::define('admin', $options);

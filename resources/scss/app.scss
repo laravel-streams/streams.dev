@@ -2,6 +2,31 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+    --color-accent: #fd77f6;
+}
+
+.text-accent,
+.hover\:text-accent {
+    color: var(--color-accent);
+}
+
+.border-accent,
+.hover\:border-accent {
+    border-color: var(--color-accent);
+}
+
+.bg-accent,
+.hover\:bg-accent {
+    background-color: var(--color-accent);
+}
+
+@import "docs";
+
 html {
     font-size: 18px;
+}
+
+svg {
+    max-width: 100%;
 }

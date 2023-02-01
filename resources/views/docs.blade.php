@@ -15,7 +15,7 @@
         @include('partials.sidebar')
         @endif
 
-        <div class="pt-8">
+        <div class="pt-1 documentation-content">
             {!! View::parse(Str::markdown($entry->body)) !!}
         </div>
 

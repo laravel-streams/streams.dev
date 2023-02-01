@@ -12,6 +12,7 @@ module.exports = {
     './resources/**/*.blade.php',
     './streams/data/**/*.html',
     './streams/data/**/*.json',
+    './streams/data/**/*.md',
     './streams/*.json',
     './docs/*.md',
   ],
@@ -22,5 +23,7 @@ module.exports = {
       }
     }
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/typography'),
+  ],
 }

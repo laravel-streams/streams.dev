@@ -3,8 +3,6 @@
 
 <head>
     @include('partials.head')
-
-    @livewireStyles
 </head>
 
 <body class="antialiased bg-gray-50">
@@ -14,8 +12,6 @@
     {!! View::parse($entry->body) !!}
 
     @vite(['resources/js/app.js'])
-
-    @livewireScripts
     
 </body>
 
