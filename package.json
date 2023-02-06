@@ -5,18 +5,20 @@
         "build": "vite build"
     },
     "devDependencies": {
-        "autoprefixer": "^10.4.12",
-        "axios": "^0.27",
+        "@tailwindcss/typography": "^0.5.9",
         "laravel-vite-plugin": "^0.5.0",
+        "autoprefixer": "^10.4.12",
+        "tailwindcss": "^3.1.8",
         "lodash": "^4.17.19",
         "postcss": "^8.4.16",
         "sass": "^1.54.5",
-        "tailwindcss": "^3.1.8",
-        "@tailwindcss/typography": "^0.5.9",
+        "axios": "^0.27",
         "vite": "^3.0.0"
     },
     "dependencies": {
-        "@laravel-streams/api-client": "https://github.com/laravel-streams/api-client/tarball/develop",
-        "alpinejs": "^3.10.3"
+        "alpinejs": "^3.10.3",
+        "anchor-js": "^5.0.0",
+        "prismjs": "^1.29.0",
+        "tocbot": "^4.20.1"
     }
 }

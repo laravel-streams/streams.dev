@@ -1,0 +1,63 @@
+.documentation__toc {
+    margin: 3rem 0;
+    //font-size: 16px;
+    line-height: 1.25;
+
+    > ol {
+        > li {
+            &:not(:first-of-type) {
+                margin-top: 0.5rem;
+            }
+
+            > a {
+                font-weight: bold;
+            }
+
+            > ol {
+                @apply pl-6;
+            }
+        }
+    }
+}
+
+.toc-link {
+    position: relative;
+    display: inline-block;
+
+    padding-left: 1rem;
+
+    padding-top: 0.125rem;
+    padding-bottom: 0.125rem;
+
+    &:after {
+        left: 0;
+        content: "#";
+        //display: none;
+        position: absolute;
+        font-weight: normal !important;
+
+        @apply text-accent;
+    }
+
+    &:hover {
+        @apply text-accent underline;
+        // &:after {
+        //     display: inline-block;
+        // }
+    }
+
+    .anchorjs-link:after {
+        @apply text-accent;
+    }
+}
+
+.documentation-content {
+    
+    .anchorjs-link {
+        display: inline-block;
+
+        &:hover {
+            @apply text-accent;
+        }
+    }
+}

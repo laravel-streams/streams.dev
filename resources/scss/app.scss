@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 :root {
-    --color-accent: #fd77f6;
+    --color-accent: #ef4444;
 }
 
 .text-accent,
@@ -22,6 +22,8 @@
 }
 
 @import "docs";
+@import "prism";
+@import "tocbot";
 
 html {
     font-size: 18px;

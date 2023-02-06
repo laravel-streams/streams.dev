@@ -15,8 +15,16 @@
         @include('partials.sidebar')
         @endif
 
-        <div class="pt-1 documentation-content">
-            {!! View::parse(Str::markdown($entry->body)) !!}
+        <div class="pt-1">
+            
+            <h1 class="text-6xl font-bold mt-6">{{ $entry->title }}</h1>
+            <p class="text-gray-500 mt-4 text-xl">{{ $entry->description }}</p>
+
+            <div class="documentation__toc my-8"></div>
+
+            <div class="documentation-content">
+                {!! View::parse(Str::markdown($entry->body)) !!}
+            </div>
         </div>
 
     </main>

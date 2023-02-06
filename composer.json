@@ -11,8 +11,9 @@
     },
     "require-dev": {
         "streams/sdk": "^1.0",
-        "fakerphp/faker": "^1.9.1",
         "laravel/tinker": "^2.7",
+        "streams/testing": "^1.0",
+        "fakerphp/faker": "^1.9.1",
         "mockery/mockery": "^1.4.4",
         "phpunit/phpunit": "^9.5.10",
         "nunomaduro/collision": "^6.1",

@@ -25,6 +25,16 @@
             "handle": "email",
             "description": "Your email address.",
             "type": "email"
+        },
+        {
+            "handle": "status",
+            "type": "select",
+            "config": {
+                "options": {
+                    "draft": "Draft",
+                    "published": "Published"
+                }
+            }
         }
     ],
     "ui": {

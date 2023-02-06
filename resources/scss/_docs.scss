@@ -8,7 +8,15 @@
         }
     }
 
-    .w-overflow, pre {
+    a {
+        @apply text-accent no-underline;
+
+        &:hover {
+            @apply underline;
+        }
+    }
+
+    .w-overflow, pre, pre[class*=language-] {
         @apply -mx-16;
     }
 }

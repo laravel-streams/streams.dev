@@ -8,22 +8,31 @@ nav_disabled: true
 
 <section class="container mx-auto pt-4">
     
-
-    <x-form url="/form-test" method="get">
-        
-        <div class="flex flex-wrap space-x-4">
-            <x-field name="first_name" input.placeholder="John"/>
-            <x-field name="last_name" input.placeholder="Joe"/>
-        </div>
-
-        <div class="w-full mt-4">
-            <x-button type="submit" text="Submit"/>
-        </div>
-
-    </x-form>
+    @ui('form', [
+        'action' => '/form-test',
+        'success_redirect' => '/',
+        'success_message' => 'Success!',
+        'rules' => [
+            'name' => ['required', 'min:10'],
+        ],
+        'fields' => [
+            [
+                'name' => 'name',
+                'required' => true,
+                'input' => [
+                    'type' => 'text',
+                    'required' => true,
+                ],
+            ],
+        ],
+        'buttons' => [
+            [
+                'type' => 'submit',
+                'text' => 'Submit',
+            ],
+        ],
+    ])
 
 </section>
 
 {!! Assets::tag('/vendor/streams/ui/js/index.js') !!}
-
-UI::define('admin', $options);
