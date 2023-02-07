@@ -13,45 +13,29 @@
             "description": "Just a name.",
             "instructions": "Just some instructions.",
             "type": "string",
+            "required": true,
+            "unique": true,
             "rules": [
-                "min:5",
+                "min:10",
                 "max:20"
             ],
-            "input": {
-                "type": "text"
+            "config": {
+                "default": "Ryan Thompson"
             }
         },
         {
-            "handle": "email",
-            "description": "Your email address.",
-            "type": "email"
-        },
-        {
             "handle": "status",
-            "type": "select",
+            "type": "enum",
             "config": {
                 "options": {
                     "draft": "Draft",
                     "published": "Published"
                 }
+            },
+            "input": {
+                "type": "select"
             }
         }
     ],
-    "ui": {
-        "forms": [
-            {
-                "handle": "default",
-                "buttons": [
-                    {
-                        "handle": "cancel",
-                        "class": "-secondary",
-                        "attributes": {
-                            "href": "{cp.section.url}"
-                        }
-                    }
-                ]
-            }
-        ]
-    },
     "data": []
 }

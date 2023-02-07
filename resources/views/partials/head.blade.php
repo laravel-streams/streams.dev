@@ -4,3 +4,5 @@
 <title>{{ config('app.name') }}</title>
 
 <link rel="icon" type="image/png" href="favicon.png" />
+
+@include('ui::support.constants')

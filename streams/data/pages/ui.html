@@ -9,21 +9,9 @@ nav_disabled: true
 <section class="container mx-auto pt-4">
     
     @ui('form', [
-        'action' => '/form-test',
-        'success_redirect' => '/',
-        'success_message' => 'Success!',
-        'rules' => [
-            'name' => ['required', 'min:10'],
-        ],
-        'fields' => [
-            [
-                'name' => 'name',
-                'required' => true,
-                'input' => [
-                    'type' => 'text',
-                    'required' => true,
-                ],
-            ],
+        'stream' => 'testing',
+        'attributes' => [
+            'ui:submit.prevent' => 'onSubmit',
         ],
         'buttons' => [
             [
