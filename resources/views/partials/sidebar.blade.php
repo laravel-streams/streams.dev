@@ -7,7 +7,7 @@
                 <span class="text-md font-bold">{{ $category->name }}</span>
                 <ul class="flex flex-col mt-2">
                     @foreach (Streams::docs()->where('category', $category->id)->orderBy('sort_order', 'ASC')->get() as $page)
-                    <li class="{{ Request::segment(2) == $page->id ? 'font-bold' : '' }}">
+                    <li class="{{ Request::segment(2) == $page->id ? 'font-bold text-accent' : '' }}">
                         <a class="hover:underline" href="/docs/{{ $page->id }}">{{ $page->title }}</a>
                     </li>
                     @endforeach

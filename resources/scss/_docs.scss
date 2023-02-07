@@ -15,8 +15,4 @@
             @apply underline;
         }
     }
-
-    .w-overflow, pre, pre[class*=language-] {
-        @apply -mx-16;
-    }
 }

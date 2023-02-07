@@ -17,7 +17,7 @@
 
         <div class="pt-1">
             
-            <h1 class="text-6xl font-bold mt-6">{{ $entry->title }}</h1>
+            <h1 class="text-6xl font-extrabold mt-6">{{ $entry->title }}</h1>
             <p class="text-gray-500 mt-4 text-xl">{{ $entry->description }}</p>
 
             <div class="documentation__toc my-8"></div>
