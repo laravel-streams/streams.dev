@@ -1,7 +1,7 @@
 <nav>
     <div class="container mx-auto flex py-4 items-center">
 
-        <a href="/" class="flex items-center -ml-3">
+        <a href="/" class="flex items-center opacity-70 hover:opacity-100 -ml-3">
             <div class="h-14 w-14 mr-2">
                 <img src="{!! URL::asset('img/logo.svg') !!}" alt="{{ config('app.name') }} Logo">
             </div>

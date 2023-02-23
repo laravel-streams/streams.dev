@@ -17,13 +17,15 @@
         {
             "handle": "sort_order",
             "type": "integer",
+            "required": true,
             "config": {
                 "default": "increment"
             }
         },
         {
             "handle": "name",
-            "type": "string"
+            "type": "string",
+            "required": true
         },
         {
             "handle": "description",
@@ -34,19 +36,19 @@
         }
     ],
     "ui": {
-        "cp": {
-            "section": {
-                "parent": "docs",
-                "title": "Categories",
-                "buttons": [
-                    {
-                        "handle": "create"
-                    }
-                ]
-            }
+        "admin": {
+            "navigation": [
+                {
+                    "component": "anchor",
+                    "text": "Categories",
+                    "url": "/admin/docs_categories",
+                    "sort_order": 11
+                }
+            ]
         },
-        "tables": [
+        "components": [
             {
+                "component": "table",
                 "handle": "default",
                 "filters": [
                     {
@@ -55,15 +57,24 @@
                 ],
                 "columns": [
                     {
-                        "handle": "name"
+                        "value": "name",
+                        "header": {
+                            "text": "Name"
+                        }
                     },
                     {
-                        "handle": "sort_order"
+                        "value": "sort_order",
+                        "header": {
+                            "text": "Sort Order"
+                        }
                     }
                 ],
                 "buttons": [
                     {
-                        "handle": "edit"
+                        "tag": "a",
+                        "text": "Edit",
+                        "handle": "edit",
+                        "url": "/{request.segments.0}/{request.segments.1}/{entry.id}/edit"
                     }
                 ]
             }

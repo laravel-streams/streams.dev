@@ -1,6 +1,6 @@
 ---
 title: Documentation
-uri: ui
+path: ui
 layout: page
 sort_order: 1
 nav_disabled: true
@@ -8,8 +8,8 @@ nav_disabled: true
 
 <section class="container mx-auto pt-4">
     
-    @ui('form', [
-        'stream' => 'testing',
+    @livewire('form', [
+        'stream' => 'pages',
         'attributes' => [
             'ui:submit.prevent' => 'onSubmit',
         ],

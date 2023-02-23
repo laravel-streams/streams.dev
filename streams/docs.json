@@ -24,6 +24,7 @@
         {
             "handle": "sort_order",
             "type": "integer",
+            "required": true,
             "config": {
                 "default": "increment"
             }
@@ -33,15 +34,24 @@
             "type": "relationship",
             "config": {
                 "related": "docs_categories"
+            },
+            "input": {
+                "type": "text",
+                "placeholder": "Uncategorized"
             }
         },
         {
             "handle": "status",
-            "type": "string"
+            "type": "string",
+            "required": true,
+            "input": {
+                "placeholder": "drafting|editing|ready"
+            }
         },
         {
             "handle": "title",
-            "type": "string"
+            "type": "string",
+            "required": true
         },
         {
             "handle": "description",
@@ -59,13 +69,19 @@
         }
     ],
     "ui": {
-        "cp": {
-            "section": {
-                "buttons": [{ "handle": "create" }]
-            }
+        "admin": {
+            "navigation": [
+                {
+                    "component": "anchor",
+                    "text": "Documentation",
+                    "url": "/admin/docs",
+                    "sort_order": 10
+                }
+            ]
         },
-        "tables": [
+        "components": [
             {
+                "component": "table",
                 "handle": "default",
                 "filters": [
                     {
@@ -73,34 +89,40 @@
                     }
                 ],
                 "columns": [
-                    { "handle": "title" },
-                    { "handle": "category" },
-                    { "handle": "status" }
+                    {
+                        "value": "title",
+                        "header": {
+                            "text": "Title"
+                        }
+                    },
+                    {
+                        "value": "category",
+                        "header": {
+                            "text": "Category"
+                        }
+                    },
+                    {
+                        "value": "status",
+                        "header": {
+                            "text": "Status"
+                        }
+                    }
                 ],
                 "buttons": [
                     {
-                        "handle": "edit"
+                        "tag": "a",
+                        "text": "Edit",
+                        "handle": "edit",
+                        "url": "/{request.segments.0}/{request.segments.1}/{entry.id}/edit"
                     },
                     {
+                        "tag": "a",
+                        "text": "View",
                         "handle": "view",
+                        "url": "/docs/{entry.id}",
                         "attributes": {
-                            "href": "/docs/{entry.id}",
                             "target": "_blank",
                             "class": ["a-button", "-secondary"]
-                        }
-                    }
-                ]
-            }
-        ],
-        "forms": [
-            {
-                "handle": "default",
-                "buttons": [
-                    {
-                        "handle": "cancel",
-                        "class": "-secondary",
-                        "attributes": {
-                            "href": "{cp.section.url}"
                         }
                     }
                 ]

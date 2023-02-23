@@ -7,23 +7,6 @@
             "format": "json"
         }
     },
-    "routes": [
-        {
-            "handle": "view",
-            "uri": "files",
-            "view": "files"
-        },
-        {
-            "handle": "view",
-            "uri": "files\/{id}",
-            "view": "file"
-        },
-        {
-            "handle": "render",
-            "uri": "file/{id}",
-            "uses": "App\\Http\\Controllers\\ViewFile"
-        }
-    ],
     "fields": [
         {
             "handle": "id",
@@ -76,38 +59,46 @@
         }
     ],
     "ui": {
-        "cp": {
-            "section": {
-                "handle": "files"
-            }
+        "admin": {
+            "navigation": [
+                {
+                    "component": "anchor",
+                    "text": "Files",
+                    "url": "/admin/files",
+                    "sort_order": 5
+                }
+            ]
         },
-        "tables": [
+        "components": [
             {
+                "component": "table",
                 "handle": "default",
                 "columns": [
                     {
-                        "handle": "path"
+                        "value": "path",
+                        "header": {
+                            "text": "Path"
+                        }
+                    },
+                    {
+                        "value": "disk",
+                        "header": {
+                            "text": "Disk"
+                        }
+                    },
+                    {
+                        "value": "mime_type",
+                        "header": {
+                            "text": "Type"
+                        }
                     }
                 ],
                 "buttons": [
                     {
-                        "handle": "edit"
-                    },
-                    {
-                        "handle": "data",
-                        "attributes": {
-                            "href": "/files/{entry.id}",
-                            "target": "_blank",
-                            "class": ["a-button", "-secondary"]
-                        }
-                    },
-                    {
-                        "handle": "render",
-                        "attributes": {
-                            "href": "/file/{entry.id}",
-                            "target": "_blank",
-                            "class": ["a-button", "-secondary"]
-                        }
+                        "tag": "a",
+                        "text": "Edit",
+                        "handle": "edit",
+                        "url": "/{request.segments.0}/{request.segments.1}/{entry.id}/edit"
                     }
                 ],
                 "config": {
@@ -115,20 +106,6 @@
                         ["path", "asc"]
                     ]
                 }
-            }
-        ],
-        "forms": [
-            {
-                "handle": "default",
-                "buttons": [
-                    {
-                        "handle": "cancel",
-                        "class": "-secondary",
-                        "attributes": {
-                            "href": "{cp.section.url}"
-                        }
-                    }
-                ]
             }
         ]
     }

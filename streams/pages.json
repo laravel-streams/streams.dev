@@ -10,7 +10,7 @@
     "routes": [
         {
             "handle": "view",
-            "uri": "{uri}",
+            "uri": "{path}",
             "parse": true,
             "view": "{layout}"
         }
@@ -24,43 +24,58 @@
         },
         {
             "handle": "title",
-            "type": "string"
+            "type": "string",
+            "required": true
         },
         {
-            "handle": "uri",
-            "type": "string"
+            "handle": "path",
+            "type": "string",
+            "required": true,
+            "unique": true
         },
         {
             "handle": "body",
-            "type": "string"
+            "type": "string",
+            "input": {
+                "type": "editor"
+            }
         }
     ],
     "ui": {
-        "tables": [
+        "admin": {
+            "navigation": [
+                {
+                    "component": "anchor",
+                    "text": "Pages",
+                    "url": "/admin/pages",
+                    "sort_order": 1
+                }
+            ]
+        },
+        "components": [
             {
+                "component": "table",
                 "handle": "default",
                 "columns": [
                     {
-                        "handle": "title"
+                        "value": "title",
+                        "header": {
+                            "text": "Title"
+                        }
+                    },
+                    {
+                        "value": "path",
+                        "header": {
+                            "text": "Path"
+                        }
                     }
                 ],
                 "buttons": [
                     {
-                        "handle": "edit"
-                    }
-                ]
-            }
-        ],
-        "forms": [
-            {
-                "handle": "default",
-                "buttons": [
-                    {
-                        "handle": "cancel",
-                        "class": "-secondary",
-                        "attributes": {
-                            "href": "{cp.section.url}"
-                        }
+                        "tag": "a",
+                        "handle": "edit",
+                        "text": "Edit",
+                        "url": "/{request.segments.0}/{request.segments.1}/{entry.id}/edit"
                     }
                 ]
             }
