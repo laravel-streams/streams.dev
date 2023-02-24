@@ -7,7 +7,7 @@ echo "Deploying application..."
     
     git pull 
 
-    composer install --ignore-platform-reqs --no-interaction --prefer-dist --optimize-autoloader
+    composer install --ignore-platform-reqs --no-dev --no-interaction --prefer-dist --optimize-autoloader
 
     # php artisan migrate --force
 
