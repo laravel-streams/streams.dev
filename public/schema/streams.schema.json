@@ -38,6 +38,7 @@
                                 "filebase",
                                 "file",
                                 "database",
+                                "eloquent",
                                 "self"
                             ],
                             "type": "string"
