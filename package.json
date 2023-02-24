@@ -15,7 +15,7 @@
         "anchor-js": "^4.3.0",
         "autoprefixer": "^10.2.4",
         "axios": "^0.21",
-        "browser-sync": "^2.26.14",
+        "browser-sync": "^2.27.12",
         "browser-sync-webpack-plugin": "^2.3.0",
         "clipboard": "^2.0.6",
         "cross-env": "^7.0",
