@@ -1,6 +1,6 @@
 {
     "name": "Streams",
-    "description": "The stream definition schema.",
+    "description": "Model definitions for the application.",
     "externalDocs": {
         "url": "https://streams.dev/docs/core/streams"
     },
@@ -12,7 +12,7 @@
         "id": {
             "title": "Id",
             "type": "string",
-            "pattern": "^[a-z0-9]+(?:[-_][a-z0-9]+)*$"
+            "pattern": "/^[a-z0-9]+(?:[-_][a-z0-9]+)*$/"
         },
         "name": {
             "title": "Name",
@@ -40,10 +40,7 @@
                                 "database",
                                 "self"
                             ],
-                            "type": "string",
-                            "externalDocs": {
-                                "url": "https://streams.dev/docs/core/sources"
-                            }
+                            "type": "string"
                         }
                     }
                 },
@@ -51,6 +48,12 @@
                     "title": "Schema",
                     "description": "The schema generation class to use.",
                     "default": "Streams\\Core\\Stream\\StreamSchema",
+                    "type": "string"
+                },
+                "abstract": {
+                    "title": "Abstract",
+                    "description": "The entry abstract class to use.",
+                    "default": "Streams\\Core\\Entry\\Entry",
                     "type": "string"
                 },
                 "criteria": {
@@ -69,10 +72,7 @@
                     "title": "Repository",
                     "description": "The repository class to use.",
                     "default": "Streams\\Core\\Repository\\Repository",
-                    "type": "string",
-                    "externalDocs": {
-                        "url": "https://streams.dev/docs/core/repositories"
-                    }
+                    "type": "string"
                 }
             }
         },
@@ -89,8 +89,7 @@
                     "uses": {
                         "title": "Uses",
                         "default": "Streams\\Core\\Http\\Controller\\StreamsController@handle",
-                        "type": "string",
-                        "example": "App\\Http\\Controller\\Example@view"
+                        "type": "string"
                     },
                     "csrf": {
                         "title": "Csrf",
@@ -111,10 +110,7 @@
                     },
                     "middleware": {
                         "title": "Middleware",
-                        "type": "array",
-                        "example": [
-                            "App\\Http\\Middleware\\Example"
-                        ]
+                        "type": "array"
                     },
                     "constraints": {
                         "title": "Constraints",
@@ -136,7 +132,7 @@
                     "handle": {
                         "title": "Handle",
                         "type": "string",
-                        "pattern": "^[a-z0-9]+(?:[-_][a-z0-9]+)*$"
+                        "pattern": "/^[a-z0-9]+(?:[-_][a-z0-9]+)*$/"
                     },
                     "type": {
                         "title": "Type",
@@ -169,8 +165,7 @@
                         "type": "string"
                     }
                 }
-            },
-            "uniqueItems": true
+            }
         }
     }
 }

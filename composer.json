@@ -19,9 +19,7 @@
     "require": {
         "blade-ui-kit/blade-heroicons": "^1.3",
         "owenvoke/blade-fontawesome": "^2.0",
-        "streams/core": "^2.0",
-        "streams/api": "^1.0",
-        "streams/ui": "^1.0"
+        "streams/core": "^2.0"
     },
     "require-dev": {
         "streams/sdk": "^1.0",
