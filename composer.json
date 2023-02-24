@@ -22,8 +22,6 @@
         "streams/core": "^2.0"
     },
     "require-dev": {
-        "streams/sdk": "^1.0",
-        "streams/testing": "^1.0",
         "laravel/tinker": "^2.2",
         "phpunit/phpunit": "^9.5.10",
         "spatie/laravel-ignition": "^1.0",
