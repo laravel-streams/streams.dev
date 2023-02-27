@@ -30,17 +30,20 @@ sort: 15
     @endif
 
     <div class="flex flex-wrap -ml-2 -mr-2">
-    @foreach(Streams::packages()->get() as $package)
+    @foreach(($packages = Streams::packages()->paginate(10)) as $package)
     <div class="w-1/2 p-2 flex">
         <a href="/packages/{{ $package->name }}" class="bg-white w-full rounded-sm p-4 border-2 border-transparent hover:border-black">
             <h3 class="text-xl font-bold">{{ $package->name }}</h3>
-            @foreach($package->categories as $key => $value)
-            <span class="text-xs rounded-sm px-1 py-0.5 bg-black text-white">{{ $value }}</span>
-            @endforeach
             <p class="text-sm text-gray-600 mt-2">{{ $package->description }}</p>
+            @foreach($package->categories as $key => $value)
+            <span class="text-xs rounded-sm py-0.5  text-gray-400">{{ $value }}{{ $loop->last ? null : ', ' }}</span>
+            @endforeach
         </a>
     </div>
     @endforeach
+
+    {!! $packages !!}
+
     </div>
 
 </div>

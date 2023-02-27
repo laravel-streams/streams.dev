@@ -19,8 +19,30 @@ Route::streams('/', [
     'stream' => 'pages',
 ]);
 
-Route::get('/packages/category/{category}', function () {
-    return view('packages');
+Route::get('/packages/category/{category}', function ($category) {
+
+    $packages = Streams::packages()
+        ->where('categories', 'contains', $category)
+        ->paginate();
+
+    return view('packages', [
+        'packages' => $packages,
+        'title' => Streams::make('packages')->fields->categories->options()[$category],
+        'description' => null,
+    ]);
+});
+
+Route::get('/packages/{vendor}', function ($vendor) {
+
+    $packages = Streams::packages()
+        ->where('name', 'like', "$vendor/%")
+        ->paginate();
+
+        return view('packages', [
+            'packages' => $packages,
+            'title' => $vendor,
+            'description' => 'Username and description and such here.',
+        ]);
 });
 
 Route::get('/packages/{vendor}/{package}', function ($vendor, $package) {

@@ -7,7 +7,8 @@
         {
             "handle": "view",
             "uri": "docs/sdk/{id}",
-            "view": "doc"
+            "view": "doc",
+            "stream": "docs_sdk"
         }
     ],
     "description": "Documentation for all things contained in the SDK package.",
@@ -15,6 +16,7 @@
     "github_docs": "https://github.com/laravel-streams/streams-sdk/blob/1.0/docs",
     "config": {
         "source": {
+            "format": "md",
             "path": "vendor/streams/sdk/docs"
         }
     },

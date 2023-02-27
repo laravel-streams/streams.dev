@@ -33,49 +33,69 @@
             "type": "multiselect",
             "config": {
                 "options": {
-                    "seo": "SEO & Accessibility",
-                    "localization": "Localization",
-                    "ecommerce": "Ecommerce",
-                    "forms": "Forms",
-                    "fields": "Fields",
+                    "admin": "Admin Panel",
+                    "assets": "Assets",
+                    "dashboard": "Dashboard",
                     "database": "Database",
                     "development": "Development",
-                    "security": "Security",
-                    "templating": "Templating",
-                    "performance": "Performance",
-                    "admin": "Admin Panel",
-                    "dashboard": "Dashboard",
-                    "assets": "Assets",
-                    "utilities": "Utilities",
+                    "ecommerce": "Ecommerce",
+                    "fields": "Fields",
+                    "forms": "Forms",
                     "integrations": "Integrations",
-                    "projects": "Projects & Starters"
+                    "localization": "Localization",
+                    "performance": "Performance",
+                    "projects": "Projects & Starters",
+                    "security": "Security",
+                    "seo": "SEO & Accessibility",
+                    "templating": "Templating",
+                    "utilities": "Utilities"
                 }
+            }
+        },
+        {
+            "handle": "readme",
+            "type": "string",
+            "input": {
+                "type": "markdown"
             }
         }
     ],
     "data": [
         {
+            "name": "streams/streams",
+            "description": "A blank TALL-stack Laravel project with Streams.",
+            "docs": "https://streams.dev/docs/installation",
+            "repository": "https://github.com/laravel-streams/streams-core",
+            "categories": ["projects"],
+            "readme": "[https://tallstack.dev/](https://tallstack.dev/)"
+        },
+        {
             "name": "streams/core",
             "description": "The fundamental features and utilities offered by the Streams platform.",
             "docs": "https://streams.dev/docs/core/introduction",
-            "categories": ["utilities"]
+            "repository": "https://github.com/laravel-streams/streams-core",
+            "categories": ["utilities"],
+            "readme": "# Streams Platform\n\nA cohesive development system for building, administrating, and interacting with data-driven Laravel applications.\n\n## Testing\n\n```bash\nphp vendor/bin/phpunit tests/\n\nXDEBUG_MODE=coverage php vendor/bin/phpunit tests/ --coverage-html=./coverage\n```"
         },
         {
             "name": "streams/api",
             "description": "A full featured, universal, and extensible RESTful API.",
-            "docs": "docs/api/introduction",
+            "docs": "https://streams.dev/docs/api/introduction",
+            "repository": "https://github.com/laravel-streams/streams-api",
             "categories": ["development", "integrations", "utilities"]
         },
         {
             "name": "streams/ui",
             "description": "Extensible, user-friendly, and performant control panel, components, and services.",
-            "docs": "docs/ui/introduction",
+            "docs": "https://streams.dev/docs/ui/introduction",
+            "repository": "https://github.com/laravel-streams/streams-ui",
             "categories": ["admin", "dashboard"]
         },
         {
             "name": "streams/sdk",
             "description": "Dev tooling for Laravel Streams.",
-            "docs": "docs/sdk/introduction",
+            "docs": "https://streams.dev/docs/sdk/introduction",
+            "repository": "https://github.com/laravel-streams/streams-sdk",
             "categories": ["development"]
         }
     ]

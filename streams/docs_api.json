@@ -7,7 +7,8 @@
         {
             "handle": "view",
             "uri": "docs/api/{id}",
-            "view": "doc"
+            "view": "doc",
+            "stream": "docs_api"
         }
     ],
     "description": "Documentation for all things contained in the API package.",
@@ -15,6 +16,7 @@
     "github_docs": "https://github.com/laravel-streams/streams-api/blob/1.0/docs",
     "config": {
         "source": {
+            "format": "md",
             "path": "vendor/streams/api/docs"
         }
     },

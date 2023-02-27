@@ -21,10 +21,12 @@
             </h2>
 
             <ul class="mt-2">
-                @foreach (Streams::make('packages')->fields->categories->options() as $key => $value)    
+                @foreach (Streams::make('packages')->fields->categories->options() as $key => $value)
+                @if (Streams::packages()->where('categories', 'contains', $key)->count())
                 <li>
-                    <a href="/packages/category/{{ $key }}" class="text-gray-500 hover:underline">{{ $value }}</a>
+                    <a href="/packages/category/{{ $key }}" class="text-gray-500 hover:underline {{ Request::segment(3) == $key ? 'text-accent font-bold' : null }}">{{ $value }}</a>
                 </li>
+                @endif
                 @endforeach
             </ul>
 
