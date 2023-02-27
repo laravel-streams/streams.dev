@@ -1,0 +1,172 @@
+{
+    "name": "Streams",
+    "description": "Model definitions for the application.",
+    "externalDocs": {
+        "url": "https://streams.dev/docs/core/streams"
+    },
+    "type": "object",
+    "required": [
+        "id"
+    ],
+    "properties": {
+        "id": {
+            "title": "Id",
+            "type": "string",
+            "pattern": "/^[a-z0-9]+(?:[-_][a-z0-9]+)*$/"
+        },
+        "name": {
+            "title": "Name",
+            "type": "string",
+            "maxLength": 50
+        },
+        "description": {
+            "title": "Description",
+            "type": "string"
+        },
+        "config": {
+            "title": "Config",
+            "type": "object",
+            "properties": {
+                "source": {
+                    "title": "Source",
+                    "type": "object",
+                    "properties": {
+                        "type": {
+                            "title": "Type",
+                            "description": "The source type for stream data.",
+                            "enum": [
+                                "filebase",
+                                "file",
+                                "database",
+                                "eloquent",
+                                "self"
+                            ],
+                            "type": "string"
+                        }
+                    }
+                },
+                "schema": {
+                    "title": "Schema",
+                    "description": "The schema generation class to use.",
+                    "default": "Streams\\Core\\Stream\\StreamSchema",
+                    "type": "string"
+                },
+                "abstract": {
+                    "title": "Abstract",
+                    "description": "The entry abstract class to use.",
+                    "default": "Streams\\Core\\Entry\\Entry",
+                    "type": "string"
+                },
+                "criteria": {
+                    "title": "Criteria",
+                    "description": "The entry criteria class to use.",
+                    "default": "Streams\\Core\\Criteria\\Criteria",
+                    "type": "string"
+                },
+                "factory": {
+                    "title": "Factory",
+                    "description": "The entry factory class to use.",
+                    "default": "Streams\\Core\\Entry\\EntryFactory",
+                    "type": "string"
+                },
+                "repository": {
+                    "title": "Repository",
+                    "description": "The repository class to use.",
+                    "default": "Streams\\Core\\Repository\\Repository",
+                    "type": "string"
+                }
+            }
+        },
+        "routes": {
+            "title": "Routes",
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "view": {
+                        "title": "View",
+                        "type": "string"
+                    },
+                    "uses": {
+                        "title": "Uses",
+                        "default": "Streams\\Core\\Http\\Controller\\StreamsController@handle",
+                        "type": "string"
+                    },
+                    "csrf": {
+                        "title": "Csrf",
+                        "type": "boolean"
+                    },
+                    "verb": {
+                        "title": "Verb",
+                        "enum": [
+                            "any",
+                            "get",
+                            "put",
+                            "post",
+                            "patch",
+                            "delete"
+                        ],
+                        "default": "any",
+                        "type": "string"
+                    },
+                    "middleware": {
+                        "title": "Middleware",
+                        "type": "array"
+                    },
+                    "constraints": {
+                        "title": "Constraints",
+                        "type": "array"
+                    }
+                }
+            }
+        },
+        "fields": {
+            "title": "Fields",
+            "type": "array",
+            "items": {
+                "type": "object",
+                "required": [
+                    "handle",
+                    "type"
+                ],
+                "properties": {
+                    "handle": {
+                        "title": "Handle",
+                        "type": "string",
+                        "pattern": "/^[a-z0-9]+(?:[-_][a-z0-9]+)*$/"
+                    },
+                    "type": {
+                        "title": "Type",
+                        "enum": [
+                            "number",
+                            "integer",
+                            "decimal",
+                            "string",
+                            "url",
+                            "uuid",
+                            "hash",
+                            "slug",
+                            "email",
+                            "encrypted",
+                            "markdown",
+                            "boolean",
+                            "datetime",
+                            "date",
+                            "time",
+                            "array",
+                            "select",
+                            "multiselect",
+                            "object",
+                            "image",
+                            "file",
+                            "relationship",
+                            "color"
+                        ],
+                        "default": "string",
+                        "type": "string"
+                    }
+                }
+            }
+        }
+    }
+}

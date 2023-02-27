@@ -14,7 +14,7 @@
             </p>
 
             <p>
-                <a href="#" class="{{ count(Request::segments()) > 2 ? "italic font-bold" : "" }} hover:underline" onclick="document.getElementById('packages_model').classList.toggle('hidden'); return false;">Packages <x-heroicon-o-truck class="inline-block h-4 w-4" style="margin-bottom: 0;"/></a>
+                <a href="/packages" class="{{ count(Request::segments()) > 2 ? "italic font-bold" : "" }} hover:underline">Packages <x-heroicon-o-truck class="inline-block h-4 w-4" style="margin-bottom: 0;"/></a>
             </p>
 
             @if ($entry->stream->id == 'pages')

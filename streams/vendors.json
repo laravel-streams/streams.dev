@@ -1,0 +1,46 @@
+{
+    "$schema": "./schema/streams.schema.json",
+    "config": {
+        "source": {
+            "type": "self"
+        }
+    },
+    "fields": [
+        {
+            "handle": "id",
+            "type": "uuid",
+            "required": true,
+            "unique": true,
+            "config": {
+                "default": true
+            }
+        },
+        {
+            "handle": "name",
+            "type": "string",
+            "required": true,
+            "unique": true,
+            "rules": ["regex:/^[a-z0-9]([_.-]?[a-z0-9]+)*$/"]
+        },
+        {
+            "handle": "display_name",
+            "type": "string"
+        },
+        {
+            "handle": "website",
+            "type": "url"
+        }
+    ],
+    "data": [
+        {
+            "name": "streams",
+            "display_name": "Laravel Streams",
+            "website": "https://streams.dev/"
+        },
+        {
+            "name": "ryanthompson",
+            "display_name": "Ryan Thompson",
+            "website": "https://ryanthepyro.com/"
+        }
+    ]
+}

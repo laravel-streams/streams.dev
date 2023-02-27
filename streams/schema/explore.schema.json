@@ -1,0 +1,36 @@
+{
+    "name": "Explore",
+    "description": "Explore the feature, functions, and operating principles of Laravel Streams.",
+    "type": "object",
+    "properties": {
+        "id": {
+            "title": "Id",
+            "type": "string",
+            "pattern": "/^[a-z0-9]+(?:[-_][a-z0-9]+)*$/"
+        },
+        "title": {
+            "title": "Title",
+            "type": "string"
+        },
+        "body": {
+            "title": "Body",
+            "type": "string"
+        },
+        "parent": {
+            "title": "Parent",
+            "type": "string"
+        },
+        "options": {
+            "title": "Options",
+            "type": "array"
+        },
+        "links": {
+            "title": "Links",
+            "type": "array"
+        },
+        "menu": {
+            "title": "Menu",
+            "type": "array"
+        }
+    }
+}

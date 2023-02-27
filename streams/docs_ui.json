@@ -4,7 +4,8 @@
     "url_prefix": "docs/ui",
     "path_prefix": "vendor/streams/ui/docs",
     "routes": {
-        "view": {
+        {
+            "handle": "view",
             "uri": "docs/ui/{id}",
             "view": "doc"
         }

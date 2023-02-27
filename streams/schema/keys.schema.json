@@ -1,0 +1,30 @@
+{
+    "name": "Keys",
+    "type": "object",
+    "required": [
+        "id",
+        "name",
+        "value"
+    ],
+    "properties": {
+        "id": {
+            "title": "Id",
+            "default": "6c0c21a6-98e1-4f3e-8001-19aa11f656ff",
+            "format": "uuid",
+            "type": "string"
+        },
+        "user": {
+            "title": "User",
+            "type": "string"
+        },
+        "name": {
+            "title": "Name",
+            "type": "string"
+        },
+        "value": {
+            "title": "Value",
+            "default": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQC3FdYRi3h5nx/LqAdh5TABVk8jraw== test@example.com",
+            "type": "string"
+        }
+    }
+}

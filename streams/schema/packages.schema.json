@@ -1,0 +1,38 @@
+{
+    "name": "Packages",
+    "type": "object",
+    "required": [
+        "name"
+    ],
+    "properties": {
+        "id": {
+            "title": "Id",
+            "type": "string",
+            "pattern": "/^[a-z0-9]+(?:[-_][a-z0-9]+)*$/"
+        },
+        "name": {
+            "title": "Name",
+            "type": "string",
+            "pattern": "/^[a-z0-9]([_.-]?[a-z0-9]+)*/[a-z0-9](([_.]?|-{0,2})[a-z0-9]+)*$/"
+        },
+        "docs": {
+            "title": "Docs",
+            "type": "string",
+            "pattern": "https?:\\/\\/(www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b([-a-zA-Z0-9()@:%_\\+.~#?&//=]*)"
+        },
+        "tags": {
+            "title": "Tags",
+            "type": "array"
+        },
+        "category": {
+            "title": "Category",
+            "enum": [
+                "projects",
+                "core",
+                "database",
+                "ui"
+            ],
+            "type": "string"
+        }
+    }
+}

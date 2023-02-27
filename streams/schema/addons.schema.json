@@ -1,0 +1,23 @@
+{
+    "name": "Addons",
+    "type": "object",
+    "required": [
+        "id",
+        "name",
+        "repository"
+    ],
+    "properties": {
+        "id": {
+            "title": "Id",
+            "type": "string"
+        },
+        "name": {
+            "title": "Name",
+            "type": "string"
+        },
+        "repository": {
+            "title": "Repository",
+            "type": "string"
+        }
+    }
+}

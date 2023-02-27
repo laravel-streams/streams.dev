@@ -3,12 +3,13 @@
     "extends": "docs",
     "url_prefix": "docs/api",
     "path_prefix": "vendor/streams/api/docs",
-    "routes": {
-        "view": {
+    "routes": [
+        {
+            "handle": "view",
             "uri": "docs/api/{id}",
             "view": "doc"
         }
-    },
+    ],
     "description": "Documentation for all things contained in the API package.",
     "project": "streams/api",
     "github_docs": "https://github.com/laravel-streams/streams-api/blob/1.0/docs",

@@ -1,4 +1,5 @@
 {
+    "$schema": "./schema/streams.schema.json",
     "config": {
         "source": {
             "type": "self"
@@ -7,37 +8,75 @@
     "fields": [
         {
             "handle": "id",
-            "type": "slug"
+            "type": "uuid",
+            "required": true,
+            "unique": true,
+            "config": {
+                "default": true
+            }
         },
         {
             "handle": "name",
-            "type": "string"
+            "type": "string",
+            "required": true,
+            "unique": true,
+            "rules": [
+                "regex:/^[a-z0-9]([_.-]?[a-z0-9]+)*/[a-z0-9](([_.]?|-{0,2})[a-z0-9]+)*$/"
+            ]
         },
         {
             "handle": "docs",
             "type": "url"
+        },
+        {
+            "handle": "categories",
+            "type": "multiselect",
+            "config": {
+                "options": {
+                    "seo": "SEO & Accessibility",
+                    "localization": "Localization",
+                    "ecommerce": "Ecommerce",
+                    "forms": "Forms",
+                    "fields": "Fields",
+                    "database": "Database",
+                    "development": "Development",
+                    "security": "Security",
+                    "templating": "Templating",
+                    "performance": "Performance",
+                    "admin": "Admin Panel",
+                    "dashboard": "Dashboard",
+                    "assets": "Assets",
+                    "utilities": "Utilities",
+                    "integrations": "Integrations",
+                    "projects": "Projects & Starters"
+                }
+            }
         }
     ],
-    "data": {
-        "streams-core": {
-            "name": "Streams Core",
+    "data": [
+        {
+            "name": "streams/core",
             "description": "The fundamental features and utilities offered by the Streams platform.",
-            "docs": "docs/core/introduction"
+            "docs": "https://streams.dev/docs/core/introduction",
+            "categories": ["utilities"]
         },
-        "streams-api": {
-            "name": "Streams API",
+        {
+            "name": "streams/api",
             "description": "A full featured, universal, and extensible RESTful API.",
-            "docs": "docs/api/introduction"
+            "docs": "docs/api/introduction",
+            "categories": ["development", "integrations", "utilities"]
         },
-        "streams-ui": {
-            "name": "Streams UI",
-            "description": "Extensible, user-friendly, and performant control panel and user interface utilities and services.",
-            "docs": "docs/ui/introduction"
+        {
+            "name": "streams/ui",
+            "description": "Extensible, user-friendly, and performant control panel, components, and services.",
+            "docs": "docs/ui/introduction",
+            "categories": ["admin", "dashboard"]
         },
-        "streams-sdk": {
-            "name": "Streams SDK",
+        {
+            "name": "streams/sdk",
             "description": "Dev tooling for Laravel Streams.",
-            "docs": "docs/sdk/introduction"
+            "docs": "docs/sdk/introduction",
+            "categories": ["development"]
         }
-    }
+    ]
 }
