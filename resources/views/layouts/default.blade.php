@@ -5,7 +5,7 @@
     @include('partials/head')
 </head>
 
-<body class="theme--{{ request()->segment(1) }}">
+<body class="theme--{{ request()->segment(1) }} flex flex-col min-h-screen">
 
     @include('partials/header')
 

@@ -13,20 +13,5 @@
     ],
     "description": "Documentation for all things contained in the UI package.",
     "project": "streams/ui",
-    "github_docs": "https://github.com/laravel-streams/streams-ui/blob/1.0/docs",
-    "config": {
-        "source": {
-            "format": "md",
-            "path": "vendor/streams/ui/docs"
-        }
-    },
-    "ui": {
-        "cp": {
-            "section": {
-                "parent": "docs",
-                "title": "UI",
-                "stream": "docs_ui"
-            }
-        }
-    }
+    "github_docs": "https://github.com/laravel-streams/streams-ui/blob/1.0/docs"
 }

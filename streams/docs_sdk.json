@@ -14,12 +14,6 @@
     "description": "Documentation for all things contained in the SDK package.",
     "project": "streams-sdk",
     "github_docs": "https://github.com/laravel-streams/streams-sdk/blob/1.0/docs",
-    "config": {
-        "source": {
-            "format": "md",
-            "path": "vendor/streams/sdk/docs"
-        }
-    },
     "ui": {
         "cp": {
             "section": {
