@@ -20,7 +20,7 @@
         <div class="ls-doc__toc mb-10"></div>
 
         <div class="doc-body">
-            {!! $entry->body()->render() !!}
+            {!! $entry->body()->parse() !!}
         </div>
 
         <div class="flex mt-12 mb-8">

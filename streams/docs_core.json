@@ -3,12 +3,13 @@
     "extends": "docs",
     "url_prefix": "docs/core",
     "path_prefix": "vendor/streams/core/docs",
-    "routes": {
-        "view": {
+    "routes": [
+        {
+            "handle": "view",
             "uri": "docs/core/{id}",
             "view": "doc"
         }
-    },
+    ],
     "description": "Documentation for all things contained in the core package.",
     "project": "streams-core",
     "github_docs": "https://github.com/laravel-streams/streams-core/blob/2.0/docs",

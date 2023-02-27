@@ -8,6 +8,12 @@
 
     "routes": [
         {
+            "handle": "schmiew",
+            "uri": "docs/test/{id}",
+            "stream": "docs",
+            "view": "doc"
+        },
+        {
             "handle": "view",
             "uri": "docs/{id}",
             "stream": "docs",
