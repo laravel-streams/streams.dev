@@ -3214,12 +3214,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-streams/streams-core.git",
-                "reference": "b60675436a29e2319d76521bfe2daadd6c26fa6a"
+                "reference": "2446ec6d6ba9349d0e0c077e94966aacff076973"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-streams/streams-core/zipball/b60675436a29e2319d76521bfe2daadd6c26fa6a",
-                "reference": "b60675436a29e2319d76521bfe2daadd6c26fa6a",
+                "url": "https://api.github.com/repos/laravel-streams/streams-core/zipball/2446ec6d6ba9349d0e0c077e94966aacff076973",
+                "reference": "2446ec6d6ba9349d0e0c077e94966aacff076973",
                 "shasum": ""
             },
             "require": {
@@ -3275,7 +3275,7 @@
                 "issues": "https://github.com/laravel-streams/streams-core/issues",
                 "source": "https://github.com/laravel-streams/streams-core/tree/2.0"
             },
-            "time": "2023-02-27T06:47:23+00:00"
+            "time": "2023-02-27T21:09:50+00:00"
         },
         {
             "name": "symfony/console",
