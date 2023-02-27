@@ -39,6 +39,10 @@
             @endif
         </ul>
 
+        <h4 class="mt-4 mb-2 text-lg font-bold">Installation</h4>
+
+        <input type="text" class="px-2 rounded-sm w-72" readonly value="composer require {{ $package->name }}">
+
         @if ($package->readme)
         <div class="doc-body mt-8">
             {!! $package->decorate('readme')->markdown() !!}
