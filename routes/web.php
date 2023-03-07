@@ -17,6 +17,7 @@ use Streams\Core\Support\Facades\Streams;
 Route::streams('/', [
     'entry' => 'homepage',
     'stream' => 'pages',
+    'middleware' => ['ttl:600']
 ]);
 
 Route::get('/packages/category/{category}', function ($category) {

@@ -21,7 +21,7 @@ Please ensure one of the following libraries is installed in order to support [i
 
 ## New Projects
 
-For new projects, the fastest way to get up and running is the [Streams starter project](/docs/examples):
+For new projects, the fastest way to get up and running is the [Streams starter project](/packages/streams/streams):
 
 ```bash
 composer create-project streams/streams:1.0.x-dev

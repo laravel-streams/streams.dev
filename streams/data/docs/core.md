@@ -2,7 +2,7 @@
 title: Laravel Development
 category: core_concepts
 stage: drafting
-enabled: true
+enabled: false
 sort: 2
 ---
 

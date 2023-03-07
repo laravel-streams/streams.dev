@@ -3,11 +3,13 @@ title: Data Modeling
 category: core_concepts
 intro: Data modeling is where we begin.
 stage: drafting
-enabled: true
+enabled: false
 sort: 0
 ---
 
 ## Introduction
+
+The Streams system leans heavily on domain-driven design (DDD). We call these domain abstractions streams, hence our namesake.
 
 Data modeling is *the* fundamental function of Streams Core. The rest of the platform builds upon streams' data and structure.
 

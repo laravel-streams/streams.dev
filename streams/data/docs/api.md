@@ -2,7 +2,7 @@
 stage: review
 title: 'API Readiness'
 category: core_concepts
-enabled: true
+enabled: false
 publish_at: null
 sort: 10
 ---

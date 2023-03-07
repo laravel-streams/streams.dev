@@ -76,7 +76,7 @@ sort: 14
         </div>
 
 
-    <h3 class="text-2xl leading-none font-extrabold tracking-tight text-gray-900 mt-10 mb-4">1.&nbsp&nbspGetting Started</h3>
+    <h3 class="text-2xl leading-none font-extrabold tracking-tight text-gray-900 mt-10 mb-4">Getting Started</h3>
                 
     <p>Start here if you are new to the Laravel Streams platform or Laravel.</p>
 
@@ -104,7 +104,7 @@ sort: 14
             </li>
             <li>
                 <a class="hover:underline"href="docs/examples">
-                    <strong class="">Examples</strong>
+                    <strong class="">Packages</strong>
                 </a>
                 <span class="ml-4">&#10141;</span>
             </li>
@@ -117,42 +117,9 @@ sort: 14
         </ul>
 
     </div>
-
-
-    <h3 class="text-2xl leading-none font-extrabold tracking-tight text-gray-900 mt-10 mb-4">2.&nbspCore Packages</h3>
-                
-    <p>Know what you are looking for already? Dive right in to our core packages. </p>
-
-    <div class="mt-5 space-x-4">
-
-        <ul class="mt-4 list-none text-xl leading-relaxed">
-            <li>
-                <a class="hover:underline"href="docs/core/introduction">
-                    <strong class="">streams/core</strong>
-                    <!-- Core utilities and modeling for Streams. -->
-                </a>
-                <span class="ml-4">&#10141;</span>
-            </li>
-            <li>
-                <a class="hover:underline"href="docs/api/introduction">
-                    <strong class="">streams/api</strong>
-                    <!-- A universal RESTful API for Streams. -->
-                </a>
-                <span class="ml-4">&#10141;</span>
-            </li>
-            <li>
-                <a class="hover:underline"href="docs/ui/introduction">
-                    <strong class="">streams/ui</strong>
-                    <!-- A versatile UI and control panel for Streams. -->
-                </a>
-                <span class="ml-4">&#10141;</span>
-            </li>
-        </ul>
-
-    </div>
         
 
-    <h3 class="text-2xl leading-none font-extrabold tracking-tight text-gray-900 mt-10 mb-4">3.&nbsp&nbspMore Resources</h3>
+    <h3 class="text-2xl leading-none font-extrabold tracking-tight text-gray-900 mt-10 mb-4">More Resources</h3>
 
     <p>Discover more resources from the developers and community.</p>
     

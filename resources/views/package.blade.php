@@ -21,6 +21,8 @@
         <h1 class="text-4xl sm:text-6xl lg:text-5xl leading-none font-extrabold tracking-tight text-gray-900 mt-8 mb-4">
             {{ $package->name }}
         </h1>
+
+        <input type="text" class="px-2 rounded-sm w-72" readonly value="composer require {{ $package->name }}">
         
         @if ($package->description)
         <p class="text-xl tracking-tight mb-4 mt-4 opacity-40">{{ $package->description }}</p>
@@ -38,10 +40,6 @@
             <li><a href="{{ $package->repository }}" target="_blank">Repository 👀</a></li>
             @endif
         </ul>
-
-        <h4 class="mt-4 mb-2 text-lg font-bold">Installation</h4>
-
-        <input type="text" class="px-2 rounded-sm w-72" readonly value="composer require {{ $package->name }}">
 
         @if ($package->readme)
         <div class="doc-body mt-8">

@@ -137,6 +137,8 @@ return [
 
     'providers' => [
 
+        Barryvdh\HttpCache\ServiceProvider::class,
+
         /*
          * Laravel Framework Service Providers...
          */

@@ -3,7 +3,7 @@ title: User Interface
 category: core_concepts
 intro: Incredibly flexible and entirely configurable UI features.
 stage: drafting
-enabled: true
+enabled: false
 sort: 20
 ---
 

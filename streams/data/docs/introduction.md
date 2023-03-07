@@ -7,20 +7,16 @@ stage: review
 enabled: 1
 ---
 
-Welcome to Laravel Streams!
+## Introduction
 
-## What is Streams?
+Laravel Streams is a content management *framework* for **Laravel developers**. It provides the tools for you to build what you need in a way that maximixes your effectiveness and minimizes technical debt and resource requirements.
 
-Laravel Streams is a system of utilities providing an optimized foundation and workflow for **Laravel development**.
+- [Streams Core](/packages/streams/core)
+- [Streams UI](/packages/streams/ui)
+- [Streams API](/packages/streams/api)
+- [Streams API](/packages/streams/api)
 
-Application fundamentals like **data modeling**, **API interaction**, **UI**, **control panels**, and more are defined with code-configured JSON files and establish best-practices design principles to support your work.
-
-The Streams system leans heavily on domain-driven design (DDD). We call these domain abstractions `streams`, hence our namesake.
-
-### Motivation
-
-The ever-changing and widening landscape of web applications, websites, and the like, has stressed the traditions and ideology of popular CMS options. And, after digging into our own CMS engine, we discovered that the problem is in the CMS paradigm. This project results from the complete deconstruction of that paradigm and establishes a new one built upon new fundamental values and principles.
-
+More packages
 
 ### Use Cases
 
@@ -88,37 +84,11 @@ By building upon data structure, we can use stream configurations to help drasti
 
 Our overarching focus is to **abstract, normalize, and optimize** development systems and the work required from many Laravel projects. We try to restrict this to our core focus of data abstraction and access.
 
-### Principle Concerns
-
-Laravel Streams focuses on these fundamental areas of application development.
-
-- [Data Modeling](streams)
-- [Laravel Development](core)
-- [Frontend Development](frontend)
-- [User Interface](ui)
-- [API Readiness](api)
-
-### What's Next?
-
-Time to get your feet wet!
-
-@foreach (Streams::entries('docs')->where('category', 'getting_started')->orderBy('sort', 'asc')->get() as $doc)
-- [{{$doc->link_title ?: $doc->title}}]({{$doc->id}})
-@endforeach
-
 ## Core Packages
 
-Know what you are looking for already? Dive right into our core packages.
+The features of this project are split into thier relevant packages:
 
-- [Streams Core](core/introduction)
-- [Streams UI](ui/introduction)
-- [Streams API](api/introduction)
-- [Streams CLI](cli/introduction)
-
-
-## Community Resources
-
-- <a href="https://discord.gg/vhz8NZC" rel="noreferrer noopener">Discord</a>
-- <a href="https://stackoverflow.com/search?q=laravel+streams" rel="noreferrer noopener">Stack Exchange</a>
-- <a href="https://github.com/laravel-streams/streams" rel="noreferrer noopener">GitHub</a>
-- <a href="https://www.youtube.com/channel/UC4a-uVtWOHNCduY5T7_Q4wA" rel="noreferrer noopener">YouTube</a>
+- [Streams Core](/packages/streams/core)
+- [Streams UI](/packages/streams/ui)
+- [Streams API](/packages/streams/api)
+- [Streams SDK](/packages/streams/sdk)

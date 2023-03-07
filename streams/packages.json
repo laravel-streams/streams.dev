@@ -79,7 +79,7 @@
         },
         {
             "name": "streams/api",
-            "description": "A full featured, universal, and extensible RESTful API.",
+            "description": "A universal and extensible RESTful API for Streams.",
             "docs": "https://streams.dev/docs/api/introduction",
             "repository": "https://github.com/laravel-streams/streams-api",
             "categories": ["development", "integrations", "utilities"]

@@ -7,14 +7,19 @@
             
             <div class="flex space-x-6 md:order-2">
 
+                <a href="https://github.com/laravel-streams" class="text-gray-400 hover:text-gray-300" target="_blank" rel="noreferrer noopener">
+                    <span class="sr-only">GitHub</span>
+                    <x-fab-github class="h-8"/>
+                </a>
+                
                 <a href="/discord" target="_blank" rel="noreferrer noopener" class="text-gray-400 hover:text-gray-300">
                     <span class="sr-only">Discord</span>
                     <x-fab-discord class="h-8"/>
                 </a>
-
-                <a href="https://www.instagram.com/RyanThePyro/" target="_blank" rel="noreferrer noopener" class="text-gray-400 hover:text-gray-300">
-                    <span class="sr-only">Instagram</span>
-                    <x-fab-instagram class="h-8"/>
+                
+                <a href="https://stackoverflow.com/search?q=laravel+streams" target="_blank" rel="noreferrer noopener" class="text-gray-400 hover:text-gray-300">
+                    <span class="sr-only">StackOverflow</span>
+                    <x-fab-stack-overflow class="h-8"/>
                 </a>
 
                 <a href="https://twitter.com/Laravel_Streams" target="_blank" rel="noreferrer noopener" class="text-gray-400 hover:text-gray-300">
@@ -22,9 +27,9 @@
                     <x-fab-twitter class="h-8"/>
                 </a>
 
-                <a href="https://github.com/laravel-streams" class="text-gray-400 hover:text-gray-300" target="_blank" rel="noreferrer noopener">
-                    <span class="sr-only">GitHub</span>
-                    <x-fab-github class="h-8"/>
+                <a href="https://www.instagram.com/RyanThePyro/" target="_blank" rel="noreferrer noopener" class="text-gray-400 hover:text-gray-300">
+                    <span class="sr-only">Instagram</span>
+                    <x-fab-instagram class="h-8"/>
                 </a>
 
             </div>
