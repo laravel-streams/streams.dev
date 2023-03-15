@@ -20,7 +20,7 @@
         <div class="ls-doc__toc mb-10"></div>
 
         <div class="doc-body">
-            {!! $entry->body()->parse() !!}
+            {!! $entry->body()->markdown() !!}
         </div>
 
         <div class="flex mt-12 mb-8">

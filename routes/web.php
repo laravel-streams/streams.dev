@@ -20,6 +20,9 @@ Route::streams('/', [
     'middleware' => ['ttl:600']
 ]);
 
+Route::view('login', 'login')->name('login');
+Route::post('login/auth', 'App\Components\LoginForm@login');
+
 Route::get('/packages/category/{category}', function ($category) {
 
     $packages = Streams::packages()

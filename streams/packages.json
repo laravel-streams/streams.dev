@@ -64,7 +64,7 @@
         {
             "name": "streams/streams",
             "description": "A blank TALL-stack Laravel project with Streams.",
-            "docs": "https://streams.dev/docs/installation",
+            "docs": "https://streams.dev/docs",
             "repository": "https://github.com/laravel-streams/streams-core",
             "categories": ["projects"],
             "readme": "[https://tallstack.dev/](https://tallstack.dev/)"
@@ -72,7 +72,7 @@
         {
             "name": "streams/core",
             "description": "The fundamental features and utilities offered by the Streams platform.",
-            "docs": "https://streams.dev/docs/core/introduction",
+            "docs": "https://streams.dev/docs/installation",
             "repository": "https://github.com/laravel-streams/streams-core",
             "categories": ["utilities"],
             "readme": "# Streams Platform\n\nA cohesive development system for building, administrating, and interacting with data-driven Laravel applications.\n\n## Testing\n\n```bash\nphp vendor/bin/phpunit tests/\n\nXDEBUG_MODE=coverage php vendor/bin/phpunit tests/ --coverage-html=./coverage\n```"

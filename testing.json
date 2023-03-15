@@ -1,0 +1,52 @@
+{
+    "data": {
+        "id": "9e36c441-a8af-4562-96f6-6b12d27e4c93",
+        "email": "ryan@pyrocms.com",
+        "password": "password",
+        "display_name": "Ryan Thompson",
+        "activated": "1",
+        "enabled": "1",
+        "last_login_at": null,
+        "remember_token": null,
+        "activation_code": null,
+        "reset_code": null,
+        "ip_address": null
+    },
+    "rules": {
+        "id": [
+            "required",
+            "unique:users,id"
+        ],
+        "email": [
+            "required",
+            "unique:users,email"
+        ],
+        "password": [
+            "required"
+        ],
+        "display_name": [
+            "required"
+        ],
+        "activated": [],
+        "enabled": [],
+        "last_login_at": [],
+        "remember_token": [],
+        "activation_code": [],
+        "reset_code": [],
+        "ip_address": []
+    },
+    "stream": {
+        "source": {
+            "type": "self"
+        },
+        "abstract": "\\App\\Users\\User"
+    },
+    "messages": {
+        "id": [
+            "The id has already been taken."
+        ],
+        "email": [
+            "The email has already been taken."
+        ]
+    }
+}

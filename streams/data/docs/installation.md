@@ -6,6 +6,21 @@ stage: review
 enabled: true
 ---
 
+## Introduction
+
+Laravel Streams is a modular content management *framework* for **Laravel developers**. It allows developers to easily create and manage custom database-agnostic content/data types, fields, and relationships and maximizes your applications integration and use of them.
+
+### Why Streams?
+
+Streams comes with only what you want and makes it incredibly fast and easy to build up custom data structures for streamlined integration into your website or application.
+
+The CMF is designed to be flexible, modular, performant, and extensible, allowing developers to create powerful and customized websites and applications that meet their specific needs while quickly prototyping ideas with built-in design patterns and flat-file modeling.
+
+### Before You Get Started
+
+Streams is built first and intended for Laravel developers. This means that building something with it requires that you have somewhat familiarity with the Laravel framework.
+
+The optional UI is consistent, user friendly, and accessible, but again, requires some coding knowledge to initially configure.
 
 ## Server Requirements
     
@@ -13,7 +28,7 @@ To run Laravel Streams you will need to meet [Laravel server requirements](https
 
 ### Supported Image Libraries
 
-Please ensure one of the following libraries is installed in order to support [image manipulation](/docs/core/images).
+Please ensure one of the following libraries is installed in order to support [image manipulation](/docs/images).
 
 - GD Library
 - Imagick PHP extension
@@ -35,10 +50,10 @@ php artisan serve
 
 The following packages are installed with the starter project:
 
-- [streams/core](/docs/core/introduction)
-- [streams/api](/docs/api/introduction)
-- [streams/ui](/docs/ui/introduction)
-- [streams/sdk](/docs/sdk/introduction)
+- [streams/core](/packages/streams/core)
+- [streams/api](/packages/streams/api)
+- [streams/ui](/packages/streams/ui)
+- [streams/sdk](/packages/streams/sdk)
 
 <!-- ### Dev Packages
 
@@ -51,14 +66,15 @@ The following development tools are also included:
 Your streams project is now ready for you to start coding.
 
 - [Configuration](configuration)
-- [Debugging](debugging)
+- [Contributing](contributing)
 
 
 ### The Basics
 
 Explore the basics of Streams by example.
 
-- [Defining Streams](how-to-define-streams)
+- [Streams](streams)
+- [Fields](fields)
 
 #### Fundamental Concepts
 
@@ -72,24 +88,11 @@ Dig deeper into the fundamental concepts of Laravel Streams.
 
 ## Existing Laravel Projects
 
-You can add the Streams platform to existing Laravel projects by requiring the packages you need.
-
-### Streams Core
-
-The **core** package is responsible for the meat and taters; it is the only **required** package.
+You can add the Streams features you need to existing Laravel projects by requiring the packages you need. The **core** package is responsible for the fundamental features; it is the only **required** package.
 
 ```bash
 composer require streams/core
+composer require streams/api
+composer require streams/ui
+composer require streams/sdk
 ```
-
-
-## Updating
-From within your project, use Composer to update individual packages:
-
-```bash
-composer update streams/core --with-dependencies
-composer update streams/api --with-dependencies
-composer update streams/ui --with-dependencies
-```
-
-You can update your entire project using **composer update**.

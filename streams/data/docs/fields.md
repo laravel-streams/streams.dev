@@ -1,10 +1,10 @@
 ---
-title: Streams
+title: Fields
 category: basics
-intro: Streams model configuration.
+intro: Streams model properties.
 stage: drafting
 enabled: true
-sort: 0
+sort: 1
 ---
 
 ## Introduction

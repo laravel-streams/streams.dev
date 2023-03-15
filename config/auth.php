@@ -68,7 +68,7 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => \Anomaly\UsersModule\User\UserModel::class,
+            'model' => \App\Users\User::class,
         ],
 
         // 'users' => [

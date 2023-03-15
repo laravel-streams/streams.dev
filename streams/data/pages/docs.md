@@ -84,8 +84,8 @@ sort: 14
 
         <ul class="mt-4 list-none text-xl leading-relaxed">
             <li>
-                <a class="hover:underline"href="docs/introduction">
-                    <strong class="">Introduction</strong>
+                <a class="hover:underline"href="docs/installation">
+                    <strong class="">Installation</strong>
                     <!-- What is Laravel Streams? -->
                 </a>
                 <span class="ml-4">&#10141;</span>

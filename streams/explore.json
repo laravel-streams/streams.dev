@@ -11,7 +11,7 @@
             "type": "slug"
         },
         "title": "string",
-        "body": "markdown",
+        "body": "string",
         "parent": {
             "type": "relationship",
             "config": {

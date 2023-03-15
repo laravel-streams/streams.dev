@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
+use Streams\Ui\Support\Facades\UI;
 
 /**
  * Class AppServiceProvider
@@ -44,6 +45,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        // ...
+        UI::component('login', \App\Components\LoginForm::class);
     }
 }
