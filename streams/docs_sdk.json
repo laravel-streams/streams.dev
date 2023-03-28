@@ -15,22 +15,15 @@
     "project": "streams-sdk",
     "github_docs": "https://github.com/laravel-streams/streams-sdk/blob/1.0/docs",
     "ui": {
-        "cp": {
-            "section": {
-                "parent": "docs",
-                "title": "SDK",
-                "stream": "docs_sdk",
-                "buttons": [
-                    {
-                        "handle": "improve",
-                        "text": "View Docs",
-                        "attributes": {
-                            "target": "_blank",
-                            "url": "/docs/sdk/introduction"
-                        }
-                    }
-                ]
-            }
+        "admin": {
+            "navigation": [
+                {
+                    "sort_order": 2,
+                    "text": "Docs SDK",
+                    "url": "\/admin\/docs_sdk",
+                    "component": "anchor"
+                }
+            ]
         }
     }
 }

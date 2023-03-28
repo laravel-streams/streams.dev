@@ -8,11 +8,11 @@
     "fields": [
         {
             "handle": "id",
-            "type": "integer",
+            "type": "uuid",
             "required": true,
             "unique": true,
             "config": {
-                "default": "increment"
+                "default": true
             }
         },
         {
@@ -66,6 +66,31 @@
                 "component": "table",
                 "handle": "default",
                 "selectable": true,
+                "filters": [
+                    {
+                        "handle": "display_name",
+                        "type": "display_name",
+                        "placeholder": "Display\/Name"
+                    },
+                    {
+                        "handle": "email",
+                        "type": "email",
+                        "placeholder": "Email"
+                    }
+                ],
+                "views": [
+                    {
+                        "handle": "all",
+                        "text": "All"
+                    },
+                    {
+                        "handle": "enabled",
+                        "text": "Enabled",
+                        "query": {
+                            "where": ["enabled", "=", true]
+                        }
+                    }
+                ],
                 "columns": [
                     {
                         "value": "display_name",
@@ -109,8 +134,8 @@
         }
     },
     "data": {
-        "1": {
-            "id": "1",
+        "9e36c441-a8af-4562-96f6-6b12d27e4c93": {
+            "id": "9e36c441-a8af-4562-96f6-6b12d27e4c93",
             "email": "ryan@pyrocms.com",
             "display_name": "Ryan Thompson",
             "password": "$2y$10$fMkttIYSiA3NVzp4yS\/lo.jihGm0KIGAx3yNyA5C\/MBxRZrTmzL2O",
@@ -128,7 +153,7 @@
             "password": "$2y$10$kBM\/oHW85qDBfmTnXRTmQuDAQM4TllTLNSlxzGEApDwGJeqww8Vgy",
             "display_name": "Testing User",
             "activated": true,
-            "enabled": true,
+            "enabled": false,
             "last_login_at": null,
             "remember_token": null,
             "activation_code": null,

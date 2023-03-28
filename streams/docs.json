@@ -120,102 +120,76 @@
         }
     ],
     "ui": {
-        "tables": {
-            "default": {
-                "views": [
-                    {
-                        "handle": "all"
-                    },
-                    {
-                        "handle": "drafts",
-                        "filters": [
-                            {
-                                "handle": "title",
-                                "type": "input"
-                            }
-                        ],
-                        "query": [{ "where": ["stage", "drafting"] }]
-                    }
-                ],
+        "admin": {
+            "navigation": [
+                {
+                    "sort_order": 2,
+                    "text": "Docs",
+                    "url": "\/admin\/docs",
+                    "component": "anchor"
+                }
+            ]
+        },
+        "components": [
+            {
+                "component": "table",
+                "handle": "default",
+                "selectable": true,
                 "filters": [
                     {
-                        "handle": "search",
-                        "fields": ["id", "title", "body"]
+                        "handle": "title",
+                        "type": "string",
+                        "placeholder": "Title"
                     }
                 ],
                 "columns": [
                     {
-                        "handle": "id",
-                        "heading": "ID",
-                        "value": "id"
+                        "value": "sort",
+                        "header": {
+                            "text": "Sort Order"
+                        }
                     },
                     {
-                        "handle": "sort",
-                        "value": "sort"
+                        "value": "id",
+                        "header": {
+                            "text": "ID"
+                        }
                     },
                     {
-                        "handle": "title",
-                        "value": "title"
+                        "value": "title",
+                        "header": {
+                            "text": "Title"
+                        }
+                    },
+                    {
+                        "value": "category",
+                        "header": {
+                            "text": "Category"
+                        }
                     }
                 ],
                 "buttons": [
                     {
-                        "text": "Edit",
-                        "handle": "edit",
-                        "attributes": {
-                            "href": "/cp/{request.segments.1}/{entry.id}/edit",
-                            "class": ["a-button", "-red"]
-                        }
+                        "button": "button.edit"
                     },
                     {
-                        "text": "Code",
-                        "handle": "code",
-                        "attributes": {
-                            "href": "vscode://file{app.base_path}/{stream.path_prefix}/{entry.id}.md",
-                            "class": ["a-button", "-secondary"]
-                        }
-                    },
-                    {
-                        "text": "View",
+                        "tag": "a",
                         "handle": "view",
+                        "text": "View",
+                        "component": "button",
+                        "url": "/docs/{entry.id}",
                         "attributes": {
-                            "target": "_blank",
-                            "href": "/{stream.url_prefix}/{entry.id}",
-                            "class": ["a-button", "-blue"]
+                            "target": "_blank"
                         }
                     }
+                ],
+                "actions": [
+                    {
+                        "handle": "delete",
+                        "text": "Delete",
+                        "type": "delete"
+                    }
                 ]
-            }
-        },
-        "buttons": [
-            {
-                "handle": "improve",
-                "text": "Improve This Page",
-                "attributes": {
-                    "target": "_blank",
-                    "style": "margin: 1rem;",
-                    "url": "{stream.github_docs}/{entry.id}.md"
-                }
-            }
-        ],
-        "alerts": [
-            {
-                "handle": "default",
-                "text": "This feature is in active development!",
-                "type": "default",
-                "attributes": {
-                    "style": "margin: 1rem;"
-                }
-            }
-        ],
-        "avatars": [
-            {
-                "handle": "default",
-                "type": "red",
-                "img": "https://api.lorem.space/image/face?hash=92048",
-                "attributes": {
-                    "style": "margin: 1rem;"
-                }
             }
         ]
     }

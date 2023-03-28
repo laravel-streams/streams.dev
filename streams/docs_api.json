@@ -15,22 +15,15 @@
     "project": "streams/api",
     "github_docs": "https://github.com/laravel-streams/streams-api/blob/1.0/docs",
     "ui": {
-        "cp": {
-            "section": {
-                "title": "API",
-                "parent": "docs",
-                "stream": "docs_api",
-                "buttons": [
-                    {
-                        "handle": "improve",
-                        "text": "View Docs",
-                        "attributes": {
-                            "target": "_blank",
-                            "url": "/docs/api/introduction"
-                        }
-                    }
-                ]
-            }
+        "admin": {
+            "navigation": [
+                {
+                    "sort_order": 2,
+                    "text": "Docs API",
+                    "url": "\/admin\/docs_api",
+                    "component": "anchor"
+                }
+            ]
         }
     }
 }

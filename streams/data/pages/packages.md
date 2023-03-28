@@ -1,7 +1,7 @@
 ---
 title: Packages
 intro: Stream-enhanced packages and addons.
-path: packages
+path: /packages
 enabled: true
 sort: 15
 ---

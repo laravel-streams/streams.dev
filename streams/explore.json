@@ -6,69 +6,99 @@
     },
     "translatable": true,
     "config.source.format": "md",
-    "fields": {
-        "id": {
+    "fields": [
+        {
+            "handle": "id",
             "type": "slug"
         },
-        "title": "string",
-        "body": "string",
-        "parent": {
+        {
+            "handle": "title",
+            "type": "string"
+        },
+        {
+            "handle": "body",
+            "type": "string"
+        },
+        {
+            "handle": "parent",
             "type": "relationship",
             "config": {
                 "related": "explore"
             }
         },
-        "options": {
+        {
+            "handle": "options",
             "type": "array"
         },
-        "links": {
+        {
+            "handle": "links",
             "type": "array"
         },
-        "menu": {
+        {
+            "handle": "menu",
             "type": "array"
         }
-    },
+    ],
     "ui": {
-        "cp": {
-            "section": {
-                "buttons": [{"handle": "create"}]
-            }
+        "admin": {
+            "navigation": [
+                {
+                    "sort_order": 3,
+                    "text": "Explore",
+                    "url": "\/admin\/explore",
+                    "component": "anchor"
+                }
+            ]
         },
-        "tables": {
-            "default": {
+        "components": [
+            {
+                "component": "table",
+                "handle": "default",
+                "selectable": true,
                 "filters": [
                     {
-                        "handle": "search",
-                        "fields": [
-                            "id",
-                            "title",
-                            "body"
-                        ]
+                        "handle": "title",
+                        "type": "string",
+                        "placeholder": "Title"
                     }
                 ],
                 "columns": [
                     {
-                        "handle": "id",
-                        "heading": "ID"
+                        "value": "id",
+                        "header": {
+                            "text": "ID"
+                        }
                     },
                     {
-                        "handle": "title"
+                        "value": "title",
+                        "header": {
+                            "text": "Title"
+                        }
                     }
                 ],
                 "buttons": [
                     {
-                        "handle": "edit",
-                        "context": "secondary"
+                        "button": "button.edit"
                     },
                     {
+                        "tag": "a",
                         "handle": "view",
+                        "text": "View",
+                        "component": "button",
+                        "url": "/explore/{entry.id}",
                         "attributes": {
-                            "href": "/explore/{entry.id}",
                             "target": "_blank"
                         }
                     }
+                ],
+                "actions": [
+                    {
+                        "handle": "delete",
+                        "text": "Delete",
+                        "type": "delete"
+                    }
                 ]
             }
-        }
+        ]
     }
 }

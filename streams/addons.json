@@ -133,21 +133,5 @@
                 }
             }            
         }
-    },
-    "ui": {
-        "tables": {
-            "default": {
-                "buttons": [
-                    {"handle": "edit"}
-                ]
-            }
-        },
-        "cp": {
-            "section": {
-                "sort_order": -1,
-                "title": "Addons",
-                "buttons": [{"handle": "create"}]
-            }
-        }
     }
 }

@@ -13,5 +13,17 @@
     ],
     "description": "Documentation for all things contained in the UI package.",
     "project": "streams/ui",
-    "github_docs": "https://github.com/laravel-streams/streams-ui/blob/1.0/docs"
+    "github_docs": "https://github.com/laravel-streams/streams-ui/blob/1.0/docs",
+    "ui": {
+        "admin": {
+            "navigation": [
+                {
+                    "sort_order": 2,
+                    "text": "Docs UI",
+                    "url": "\/admin\/docs_ui",
+                    "component": "anchor"
+                }
+            ]
+        }
+    }
 }

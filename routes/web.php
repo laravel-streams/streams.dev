@@ -23,6 +23,17 @@ Route::streams('/', [
 Route::view('login', 'login')->name('login');
 Route::post('login/auth', 'App\Components\LoginForm@login');
 
+Route::get('/packages', function () {
+
+    $packages = Streams::packages()->paginate();
+
+    return view('packages', [
+        'packages' => $packages,
+        'title' => 'Packages',
+        'description' => null,
+    ]);
+});
+
 Route::get('/packages/category/{category}', function ($category) {
 
     $packages = Streams::packages()

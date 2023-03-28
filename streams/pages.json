@@ -40,33 +40,68 @@
         }
     ],
     "ui": {
-        "cp": {
-            "section": {
-                "title": "Pages",
-                "buttons": [
-                    {"handle": "create"}
-                ]
-            }
+        "admin": {
+            "navigation": [
+                {
+                    "sort_order": 1,
+                    "text": "Pages",
+                    "url": "\/admin\/pages",
+                    "component": "anchor"
+                }
+            ]
         },
-        "tables": [
+        "components": [
             {
+                "component": "table",
                 "handle": "default",
+                "selectable": true,
+                "filters": [
+                    {
+                        "handle": "title",
+                        "type": "string",
+                        "placeholder": "Title"
+                    }
+                ],
                 "columns": [
-                    {"handle": "title"},
-                    {"handle": "enabled"}
+                    {
+                        "value": "title",
+                        "header": {
+                            "text": "Title"
+                        }
+                    },
+                    {
+                        "value": "path",
+                        "header": {
+                            "text": "Path"
+                        }
+                    },
+                    {
+                        "value": "enabled",
+                        "header": {
+                            "text": "Enabled"
+                        }
+                    }
                 ],
                 "buttons": [
                     {
-                        "handle": "edit"
+                        "button": "button.edit"
                     },
                     {
-                        "text": "View",
+                        "tag": "a",
                         "handle": "view",
+                        "text": "View",
+                        "component": "button",
+                        "url": "{entry.path}",
                         "attributes": {
-                            "target": "_blank",
-                            "href": "/{entry.path}",
-                            "class": ["a-button", "-blue"]
+                            "target": "_blank"
                         }
+                    }
+                ],
+                "actions": [
+                    {
+                        "handle": "delete",
+                        "text": "Delete",
+                        "type": "delete"
                     }
                 ]
             }

@@ -15,22 +15,15 @@
     "project": "streams-core",
     "github_docs": "https://github.com/laravel-streams/streams-core/blob/2.0/docs",
     "ui": {
-        "cp": {
-            "section": {
-                "title": "Core",
-                "parent": "docs",
-                "stream": "docs_core",
-                "buttons": [
-                    {
-                        "handle": "improve",
-                        "text": "View Docs",
-                        "attributes": {
-                            "target": "_blank",
-                            "url": "/docs/core/introduction"
-                        }
-                    }
-                ]
-            }
+        "admin": {
+            "navigation": [
+                {
+                    "sort_order": 2,
+                    "text": "Docs Core",
+                    "url": "\/admin\/docs_core",
+                    "component": "anchor"
+                }
+            ]
         }
     }
 }

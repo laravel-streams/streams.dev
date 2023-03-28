@@ -1,6 +1,6 @@
 ---
 title: Addons
-path: addons
+path: /addons
 enabled: true
 sort: 14
 ---
