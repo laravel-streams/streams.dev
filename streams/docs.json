@@ -16,7 +16,7 @@
     ],
 
     "project": "streams",
-    "github_docs": "https://github.com/laravel-streams/streams.dev/blob/master/docs",
+    "github_docs": "https://github.com/laravel-streams/streams.dev/blob/master/streams/data/docs",
 
     "config": {
         "source": {
