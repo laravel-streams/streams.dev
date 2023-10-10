@@ -1,0 +1,305 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Language" content="en">
+
+<meta name="generator" content="Laravel Streams"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="csrf-token" content="lllUMylao8iFnrp94GXQgmPj88TvBoxGhmLx0cis">
+
+<meta name="description" content=""/>
+
+
+
+<title>
+    Streams
+    </title>
+
+<link rel="icon" type="image/png" href="/img/favicon.png"/>
+
+
+
+
+
+<link media="all" type="text/css" rel="stylesheet" href="/css/variables.css"/>
+<link media="all" type="text/css" rel="stylesheet" href="/css/theme.css"/>
+</head>
+
+<body class="theme-- flex flex-col min-h-screen">
+
+    <header>
+
+    <div class="flex items-center justify-between px-16 py-6">
+
+        <div class="flex items-center justify-center">
+
+            <div class="flex items-center justify-center font-bold text-black text-3xl">
+                <a href="/"><img src="/img/logo.png" width="240"></a>
+            </div>
+
+            <div class="lg:flex items-center justify-center antialiased lg:ml-20 pt-1">
+                <div x-data="searchComponent()" @click.away="close()" class="relative">
+                    <div>
+                        <svg class="h-6 w-6 inline z-2 relative ml-2 -mr-9 -mt-0.5 opacity-50" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+</svg>                        <input type="search" x-model="q" placeholder="Search"
+                            class="bg-gray-100 px-6 py-3 rounded-lg pl-10 w-96" @focus="await search()"
+                            @keyup.debounce.250="search()">
+                    </div>
+                    <div class="absolute z-10 left-0 right-0 m-0 bg-white shadow-xl border-2 rounded-lg overflow-y-scroll"
+                        style="max-height: calc(100vh - 100px)" x-show="results.length" x-cloak>
+                        <ul x-model="results">
+                            <template x-for="(result, index) in results" :key="index">
+                                <li>
+                                    <a x-bind:href="result.item.href" class="block p-3 m-3 hover:bg-gray-100 rounded-lg">
+                                        <strong x-text="result.item.package"></strong>
+                                        <span>&nbsp;>&nbsp;</span>
+                                        <strong x-text="result.item.title"></strong>
+                                        <br x-show="result.item.category">
+                                        <small class="font-mono" x-text="result.item.category"></small>
+                                        <br x-show="result.item.intro">
+                                        <small x-text="result.item.intro"></small>
+                                    </a>
+                                </li>
+                            </template>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+
+        <div class="hidden md:flex items-center justify-center gap-x-2">
+            <a href="/explore/idea"
+                class="px-6 py-3 font-bold bg-gray-200 hover:bg-gray-800 hover:text-white text-black outline-none focus:outline-none hover:shadow-md transition duration-200 ease-in-out">Explore</a>
+            <a href="/docs/installation"
+                class="px-6 py-3 font-bold bg-black hover:bg-gray-800 text-white outline-none focus:outline-none hover:shadow-md transition duration-200 ease-in-out">Get
+                Started <span>&#10141;</span></a>
+        </div>
+
+    </div>
+
+</header>
+
+<script>
+    const searchComponent = function () {
+        return {
+            q: null,
+            results: [],
+            search: async function () {
+
+                const response = await fetch("http://127.0.0.1:8002/docs.json");
+                
+                const list = await response.json();
+
+                const options = {
+                    minMatchCharLength: 3,
+                    // location: 0,
+                    threshold: 0.42,
+                    // distance: 100,
+                    // useExtendedSearch: false,
+                    // ignoreLocation: false,
+                    // ignoreFieldNorm: false,
+                    // fieldNormWeight: 1,
+                    keys: [
+                        "id",
+                        "title",
+                        "intro",
+                        "body"
+                        ]
+                };
+
+                if (!this.q || this.q.length < 3) {
+                    return;
+                }
+
+                const fuse = new Fuse(list, options);
+
+                this.results = results = fuse.search(this.q);
+                console.log(results);
+            },
+            close: function () {
+                this.q = null;
+                this.results = [];
+            }
+        }
+    }
+</script>
+
+    <div id="app" class="flex-grow">
+        <div class="flex flex-wrap min-h-screen">
+    <main class="w-full mx-auto">
+        <style type="text/css">input[type="search"] { background: none !important; }</style>
+
+<div class="flex p-20">
+    
+    <div>
+        <h1 class="text-4xl sm:text-6xl lg:text-7xl leading-none font-extrabold tracking-tight text-gray-900 mt-10 mb-8 sm:mt-14 sm:mb-10">Optimized Laravel Development</h1>
+        
+        <p class="max-w-screen-lg text-lg text-gray-700 sm:text-2xl sm:leading-10 font-medium mb-10 sm:mb-11">A cohesive development system for building, administrating, and interacting with data-driven Laravel applications. </p>    
+
+        <div class="mt-16 space-x-4">
+            <a href="/docs" class="px-6 py-3 font-bold text-2xl bg-black hover:bg-gray-800 text-white outline-none focus:outline-none hover:shadow-md transition duration-200 ease-in-out"><svg class="w-6 h-6 mb-1 mr-2 inline-block" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M8 7v8a2 2 0 002 2h6M8 7V5a2 2 0 012-2h4.586a1 1 0 01.707.293l4.414 4.414a1 1 0 01.293.707V15a2 2 0 01-2 2h-2M8 7H6a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2v-2"/>
+</svg> Documentation</a>
+        </div>
+    </div>
+
+    <img src="/img/undraw_building_websites.svg" class="w-5/12">
+    
+</div>
+
+
+
+<div class="flex py-24 px-20 my-24 bg-white">
+
+    <div class="w-2/5">
+        <div class="relative w-full flex flex-col bg-black">
+    <div class="flex-none h-11 flex items-center px-4">
+        <div class="flex space-x-1.5">
+            <div class="w-3 h-3 border-2 rounded-full bg-red-500 border-red-500"></div>
+            <div class="w-3 h-3 border-2 rounded-full bg-yellow-400 border-yellow-400"></div>
+            <div class="w-3 h-3 border-2 rounded-full bg-green-400 border-green-400"></div>
+        </div>
+    </div>
+    <div class="relative border-t border-white border-opacity-10 min-h-0 flex-auto flex flex-col">
+        <div class="hidden md:block absolute inset-y-0 left-0 bg-black bg-opacity-25" style="width: 50px;"></div>
+        <div class="w-full flex-auto flex min-h-0 overflow-auto">
+            <div class="w-full relative flex-auto">
+                <pre>
+<code class="language-json">// streams/pages.json
+{
+    "config": {
+        "source": {
+            "format": "md"
+        }
+    },
+    "template": "page",
+    "rules": {
+        "id": "required",
+        "title": "required"
+    },
+    "fields": {
+        "id": "slug",
+        "path": "string"
+    }
+}</code></pre>
+            </div>
+        </div>
+    </div>
+</div>
+    </div>
+    
+    <div class="pl-12">
+        <h2 class="text-4xl sm:text-6xl lg:text-5xl leading-none font-extrabold tracking-tight text-gray-900 mt-10 mb-8 sm:mt-14 sm:mb-10">Code Configured + Flat File</h2>
+        
+        <p class="max-w-screen-lg text-lg text-gray-700 sm:text-2xl sm:leading-10 font-medium mb-10 sm:mb-11">
+        Hit the ground running and rapidly build out prototypes with code-configured declarations, a unified API, and plenty of database options to choose from, including flat-file support. Then, scale to other databases without changing your code. 
+        </p>    
+
+        <div class="mt-16 space-x-4">
+            <a href="/explore/idea" class="px-6 py-3 font-bold text-2xl bg-black hover:bg-gray-800 text-white outline-none focus:outline-none hover:shadow-md transition duration-200 ease-in-out"><svg class="w-6 h-6 mb-1 mr-2 inline-block" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc. --><path d="M464 256A208 208 0 1 0 48 256a208 208 0 1 0 416 0zM0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256zm306.7 69.1L162.4 380.6c-19.4 7.5-38.5-11.6-31-31l55.5-144.3c3.3-8.5 9.9-15.1 18.4-18.4l144.3-55.5c19.4-7.5 38.5 11.6 31 31L325.1 306.7c-3.2 8.5-9.9 15.1-18.4 18.4zM288 256a32 32 0 1 0 -64 0 32 32 0 1 0 64 0z"/></svg> Explore More</a>
+        </div>
+    </div>
+    
+</div>
+
+
+
+<div class="flex p-20">
+    
+    <img src="/img/undraw_stepping_up.svg" class="w-5/12 mr-20">
+    
+    <div>
+        <h2 class="text-4xl sm:text-6xl lg:text-5xl leading-none font-extrabold tracking-tight text-gray-900 mt-10 mb-8 sm:mt-14 sm:mb-10">Ready to Scale</h2>
+        
+        <p class="max-w-screen-lg text-lg text-gray-700 sm:text-2xl sm:leading-10 font-medium mb-10 sm:mb-11">Scale your flat-file structures to SQL and more without changing your code.</p>    
+
+        <!-- <div class="mt-16 space-x-4">
+            <a href="/docs" class="px-6 py-3 font-bold text-2xl bg-black hover:bg-gray-800 text-white outline-none focus:outline-none hover:shadow-md transition duration-200 ease-in-out"><svg class="w-6 h-6 mb-1 mr-2 inline-block" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M8 7v8a2 2 0 002 2h6M8 7V5a2 2 0 012-2h4.586a1 1 0 01.707.293l4.414 4.414a1 1 0 01.293.707V15a2 2 0 01-2 2h-2M8 7H6a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2v-2"/>
+</svg> Documentation</a>
+        </div> -->
+    </div>
+    
+</div>
+
+
+        
+    </main>
+</div>
+    </div>
+    
+    <footer class="bg-black" aria-labelledby="footerHeading">
+    
+    <h2 id="footerHeading" class="sr-only">Footer</h2>
+
+    <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
+        <div class="md:flex md:items-center md:justify-between">
+            
+            <div class="flex space-x-6 md:order-2">
+
+                <a href="https://github.com/laravel-streams" class="text-gray-400 hover:text-gray-300" target="_blank" rel="noreferrer noopener">
+                    <span class="sr-only">GitHub</span>
+                    <svg class="h-8" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc. --><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>                </a>
+                
+                <a href="/discord" target="_blank" rel="noreferrer noopener" class="text-gray-400 hover:text-gray-300">
+                    <span class="sr-only">Discord</span>
+                    <svg class="h-8" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc. --><path d="M524.531,69.836a1.5,1.5,0,0,0-.764-.7A485.065,485.065,0,0,0,404.081,32.03a1.816,1.816,0,0,0-1.923.91,337.461,337.461,0,0,0-14.9,30.6,447.848,447.848,0,0,0-134.426,0,309.541,309.541,0,0,0-15.135-30.6,1.89,1.89,0,0,0-1.924-.91A483.689,483.689,0,0,0,116.085,69.137a1.712,1.712,0,0,0-.788.676C39.068,183.651,18.186,294.69,28.43,404.354a2.016,2.016,0,0,0,.765,1.375A487.666,487.666,0,0,0,176.02,479.918a1.9,1.9,0,0,0,2.063-.676A348.2,348.2,0,0,0,208.12,430.4a1.86,1.86,0,0,0-1.019-2.588,321.173,321.173,0,0,1-45.868-21.853,1.885,1.885,0,0,1-.185-3.126c3.082-2.309,6.166-4.711,9.109-7.137a1.819,1.819,0,0,1,1.9-.256c96.229,43.917,200.41,43.917,295.5,0a1.812,1.812,0,0,1,1.924.233c2.944,2.426,6.027,4.851,9.132,7.16a1.884,1.884,0,0,1-.162,3.126,301.407,301.407,0,0,1-45.89,21.83,1.875,1.875,0,0,0-1,2.611,391.055,391.055,0,0,0,30.014,48.815,1.864,1.864,0,0,0,2.063.7A486.048,486.048,0,0,0,610.7,405.729a1.882,1.882,0,0,0,.765-1.352C623.729,277.594,590.933,167.465,524.531,69.836ZM222.491,337.58c-28.972,0-52.844-26.587-52.844-59.239S193.056,219.1,222.491,219.1c29.665,0,53.306,26.82,52.843,59.239C275.334,310.993,251.924,337.58,222.491,337.58Zm195.38,0c-28.971,0-52.843-26.587-52.843-59.239S388.437,219.1,417.871,219.1c29.667,0,53.307,26.82,52.844,59.239C470.715,310.993,447.538,337.58,417.871,337.58Z"/></svg>                </a>
+                
+                <a href="https://stackoverflow.com/search?q=laravel+streams" target="_blank" rel="noreferrer noopener" class="text-gray-400 hover:text-gray-300">
+                    <span class="sr-only">StackOverflow</span>
+                    <svg class="h-8" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Free 6.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc. --><path d="M290.7 311L95 269.7 86.8 309l195.7 41zm51-87L188.2 95.7l-25.5 30.8 153.5 128.3zm-31.2 39.7L129.2 179l-16.7 36.5L293.7 300zM262 32l-32 24 119.3 160.3 32-24zm20.5 328h-200v39.7h200zm39.7 80H42.7V320h-40v160h359.5V320h-40z"/></svg>                </a>
+
+                <a href="https://twitter.com/Laravel_Streams" target="_blank" rel="noreferrer noopener" class="text-gray-400 hover:text-gray-300">
+                    <span class="sr-only">Twitter</span>
+                    <svg class="h-8" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc. --><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>                </a>
+
+                <a href="https://www.instagram.com/RyanThePyro/" target="_blank" rel="noreferrer noopener" class="text-gray-400 hover:text-gray-300">
+                    <span class="sr-only">Instagram</span>
+                    <svg class="h-8" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc. --><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/></svg>                </a>
+
+            </div>
+            
+            <p class="mt-8 text-base text-gray-400 md:mt-0 md:order-1">
+            &copy; 2023 Laravel Streams. All rights reserved.
+            </p>
+
+        </div>
+    </div>
+  </footer>
+    <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.6.2"></script>
+
+
+
+<script src="/js/app.js"></script>
+
+<script>
+
+    // window.streams.core.app.bootstrap({
+    //     providers: [
+    //         window.streams.core.StreamsServiceProvider,
+    //         window.streams.api.ApiServiceProvider,
+    //         window.streams.ui.UiServiceProvider,
+    //         window.AppServiceProvider
+    //     ]
+    // }).then(app => {
+    //     return app.boot();
+    // }).then(app => {
+    //     return app.start();
+    // });
+</script>
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+
+<script src="//instant.page/5.1.0" type="module" integrity="sha384-by67kQnR+pyfy8yWP4kPO12fHKRLHZPfEsiSXR8u2IKcTdxD805MGUXBzVPnkLHw"></script>
+
+</body>
+</html>
