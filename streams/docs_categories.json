@@ -87,6 +87,12 @@
             "name": "Getting Started",
             "description": "Download, install, and start working with Streams."
         },
+        "core-concepts": {
+            "id": "core-concepts",
+            "sort_order": 1,
+            "name": "Core Concepts",
+            "description": "Explore the architecture concepts of Streams."
+        },
         "basics": {
             "id": "basics",
             "sort_order": 2,
@@ -97,7 +103,7 @@
             "id": "frontend",
             "sort_order": 3,
             "name": "Frontend",
-            "description": "Frontend development and support."
+            "description": "UI development with Streams."
         },
         "advanced": {
             "id": "advanced",

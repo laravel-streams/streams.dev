@@ -10,7 +10,7 @@
     "routes": [
         {
             "handle": "view",
-            "uri": "{path}",
+            "uri": "{uri}",
             "parse": true,
             "view": "{layout}"
         }
@@ -28,7 +28,7 @@
             "required": true
         },
         {
-            "handle": "path",
+            "handle": "uri",
             "type": "string",
             "required": true,
             "unique": true

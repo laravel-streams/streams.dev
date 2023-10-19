@@ -2,7 +2,7 @@
 sort_order: 4
 title: Streams
 description: 'Get started with the stream modeling engine.'
-category: getting-started
+category: core-concepts
 status: ideation
 ---
 

@@ -507,7 +507,7 @@
             "id": "a659ec13-6b73-460d-a3a6-512aa0809f43",
             "name": "Streams CMS",
             "type": "starter",
-            "enabled": true,
+            "enabled": false,
             "composer": {
                 "name": "streams\/cms",
                 "type": "project",
@@ -664,7 +664,7 @@
             "id": "f5d37f25-4b0c-42e3-9b2a-570c29c557bb",
             "name": "Subscriptions",
             "type": "tools",
-            "enabled": true,
+            "enabled": false,
             "composer": {
                 "name": "ryanthompson\/subscriptions",
                 "type": "streams-addon",
@@ -743,7 +743,7 @@
             "id": "7928c25d-5293-4c3b-8144-3950c8550fca",
             "name": "Streams Maker",
             "type": "tools",
-            "enabled": true,
+            "enabled": false,
             "composer": {
                 "name": "streams\/maker",
                 "type": "streams-addon",
@@ -822,7 +822,7 @@
             "id": "45372a9a-3f48-4d7a-8f60-c2d987b0661b",
             "name": "Pyro Bridge",
             "type": "tools",
-            "enabled": true,
+            "enabled": false,
             "composer": {
                 "name": "pyrocms\/bridge",
                 "type": "streams-addon",

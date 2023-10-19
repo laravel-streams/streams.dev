@@ -5,6 +5,7 @@
     "keywords": ["framework", "laravel"],
     "license": "MIT",
     "require": {
+        "barryvdh/laravel-httpcache": "^1.0",
         "streams/core": "^2.0",
         "streams/ui": "^1.0"
     },
