@@ -2,7 +2,7 @@
 sort_order: 10
 title: Caching
 description: 'Caching options and automation.'
-category: basics
+category: development
 status: ideation
 ---
 

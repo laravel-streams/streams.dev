@@ -6,10 +6,19 @@ sort_order: 2
 ---
 
 @php 
-$packages = Streams::entries('packages')->where('enabled', true)->orderBy('sort_order', 'ASC')->get();
+$packages = Streams::entries('packages')
+    ->where('enabled', true)
+    ->orderBy('sort_order', 'ASC');
+
+if (Request::get('type')) {
+    $packages = $packages->where('type', Request::get('type'));
+}
+
+$packages = $packages->get();
+
 @endphp
 
-<section class="flex flex-wrap">
+<section class="flex flex-wrap flex-grow">
     @foreach($packages as $package)
     <div class="w-1/2 mb-4">
     <div class="p-4 m-2 h-full bg-white rounded-sm shadow-sm hover:shadow-slate-300 hover:border-black border border-transparent border-dashed">

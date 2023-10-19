@@ -1,8 +1,8 @@
 ---
 title: Introduction
-description: 'The system architecture and terminology.'
+description: 'Streams overview and terminology.'
 sort_order: 0
-category: getting-started
+category: core-concepts
 status: ideation
 ---
 

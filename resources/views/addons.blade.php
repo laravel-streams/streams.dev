@@ -13,7 +13,7 @@
         
         @include('partials.filters')
 
-        <div>
+        <div class="flex-grow">
             {!! View::parse($entry->body) !!}
         </div>
 

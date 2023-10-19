@@ -1,0 +1,104 @@
+{
+    "name": "Explore",
+    "description": "Explore the feature, functions, and operating principles of Laravel Streams.",
+    "routes.view": {
+        "uri": "/explore/{id}"
+    },
+    "translatable": true,
+    "config.source.format": "md",
+    "fields": [
+        {
+            "handle": "id",
+            "type": "slug"
+        },
+        {
+            "handle": "title",
+            "type": "string"
+        },
+        {
+            "handle": "body",
+            "type": "string"
+        },
+        {
+            "handle": "parent",
+            "type": "relationship",
+            "config": {
+                "related": "explore"
+            }
+        },
+        {
+            "handle": "options",
+            "type": "array"
+        },
+        {
+            "handle": "links",
+            "type": "array"
+        },
+        {
+            "handle": "menu",
+            "type": "array"
+        }
+    ],
+    "ui": {
+        "admin": {
+            "navigation": [
+                {
+                    "sort_order": 3,
+                    "text": "Explore",
+                    "url": "\/admin\/explore",
+                    "component": "anchor"
+                }
+            ]
+        },
+        "components": [
+            {
+                "component": "table",
+                "handle": "default",
+                "selectable": true,
+                "filters": [
+                    {
+                        "handle": "title",
+                        "type": "string",
+                        "placeholder": "Title"
+                    }
+                ],
+                "columns": [
+                    {
+                        "value": "id",
+                        "header": {
+                            "text": "ID"
+                        }
+                    },
+                    {
+                        "value": "title",
+                        "header": {
+                            "text": "Title"
+                        }
+                    }
+                ],
+                "buttons": [
+                    {
+                        "button": "button.edit"
+                    },
+                    {
+                        "tag": "a",
+                        "handle": "view",
+                        "text": "View",
+                        "component": "button",
+                        "url": "/explore/{entry.id}",
+                        "attributes": {
+                            "target": "_blank"
+                        }
+                    }
+                ],
+                "actions": [
+                    {
+                        "handle": "delete",
+                        "text": "Delete",
+                        "type": "delete"
+                    }
+                ]
+            }
+        ]
+    }
+}
