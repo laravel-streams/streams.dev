@@ -51,7 +51,6 @@ The following development tools are also included:
 Your streams project is now ready for you to start coding.
 
 - [Configuration](configuration)
-- [Debugging](debugging)
 
 
 ### The Basics
