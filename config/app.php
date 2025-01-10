@@ -185,7 +185,7 @@ return [
         /*
          * Package Service Providers...
          */
-        Barryvdh\HttpCache\ServiceProvider::class,
+        // Barryvdh\HttpCache\ServiceProvider::class,
         
         /*
          * Application Service Providers...
