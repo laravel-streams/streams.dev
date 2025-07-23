@@ -5,18 +5,23 @@
     "keywords": ["framework", "laravel"],
     "license": "MIT",
     "require": {
-        "streams/core": "^2.0"
+        "php": "^8.0.2",
+        "guzzlehttp/guzzle": "^7.2",
+        "laravel/framework": "^10.0",
+        "predis/predis": "^3.0",
+        "streams/core": "^2.0",
+        "streams/ui": "^1.0"
     },
     "require-dev": {
-        "streams/sdk": "^1.0",
-        "laravel/tinker": "^2.7",
-        "streams/testing": "^1.0",
+        "barryvdh/laravel-debugbar": "^3.15",
         "fakerphp/faker": "^1.9.1",
+        "laravel/pint": "^1.0",
+        "laravel/sail": "^1.18",
         "mockery/mockery": "^1.4.4",
-        "phpunit/phpunit": "^9.5.10",
-        "nunomaduro/collision": "^6.1",
-        "spatie/laravel-web-tinker": "^1.8",
-        "spatie/laravel-ignition": "^1.0"
+        "nunomaduro/collision": "^7.0",
+        "phpunit/phpunit": "^10.1",
+        "spatie/laravel-ignition": "^2.0",
+        "streams/sdk": "^1.0"
     },
     "repositories": [
         {
