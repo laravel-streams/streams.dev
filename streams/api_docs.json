@@ -11,7 +11,7 @@
     "routes": [
         {
             "handle": "view",
-            "uri": "docs/streams-api/{id}",
+            "uri": "docs/api/{id}",
             "view": "docs"
         }
     ],
@@ -120,7 +120,7 @@
                         "tag": "a",
                         "text": "View",
                         "handle": "view",
-                        "url": "/docs/{entry.id}",
+                        "url": "/docs/api/{entry.id}",
                         "attributes": {
                             "target": "_blank",
                             "class": ["a-button", "-secondary"]

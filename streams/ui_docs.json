@@ -11,7 +11,7 @@
     "routes": [
         {
             "handle": "view",
-            "uri": "docs/streams-ui/{id}",
+            "uri": "docs/ui/{id}",
             "view": "docs"
         }
     ],

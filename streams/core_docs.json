@@ -11,7 +11,7 @@
     "routes": [
         {
             "handle": "view",
-            "uri": "docs/streams-core/{id}",
+            "uri": "docs/core/{id}",
             "view": "docs"
         }
     ],
@@ -20,46 +20,39 @@
             "handle": "id",
             "type": "slug",
             "required": true,
-            "unique": true
+            "unique": true,
+            "config": {
+                "from": "filename"
+            }
         },
         {
-            "handle": "sort_order",
+            "handle": "sort",
             "type": "integer",
             "required": true,
             "config": {
-                "default": "increment"
+                "default": 0
             }
         },
         {
-            "handle": "category",
-            "type": "relationship",
-            "config": {
-                "related": "docs_categories"
-            },
-            "input": {
-                "type": "text",
-                "placeholder": "Uncategorized"
-            }
-        },
-        {
-            "handle": "status",
+            "handle": "stage",
             "type": "string",
             "required": true,
-            "input": {
-                "placeholder": "drafting|editing|ready"
+            "config": {
+                "default": "review"
+            }
+        },
+        {
+            "handle": "enabled",
+            "type": "boolean",
+            "required": true,
+            "config": {
+                "default": true
             }
         },
         {
             "handle": "title",
             "type": "string",
             "required": true
-        },
-        {
-            "handle": "description",
-            "type": "string",
-            "input": {
-                "type": "textarea"
-            }
         },
         {
             "handle": "body",
@@ -120,7 +113,7 @@
                         "tag": "a",
                         "text": "View",
                         "handle": "view",
-                        "url": "/docs/streams-core/{entry.id}",
+                        "url": "/docs/core/{entry.id}",
                         "attributes": {
                             "target": "_blank",
                             "class": ["a-button", "-secondary"]
