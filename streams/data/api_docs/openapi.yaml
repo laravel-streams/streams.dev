@@ -1,0 +1,10 @@
+openapi: 3.0.3
+info:
+  title: Streams API (work-in-progress)
+  version: '1.0.0'
+  description: >-
+    A living OpenAPI stub for Streams API. This file is a starting point and
+    will be expanded as Builder::make(...) docs are finalized. The current JSON
+    response envelope is preserved; changes must be versioned.
+paths: {}
+components: {}

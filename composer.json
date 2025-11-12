@@ -1,7 +1,7 @@
 {
-    "name": "laravel/laravel",
+    "name": "laravel-streams/streams.dev",
     "type": "project",
-    "description": "The Laravel Framework.",
+    "description": "A modular ecosystem of Laravel packages (Core, UI, API, SDK) for building configurable, data-driven web applications and control panels.",
     "keywords": ["framework", "laravel"],
     "license": "MIT",
     "require": {

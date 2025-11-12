@@ -1,0 +1,133 @@
+{
+    "name": "API Docs",
+    "handle": "api_docs",
+    "description": "Basic docs for the API package.",
+    "config": {
+        "source": {
+            "format": "md",
+            "path": "submodules/streams-api/docs"
+        }
+    },
+    "routes": [
+        {
+            "handle": "view",
+            "uri": "docs/streams-api/{id}",
+            "view": "docs"
+        }
+    ],
+    "fields": [
+        {
+            "handle": "id",
+            "type": "slug",
+            "required": true,
+            "unique": true
+        },
+        {
+            "handle": "sort_order",
+            "type": "integer",
+            "required": true,
+            "config": {
+                "default": "increment"
+            }
+        },
+        {
+            "handle": "category",
+            "type": "relationship",
+            "config": {
+                "related": "docs_categories"
+            },
+            "input": {
+                "type": "text",
+                "placeholder": "Uncategorized"
+            }
+        },
+        {
+            "handle": "status",
+            "type": "string",
+            "required": true,
+            "input": {
+                "placeholder": "drafting|editing|ready"
+            }
+        },
+        {
+            "handle": "title",
+            "type": "string",
+            "required": true
+        },
+        {
+            "handle": "description",
+            "type": "string",
+            "input": {
+                "type": "textarea"
+            }
+        },
+        {
+            "handle": "body",
+            "type": "string",
+            "input": {
+                "type": "editor"
+            }
+        }
+    ],
+    "ui": {
+        "admin": {
+            "navigation": [
+                {
+                    "component": "anchor",
+                    "text": "Documentation",
+                    "url": "/admin/docs",
+                    "sort_order": 10
+                }
+            ]
+        },
+        "components": [
+            {
+                "component": "table",
+                "handle": "default",
+                "filters": [
+                    {
+                        "handle": "title"
+                    }
+                ],
+                "columns": [
+                    {
+                        "value": "title",
+                        "header": {
+                            "text": "Title"
+                        }
+                    },
+                    {
+                        "value": "category",
+                        "header": {
+                            "text": "Category"
+                        }
+                    },
+                    {
+                        "value": "status",
+                        "header": {
+                            "text": "Status"
+                        }
+                    }
+                ],
+                "buttons": [
+                    {
+                        "tag": "a",
+                        "text": "Edit",
+                        "handle": "edit",
+                        "url": "/{request.segments.0}/{request.segments.1}/{entry.id}/edit"
+                    },
+                    {
+                        "tag": "a",
+                        "text": "View",
+                        "handle": "view",
+                        "url": "/docs/{entry.id}",
+                        "attributes": {
+                            "target": "_blank",
+                            "class": ["a-button", "-secondary"]
+                        }
+                    }
+                ]
+            }
+        ]
+    }
+}

@@ -35,7 +35,9 @@
                 "options": {
                     "starter": "Starters",
                     "example": "Examples",
-                    "database": "Database"
+                    "database": "Database",
+                    "client": "Clients",
+                    "tools": "Tools"
                 }
             }
         },
@@ -340,6 +342,38 @@
             },
             "type": null,
             "enabled": true
+        },
+        "8b2c4d3e-5a6f-4g7h-8i9j-0k1l2m3n4o5p": {
+            "id": "8b2c4d3e-5a6f-4g7h-8i9j-0k1l2m3n4o5p",
+            "name": "Streams API Client",
+            "type": "client",
+            "enabled": true,
+            "composer": {
+                "name": "@laravel-streams/api-client",
+                "type": "library",
+                "description": "A JavaScript client for interacting with the Laravel Streams API.",
+                "license": "MIT",
+                "support": {
+                    "docs": "https://github.com/laravel-streams/api-client/tree/master/docs",
+                    "source": "https://github.com/laravel-streams/api-client"
+                },
+                "keywords": ["streams", "api", "client", "javascript"],
+                "version": "3.0.0",
+                "authors": [
+                    {
+                        "name": "Robin Radic",
+                        "email": "rradic@gmail.com"
+                    },
+                    {
+                        "name": "Ryan Thompson",
+                        "email": "ryan@streams.dev"
+                    }
+                ],
+                "repository": {
+                    "type": "git",
+                    "url": "https://github.com/laravel-streams/api-client"
+                }
+            }
         },
         "75a5fd1f-d9f5-46fe-81a9-fe1f1ccc0129": {
             "id": "75a5fd1f-d9f5-46fe-81a9-fe1f1ccc0129",
