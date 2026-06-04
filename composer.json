@@ -94,7 +94,10 @@
     },
     "config": {
         "optimize-autoloader": true,
-        "preferred-install": "dist",
+        "preferred-install": {
+            "streams/*": "source",
+            "*": "dist"
+        },
         "sort-packages": true,
         "allow-plugins": {
             "pestphp/pest-plugin": true

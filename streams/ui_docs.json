@@ -4,8 +4,7 @@
     "description": "Documentation for the Streams UI package.",
     "config": {
         "source": {
-            "format": "md",
-            "path": "submodules/streams-ui/docs"
+            "format": "md"
         }
     },
     "routes": [
@@ -120,7 +119,7 @@
                         "tag": "a",
                         "text": "View",
                         "handle": "view",
-                        "url": "/docs/streams-ui/{entry.id}",
+                        "url": "/docs/ui/{entry.id}",
                         "attributes": {
                             "target": "_blank",
                             "class": ["a-button", "-secondary"]

@@ -1,9 +1,9 @@
 ---
 title: Files
 description: 'Files and image handling.'
-sort_order: 3
+sort_order: 2
 category: basics
-status: ideation
+status: ready
 ---
 
 ## Introduction

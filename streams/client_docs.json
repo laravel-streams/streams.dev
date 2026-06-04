@@ -4,8 +4,7 @@
     "description": "Basic docs for the API client package.",
     "config": {
         "source": {
-            "format": "md",
-            "path": "submodules/api-client/docs"
+            "format": "md"
         }
     },
     "routes": [

@@ -1,7 +1,7 @@
 ---
 title: Repositories
 description: 'Working with stream repositories for data access.'
-sort_order: 3
+sort_order: 5
 category: core-concepts
 status: live
 ---

@@ -1,9 +1,8 @@
 ---
-id: builder
-sort_order: 3
-status: drafting
-title: Builder::make(...) API Guide
-description: Document the Builder contract and examples for using Builder::make(...) to create API endpoints.
+sort_order: 10
+title: Builder
+description: 'Builder contract for composing API queries and responses.'
+status: editing
 ---
 
 ## Table of Contents

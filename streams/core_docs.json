@@ -4,8 +4,7 @@
     "description": "Documentation for the Streams Core package.",
     "config": {
         "source": {
-            "format": "md",
-            "path": "submodules/streams-core/docs"
+            "format": "md"
         }
     },
     "routes": [
@@ -26,7 +25,7 @@
             }
         },
         {
-            "handle": "sort",
+            "handle": "sort_order",
             "type": "integer",
             "required": true,
             "config": {
@@ -34,19 +33,18 @@
             }
         },
         {
-            "handle": "stage",
+            "handle": "status",
             "type": "string",
             "required": true,
             "config": {
-                "default": "review"
+                "default": "drafting"
             }
         },
         {
-            "handle": "enabled",
-            "type": "boolean",
-            "required": true,
-            "config": {
-                "default": true
+            "handle": "description",
+            "type": "string",
+            "input": {
+                "type": "textarea"
             }
         },
         {

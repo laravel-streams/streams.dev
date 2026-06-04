@@ -2,44 +2,34 @@
 title: Introduction
 description: 'RESTful API automation for Laravel Streams.'
 sort_order: 0
-category: core-concepts
-status: live
+status: ready
 ---
 
 # Streams API
 
-The Streams API package (`streams/api`) provides automatic RESTful API generation for your Laravel Streams. It creates standardized JSON APIs for your streams without requiring manual controller or route definition.
+The Streams API package (`streams/api`) generates REST endpoints for your streams without hand-written CRUD controllers for each model.
 
-## What is Streams API?
+## What you get
 
-Streams API automatically generates REST endpoints for your streams, providing:
+- CRUD routes per exposed stream
+- Query parameters for filter, sort, and pagination
+- Request validation from stream field rules
+- Custom interfaces, endpoints, and response formatting
+- OpenAPI schema generation
 
-- **Automatic REST Routes**: CRUD operations for all streams
-- **JSON:API Compliance**: Follows JSON:API specification standards
-- **Relationship Support**: Automatic relationship endpoints
-- **Filtering & Sorting**: Query parameter support for data filtering
-- **Pagination**: Built-in pagination with customizable limits
-- **Validation**: Automatic request validation using stream rules
-- **Customizable**: Override default behavior when needed
+Responses use the **Streams API JSON envelope** documented in [Responses](/docs/api/responses). The format is stable and intentionally preserved across versions.
 
-## Key Features
+## Default routes
 
-### Automatic Endpoint Generation
-Every stream automatically gets a full set of REST endpoints:
-- `GET /api/{stream}` - List entries
-- `GET /api/{stream}/{id}` - Get single entry
-- `POST /api/{stream}` - Create entry
-- `PUT/PATCH /api/{stream}/{id}` - Update entry
-- `DELETE /api/{stream}/{id}` - Delete entry
+Each exposed stream receives:
 
-### JSON:API Compliance
-Responses follow the JSON:API specification for consistent, predictable APIs.
+- `GET /api/{stream}` — list entries
+- `GET /api/{stream}/{id}` — single entry
+- `POST /api/{stream}` — create
+- `PUT/PATCH /api/{stream}/{id}` — update
+- `DELETE /api/{stream}/{id}` — delete
 
-### Advanced Querying
-Support for filtering, sorting, pagination, and relationship inclusion via URL parameters.
-
-### Security Integration
-Integrates with Laravel's authentication and authorization systems.
+Exact prefixes depend on your API interface configuration.
 
 ## Installation
 

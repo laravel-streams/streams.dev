@@ -3,7 +3,7 @@ sort_order: 5
 title: Fields
 description: 'Fields, types, and inputs are documented here.'
 category: core-concepts
-status: ideation
+status: ready
 ---
 
 ## Introduction

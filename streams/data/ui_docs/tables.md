@@ -1,9 +1,8 @@
 ---
 title: Tables and Lists
 description: 'Data tables and listing components in Streams UI.'
-sort_order: 2
-category: core-concepts
-status: live
+sort_order: 4
+status: ready
 ---
 
 # Tables and Lists

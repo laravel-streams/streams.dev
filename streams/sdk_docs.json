@@ -1,0 +1,118 @@
+{
+    "name": "SDK Docs",
+    "handle": "sdk_docs",
+    "description": "Documentation for the Streams SDK package.",
+    "config": {
+        "source": {
+            "format": "md"
+        }
+    },
+    "routes": [
+        {
+            "handle": "view",
+            "uri": "docs/sdk/{id}",
+            "view": "docs"
+        }
+    ],
+    "fields": [
+        {
+            "handle": "id",
+            "type": "slug",
+            "required": true,
+            "unique": true,
+            "config": {
+                "from": "filename"
+            }
+        },
+        {
+            "handle": "sort_order",
+            "type": "integer",
+            "required": true,
+            "config": {
+                "default": "increment"
+            }
+        },
+        {
+            "handle": "status",
+            "type": "string",
+            "required": true,
+            "input": {
+                "placeholder": "drafting|editing|ready"
+            }
+        },
+        {
+            "handle": "title",
+            "type": "string",
+            "required": true
+        },
+        {
+            "handle": "description",
+            "type": "string",
+            "input": {
+                "type": "textarea"
+            }
+        },
+        {
+            "handle": "body",
+            "type": "string",
+            "input": {
+                "type": "editor"
+            }
+        }
+    ],
+    "ui": {
+        "admin": {
+            "navigation": [
+                {
+                    "component": "anchor",
+                    "text": "SDK Documentation",
+                    "url": "/admin/sdk_docs",
+                    "sort_order": 12
+                }
+            ]
+        },
+        "components": [
+            {
+                "component": "table",
+                "handle": "default",
+                "filters": [
+                    {
+                        "handle": "title"
+                    }
+                ],
+                "columns": [
+                    {
+                        "value": "title",
+                        "header": {
+                            "text": "Title"
+                        }
+                    },
+                    {
+                        "value": "status",
+                        "header": {
+                            "text": "Status"
+                        }
+                    }
+                ],
+                "buttons": [
+                    {
+                        "tag": "a",
+                        "text": "Edit",
+                        "handle": "edit",
+                        "url": "/{request.segments.0}/{request.segments.1}/{entry.id}/edit"
+                    },
+                    {
+                        "tag": "a",
+                        "text": "View",
+                        "handle": "view",
+                        "url": "/docs/sdk/{entry.id}",
+                        "attributes": {
+                            "target": "_blank",
+                            "class": ["a-button", "-secondary"]
+                        }
+                    }
+                ]
+            }
+        ]
+    }
+}

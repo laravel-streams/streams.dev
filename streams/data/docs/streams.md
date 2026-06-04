@@ -3,7 +3,7 @@ sort_order: 4
 title: Streams
 description: 'Get started with the stream modeling engine.'
 category: core-concepts
-status: ideation
+status: ready
 ---
 
 ## Introduction
@@ -277,3 +277,5 @@ $entry->relation;   // The relation value.
 ### Stream Sources
 
 You can configure the flat-file database as well as other sources for storing data including any Laravel database. No code changes required.
+
+For full reference, see [Streams Core — Streams](/docs/core/streams).

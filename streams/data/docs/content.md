@@ -1,9 +1,9 @@
 ---
 title: Content
 description: 'Pages and other content fragments.'
-sort_order: 3
+sort_order: 4
 category: basics
-status: ideation
+status: ready
 ---
 
 ## Introduction

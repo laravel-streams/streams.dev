@@ -4,8 +4,7 @@
     "description": "Basic docs for the API package.",
     "config": {
         "source": {
-            "format": "md",
-            "path": "submodules/streams-api/docs"
+            "format": "md"
         }
     },
     "routes": [

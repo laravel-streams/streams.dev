@@ -3,7 +3,7 @@ title: Introduction
 description: 'The core foundation package for Laravel Streams.'
 sort_order: 0
 category: core-concepts
-status: live
+status: ready
 ---
 
 # Streams Core

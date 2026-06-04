@@ -1,9 +1,8 @@
 ---
 title: Forms and Inputs
 description: 'Creating dynamic forms with Streams UI.'
-sort_order: 1
-category: core-concepts
-status: live
+sort_order: 5
+status: ready
 ---
 
 # Forms and Inputs

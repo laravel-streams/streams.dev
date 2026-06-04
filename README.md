@@ -2,26 +2,44 @@
 
 Streams is a modular ecosystem of Laravel packages (Core, UI, API, SDK) for building configurable, data-driven web applications and control panels.
 
-This repository hosts the Streams developer platform and example packages used to compose production applications. The project provides:
+This repository is the **Streams developer platform** and the **canonical documentation site** for the ecosystem.
 
-- Streams Core: domain-driven, code-configured streams and field types.
-- Streams UI: control-panel components and builder helpers (forms, tables, pages).
-- Streams API: a RESTful API layer to expose Streams data to clients.
-- Streams SDK & Testing: developer tools and test helpers.
+### Packages
 
-Key resources
-- Documentation (developer guides, API spec, and tutorials): /streams/data/docs and /streams/data/api_docs
-- Packages inventory and sample projects: /streams/packages.json and /streams/data/packages
+- **Streams Core** — domain-driven, JSON-configured streams and field types
+- **Streams UI** — control panel, forms, tables, and pages
+- **Streams API** — REST layer for stream data
+- **Streams SDK** — development workflow and automation
+- **Streams Testing** — test helpers for Streams packages
 
-Important notes
-- The JSON API response format in existing endpoints is intentionally preserved; documentation and API changes should not change the output envelope unless explicitly noted and versioned.
+### Documentation
 
-Getting started
-1. Install dependencies via Composer.
-2. Review `streams/packages.json` to see installed Streams packages and example projects.
-3. Read the API docs in `streams/data/api_docs/` for Builder-style examples and migration notes.
+All public docs live as flat files under `streams/data/` and are served by URL:
 
-Filling out docs
-I've added a set of skeleton API documentation pages under `streams/data/api_docs/` (Quick Start, Builder guide, Endpoints, Querying, Pagination, Auth, Errors, Migration, Testing, Examples). Each page contains a Table of Contents to make it easy to complete content incrementally.
+| Section | Path |
+|---------|------|
+| Hub guides | `/docs/{slug}` → `streams/data/docs/` |
+| Core | `/docs/core/{slug}` → `streams/data/core_docs/` |
+| UI | `/docs/ui/{slug}` → `streams/data/ui_docs/` |
+| API | `/docs/api/{slug}` → `streams/data/api_docs/` |
+| SDK | `/docs/sdk/{slug}` → `streams/data/sdk_docs/` |
+| Testing | `/docs/testing/{slug}` → `streams/data/testing_docs/` |
+| Client | `/docs/client/{slug}` → `streams/data/client_docs/` |
 
-If you'd like, I can now start implementing the Builder contract in `streams/api` after we finalize the docs and tests.
+See [STYLE.md](STYLE.md) for voice, frontmatter, and content boundaries.
+
+### Contributing to docs
+
+1. Edit markdown in the appropriate `streams/data/` directory.
+2. Follow frontmatter conventions in `STYLE.md`.
+3. Hub pages link to section docs; avoid duplicating reference material.
+4. Package repos should link to `https://streams.dev/docs/...` rather than maintaining separate doc trees.
+
+### Getting started (local)
+
+```bash
+composer install
+php artisan serve
+```
+
+Browse `/docs` for documentation and `/addons` for the package catalog.

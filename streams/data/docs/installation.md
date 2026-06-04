@@ -2,26 +2,19 @@
 sort_order: 1
 category: getting-started
 title: Installation
-description: 'How to install Streams and addons.'
-status: ideation
+description: 'Install Streams on new or existing Laravel projects.'
+status: ready
 ---
 
+## Server requirements
 
-## Server Requirements
-    
-To run Laravel Streams you will need to meet [Laravel server requirements](https://laravel.com/docs/deployment#server-requirements).
+Streams requires a standard [Laravel-compatible environment](https://laravel.com/docs/deployment#server-requirements).
 
-### Supported Image Libraries
+For image handling, install GD or the Imagick PHP extension. See [Images](/docs/images).
 
-Please ensure one of the following libraries is installed in order to support [image manipulation](/docs/images).
+## New projects
 
-- GD Library
-- Imagick PHP extension
-
-
-## New Projects
-
-For new projects, the fastest way to get up and running is the [Streams starter project](/docs/examples):
+The fastest path is the Streams starter project:
 
 ```bash
 composer create-project streams/streams:1.0.x-dev
@@ -31,59 +24,40 @@ cd streams
 php artisan serve
 ```
 
-### Included Packages
+### Included packages
 
-The following packages are installed with the starter project:
+The starter typically includes:
 
 - [streams/core](/docs/core/introduction)
 - [streams/api](/docs/api/introduction)
 - [streams/ui](/docs/ui/introduction)
-- [streams/sdk](/docs/sdk/introduction)
+- [streams/sdk](/docs/sdk/introduction) (dev)
 
-<!-- ### Dev Packages
+### Team workflow
 
-The following development tools are also included:
+Commit `streams/` and `streams/data/` to version control so stream definitions and filebase content stay in sync across developers and environments. Keep secrets in `.env` only.
 
-- [Streams Testing](/docs/testing) -->
+Next: [Configuration](/docs/configuration) and [Architecture](/docs/architecture).
 
-### Getting Started
+## Existing Laravel projects
 
-Your streams project is now ready for you to start coding.
-
-- [Configuration](configuration)
-
-
-### The Basics
-
-Explore the basics of Streams by example.
-
-- [Defining Streams](how-to-define-streams)
-
-#### Fundamental Concepts
-
-Dig deeper into the fundamental concepts of Laravel Streams. 
-
-- [Data Modeling](streams)
-- [Laravel Development](core)
-- [Frontend Development](frontend)
-- [User Interface](ui)
-- [API Readiness](api)
-
-## Existing Laravel Projects
-
-You can add the Streams platform to existing Laravel projects by requiring the packages you need.
-
-### Streams Core
-
-The **core** package is responsible for the meat and taters; it is the only **required** package.
+Add only the packages you need:
 
 ```bash
 composer require streams/core
+composer require streams/ui
+composer require streams/api
 ```
 
+Core is the only required package. UI and API are optional layers.
+
+### Local package development
+
+To contribute to Streams packages from this repo, use Composer path repositories pointing at your local clones (see [Addons](/docs/addons)).
 
 ## Updating
-From within your project, use Composer to update individual packages:
+
+Update individual packages:
 
 ```bash
 composer update streams/core --with-dependencies
@@ -91,4 +65,8 @@ composer update streams/api --with-dependencies
 composer update streams/ui --with-dependencies
 ```
 
-You can update your entire project using **composer update**.
+Or update the full project:
+
+```bash
+composer update
+```

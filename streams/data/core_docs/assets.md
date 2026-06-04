@@ -1,9 +1,9 @@
 ---
 title: Asset Management
 description: 'Managing assets and images in Streams Core.'
-sort_order: 4
+sort_order: 6
 category: core-concepts
-status: live
+status: ready
 ---
 
 # Asset Management

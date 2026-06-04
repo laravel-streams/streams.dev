@@ -1,27 +1,53 @@
-<aside class="w-60">
-    <div class="py-4 w-60">
+@php
+    $section = Request::segment(2);
+    $packages = [
+        'core' => ['label' => 'Core', 'stream' => 'core_docs'],
+        'ui' => ['label' => 'UI', 'stream' => 'ui_docs'],
+        'api' => ['label' => 'API', 'stream' => 'api_docs'],
+        'sdk' => ['label' => 'SDK', 'stream' => 'sdk_docs'],
+        'testing' => ['label' => 'Testing', 'stream' => 'testing_docs'],
+        'client' => ['label' => 'Client', 'stream' => 'client_docs'],
+    ];
+    $isPackageSection = array_key_exists($section, $packages);
+@endphp
 
-        <ul>
+<aside class="w-60 shrink-0">
+    <div class="py-4 pr-6">
+
+        <ul class="text-sm border-b border-gray-200 pb-4 mb-4 flex flex-wrap gap-x-3 gap-y-1">
             <li>
-                <a class="font-bold" href="/docs">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
-                      </svg>                      
-                </a>
+                <a href="/docs" class="{{ $section === null || $section === 'docs' ? 'font-bold text-black' : 'text-gray-600 hover:text-black' }}">Hub</a>
             </li>
-            @foreach(Streams::entries('docs_categories')->orderBy('sort_order', 'ASC')->get() as $category)
-            <li class="mt-4">
-                <span class="text-md font-bold">{{ $category->name }}</span>
-                <ul class="flex flex-col mt-2">
-                    @foreach (Streams::docs()->where('category', $category->id)->orderBy('sort_order', 'ASC')->get() as $page)
-                    <li class="{{ Request::segment(2) == $page->id ? 'font-bold text-accent' : '' }}">
-                        <a class="hover:underline" href="/docs/{{ $page->id }}">{{ $page->title }}</a>
-                    </li>
-                    @endforeach
-                </ul>
+            @foreach ($packages as $slug => $package)
+            <li>
+                <a href="/docs/{{ $slug }}/introduction" class="{{ $section === $slug ? 'font-bold text-black' : 'text-gray-600 hover:text-black' }}">{{ $package['label'] }}</a>
             </li>
             @endforeach
         </ul>
+
+        @if ($isPackageSection)
+            <p class="text-xs uppercase tracking-wide text-gray-500 mb-2">{{ $packages[$section]['label'] }}</p>
+            <ul class="flex flex-col gap-1">
+                @foreach (Streams::entries($packages[$section]['stream'])->orderBy('sort_order', 'ASC')->get() as $page)
+                <li class="{{ Request::segment(3) == $page->id ? 'font-bold text-black' : '' }}">
+                    <a class="hover:underline text-gray-800" href="/docs/{{ $section }}/{{ $page->id }}">{{ $page->title }}</a>
+                </li>
+                @endforeach
+            </ul>
+        @else
+            @foreach(Streams::entries('docs_categories')->orderBy('sort_order', 'ASC')->get() as $category)
+            <div class="mt-4">
+                <span class="text-sm font-bold">{{ $category->name }}</span>
+                <ul class="flex flex-col mt-2 gap-1">
+                    @foreach (Streams::docs()->where('category', $category->id)->orderBy('sort_order', 'ASC')->get() as $page)
+                    <li class="{{ Request::segment(2) == $page->id ? 'font-bold text-black' : '' }}">
+                        <a class="hover:underline text-gray-800" href="/docs/{{ $page->id }}">{{ $page->title }}</a>
+                    </li>
+                    @endforeach
+                </ul>
+            </div>
+            @endforeach
+        @endif
 
     </div>
 </aside>

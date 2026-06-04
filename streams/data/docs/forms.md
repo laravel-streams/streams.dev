@@ -1,15 +1,27 @@
 ---
-sort_order: 15
+sort_order: 13
 title: Forms
-description: 'How to build forms.'
+description: 'When to use UI forms in Streams applications.'
 category: frontend
-status: ideation
+status: ready
 ---
 
-## Introduction
+## Overview
 
-Streams can enhance web forms in subtle ways or automate them entirely. 
+Streams UI generates forms from stream field definitions. Your team gets validation, field types, and layout without duplicating schema in Blade.
 
-### Streams UI
+Use forms in control panels, settings pages, and modals.
 
-This documentation requires that `streams/core` be installed.
+## When to build a form
+
+- Create or edit stream entries in the CP
+- Multi-step product settings
+- Nested or relationship fields
+
+Define fields once in stream JSON; UI renders inputs from field types.
+
+## Learn more
+
+- [UI forms reference](/docs/ui/forms)
+- [Field types](/docs/core/fields)
+- [Control panel](/docs/control-panel)

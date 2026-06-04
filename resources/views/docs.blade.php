@@ -19,9 +19,9 @@
 
             @if (App::environment() == 'local')
             <div class="pt-6">
-                <a href="vscode://file{{ base_path('streams/data/' . $entry->stream()->id . '/' . $entry->id . '.md') }}" class="hover:text-gray-700 text-gray-400 text-sm outline-none focus:outline-none transition duration-200 ease-in-out">Edit this page.</a>
+                <a href="vscode://file{{ base_path('streams/data/' . $entry->stream()->handle . '/' . $entry->id . '.md') }}" class="hover:text-gray-700 text-gray-400 text-sm">Edit this page</a>
             </div>
-            @endif
+        @endif
             
             <h1 class="text-6xl font-extrabold mt-6">{{ $entry->title }}</h1>
             <p class="text-gray-500 mt-4 text-xl">{{ $entry->description }}</p>

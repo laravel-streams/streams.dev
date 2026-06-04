@@ -1,61 +1,50 @@
 ---
 title: Introduction
-description: 'Streams overview and terminology.'
+description: 'Streams overview for Laravel developers and teams.'
 sort_order: 0
 category: core-concepts
-status: ideation
+status: ready
 ---
-
-👋 Welcome to Laravel Streams!
 
 ## What is Streams?
 
-Streams is a system of unified packages providing an optimized foundation and workflow for **Laravel development**.
+Streams is a system of unified Laravel packages that provide an optimized foundation for **data modeling**, **admin interfaces**, **APIs**, and **development workflow**.
 
-Application fundamentals like **data modeling**, **API interaction**, **user interfaces**, and more are defined with code-configured JSON files and establish best-practices design principles to support your work.
+Your team defines domain data as JSON stream configurations in `streams/`. Those definitions are version-controlled, reviewable, and shared across environments—the same way you already manage Laravel config and migrations.
 
-> The Streams system leans heavily on domain-driven design (DDD). We call these domain abstractions `streams`, hence our namesake.
+> Streams leans on domain-driven design. We call these domain abstractions **streams**.
 
----
+## Who it is for
 
-### Motivation
+Streams is built for **Laravel developers and teams** shipping real products:
 
-The ever-changing and widening landscape of web applications, websites, and the like, has stressed the traditions and ideology of popular CMS options. And, after digging into our own CMS engine, we discovered that the problem is in our CMS paradigm. This project results from the deconstruction of that paradigm and establishes a new one built upon new fundamental principles and unique goals via unified ala-mode packages.
+- Custom CMS and content sites
+- SaaS backends and tenant admin
+- Internal admin and product control panels
+- Headless APIs for mobile or SPA clients
+- Starter projects and composable addons
 
-### Use Cases
+You can adopt Core alone or compose **Core + UI + API + SDK + Testing** as your project requires.
 
-Laravel Streams and its components are well suited to build various applications:
+## Core packages
 
-- Websites
-- Prototyping
-- App Backbone
-- Headless CMS
-- Integrated CMS
-- Code Generator
-- Application Core
-- Project Bootstraps
-- Development Automation
+| Package | Role |
+|---------|------|
+| [Streams Core](/docs/core/introduction) | Data modeling, repositories, field types |
+| [Streams UI](/docs/ui/introduction) | Control panels, forms, tables, pages |
+| [Streams API](/docs/api/introduction) | REST endpoints for stream data |
+| [Streams SDK](/docs/sdk/introduction) | Scaffolding and dev workflow |
+| [Streams Testing](/docs/testing/introduction) | Test environment and helpers |
 
+## Next steps
 
-Time to get your feet wet!
+- [Installation](/docs/installation) — new or existing Laravel projects
+- [Architecture](/docs/architecture) — how the pieces fit together
+- [Use cases](/docs/use-cases) — pick a path for your product type
+- [Configuration](/docs/configuration) — Laravel config and `streams/` layout
 
-<!-- @foreach (Streams::entries('docs')->where('category', 'getting_started')->orderBy('sort', 'asc')->get() as $doc)
-- [{{$doc->link_title ?: $doc->title}}]({{$doc->id}})
-@endforeach -->
+## Community
 
-## Core Packages
-
-Know what you are looking for already? Dive right into our core packages.
-
-- [Streams Core](core/introduction)
-- [Streams UI](ui/introduction)
-- [Streams API](api/introduction)
-- [Streams CLI](cli/introduction)
-
-
-## Community Resources
-
-- <a href="https://discord.gg/vhz8NZC" rel="noreferrer noopener">Discord</a>
-- <a href="https://stackoverflow.com/search?q=laravel+streams" rel="noreferrer noopener">Stack Exchange</a>
-- <a href="https://github.com/laravel-streams/streams" rel="noreferrer noopener">GitHub</a>
-- <a href="https://www.youtube.com/channel/UC4a-uVtWOHNCduY5T7_Q4wA" rel="noreferrer noopener">YouTube</a>
+- [Discord](https://discord.gg/vhz8NZC)
+- [GitHub](https://github.com/laravel-streams/streams)
+- [Stack Overflow](https://stackoverflow.com/search?q=laravel+streams)
