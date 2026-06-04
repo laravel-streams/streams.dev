@@ -17,7 +17,7 @@ Streams Core provides a convenient API to link [Laravel cache](https://laravel.c
 {
     "config": {
         "cache": {
-            "enabled": "true",
+            "enabled": true,
             "store": "default",
             "ttl": 3600
         }
@@ -167,9 +167,8 @@ Streams::make('examples')->cache()->flush();
 
 > The flush method only flushes linked cache.
 
-## Related Documentation
+## Related
 
--   [Query Cache](querying#caching)
--   [API Cache](../api/caching)
--   [Laravel Cache](https://laravel.com/docs/cache)
--   [@todo Response Cache](#caching-responses)
+- [Core caching reference](/docs/core/caching)
+- [Core criteria](/docs/core/criteria)
+- [Laravel Cache](https://laravel.com/docs/cache)

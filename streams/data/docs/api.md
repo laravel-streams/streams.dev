@@ -10,7 +10,7 @@ status: ready
 
 Add `streams/api` when your team needs to expose stream data to SPAs, mobile apps, partners, or webhooks—without writing CRUD controllers by hand.
 
-Keep business logic in Laravel as usual. API registers routes from stream configuration.
+Keep business logic in Laravel as usual. You register API routes manually in a route group.
 
 ## Installation
 
@@ -18,19 +18,29 @@ Keep business logic in Laravel as usual. API registers routes from stream config
 composer require streams/api
 ```
 
-Publish config if you need to customize behavior:
+Register routes in `routes/api.php`:
 
-```bash
-php artisan vendor:publish --provider="Streams\\Api\\ApiServiceProvider" --tag=config
+```php
+Route::middleware(config('streams.api.middleware'))
+    ->prefix(config('streams.api.prefix'))
+    ->group(function () {
+        API::routeEntries();
+        API::routeStreams();
+    });
 ```
+
+See [API installation](/docs/api/installation).
 
 ## What you get
 
-Each exposed stream receives standard REST endpoints. Response shape follows the Streams API envelope documented in [Responses](/docs/api/responses)—not JSON:API.
+Standard REST endpoints under `/api/streams/{stream}/entries`. Response shape follows the Streams envelope in [Responses](/docs/api/responses)—not JSON:API.
+
+The API is **disabled by default** until you register routes and apply middleware.
 
 ## Learn more
 
 - [API introduction](/docs/api/introduction)
+- [Routes reference](/docs/api/routes)
 - [Query parameters](/docs/api/query-parameters)
 - [Custom endpoints](/docs/api/custom-endpoints)
 - [OpenAPI / Swagger](/docs/api/openapi)

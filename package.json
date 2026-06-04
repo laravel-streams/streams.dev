@@ -18,6 +18,7 @@
     "dependencies": {
         "alpinejs": "^3.10.3",
         "anchor-js": "^5.0.0",
+        "fuse.js": "^7.4.1",
         "prismjs": "^1.29.0",
         "tocbot": "^4.20.1"
     }

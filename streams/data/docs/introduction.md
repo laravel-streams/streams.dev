@@ -2,7 +2,7 @@
 title: Introduction
 description: 'Streams overview for Laravel developers and teams.'
 sort_order: 0
-category: core-concepts
+category: getting-started
 status: ready
 ---
 
@@ -13,6 +13,8 @@ Streams is a system of unified Laravel packages that provide an optimized founda
 Your team defines domain data as JSON stream configurations in `streams/`. Those definitions are version-controlled, reviewable, and shared across environments—the same way you already manage Laravel config and migrations.
 
 > Streams leans on domain-driven design. We call these domain abstractions **streams**.
+
+Working on **this repository**? Start with [This project](/docs/this-project).
 
 ## Who it is for
 

@@ -6,67 +6,77 @@ nav_disabled: true
 ---
 
 @include('partials.topbar')
+@include('partials.docs-search')
 
-<div class="pb-24">
-    <!-- <section class="pt-24">
-        <div class="logo">{!! Assets::contents('public::img/logo.svg') !!}</div>
-    </section> -->
-
-    <section class="container mx-auto max-w-5xl text-center pt-24 px-8">
-        <div class="text-7xl font-bold leading-snug">
+<div class="pb-24 bg-[var(--color-page)]">
+    <section class="container mx-auto max-w-3xl px-8 pt-20 pb-12 text-center">
+        <h1 class="text-4xl md:text-5xl font-bold leading-tight tracking-tight text-[var(--color-text)]">
             Unified Laravel packages.
+        </h1>
+        <p class="mt-5 text-lg text-[var(--color-text-secondary)] max-w-xl mx-auto">
+            Composable streams, version-controlled config, and familiar workflows for
+            <span class="font-semibold text-[var(--color-text)]">Laravel developers and teams</span>.
+        </p>
+        <input
+            type="search"
+            class="docs-search-input-hero max-w-xl mx-auto"
+            placeholder="Search documentation…"
+            aria-label="Search documentation"
+            data-docs-search-input-hero
+            readonly
+        />
+    </section>
+
+    <section class="container mx-auto max-w-4xl px-8 pb-16">
+        <p class="docs-section-title text-center">Jump to reference</p>
+        <div class="docs-pill-grid">
+            <a href="/docs/core/introduction" class="docs-pill"><strong>Core</strong><span>Data modeling</span></a>
+            <a href="/docs/ui/introduction" class="docs-pill"><strong>UI</strong><span>Admin panels</span></a>
+            <a href="/docs/api/introduction" class="docs-pill"><strong>API</strong><span>REST endpoints</span></a>
+            <a href="/docs/core/criteria" class="docs-pill"><strong>Criteria</strong><span>Queries</span></a>
+            <a href="/docs/core/repositories" class="docs-pill"><strong>Repositories</strong><span>CRUD</span></a>
+            <a href="/docs/installation" class="docs-pill"><strong>Installation</strong><span>Get started</span></a>
         </div>
     </section>
 
-    <section class="container mx-auto max-w-3xl text-center pt-12 px-8">
-        <p class="text-xl text-gray-700">
-            An optimized foundation for <span class="font-bold">Laravel developers and teams</span>—composable packages, version-controlled stream config, and familiar workflows.
-        </p>
-        <p class="mt-8">
-            <a href="/docs" class="relative inline-block px-6 py-2 group">
+    <section class="container mx-auto max-w-3xl px-8 pb-20 text-center">
+        <p class="text-sm text-[var(--color-text-muted)] mb-6">New to Streams?</p>
+        <div class="flex flex-wrap justify-center gap-4">
+            <a href="/docs/installation" class="relative inline-block px-6 py-2 group">
                 <span class="absolute inset-0 w-full h-full transition duration-300 ease-out transform translate-x-1 translate-y-1 bg-black group-hover:translate-x-0 group-hover:translate-y-0"></span>
                 <span class="absolute inset-0 w-full h-full bg-white border-2 border-black"></span>
-                <span class="relative text-black">Documentation</span>
+                <span class="relative text-black">Installation guide</span>
             </a>
-        </p>
-    </section>
-
-    <section class="container mx-auto max-w-7xl text-center pt-24 px-8">
-        <div class="text-4xl font-bold leading-snug">
-            Starter Projects & Examples
+            <a href="/docs" class="relative inline-block px-6 py-2 group">
+                <span class="absolute inset-0 w-full h-full bg-white border-2 border-black"></span>
+                <span class="relative text-black">All documentation</span>
+            </a>
         </div>
-        <p class="text-xl mt-4">
-            Open-source building blocks and use cases to get familiar with our
-            packages.
+    </section>
+
+    <section class="container mx-auto max-w-7xl text-center pt-8 px-8 border-t border-[var(--color-border)]">
+        <div class="text-3xl font-bold leading-snug pt-16">
+            Starter projects and examples
+        </div>
+        <p class="text-lg mt-3 text-[var(--color-text-secondary)]">
+            Open-source building blocks to get familiar with our packages.
         </p>
     </section>
 
-    <section
-        class="container mx-auto max-w-7xl text-center pt-24 px-8 flex flex-wrap justify-center"
-    >
-        @foreach(Streams::entries('packages')->where('type', 'IN', ['starter',
-        'example'])->where('enabled', true)->get() as $package)
-        <div class="w-1/4 flex">
-            <div
-                class="p-4 flex flex-col rounded transition border border-black m-2"
-            >
-                <h3 class="text-2xl mb-2 font-bold">{{ $package->name }}</h3>
-                <div class="font-mono mb-2">{{ $package->composer->name }}</div>
-                <p class="text-md mb-8 flex-grow">
+    <section class="container mx-auto max-w-7xl text-center pt-12 px-8 flex flex-wrap justify-center">
+        @foreach(Streams::entries('packages')->where('type', 'IN', ['starter', 'example'])->where('enabled', true)->get() as $package)
+        <div class="w-full sm:w-1/2 lg:w-1/4 flex p-2">
+            <div class="p-4 flex flex-col w-full rounded border border-[var(--color-border)] bg-[var(--color-surface)] hover:border-black transition m-0">
+                <h3 class="text-xl mb-2 font-bold">{{ $package->name }}</h3>
+                <div class="font-mono text-sm mb-2 text-[var(--color-text-muted)]">{{ $package->composer->name }}</div>
+                <p class="text-sm mb-8 flex-grow text-[var(--color-text-secondary)]">
                     {{ $package->composer->description }}
                 </p>
-                <div class="pb-4">
-                    <a
-                        href="/addons/{{ $package->composer->name }}"
-                        class="relative px-6 py-2 group"
-                    >
-                        <span
-                            class="absolute inset-0 w-full h-full transition duration-300 ease-out transform translate-x-1 translate-y-1 bg-black group-hover:-translate-x-0 group-hover:-translate-y-0"
-                        ></span>
-                        <span
-                            class="absolute inset-0 w-full h-full bg-white border-2 border-black"
-                        ></span>
-                        <span class="relative text-black">Learn More</span>
+                <div class="pb-2">
+                    <a href="/addons/{{ $package->composer->name }}" class="relative inline-block px-5 py-2 group text-sm">
+                        <span class="absolute inset-0 w-full h-full transition duration-300 ease-out transform translate-x-1 translate-y-1 bg-black group-hover:translate-x-0 group-hover:translate-y-0"></span>
+                        <span class="absolute inset-0 w-full h-full bg-white border-2 border-black"></span>
+                        <span class="relative text-black">Learn more</span>
                     </a>
                 </div>
             </div>
@@ -74,42 +84,29 @@ nav_disabled: true
         @endforeach
     </section>
 
-
-    <section class="container mx-auto max-w-7xl text-center pt-24 px-8">
-        <div class="text-4xl font-bold leading-snug">
-            Explore our unified packages.
+    <section class="container mx-auto max-w-7xl text-center pt-20 px-8">
+        <div class="text-3xl font-bold leading-snug">
+            Explore packages
         </div>
-        <p class="text-xl mt-4">
-            Simplify development by using our growing list of versatile packages.
+        <p class="text-lg mt-3 text-[var(--color-text-secondary)]">
+            Simplify development with versatile, composable Laravel packages.
         </p>
     </section>
 
-    <section
-        class="container mx-auto max-w-7xl text-center pt-24 px-8 flex flex-wrap justify-center"
-    >
-        @foreach(Streams::entries('packages')->where('type', 'NOT IN', ['starter',
-        'example'])->where('enabled', true)->get() as $package)
-        <div class="w-1/4 flex">
-            <div
-                class="p-4 w-full flex flex-col rounded transition border border-black m-2"
-            >
-                <h3 class="text-2xl mb-2 font-bold">{{ $package->name }}</h3>
-                <div class="font-mono mb-2">{{ $package->composer->name }}</div>
-                <p class="text-md mb-8 flex-grow">
+    <section class="container mx-auto max-w-7xl text-center pt-12 px-8 pb-8 flex flex-wrap justify-center">
+        @foreach(Streams::entries('packages')->where('type', 'NOT IN', ['starter', 'example'])->where('enabled', true)->get() as $package)
+        <div class="w-full sm:w-1/2 lg:w-1/4 flex p-2">
+            <div class="p-4 w-full flex flex-col rounded border border-[var(--color-border)] bg-[var(--color-surface)] hover:border-black transition">
+                <h3 class="text-xl mb-2 font-bold">{{ $package->name }}</h3>
+                <div class="font-mono text-sm mb-2 text-[var(--color-text-muted)]">{{ $package->composer->name }}</div>
+                <p class="text-sm mb-8 flex-grow text-[var(--color-text-secondary)]">
                     {{ $package->composer->description }}
                 </p>
-                <div class="pb-4">
-                    <a
-                        href="/addons/{{ $package->composer->name }}"
-                        class="relative px-6 py-2 group"
-                    >
-                        <span
-                            class="absolute inset-0 w-full h-full transition duration-300 ease-out transform translate-x-1 translate-y-1 bg-black group-hover:-translate-x-0 group-hover:-translate-y-0"
-                        ></span>
-                        <span
-                            class="absolute inset-0 w-full h-full bg-white border-2 border-black"
-                        ></span>
-                        <span class="relative text-black">Learn More</span>
+                <div class="pb-2">
+                    <a href="/addons/{{ $package->composer->name }}" class="relative inline-block px-5 py-2 group text-sm">
+                        <span class="absolute inset-0 w-full h-full transition duration-300 ease-out transform translate-x-1 translate-y-1 bg-black group-hover:translate-x-0 group-hover:translate-y-0"></span>
+                        <span class="absolute inset-0 w-full h-full bg-white border-2 border-black"></span>
+                        <span class="relative text-black">Learn more</span>
                     </a>
                 </div>
             </div>
@@ -117,3 +114,5 @@ nav_disabled: true
         @endforeach
     </section>
 </div>
+
+@vite(['resources/js/app.js'])

@@ -1,37 +1,70 @@
 ---
 title: Resources
-description: 'Stream resources in control panels.'
-sort_order: 3
+description: 'PHP Resource subclasses — getPages(), table(), and form().'
+sort_order: 6
 status: ready
 ---
 
-## Overview
+A **resource** connects a Core stream to admin CRUD pages. Subclass `Streams\Ui\Resources\Resource` and implement `getPages()`, `form()`, and `table()`.
 
-A **resource** connects a stream to panel UI: list (table), create/edit (form), and optional view page.
-
-Resources are how ops and admin teams manage stream entries without custom CRUD for every model.
-
-## Registering a resource
-
-Attach a resource to a panel for a stream handle:
+## Basic resource
 
 ```php
-// Illustrative — resource registration on a panel
-$panel->resource('orders', [
-    'table' => OrderTable::class,
-    'form' => OrderForm::class,
-]);
+class PostResource extends Resource
+{
+    protected static ?string $stream = 'posts';
+
+    public static function getPages(): array
+    {
+        return [
+            'index' => ListEntries::route('/'),
+            'create' => CreateEntry::route('/create'),
+            'edit' => EditEntry::route('/{entry}/edit'),
+        ];
+    }
+
+    public static function form(Form $form): Form
+    {
+        return $form->components([/* ... */]);
+    }
+
+    public static function table(Table $table): Table
+    {
+        return $table->columns([/* ... */]);
+    }
+}
 ```
 
-Streams UI can infer tables and forms from field definitions when you do not need custom builders.
+## Registration
 
-## Customization
+```php
+Panel::make('admin')->resources([PostResource::class]);
+```
 
-Override columns, filters, form layout, and policies in PHP when JSON defaults are not enough.
+## Navigation
+
+Override static properties or `getNavigationItems()`:
+
+```php
+protected static ?string $navigationGroup = 'Content';
+protected static ?string $navigationLabel = 'Posts';
+protected static ?string $navigationIcon = 'heroicon-o-document';
+```
+
+## URL helpers
+
+```php
+PostResource::getUrl('index');
+PostResource::getUrl('edit', ['entry' => $id]);
+```
+
+## Does not exist
+
+- `$panel->resource('posts', [...])` JSON registration
+- Auto-generated forms from stream JSON alone (you implement `form()` and `table()`)
 
 ## Related
 
-- [Panels](/docs/ui/panels)
-- [Tables](/docs/ui/tables)
+- [Pages](/docs/ui/pages)
 - [Forms](/docs/ui/forms)
-- [Core entries](/docs/core/entries)
+- [Tables](/docs/ui/tables)

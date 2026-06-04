@@ -1,20 +1,39 @@
 ---
-id: errors
+title: Errors
+description: '409 validation, 404 JSON, 204 delete, and error envelope.'
 sort_order: 8
-status: drafting
-title: Errors & Status Codes
-description: Standard error formats, validation errors, and status codes used by the API.
+status: ready
 ---
 
-## Table of Contents
+Error responses populate the `errors` array in the JSON envelope (except 204 delete).
 
-- Standard error envelope
-- Validation errors (422)
-- Authentication / Authorization (401/403)
-- Not found (404)
-- Server errors (500)
-- Tips for client error handling
+## Status codes
 
-## Standard error envelope
+| Code | When | Body |
+|------|------|------|
+| **409** | Validation failure on create/update/patch | Envelope with `errors` strings |
+| **404** | Stream or entry not found | Envelope with `errors` (e.g. `"Entry not found."`) |
+| **204** | Successful delete | Empty body, no envelope |
+| **400** | Bad request | Envelope with `errors` |
 
-Document how errors are returned (structure, codes, details). Examples must preserve the existing JSON envelope.
+Validation uses **409 Conflict**, not HTTP 422.
+
+## Example validation error
+
+```json
+{
+    "data": null,
+    "errors": ["The title field is required."],
+    "links": { "self": "..." },
+    "meta": { "stream": "films" }
+}
+```
+
+## Example not found
+
+`GET /api/streams/films/entries/missing` returns 404 with errors populated.
+
+## Related
+
+- [Responses](/docs/api/responses)
+- [Request format](/docs/api/requests)

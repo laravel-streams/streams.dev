@@ -16,5 +16,9 @@ use Streams\Ui\Support\Facades\UI;
 |
 */
 
+use App\Support\DocsSearchIndex;
+
+Route::get('/search/docs.json', fn () => response()->json(DocsSearchIndex::all()));
+
 Route::view('api-test', 'api');
 Route::view('ui-test', 'ui');

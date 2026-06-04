@@ -81,6 +81,12 @@
         ]
     },
     "data": {
+        "this-project": {
+            "id": "this-project",
+            "sort_order": 0,
+            "name": "This Project",
+            "description": "How streams.dev is built and run locally."
+        },
         "getting-started": {
             "id": "getting-started",
             "sort_order": 1,

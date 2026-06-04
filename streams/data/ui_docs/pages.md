@@ -1,37 +1,54 @@
 ---
 title: Pages
-description: 'Custom panel pages in Streams UI.'
-sort_order: 6
+description: 'ListEntries, CreateEntry, EditEntry, and custom Livewire pages.'
+sort_order: 7
 status: ready
 ---
 
-## Overview
+**Pages** are Livewire components rendered inside a panel layout.
 
-**Pages** are standalone panel views—dashboards, wizards, settings screens—not tied to a single stream CRUD resource.
+## Resource CRUD pages
 
-Use pages when your team needs composed UI beyond auto-generated tables and forms.
+| Class | Purpose |
+|-------|---------|
+| `ListEntries` | Table listing |
+| `CreateEntry` | Create form |
+| `EditEntry` | Edit form |
 
-## When to use a page
+Namespace: `Streams\Ui\Livewire\Pages`
 
-- Dashboard with metrics and shortcuts
-- Multi-stream workflow (onboarding, imports)
-- Product settings that span several forms
-
-## Definition
-
-Pages are typically PHP classes extending the UI page base, registered on the panel with a URI segment and navigation label.
+Register through resource `getPages()`:
 
 ```php
-// Illustrative pattern — see your app's panel registration
-$page = Page::make('settings')
-    ->path('settings')
-    ->title('Account Settings');
+return [
+    'index' => ListEntries::route('/'),
+    'create' => CreateEntry::route('/create'),
+    'edit' => EditEntry::route('/{entry}/edit'),
+];
 ```
 
-Pair with Livewire components or Blade views as you would in any Laravel app.
+Each page sets `protected static string $resource = PostResource::class`.
+
+## Custom pages
+
+Extend `Streams\Ui\Livewire\Pages\PanelPage` for standalone screens:
+
+```php
+class DashboardPage extends PanelPage
+{
+    protected static string $view = 'ui::pages.dashboard';
+    protected static ?string $navigationLabel = 'Dashboard';
+}
+```
+
+Register on the panel:
+
+```php
+Panel::make('admin')->pages([DashboardPage::class]);
+```
 
 ## Related
 
-- [Panels](/docs/ui/panels)
-- [Forms](/docs/ui/forms)
-- [Components (hub)](/docs/components)
+- [Resources](/docs/ui/resources)
+- [Routing](/docs/ui/routing)
+- [Livewire integration](/docs/ui/livewire)

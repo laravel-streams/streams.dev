@@ -1,6 +1,6 @@
 ---
 title: Content
-description: 'Pages and other content fragments.'
+description: 'Filebase pages and content fragments in Streams.'
 sort_order: 4
 category: basics
 status: ready
@@ -8,83 +8,97 @@ status: ready
 
 ## Introduction
 
-This page examines common content models and how to use them in Streams.
+Streams stores content as **entries** in configured sources. This hub page covers common content patterns; field types and adapters are documented in [Core](/docs/core/introduction).
 
-## Pages
+## Pages stream
 
-Let's start by looking at a basic pages stream:
+A typical pages stream uses the **filebase** source (default) with HTML or Markdown files:
 
 ```json
-// streams/pages.json
 {
-    "source": {
-        "type": "filebase",
-        "format": "html"
+    "id": "pages",
+    "config": {
+        "source": {
+            "type": "filebase",
+            "format": "html"
+        }
     },
-    "route": [
+    "routes": [
         {
             "handle": "view",
-            "uri": "{path}"
-            "defer": true,
+            "uri": "{uri}",
             "parse": true,
+            "view": "{layout}"
         }
     ],
-    "fields": {
-        [
-            "handle": "title",
-            "required": true,
-        ],
-        [
-            "handle": "path",
-            "required": true,
-            "unique": true,
-        ],
-        [
-            "handle": "body"
-        ]
-    }
+    "fields": [
+        { "handle": "id", "type": "slug", "required": true, "unique": true },
+        { "handle": "title", "type": "string", "required": true },
+        { "handle": "uri", "type": "string", "required": true, "unique": true },
+        { "handle": "body", "type": "string" }
+    ]
 }
 ```
 
-#### Example Page
+### Entry frontmatter
 
-The pages above will be stored similar to the below data:
+Each file in `streams/data/pages/` carries YAML frontmatter plus a Blade/HTML body:
 
 ```html
-@verbatim<!-- streams/data/pages/welcome.html -->
 ---
-title: Welcome to Streams
-path: /
+title: Welcome
+uri: /
+layout: blank
 ---
 
 @include('partials.topbar')
-
-<h1>{{ $entry->title }}</h1>@endverbatim
+<h1>{{ $entry->title }}</h1>
 ```
 
+| Key | Role |
+|-----|------|
+| `uri` | URL path for `parse: true` routes |
+| `layout` | Blade layout passed to `{layout}` in the route definition |
+| `title` | Stored field; available on `$entry` |
 
+See [Site pages](/docs/site-pages) for how this repo wires `/`, `/docs`, and `/addons`.
 
-## Posts
-## Blocks
+## Markdown documentation
 
-Block content is represented as an array of structured data where each item is tied to a particular view fragment.
-
-For example, you might have a block for a gallery of images, a group of links, or wysiwyg content. 
+Doc streams set `format: md` and route to a shared view:
 
 ```json
-// streams/pages.json
 {
-    "fields": {
-        [
-            "handle": "content",
-            "type": "array",
-            "config": {
-                "allowed": [
-                    {"stream": "gallery_blocks"},
-                    {"structure": [
-                        {"handle": "title", "type": "string"}
-                        {"handle": "wysiwyg", "type": "wysiwyg"}
-                    ]},
+    "routes": [
+        {
+            "uri": "docs/{id}",
+            "view": "docs"
+        }
+    ]
+}
+```
+
+Files live in `streams/data/docs/` (or `{package}_docs/`). The entry `id` matches the filename without extension.
+
+## Posts and structured content
+
+Blog or article streams follow the same pattern with different fields — for example `slug`, `published_at`, and a `relationship` to authors. Model fields in stream JSON; store entries in filebase or [database sources](/docs/core/sources-and-adapters).
+
+## Blocks
+
+Block content is an array field whose items map to structured fragments:
+
+```json
+{
+    "handle": "content",
+    "type": "array",
+    "config": {
+        "allowed": [
+            { "stream": "gallery_blocks" },
+            {
+                "structure": [
+                    { "handle": "title", "type": "string" },
+                    { "handle": "body", "type": "string" }
                 ]
             }
         ]
@@ -92,48 +106,19 @@ For example, you might have a block for a gallery of images, a group of links, o
 }
 ```
 
-## Partials
+Each block type can reference another stream or an inline field structure.
 
-Partials are much like view template partials in concept. They are a parts of a view template that can be included in other views. 
+## Partials via Includes
 
-```json
-// streams/partials.json
-{
-    "source": {
-        "type": "filebase",
-        "format": "html"
-    },
-    "fields": {
-        [
-            "handle": "id",
-            "required": true,
-            "unique": true,
-            "config": {
-                "default": true
-            }
-        ],
-        [
-            "handle": "name",
-            "required": true,
-        ],
-        [
-            "handle": "body"
-        ]
-    }
-}
+For reusable view fragments, use Core's [Includes](/docs/core/views-and-includes) API rather than duplicating Blade `@include` paths in JSON:
+
+```php
+Includes::include('sidebar', 'partials.sidebar');
 ```
 
-```json
-// streams/pages.json
-{
-    "fields": {
-        [
-            "handle": "partial",
-            "type": "relationship",
-            "config": {
-                "related": "partials"
-            }
-        ]
-    }
-}
-```
+## Related
+
+- [Site pages](/docs/site-pages)
+- [Routing](/docs/routing)
+- [Core streams](/docs/core/streams)
+- [Core entries](/docs/core/entries)

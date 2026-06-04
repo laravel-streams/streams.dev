@@ -59,6 +59,15 @@ Avoid: emoji in body copy, CMS-only positioning, feature lists without a concret
 ## Visual (site)
 
 - Black, white, and subtle grays only — no color accent
-- System font stack
+- CSS tokens in `resources/scss/_tokens.scss` (`--color-page`, `--color-text`, etc.)
+- System font stack; documentation body ~65ch (`max-w-[42rem]`)
 - Generous whitespace, minimal chrome
-- Code blocks use monochrome-friendly syntax highlighting
+- Code blocks use monochrome Prism theme (`resources/scss/_prism.scss`)
+
+## Documentation layout
+
+- Shared shell: `resources/views/layouts/docs.blade.php` (left nav, article, sticky right TOC on `xl+`)
+- Hub index: `layout: docs-hub` on `streams/data/pages/docs.html`
+- Markdown articles: `resources/views/docs.blade.php` via `DocumentationMarkdown` helper
+- Search: `⌘K` / `Ctrl+K` and topbar trigger; index at `/search/docs.json` (`DocsSearchIndex`)
+- Sidebar IA: **Reference** (packages) first; **New here?** and **Guides** collapsed by default

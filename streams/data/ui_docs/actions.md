@@ -1,32 +1,49 @@
 ---
 title: Actions
-description: 'Table and form actions in Streams UI.'
-sort_order: 7
+description: 'Action, modals, redirects, and table header/row action groups.'
+sort_order: 16
 status: ready
 ---
 
-## Overview
+Actions are buttons that run closures, open modals, or redirect. Base class: `Streams\Ui\Builders\Actions\Action`.
 
-**Actions** are buttons or links on tables and forms—row actions, bulk actions, header actions—that run closures, redirects, or Livewire handlers.
+## Basic action
 
-## Table row actions
+```php
+use Streams\Ui\Builders\Actions\Action;
 
-Common patterns:
+Action::make('publish')
+    ->label('Publish')
+    ->icon('heroicon-o-check')
+    ->action(function ($entry) {
+        $entry->published = true;
+        $entry->save();
+    });
+```
 
-- View / Edit / Delete entry
-- Custom workflow (approve, publish, refund)
+## Table actions
 
-Define actions on the table builder or in stream UI configuration.
+Register on the table builder:
 
-## Bulk actions
+```php
+->actions([
+    Action::make('edit')->url(fn ($entry) => PostResource::getUrl('edit', ['entry' => $entry])),
+])
+->headerActions([
+    Action::make('create')->url(fn () => PostResource::getUrl('create')),
+])
+```
 
-Apply an operation to selected rows (delete, export, tag). Bulk actions respect authorization like single-row actions.
+## Modals and forms
 
-## Form actions
+Actions support modal forms via `->form([...])` and redirect via `->redirect()` concerns on `MountableAction`.
 
-Submit, save and continue, cancel—configured on form builders alongside validation rules from stream fields.
+## Action groups
+
+`ActionGroup` and table-specific action classes organize related actions in dropdown menus.
 
 ## Related
 
+- [Bulk actions](/docs/ui/bulk-actions)
 - [Tables](/docs/ui/tables)
-- [Forms](/docs/ui/forms)
+- [Livewire integration](/docs/ui/livewire)

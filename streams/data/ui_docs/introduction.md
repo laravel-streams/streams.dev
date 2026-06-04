@@ -1,38 +1,43 @@
 ---
 title: Introduction
-description: 'Control panels, forms, and tables for Laravel Streams.'
+description: 'Livewire admin panels on Core — panels, resources, and builders.'
 sort_order: 0
 status: ready
 ---
 
-## What is Streams UI?
+Streams UI (`streams/ui`) builds Livewire admin panels on top of Streams Core. You register a **panel**, define **resource** classes for each stream, and configure **forms** and **tables** with PHP builders.
 
-`streams/ui` builds admin and product interfaces on top of Streams Core—panels, forms, tables, and pages—using Livewire and Tailwind.
+## Architecture
 
-Define data in stream JSON; UI generates much of the interface. Customize with PHP builders where your team needs more control.
-
-## Install
-
-```bash
-composer require streams/ui
+```
+Panel (UI::panel)
+  └── Resources (PHP classes)
+        ├── ListEntries  → Table builder
+        ├── CreateEntry  → Form builder
+        └── EditEntry    → Form builder
 ```
 
-Requires [Streams Core](/docs/core/introduction). See [Installation](/docs/ui/installation) for assets and config.
+There are no `UI::form()` or `UI::table()` Blade helpers. Builders are PHP objects wired through Livewire pages.
 
-## What you can build
+## Minimal setup
 
-- Internal admin for your operations team
-- Customer account or product settings areas
-- Stream-backed CRUD without hand-written controllers for every entity
+```php
+use Streams\Ui\Support\Facades\UI;
+use Streams\Ui\Builders\Panels\Panel;
 
-## In this section
+UI::panel(
+    Panel::make('admin')
+        ->default()
+        ->path('admin')
+        ->middleware(['web'])
+        ->resources([PostResource::class])
+);
+```
 
+Visit `/admin` after registering at least one resource.
+
+## Related
+
+- [Quick start](/docs/ui/quick-start)
 - [Installation](/docs/ui/installation)
 - [Panels](/docs/ui/panels)
-- [Resources](/docs/ui/resources)
-- [Forms](/docs/ui/forms)
-- [Tables](/docs/ui/tables)
-- [Pages](/docs/ui/pages)
-- [Actions](/docs/ui/actions)
-
-Hub guides: [UI](/docs/ui), [Control panel](/docs/control-panel), [Use cases](/docs/use-cases).

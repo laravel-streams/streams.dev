@@ -1,18 +1,41 @@
 ---
-id: pagination
-sort_order: 6
-status: drafting
-title: Pagination & Performance
-description: Pagination patterns, cursor vs page, caching, and ETag guidance.
+title: Pagination
+description: 'first_page, next_page, and meta keys from addPaginationMeta().'
+sort_order: 7
+status: ready
 ---
 
-## Table of Contents
+Paginated list responses add keys to `links` and `meta` via `ApiResponse::addPaginationMeta()`.
 
-- Pagination strategies (page-based, cursor)
-- Performance tips (caching, indexing, limits)
-- ETag and conditional requests
-- Large result set strategies
+## Meta keys
 
-## Pagination strategies
+```json
+"meta": {
+    "total": 150,
+    "per_page": 100,
+    "last_page": 2,
+    "current_page": 1
+}
+```
 
-Document how pagination appears in the JSON envelope and recommended defaults.
+## Link keys
+
+```json
+"links": {
+    "self": "...",
+    "first_page": "...",
+    "next_page": "...",
+    "previous_page": "..."
+}
+```
+
+When on the first page, `previous_page` may be null. When on the last page, `next_page` may be null.
+
+## Request parameters
+
+Use `per_page` and `page` query parameters on `GET /api/streams/{stream}/entries`. Default `per_page` is **100** in source code.
+
+## Related
+
+- [Query parameters](/docs/api/query-parameters)
+- [Responses](/docs/api/responses)

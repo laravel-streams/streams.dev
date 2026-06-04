@@ -2,8 +2,25 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-    --color-accent: #111827;
+@import "tokens";
+@import "docs";
+@import "prism";
+@import "tocbot";
+
+html {
+    font-size: 18px;
+}
+
+body.docs-layout {
+    color: var(--color-text);
+}
+
+svg {
+    max-width: 100%;
+}
+
+[x-cloak] {
+    display: none !important;
 }
 
 .text-accent,
@@ -19,16 +36,4 @@
 .bg-accent,
 .hover\:bg-accent {
     background-color: var(--color-accent);
-}
-
-@import "docs";
-@import "prism";
-@import "tocbot";
-
-html {
-    font-size: 18px;
-}
-
-svg {
-    max-width: 100%;
 }

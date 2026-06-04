@@ -1,63 +1,44 @@
 .documentation__toc {
-    margin: 3rem 0;
-    //font-size: 16px;
-    line-height: 1.25;
+    line-height: 1.35;
+    font-size: 0.8125rem;
+    color: var(--color-text-muted);
 
-    > ol {
-        > li {
-            &:not(:first-of-type) {
-                margin-top: 0.5rem;
-            }
+    &:empty {
+        display: none;
+    }
 
-            > a {
-                font-weight: bold;
-            }
+    .toc-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
 
-            > ol {
-                @apply pl-6;
-            }
+    .toc-list-item {
+        margin-top: 0.35rem;
+    }
+
+    .toc-link {
+        display: block;
+        padding: 0.2rem 0;
+        color: var(--color-text-muted);
+        text-decoration: none;
+        border-left: 2px solid transparent;
+        padding-left: 0.625rem;
+        margin-left: -0.625rem;
+
+        &.is-active-link {
+            color: var(--color-text);
+            font-weight: 600;
+            border-left-color: var(--color-text);
         }
-    }
-}
-
-.toc-link {
-    position: relative;
-    display: inline-block;
-
-    padding-left: 1rem;
-
-    padding-top: 0.125rem;
-    padding-bottom: 0.125rem;
-
-    &:after {
-        left: 0;
-        content: "#";
-        //display: none;
-        position: absolute;
-        font-weight: normal !important;
-
-        @apply text-accent;
-    }
-
-    &:hover {
-        @apply text-accent underline;
-        // &:after {
-        //     display: inline-block;
-        // }
-    }
-
-    .anchorjs-link:after {
-        @apply text-accent;
-    }
-}
-
-.documentation-content {
-    
-    .anchorjs-link {
-        display: inline-block;
 
         &:hover {
-            @apply text-accent;
+            color: var(--color-text);
         }
+    }
+
+    .is-collapsible .toc-list {
+        padding-left: 0.75rem;
+        margin-top: 0.25rem;
     }
 }

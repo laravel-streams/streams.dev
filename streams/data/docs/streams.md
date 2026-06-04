@@ -278,4 +278,4 @@ $entry->relation;   // The relation value.
 
 You can configure the flat-file database as well as other sources for storing data including any Laravel database. No code changes required.
 
-For full reference, see [Streams Core — Streams](/docs/core/streams).
+For full reference, see [Core — Streams](/docs/core/streams), [Core — Caching](/docs/core/caching), and [Core — Validation](/docs/core/validation).

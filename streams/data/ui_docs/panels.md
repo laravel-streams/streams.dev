@@ -1,46 +1,47 @@
 ---
 title: Panels
-description: 'Register and configure control panels with Streams UI.'
-sort_order: 2
+description: 'Path, middleware, default panel, branding, and SetUpPanel.'
+sort_order: 4
 status: ready
 ---
 
-## Overview
+A **panel** is an admin area with its own path, middleware, navigation, resources, and pages.
 
-A **panel** is a routed area of your application—typically `/admin` or `/account`—with its own navigation, middleware, and resources.
-
-Register panels in PHP (panel builders) or stream-linked configuration depending on your app setup.
-
-## Basic panel
+## Register a panel
 
 ```php
-use Streams\Ui\Panels\Panel;
+use Streams\Ui\Support\Facades\UI;
+use Streams\Ui\Builders\Panels\Panel;
 
-Panel::make('admin')
-    ->path('admin')
-    ->middleware(['web', 'auth'])
-    ->brandName('Acme Admin');
+UI::panel(
+    Panel::make('admin')
+        ->default()
+        ->path('admin')
+        ->brandName('Acme')
+        ->middleware(['web', 'auth'])
+        ->resources([PostResource::class])
+        ->pages([DashboardPage::class])
+);
 ```
 
-Panel routes register under the configured path. Attach stream tables and forms as **resources**.
+## Panel options
 
-## Navigation
+| Method | Purpose |
+|--------|---------|
+| `path()` | URL prefix (`/admin`) |
+| `domain()` / `domains()` | Restrict to hostnames |
+| `default()` | Mark as default panel for URL generation |
+| `middleware()` | Additional middleware (always includes `panel:{id}`) |
+| `brandName()`, logo traits | Branding |
+| `homeUrl()` | Panel home link |
+| `routes(Closure)` | Custom route registration |
 
-Group links in the sidebar:
+## SetUpPanel middleware
 
-- Stream resources (CRUD for each stream)
-- Custom pages (dashboards, settings)
-- External links
-
-## Team conventions
-
-- One panel for internal admin, a separate panel for customer account settings if both exist
-- Share middleware and auth policies with the rest of your Laravel app
-- Keep panel-specific assets published via `vendor:publish`
+Alias `panel` maps to `Streams\Ui\Http\Middleware\SetUpPanel`. It boots the current panel before Livewire handles the request.
 
 ## Related
 
-- [Control panel (hub)](/docs/control-panel)
-- [Pages](/docs/ui/pages)
-- [Resources](/docs/ui/resources)
-- [SDK admin panels](/docs/sdk/admin-panels)
+- [Installation](/docs/ui/installation)
+- [Routing](/docs/ui/routing)
+- [Navigation](/docs/ui/navigation)
