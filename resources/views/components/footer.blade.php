@@ -11,4 +11,9 @@
             <li><a class="hover:text-fg" href="https://github.com/laravel-streams" rel="noopener">GitHub</a></li>
         </ul>
     </div>
+    @if (config('app.debug'))
+    <div class="mx-auto max-w-[90rem] px-4 pb-4 text-sm text-fg-muted lg:px-6">
+        {{ response_time() . ' s' }}&nbsp;|&nbsp;{{ memory_usage() }}
+    </div>
+    @endif
 </footer>
