@@ -61,7 +61,7 @@ export function initDocsSearch() {
 
     const render = (results) => {
         resultsEl.innerHTML = '';
-        emptyEl?.classList.toggle('hidden', results.length > 0);
+        emptyEl?.classList.toggle('hidden', results.length > 0 || !input.value.trim());
 
         if (!results.length) {
             return;
@@ -78,7 +78,7 @@ export function initDocsSearch() {
 
         Object.keys(grouped).forEach((section) => {
             const heading = document.createElement('li');
-            heading.className = 'px-4 py-1.5 text-xs font-semibold uppercase tracking-wide text-[var(--color-text-muted)]';
+            heading.className = 'px-3.5 pt-3 pb-1.5 text-[0.6875rem] font-semibold uppercase tracking-[0.08em] text-fg-muted';
             heading.textContent = GROUP_LABELS[section] || section;
             resultsEl.appendChild(heading);
 
@@ -87,11 +87,12 @@ export function initDocsSearch() {
                 const li = document.createElement('li');
                 const btn = document.createElement('button');
                 btn.type = 'button';
-                btn.className = 'docs-search-result w-full text-left px-4 py-2.5 hover:bg-[var(--color-page)]' + (globalIndex === activeIndex ? ' bg-[var(--color-page)]' : '');
+                btn.className = 'docs-search-result' + (globalIndex === activeIndex ? ' is-active' : '');
+                btn.setAttribute('role', 'option');
                 btn.dataset.index = String(globalIndex);
                 btn.innerHTML = `
-                    <span class="block font-medium text-[var(--color-text)]">${escapeHtml(result.item.title)}</span>
-                    <span class="block mt-0.5 text-xs text-[var(--color-text-muted)]">${escapeHtml(result.item.description || result.item.excerpt || '')}</span>
+                    <span class="block text-[0.9375rem] font-medium text-fg">${escapeHtml(result.item.title)}</span>
+                    <span class="mt-0.5 block truncate text-xs text-fg-muted">${escapeHtml(result.item.description || result.item.excerpt || '')}</span>
                 `;
                 btn.addEventListener('click', () => navigate(result.item.url));
                 li.appendChild(btn);
@@ -105,7 +106,8 @@ export function initDocsSearch() {
     const highlightActive = () => {
         resultsEl.querySelectorAll('.docs-search-result').forEach((el) => {
             const idx = Number(el.dataset.index);
-            el.classList.toggle('bg-[var(--color-page)]', idx === activeIndex);
+            el.classList.toggle('is-active', idx === activeIndex);
+            el.setAttribute('aria-selected', idx === activeIndex ? 'true' : 'false');
         });
     };
 
