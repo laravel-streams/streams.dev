@@ -1,4 +1,5 @@
-@import "tailwindcss";
+/* source(none) turns off automatic detection, which was scanning untracked files and changing the build. */
+@import "tailwindcss" source(none);
 @plugin "@tailwindcss/typography";
 
 @import "./tokens.css";
@@ -12,14 +13,17 @@
 /* Dark mode follows the class the theme toggle puts on <html>. */
 @custom-variant dark (&:where(.dark, .dark *, [data-theme="dark"], [data-theme="dark"] *));
 
-/* Content Tailwind scans for class names (beyond resources/, detected automatically). */
+/* Class sources. Paths are relative to this file. vendor/ is gitignored, so the form views are listed on purpose. */
+@source "../views";
+@source "../js";
+@source "../../app";
 @source "../../streams/data";
 @source "../../streams/*.json";
-/* streams-ui form inputs rendered on /ui (read-only; the package is not edited). */
+/* streams-ui form markup rendered on /ui (read-only; the package is not edited). */
+@source "../../vendor/streams/ui/resources/views/builders/form.blade.php";
 @source "../../vendor/streams/ui/resources/views/builders/inputs";
 @source "../../vendor/streams/ui/resources/views/components/inputs";
-@source "../../vendor/streams/ui/resources/views/components/field.blade.php";
-@source "../../vendor/streams/ui/resources/views/builders/form.blade.php";
+@source "../../vendor/streams/ui/resources/views/components/field";
 
 /*
  * Map the --st-* tokens onto Tailwind's theme namespaces so utilities such as
