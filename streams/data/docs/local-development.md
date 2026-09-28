@@ -8,14 +8,14 @@ status: ready
 
 ## Prerequisites
 
-- PHP 8.0.2+ with extensions required by [Laravel 10](https://laravel.com/docs/10.x/deployment#server-requirements)
+- PHP 8.1+ with the extensions required by [Laravel 10](https://laravel.com/docs/10.x/deployment#server-requirements) (this site runs Laravel 10.50)
 - Composer
 - Node.js and npm (for Vite and Tailwind)
 
 ## First-time setup
 
 ```bash
-git clone git@github.com:streams/streams.dev.git
+git clone git@github.com:laravel-streams/streams.dev.git
 cd streams.dev
 
 composer install

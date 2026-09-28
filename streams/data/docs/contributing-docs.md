@@ -17,7 +17,7 @@ All documentation for streams.dev is in **this repository** under `streams/data/
 | UI | `streams/data/ui_docs/` | `/docs/ui/{id}` |
 | API | `streams/data/api_docs/` | `/docs/api/{id}` |
 
-See [STYLE.md](https://github.com/streams/streams.dev/blob/develop/STYLE.md) for voice, frontmatter, and visual guidelines.
+See [STYLE.md](https://github.com/laravel-streams/streams.dev/blob/develop/STYLE.md) for voice, frontmatter, and visual guidelines.
 
 ## Frontmatter
 
@@ -66,6 +66,6 @@ Before marking `status: ready`, trace documented classes and methods to:
 
 ## Related
 
-- [STYLE.md](https://github.com/streams/streams.dev/blob/develop/STYLE.md)
+- [STYLE.md](https://github.com/laravel-streams/streams.dev/blob/develop/STYLE.md)
 - [Project structure](/docs/project-structure)
 - [Local development](/docs/local-development)

@@ -14,7 +14,7 @@ This guide will walk you through installing and configuring the Streams Testing 
 Before installing, ensure your environment meets these requirements:
 
 - **PHP**: 8.1 or higher
-- **Laravel**: 10.x or 11.x
+- **Laravel**: 10.x only. The package requires `orchestra/testbench ^8.36`, which targets Laravel 10.
 - **Streams Core**: ^2.0
 - **Composer**: Latest version recommended
 
@@ -23,7 +23,7 @@ Before installing, ensure your environment meets these requirements:
 Install the Streams Testing package via Composer as a development dependency:
 
 ```bash
-composer require streams/testing --dev
+composer require --dev streams/testing:1.0.x-dev
 ```
 
 This will install the package and all its dependencies, including Orchestra Testbench and PHPUnit.
