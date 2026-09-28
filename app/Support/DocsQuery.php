@@ -21,17 +21,24 @@ class DocsQuery
      */
     public const PACKAGES = ['guides', 'core', 'ui', 'api', 'sdk', 'testing', 'client'];
 
-    public const SECTIONS = ['guide', 'reference'];
+    /**
+     * Section filters: the "section" frontmatter key every docs page
+     * carries (see STYLE.md). Package reference pages are "packages".
+     */
+    public const SECTIONS = ['get-started', 'guides', 'concepts', 'reference', 'packages', 'contributing'];
 
     /**
      * Every docs page with its slug, cached like the other docs indexes.
+     * "section" is the page's frontmatter section, not the index's
+     * guide/reference split.
      */
     public static function documents(): array
     {
-        return Cache::remember('docs.mcp.documents', now()->addMinutes(15), function () {
-            return array_map(fn (array $document) => $document + [
+        return Cache::remember('docs.mcp.documents.v2', now()->addMinutes(15), function () {
+            return array_map(fn (array $document) => array_merge($document, [
                 'slug' => static::slugFor($document),
-            ], DocsSearchIndex::documents());
+                'section' => ($document['page_section'] ?? '') ?: $document['section'],
+            ]), DocsSearchIndex::documents());
         });
     }
 
@@ -169,10 +176,11 @@ class DocsQuery
      */
     public static function navigation(?string $package = null, ?string $section = null): array
     {
-        $slugs = array_column(static::documents(), 'slug', 'url');
+        $pages = array_column(static::documents(), null, 'url');
         $groups = [];
 
         foreach (LlmsText::sections() as $label => $documents) {
+            $documents = array_map(fn ($document) => $pages[$document['url']] ?? $document + ['slug' => static::slugFor($document)], $documents);
             $documents = static::filter($documents, $package, $section);
 
             if ($documents === []) {
@@ -182,12 +190,12 @@ class DocsQuery
             $groups[] = [
                 'group' => $label,
                 'package' => $documents[0]['package'],
-                'section' => $documents[0]['section'],
                 'pages' => array_map(fn ($document) => [
                     'title' => $document['title'],
                     'nav_title' => $document['nav_title'] ?? $document['title'],
-                    'slug' => $slugs[$document['url']] ?? static::slugFor($document),
+                    'slug' => $document['slug'],
                     'url' => $document['url'],
+                    'section' => $document['section'],
                 ], $documents),
             ];
         }

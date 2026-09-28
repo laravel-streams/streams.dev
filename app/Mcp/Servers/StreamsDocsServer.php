@@ -25,7 +25,7 @@ use Laravel\Mcp\Server\Attributes\Version;
     Streams (laravel-streams) is a set of Laravel packages for building data-driven apps from JSON configuration. A stream is a JSON file in streams/ that declares fields, validation, a storage source (flat files, database, API) and routes; the packages provide repositories and criteria queries (streams/core), Livewire admin panels, forms and tables (streams/ui), a REST API (streams/api), generators and schema validation (streams/sdk), test helpers (streams/testing) and a JavaScript client (@laravel-streams/api-client).
 
     This server gives read-only access to the official docs at streams.dev:
-    - search_docs: find pages by keywords (filter by package: guides, core, ui, api, sdk, testing, client).
+    - search_docs: find pages by keywords (filter by package: guides, core, ui, api, sdk, testing, client; or by section: get-started, guides, concepts, reference, packages, contributing).
     - get_page: read a whole page as markdown by slug ("core/introduction", "installation") or URL.
     - list_pages: the docs navigation, to browse a package or see what exists.
     - get_schema: the JSON Schema for streams/*.json stream definitions.

@@ -89,6 +89,7 @@ class DocsSearchIndex
                     'package' => $meta['package'],
                     'label' => $meta['label'],
                     'section' => $meta['section'],
+                    'page_section' => (string) ($entry->section ?? ''),
                     'body' => (string) ($entry->body ?? ''),
                 ];
             }

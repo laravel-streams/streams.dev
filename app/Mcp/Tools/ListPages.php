@@ -17,7 +17,7 @@ use Laravel\Mcp\Server\Tools\Annotations\IsReadOnly;
 
 #[Name('list_pages')]
 #[Title('List the Streams docs pages')]
-#[Description('Returns the streams.dev docs navigation: hub guides grouped by category, then each package reference (core, ui, api, sdk, testing, client), with every page\'s title, slug and URL in reading order. Filter by package or section to keep it short.')]
+#[Description('Returns the streams.dev docs navigation: hub guides grouped by category, then each package reference (core, ui, api, sdk, testing, client), with every page\'s title, nav title, slug, URL and frontmatter section in reading order. Filter by package or section (get-started, guides, concepts, reference, packages, contributing) to keep it short.')]
 #[IsReadOnly]
 #[IsIdempotent]
 #[IsOpenWorld(false)]
@@ -30,7 +30,7 @@ class ListPages extends Tool
             'section' => ['nullable', 'string', 'in:'.implode(',', DocsQuery::SECTIONS)],
         ], [
             'package.in' => 'package must be one of: '.implode(', ', DocsQuery::PACKAGES).'.',
-            'section.in' => 'section must be "guide" (hub guides) or "reference" (package references).',
+            'section.in' => 'section must be one of: '.implode(', ', DocsQuery::SECTIONS).'.',
         ]);
 
         $groups = DocsQuery::navigation($validated['package'] ?? null, $validated['section'] ?? null);
@@ -49,7 +49,7 @@ class ListPages extends Tool
                 ->description('Only list one package. "guides" is the hub guides.'),
             'section' => $schema->string()
                 ->enum(DocsQuery::SECTIONS)
-                ->description('"guide" for hub guides, "reference" for package reference pages.'),
+                ->description('Only pages whose frontmatter section matches: "get-started", "guides", "concepts", "reference", "packages" (every package reference page) or "contributing" (how streams.dev is built).'),
         ];
     }
 }

@@ -40,12 +40,41 @@ class DocsMcpServerTest extends TestCase
             ->assertHasErrors(['Pass a search query']);
     }
 
+    public function test_section_filters_use_the_frontmatter_section()
+    {
+        StreamsDocsServer::tool(SearchDocs::class, ['query' => 'install', 'section' => 'get-started'])
+            ->assertOk()
+            ->assertSee(['"slug":"installation"', '"section":"get-started"'])
+            ->assertDontSee('"section":"packages"');
+
+        StreamsDocsServer::tool(SearchDocs::class, ['query' => 'install', 'section' => 'packages'])
+            ->assertOk()
+            ->assertSee('"slug":"core/installation"')
+            ->assertDontSee('"slug":"installation"');
+
+        StreamsDocsServer::tool(ListPages::class, ['section' => 'contributing'])
+            ->assertOk()
+            ->assertSee(['contributing-docs', '"section":"contributing"'])
+            ->assertDontSee(['"section":"guides"', 'core/introduction']);
+
+        StreamsDocsServer::tool(ListPages::class, ['package' => 'guides', 'section' => 'packages'])
+            ->assertOk()
+            ->assertSee('"count":0');
+
+        StreamsDocsServer::tool(SearchDocs::class, ['query' => 'routes', 'section' => 'guide'])
+            ->assertHasErrors(['section must be one of: get-started, guides, concepts, reference, packages, contributing']);
+
+        StreamsDocsServer::tool(GetPage::class, ['page' => 'installation'])
+            ->assertOk()
+            ->assertSee('section: get-started');
+    }
+
     public function test_get_page_returns_markdown_with_frontmatter()
     {
         foreach (['core/introduction', '/docs/core/introduction', 'https://streams.dev/docs/core/introduction.md'] as $reference) {
             StreamsDocsServer::tool(GetPage::class, ['page' => $reference])
                 ->assertOk()
-                ->assertSee(['---', 'slug: core/introduction', 'url: ', '/docs/core/introduction', 'package: core', 'nav_title: Introduction', '# Core: Introduction']);
+                ->assertSee(['---', 'slug: core/introduction', 'url: ', '/docs/core/introduction', 'package: core', 'section: packages', 'nav_title: Introduction', '# Core: Introduction']);
         }
 
         StreamsDocsServer::tool(GetPage::class, ['page' => 'installation'])

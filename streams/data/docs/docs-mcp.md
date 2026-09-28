@@ -78,12 +78,12 @@ All tools are read-only.
 
 | Tool | Arguments | Returns |
 |------|-----------|---------|
-| `search_docs` | `query` (required), `package`, `section`, `limit` (default 10, max 50) | Ranked pages with title, slug, URL, markdown URL, package, and a snippet |
+| `search_docs` | `query` (required), `package`, `section`, `limit` (default 10, max 50) | Ranked pages with title, slug, URL, markdown URL, package, section, tags, and a snippet |
 | `get_page` | `page`: a slug (`core/introduction`), docs path, or URL | The page as markdown with a frontmatter block (title, description, slug, url) |
-| `list_pages` | `package`, `section` | The navigation: guides by category, then each package, with title, slug, and URL |
+| `list_pages` | `package`, `section` | The navigation: guides by group, then each package, with title, slug, URL, and section |
 | `get_schema` | `name` (default `streams`) | The JSON Schema served at [/schema/streams.schema.json](/schema/streams.schema.json) |
 
-`package` is one of `guides`, `core`, `ui`, `api`, `sdk`, `testing`, `client`. `section` is `guide` or `reference`. A page's slug is its path under `/docs/`: `installation` for a hub guide, `core/introduction` for a package page.
+`package` is one of `guides`, `core`, `ui`, `api`, `sdk`, `testing`, `client`. `section` is the page's frontmatter section: `get-started`, `guides`, `concepts`, `reference`, `packages` (every package reference page), or `contributing`. A page's slug is its path under `/docs/`: `installation` for a hub guide, `core/introduction` for a package page.
 
 Pages are also exposed as resources: `streams-docs://pages/{package}/{page}` (for example `streams-docs://pages/core/introduction`), plus `streams-docs://llms.txt` for the index.
 
