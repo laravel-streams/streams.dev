@@ -276,9 +276,21 @@
         color: inherit;
         text-decoration: none;
         transition:
+            background-color var(--st-duration-base) var(--st-ease-out),
             border-color var(--st-duration-base) var(--st-ease-out),
-            box-shadow var(--st-duration-base) var(--st-ease-out),
             transform var(--st-duration-base) var(--st-ease-out);
+    }
+
+    /* Hover shadow on its own layer so the lift animates opacity, not box-shadow. */
+    .st-card::after {
+        content: "";
+        position: absolute;
+        inset: -1px;
+        border-radius: inherit;
+        box-shadow: var(--st-shadow-3);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity var(--st-duration-base) var(--st-ease-out);
     }
 
     .st-card--glass {
@@ -286,11 +298,17 @@
     }
 
     a.st-card:hover,
+    a.st-card:focus-visible,
     .st-card--interactive:hover {
         background: var(--st-glass-bg-strong);
         border-color: var(--st-border-strong);
-        box-shadow: var(--st-glass-shadow-lg);
-        transform: translateY(calc(var(--st-lift) * 2));
+        transform: translateY(calc(var(--st-lift) * 3));
+    }
+
+    a.st-card:hover::after,
+    a.st-card:focus-visible::after,
+    .st-card--interactive:hover::after {
+        opacity: 1;
     }
 
     .st-card__eyebrow {
@@ -647,17 +665,33 @@
             color: var(--st-text);
         }
 
-        /* Active section: a short accent bar under the label. */
-        &[aria-current="page"]::after {
+        /* Accent bar under the label: grows in on hover/focus, stays on the current section. */
+        &::after {
             content: "";
             position: absolute;
             left: 50%;
             bottom: 0.3rem;
             width: 1.25rem;
             height: 2px;
+            margin-left: -0.625rem;
             border-radius: 2px;
             background: var(--st-accent-gradient);
-            transform: translateX(-50%);
+            opacity: 0;
+            transform: scaleX(0);
+            transition:
+                transform var(--st-duration-base) var(--st-ease-out),
+                opacity var(--st-duration-base) var(--st-ease-out);
+        }
+
+        &:hover::after,
+        &:focus-visible::after {
+            opacity: 0.55;
+            transform: scaleX(0.7);
+        }
+
+        &[aria-current="page"]::after {
+            opacity: 1;
+            transform: scaleX(1);
         }
     }
 
@@ -667,7 +701,7 @@
         gap: 0.625rem;
         height: 2.75rem;
         padding-inline: 1rem 0.5rem;
-        border-radius: var(--st-radius-control-lg);
+        border-radius: var(--st-radius-control);
         border: 1px solid var(--st-glass-border);
         background: var(--st-glass-bg-subtle);
         box-shadow: var(--st-glass-ring);
@@ -688,7 +722,7 @@
         align-items: center;
         height: 1.5rem;
         padding-inline: 0.5rem;
-        border-radius: var(--st-radius-control);
+        border-radius: var(--st-radius-xs);
         border: 1px solid var(--st-border);
         background: var(--st-surface);
         font-family: var(--st-font-mono);
@@ -719,16 +753,20 @@
         width: 100%;
         height: 3.5rem;
         padding-inline: 1.25rem 0.75rem;
-        border-radius: var(--st-radius-xs);
+        border-radius: var(--st-radius-control-lg);
         cursor: text;
         color: var(--st-text-muted);
         font-size: var(--st-text-base);
         text-align: left;
-        transition: box-shadow var(--st-duration-base) var(--st-ease-out), border-color var(--st-duration-base) var(--st-ease-out);
+        transition:
+            border-color var(--st-duration-base) var(--st-ease-out),
+            background-color var(--st-duration-base) var(--st-ease-out),
+            transform var(--st-duration-base) var(--st-ease-out);
 
         &:hover {
             border-color: var(--st-border-strong);
-            box-shadow: var(--st-glass-shadow-lg);
+            background: var(--st-glass-bg-strong);
+            transform: translateY(var(--st-lift));
         }
     }
 
@@ -739,6 +777,25 @@
         letter-spacing: 0.08em;
         text-transform: uppercase;
         color: var(--st-text-muted);
+    }
+}
+
+/*
+ * Scroll reveal (resources/js/reveal.js). Only elements that start below the
+ * fold get the pending state, so nothing visible on load ever blinks. Once
+ * revealed, the classes are removed and normal hover transitions return.
+ */
+@layer components {
+    .st-reveal-pending {
+        opacity: 0;
+        transform: translate3d(0, var(--st-reveal-distance), 0);
+    }
+
+    .st-reveal-in {
+        transition:
+            opacity var(--st-duration-reveal) var(--st-ease-out),
+            transform var(--st-duration-reveal) var(--st-ease-out) !important;
+        transition-delay: var(--st-reveal-delay, 0ms) !important;
     }
 }
 

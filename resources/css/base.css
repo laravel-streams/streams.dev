@@ -38,13 +38,6 @@
 
     body::before {
         background:
-            radial-gradient(40rem 30rem at 12% 2%, var(--st-mesh-violet), transparent 70%),
-            radial-gradient(38rem 28rem at 88% 8%, var(--st-mesh-cyan), transparent 70%),
-            radial-gradient(36rem 30rem at 55% 22%, var(--st-mesh-rose), transparent 72%),
-            radial-gradient(40rem 32rem at 4% 45%, var(--st-mesh-cyan), transparent 70%),
-            radial-gradient(38rem 30rem at 96% 58%, var(--st-mesh-amber), transparent 70%),
-            radial-gradient(42rem 32rem at 20% 82%, var(--st-mesh-rose), transparent 70%),
-            radial-gradient(44rem 32rem at 82% 100%, var(--st-mesh-violet), transparent 70%),
             radial-gradient(64rem 38rem at 6% 0%, var(--st-glow-1), transparent 66%),
             radial-gradient(52rem 34rem at 96% 3%, var(--st-glow-2), transparent 62%),
             radial-gradient(46rem 34rem at 88% 32%, var(--st-glow-1), transparent 64%),
@@ -58,6 +51,65 @@
         background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.5 0 0 0 0 0.5 0 0 0 0 0.5 0 0 0 1 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
         background-size: 180px 180px;
     }
+}
+
+/*
+ * Color mesh: six soft blobs spread down the document, each drifting on its
+ * own slow loop (40-58s, alternate, ease-in-out). Transform only, one small
+ * composited layer each; the wrapper clips them so nothing adds scroll
+ * width or height. Static under prefers-reduced-motion.
+ */
+@layer base {
+    .st-mesh {
+        position: absolute;
+        inset: 0;
+        z-index: -1;
+        overflow: hidden;
+        pointer-events: none;
+        contain: layout paint;
+    }
+
+    .st-mesh__blob {
+        position: absolute;
+        width: 40rem;
+        height: 30rem;
+        border-radius: 50%;
+        background: radial-gradient(closest-side, var(--st-blob), transparent);
+        will-change: transform;
+        animation: var(--st-blob-drift) var(--st-blob-duration, var(--st-drift-duration)) ease-in-out infinite alternate;
+    }
+
+    .st-mesh__blob:nth-child(1) { --st-blob: var(--st-mesh-violet); --st-blob-drift: st-drift-a; --st-blob-duration: 52s; top: -6rem; left: -8%; }
+    .st-mesh__blob:nth-child(2) { --st-blob: var(--st-mesh-cyan); --st-blob-drift: st-drift-b; --st-blob-duration: 44s; top: 2%; left: 62%; }
+    .st-mesh__blob:nth-child(3) { --st-blob: var(--st-mesh-rose); --st-blob-drift: st-drift-c; --st-blob-duration: 58s; top: 22%; left: 30%; }
+    .st-mesh__blob:nth-child(4) { --st-blob: var(--st-mesh-amber); --st-blob-drift: st-drift-a; --st-blob-duration: 48s; top: 48%; left: 66%; animation-direction: alternate-reverse; }
+    .st-mesh__blob:nth-child(5) { --st-blob: var(--st-mesh-cyan); --st-blob-drift: st-drift-b; --st-blob-duration: 56s; top: 66%; left: -10%; }
+    .st-mesh__blob:nth-child(6) { --st-blob: var(--st-mesh-violet); --st-blob-drift: st-drift-c; --st-blob-duration: 40s; top: 84%; left: 48%; }
+
+    @media (max-width: 639.98px) {
+        .st-mesh__blob {
+            width: 28rem;
+            height: 22rem;
+        }
+    }
+}
+
+@keyframes st-drift-a {
+    from { transform: translate3d(0, 0, 0) scale(1); }
+    to { transform: translate3d(14vw, 7rem, 0) scale(1.18); }
+}
+
+@keyframes st-drift-b {
+    from { transform: translate3d(0, 0, 0) scale(1.05); }
+    to { transform: translate3d(-12vw, 9rem, 0) scale(0.88); }
+}
+
+@keyframes st-drift-c {
+    from { transform: translate3d(0, 0, 0) scale(0.95) rotate(0deg); }
+    to { transform: translate3d(9vw, -8rem, 0) scale(1.2) rotate(12deg); }
+}
+
+@layer base {
 
     ::selection {
         background: var(--st-inverse);
@@ -118,9 +170,34 @@
     }
 }
 
+@keyframes st-fade-out {
+    to {
+        opacity: 0;
+    }
+}
+
+/* Theme switch: a plain 240ms crossfade of the whole page (see theme-toggle). */
+:root[data-st-switching]::view-transition-old(*),
+:root[data-st-switching]::view-transition-new(*) {
+    animation-duration: 240ms;
+    animation-timing-function: var(--st-ease-out);
+}
+
+:root[data-st-switching]::view-transition-old(explore-stage) {
+    animation-name: st-fade-out;
+}
+
+:root[data-st-switching]::view-transition-new(explore-stage) {
+    animation-name: st-fade;
+}
+
 @media (prefers-reduced-motion: reduce) {
     @view-transition {
         navigation: none;
+    }
+
+    .st-mesh__blob {
+        animation: none !important;
     }
 
     *,

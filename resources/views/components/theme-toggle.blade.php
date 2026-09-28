@@ -7,7 +7,14 @@
         labels: { system: 'Theme: system', light: 'Theme: light', dark: 'Theme: dark' },
         cycle() {
             this.mode = { system: 'light', light: 'dark', dark: 'system' }[this.mode];
-            window.StreamsTheme.set(this.mode);
+            const apply = () => window.StreamsTheme.set(this.mode);
+            const root = document.documentElement;
+            if (!document.startViewTransition || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                apply();
+                return;
+            }
+            root.dataset.stSwitching = '';
+            document.startViewTransition(apply).finished.finally(() => delete root.dataset.stSwitching);
         },
     }"
     @click="cycle()"

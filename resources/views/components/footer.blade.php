@@ -5,10 +5,10 @@
             <span>Streams · Agentic-first Laravel packages</span>
         </div>
         <ul class="flex flex-wrap items-center gap-x-6 gap-y-3">
-            <li><a class="hover:text-fg" href="/docs">Docs</a></li>
-            <li><a class="hover:text-fg" href="/explore/idea">Explore</a></li>
-            <li><a class="hover:text-fg" href="/addons">Addons</a></li>
-            <li><a class="hover:text-fg" href="https://github.com/laravel-streams" rel="noopener">GitHub</a></li>
+            <li><a class="transition-colors duration-200 ease-out hover:text-fg" href="/docs">Docs</a></li>
+            <li><a class="transition-colors duration-200 ease-out hover:text-fg" href="/explore/idea">Explore</a></li>
+            <li><a class="transition-colors duration-200 ease-out hover:text-fg" href="/addons">Addons</a></li>
+            <li><a class="transition-colors duration-200 ease-out hover:text-fg" href="https://github.com/laravel-streams" rel="noopener">GitHub</a></li>
         </ul>
     </div>
     @if (config('app.debug'))

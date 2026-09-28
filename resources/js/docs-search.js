@@ -21,6 +21,9 @@ export function initDocsSearch() {
     let fuse = null;
     let items = [];
     let activeIndex = -1;
+    let closeTimer = null;
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const isOpen = () => !root.hidden && !root.classList.contains('is-closing');
 
     const loadIndex = async () => {
         if (items.length) {
@@ -41,8 +44,19 @@ export function initDocsSearch() {
         });
     };
 
-    const open = async () => {
-        await loadIndex();
+    // Show the dialog immediately (so the open animation isn't gated on the
+    // network) and fetch the index in the background; re-run any query typed
+    // while it was loading.
+    const open = () => {
+        loadIndex()
+            .then(() => {
+                if (isOpen() && input.value.trim()) {
+                    search(input.value);
+                }
+            })
+            .catch(() => {});
+        clearTimeout(closeTimer);
+        root.classList.remove('is-closing');
         root.hidden = false;
         root.setAttribute('aria-hidden', 'false');
         document.body.classList.add('overflow-hidden');
@@ -52,11 +66,24 @@ export function initDocsSearch() {
         requestAnimationFrame(() => input.focus());
     };
 
+    // Close plays the 160ms fade/scale-out (.is-closing) before hiding.
     const close = () => {
-        root.hidden = true;
+        if (!isOpen()) {
+            return;
+        }
+        const finish = () => {
+            root.classList.remove('is-closing');
+            root.hidden = true;
+        };
         root.setAttribute('aria-hidden', 'true');
         document.body.classList.remove('overflow-hidden');
         activeIndex = -1;
+        if (reducedMotion.matches) {
+            finish();
+            return;
+        }
+        root.classList.add('is-closing');
+        closeTimer = setTimeout(finish, 170);
     };
 
     const render = (results) => {
@@ -177,10 +204,10 @@ export function initDocsSearch() {
     document.addEventListener('keydown', (e) => {
         if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
             e.preventDefault();
-            if (root.hidden) {
-                open();
-            } else {
+            if (isOpen()) {
                 close();
+            } else {
+                open();
             }
         }
     });

@@ -18,6 +18,9 @@
 
 <body class="flex min-h-screen flex-col text-fg antialiased {{ $bodyClass ?? '' }}" @isset($bodyData) x-data="{{ $bodyData }}" @endisset>
 
+    {{-- Drifting color mesh behind the glass (styles in base.css). --}}
+    <div class="st-mesh" aria-hidden="true"><span class="st-mesh__blob"></span><span class="st-mesh__blob"></span><span class="st-mesh__blob"></span><span class="st-mesh__blob"></span><span class="st-mesh__blob"></span><span class="st-mesh__blob"></span></div>
+
     <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-3 focus:z-50 st-btn st-btn--primary st-btn--sm">Skip to content</a>
 
     @if ($chrome ?? true)

@@ -84,6 +84,7 @@
     }
 
     .docs-nav-link {
+        position: relative;
         display: block;
         padding: 0.4375rem 0.75rem;
         border-radius: var(--st-radius-control);
@@ -107,8 +108,8 @@
             box-shadow: var(--st-glass-ring), 0 0 0 1px var(--st-border), var(--st-shadow-1);
         }
 
-        /* Accent indicator on the active item. */
-        &.is-active::before {
+        /* Accent indicator: hints on hover, grows in once on the active item. */
+        &::before {
             content: "";
             position: absolute;
             top: 0.5rem;
@@ -117,6 +118,23 @@
             width: 3px;
             border-radius: 3px;
             background: linear-gradient(180deg, var(--st-violet), var(--st-cyan));
+            opacity: 0;
+            transform: scaleY(0);
+            transition:
+                transform var(--st-duration-base) var(--st-ease-out),
+                opacity var(--st-duration-base) var(--st-ease-out);
+        }
+
+        &:hover::before,
+        &:focus-visible::before {
+            opacity: 0.45;
+            transform: scaleY(0.5);
+        }
+
+        &.is-active::before {
+            opacity: 1;
+            transform: scaleY(1);
+            animation: st-bar-in 360ms var(--st-ease-out) 80ms both;
         }
     }
 
@@ -232,17 +250,34 @@
         box-shadow: var(--st-glass-ring), var(--st-shadow-1);
         -webkit-backdrop-filter: var(--st-glass-filter);
         backdrop-filter: var(--st-glass-filter);
+        position: relative;
         text-decoration: none !important;
         transition:
+            background-color var(--st-duration-base) var(--st-ease-out),
             border-color var(--st-duration-base) var(--st-ease-out),
-            box-shadow var(--st-duration-base) var(--st-ease-out),
             transform var(--st-duration-base) var(--st-ease-out);
 
-        &:hover {
+        &::after {
+            content: "";
+            position: absolute;
+            inset: -1px;
+            border-radius: inherit;
+            box-shadow: var(--st-shadow-2);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity var(--st-duration-base) var(--st-ease-out);
+        }
+
+        &:hover,
+        &:focus-visible {
             background: var(--st-glass-bg-strong);
             border-color: var(--st-border-strong);
-            box-shadow: var(--st-glass-shadow);
-            transform: translateY(var(--st-lift));
+            transform: translateY(calc(var(--st-lift) * 2));
+        }
+
+        &:hover::after,
+        &:focus-visible::after {
+            opacity: 1;
         }
 
         strong {
@@ -286,6 +321,8 @@
         display: none;
     }
 
+    /* Open: overlay fades in 220ms; panel fades and scales 0.98 -> 1 over 220ms (ease-out).
+       Close (.is-closing, set by docs-search.js): both reverse in 160ms (ease-in), then [hidden]. */
     .docs-search-overlay {
         background: rgb(10 10 11 / 0.22);
         -webkit-backdrop-filter: blur(10px) saturate(1.2);
@@ -295,7 +332,16 @@
 
     .docs-search-panel {
         border-radius: var(--st-radius-2xl);
-        animation: st-rise var(--st-duration-base) var(--st-ease-out) both;
+        transform-origin: 50% 0;
+        animation: st-dialog-in var(--st-duration-base) var(--st-ease-out) both;
+    }
+
+    .docs-search.is-closing .docs-search-overlay {
+        animation: st-fade-out 160ms var(--st-ease-in) both;
+    }
+
+    .docs-search.is-closing .docs-search-panel {
+        animation: st-dialog-out 160ms var(--st-ease-in) both;
     }
 
     .docs-search-result {
@@ -315,6 +361,27 @@
             background: var(--st-glass-bg-strong);
             box-shadow: var(--st-glass-ring), 0 0 0 1px var(--st-border);
         }
+    }
+}
+
+@keyframes st-dialog-in {
+    from {
+        opacity: 0;
+        transform: scale(0.98);
+    }
+}
+
+@keyframes st-dialog-out {
+    to {
+        opacity: 0;
+        transform: scale(0.98);
+    }
+}
+
+@keyframes st-bar-in {
+    from {
+        opacity: 0;
+        transform: scaleY(0);
     }
 }
 

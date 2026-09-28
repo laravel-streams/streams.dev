@@ -140,10 +140,15 @@
 
     /* Motion: subtle only. Collapsed to ~0 under prefers-reduced-motion. */
     --st-ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+    --st-ease-in: cubic-bezier(0.4, 0, 1, 1);
     --st-ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
-    --st-duration-fast: 120ms;
-    --st-duration-base: 200ms;
+    --st-duration-fast: 150ms;
+    --st-duration-base: 220ms;
     --st-duration-slow: 420ms;
+    --st-duration-reveal: 640ms;
+    --st-reveal-distance: 10px;
+    --st-reveal-stagger: 70ms;
+    --st-drift-duration: 52s;
     --st-lift: -1px;
 
     /*
@@ -244,9 +249,9 @@
     --st-accent-gradient: linear-gradient(100deg, #c4b5fd 0%, #67e8f9 55%, #f9a8d4 100%);
     --st-accent-line: linear-gradient(90deg, rgb(167 139 250 / 0.5), rgb(103 232 249 / 0.45), rgb(249 168 212 / 0.4), rgb(252 211 77 / 0.35));
 
-    --st-mesh-violet: rgb(139 92 246 / 0.18);
-    --st-mesh-cyan: rgb(34 211 238 / 0.13);
-    --st-mesh-rose: rgb(236 72 153 / 0.13);
+    --st-mesh-violet: rgb(139 92 246 / 0.15);
+    --st-mesh-cyan: rgb(34 211 238 / 0.11);
+    --st-mesh-rose: rgb(236 72 153 / 0.11);
     --st-mesh-amber: rgb(245 158 11 / 0.1);
 
     --st-code-glass: rgb(0 0 0 / 0.55);
@@ -269,6 +274,8 @@
         --st-duration-fast: 0.01ms;
         --st-duration-base: 0.01ms;
         --st-duration-slow: 0.01ms;
+        --st-duration-reveal: 0.01ms;
+        --st-reveal-distance: 0px;
         --st-lift: 0px;
     }
 }
