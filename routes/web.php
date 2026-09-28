@@ -22,6 +22,15 @@ use App\Support\LlmsText;
 
 Route::get('/search/docs.json', fn () => response()->json(DocsSearchIndex::all()));
 
+Route::get('/schema/streams.schema.json', function () {
+    $path = public_path('schema/streams.schema.json');
+    abort_unless(is_file($path), 404);
+
+    return response(file_get_contents($path), 200, [
+        'Content-Type' => 'application/json; charset=UTF-8',
+    ]);
+});
+
 /*
  * Machine-readable docs for agents (https://llmstxt.org), built from
  * DocsSearchIndex on request and cached alongside the search index.
