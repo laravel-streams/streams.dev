@@ -1,9 +1,12 @@
 ---
-sort_order: 3
 title: Client Configuration
-description: 'Configure the API client for your application'
-category: core
-status: published
+nav_title: Client Configuration
+description: Configure the API client for your application
+section: packages
+package: client
+order: 40
+tags: [client]
+status: ready
 ---
 
 # Client Configuration

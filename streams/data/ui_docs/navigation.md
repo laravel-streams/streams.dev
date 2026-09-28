@@ -1,7 +1,11 @@
 ---
 title: Navigation
-description: 'Navigation groups, items, and wiring resources into the sidebar.'
-sort_order: 8
+nav_title: Navigation
+description: Navigation groups, items, and wiring resources into the sidebar.
+section: packages
+package: ui
+order: 90
+tags: [ui, navigation]
 status: ready
 ---
 

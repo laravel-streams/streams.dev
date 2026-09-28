@@ -44,7 +44,7 @@ class StreamForm extends Component
         $components = [];
 
         foreach (Streams::make($this->stream)->fields as $field) {
-            if (in_array($field->handle, ['id', 'sort_order'])) {
+            if (in_array($field->handle, ['id', 'sort_order', 'order'])) {
                 continue;
             }
 

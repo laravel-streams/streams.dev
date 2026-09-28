@@ -1,7 +1,11 @@
 ---
 title: Callbacks
-description: 'FiresCallbacks on streams, entries, repositories, and criteria.'
-sort_order: 21
+nav_title: Callbacks
+description: FiresCallbacks on streams, entries, repositories, and criteria.
+section: packages
+package: core
+order: 220
+tags: [core, callbacks]
 status: ready
 ---
 

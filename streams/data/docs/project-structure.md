@@ -1,8 +1,12 @@
 ---
 title: Project structure
-description: 'Where stream definitions, content, views, and app code live.'
-sort_order: 1
+nav_title: Project structure
+description: Where stream definitions, content, views, and app code live.
+section: contributing
 category: this-project
+package: site
+order: 20
+tags: [site, project, structure]
 status: ready
 ---
 

@@ -1,7 +1,11 @@
 ---
-sort_order: 0
-title: Introduction
-description: 'Dev-only Artisan generators for streams, entries, addons, schemas, and Livewire admins.'
+title: 'SDK: Introduction'
+nav_title: Introduction
+description: Dev-only Artisan generators for streams, entries, addons, schemas, and Livewire admins.
+section: packages
+package: sdk
+order: 10
+tags: [sdk, introduction]
 status: ready
 ---
 

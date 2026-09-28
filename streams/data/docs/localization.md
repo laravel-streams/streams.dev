@@ -1,8 +1,12 @@
 ---
-sort_order: 17
 title: Localization
-description: 'Internationalization with Streams and Laravel.'
+nav_title: Localization
+description: Internationalization with Streams and Laravel.
+section: guides
 category: advanced
+package: core
+order: 60
+tags: [core, localization]
 status: ready
 ---
 

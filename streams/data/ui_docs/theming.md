@@ -1,7 +1,11 @@
 ---
 title: Theming
+nav_title: Theming
 description: 'Panel color palettes, brand name, logo, favicon, and layout. The streams:admin --theme flag does not change the generated layout.'
-sort_order: 19
+section: packages
+package: ui
+order: 190
+tags: [ui, theming]
 status: ready
 ---
 

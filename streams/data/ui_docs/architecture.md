@@ -1,7 +1,11 @@
 ---
-title: Architecture
+title: 'UI: Architecture'
+nav_title: Architecture
 description: 'Panels → pages/resources → Livewire → routes flow.'
-sort_order: 3
+section: packages
+package: ui
+order: 40
+tags: [ui, architecture]
 status: ready
 ---
 

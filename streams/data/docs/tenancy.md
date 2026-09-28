@@ -1,8 +1,12 @@
 ---
-sort_order: 18
-category: advanced
 title: Tenancy
+nav_title: Tenancy
 description: 'Three separate mechanisms: Core applications matched by URL, an API tenant resolver you scope yourself, and a UI panel tenant that does not scope routes yet.'
+section: guides
+category: advanced
+package: all
+order: 70
+tags: [tenancy]
 status: ready
 ---
 

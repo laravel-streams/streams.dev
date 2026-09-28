@@ -1,7 +1,11 @@
 ---
 title: Pages
-description: 'ListEntries, CreateEntry, EditEntry, and custom Livewire pages.'
-sort_order: 7
+nav_title: Pages
+description: ListEntries, CreateEntry, EditEntry, and custom Livewire pages.
+section: packages
+package: ui
+order: 80
+tags: [ui, pages]
 status: ready
 ---
 

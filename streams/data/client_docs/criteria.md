@@ -1,9 +1,12 @@
 ---
-sort_order: 6
 title: Criteria Query Builder
-description: 'PHP Laravel-style query building for filtering and sorting'
-category: core
-status: published
+nav_title: Criteria Query Builder
+description: PHP Laravel-style query building for filtering and sorting
+section: packages
+package: client
+order: 70
+tags: [client, criteria]
+status: ready
 ---
 
 # Criteria Query Builder

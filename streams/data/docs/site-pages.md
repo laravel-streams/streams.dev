@@ -1,8 +1,12 @@
 ---
 title: Site pages
-description: 'How pages.json and HTML entries drive site URLs without controllers.'
-sort_order: 2
+nav_title: Site pages
+description: How pages.json and HTML entries drive site URLs without controllers.
+section: contributing
 category: this-project
+package: site
+order: 30
+tags: [site, pages]
 status: ready
 ---
 

@@ -1,8 +1,12 @@
 ---
-sort_order: 8
 title: Routing
-description: 'Routing your application.'
+nav_title: Routing
+description: Routing your application.
+section: guides
 category: basics
+package: core
+order: 30
+tags: [core, routing]
 status: ready
 ---
 

@@ -1,7 +1,11 @@
 ---
-sort_order: 2
-title: Streams
-description: 'Define streams with the SDK scaffolding workflow.'
+title: 'SDK: Streams'
+nav_title: Streams
+description: Define streams with the SDK scaffolding workflow.
+section: packages
+package: sdk
+order: 30
+tags: [sdk, streams]
 status: ready
 ---
 

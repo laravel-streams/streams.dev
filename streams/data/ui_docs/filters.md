@@ -1,7 +1,11 @@
 ---
 title: Filters
-description: 'Text, Select, Search, Toggle, and Criteria table filters.'
-sort_order: 14
+nav_title: Filters
+description: Text, Select, Search, Toggle, and Criteria table filters.
+section: packages
+package: ui
+order: 150
+tags: [ui, filters]
 status: ready
 ---
 

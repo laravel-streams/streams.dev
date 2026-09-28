@@ -1,7 +1,11 @@
 ---
-sort_order: 3
-title: Fields
-description: 'Field types reference for SDK stream definitions.'
+title: 'SDK: Fields'
+nav_title: Fields
+description: Field types reference for SDK stream definitions.
+section: packages
+package: sdk
+order: 40
+tags: [sdk, fields]
 status: ready
 ---
 

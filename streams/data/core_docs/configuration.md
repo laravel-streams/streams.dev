@@ -1,7 +1,11 @@
 ---
-title: Configuration
+title: 'Core: Configuration'
+nav_title: Configuration
 description: 'config/streams/core.php — data path, sources, field types, and images.'
-sort_order: 2
+section: packages
+package: core
+order: 30
+tags: [core, configuration]
 status: ready
 ---
 

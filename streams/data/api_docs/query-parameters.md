@@ -1,7 +1,11 @@
 ---
 title: Query parameters
-description: 'where, constraint, order_by, limit, skip, and per_page on GET entries.'
-sort_order: 6
+nav_title: Query parameters
+description: where, constraint, order_by, limit, skip, and per_page on GET entries.
+section: packages
+package: api
+order: 70
+tags: [api, query, parameters]
 status: ready
 ---
 

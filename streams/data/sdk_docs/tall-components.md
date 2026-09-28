@@ -1,7 +1,11 @@
 ---
-sort_order: 4
 title: TALL Components
-description: 'Tailwind, Alpine, Laravel, and Livewire patterns in the SDK.'
+nav_title: TALL Components
+description: Tailwind, Alpine, Laravel, and Livewire patterns in the SDK.
+section: packages
+package: sdk
+order: 50
+tags: [sdk, tall, components]
 status: ready
 ---
 

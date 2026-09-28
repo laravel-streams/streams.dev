@@ -1,7 +1,11 @@
 ---
 title: Command reference
+nav_title: Command reference
 description: 'Every Artisan command in streams/sdk: what it writes, its arguments and options, and which commands are not registered yet.'
-sort_order: 1
+section: packages
+package: sdk
+order: 20
+tags: [sdk, commands]
 status: ready
 ---
 

@@ -1,7 +1,11 @@
 ---
 title: Validation
-description: 'Manual validator() usage, field rules, and StreamsPresenceVerifier.'
-sort_order: 11
+nav_title: Validation
+description: Manual validator() usage, field rules, and StreamsPresenceVerifier.
+section: packages
+package: core
+order: 120
+tags: [core, validation]
 status: ready
 ---
 

@@ -1,9 +1,12 @@
 ---
-sort_order: 8
-title: Examples
-description: 'Real-world usage patterns and complete examples'
-category: guides
-status: published
+title: 'Client: Examples'
+nav_title: Examples
+description: Real-world usage patterns and complete examples
+section: packages
+package: client
+order: 90
+tags: [client, examples]
+status: ready
 ---
 
 # Examples

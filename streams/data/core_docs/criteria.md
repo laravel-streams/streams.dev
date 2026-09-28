@@ -1,7 +1,11 @@
 ---
 title: Criteria
+nav_title: Criteria
 description: 'Query API — where, orderBy, paginate, cache, chunk, and adapter forwarding.'
-sort_order: 8
+section: packages
+package: core
+order: 90
+tags: [core, criteria]
 status: ready
 ---
 

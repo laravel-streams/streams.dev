@@ -33,7 +33,7 @@ class LlmsText
                 $lines[] = '';
 
                 foreach ($documents as $document) {
-                    $line = '- ['.$document['title'].']('.$document['markdown'].')';
+                    $line = '- ['.$document['nav_title'].']('.$document['markdown'].')';
 
                     if ($document['description'] !== '') {
                         $line .= ': '.$document['description'];
@@ -69,7 +69,7 @@ class LlmsText
                 foreach ($documents as $document) {
                     $parts[] = '---';
                     $parts[] = '';
-                    $parts[] = static::page($document, $label);
+                    $parts[] = static::page(['title' => $document['nav_title']] + $document, $label);
                 }
             }
 
@@ -106,7 +106,7 @@ class LlmsText
         $documents = DocsSearchIndex::documents();
 
         $categories = Streams::exists('docs_categories')
-            ? Streams::entries('docs_categories')->orderBy('sort_order', 'ASC')->get()->pluck('name', 'id')->all()
+            ? Streams::entries('docs_categories')->orderBy('order', 'ASC')->get()->pluck('name', 'id')->all()
             : [];
 
         $sections = [];

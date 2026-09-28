@@ -1,8 +1,12 @@
 ---
-sort_order: 103
-category: development
 title: Agents
+nav_title: Agents
 description: 'How agents should read Streams docs: llms.txt, raw markdown, OpenAPI, and what is not built yet.'
+section: guides
+category: development
+package: sdk
+order: 50
+tags: [sdk, agents]
 status: ready
 ---
 

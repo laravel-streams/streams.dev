@@ -1,7 +1,11 @@
 ---
 title: Facades and helpers
-description: 'Streams, Assets, Images, Applications facades and global helpers.'
-sort_order: 19
+nav_title: Facades and helpers
+description: Streams, Assets, Images, Applications facades and global helpers.
+section: packages
+package: core
+order: 200
+tags: [core, facades, helpers]
 status: ready
 ---
 

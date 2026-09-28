@@ -1,8 +1,12 @@
 ---
-sort_order: 104
-category: development
 title: MCP
-description: 'The Streams MCP server is not shipped. These are the tools it is planned to expose, and the Artisan commands that exist today.'
+nav_title: MCP
+description: The Streams MCP server is not shipped. These are the tools it is planned to expose, and the Artisan commands that exist today.
+section: guides
+category: development
+package: sdk
+order: 60
+tags: [sdk, mcp]
 status: ready
 ---
 

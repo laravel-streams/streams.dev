@@ -1,8 +1,12 @@
 ---
-sort_order: 5
-category: getting-started
 title: Versions and support
-description: 'Which Laravel and PHP versions each Streams package supports, and how to require them.'
+nav_title: Versions and support
+description: Which Laravel and PHP versions each Streams package supports, and how to require them.
+section: get-started
+category: getting-started
+package: all
+order: 50
+tags: [versions]
 status: ready
 ---
 

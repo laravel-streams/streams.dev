@@ -1,7 +1,11 @@
 ---
 title: Actions
-description: 'Action, modals, redirects, and table header/row action groups.'
-sort_order: 16
+nav_title: Actions
+description: Action, modals, redirects, and table header/row action groups.
+section: packages
+package: ui
+order: 170
+tags: [ui, actions]
 status: ready
 ---
 

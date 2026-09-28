@@ -1,7 +1,11 @@
 ---
 title: Sources and adapters
-description: 'filebase, file, self, database, eloquent, collection, and filesystem adapters.'
-sort_order: 9
+nav_title: Sources and adapters
+description: filebase, file, self, database, eloquent, collection, and filesystem adapters.
+section: packages
+package: core
+order: 100
+tags: [core, sources, adapters]
 status: ready
 ---
 

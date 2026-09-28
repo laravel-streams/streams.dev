@@ -1,7 +1,11 @@
 ---
-title: Examples
-description: 'curl recipes with correct paths and response shapes.'
-sort_order: 19
+title: 'API: Examples'
+nav_title: Examples
+description: curl recipes with correct paths and response shapes.
+section: packages
+package: api
+order: 200
+tags: [api, examples]
 status: ready
 ---
 

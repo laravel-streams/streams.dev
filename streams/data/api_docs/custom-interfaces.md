@@ -1,7 +1,11 @@
 ---
 title: Custom interfaces
-description: 'Register several ApiInterface instances with their own path, domain, middleware, resources, and tenant.'
-sort_order: 12
+nav_title: Custom interfaces
+description: Register several ApiInterface instances with their own path, domain, middleware, resources, and tenant.
+section: packages
+package: api
+order: 130
+tags: [api, custom, interfaces]
 status: ready
 ---
 

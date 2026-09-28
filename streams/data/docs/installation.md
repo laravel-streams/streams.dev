@@ -1,8 +1,12 @@
 ---
-sort_order: 1
-category: getting-started
 title: Installation
-description: 'Install Streams on new or existing Laravel projects.'
+nav_title: Installation
+description: Install Streams on new or existing Laravel projects.
+section: get-started
+category: getting-started
+package: all
+order: 20
+tags: [installation]
 status: ready
 ---
 

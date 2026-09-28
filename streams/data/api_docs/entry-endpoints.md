@@ -1,7 +1,11 @@
 ---
 title: Entry endpoints
+nav_title: Entry endpoints
 description: 'CRUD and upsert behavior for /api/streams/{stream}/entries.'
-sort_order: 10
+section: packages
+package: api
+order: 110
+tags: [api, entry, endpoints]
 status: ready
 ---
 

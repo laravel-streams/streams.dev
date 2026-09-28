@@ -1,7 +1,11 @@
 ---
 title: Request format
+nav_title: Request format
 description: 'Flat JSON field maps on create and update — not JSON:API.'
-sort_order: 4
+section: packages
+package: api
+order: 50
+tags: [api, requests]
 status: ready
 ---
 

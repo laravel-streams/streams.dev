@@ -1,8 +1,12 @@
 ---
-sort_order: 7
-category: getting-started
 title: Upgrade guide
-description: 'How to stay current on the development branches, and what to change for each breaking change.'
+nav_title: Upgrade guide
+description: How to stay current on the development branches, and what to change for each breaking change.
+section: get-started
+category: getting-started
+package: all
+order: 70
+tags: [upgrading]
 status: ready
 ---
 

@@ -1,7 +1,11 @@
 ---
-sort_order: 2
 title: Test Data
-description: 'Sample streams and test data included in the package.'
+nav_title: Test Data
+description: Sample streams and test data included in the package.
+section: packages
+package: testing
+order: 30
+tags: [testing, test, data]
 status: ready
 ---
 

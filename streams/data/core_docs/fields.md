@@ -1,7 +1,11 @@
 ---
-title: Fields
-description: 'Field handles, rules, shorthands, and registered types from core.php.'
-sort_order: 4
+title: 'Core: Fields'
+nav_title: Fields
+description: Field handles, rules, shorthands, and registered types from core.php.
+section: packages
+package: core
+order: 50
+tags: [core, fields]
 status: ready
 ---
 

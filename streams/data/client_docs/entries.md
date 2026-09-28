@@ -1,9 +1,12 @@
 ---
-sort_order: 5
 title: Working with Entries
-description: 'CRUD operations for stream entries'
-category: core
-status: published
+nav_title: Working with Entries
+description: CRUD operations for stream entries
+section: packages
+package: client
+order: 60
+tags: [client, entries]
+status: ready
 ---
 
 # Working with Entries

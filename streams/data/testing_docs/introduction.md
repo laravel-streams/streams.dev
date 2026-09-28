@@ -1,7 +1,11 @@
 ---
-sort_order: 0
-title: Introduction
-description: 'Testing package for Streams with pre-configured environments and sample data.'
+title: 'Testing: Introduction'
+nav_title: Introduction
+description: Testing package for Streams with pre-configured environments and sample data.
+section: packages
+package: testing
+order: 10
+tags: [testing, introduction]
 status: ready
 ---
 

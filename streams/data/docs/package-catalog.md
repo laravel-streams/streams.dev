@@ -1,8 +1,12 @@
 ---
 title: Package catalog
-description: 'How packages.json powers the add-ons page and homepage cards.'
-sort_order: 3
+nav_title: Package catalog
+description: How packages.json powers the add-ons page and homepage cards.
+section: contributing
 category: this-project
+package: site
+order: 40
+tags: [site, package, catalog]
 status: ready
 ---
 

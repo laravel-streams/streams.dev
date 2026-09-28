@@ -1,7 +1,11 @@
 ---
-title: Assets
+title: 'Core: Assets'
+nav_title: Assets
 description: 'Asset registry, path namespaces, @assets Blade, and HTML helpers.'
-sort_order: 16
+section: packages
+package: core
+order: 170
+tags: [core, assets]
 status: ready
 ---
 

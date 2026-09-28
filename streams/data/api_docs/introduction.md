@@ -1,7 +1,11 @@
 ---
-title: Introduction
-description: 'A criteria-scoped REST API for streams and entries. You opt in to routes and own authentication.'
-sort_order: 0
+title: 'API: Introduction'
+nav_title: Introduction
+description: A criteria-scoped REST API for streams and entries. You opt in to routes and own authentication.
+section: packages
+package: api
+order: 10
+tags: [api, introduction]
 status: ready
 ---
 

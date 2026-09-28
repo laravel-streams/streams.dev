@@ -1,7 +1,11 @@
 ---
-title: Images
+title: 'Core: Images'
+nav_title: Images
 description: 'Images::make, alterations, picture/srcset, versioning, and auto-alt.'
-sort_order: 17
+section: packages
+package: core
+order: 180
+tags: [core, images]
 status: ready
 ---
 

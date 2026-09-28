@@ -1,9 +1,12 @@
 ---
-sort_order: 2
 title: Quick Start
-description: 'Get started with the Streams API Client in minutes'
-category: getting-started
-status: published
+nav_title: Quick Start
+description: Get started with the Streams API Client in minutes
+section: packages
+package: client
+order: 30
+tags: [client, quickstart]
+status: ready
 ---
 
 # Quick Start

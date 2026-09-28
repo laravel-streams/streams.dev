@@ -1,8 +1,12 @@
 ---
-sort_order: 101
-category: development
 title: Streams SDK
-description: 'Scaffolding and development workflow for Streams.'
+nav_title: Streams SDK
+description: Scaffolding and development workflow for Streams.
+section: guides
+category: development
+package: sdk
+order: 30
+tags: [sdk]
 status: ready
 ---
 

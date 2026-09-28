@@ -1,7 +1,11 @@
 ---
-title: Installation
-description: 'Require streams/api, enable the gate, and register an interface from a service provider.'
-sort_order: 1
+title: 'API: Installation'
+nav_title: Installation
+description: Require streams/api, enable the gate, and register an interface from a service provider.
+section: packages
+package: api
+order: 20
+tags: [api, installation]
 status: ready
 ---
 

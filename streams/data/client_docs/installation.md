@@ -1,9 +1,12 @@
 ---
-sort_order: 1
-title: Installation
-description: 'Installing and setting up the Streams API Client'
-category: getting-started
-status: published
+title: 'Client: Installation'
+nav_title: Installation
+description: Installing and setting up the Streams API Client
+section: packages
+package: client
+order: 20
+tags: [client, installation]
+status: ready
 ---
 
 # Installation

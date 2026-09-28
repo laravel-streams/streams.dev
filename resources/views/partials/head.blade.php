@@ -19,8 +19,10 @@
         $pageTitle = $addon ? $addon->name.' · Addons' : $pageTitle;
         $pageDescription = $addon?->composer?->description ?? $pageDescription;
     }
+    // Package pages keep a unique front matter title ("Core: Introduction"); the browser
+    // title uses the short nav_title plus the package ("Introduction · Core").
     if ($pageTitle && isset($docsPackages[$pageStream])) {
-        $pageTitle .= ' · '.$docsPackages[$pageStream];
+        $pageTitle = ($yieldedTitle !== '' ? $yieldedTitle : ($pageEntry?->nav_title ?: $pageEntry?->title)).' · '.$docsPackages[$pageStream];
     }
     $pageTitle = $pageTitle && $pageTitle !== $siteName ? $pageTitle.' · '.$siteName : $siteName;
 

@@ -1,7 +1,11 @@
 ---
-title: Forms
+title: 'UI: Forms'
+nav_title: Forms
 description: 'Form::make(), Form::for($livewire), components, state, and validation.'
-sort_order: 9
+section: packages
+package: ui
+order: 100
+tags: [ui, forms]
 status: ready
 ---
 

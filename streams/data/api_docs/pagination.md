@@ -1,7 +1,11 @@
 ---
 title: Pagination
-description: 'first_page, next_page, and meta keys from addPaginationMeta().'
-sort_order: 7
+nav_title: Pagination
+description: first_page, next_page, and meta keys from addPaginationMeta().
+section: packages
+package: api
+order: 80
+tags: [api, pagination]
 status: ready
 ---
 

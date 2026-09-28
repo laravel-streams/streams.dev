@@ -1,7 +1,11 @@
 ---
 title: OpenAPI
+nav_title: OpenAPI
 description: 'The generic OpenAPI reference, plus api:schema and api:documentation for your own app.'
-sort_order: 17
+section: packages
+package: api
+order: 180
+tags: [api, openapi]
 status: ready
 ---
 

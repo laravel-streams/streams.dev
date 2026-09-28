@@ -1,8 +1,12 @@
 ---
-sort_order: 6
-category: getting-started
 title: Changelog
-description: 'Notable changes to the Streams packages, newest first, grouped by month.'
+nav_title: Changelog
+description: Notable changes to the Streams packages, newest first, grouped by month.
+section: get-started
+category: getting-started
+package: all
+order: 60
+tags: [changelog]
 status: ready
 ---
 

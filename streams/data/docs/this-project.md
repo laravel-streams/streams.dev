@@ -1,8 +1,12 @@
 ---
 title: This project
-description: 'What streams.dev is and how it uses Streams Core and UI.'
-sort_order: 0
+nav_title: This project
+description: What streams.dev is and how it uses Streams Core and UI.
+section: contributing
 category: this-project
+package: site
+order: 10
+tags: [site, project]
 status: ready
 ---
 

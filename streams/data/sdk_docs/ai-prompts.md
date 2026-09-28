@@ -1,7 +1,11 @@
 ---
-sort_order: 6
 title: AI Prompts
-description: 'Patterns and prompts for AI-assisted Streams development.'
+nav_title: AI Prompts
+description: Patterns and prompts for AI-assisted Streams development.
+section: packages
+package: sdk
+order: 70
+tags: [sdk, ai, prompts]
 status: ready
 ---
 

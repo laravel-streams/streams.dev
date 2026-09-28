@@ -1,8 +1,12 @@
 ---
-sort_order: 14
 title: Control Panel
-description: 'Building admin and product panels with Streams UI.'
+nav_title: Control Panel
+description: Building admin and product panels with Streams UI.
+section: guides
 category: advanced
+package: ui
+order: 30
+tags: [ui, control, panel]
 status: ready
 ---
 

@@ -1,8 +1,12 @@
 ---
-sort_order: 15
 title: Users
-description: 'Authentication and user streams in Streams applications.'
+nav_title: Users
+description: Authentication and user streams in Streams applications.
+section: guides
 category: advanced
+package: all
+order: 40
+tags: [users]
 status: ready
 ---
 

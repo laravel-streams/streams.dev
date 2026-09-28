@@ -1,7 +1,11 @@
 ---
 title: Query endpoint
+nav_title: Query endpoint
 description: 'POST /api/streams/{stream}/query with parameters array.'
-sort_order: 11
+section: packages
+package: api
+order: 120
+tags: [api, query, endpoint]
 status: ready
 ---
 

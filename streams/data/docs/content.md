@@ -1,8 +1,12 @@
 ---
 title: Content
-description: 'Filebase pages and content fragments in Streams.'
-sort_order: 4
+nav_title: Content
+description: Filebase pages and content fragments in Streams.
+section: guides
 category: basics
+package: core
+order: 20
+tags: [core, content]
 status: ready
 ---
 

@@ -68,7 +68,7 @@
         @foreach ($packages as $slug => $package)
         @php
             $packagePages = Streams::exists($package['stream'])
-                ? Streams::entries($package['stream'])->orderBy('sort_order', 'ASC')->get()
+                ? Streams::entries($package['stream'])->orderBy('order', 'ASC')->get()
                 : collect();
             $landing = $packagePages->firstWhere('id', 'introduction') ?? $packagePages->first();
         @endphp
@@ -84,7 +84,7 @@
                 <li>
                     <a href="/docs/{{ $slug }}/{{ $page->id }}"
                        class="docs-nav-link docs-nav-link--sub {{ $section === $slug && Request::segment(3) == $page->id ? 'is-active' : '' }}">
-                        {{ $page->title }}
+                        {{ $page->nav_title ?: $page->title }}
                     </a>
                 </li>
                 @endforeach
@@ -118,17 +118,17 @@
         </button>
         <div x-show="guidesOpen" x-cloak class="mt-1">
             <a href="/docs" class="docs-nav-link block mb-2 {{ $isHubIndex ? 'is-active' : '' }}">Overview</a>
-            @foreach (Streams::entries('docs_categories')->orderBy('sort_order', 'ASC')->get() as $category)
+            @foreach (Streams::entries('docs_categories')->orderBy('order', 'ASC')->get() as $category)
             <details class="mb-2 group" data-filter-group>
                 <summary class="docs-nav-link cursor-pointer list-none flex items-center justify-between">
                     <span data-filter-label>{{ $category->name }}</span>
                 </summary>
                 <ul class="docs-nav-nested mt-1 space-y-0.5">
-                    @foreach (Streams::docs()->where('category', $category->id)->orderBy('sort_order', 'ASC')->get() as $page)
+                    @foreach (Streams::docs()->where('category', $category->id)->orderBy('order', 'ASC')->get() as $page)
                     <li>
                         <a href="/docs/{{ $page->id }}"
                            class="docs-nav-link docs-nav-link--sub {{ ! $isPackageSection && Request::segment(2) == $page->id ? 'is-active' : '' }}">
-                            {{ $page->title }}
+                            {{ $page->nav_title ?: $page->title }}
                         </a>
                     </li>
                     @endforeach

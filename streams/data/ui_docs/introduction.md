@@ -1,7 +1,11 @@
 ---
-title: Introduction
+title: 'UI: Introduction'
+nav_title: Introduction
 description: 'Livewire admin panels on Core — panels, resources, and builders.'
-sort_order: 0
+section: packages
+package: ui
+order: 10
+tags: [ui, introduction]
 status: ready
 ---
 

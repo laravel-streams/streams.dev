@@ -1,9 +1,12 @@
 ---
-sort_order: 4
-title: Streams
-description: 'Working with stream resources and CRUD operations'
-category: core
-status: published
+title: 'Client: Streams'
+nav_title: Streams
+description: Working with stream resources and CRUD operations
+section: packages
+package: client
+order: 50
+tags: [client, streams]
+status: ready
 ---
 
 # Streams

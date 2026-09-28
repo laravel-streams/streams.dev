@@ -32,6 +32,7 @@ class DocsSearchIndex
                 'markdown' => $document['markdown'],
                 'package' => $document['package'],
                 'section' => $document['section'],
+                'tags' => $document['tags'],
                 'excerpt' => static::excerpt($document['body']),
             ], static::documents());
 
@@ -56,7 +57,7 @@ class DocsSearchIndex
 
     /**
      * Every markdown docs page, grouped by package in sidebar order and
-     * sorted by sort_order within each package. Used by the search index,
+     * sorted by the front matter "order" within each package. Used by the search index,
      * /llms.txt, /llms-full.txt, and the raw markdown routes.
      */
     public static function documents(): array
@@ -70,7 +71,7 @@ class DocsSearchIndex
 
             $entries = Streams::entries($handle)->get()
                 ->filter(fn ($entry) => filled($entry->id ?? null))
-                ->sortBy(fn ($entry) => [(int) ($entry->sort_order ?? 0), (string) $entry->id]);
+                ->sortBy(fn ($entry) => [(int) ($entry->order ?? 0), (string) $entry->id]);
 
             foreach ($entries as $entry) {
                 $path = $meta['prefix'].'/'.$entry->id;
@@ -79,8 +80,10 @@ class DocsSearchIndex
                     'stream' => $handle,
                     'id' => (string) $entry->id,
                     'title' => (string) ($entry->title ?? $entry->id),
+                    'nav_title' => (string) ($entry->nav_title ?: ($entry->title ?? $entry->id)),
                     'description' => (string) ($entry->description ?? ''),
                     'category' => (string) ($entry->category ?? ''),
+                    'tags' => array_values((array) ($entry->tags ?? [])),
                     'url' => URL::to($path),
                     'markdown' => URL::to($path.'.md'),
                     'package' => $meta['package'],

@@ -1,8 +1,12 @@
 ---
 title: Local development
-description: 'Install dependencies, run the dev server, and edit content locally.'
-sort_order: 4
+nav_title: Local development
+description: Install dependencies, run the dev server, and edit content locally.
+section: contributing
 category: this-project
+package: site
+order: 50
+tags: [site, local, development]
 status: ready
 ---
 

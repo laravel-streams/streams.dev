@@ -1,7 +1,11 @@
 ---
-sort_order: 5
 title: Admin Panels
-description: 'Scaffold admin panels with the SDK.'
+nav_title: Admin Panels
+description: Scaffold admin panels with the SDK.
+section: packages
+package: sdk
+order: 60
+tags: [sdk, admin, panels]
 status: ready
 ---
 

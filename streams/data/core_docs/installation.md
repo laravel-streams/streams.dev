@@ -1,7 +1,11 @@
 ---
-title: Installation
-description: 'Composer, publish config/streams, env vars, and first stream.'
-sort_order: 1
+title: 'Core: Installation'
+nav_title: Installation
+description: Composer, publish config/streams, env vars, and first stream.
+section: packages
+package: core
+order: 20
+tags: [core, installation]
 status: ready
 ---
 

@@ -1,7 +1,11 @@
 ---
 title: Inputs
+nav_title: Inputs
 description: 'Input classes in Streams\\Ui\\Builders\\Inputs.'
-sort_order: 11
+section: packages
+package: ui
+order: 120
+tags: [ui, inputs]
 status: ready
 ---
 

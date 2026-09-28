@@ -1,7 +1,11 @@
 ---
-sort_order: 1
-title: Installation
-description: 'Install and configure the Streams Testing package.'
+title: 'Testing: Installation'
+nav_title: Installation
+description: Install and configure the Streams Testing package.
+section: packages
+package: testing
+order: 20
+tags: [testing, installation]
 status: ready
 ---
 

@@ -1,8 +1,12 @@
 ---
-sort_order: 4
 title: Streams
-description: 'Get started with the stream modeling engine.'
+nav_title: Streams
+description: Get started with the stream modeling engine.
+section: concepts
 category: core-concepts
+package: core
+order: 20
+tags: [core, streams]
 status: ready
 ---
 

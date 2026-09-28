@@ -1,7 +1,11 @@
 ---
-sort_order: 5
 title: Troubleshooting
-description: 'Common issues when testing with Streams Testing.'
+nav_title: Troubleshooting
+description: Common issues when testing with Streams Testing.
+section: packages
+package: testing
+order: 60
+tags: [testing, troubleshooting]
 status: ready
 ---
 

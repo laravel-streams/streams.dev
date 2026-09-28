@@ -20,15 +20,19 @@ Every doc page uses YAML frontmatter:
 
 ```yaml
 ---
-sort_order: 1
-title: Page Title
-description: 'One-line summary for indexes and meta.'
-category: getting-started   # hub docs only; omit in package sections
-status: ready               # drafting | editing | ready
+title: 'Core: Installation'      # required; unique across the site (the page H1)
+nav_title: Installation          # short sidebar and browser-tab label
+description: One sentence, plain text, for indexes and meta.
+section: packages                # get-started | guides | concepts | reference | packages | contributing
+category: getting-started        # hub docs only: a key in streams/docs_categories.json
+package: core                    # core | ui | api | sdk | testing | client | site | all
+order: 20                        # sidebar order within the stream (hub docs: within the category); step by 10
+tags: [core, installation]
+status: ready                    # draft | review | ready | deprecated
 ---
 ```
 
-Entry `id` is the filename without `.md`.
+Entry `id` is the filename without `.md`. `tests/Feature/DocsContentTest.php` enforces these keys, the enums, unique titles, a language on every code fence, root-relative links, parseable `json` blocks, and no `# H1` in the body (the layout renders `title` as the H1).
 
 ## Hub vs section content
 

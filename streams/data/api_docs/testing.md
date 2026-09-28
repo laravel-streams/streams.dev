@@ -1,7 +1,11 @@
 ---
-title: Testing
-description: 'ApiTestCase, route setup, and status expectations.'
-sort_order: 18
+title: 'API: Testing'
+nav_title: Testing
+description: ApiTestCase, route setup, and status expectations.
+section: packages
+package: api
+order: 190
+tags: [api, testing]
 status: ready
 ---
 

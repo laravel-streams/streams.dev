@@ -1,7 +1,11 @@
 ---
 title: Extending Core
-description: 'Custom adapters, repositories, entries, and field types via config bindings.'
-sort_order: 22
+nav_title: Extending Core
+description: Custom adapters, repositories, entries, and field types via config bindings.
+section: packages
+package: core
+order: 230
+tags: [core, extending]
 status: ready
 ---
 

@@ -1,8 +1,12 @@
 ---
-sort_order: 5
 title: Fields
-description: 'Fields, types, and inputs are documented here.'
+nav_title: Fields
+description: Fields, types, and inputs are documented here.
+section: concepts
 category: core-concepts
+package: core
+order: 30
+tags: [core, fields]
 status: ready
 ---
 

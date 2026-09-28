@@ -1,8 +1,12 @@
 ---
-sort_order: 10
 title: Caching
-description: 'Caching options and automation.'
+nav_title: Caching
+description: Caching options and automation.
+section: guides
 category: development
+package: core
+order: 10
+tags: [core, caching]
 status: ready
 ---
 

@@ -1,8 +1,12 @@
 ---
-sort_order: 16
 title: Databases
-description: 'Storage adapters and database-backed streams.'
+nav_title: Databases
+description: Storage adapters and database-backed streams.
+section: guides
 category: advanced
+package: core
+order: 50
+tags: [core, databases]
 status: ready
 ---
 

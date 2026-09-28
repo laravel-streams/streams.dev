@@ -1,7 +1,11 @@
 ---
-title: Streams
+title: 'Core: Streams'
+nav_title: Streams
 description: 'Stream JSON schema — fields, extends, imports, routes, and config.'
-sort_order: 3
+section: packages
+package: core
+order: 40
+tags: [core, streams]
 status: ready
 ---
 

@@ -1,7 +1,11 @@
 ---
-title: Caching
+title: 'API: Caching'
+nav_title: Caching
 description: 'HTTP caching with the ApiCache middleware: ETags, Cache-Control, and per-stream opt-out.'
-sort_order: 16
+section: packages
+package: api
+order: 170
+tags: [api, caching]
 status: ready
 ---
 

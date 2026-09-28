@@ -1,7 +1,11 @@
 ---
-title: Routes
-description: 'Full route table for streams and entries endpoints.'
-sort_order: 3
+title: 'API: Routes'
+nav_title: Routes
+description: Full route table for streams and entries endpoints.
+section: packages
+package: api
+order: 40
+tags: [api, routes]
 status: ready
 ---
 

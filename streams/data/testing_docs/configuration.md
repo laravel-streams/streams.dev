@@ -1,7 +1,11 @@
 ---
-sort_order: 4
-title: Configuration
-description: 'Configure the Streams Testing environment.'
+title: 'Testing: Configuration'
+nav_title: Configuration
+description: Configure the Streams Testing environment.
+section: packages
+package: testing
+order: 50
+tags: [testing, configuration]
 status: ready
 ---
 

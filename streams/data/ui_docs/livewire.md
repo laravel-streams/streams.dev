@@ -1,7 +1,11 @@
 ---
 title: Livewire integration
-description: 'InteractsWithTable, InteractsWithForms, and panel middleware.'
-sort_order: 17
+nav_title: Livewire integration
+description: InteractsWithTable, InteractsWithForms, and panel middleware.
+section: packages
+package: ui
+order: 180
+tags: [ui, livewire]
 status: ready
 ---
 

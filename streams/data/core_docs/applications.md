@@ -1,7 +1,11 @@
 ---
 title: Applications
-description: 'Multi-app URL matching, active application, and Integrator merge keys.'
-sort_order: 13
+nav_title: Applications
+description: Multi-app URL matching, active application, and Integrator merge keys.
+section: packages
+package: core
+order: 140
+tags: [core, applications]
 status: ready
 ---
 

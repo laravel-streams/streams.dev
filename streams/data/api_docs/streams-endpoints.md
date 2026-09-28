@@ -1,7 +1,11 @@
 ---
 title: Stream endpoints
-description: 'CRUD for stream definitions on /api/streams.'
-sort_order: 9
+nav_title: Stream endpoints
+description: CRUD for stream definitions on /api/streams.
+section: packages
+package: api
+order: 100
+tags: [api, streams, endpoints]
 status: ready
 ---
 

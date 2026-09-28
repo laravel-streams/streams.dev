@@ -1,8 +1,12 @@
 ---
-sort_order: 3
-category: getting-started
 title: Configuration
-description: 'Laravel config, environment variables, and the streams directory.'
+nav_title: Configuration
+description: Laravel config, environment variables, and the streams directory.
+section: get-started
+category: getting-started
+package: core
+order: 40
+tags: [core, configuration]
 status: ready
 ---
 

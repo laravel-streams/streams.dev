@@ -1,7 +1,11 @@
 ---
 title: Columns
-description: 'Text, Link, Image, Icon, Toggle, and other table columns.'
-sort_order: 13
+nav_title: Columns
+description: Text, Link, Image, Icon, Toggle, and other table columns.
+section: packages
+package: ui
+order: 140
+tags: [ui, columns]
 status: ready
 ---
 

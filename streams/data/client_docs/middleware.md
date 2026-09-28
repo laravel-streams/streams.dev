@@ -1,9 +1,12 @@
 ---
-sort_order: 7
 title: Middleware System
-description: 'Request/response middleware and custom middleware creation'
-category: advanced
-status: published
+nav_title: Middleware System
+description: Request/response middleware and custom middleware creation
+section: packages
+package: client
+order: 80
+tags: [client, middleware]
+status: ready
 ---
 
 # Middleware System

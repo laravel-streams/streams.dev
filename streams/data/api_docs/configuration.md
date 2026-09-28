@@ -1,7 +1,11 @@
 ---
-title: Configuration
+title: 'API: Configuration'
+nav_title: Configuration
 description: 'Every key in config/streams/api.php: enabled, prefix, middleware, interface, and the gate.'
-sort_order: 2
+section: packages
+package: api
+order: 30
+tags: [api, configuration]
 status: ready
 ---
 

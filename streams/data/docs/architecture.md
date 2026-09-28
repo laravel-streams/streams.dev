@@ -1,8 +1,12 @@
 ---
 title: Architecture
-description: 'How Streams packages fit together in a Laravel application.'
-sort_order: 1
+nav_title: Architecture
+description: How Streams packages fit together in a Laravel application.
+section: concepts
 category: core-concepts
+package: all
+order: 10
+tags: [architecture]
 status: ready
 ---
 
