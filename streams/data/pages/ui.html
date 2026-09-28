@@ -1,26 +1,25 @@
 ---
-title: Documentation
+title: UI sandbox
 uri: ui
 layout: page
 sort_order: 1
 nav_disabled: true
 ---
 
-<section class="container mx-auto pt-4">
-    
-    @livewire('form', [
-        'stream' => 'pages',
-        'attributes' => [
-            'ui:submit.prevent' => 'onSubmit',
-        ],
-        'buttons' => [
-            [
-                'type' => 'submit',
-                'text' => 'Submit',
+<section class="mx-auto max-w-2xl px-6 pt-16 pb-28">
+    <p class="st-eyebrow">streams/ui</p>
+    <h1 class="docs-title mt-3">UI sandbox</h1>
+    <p class="docs-lead">A stream-driven form rendered with the Streams UI form builder, outside an admin panel. Nothing is saved.</p>
+
+    <x-glass class="mt-10 rounded-2xl p-6 sm:p-8">
+        @livewire('form', [
+            'stream' => 'pages',
+            'buttons' => [
+                [
+                    'type' => 'submit',
+                    'text' => 'Submit',
+                ],
             ],
-        ],
-    ])
-
+        ])
+    </x-glass>
 </section>
-
-{!! Assets::tag('/vendor/streams/ui/js/index.js') !!}
