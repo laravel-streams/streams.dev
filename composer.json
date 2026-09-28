@@ -74,6 +74,10 @@
         "dev": [
             "Composer\\Config::disableProcessTimeout",
             "npx concurrently -c \"#93c5fd,#fb7185,#fdba74\" --names=server,logs,vite --kill-others \"php artisan serve --host=127.0.0.1 --port=8427\" \"php artisan pail --timeout=0\" \"npm run dev\""
+        ],
+        "local": [
+            "Composer\\Config::disableProcessTimeout",
+            "@php scripts/composer-local.php --update"
         ]
     },
     "extra": {
@@ -97,5 +101,8 @@
         }
     },
     "minimum-stability": "dev",
-    "prefer-stable": true
+    "prefer-stable": true,
+    "scripts-descriptions": {
+        "local": "Symlink local Streams package checkouts (../_packages, or ../_rc with -- --rc=core,sdk) and update streams/*."
+    }
 }

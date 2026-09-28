@@ -59,11 +59,19 @@ Streams UI registers a panel at `/admin` from `AppServiceProvider`. Use it to br
 To work on a package and see the change in this site, check it out next to this repository and link it in without editing `composer.json`:
 
 ```bash
-php scripts/composer-local.php
-COMPOSER=composer.local.json composer update "streams/*"
+composer local
 ```
 
-The script finds checkouts at `../_rc/streams-<name>`, `../_packages/streams-<name>`, or `../streams-<name>` (or `STREAMS_<NAME>_PATH`), and writes a gitignored `composer.local.json` that symlinks them. Edits in the checkout then show up immediately. Run a plain `composer install` to switch back. Run package tests in the package directory; run `php artisan test` here for the site.
+`composer local` runs `scripts/composer-local.php`, which finds checkouts at `../_packages/streams-<name>` or `../streams-<name>` (or the path in `STREAMS_<NAME>_PATH`), writes a gitignored `composer.local.json` and `composer.local.lock` that symlink them, and then runs `composer update "streams/*"` against that file. `composer.json` and `composer.lock` stay as committed. Edits in the checkout then show up immediately.
+
+The script warns when a checkout does not contain the branch `composer.json` asks for (for example `_packages/streams-core` on `2.0` while the site needs `rc/prep`). To link release-candidate worktrees from `../_rc/streams-<name>` instead, ask for them by name:
+
+```bash
+composer local -- --rc=core,sdk      # or: STREAMS_LOCAL_RC=core,sdk composer local
+composer local -- --rc               # every package from ../_rc
+```
+
+To only write `composer.local.json`, run `php scripts/composer-local.php` and then `COMPOSER=composer.local.json composer update "streams/*"` yourself. Run a plain `composer install` to switch back to the GitHub packages. Run package tests in the package directory; run `php artisan test` here for the site.
 
 ## Assets
 

@@ -97,7 +97,7 @@ How a request is served: most URLs have no controller. Core reads each `streams/
 
 The `as` aliases let packages that require `streams/core ^2.0` accept the release-candidate branch. `streams/api` and `streams/testing` are documented here but not installed in this app.
 
-To hack on a package and see it in the site, check it out next to this repository and run `php scripts/composer-local.php`, then `COMPOSER=composer.local.json composer update "streams/*"`. That symlinks your checkout into `vendor/streams/` through a gitignored `composer.local.json` and `composer.local.lock`. A plain `composer install` switches back. Never commit `composer.json` changes that point at local paths.
+To hack on a package and see it in the site, check it out next to this repository (`../_packages/streams-<name>` or `../streams-<name>`) and run `composer local`. It runs `scripts/composer-local.php`, which symlinks your checkout into `vendor/streams/` through a gitignored `composer.local.json` and `composer.local.lock`, then updates `streams/*` from it. The script warns when a checkout lacks the branch `composer.json` wants (core `rc/prep`, sdk `sdk/rc`); link release-candidate worktrees from `../_rc/streams-<name>` with `composer local -- --rc=core,sdk` (or `STREAMS_LOCAL_RC=core,sdk`). A plain `composer install` switches back. Never commit `composer.json` changes that point at local paths.
 
 When your task is the site, do not edit files under `vendor/streams/*`. If a package needs a change, say so in your summary.
 
