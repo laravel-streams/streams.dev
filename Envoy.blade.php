@@ -63,9 +63,7 @@ refresh
 health_check_ping
 @endstory
 
-@story('refresh')
-refresh
-@endstory
+{{-- No 'refresh' story: a story named like its own task makes Envoy 2.12 expand it forever (memory exhausted). Run the task with: envoy run refresh --}}
 
 @task('composer')
 echo "Installing composer dependencies."
