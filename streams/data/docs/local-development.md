@@ -8,14 +8,15 @@ status: ready
 
 ## Prerequisites
 
-- PHP 8.1+ with the extensions required by [Laravel 10](https://laravel.com/docs/10.x/deployment#server-requirements) (this site runs Laravel 10.50)
-- Composer
-- Node.js and npm (for Vite and Tailwind)
+- PHP 8.2+ with the extensions required by [Laravel 10](https://laravel.com/docs/10.x/deployment#server-requirements) (this site runs Laravel 10.50)
+- Composer 2
+- Node.js 20.19+ or 22.12+ and npm (for Vite and Tailwind)
+- Git (Composer clones the Streams packages from GitHub)
 
 ## First-time setup
 
 ```bash
-git clone git@github.com:laravel-streams/streams.dev.git
+git clone https://github.com/laravel-streams/streams.dev.git --branch next
 cd streams.dev
 
 composer install
@@ -23,20 +24,12 @@ cp .env.example .env
 php artisan key:generate
 
 npm install
-npm run dev
+composer dev
 ```
 
-In a second terminal:
+`composer dev` serves the app on `http://127.0.0.1:8427` and runs the Vite dev server (with hot reload) on port 5427. Both ports are strict: if one is taken the command stops instead of picking another. No database is needed.
 
-```bash
-php artisan serve
-```
-
-Visit `http://127.0.0.1:8000`. Use another port if 8000 is in use:
-
-```bash
-php artisan serve --port=8888
-```
+Run the tests with `php artisan test` and `npm run test:js`.
 
 ## Editing content
 
@@ -57,16 +50,16 @@ Streams UI registers a panel at `/admin` from `AppServiceProvider`. Use it to br
 
 ## Local package development
 
-`composer.json` path repositories point at sibling clones:
+`composer.json` installs `streams/core` (branch `rc/prep`), `streams/ui` (`1.0`) and `streams/sdk` (`sdk/rc`) from their GitHub repositories as git clones in `vendor/streams/`.
 
-```
-../_packages/streams-core
-../_packages/streams-ui
-../_packages/streams-api
-...
+To work on a package and see the change in this site, check it out next to this repository and link it in without editing `composer.json`:
+
+```bash
+php scripts/composer-local.php
+COMPOSER=composer.local.json composer update "streams/*"
 ```
 
-After editing package source, changes are available immediately through symlinks. Run package tests in the package directory; run `php artisan test` here for the site.
+The script finds checkouts at `../_rc/streams-<name>`, `../_packages/streams-<name>`, or `../streams-<name>` (or `STREAMS_<NAME>_PATH`), and writes a gitignored `composer.local.json` that symlinks them. Edits in the checkout then show up immediately. Run a plain `composer install` to switch back. Run package tests in the package directory; run `php artisan test` here for the site.
 
 ## Assets
 
@@ -77,7 +70,7 @@ npm run dev    # watch mode
 npm run build  # production build
 ```
 
-Styles live in `resources/scss/app.scss`. Tailwind scans Blade and stream content paths configured in `tailwind.config.js`.
+Styles live in `resources/css/` (`app.css` imports the tokens and components). Tailwind v4 runs through the `@tailwindcss/vite` plugin. The built files in `public/build` are committed, so run `npm run build` after changing CSS or JavaScript.
 
 ## Related
 

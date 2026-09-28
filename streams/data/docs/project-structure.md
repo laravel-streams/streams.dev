@@ -74,19 +74,23 @@ UI::panel(
 );
 ```
 
-Most domain logic lives in packages under `vendor/streams/` (symlinked from `../_packages/` when using path repositories).
+Most domain logic lives in the packages under `vendor/streams/`, which Composer installs as git clones from GitHub.
 
-## Composer path repositories
+## Composer repositories
 
-`composer.json` defines path repos for local package development:
+`composer.json` points each Streams package at its GitHub repository and pins the branch:
 
 ```json
+"require": {
+    "streams/core": "dev-rc/prep as 2.0.x-dev",
+    "streams/ui": "1.0.x-dev"
+},
 "repositories": [
-    { "type": "path", "url": "../_packages/streams-core", "options": { "symlink": true } }
+    { "type": "vcs", "url": "https://github.com/laravel-streams/streams-core.git", "no-api": true }
 ]
 ```
 
-Run `composer update streams/core` after changing package source to refresh symlinks.
+The `as 2.0.x-dev` alias lets packages that require `streams/core ^2.0` accept the branch. For local package work, `php scripts/composer-local.php` writes a gitignored `composer.local.json` with symlinked path repositories; see [Local development](/docs/local-development).
 
 ## Related
 
