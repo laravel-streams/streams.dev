@@ -52,6 +52,7 @@ class LlmsText
             $lines[] = '- [OpenAPI reference]('.URL::to('/docs/api/openapi.yaml').'): OpenAPI 3 spec of the built-in streams/api endpoints, copied from the streams/api package';
             $lines[] = '- [Stream definition schema]('.URL::to('/schema/streams.schema.json').'): JSON Schema (draft-07) for streams/*.json definition files';
             $lines[] = '- [Search index]('.URL::to('/search/docs.json').'): JSON index of every page with title, description, URL, and excerpt';
+            $lines[] = '- [Docs MCP endpoint]('.URL::to('/mcp').'): Read-only MCP server over these docs (Streamable HTTP, JSON-RPC over POST) with search_docs, get_page, list_pages, and get_schema tools';
             $lines[] = '';
 
             return implode("\n", $lines);
@@ -104,7 +105,7 @@ class LlmsText
      * Group documents under llms.txt section headings: hub guides by
      * group, then one section per package, then Contributing.
      */
-    protected static function sections(): array
+    public static function sections(): array
     {
         $documents = DocsSearchIndex::documents();
 
