@@ -81,47 +81,47 @@
         ]
     },
     "data": {
-        "this-project": {
-            "id": "this-project",
-            "order": 0,
-            "name": "This Project",
-            "description": "How streams.dev is built and run locally."
-        },
         "getting-started": {
             "id": "getting-started",
             "order": 1,
-            "name": "Getting Started",
+            "name": "Get started",
             "description": "Download, install, and start working with Streams."
         },
         "core-concepts": {
             "id": "core-concepts",
-            "order": 1,
+            "order": 2,
             "name": "Core Concepts",
             "description": "Explore the architecture concepts of Streams."
         },
         "basics": {
             "id": "basics",
-            "order": 2,
+            "order": 3,
             "name": "The Basics",
             "description": "Common usage, use cases, and services explored."
         },
         "frontend": {
             "id": "frontend",
-            "order": 3,
+            "order": 4,
             "name": "Frontend",
             "description": "UI development with Streams."
         },
         "advanced": {
             "id": "advanced",
-            "order": 4,
+            "order": 5,
             "name": "Advanced",
             "description": "Take Streams further with advanced features."
         },
         "development": {
-            "order": 5,
             "id": "development",
+            "order": 6,
             "name": "Developers",
             "description": "Advanced topics for Streams developers."
+        },
+        "this-project": {
+            "id": "this-project",
+            "order": 99,
+            "name": "Contributing",
+            "description": "How streams.dev is built and run locally, and how to contribute to the docs."
         }
     }
 }

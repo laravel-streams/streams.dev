@@ -99,7 +99,7 @@ class LlmsText
 
     /**
      * Group documents under llms.txt section headings: hub guides by
-     * category, then one section per package.
+     * group, then one section per package, then Contributing.
      */
     protected static function sections(): array
     {
@@ -114,7 +114,7 @@ class LlmsText
         foreach ($categories as $id => $name) {
             foreach ($documents as $document) {
                 if ($document['package'] === 'guides' && $document['category'] === $id) {
-                    $sections['Guides: '.$name][] = $document;
+                    $sections[static::groupLabel($id, $name)][] = $document;
                 }
             }
         }
@@ -133,13 +133,26 @@ class LlmsText
 
         // Pages about the streams.dev repo itself matter least to agents
         // building Streams apps, so they go last.
-        $site = 'Guides: '.($categories['this-project'] ?? '');
+        $site = static::groupLabel('this-project', $categories['this-project'] ?? '');
 
         if (isset($sections[$site])) {
             $sections += [$site => Arr::pull($sections, $site)];
         }
 
         return $sections;
+    }
+
+    /**
+     * Get started and Contributing are top-level sidebar sections; the other
+     * hub groups sit under Guides.
+     */
+    protected static function groupLabel(string $id, string $name): string
+    {
+        return match ($id) {
+            'getting-started' => 'Get started',
+            'this-project' => 'Contributing',
+            default => 'Guides: '.$name,
+        };
     }
 
     /**
