@@ -1,8 +1,12 @@
 ---
-sort_order: 5
 title: Fields
-description: 'Fields, types, and inputs are documented here.'
+nav_title: Fields
+description: Fields, types, and inputs are documented here.
+section: concepts
 category: core-concepts
+package: core
+order: 30
+tags: [core, fields]
 status: ready
 ---
 
@@ -14,12 +18,13 @@ Fields are strictly concerned with data. Please see the [UI package](/docs/ui/in
 
 ## Defining Fields
 
-Fields can be defined within the JSON [configuration for your streams](streams#defining-streams). You can get started by simply defining fields by `handle` and their `type` respectively.
+Fields can be defined within the JSON [configuration for your streams](/docs/streams#defining-streams). You can get started by simply defining fields by `handle` and their `type` respectively.
 
 #### Basic Example
 
+In `streams/contacts.json`:
+
 ```json
-// streams/contacts.json
 {
     "fields": [
         {
@@ -34,8 +39,9 @@ Fields can be defined within the JSON [configuration for your streams](streams#d
 
 To define more information about the field use an array:
 
+In `streams/contacts.json`:
+
 ```json
-// streams/contacts.json
 {
     "fields": [
         {
@@ -56,10 +62,11 @@ To define more information about the field use an array:
 
 ### Field Validation
 
-Define [Laravel validation rules](https://laravel.com/docs/validation#available-validation-rules) for fields and they will be merged the [stream validation rules](streams#stream-validation).
+Define [Laravel validation rules](https://laravel.com/docs/validation#available-validation-rules) for fields and they will be merged the [stream validation rules](/docs/streams#stream-validation).
+
+In `streams/contacts.json`:
 
 ```json
-// streams/contacts.json
 {
     "fields": [
         {
@@ -84,7 +91,7 @@ Define [Laravel validation rules](https://laravel.com/docs/validation#available-
 
 ## Basic Usage
 
-Values are stored as an [image source](images#image-sources)
+Values are stored as an [image source](/docs/images#image-sources)
 
 ```php
 Image::make($entry->profile_image)->url();
@@ -110,12 +117,13 @@ $entry->profileImage()->url();
 
 ## Field Types
 
-The field type is responsible for validating, casting, and more for its specific data type.
+The field type is responsible for validating, casting, and more for its specific data type. These are the 24 types registered by Core (`streams.core.field_types`); apps and addons can register more. Each example is a complete field in list form, so it validates against the [stream definition schema](/docs/sdk/stream-schema).
 
 ### String
 
 ```json
 {
+    "handle": "title",
     "type": "string"
 }
 ```
@@ -124,14 +132,18 @@ The field type is responsible for validating, casting, and more for its specific
 
 ```json
 {
+    "handle": "website",
     "type": "url"
 }
 ```
 
 ### UUID
 
+`"default": true` in `config` generates a UUID when the attribute is missing.
+
 ```json
 {
+    "handle": "id",
     "type": "uuid",
     "config": {
         "default": true
@@ -143,17 +155,21 @@ The field type is responsible for validating, casting, and more for its specific
 
 ```json
 {
+    "handle": "password",
     "type": "hash"
 }
 ```
 
 ### Slug
 
+`config.separator` sets the word separator (default `-`).
+
 ```json
 {
+    "handle": "slug",
     "type": "slug",
     "config": {
-        "seperator": "-"
+        "separator": "-"
     }
 }
 ```
@@ -162,6 +178,7 @@ The field type is responsible for validating, casting, and more for its specific
 
 ```json
 {
+    "handle": "email",
     "type": "email"
 }
 ```
@@ -170,31 +187,27 @@ The field type is responsible for validating, casting, and more for its specific
 
 ```json
 {
+    "handle": "api_token",
     "type": "encrypted"
 }
 ```
 
 ### Color
 
-```json
-{
-    "type": "Color"
-}
-```
-
-### Markdown
+Values are stored lowercase and must parse as a color. The decorator adds `hex()`, `rgb()`, `rgba()`, and the individual channels; `config.format` picks the default output (`hex`).
 
 ```json
 {
-    "type": "markdown"
+    "handle": "brand_color",
+    "type": "color"
 }
 ```
-
 
 ### Number
 
 ```json
 {
+    "handle": "rating",
     "type": "number"
 }
 ```
@@ -203,15 +216,22 @@ The field type is responsible for validating, casting, and more for its specific
 
 ```json
 {
+    "handle": "age",
     "type": "integer"
 }
 ```
 
 ### Decimal
 
+`config.precision` rounds to that many decimal places.
+
 ```json
 {
-    "type": "decimal"
+    "handle": "price",
+    "type": "decimal",
+    "config": {
+        "precision": 2
+    }
 }
 ```
 
@@ -219,43 +239,59 @@ The field type is responsible for validating, casting, and more for its specific
 
 ```json
 {
+    "handle": "published",
     "type": "boolean"
 }
 ```
 
 ### Date
 
+`config.format` is the storage format (default `Y-m-d`).
+
 ```json
 {
+    "handle": "birthday",
     "type": "date"
 }
 ```
 
 ### Time
 
+`config.format` defaults to `H:i:s`; `config.timezone` defaults to `app.timezone`.
+
 ```json
 {
+    "handle": "opens_at",
     "type": "time"
 }
 ```
 
 ### Datetime
 
+`config.format` defaults to `Y-m-d H:i:s`; `config.timezone` defaults to `app.timezone`.
+
 ```json
 {
-    "type": "datetime"
+    "handle": "published_at",
+    "type": "datetime",
+    "config": {
+        "timezone": "UTC"
+    }
 }
 ```
 
 ### Enum
 
+`enum` is an alias of `select`. Both need `config.options`.
+
 ```json
 {
+    "handle": "size",
     "type": "enum",
     "config": {
         "options": {
-            "foo": "Foo",
-            "bar": "Bar",
+            "sm": "Small",
+            "lg": "Large"
         }
     }
 }
@@ -265,11 +301,12 @@ The field type is responsible for validating, casting, and more for its specific
 
 ```json
 {
+    "handle": "status",
     "type": "select",
     "config": {
         "options": {
-            "foo": "Foo",
-            "bar": "Bar",
+            "draft": "Draft",
+            "live": "Live"
         }
     }
 }
@@ -279,11 +316,12 @@ The field type is responsible for validating, casting, and more for its specific
 
 ```json
 {
+    "handle": "tags",
     "type": "multiselect",
     "config": {
         "options": {
-            "foo": "Foo",
-            "bar": "Bar",
+            "news": "News",
+            "guides": "Guides"
         }
     }
 }
@@ -291,11 +329,14 @@ The field type is responsible for validating, casting, and more for its specific
 
 ### Array
 
+`config.items` lists the allowed item types. Each item must pass at least one of them. Set `config.enforce_items` to `false` to skip the check, or use `config.related` (or `config.stream`) to cast items to entries of a stream.
+
 ```json
 {
+    "handle": "scores",
     "type": "array",
     "config": {
-        "allowed": [
+        "items": [
             {"type": "string"},
             {"type": "number"}
         ]
@@ -305,15 +346,16 @@ The field type is responsible for validating, casting, and more for its specific
 
 ### Object
 
+`config.allowed` lists the value types an object may be. Each item names a `stream` (an entry of that stream), a `generic` class, or a `prototype` class. Without `allowed`, any object is accepted.
+
 ```json
 {
+    "handle": "address",
     "type": "object",
     "config": {
         "allowed": [
-            {
-                "stream": "example"
-            },
-            {"type": "number"}
+            {"stream": "addresses"},
+            {"generic": "Illuminate\\Support\\Collection"}
         ]
     }
 }
@@ -321,52 +363,50 @@ The field type is responsible for validating, casting, and more for its specific
 
 ### File
 
+The value is a path string. The decorator adds file helpers. Core does not restrict file types; add Laravel `rules` for that.
+
 ```json
 {
-    "type": "file",
-    "config": {
-        "allowed": [
-            "application/*",
-            "text/*"
-        ]
-    }
+    "handle": "attachment",
+    "type": "file"
 }
 ```
 
 ### Image
 
+A `file` whose decorator works with the [image manager](/docs/images).
+
 ```json
 {
-    "type": "image",
-    "config": {
-        "allowed": [
-            "image/*"
-        ]
-    }
+    "handle": "profile_image",
+    "type": "image"
 }
 ```
 
 ### Relationship
 
+`config.related` names the related stream. `related` next to `type` is ignored. Add `"multiple": true` to store a list of keys, and `key_name` if the related stream is not keyed by `id`.
+
 ```json
 {
+    "handle": "author_id",
     "type": "relationship",
     "config": {
-        "related": "stream"
+        "related": "authors"
     }
 }
 ```
 
 ### Polymorphic
 
+Stores a reference to an entry of any stream as `{"@stream": "posts", "id": "..."}` and restores the entry when read. `config.related` optionally documents the streams you expect; Core does not enforce it.
+
 ```json
 {
+    "handle": "commentable",
     "type": "polymorphic",
     "config": {
-        "allowed": [
-            "stream1",
-            "stream2"
-        ]
+        "related": ["posts", "pages"]
     }
 }
 ```

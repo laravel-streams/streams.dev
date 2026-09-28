@@ -1,8 +1,12 @@
 ---
-sort_order: 5
 title: Images
-description: 'Image manager.'
+nav_title: Images
+description: Read, resize, and render images with the Images facade, built on Intervention Image.
+section: guides
 category: frontend
+package: core
+order: 10
+tags: [core, images]
 status: ready
 ---
 

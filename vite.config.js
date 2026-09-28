@@ -21,7 +21,7 @@ export default defineConfig({
         },
     },
     build: {
-        // Laravel 10's @vite directive reads public/build/manifest.json (not .vite/manifest.json).
+        // Laravel's @vite directive (10 through 12) reads public/build/manifest.json, not .vite/manifest.json.
         manifest: 'manifest.json',
     },
 });

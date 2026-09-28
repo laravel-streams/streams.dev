@@ -1,11 +1,13 @@
 ---
-sort_order: 1
-title: Installation
-description: 'Install and configure the Streams Testing package.'
+title: 'Testing: Installation'
+nav_title: Installation
+description: Install and configure the Streams Testing package.
+section: packages
+package: testing
+order: 20
+tags: [testing, installation]
 status: ready
 ---
-
-# Installation
 
 This guide will walk you through installing and configuring the Streams Testing package for your project.
 
@@ -13,8 +15,8 @@ This guide will walk you through installing and configuring the Streams Testing 
 
 Before installing, ensure your environment meets these requirements:
 
-- **PHP**: 8.1 or higher
-- **Laravel**: 10.x only. The package requires `orchestra/testbench ^8.36`, which targets Laravel 10.
+- **PHP**: 8.2 or higher (required by Streams Core)
+- **Laravel**: 10.x only for now. The package requires `orchestra/testbench ^8.36`, which targets Laravel 10. Support is being widened to `^8.36|^9.15|^10.8` (Laravel 10, 11, and 12). Until then you can't install it in a Laravel 11 or 12 app; streams.dev, which runs Laravel 12, doesn't use it for that reason. See the [version matrix](/docs/installation#version-matrix).
 - **Streams Core**: ^2.0
 - **Composer**: Latest version recommended
 
@@ -117,7 +119,7 @@ vendor/bin/phpunit
 
 You should see output indicating your tests passed:
 
-```
+```text
 PHPUnit 10.5.58 by Sebastian Bergmann and contributors.
 
 ..                                                                  2 / 2 (100%)

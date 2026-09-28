@@ -1,7 +1,11 @@
 ---
-title: Installation
+title: 'UI: Installation'
+nav_title: Installation
 description: 'Composer, UI::panel(Panel::make()), publish tags, and middleware.'
-sort_order: 1
+section: packages
+package: ui
+order: 20
+tags: [ui, installation]
 status: ready
 ---
 

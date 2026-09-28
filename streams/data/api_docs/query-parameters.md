@@ -1,11 +1,15 @@
 ---
 title: Query parameters
-description: 'where, constraint, order_by, limit, skip, and per_page on GET entries.'
-sort_order: 6
+nav_title: Query parameters
+description: where, constraint, order_by, limit, skip, and per_page on GET entries.
+section: packages
+package: api
+order: 70
+tags: [api, query, parameters]
 status: ready
 ---
 
-`GET /api/streams/{stream}/entries` accepts query parameters implemented in `GetEntries::applyFilters()`.
+`GET /api/streams/{stream}/entries` accepts query parameters implemented in `Streams\Api\Endpoints\Entries\ListEntries::applyFilters()` (the pre-1.0 `GetEntries` controller was replaced by this endpoint class).
 
 ## Parameters
 

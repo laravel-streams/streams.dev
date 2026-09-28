@@ -1,8 +1,12 @@
 ---
-sort_order: 11
 title: API
-description: 'When and how to add a REST API to your Streams application.'
+nav_title: API
+description: When and how to add a REST API to your Streams application.
+section: guides
 category: advanced
+package: api
+order: 10
+tags: [api]
 status: ready
 ---
 

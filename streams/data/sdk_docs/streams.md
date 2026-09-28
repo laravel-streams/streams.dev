@@ -1,11 +1,13 @@
 ---
-sort_order: 2
-title: Streams
-description: 'Define streams with the SDK scaffolding workflow.'
+title: 'SDK: Streams'
+nav_title: Streams
+description: Define streams with the SDK scaffolding workflow.
+section: packages
+package: sdk
+order: 40
+tags: [sdk, streams]
 status: ready
 ---
-
-# Stream Definition Guide
 
 Streams are the foundation of Laravel Streams - they define the structure and behavior of your data entities. Think of them as dynamic Eloquent models that can be configured through JSON.
 
@@ -99,21 +101,6 @@ Streams are the foundation of Laravel Streams - they define the structure and be
         "source": {
             "type": "database",
             "table": "products"
-        }
-    }
-}
-```
-
-### API Sources
-```json
-{
-    "config": {
-        "source": {
-            "type": "api",
-            "endpoint": "https://api.example.com/products",
-            "headers": {
-                "Authorization": "Bearer {token}"
-            }
         }
     }
 }

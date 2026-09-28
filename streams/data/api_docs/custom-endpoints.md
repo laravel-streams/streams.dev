@@ -1,7 +1,11 @@
 ---
 title: Custom endpoints
-description: 'Add endpoints to an interface, write ApiEndpoint classes, and group them in resources.'
-sort_order: 13
+nav_title: Custom endpoints
+description: Add endpoints to an interface, write ApiEndpoint classes, and group them in resources.
+section: packages
+package: api
+order: 140
+tags: [api, custom, endpoints]
 status: ready
 ---
 

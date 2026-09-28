@@ -1,7 +1,11 @@
 ---
 title: Quick start
-description: 'Register a panel, one Resource class, and visit /admin.'
-sort_order: 2
+nav_title: Quick start
+description: Register a panel, one Resource class, and visit /admin.
+section: packages
+package: ui
+order: 30
+tags: [ui, quick, start]
 status: ready
 ---
 

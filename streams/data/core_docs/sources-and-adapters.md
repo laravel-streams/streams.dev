@@ -1,7 +1,11 @@
 ---
 title: Sources and adapters
-description: 'filebase, file, self, database, eloquent, collection, and filesystem adapters.'
-sort_order: 9
+nav_title: Sources and adapters
+description: filebase, file, self, database, eloquent, collection, and filesystem adapters.
+section: packages
+package: core
+order: 100
+tags: [core, sources, adapters]
 status: ready
 ---
 
@@ -18,6 +22,8 @@ Each stream's `config.source.type` selects a **repository adapter** that reads a
 | `eloquent` | `EloquentAdapter` | `model` (Eloquent class) |
 | `collection` | `CollectionAdapter` | `data` (inline array) |
 | `filesystem` | `FilesystemAdapter` | `disk` (Laravel Storage disk) |
+| `elasticsearch` | `ElasticsearchAdapter` | `index` (default: stream ID), `search_fields`, `scout_prefix`. Requires `elasticsearch/elasticsearch`. |
+| `opensearch` | `OpenSearchAdapter` | `index`, `search_fields`, `scout_prefix`; connections in `streams.core.opensearch`. Requires `opensearch-project/opensearch-php`. |
 
 Default type comes from `config('streams.core.default_source')` (`filebase`).
 

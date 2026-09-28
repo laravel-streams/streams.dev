@@ -1,8 +1,12 @@
 ---
-sort_order: 100
-category: development
 title: Addons
-description: 'Composing packages and local development with Streams.'
+nav_title: Addons
+description: Composing packages and local development with Streams.
+section: guides
+category: development
+package: core
+order: 20
+tags: [core, addons]
 status: ready
 ---
 

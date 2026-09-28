@@ -1,8 +1,12 @@
 ---
-sort_order: 105
-category: development
 title: Workflows
+nav_title: Workflows
 description: 'Streams\Core\Support\Workflow runs named steps in order and fires before and after callbacks.'
+section: guides
+category: development
+package: all
+order: 70
+tags: [workflows]
 status: ready
 ---
 

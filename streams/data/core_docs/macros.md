@@ -1,7 +1,11 @@
 ---
 title: Macros
+nav_title: Macros
 description: 'Route::streams, Str::parse, Arr::make, Factory includes, and more.'
-sort_order: 20
+section: packages
+package: core
+order: 210
+tags: [core, macros]
 status: ready
 ---
 

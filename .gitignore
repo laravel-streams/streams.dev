@@ -7,6 +7,7 @@
 .env
 .env.backup
 .phpunit.result.cache
+/.phpunit.cache
 Homestead.json
 Homestead.yaml
 auth.json
@@ -15,3 +16,5 @@ yarn-error.log
 /.idea
 /.vscode
 /__pycache__
+/composer.local.json
+/composer.local.lock

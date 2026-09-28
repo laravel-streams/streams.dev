@@ -1,7 +1,11 @@
 ---
 title: Form layouts
-description: 'Field, Fieldset, Container, Section, and Grid layout components.'
-sort_order: 10
+nav_title: Form layouts
+description: Field, Fieldset, Container, Section, and Grid layout components.
+section: packages
+package: ui
+order: 110
+tags: [ui, form, layouts]
 status: ready
 ---
 

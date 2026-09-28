@@ -10,26 +10,31 @@
     ];
     $isPackageSection = array_key_exists($section, $packages);
     $isHubIndex = Request::is('docs') && ! Request::segment(2);
+    $hubPage = ! $isPackageSection ? Request::segment(2) : null;
 
-    $newHereLinks = [
-        ['title' => 'Installation', 'url' => '/docs/installation'],
-        ['title' => 'Use cases', 'url' => '/docs/use-cases'],
-        ['title' => 'Architecture', 'url' => '/docs/architecture'],
-        ['title' => 'This project', 'url' => '/docs/this-project'],
-        ['title' => 'UI quick start', 'url' => '/docs/ui/quick-start'],
-    ];
+    // Hub groups (streams/docs_categories.json) with their own sidebar section.
+    $getStartedPages = Streams::docs()->where('category', 'getting-started')->orderBy('order', 'ASC')->get();
+    $contributingPages = Streams::docs()->where('category', 'this-project')->orderBy('order', 'ASC')->get();
+    $guideCategories = Streams::entries('docs_categories')->orderBy('order', 'ASC')->get()
+        ->reject(fn ($category) => in_array($category->id, ['getting-started', 'this-project']));
+    $inContributing = $hubPage && $contributingPages->contains('id', $hubPage);
 @endphp
 
 <nav class="docs-sidebar" x-data="{
     guidesOpen: localStorage.getItem('docs-nav-guides-open') === '1',
-    newHereOpen: localStorage.getItem('docs-nav-newhere-open') === '1',
+    getStartedOpen: localStorage.getItem('docs-nav-getstarted-open') !== '0',
+    contributingOpen: {{ $inContributing ? 'true' : 'false' }} || localStorage.getItem('docs-nav-contributing-open') === '1',
     toggleGuides() {
         this.guidesOpen = !this.guidesOpen;
         localStorage.setItem('docs-nav-guides-open', this.guidesOpen ? '1' : '0');
     },
-    toggleNewHere() {
-        this.newHereOpen = !this.newHereOpen;
-        localStorage.setItem('docs-nav-newhere-open', this.newHereOpen ? '1' : '0');
+    toggleGetStarted() {
+        this.getStartedOpen = !this.getStartedOpen;
+        localStorage.setItem('docs-nav-getstarted-open', this.getStartedOpen ? '1' : '0');
+    },
+    toggleContributing() {
+        this.contributingOpen = !this.contributingOpen;
+        localStorage.setItem('docs-nav-contributing-open', this.contributingOpen ? '1' : '0');
     }
 }" x-init="if (localStorage.getItem('docs-nav-guides-open') === null) { guidesOpen = false; }">
 
@@ -62,13 +67,31 @@
     </div>
 
     <div id="docs-nav-tree" data-docs-nav>
+    {{-- Get started is open by default; the choice is remembered once toggled. --}}
+    <div class="mb-5" data-filter-section>
+        <button type="button" class="docs-nav-label w-full text-left flex items-center justify-between cursor-pointer" @click="toggleGetStarted()">
+            <span>Get started</span>
+            <span x-text="getStartedOpen ? '−' : '+'" class="font-normal text-[var(--color-text-muted)]"></span>
+        </button>
+        <ul class="mt-1 space-y-0.5" x-show="getStartedOpen">
+            @foreach ($getStartedPages as $page)
+            <li>
+                <a href="/docs/{{ $page->id }}"
+                   class="docs-nav-link docs-nav-link--sub {{ $hubPage == $page->id ? 'is-active' : '' }}">
+                    {{ $page->nav_title ?: $page->title }}
+                </a>
+            </li>
+            @endforeach
+        </ul>
+    </div>
+
     <div data-filter-section>
-    <p class="docs-nav-label">Reference</p>
+    <p class="docs-nav-label">Packages</p>
     <ul class="mb-5 space-y-1">
         @foreach ($packages as $slug => $package)
         @php
             $packagePages = Streams::exists($package['stream'])
-                ? Streams::entries($package['stream'])->orderBy('sort_order', 'ASC')->get()
+                ? Streams::entries($package['stream'])->orderBy('order', 'ASC')->get()
                 : collect();
             $landing = $packagePages->firstWhere('id', 'introduction') ?? $packagePages->first();
         @endphp
@@ -84,7 +107,7 @@
                 <li>
                     <a href="/docs/{{ $slug }}/{{ $page->id }}"
                        class="docs-nav-link docs-nav-link--sub {{ $section === $slug && Request::segment(3) == $page->id ? 'is-active' : '' }}">
-                        {{ $page->title }}
+                        {{ $page->nav_title ?: $page->title }}
                     </a>
                 </li>
                 @endforeach
@@ -95,40 +118,23 @@
     </div>
 
     <div class="mb-5" data-filter-section>
-        <button type="button" class="docs-nav-label w-full text-left flex items-center justify-between cursor-pointer" @click="toggleNewHere()">
-            <span>New here?</span>
-            <span x-text="newHereOpen ? '−' : '+'" class="font-normal text-[var(--color-text-muted)]"></span>
-        </button>
-        <ul class="mt-1 space-y-0.5" x-show="newHereOpen" x-cloak>
-            @foreach ($newHereLinks as $link)
-            <li>
-                <a href="{{ $link['url'] }}"
-                   class="docs-nav-link {{ Request::is(trim($link['url'], '/')) || Request::segment(2) === basename($link['url']) ? 'is-active' : '' }}">
-                    {{ $link['title'] }}
-                </a>
-            </li>
-            @endforeach
-        </ul>
-    </div>
-
-    <div data-filter-section>
         <button type="button" class="docs-nav-label w-full text-left flex items-center justify-between cursor-pointer" @click="toggleGuides()">
             <span>Guides</span>
             <span x-text="guidesOpen ? '−' : '+'" class="font-normal text-[var(--color-text-muted)]"></span>
         </button>
         <div x-show="guidesOpen" x-cloak class="mt-1">
             <a href="/docs" class="docs-nav-link block mb-2 {{ $isHubIndex ? 'is-active' : '' }}">Overview</a>
-            @foreach (Streams::entries('docs_categories')->orderBy('sort_order', 'ASC')->get() as $category)
+            @foreach ($guideCategories as $category)
             <details class="mb-2 group" data-filter-group>
                 <summary class="docs-nav-link cursor-pointer list-none flex items-center justify-between">
                     <span data-filter-label>{{ $category->name }}</span>
                 </summary>
                 <ul class="docs-nav-nested mt-1 space-y-0.5">
-                    @foreach (Streams::docs()->where('category', $category->id)->orderBy('sort_order', 'ASC')->get() as $page)
+                    @foreach (Streams::docs()->where('category', $category->id)->orderBy('order', 'ASC')->get() as $page)
                     <li>
                         <a href="/docs/{{ $page->id }}"
-                           class="docs-nav-link docs-nav-link--sub {{ ! $isPackageSection && Request::segment(2) == $page->id ? 'is-active' : '' }}">
-                            {{ $page->title }}
+                           class="docs-nav-link docs-nav-link--sub {{ $hubPage == $page->id ? 'is-active' : '' }}">
+                            {{ $page->nav_title ?: $page->title }}
                         </a>
                     </li>
                     @endforeach
@@ -136,6 +142,24 @@
             </details>
             @endforeach
         </div>
+    </div>
+
+    {{-- How streams.dev itself is built and run: last, because it matters least to people building Streams apps. --}}
+    <div data-filter-section>
+        <button type="button" class="docs-nav-label w-full text-left flex items-center justify-between cursor-pointer" @click="toggleContributing()">
+            <span>Contributing</span>
+            <span x-text="contributingOpen ? '−' : '+'" class="font-normal text-[var(--color-text-muted)]"></span>
+        </button>
+        <ul class="mt-1 space-y-0.5" x-show="contributingOpen" x-cloak>
+            @foreach ($contributingPages as $page)
+            <li>
+                <a href="/docs/{{ $page->id }}"
+                   class="docs-nav-link docs-nav-link--sub {{ $hubPage == $page->id ? 'is-active' : '' }}">
+                    {{ $page->nav_title ?: $page->title }}
+                </a>
+            </li>
+            @endforeach
+        </ul>
     </div>
     </div>
 

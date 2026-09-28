@@ -1,7 +1,11 @@
 ---
 title: Resources
+nav_title: Resources
 description: 'PHP Resource subclasses — getPages(), table(), and form().'
-sort_order: 6
+section: packages
+package: ui
+order: 70
+tags: [ui, resources]
 status: ready
 ---
 

@@ -1,8 +1,12 @@
 ---
 title: Contributing documentation
-description: 'How to add or edit documentation on streams.dev.'
-sort_order: 5
+nav_title: Contributing documentation
+description: How to add or edit documentation on streams.dev.
+section: contributing
 category: this-project
+package: site
+order: 60
+tags: [site, contributing, docs]
 status: ready
 ---
 
@@ -25,15 +29,21 @@ Every page requires YAML frontmatter:
 
 ```yaml
 ---
-sort_order: 10
-title: Page Title
-description: 'One-line summary for indexes and meta.'
-status: ready
-category: getting-started   # hub docs only
+title: 'Core: Installation'      # required; unique across the site (the page H1)
+nav_title: Installation          # short sidebar and browser-tab label
+description: One sentence, plain text, for indexes and meta.
+section: packages                # get-started | guides | concepts | reference | packages | contributing
+category: getting-started        # hub docs only: a key in streams/docs_categories.json
+package: core                    # core | ui | api | sdk | testing | client | site | all
+order: 20                        # sidebar order within the stream (hub docs: within the category); step by 10
+tags: [core, installation]
+status: ready                    # draft | review | ready | deprecated
 ---
 ```
 
-**Status workflow:** `drafting` → `editing` → `ready`. Mark pages `ready` only after verifying claims against package source code.
+The layout renders `title` as the page H1, so don't start the body with a `#` heading. Give every code fence a language, link to other pages with root-relative URLs (`/docs/core/fields`), and keep `json` blocks valid JSON. `tests/Feature/DocsContentTest.php` checks all of this.
+
+**Status workflow:** `draft` → `review` → `ready` (and `deprecated` for pages kept only for old versions). Mark pages `ready` only after verifying claims against package source code.
 
 ## Hub vs section rules
 
@@ -44,14 +54,14 @@ category: getting-started   # hub docs only
 ## Adding a hub page
 
 1. Create `streams/data/docs/{slug}.md` with frontmatter including `category`.
-2. Assign `sort_order` within the category.
-3. Add the page to a category in `streams/docs_categories.json` if introducing a new group.
+2. Assign `order` within the category.
+3. Add the page to a category in `streams/docs_categories.json` if introducing a new category.
 4. Preview at `/docs/{slug}`.
 
 ## Adding a package reference page
 
 1. Create `streams/data/{package}_docs/{slug}.md`.
-2. Set `sort_order` for sidebar ordering (no `category` field needed).
+2. Set `order` for sidebar ordering (no `category` field needed).
 3. Sidebar picks up the page automatically from the doc stream entries.
 
 ## Accuracy standard

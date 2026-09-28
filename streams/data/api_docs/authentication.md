@@ -1,7 +1,11 @@
 ---
 title: Authentication
-description: 'The API ships no auth. Your app owns access through the gate middleware and interface middleware.'
-sort_order: 14
+nav_title: Authentication
+description: The API ships no auth. Your app owns access through the gate middleware and interface middleware.
+section: packages
+package: api
+order: 150
+tags: [api, authentication]
 status: ready
 ---
 

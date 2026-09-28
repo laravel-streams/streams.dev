@@ -1,7 +1,11 @@
 ---
 title: Integrator
-description: 'Wire application entries into config, streams, routes, and providers at boot.'
-sort_order: 14
+nav_title: Integrator
+description: Wire application entries into config, streams, routes, and providers at boot.
+section: packages
+package: core
+order: 150
+tags: [core, integrator]
 status: ready
 ---
 

@@ -1,7 +1,11 @@
 ---
 title: Views and includes
-description: 'View namespaces, Includes slots, ViewTemplate, and Factory includes.'
-sort_order: 18
+nav_title: Views and includes
+description: View namespaces, Includes slots, ViewTemplate, and Factory includes.
+section: packages
+package: core
+order: 190
+tags: [core, views, includes]
 status: ready
 ---
 

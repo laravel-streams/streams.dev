@@ -1,7 +1,11 @@
 ---
-title: Introduction
+title: 'UI: Introduction'
+nav_title: Introduction
 description: 'Livewire admin panels on Core — panels, resources, and builders.'
-sort_order: 0
+section: packages
+package: ui
+order: 10
+tags: [ui, introduction]
 status: ready
 ---
 
@@ -9,7 +13,7 @@ Streams UI (`streams/ui`) builds Livewire admin panels on top of Streams Core. Y
 
 ## Architecture
 
-```
+```text
 Panel (UI::panel)
   └── Resources (PHP classes)
         ├── ListEntries  → Table builder

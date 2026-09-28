@@ -15,7 +15,7 @@
             "unique": true
         },
         {
-            "handle": "sort_order",
+            "handle": "order",
             "type": "integer",
             "required": true,
             "config": {
@@ -63,9 +63,9 @@
                         }
                     },
                     {
-                        "value": "sort_order",
+                        "value": "order",
                         "header": {
-                            "text": "Sort Order"
+                            "text": "Order"
                         }
                     }
                 ],
@@ -81,47 +81,47 @@
         ]
     },
     "data": {
-        "this-project": {
-            "id": "this-project",
-            "sort_order": 0,
-            "name": "This Project",
-            "description": "How streams.dev is built and run locally."
-        },
         "getting-started": {
             "id": "getting-started",
-            "sort_order": 1,
-            "name": "Getting Started",
+            "order": 1,
+            "name": "Get started",
             "description": "Download, install, and start working with Streams."
         },
         "core-concepts": {
             "id": "core-concepts",
-            "sort_order": 1,
+            "order": 2,
             "name": "Core Concepts",
             "description": "Explore the architecture concepts of Streams."
         },
         "basics": {
             "id": "basics",
-            "sort_order": 2,
+            "order": 3,
             "name": "The Basics",
             "description": "Common usage, use cases, and services explored."
         },
         "frontend": {
             "id": "frontend",
-            "sort_order": 3,
+            "order": 4,
             "name": "Frontend",
             "description": "UI development with Streams."
         },
         "advanced": {
             "id": "advanced",
-            "sort_order": 4,
+            "order": 5,
             "name": "Advanced",
             "description": "Take Streams further with advanced features."
         },
         "development": {
-            "sort_order": 5,
             "id": "development",
+            "order": 6,
             "name": "Developers",
             "description": "Advanced topics for Streams developers."
+        },
+        "this-project": {
+            "id": "this-project",
+            "order": 99,
+            "name": "Contributing",
+            "description": "How streams.dev is built and run locally, and how to contribute to the docs."
         }
     }
 }

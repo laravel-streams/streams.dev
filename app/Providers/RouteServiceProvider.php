@@ -48,5 +48,22 @@ class RouteServiceProvider extends ServiceProvider
         RateLimiter::for('api', function (Request $request) {
             return Limit::perMinute(60)->by($request->user()?->id ?: $request->ip());
         });
+
+        // Public docs MCP server (routes/ai.php). Keyed by client IP, which
+        // TrustProxies resolves from X-Forwarded-For behind Cloudflare.
+        RateLimiter::for('mcp', function (Request $request) {
+            return Limit::perMinute(60)
+                ->by('mcp|'.$request->ip())
+                ->response(function (Request $request, array $headers) {
+                    return response()->json([
+                        'jsonrpc' => '2.0',
+                        'id' => $request->json('id'),
+                        'error' => [
+                            'code' => -32000,
+                            'message' => 'Rate limit exceeded. Retry after '.($headers['Retry-After'] ?? 60).' seconds.',
+                        ],
+                    ], 429, $headers);
+                });
+        });
     }
 }

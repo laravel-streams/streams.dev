@@ -1,11 +1,13 @@
 ---
-sort_order: 6
 title: AI Prompts
-description: 'Patterns and prompts for AI-assisted Streams development.'
+nav_title: AI Prompts
+description: Patterns and prompts for AI-assisted Streams development.
+section: packages
+package: sdk
+order: 60
+tags: [sdk, ai, prompts]
 status: ready
 ---
-
-# AI Assistant Prompts & Patterns
 
 This guide provides AI assistants with specific prompts, patterns, and examples for effectively using the Laravel Streams SDK to help developers build applications.
 
@@ -16,7 +18,7 @@ When helping users with Laravel Streams, follow this structured approach:
 ### 1. Requirements Gathering
 Ask clarifying questions to understand the project:
 
-```
+```text
 Before we start building with Laravel Streams, I need to understand your requirements:
 
 1. What type of application are you building? (blog, e-commerce, CRM, etc.)
@@ -30,7 +32,7 @@ Before we start building with Laravel Streams, I need to understand your require
 ### 2. Data Structure Analysis
 Help users design their stream structure:
 
-```
+```text
 Based on your requirements, I recommend these streams:
 
 For a blog application:
@@ -45,7 +47,7 @@ Let me create the stream definitions for you.
 ### 3. Implementation Steps
 Provide a clear roadmap:
 
-```
+```text
 Here's how we'll implement your application:
 
 1. Create stream definitions with proper field types
@@ -64,13 +66,8 @@ Let's start with step 1...
 # Create the main blog stream
 php artisan make:stream blog_posts
 
-# Generate complete TALL stack components
-php artisan streams:livewire blog_posts --type=index
-php artisan streams:livewire blog_posts --type=form
-php artisan streams:livewire blog_posts --type=show
-
-# Create admin panel
-php artisan streams:admin blog_posts
+# Generate the index, form, and show Livewire components
+php artisan streams:livewire blog_posts
 
 # Publish blog example for reference
 php artisan vendor:publish --tag=blog-example
@@ -81,12 +78,9 @@ php artisan vendor:publish --tag=blog-example
 # Create product catalog
 php artisan make:stream products
 
-# Generate components with inventory management
+# Generate the index and form components
 php artisan streams:livewire products --type=index
 php artisan streams:livewire products --type=form
-
-# Create admin panel for product management
-php artisan streams:admin products --layout=sidebar
 
 # Publish e-commerce example
 php artisan vendor:publish --tag=ecommerce-example
@@ -97,13 +91,8 @@ php artisan vendor:publish --tag=ecommerce-example
 # Create contact management
 php artisan make:stream contacts
 
-# Generate CRM components
-php artisan streams:livewire contacts --type=index
-php artisan streams:livewire contacts --type=form
-php artisan streams:livewire contacts --type=show
-
-# Create admin interface
-php artisan streams:admin contacts
+# Generate CRM components (index, form, and show)
+php artisan streams:livewire contacts
 
 # Publish CRM example
 php artisan vendor:publish --tag=crm-example
@@ -112,36 +101,40 @@ php artisan vendor:publish --tag=crm-example
 ## Field Type Recommendations
 
 ### Content Management
-When users need content management, recommend these field types:
+When users need content management, recommend these field types. Field behavior is Core's ([Fields](/docs/core/fields)): length and range limits go in `rules`, long text is a `string` with an `input` hint, and type options go in `config`:
 
 ```json
 {
-    "title": {
-        "type": "string",
-        "required": true,
-        "config": {"max": 255}
-    },
-    "slug": {
-        "type": "slug",
-        "unique": true,
-        "config": {"slugify": "title"}
-    },
-    "content": {
-        "type": "markdown",
-        "required": true,
-        "config": {"height": 400}
-    },
-    "featured_image": {
-        "type": "image",
-        "config": {"path": "images"}
-    },
-    "status": {
-        "type": "select",
-        "config": {
-            "options": {
-                "draft": "Draft",
-                "published": "Published",
-                "archived": "Archived"
+    "fields": {
+        "title": {
+            "type": "string",
+            "required": true,
+            "rules": [
+                "max:255"
+            ]
+        },
+        "slug": {
+            "type": "slug",
+            "unique": true
+        },
+        "content": {
+            "type": "string",
+            "required": true,
+            "input": {
+                "type": "editor"
+            }
+        },
+        "featured_image": {
+            "type": "image"
+        },
+        "status": {
+            "type": "select",
+            "config": {
+                "options": {
+                    "draft": "Draft",
+                    "published": "Published",
+                    "archived": "Archived"
+                }
             }
         }
     }
@@ -153,27 +146,41 @@ For product catalogs, suggest:
 
 ```json
 {
-    "name": {
-        "type": "string",
-        "required": true
-    },
-    "sku": {
-        "type": "string",
-        "unique": true,
-        "required": true
-    },
-    "price": {
-        "type": "decimal",
-        "required": true,
-        "config": {"decimals": 2, "min": 0}
-    },
-    "stock_quantity": {
-        "type": "integer",
-        "config": {"min": 0, "default": 0}
-    },
-    "is_featured": {
-        "type": "boolean",
-        "config": {"default": false}
+    "fields": {
+        "name": {
+            "type": "string",
+            "required": true
+        },
+        "sku": {
+            "type": "string",
+            "unique": true,
+            "required": true
+        },
+        "price": {
+            "type": "decimal",
+            "required": true,
+            "rules": [
+                "min:0"
+            ],
+            "config": {
+                "precision": 2
+            }
+        },
+        "stock_quantity": {
+            "type": "integer",
+            "rules": [
+                "min:0"
+            ],
+            "config": {
+                "default": 0
+            }
+        },
+        "is_featured": {
+            "type": "boolean",
+            "config": {
+                "default": false
+            }
+        }
     }
 }
 ```
@@ -183,32 +190,37 @@ For user-related streams:
 
 ```json
 {
-    "first_name": {
-        "type": "string",
-        "required": true,
-        "config": {"max": 100}
-    },
-    "last_name": {
-        "type": "string",
-        "required": true,
-        "config": {"max": 100}
-    },
-    "email": {
-        "type": "email",
-        "unique": true,
-        "required": true
-    },
-    "avatar": {
-        "type": "image",
-        "config": {"path": "avatars"}
-    },
-    "role": {
-        "type": "select",
-        "config": {
-            "options": {
-                "user": "User",
-                "admin": "Administrator",
-                "moderator": "Moderator"
+    "fields": {
+        "first_name": {
+            "type": "string",
+            "required": true,
+            "rules": [
+                "max:100"
+            ]
+        },
+        "last_name": {
+            "type": "string",
+            "required": true,
+            "rules": [
+                "max:100"
+            ]
+        },
+        "email": {
+            "type": "email",
+            "unique": true,
+            "required": true
+        },
+        "avatar": {
+            "type": "image"
+        },
+        "role": {
+            "type": "select",
+            "config": {
+                "options": {
+                    "user": "User",
+                    "admin": "Administrator",
+                    "moderator": "Moderator"
+                }
             }
         }
     }
@@ -220,7 +232,7 @@ For user-related streams:
 ### UI Customization
 When users want to customize the interface:
 
-```
+```text
 I can help you customize the generated components. Here are common customizations:
 
 1. **Styling**: Modify Tailwind CSS classes in the Blade templates
@@ -235,7 +247,7 @@ Which aspect would you like to customize first?
 ### Business Logic
 For adding custom functionality:
 
-```
+```text
 To add custom business logic to your streams:
 
 1. **Custom Methods**: Add methods to your Livewire components
@@ -252,7 +264,7 @@ Let me show you how to implement [specific feature]...
 ### Common Issues
 Help users resolve typical problems:
 
-```
+```text
 Let me help you troubleshoot this issue. Here are the most common problems and solutions:
 
 1. **Missing Stream**: Make sure the stream definition exists in streams/ directory
@@ -267,7 +279,7 @@ Can you share the specific error message you're seeing?
 ### Performance Optimization
 When users need performance improvements:
 
-```
+```text
 Here are performance optimization strategies for your streams:
 
 1. **Eager Loading**: Load related data efficiently
@@ -342,16 +354,11 @@ public function save()
 # 1. Publish blog example
 php artisan vendor:publish --tag=blog-example
 
-# 2. Generate all components
-php artisan streams:livewire blog_posts --type=index
-php artisan streams:livewire blog_posts --type=form
-php artisan streams:livewire blog_posts --type=show
+# 2. Check the definition, then generate index, form, and show components
+php artisan streams:validate streams/blog_posts.json
+php artisan streams:livewire blog_posts
 
-# 3. Create admin panel
-php artisan streams:admin blog_posts
-
-# 4. Add routes to web.php
-# (Generated routes will be displayed)
+# 3. Add the printed routes to routes/web.php
 ```
 
 ### E-commerce Product Catalog
@@ -363,11 +370,8 @@ php artisan vendor:publish --tag=ecommerce-example
 php artisan streams:livewire products --type=index
 php artisan streams:livewire products --type=form
 
-# 3. Create inventory admin
-php artisan streams:admin products --layout=sidebar
-
-# 4. Customize for e-commerce needs
-# (Provide specific customization code)
+# 3. Add the printed routes to routes/web.php, then customize the
+#    generated classes in app/Livewire and views in resources/views/livewire
 ```
 
 ## Best Practices for AI Assistants
@@ -414,7 +418,7 @@ Optimize generated code:
 ## Sample Conversations
 
 ### Blog Setup Conversation
-```
+```text
 User: I want to create a blog with Laravel Streams.
 
 AI: I'd be happy to help you create a blog with Laravel Streams! Let me ask a few questions to ensure we build exactly what you need:
@@ -428,7 +432,7 @@ Based on your answers, I'll generate the complete blog system for you.
 ```
 
 ### E-commerce Conversation
-```
+```text
 User: I need to build a product catalog.
 
 AI: Great! A product catalog is perfect for Laravel Streams. To build the right solution, I need to understand your requirements:

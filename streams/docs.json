@@ -23,11 +23,35 @@
             "unique": true
         },
         {
-            "handle": "sort_order",
-            "type": "integer",
+            "handle": "title",
+            "type": "string",
+            "required": true
+        },
+        {
+            "handle": "nav_title",
+            "type": "string"
+        },
+        {
+            "handle": "description",
+            "type": "string",
+            "required": true,
+            "input": {
+                "type": "textarea"
+            }
+        },
+        {
+            "handle": "section",
+            "type": "select",
             "required": true,
             "config": {
-                "default": "increment"
+                "options": {
+                    "get-started": "Get started",
+                    "guides": "Guides",
+                    "concepts": "Concepts",
+                    "reference": "Reference",
+                    "packages": "Packages",
+                    "contributing": "Contributing"
+                }
             }
         },
         {
@@ -42,23 +66,53 @@
             }
         },
         {
-            "handle": "status",
-            "type": "string",
+            "handle": "package",
+            "type": "select",
             "required": true,
-            "input": {
-                "placeholder": "drafting|editing|ready"
+            "config": {
+                "options": {
+                    "core": "Core",
+                    "ui": "UI",
+                    "api": "API",
+                    "sdk": "SDK",
+                    "testing": "Testing",
+                    "client": "Client",
+                    "site": "streams.dev",
+                    "all": "All packages"
+                }
             }
         },
         {
-            "handle": "title",
-            "type": "string",
-            "required": true
+            "handle": "order",
+            "type": "integer",
+            "required": true,
+            "config": {
+                "default": "increment"
+            }
         },
         {
-            "handle": "description",
-            "type": "string",
-            "input": {
-                "type": "textarea"
+            "handle": "tags",
+            "type": "array",
+            "config": {
+                "items": [
+                    {
+                        "type": "string"
+                    }
+                ]
+            }
+        },
+        {
+            "handle": "status",
+            "type": "select",
+            "required": true,
+            "config": {
+                "options": {
+                    "draft": "Draft",
+                    "review": "In review",
+                    "ready": "Ready",
+                    "deprecated": "Deprecated"
+                },
+                "default": "draft"
             }
         },
         {

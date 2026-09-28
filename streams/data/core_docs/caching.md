@@ -1,7 +1,11 @@
 ---
-title: Caching
-description: 'Per-stream cache config, criteria cache(), fresh(), and flush on writes.'
-sort_order: 10
+title: 'Core: Caching'
+nav_title: Caching
+description: Per-stream cache config, criteria cache(), fresh(), and flush on writes.
+section: packages
+package: core
+order: 110
+tags: [core, caching]
 status: ready
 ---
 

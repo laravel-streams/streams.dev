@@ -1,7 +1,11 @@
 ---
 title: Repositories
+nav_title: Repositories
 description: 'Repository CRUD API — repository() vs entries() and available methods.'
-sort_order: 7
+section: packages
+package: core
+order: 80
+tags: [core, repositories]
 status: ready
 ---
 
@@ -52,8 +56,10 @@ These methods do **not** exist on Repository:
 Bind a custom class in stream config:
 
 ```json
-"config": {
-    "repository": "App\\Streams\\PostRepository"
+{
+    "config": {
+        "repository": "App\\Streams\\PostRepository"
+    }
 }
 ```
 

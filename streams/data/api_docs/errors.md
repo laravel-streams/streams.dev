@@ -1,7 +1,11 @@
 ---
 title: Errors
-description: '409 validation, 404 JSON, 204 delete, and error envelope.'
-sort_order: 8
+nav_title: Errors
+description: 409 validation, 404 JSON, 204 delete, and error envelope.
+section: packages
+package: api
+order: 90
+tags: [api, errors]
 status: ready
 ---
 

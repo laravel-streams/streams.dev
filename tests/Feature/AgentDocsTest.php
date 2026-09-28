@@ -54,7 +54,20 @@ class AgentDocsTest extends TestCase
     {
         $this->get('/docs/api/openapi.yaml')
             ->assertOk()
-            ->assertSee('openapi: 3.0.3', false);
+            ->assertSee('openapi: 3.0.3', false)
+            ->assertSee('# Copied from streams/api', false)
+            ->assertSee('/streams/{stream}/entries/{entry}', false);
+    }
+
+    public function test_api_docs_avoid_the_known_pitfalls()
+    {
+        $docs = fn (string $page) => file_get_contents(base_path("streams/data/api_docs/{$page}.md"));
+
+        $this->assertStringContainsString('calling `routeStreams()` and then `routeEntries()` leaves you with the stream routes only', $docs('routes'));
+        $this->assertStringContainsString('ListEntries::applyFilters()', $docs('query-parameters'));
+        $this->assertStringNotContainsString('extends ApiTestCase', $docs('testing'));
+        $this->assertStringContainsString('autoload-dev', $docs('testing'));
+        $this->assertStringContainsString('**201**', $docs('entry-endpoints'));
     }
 
     public function test_every_package_section_has_a_landing_page()
@@ -82,7 +95,53 @@ class AgentDocsTest extends TestCase
 
         $this->assertStringContainsString(']('.url('/docs/mcp.md').')', $index);
         $this->assertStringContainsString(']('.url('/docs/sdk/commands.md').')', $index);
-        $this->assertStringContainsString('not shipped', strtolower($this->get('/docs/mcp')->getContent()));
+    }
+
+    public function test_agent_docs_describe_the_shipped_mcp_server()
+    {
+        $mcp = $this->get('/docs/mcp.md')->assertOk()->getContent();
+
+        $this->assertStringContainsString('php artisan mcp:start streams', $mcp);
+        $this->assertStringContainsString('11.45+ or 12.41+', $mcp);
+        $this->assertStringContainsString('`design-stream`', $mcp);
+        $this->assertStringContainsString('streams://schemas/streams.schema.json', $mcp);
+
+        foreach (['list-streams', 'describe-stream', 'entry-schema', 'definition-schema', 'validate-stream-definition', 'list-entries', 'read-entry', 'create-entry', 'update-entry', 'delete-entry', 'search-docs', 'read-doc', 'make-stream', 'make-addon'] as $tool) {
+            $this->assertStringContainsString("`{$tool}`", $mcp);
+        }
+
+        // Nothing agents read may still claim MCP is missing or document the removed streams:admin command.
+        foreach (['/llms.txt', '/llms-full.txt'] as $url) {
+            $text = strtolower($this->get($url)->assertOk()->getContent());
+
+            $this->assertStringNotContainsString('not shipped', $text, $url);
+            $this->assertStringNotContainsString('there is no mcp server', $text, $url);
+            $this->assertStringNotContainsString('php artisan streams:admin', $text, $url);
+        }
+
+        $this->assertStringContainsString(url('/schema/streams.schema.json'), $this->get('/llms.txt')->getContent());
+
+        $this->get('/docs/sdk/commands')
+            ->assertOk()
+            ->assertSee('streams:validate', false)
+            ->assertSee('streams:list {--json}', false)
+            ->assertSee('App\Livewire', false)
+            ->assertSee('<code>streams:admin</code> has been removed', false);
+    }
+
+    public function test_removed_sdk_pages_redirect()
+    {
+        $this->get('/docs/sdk')->assertStatus(301)->assertRedirect('/docs/sdk/introduction');
+        $this->get('/docs/sdk/fields')->assertStatus(301)->assertRedirect('/docs/core/fields');
+        $this->get('/docs/sdk/admin-panels')->assertStatus(301)->assertRedirect('/docs/sdk/commands#streamslivewire');
+
+        $this->get('/docs/sdk.md')->assertStatus(301)->assertRedirect('/docs/sdk/introduction.md');
+        $this->get('/docs/sdk/fields.md')->assertStatus(301)->assertRedirect('/docs/core/fields.md');
+        $this->get('/docs/sdk/admin-panels.md')->assertStatus(301)->assertRedirect('/docs/sdk/commands.md');
+
+        foreach (config('docs.redirects') as $target) {
+            $this->get(strtok($target, '#'))->assertOk();
+        }
     }
 
     public function test_sdk_introduction_only_lists_real_commands()
@@ -94,5 +153,29 @@ class AgentDocsTest extends TestCase
             ->assertDontSee('php artisan streams:crud', false)
             ->assertSee('make:stream', false)
             ->assertDontSee('01-streams.md', false);
+    }
+
+    public function test_install_docs_use_real_publish_tags_and_the_version_matrix()
+    {
+        $install = $this->get('/docs/installation.md')->assertOk()->getContent();
+
+        $this->assertStringContainsString('PHP 8.2 or newer', $install);
+        $this->assertStringContainsString('## Version matrix', $install);
+        $this->assertStringContainsString('11.45+', $install);
+        $this->assertStringContainsString('12.41+', $install);
+        $this->assertStringContainsString('^8.36\|^9.15\|^10.8', $install);
+
+        foreach (['/docs/installation.md', '/docs/core/installation.md'] as $url) {
+            $text = $this->get($url)->getContent();
+
+            $this->assertStringNotContainsString('--tag=streams-config', $text, $url);
+            $this->assertStringNotContainsString('--tag=streams-data', $text, $url);
+        }
+
+        $core = $this->get('/docs/core/installation.md')->getContent();
+
+        foreach (['config', 'streams', 'public'] as $tag) {
+            $this->assertStringContainsString('--provider="Streams\Core\StreamsServiceProvider" --tag='.$tag, $core);
+        }
     }
 }

@@ -1,7 +1,11 @@
 ---
 title: Field decorators
+nav_title: Field decorators
 description: 'Decorate entry field values for display — markdown, HTML, and type decorators.'
-sort_order: 5
+section: packages
+package: core
+order: 60
+tags: [core, field, decorators]
 status: ready
 ---
 

@@ -1,7 +1,11 @@
 ---
 title: Bulk actions
-description: 'BulkAction, selection patterns, and grouped actions.'
-sort_order: 15
+nav_title: Bulk actions
+description: BulkAction, selection patterns, and grouped actions.
+section: packages
+package: ui
+order: 160
+tags: [ui, bulk, actions]
 status: ready
 ---
 

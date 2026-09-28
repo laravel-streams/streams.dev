@@ -38,14 +38,19 @@
             "$ref": "#/definitions/streamConfig"
         },
         "fields": {
-            "description": "The stream's fields. Either a list of field objects (each with a \"handle\") or an object keyed by handle whose values are field objects or a field type string.",
+            "description": "The stream's fields. Either a list of field objects (each with a \"handle\") or an object keyed by handle whose values are field objects or a field type string. The whole value, or any single field, can be an \"@path/to/file.json\" import.",
             "oneOf": [
                 {
                     "type": "array",
                     "items": {
-                        "allOf": [
-                            { "$ref": "#/definitions/field" },
-                            { "required": ["handle"] }
+                        "oneOf": [
+                            { "$ref": "#/definitions/import" },
+                            {
+                                "allOf": [
+                                    { "$ref": "#/definitions/field" },
+                                    { "required": ["handle"] }
+                                ]
+                            }
                         ]
                     }
                 },
@@ -55,10 +60,12 @@
                     "additionalProperties": {
                         "oneOf": [
                             { "$ref": "#/definitions/fieldType" },
-                            { "$ref": "#/definitions/field" }
+                            { "$ref": "#/definitions/field" },
+                            { "$ref": "#/definitions/import" }
                         ]
                     }
-                }
+                },
+                { "$ref": "#/definitions/import" }
             ]
         },
         "rules": {
@@ -101,6 +108,11 @@
         }
     },
     "definitions": {
+        "import": {
+            "type": "string",
+            "pattern": "^@\\S+\\.json$",
+            "description": "An import: \"@\" followed by a JSON file path relative to the application base path (for example \"@streams/fields/seo.json\"). streams/core replaces it with the decoded file when the stream is built."
+        },
         "streamId": {
             "type": "string",
             "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]*$"
@@ -263,8 +275,21 @@
                 },
                 "allowed": {
                     "type": "array",
-                    "items": { "type": "string" },
-                    "description": "object: allowed property types."
+                    "description": "object: allowed value types. The value must match at least one item: an entry of a stream, or an instance of a generic or prototype class.",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "stream": { "$ref": "#/definitions/streamId" },
+                            "generic": { "type": "string", "minLength": 1 },
+                            "prototype": { "type": "string", "minLength": 1 }
+                        },
+                        "additionalProperties": false,
+                        "anyOf": [
+                            { "required": ["stream"] },
+                            { "required": ["generic"] },
+                            { "required": ["prototype"] }
+                        ]
+                    }
                 },
                 "enforce_items": {
                     "type": "boolean",

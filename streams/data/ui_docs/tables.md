@@ -1,7 +1,11 @@
 ---
 title: Tables
+nav_title: Tables
 description: 'Table::make($livewire), query, columns, filters, and pagination.'
-sort_order: 12
+section: packages
+package: ui
+order: 130
+tags: [ui, tables]
 status: ready
 ---
 

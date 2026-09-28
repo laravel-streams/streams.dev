@@ -1,11 +1,13 @@
 ---
-sort_order: 2
 title: Test Data
-description: 'Sample streams and test data included in the package.'
+nav_title: Test Data
+description: Sample streams and test data included in the package.
+section: packages
+package: testing
+order: 30
+tags: [testing, test, data]
 status: ready
 ---
-
-# Test Data
 
 The Streams Testing package includes a rich set of sample data based on the Star Wars universe. This data provides realistic examples for testing and learning Streams concepts.
 

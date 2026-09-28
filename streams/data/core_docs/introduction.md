@@ -1,7 +1,11 @@
 ---
-title: Introduction
-description: 'JSON-defined streams, repositories, criteria, and Laravel integration.'
-sort_order: 0
+title: 'Core: Introduction'
+nav_title: Introduction
+description: JSON-defined streams, repositories, criteria, and Laravel integration.
+section: packages
+package: core
+order: 10
+tags: [core, introduction]
 status: ready
 ---
 

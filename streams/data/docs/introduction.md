@@ -1,8 +1,12 @@
 ---
 title: Introduction
-description: 'Streams overview for Laravel developers and teams.'
-sort_order: 0
+nav_title: Introduction
+description: Streams overview for Laravel developers and teams.
+section: get-started
 category: getting-started
+package: all
+order: 10
+tags: [introduction]
 status: ready
 ---
 

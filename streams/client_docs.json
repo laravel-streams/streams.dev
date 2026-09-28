@@ -23,7 +23,56 @@
             "unique": true
         },
         {
-            "handle": "sort_order",
+            "handle": "title",
+            "type": "string",
+            "required": true
+        },
+        {
+            "handle": "nav_title",
+            "type": "string"
+        },
+        {
+            "handle": "description",
+            "type": "string",
+            "required": true,
+            "input": {
+                "type": "textarea"
+            }
+        },
+        {
+            "handle": "section",
+            "type": "select",
+            "required": true,
+            "config": {
+                "options": {
+                    "get-started": "Get started",
+                    "guides": "Guides",
+                    "concepts": "Concepts",
+                    "reference": "Reference",
+                    "packages": "Packages",
+                    "contributing": "Contributing"
+                }
+            }
+        },
+        {
+            "handle": "package",
+            "type": "select",
+            "required": true,
+            "config": {
+                "options": {
+                    "core": "Core",
+                    "ui": "UI",
+                    "api": "API",
+                    "sdk": "SDK",
+                    "testing": "Testing",
+                    "client": "Client",
+                    "site": "streams.dev",
+                    "all": "All packages"
+                }
+            }
+        },
+        {
+            "handle": "order",
             "type": "integer",
             "required": true,
             "config": {
@@ -31,34 +80,28 @@
             }
         },
         {
-            "handle": "category",
-            "type": "relationship",
+            "handle": "tags",
+            "type": "array",
             "config": {
-                "related": "docs_categories"
-            },
-            "input": {
-                "type": "text",
-                "placeholder": "Uncategorized"
+                "items": [
+                    {
+                        "type": "string"
+                    }
+                ]
             }
         },
         {
             "handle": "status",
-            "type": "string",
+            "type": "select",
             "required": true,
-            "input": {
-                "placeholder": "drafting|editing|ready"
-            }
-        },
-        {
-            "handle": "title",
-            "type": "string",
-            "required": true
-        },
-        {
-            "handle": "description",
-            "type": "string",
-            "input": {
-                "type": "textarea"
+            "config": {
+                "options": {
+                    "draft": "Draft",
+                    "review": "In review",
+                    "ready": "Ready",
+                    "deprecated": "Deprecated"
+                },
+                "default": "draft"
             }
         },
         {
@@ -97,9 +140,9 @@
                         }
                     },
                     {
-                        "value": "category",
+                        "value": "package",
                         "header": {
-                            "text": "Category"
+                            "text": "Package"
                         }
                     },
                     {

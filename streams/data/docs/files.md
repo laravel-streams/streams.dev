@@ -1,8 +1,12 @@
 ---
 title: Files
-description: 'Files and image handling.'
-sort_order: 2
+nav_title: Files
+description: Files and image handling.
+section: guides
 category: basics
+package: core
+order: 10
+tags: [core, files]
 status: ready
 ---
 

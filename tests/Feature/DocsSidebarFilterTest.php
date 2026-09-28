@@ -34,4 +34,28 @@ class DocsSidebarFilterTest extends TestCase
         // Only the current page is marked active, even though every package has an "introduction".
         $this->assertSame(1, substr_count($html, 'docs-nav-link--sub is-active'));
     }
+
+    public function test_sidebar_sections_are_get_started_packages_guides_then_contributing()
+    {
+        $html = $this->get('/docs/installation')->assertOk()->getContent();
+
+        $positions = array_map(fn ($label) => strpos($html, "<span>{$label}</span>"), ['Get started', 'Guides', 'Contributing']);
+        $positions[] = strpos($html, '<p class="docs-nav-label">Packages</p>');
+
+        $this->assertNotContains(false, $positions);
+        [$getStarted, $guides, $contributing, $packages] = $positions;
+
+        $this->assertTrue($getStarted < $packages && $packages < $guides && $guides < $contributing);
+
+        // Get started is expanded unless the reader collapsed it.
+        $this->assertStringContainsString("getStartedOpen: localStorage.getItem('docs-nav-getstarted-open') !== '0'", $html);
+        $this->assertStringContainsString('x-show="getStartedOpen">', $html);
+
+        // Contributing lists the streams.dev pages, and old URLs still work.
+        $this->assertGreaterThan($contributing, strpos($html, 'href="/docs/this-project"'));
+        $this->get('/docs/this-project')->assertOk();
+        $this->get('/docs/local-development')->assertOk();
+
+        $this->assertSame(1, substr_count($html, 'docs-nav-link--sub is-active'));
+    }
 }

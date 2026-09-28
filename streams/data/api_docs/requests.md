@@ -1,7 +1,11 @@
 ---
 title: Request format
+nav_title: Request format
 description: 'Flat JSON field maps on create and update — not JSON:API.'
-sort_order: 4
+section: packages
+package: api
+order: 50
+tags: [api, requests]
 status: ready
 ---
 
@@ -17,11 +21,11 @@ curl -s -X POST "http://localhost/api/streams/films/entries" \
   -d '{"title":"Star Wars","director":"George Lucas"}'
 ```
 
-The controller passes `$request->json()->all()` to `newInstance()` on the stream criteria.
+The `CreateEntry` endpoint passes the JSON body to `newInstance()` on the stream's entries.
 
 ## Update entry
 
-**PUT** replaces fields from JSON body. **PATCH** merges partial updates.
+**PUT** sets the JSON body on the entry with `setAttributes()`; **PATCH** assigns each field in the body one at a time. Both return **200** when they update and **201** when the entry didn't exist and was created. See [Entry endpoints](/docs/api/entry-endpoints#update-entry).
 
 ```bash
 curl -s -X PATCH "http://localhost/api/streams/films/entries/1" \

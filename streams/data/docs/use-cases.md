@@ -1,8 +1,12 @@
 ---
 title: Use Cases
-description: 'Starting paths for common product types with Streams.'
-sort_order: 2
+nav_title: Use Cases
+description: Starting paths for common product types with Streams.
+section: get-started
 category: getting-started
+package: all
+order: 30
+tags: [use, cases]
 status: ready
 ---
 

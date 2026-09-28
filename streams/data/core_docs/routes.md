@@ -1,7 +1,11 @@
 ---
-title: Routes
+title: 'Core: Routes'
+nav_title: Routes
 description: 'Stream routes JSON, Route::streams, EntryController, parse and defer.'
-sort_order: 12
+section: packages
+package: core
+order: 130
+tags: [core, routes]
 status: ready
 ---
 

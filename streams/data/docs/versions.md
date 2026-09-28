@@ -1,8 +1,12 @@
 ---
-sort_order: 5
-category: getting-started
 title: Versions and support
-description: 'Which Laravel and PHP versions each Streams package supports, and how to require them.'
+nav_title: Versions and support
+description: Which Laravel and PHP versions each Streams package supports, and how to require them.
+section: get-started
+category: getting-started
+package: all
+order: 50
+tags: [versions]
 status: ready
 ---
 
@@ -12,22 +16,23 @@ Streams is pre-release. Most packages have **no tagged releases yet**, so you in
 
 | Package | Install constraint | Branch | Laravel | PHP | Notes |
 |---------|--------------------|--------|---------|-----|-------|
-| [streams/core](/docs/core/introduction) | `2.0.x-dev` | `2.0` | `^10\|^11\|^12` | not declared (Laravel 10 needs 8.1+) | Stable tags exist only for the old 1.x line (latest `v1.10.4`). |
+| [streams/core](/docs/core/introduction) | `2.0.x-dev` | `2.0` | `^10\|^11\|^12` | `^8.2` | Stable tags exist only for the old 1.x line (latest `v1.10.4`). |
 | [streams/ui](/docs/ui/introduction) | `1.0.x-dev` | `1.0` | via Core | via Core | Requires Livewire `^3.0`. |
-| [streams/api](/docs/api/introduction) | `1.0.x-dev` | `1.0` | via Core | via Core | |
-| [streams/sdk](/docs/sdk/introduction) | `1.0.x-dev` | `1.0` | via Core | via Core | Install as a dev dependency. |
-| [streams/testing](/docs/testing/introduction) | `1.0.x-dev` | `1.0` | **10 only** | 8.1+ | Requires `orchestra/testbench ^8.36`, which targets Laravel 10. |
+| [streams/api](/docs/api/introduction) | `1.0.x-dev` | `1.0` | via Core | `^8.2` | |
+| [streams/sdk](/docs/sdk/introduction) | `1.0.x-dev` | `1.0` | via Core | `^8.2` | Install as a dev dependency. The optional [MCP server](/docs/mcp) needs `laravel/mcp`, so Laravel 11.45+ or 12.41+. |
+| [streams/testing](/docs/testing/introduction) | `1.0.x-dev` | `1.0` | **10 only, for now** | via Core (8.2+) | Requires `orchestra/testbench ^8.36`, which targets Laravel 10. Being widened to `^8.36\|^9.15\|^10.8` (Laravel 10 to 12). |
 | [streams/mongodb](/docs/core/sources-and-adapters) | `1.0.x-dev` | `1.0` | via Core | via Core | Experimental. Requires `mongodb/mongodb ^1.10`. |
 | [@laravel-streams/api-client](/docs/client/introduction) | `3.0.0` | `master` | n/a | n/a | npm package, zero runtime dependencies. |
-| `streams/streams` (starter) | `1.0.x-dev` | `1.0` | `^10.0` | `^8.0.2` declared | Pins Laravel 10; requires Core, UI, and API. |
+| `streams/streams` (starter) | `1.0.x-dev` | `1.0` | `^10.0` | `^8.0.2` declared (Core needs 8.2+) | Pins Laravel 10; requires Core, UI, and API. |
 
-"Via Core" means the package declares no framework or PHP constraint of its own and accepts whatever `streams/core ^2.0` accepts.
+"Via Core" means the package declares no framework or PHP constraint of its own and accepts whatever `streams/core ^2.0` accepts. Core, API, and SDK declare PHP `^8.2`, so every package needs PHP 8.2 or newer. The Laravel 10/11/12 [version matrix](/docs/installation#version-matrix) on the installation page shows the same support per Laravel version.
 
 ### What is actually tested
 
-- Every package's lock file and CI harness runs on **Laravel 10** (10.49). The shared harness, `streams/testing`, is built on testbench 8, which is Laravel 10 only.
-- Core **declares** Laravel 11 and 12 support, but no package test suite runs on them yet. Treat 11 and 12 as expected to work, not verified.
-- This site (streams.dev) runs Laravel 10.50 with `streams/core 2.0.x-dev` and `streams/ui 1.0.x-dev`.
+- Core, UI, and API run their CI on **Laravel 10** (10.49). The shared harness, `streams/testing`, is built on testbench 8, which is Laravel 10 only. Widening it to testbench 9 and 10 is in progress.
+- Core **declares** Laravel 11 and 12 support, but the Core, UI, and API suites don't run on them until `streams/testing` is widened. Treat 11 and 12 as expected to work, not verified.
+- `streams/sdk` has its own harness and runs on **Laravel 12.41** with `laravel/mcp`, so the SDK and its MCP server are tested on Laravel 12.
+- This site (streams.dev) runs **Laravel 12** on PHP `^8.2`, with `streams/core` from `rc/prep` (aliased as `2.0.x-dev`), `streams/ui 1.0.x-dev`, and `streams/sdk` from `sdk/rc` as a dev dependency. It doesn't use `streams/testing`, so its own test suite runs on Laravel 12 and PHPUnit 11.
 
 ## Requiring the packages
 

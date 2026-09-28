@@ -1,7 +1,11 @@
 ---
-title: Routing
-description: 'Panel route registration, route names, and custom routes closure.'
-sort_order: 5
+title: 'UI: Routing'
+nav_title: Routing
+description: Panel route registration, route names, and custom routes closure.
+section: packages
+package: ui
+order: 60
+tags: [ui, routing]
 status: ready
 ---
 

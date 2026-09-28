@@ -1,8 +1,12 @@
 ---
-sort_order: 12
 title: UI
-description: 'Control panels and interface generation for Streams.'
+nav_title: UI
+description: Control panels and interface generation for Streams.
+section: guides
 category: advanced
+package: ui
+order: 20
+tags: [ui]
 status: ready
 ---
 

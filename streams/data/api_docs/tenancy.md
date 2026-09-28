@@ -1,7 +1,11 @@
 ---
-title: Tenancy
+title: 'API: Tenancy'
+nav_title: Tenancy
 description: 'Resolve a tenant once per request with API::tenant() or ApiInterface::tenant(), then scope criteria with endpoint callbacks.'
-sort_order: 15
+section: packages
+package: api
+order: 160
+tags: [api, tenancy]
 status: ready
 ---
 

@@ -1,8 +1,12 @@
 ---
-sort_order: 10
 title: Components
-description: 'Blade and Livewire UI patterns with Streams.'
+nav_title: Components
+description: Blade and Livewire UI patterns with Streams.
+section: guides
 category: frontend
+package: ui
+order: 30
+tags: [ui, components]
 status: ready
 ---
 

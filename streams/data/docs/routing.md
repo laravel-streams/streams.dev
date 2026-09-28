@@ -1,8 +1,12 @@
 ---
-sort_order: 8
 title: Routing
-description: 'Routing your application.'
+nav_title: Routing
+description: Routing your application.
+section: guides
 category: basics
+package: core
+order: 30
+tags: [core, routing]
 status: ready
 ---
 
@@ -42,18 +46,19 @@ Route::streams('uri', [
 
 The first argument is the URI and the second is either:
 
-- The name of the [view](views) to render.
+- The name of the [view](/docs/core/views-and-includes) to render.
 - A callable string.
 - An array of [route options](#route-options).
 
 ### Stream Routes
 
-Defining routes in your [stream configuration](streams#routing) makes it easy to automate naming and URL generation around your domain information and entities.
+Defining routes in your [stream configuration](/docs/streams#routing) makes it easy to automate naming and URL generation around your domain information and entities.
 
 Define stream routes using a `action => options` format, where `options` is again either the URI, controller and method string, or an array of [route options](#route-options).
 
+In `streams/contacts.json`:
+
 ```json
-// streams/contacts.json
 {
     "routes": {
         "index": {
@@ -84,27 +89,28 @@ $url = route('streams::contacts.index');
 
 Unless a view is specified, the associated requests will attempt to resolve a view automatically.
 
+In `streams/contacts.json`:
+
 ```json
-// streams/contacts.json
 {
     "routes": {
         "index": {
             "uri": "contacts"
-            // resources/contacts/index.php
         },
         "view": {
             "uri": "contacts/{id}"
-            // resources/contacts/view.php
-        },
-        "rss": {
-            "uri": "contacts/{id}/rss"
-            // resources/contacts/rss.php
         }
     }
 }
 ```
 
-You can configure automatic view patterns within the `streams/route.php` [configuration file](configuration). The process ignores the views if they do not exist.
+`EntryController` picks the first view that exists, in this order:
+
+1. The route's `view` option.
+2. A view with the same name as the route (`as`).
+3. For a route that resolves an entry (`contacts/{id}`), the singular stream ID (`resources/views/contact.blade.php`). Otherwise, the plural (`resources/views/contacts.blade.php`).
+
+If none exists, no view is set.
 
 ## Route Parameters
 
@@ -172,7 +178,7 @@ A `404` error page will be displayed entry resolution is attempted, but no entry
 
 All Streams platform-specific methods of registering routes support the following route options.
 
-All route options are parsed with [controller data](controllers):
+All route options are parsed with [controller data](/docs/core/routes):
 
 ```php
 Route::streams('address-book/{stream}/{id}', [
@@ -182,7 +188,7 @@ Route::streams('address-book/{stream}/{id}', [
 
 ### View
 
-Use the `view` option to specify a [view](views) to render:
+Use the `view` option to specify a [view](/docs/core/views-and-includes) to render:
 
 ```php
 Route::streams('uri', [

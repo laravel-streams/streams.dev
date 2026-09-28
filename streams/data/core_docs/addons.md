@@ -1,7 +1,11 @@
 ---
-title: Addons
-description: 'streams-addon Composer discovery and the Addons facade.'
-sort_order: 15
+title: 'Core: Addons'
+nav_title: Addons
+description: streams-addon Composer discovery and the Addons facade.
+section: packages
+package: core
+order: 160
+tags: [core, addons]
 status: ready
 ---
 

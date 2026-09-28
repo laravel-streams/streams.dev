@@ -1,7 +1,11 @@
 ---
-sort_order: 0
-title: Introduction
-description: 'Dev-only Artisan generators for streams, entries, addons, schemas, and Livewire admins.'
+title: 'SDK: Introduction'
+nav_title: Introduction
+description: Dev-only Artisan generators and checks for streams, entries, addons, and Livewire components, plus a local MCP server for agents.
+section: packages
+package: sdk
+order: 10
+tags: [sdk, introduction]
 status: ready
 ---
 
@@ -13,15 +17,17 @@ Install it with Core already required:
 composer require --dev streams/sdk:1.0.x-dev
 ```
 
-Commands are registered only when the app is running in the console. The ones `php artisan` can see today are `make:stream`, `make:entry`, `make:addon`, `streams:schema`, `streams:livewire`, and `streams:admin`. Arguments, options, and the commands that exist in source but are not registered are in the [command reference](/docs/sdk/commands).
+Commands are registered only when the app is running in the console. The ones `php artisan` can see today are `make:stream`, `make:entry`, `make:addon`, `streams:list`, `streams:validate`, `streams:schema`, and `streams:livewire`. Arguments, options, and the commands that exist in source but are not registered are in the [command reference](/docs/sdk/commands).
 
 There is no `streams:component` or `streams:crud` command.
 
 ## What it is for
 
-Use the SDK to write the first version of a stream file, an entry, an addon package, a JSON schema export, or a plain Livewire admin. Configured control panels belong to [Streams UI](/docs/ui/introduction), not to these generators.
+Use the SDK to write the first version of a stream file, an entry, an addon package, or a JSON schema export, to check definitions with `streams:validate`, and to generate Livewire index, form, and show components with `streams:livewire`. Configured control panels belong to [Streams UI](/docs/ui/introduction), not to these generators. `streams:admin` has been removed.
 
-`streams:livewire` and `streams:admin` are in the `1.0` branch of the package and are not on a tagged release. See [Versions and support](/docs/versions).
+The SDK also ships a local-development [MCP server](/docs/mcp) for AI agents. Start it with `php artisan mcp:start streams`. It needs `laravel/mcp`, which needs Laravel 11.45+ or 12.41+. On Laravel 10, agents use `streams:list --json` and `streams:validate --json` instead.
+
+The SDK is on the `1.0.x-dev` branch and has no tagged release yet. See [Versions and support](/docs/versions).
 
 ## What a stream file looks like
 
@@ -29,8 +35,8 @@ Use the SDK to write the first version of a stream file, an entry, an addon pack
 
 ```json
 {
+    "$schema": "https://streams.dev/schema/streams.schema.json",
     "name": "Blog Posts",
-    "handle": "blog_posts",
     "fields": [
         {"handle": "id", "type": "uuid"},
         {"handle": "title", "type": "string", "required": true},
@@ -51,5 +57,6 @@ The SDK also publishes the example streams in its `streams/` directory (`blog_po
 - [Command reference](/docs/sdk/commands)
 - [Core streams](/docs/core/streams)
 - [Core fields](/docs/core/fields)
-- [Admin panels](/docs/sdk/admin-panels)
+- [Stream definition schema](/docs/sdk/stream-schema)
+- [MCP server](/docs/mcp)
 - [Agents](/docs/agents)

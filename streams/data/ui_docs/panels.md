@@ -1,7 +1,11 @@
 ---
 title: Panels
-description: 'Path, middleware, default panel, branding, and SetUpPanel.'
-sort_order: 4
+nav_title: Panels
+description: Path, middleware, default panel, branding, and SetUpPanel.
+section: packages
+package: ui
+order: 50
+tags: [ui, panels]
 status: ready
 ---
 

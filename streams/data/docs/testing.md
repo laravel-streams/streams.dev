@@ -1,8 +1,12 @@
 ---
-sort_order: 102
-category: development
 title: Testing
-description: 'Testing Streams applications and packages.'
+nav_title: Testing
+description: Testing Streams applications and packages.
+section: guides
+category: development
+package: testing
+order: 40
+tags: [testing]
 status: ready
 ---
 

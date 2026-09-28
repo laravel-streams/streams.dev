@@ -1,11 +1,13 @@
 ---
-sort_order: 4
-title: Configuration
-description: 'Configure the Streams Testing environment.'
+title: 'Testing: Configuration'
+nav_title: Configuration
+description: Configure the Streams Testing environment.
+section: packages
+package: testing
+order: 50
+tags: [testing, configuration]
 status: ready
 ---
-
-# Configuration
 
 Learn how to configure the Streams Testing package to match your project's needs, from basic PHPUnit settings to advanced test environment customization.
 
@@ -153,9 +155,8 @@ Configure Streams-specific settings:
 ```xml
 <php>
     <!-- Streams Settings -->
-    <env name="STREAMS_CACHE" value="false"/>
-    <env name="STREAMS_SOURCE" value="file"/>
-    <env name="STREAMS_PATH" value="./storage/streams"/>
+    <env name="STREAMS_SOURCE" value="filebase"/>
+    <env name="STREAMS_DATA_PATH" value="storage/streams/data"/>
 </php>
 ```
 
@@ -244,7 +245,7 @@ class FilmTest extends \Tests\CustomTestCase
 
 Organize tests by type:
 
-```
+```text
 tests/
 ├── Feature/           # Integration tests
 │   ├── FilmTest.php
@@ -408,7 +409,7 @@ Enable result caching:
 
 Add to `.gitignore`:
 
-```
+```text
 .phpunit.cache/
 coverage/
 ```
@@ -456,7 +457,7 @@ jobs:
     
     strategy:
       matrix:
-        php: [8.1, 8.2, 8.3]
+        php: [8.2, 8.3]
     
     steps:
       - uses: actions/checkout@v3

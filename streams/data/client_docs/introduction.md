@@ -1,7 +1,11 @@
 ---
-sort_order: 0
-title: Introduction
-description: 'A zero-dependency JavaScript client for the Streams REST API.'
+title: 'Client: Introduction'
+nav_title: Introduction
+description: A zero-dependency JavaScript client for the Streams REST API.
+section: packages
+package: client
+order: 10
+tags: [client, introduction]
 status: ready
 ---
 

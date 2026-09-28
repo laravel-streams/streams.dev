@@ -1,7 +1,11 @@
 ---
 title: Responses
+nav_title: Responses
 description: 'Response envelope — data, errors, links, meta — and ApiResponse API.'
-sort_order: 5
+section: packages
+package: api
+order: 60
+tags: [api, responses]
 status: ready
 ---
 

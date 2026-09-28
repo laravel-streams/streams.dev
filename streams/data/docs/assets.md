@@ -1,8 +1,12 @@
 ---
-sort_order: 9
 title: Assets
-description: 'Asset and image management overview.'
+nav_title: Assets
+description: Asset and image management overview.
+section: guides
 category: frontend
+package: core
+order: 20
+tags: [core, assets]
 status: ready
 ---
 

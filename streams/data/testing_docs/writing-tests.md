@@ -1,11 +1,13 @@
 ---
-sort_order: 3
 title: Writing Tests
-description: 'Write effective tests for Streams applications.'
+nav_title: Writing Tests
+description: Write effective tests for Streams applications.
+section: packages
+package: testing
+order: 40
+tags: [testing, writing, tests]
 status: ready
 ---
-
-# Writing Tests
 
 This guide covers everything you need to know about writing tests for Streams applications, from basic examples to advanced testing patterns.
 

@@ -1,8 +1,12 @@
 ---
-sort_order: 14
 title: Control Panel
-description: 'Building admin and product panels with Streams UI.'
+nav_title: Control Panel
+description: Building admin and product panels with Streams UI.
+section: guides
 category: advanced
+package: ui
+order: 30
+tags: [ui, control, panel]
 status: ready
 ---
 
@@ -29,5 +33,5 @@ Same UI package; different panel registration and auth.
 ## Learn more
 
 - [UI panels](/docs/ui/panels)
-- [SDK admin panels](/docs/sdk/admin-panels)
+- [SDK Livewire generator](/docs/sdk/commands#streamslivewire)
 - [Use cases](/docs/use-cases)

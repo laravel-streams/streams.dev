@@ -1,7 +1,11 @@
 ---
 title: Entries
-description: 'Entry lifecycle, attributes, factory, save/delete, and protected fields.'
-sort_order: 6
+nav_title: Entries
+description: Entry lifecycle, attributes, factory, save/delete, and protected fields.
+section: packages
+package: core
+order: 70
+tags: [core, entries]
 status: ready
 ---
 

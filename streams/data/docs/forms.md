@@ -1,8 +1,12 @@
 ---
-sort_order: 13
 title: Forms
-description: 'When to use UI forms in Streams applications.'
+nav_title: Forms
+description: When to use UI forms in Streams applications.
+section: guides
 category: frontend
+package: ui
+order: 40
+tags: [ui, forms]
 status: ready
 ---
 

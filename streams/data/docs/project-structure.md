@@ -1,14 +1,18 @@
 ---
 title: Project structure
-description: 'Where stream definitions, content, views, and app code live.'
-sort_order: 1
+nav_title: Project structure
+description: Where stream definitions, content, views, and app code live.
+section: contributing
 category: this-project
+package: site
+order: 20
+tags: [site, project, structure]
 status: ready
 ---
 
 ## Top-level layout
 
-```
+```text
 streams.dev/
 ├── app/                    # Minimal Laravel app code
 ├── streams/                # Stream JSON definitions
@@ -39,7 +43,7 @@ Stream JSON holds fields, routes, source adapters, and optional UI admin config.
 
 Filebase entries live beside stream definitions:
 
-```
+```text
 streams/data/
 ├── docs/              # Hub guides (*.md)
 ├── core_docs/         # Core package docs
@@ -74,19 +78,25 @@ UI::panel(
 );
 ```
 
-Most domain logic lives in packages under `vendor/streams/` (symlinked from `../_packages/` when using path repositories).
+Most domain logic lives in the packages under `vendor/streams/`, which Composer installs as git clones from GitHub.
 
-## Composer path repositories
+## Composer repositories
 
-`composer.json` defines path repos for local package development:
+`composer.json` points each Streams package at its GitHub repository and pins the branch:
 
 ```json
-"repositories": [
-    { "type": "path", "url": "../_packages/streams-core", "options": { "symlink": true } }
-]
+{
+    "require": {
+        "streams/core": "dev-rc/prep as 2.0.x-dev",
+        "streams/ui": "1.0.x-dev"
+    },
+    "repositories": [
+        { "type": "vcs", "url": "https://github.com/laravel-streams/streams-core.git", "no-api": true }
+    ]
+}
 ```
 
-Run `composer update streams/core` after changing package source to refresh symlinks.
+The `as 2.0.x-dev` alias lets packages that require `streams/core ^2.0` accept the branch. For local package work, `php scripts/composer-local.php` writes a gitignored `composer.local.json` with symlinked path repositories; see [Local development](/docs/local-development).
 
 ## Related
 
