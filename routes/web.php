@@ -42,7 +42,8 @@ Route::get('/llms.txt', fn () => response(LlmsText::index(), 200, $text));
 Route::get('/llms-full.txt', fn () => response(LlmsText::full(), 200, $text));
 
 Route::get('/docs/api/openapi.yaml', fn () => response(
-    file_get_contents(base_path('streams/data/api_docs/openapi.yaml')),
+    // A copy of streams/api's resources/openapi/openapi.yaml; see scripts/sync-openapi.php.
+    file_get_contents(resource_path('openapi/openapi.yaml')),
     200,
     ['Content-Type' => 'application/yaml; charset=UTF-8']
 ));

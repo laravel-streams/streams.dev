@@ -53,7 +53,7 @@ public function boot(): void
 }
 ```
 
-The helpers register the default interface (`STREAMS_API_DEFAULT_INTERFACE`, default `api`) at the configured prefix (`STREAMS_API_PREFIX`, default `api`) with the configured middleware group (`STREAMS_API_MIDDLEWARE`, default `api`). They do nothing if the default interface is already registered.
+The helpers register the default interface (`STREAMS_API_DEFAULT_INTERFACE`, default `api`) at the configured prefix (`STREAMS_API_PREFIX`, default `api`) with the configured middleware group (`STREAMS_API_MIDDLEWARE`, default `api`). They do nothing if the default interface is already registered, so call only one of them: `routeEntries()` followed by `routeStreams()` registers the entry routes only.
 
 > Don't call these helpers from `routes/api.php` or inside a `Route::prefix()->group()`. Registration happens immediately, so the surrounding group's prefix and middleware stack on top of the interface's own and you get paths like `/api/api/streams`.
 

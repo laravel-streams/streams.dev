@@ -54,7 +54,20 @@ class AgentDocsTest extends TestCase
     {
         $this->get('/docs/api/openapi.yaml')
             ->assertOk()
-            ->assertSee('openapi: 3.0.3', false);
+            ->assertSee('openapi: 3.0.3', false)
+            ->assertSee('# Copied from streams/api', false)
+            ->assertSee('/streams/{stream}/entries/{entry}', false);
+    }
+
+    public function test_api_docs_avoid_the_known_pitfalls()
+    {
+        $docs = fn (string $page) => file_get_contents(base_path("streams/data/api_docs/{$page}.md"));
+
+        $this->assertStringContainsString('calling `routeStreams()` and then `routeEntries()` leaves you with the stream routes only', $docs('routes'));
+        $this->assertStringContainsString('ListEntries::applyFilters()', $docs('query-parameters'));
+        $this->assertStringNotContainsString('extends ApiTestCase', $docs('testing'));
+        $this->assertStringContainsString('autoload-dev', $docs('testing'));
+        $this->assertStringContainsString('**201**', $docs('entry-endpoints'));
     }
 
     public function test_every_package_section_has_a_landing_page()

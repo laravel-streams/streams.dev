@@ -1,0 +1,405 @@
+# Copied from streams/api (laravel-streams/streams-api) resources/openapi/openapi.yaml,
+# branch rc/prep at 0d3ba86d. Don't edit it here: change it in streams/api, then
+# re-copy it with `php scripts/sync-openapi.php`. Served at /docs/api/openapi.yaml.
+
+openapi: 3.0.3
+info:
+  title: Streams API
+  version: 1.0.0
+  description: |
+    Reference for the built-in routes that `streams/api` registers when an app opts in with
+    `API::routeCrud()` (or `API::routeStreams()` / `API::routeEntries()`, or an `ApiInterface`
+    with `StreamsResource` / `EntriesResource`).
+
+    Paths are generic: `{stream}` is any stream id and `{entry}` is an entry key
+    (the stream's `config.key_name`, default `id`). For per-stream request and response
+    schemas built from your own stream definitions, run `php artisan api:schema`.
+
+    Authentication is owned by the application. The package only gates the API on and off
+    (`STREAMS_API_ENABLED`, `gate_middleware`, default `EnsureApiIsEnabled`). When the API is
+    disabled every route answers with `gate_status` (default 404).
+
+    This file is kept in sync with the registered routes by `tests/OpenApiDocumentTest.php`.
+  license:
+    name: MIT
+    url: https://github.com/laravel-streams/streams-api/blob/1.0/LICENSE.md
+# The package does not authenticate. Apps add their own middleware (for example auth:sanctum)
+# and can publish a copy of this file with their security scheme.
+security: []
+servers:
+  - url: /api
+    description: Default prefix (`STREAMS_API_PREFIX`, config `streams.api.prefix`).
+tags:
+  - name: Streams
+    description: Stream definitions (entries of the core streams stream).
+  - name: Entries
+    description: Entries of a stream.
+paths:
+  /streams:
+    get:
+      tags: [Streams]
+      operationId: streams.list
+      summary: List stream definitions.
+      parameters:
+        - $ref: '#/components/parameters/PerPage'
+        - $ref: '#/components/parameters/Page'
+        - $ref: '#/components/parameters/Where'
+        - $ref: '#/components/parameters/Constraint'
+        - $ref: '#/components/parameters/OrderBy'
+        - $ref: '#/components/parameters/Limit'
+        - $ref: '#/components/parameters/Skip'
+      responses:
+        '200':
+          $ref: '#/components/responses/List'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    post:
+      tags: [Streams]
+      operationId: streams.create
+      summary: Create a stream definition.
+      requestBody:
+        $ref: '#/components/requestBodies/Entry'
+      responses:
+        '201':
+          $ref: '#/components/responses/Created'
+        '409':
+          $ref: '#/components/responses/Invalid'
+  /streams/{stream}:
+    parameters:
+      - $ref: '#/components/parameters/Stream'
+    get:
+      tags: [Streams]
+      operationId: streams.show
+      summary: Show a stream definition.
+      responses:
+        '200':
+          $ref: '#/components/responses/Single'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    put:
+      tags: [Streams]
+      operationId: streams.update
+      summary: Replace a stream definition. Creates it when it does not exist.
+      requestBody:
+        $ref: '#/components/requestBodies/Entry'
+      responses:
+        '200':
+          $ref: '#/components/responses/Single'
+        '201':
+          $ref: '#/components/responses/Created'
+        '409':
+          $ref: '#/components/responses/Invalid'
+    patch:
+      tags: [Streams]
+      operationId: streams.patch
+      summary: Update the given attributes of a stream definition. Creates it when it does not exist.
+      requestBody:
+        $ref: '#/components/requestBodies/Entry'
+      responses:
+        '200':
+          $ref: '#/components/responses/Single'
+        '201':
+          $ref: '#/components/responses/Created'
+        '409':
+          $ref: '#/components/responses/Invalid'
+    delete:
+      tags: [Streams]
+      operationId: streams.delete
+      summary: Delete a stream definition.
+      responses:
+        '204':
+          description: Deleted.
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /streams/{stream}/entries:
+    parameters:
+      - $ref: '#/components/parameters/Stream'
+    get:
+      tags: [Entries]
+      operationId: entries.list
+      summary: List entries of a stream.
+      parameters:
+        - $ref: '#/components/parameters/PerPage'
+        - $ref: '#/components/parameters/Page'
+        - $ref: '#/components/parameters/Where'
+        - $ref: '#/components/parameters/Constraint'
+        - $ref: '#/components/parameters/OrderBy'
+        - $ref: '#/components/parameters/Limit'
+        - $ref: '#/components/parameters/Skip'
+        - $ref: '#/components/parameters/With'
+      responses:
+        '200':
+          $ref: '#/components/responses/List'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    post:
+      tags: [Entries]
+      operationId: entries.create
+      summary: Create an entry. Validated against the stream's field rules.
+      requestBody:
+        $ref: '#/components/requestBodies/Entry'
+      responses:
+        '201':
+          $ref: '#/components/responses/Created'
+        '409':
+          $ref: '#/components/responses/Invalid'
+  /streams/{stream}/entries/{entry}:
+    parameters:
+      - $ref: '#/components/parameters/Stream'
+      - $ref: '#/components/parameters/Entry'
+    get:
+      tags: [Entries]
+      operationId: entries.show
+      summary: Show an entry. Relationship fields add a link to the related entry.
+      parameters:
+        - $ref: '#/components/parameters/With'
+      responses:
+        '200':
+          $ref: '#/components/responses/Single'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    put:
+      tags: [Entries]
+      operationId: entries.update
+      summary: Replace an entry's attributes. Creates the entry when it does not exist.
+      requestBody:
+        $ref: '#/components/requestBodies/Entry'
+      responses:
+        '200':
+          $ref: '#/components/responses/Single'
+        '201':
+          $ref: '#/components/responses/Created'
+        '409':
+          $ref: '#/components/responses/Invalid'
+    patch:
+      tags: [Entries]
+      operationId: entries.patch
+      summary: Update the given attributes of an entry. Creates the entry when it does not exist.
+      requestBody:
+        $ref: '#/components/requestBodies/Entry'
+      responses:
+        '200':
+          $ref: '#/components/responses/Single'
+        '201':
+          $ref: '#/components/responses/Created'
+        '409':
+          $ref: '#/components/responses/Invalid'
+    delete:
+      tags: [Entries]
+      operationId: entries.delete
+      summary: Delete an entry.
+      responses:
+        '204':
+          description: Deleted.
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /streams/{stream}/query:
+    parameters:
+      - $ref: '#/components/parameters/Stream'
+    post:
+      tags: [Entries]
+      operationId: entries.query
+      summary: Run criteria methods against a stream and return paginated entries.
+      description: |
+        Each item in `parameters` is an object of one criteria method name to its argument list,
+        applied in order. `delete` and `truncate` are refused.
+      parameters:
+        - $ref: '#/components/parameters/PerPage'
+        - $ref: '#/components/parameters/Page'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                parameters:
+                  type: array
+                  items:
+                    type: object
+                    additionalProperties:
+                      type: array
+                      items: {}
+            example:
+              parameters:
+                - where: [views, '>', 100]
+                - orderBy: [created_at, desc]
+      responses:
+        '200':
+          $ref: '#/components/responses/List'
+        '404':
+          $ref: '#/components/responses/NotFound'
+components:
+  parameters:
+    Stream:
+      name: stream
+      in: path
+      required: true
+      description: Stream id.
+      schema:
+        type: string
+      example: films
+    Entry:
+      name: entry
+      in: path
+      required: true
+      description: Entry key (the stream's `config.key_name`, default `id`). May contain slashes.
+      schema:
+        type: string
+      example: '1'
+    PerPage:
+      name: per_page
+      in: query
+      schema:
+        type: integer
+        default: 100
+    Page:
+      name: page
+      in: query
+      schema:
+        type: integer
+        default: 1
+    Where:
+      name: where
+      in: query
+      style: deepObject
+      explode: true
+      description: '`where[field]=value`, or `where[field][operator]=value`.'
+      schema:
+        type: object
+        additionalProperties: {}
+    Constraint:
+      name: constraint
+      in: query
+      style: deepObject
+      explode: true
+      description: Operator for the matching `where[field]`, for example `constraint[views]=>`.
+      schema:
+        type: object
+        additionalProperties:
+          type: string
+    OrderBy:
+      name: order_by
+      in: query
+      style: deepObject
+      explode: true
+      description: '`order_by[field]=asc|desc`.'
+      schema:
+        type: object
+        additionalProperties:
+          type: string
+          enum: [asc, desc]
+    Limit:
+      name: limit
+      in: query
+      schema:
+        type: integer
+    Skip:
+      name: skip
+      in: query
+      description: Offset used with `limit`.
+      schema:
+        type: integer
+        default: 0
+    With:
+      name: with
+      in: query
+      description: Relationship fields to eager load, by relation name. `with[]=a&with[]=b` or `with=a,b`.
+      schema:
+        oneOf:
+          - type: string
+          - type: array
+            items:
+              type: string
+  requestBodies:
+    Entry:
+      required: true
+      description: Entry attributes keyed by field handle.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Entry'
+  responses:
+    List:
+      description: Paginated entries.
+      content:
+        application/json:
+          schema:
+            allOf:
+              - $ref: '#/components/schemas/Envelope'
+              - type: object
+                properties:
+                  meta:
+                    $ref: '#/components/schemas/PaginationMeta'
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Entry'
+    Single:
+      description: One entry.
+      content:
+        application/json:
+          schema:
+            allOf:
+              - $ref: '#/components/schemas/Envelope'
+              - type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Entry'
+    Created:
+      description: Created. The `Location` header and `links.location` point at the new entry.
+      headers:
+        Location:
+          schema:
+            type: string
+            format: uri
+      content:
+        application/json:
+          schema:
+            allOf:
+              - $ref: '#/components/schemas/Envelope'
+              - type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Entry'
+    Invalid:
+      description: Validation failed. Messages are in `errors`.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Envelope'
+    NotFound:
+      description: Stream or entry not found, or the API is disabled.
+  schemas:
+    Entry:
+      type: object
+      description: Attributes keyed by field handle. The exact shape is the stream definition.
+      additionalProperties: true
+    Envelope:
+      type: object
+      properties:
+        meta:
+          type: object
+          additionalProperties: true
+        links:
+          type: object
+          additionalProperties:
+            type: string
+            nullable: true
+        errors:
+          type: array
+          items:
+            type: string
+        data: {}
+    PaginationMeta:
+      type: object
+      properties:
+        total:
+          type: integer
+        per_page:
+          type: integer
+        last_page:
+          type: integer
+        current_page:
+          type: integer
+      additionalProperties: true

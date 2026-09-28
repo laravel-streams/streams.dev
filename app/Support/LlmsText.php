@@ -49,7 +49,7 @@ class LlmsText
 
             $lines[] = '## Optional';
             $lines[] = '';
-            $lines[] = '- [OpenAPI reference]('.URL::to('/docs/api/openapi.yaml').'): Generic OpenAPI 3 spec of the built-in streams/api endpoints';
+            $lines[] = '- [OpenAPI reference]('.URL::to('/docs/api/openapi.yaml').'): OpenAPI 3 spec of the built-in streams/api endpoints, copied from the streams/api package';
             $lines[] = '- [Stream definition schema]('.URL::to('/schema/streams.schema.json').'): JSON Schema (draft-07) for streams/*.json definition files';
             $lines[] = '- [Search index]('.URL::to('/search/docs.json').'): JSON index of every page with title, description, URL, and excerpt';
             $lines[] = '';

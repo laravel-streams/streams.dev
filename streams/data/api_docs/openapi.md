@@ -11,7 +11,9 @@ status: ready
 
 ## Reference spec
 
-A generic OpenAPI 3 description of the built-in endpoints is published at [/docs/api/openapi.yaml](/docs/api/openapi.yaml). It covers every route on `StreamsResource` and `EntriesResource`, the query parameters, and the response envelope. Entry bodies are generic there because they depend on your streams.
+The `streams/api` package ships an OpenAPI 3 description of its built-in endpoints in `resources/openapi/openapi.yaml`, and this site serves a copy at [/docs/api/openapi.yaml](/docs/api/openapi.yaml). It covers every route on `StreamsResource` and `EntriesResource` (the paths `API::routeCrud()` registers), the query parameters, and the response envelope. The package's own tests check that every registered route is documented and nothing else. Entry bodies are generic there because they depend on your streams.
+
+In your own app the file is at `vendor/streams/api/resources/openapi/openapi.yaml`. The copy on this site is re-synced from the package with `php scripts/sync-openapi.php`; its header comment names the branch and commit it came from.
 
 ## Your app's spec
 
