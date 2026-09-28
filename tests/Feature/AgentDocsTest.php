@@ -141,4 +141,28 @@ class AgentDocsTest extends TestCase
             ->assertSee('make:stream', false)
             ->assertDontSee('01-streams.md', false);
     }
+
+    public function test_install_docs_use_real_publish_tags_and_the_version_matrix()
+    {
+        $install = $this->get('/docs/installation.md')->assertOk()->getContent();
+
+        $this->assertStringContainsString('PHP 8.2 or newer', $install);
+        $this->assertStringContainsString('## Version matrix', $install);
+        $this->assertStringContainsString('11.45+', $install);
+        $this->assertStringContainsString('12.41+', $install);
+        $this->assertStringContainsString('^8.36\|^9.15\|^10.8', $install);
+
+        foreach (['/docs/installation.md', '/docs/core/installation.md'] as $url) {
+            $text = $this->get($url)->getContent();
+
+            $this->assertStringNotContainsString('--tag=streams-config', $text, $url);
+            $this->assertStringNotContainsString('--tag=streams-data', $text, $url);
+        }
+
+        $core = $this->get('/docs/core/installation.md')->getContent();
+
+        foreach (['config', 'streams', 'public'] as $tag) {
+            $this->assertStringContainsString('--provider="Streams\Core\StreamsServiceProvider" --tag='.$tag, $core);
+        }
+    }
 }

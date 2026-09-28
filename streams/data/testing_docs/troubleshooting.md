@@ -580,7 +580,7 @@ When tests aren't working, check:
 - [ ] `parent::setUp()` and `parent::tearDown()` called
 - [ ] File permissions correct on stream data
 - [ ] APP_KEY set in phpunit.xml
-- [ ] Correct PHP version (8.1+)
+- [ ] Correct PHP version (8.2+)
 - [ ] Dependencies installed with `composer install`
 
 Still having issues? Check the [GitHub issues](https://github.com/laravel-streams/streams-testing/issues) or create a new one with the diagnostic information above.

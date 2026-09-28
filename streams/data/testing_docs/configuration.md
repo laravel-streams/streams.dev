@@ -458,7 +458,7 @@ jobs:
     
     strategy:
       matrix:
-        php: [8.1, 8.2, 8.3]
+        php: [8.2, 8.3]
     
     steps:
       - uses: actions/checkout@v3

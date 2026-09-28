@@ -23,7 +23,7 @@ The server runs over stdio on your machine through Artisan. It is not an HTTP en
 composer require --dev laravel/mcp
 ```
 
-On Laravel 10 the MCP server is not available and is skipped automatically. Agents can still use the CLI equivalents: `php artisan streams:list --json` and `php artisan streams:validate --json`. See the [version matrix](/docs/versions#version-matrix).
+On Laravel 10 the MCP server is not available and is skipped automatically. Agents can still use the CLI equivalents: `php artisan streams:list --json` and `php artisan streams:validate --json`. See the [version matrix](/docs/installation#version-matrix).
 
 ## Start the server
 
