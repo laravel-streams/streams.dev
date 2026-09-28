@@ -2,7 +2,10 @@
     "name": "laravel-streams/streams.dev",
     "type": "project",
     "description": "A modular ecosystem of Laravel packages (Core, UI, API, SDK) for building configurable, data-driven web applications and control panels.",
-    "keywords": ["framework", "laravel"],
+    "keywords": [
+        "framework",
+        "laravel"
+    ],
     "license": "MIT",
     "require": {
         "php": "^8.0.2",
@@ -85,6 +88,10 @@
         ],
         "post-create-project-cmd": [
             "@php artisan key:generate --ansi"
+        ],
+        "dev": [
+            "Composer\\Config::disableProcessTimeout",
+            "npx concurrently -c \"#93c5fd,#fdba74\" --names=server,vite --kill-others \"php artisan serve --host=127.0.0.1 --port=8427\" \"npm run dev\""
         ]
     },
     "extra": {
@@ -101,7 +108,8 @@
         "sort-packages": true,
         "allow-plugins": {
             "pestphp/pest-plugin": true
-        }
+        },
+        "process-timeout": 0
     },
     "minimum-stability": "dev",
     "prefer-stable": true
