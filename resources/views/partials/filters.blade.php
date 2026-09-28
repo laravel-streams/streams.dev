@@ -1,19 +1,12 @@
-<aside class="w-60">
-    <div class="py-4 w-60">
-
-        <ul>
-            @foreach (Streams::make('packages')->fields->get('type')->options() as $key => $type)
-            <li><a class="hover:underline" href="/addons?type={{ $key }}">{{ $type }}</a></li>
-            @endforeach
-            {{-- <li><a class="hover:underline" href="#">Starters</a></li>
-            <li><a class="hover:underline" href="#">Core</a></li> --}}
-            {{-- <li><a class="hover:underline" href="#">Fields</a></li> --}}
-            {{-- <li><a class="hover:underline" href="#">Inputs</a></li>
-            <li><a class="hover:underline" href="#">Analytics</a></li>
-            <li><a class="hover:underline" href="#">Forms</a></li>
-            <li><a class="hover:underline" href="#">Dev Tools</a></li>
-            <li><a class="hover:underline" href="#">Optimization</a></li> --}}
-        </ul>
-
-    </div>
+@php
+    $activeType = Request::get('type');
+@endphp
+<aside class="shrink-0 md:w-52" aria-label="Addon types">
+    <p class="docs-nav-label">Browse</p>
+    <ul class="flex flex-wrap gap-1 md:flex-col">
+        <li><a class="docs-nav-link {{ $activeType ? '' : 'is-active' }}" href="/addons">All addons</a></li>
+        @foreach (Streams::make('packages')->fields->get('type')->options() as $key => $type)
+        <li><a class="docs-nav-link {{ $activeType === $key ? 'is-active' : '' }}" href="/addons?type={{ $key }}">{{ $type }}</a></li>
+        @endforeach
+    </ul>
 </aside>
