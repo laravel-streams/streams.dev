@@ -18,9 +18,9 @@ Complete examples demonstrating real-world usage patterns.
 import { Client, AuthorizationMiddleware, CriteriaMiddleware, Criteria } from '@laravel-streams/api-client';
 
 const client = new Client({
-    baseUrl: 'https://api.example.com',
-    middleware: [
-        new AuthorizationMiddleware('your-api-token'),
+    baseURL: 'https://api.example.com',
+    middlewares: [
+        new AuthorizationMiddleware({ token: 'your-api-token' }),
         new CriteriaMiddleware()
     ]
 });

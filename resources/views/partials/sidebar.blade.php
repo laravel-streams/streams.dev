@@ -41,14 +41,21 @@
     <p class="docs-nav-label">Reference</p>
     <ul class="mb-4 space-y-0.5">
         @foreach ($packages as $slug => $package)
+        @php
+            $packagePages = Streams::exists($package['stream'])
+                ? Streams::entries($package['stream'])->orderBy('sort_order', 'ASC')->get()
+                : collect();
+            $landing = $packagePages->firstWhere('id', 'introduction') ?? $packagePages->first();
+        @endphp
+        @continue(! $landing)
         <li>
-            <a href="/docs/{{ $slug }}/introduction"
+            <a href="/docs/{{ $slug }}/{{ $landing->id }}"
                class="docs-nav-link {{ $section === $slug ? 'is-active' : '' }}">
                 {{ $package['label'] }}
             </a>
             @if ($section === $slug)
             <ul class="docs-nav-nested mt-1 space-y-0.5 mb-2">
-                @foreach (Streams::entries($package['stream'])->orderBy('sort_order', 'ASC')->get() as $page)
+                @foreach ($packagePages as $page)
                 <li>
                     <a href="/docs/{{ $slug }}/{{ $page->id }}"
                        class="docs-nav-link text-[0.8125rem] {{ Request::segment(3) == $page->id ? 'is-active' : '' }}">
