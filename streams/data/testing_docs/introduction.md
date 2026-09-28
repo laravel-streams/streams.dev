@@ -61,4 +61,4 @@ Full access to Laravel's testing features, including database assertions, HTTP t
 
 ## Getting Started
 
-Ready to start testing? Continue to the [Installation Guide](installation.md) to set up the Streams Testing package in your project.
+Ready to start testing? Continue to the [Installation Guide](/docs/testing/installation) to set up the Streams Testing package in your project.

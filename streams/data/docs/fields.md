@@ -10,7 +10,7 @@ status: ready
 
 Fields represent the type and characteristics of your stream data. For example a "name" field would likely be a **string** field type.
 
-Fields are strictly concerned with data. Please see the [UI package](../ui/introduction) for configuring field [inputs](../ui/inputs).
+Fields are strictly concerned with data. Please see the [UI package](/docs/ui/introduction) for configuring field [inputs](/docs/ui/inputs).
 
 ## Defining Fields
 

@@ -237,6 +237,6 @@ chmod -R 775 vendor/streams/testing/laravel/streams
 
 Now that you have the package installed, learn about:
 
-- [Test Data](test-data.md) - Understanding the sample streams
-- [Writing Tests](writing-tests.md) - Creating effective tests
-- [Configuration](configuration.md) - Advanced setup options
+- [Test Data](/docs/testing/test-data) — sample streams
+- [Writing Tests](/docs/testing/writing-tests)
+- [Configuration](/docs/testing/configuration)

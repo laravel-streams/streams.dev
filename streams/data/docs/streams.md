@@ -77,7 +77,7 @@ $entry->company->email;
 ### Stream Routes
 
 - [Stream Routes](routing#stream-routes)
-- [Route Options](routing#route-optionss)
+- [Route Options](/docs/core/routes)
 
 Streams can simplify **routing** by defining associated routes in their definition.
 
@@ -109,7 +109,7 @@ You can also use an array to include other **route options**.
 
 Streams simplifies **validation** by defining validation in their definition.
 
-- [Defining Rules](validation#rule-configuration)
+- [Validation](/docs/core/validation)
 
 ```json
 // streams/contacts.json
@@ -130,7 +130,7 @@ Streams simplifies **validation** by defining validation in their definition.
 
 ### Security
 
-Specify the [Laravel policy](https://laravel.com/docs/authorization#creating-policies) to use for [security](security).
+Specify the [Laravel policy](https://laravel.com/docs/authorization#creating-policies) class to use for the stream. There is no separate security guide.
 
 ```json
 // streams/contacts.json
@@ -143,7 +143,7 @@ Specify the [Laravel policy](https://laravel.com/docs/authorization#creating-pol
 
 Streams provides a touch-free caching system you can define in the configuration.
 
-- [Defining Rules](validation#rule-configuration)
+- [Caching](/docs/core/caching)
 
 ```json
 // streams/contacts.json
@@ -157,7 +157,7 @@ Streams provides a touch-free caching system you can define in the configuration
 
 Sources define the source information for entry data which you can define in the configuration.
 
-- [Defining Sources](sources#defining-sources)
+- [Sources and adapters](/docs/core/sources-and-adapters)
 
 ```json
 // streams/contacts.json
@@ -173,13 +173,13 @@ Sources define the source information for entry data which you can define in the
 
 Domain entities are called `entries` within the Streams platform. A stream defines entry attributes, or `fields`, that dictate the entry's properties, data-casting, and more.
 
-- [Defining Entries](entries#defining-entries)
+- [Entries](/docs/core/entries)
 
 ### Abstracts
 
 The **abstract** parameter defines the class to use when constructing entry instances.
 
-- [Entry Abstracts](entries#entry-objects)
+- [Entries](/docs/core/entries)
 
 ```json
 // streams/contacts.json
@@ -194,7 +194,7 @@ The **abstract** parameter defines the class to use when constructing entry inst
 
 The **criteria** parameter defines the class to use when building entry queries.
 
-- [Querying Entries](querying)
+- [Criteria](/docs/core/criteria)
 
 ```json
 // streams/contacts.json
@@ -207,7 +207,7 @@ The **criteria** parameter defines the class to use when building entry queries.
 
 The **repository** parameter defines the repository class to use for the stream entries.
 
-- [Entry Repositories](repositories)
+- [Repositories](/docs/core/repositories)
 
 ```json
 // streams/contacts.json
