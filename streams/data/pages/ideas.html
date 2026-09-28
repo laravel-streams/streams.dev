@@ -1,0 +1,42 @@
+---
+title: Ideas
+description: 'Scratch page for UI ideas.'
+uri: ideas
+layout: page
+sort_order: 1
+nav_disabled: true
+---
+
+<section class="mx-auto max-w-3xl px-6 pt-16">
+    <h2 class="docs-title">Generic Forms</h2>
+    <div class="mt-4 text-fg-secondary">
+        @verbatim
+        <code><pre>
+@ui('form', [
+    'url' => 'my/custom/path'
+    'template' => 'forms.my_custom_form'
+])
+
+&lt;x-form url="my/custom/path">
+// Custom stuff
+&lt;/x-form>
+        </pre></code>
+        @endverbatim
+    </div>
+</section>
+
+<section class="mx-auto max-w-3xl px-6 pt-12 pb-28">
+    <h2 class="docs-title">Entry Forms</h2>
+    <div class="mt-4 text-fg-secondary">
+        @verbatim
+        <code><pre>
+// Direct API
+Streams::make('pages')->ui('forms.default'); // Instance/__toString
+Streams::make('pages')->ui('forms.default')->render();
+
+// Directive
+@ui('pages::forms.default') // render()
+        </pre></code>
+        @endverbatim
+    </div>
+</section>

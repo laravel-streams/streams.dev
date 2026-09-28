@@ -1,0 +1,108 @@
+/* source(none) turns off automatic detection, which was scanning untracked files and changing the build. */
+@import "tailwindcss" source(none);
+@plugin "@tailwindcss/typography";
+
+@import "./tokens.css";
+@import "./base.css";
+@import "./components.css";
+@import "./docs.css";
+@import "./explore.css";
+@import "./geometry.css";
+@import "./prism.css";
+@import "./tocbot.css";
+
+/* Dark mode follows the class the theme toggle puts on <html>. */
+@custom-variant dark (&:where(.dark, .dark *, [data-theme="dark"], [data-theme="dark"] *));
+
+/* Class sources. Paths are relative to this file. vendor/ is gitignored, so the form views are listed on purpose. */
+@source "../views";
+@source "../js";
+@source "../../app";
+@source "../../streams/data";
+@source "../../streams/*.json";
+/* streams-ui form markup rendered on /ui (read-only; the package is not edited). */
+@source "../../vendor/streams/ui/resources/views/builders/form.blade.php";
+@source "../../vendor/streams/ui/resources/views/builders/inputs";
+@source "../../vendor/streams/ui/resources/views/components/inputs";
+@source "../../vendor/streams/ui/resources/views/components/field";
+
+/*
+ * Map the --st-* tokens onto Tailwind's theme namespaces so utilities such as
+ * `bg-page`, `text-fg-muted`, `border-line`, `rounded-xl`, and `shadow-e2`
+ * follow the active scheme automatically.
+ */
+@theme {
+    --font-sans: var(--st-font-sans);
+    --font-mono: var(--st-font-mono);
+
+    /* Extra type steps from tokens.css: text-2xs, text-md, text-prose. */
+    --text-2xs: var(--st-text-2xs);
+    --text-md: var(--st-text-md);
+    --text-prose: var(--st-text-prose);
+
+    --color-page: var(--st-page);
+    --color-surface: var(--st-surface);
+    --color-surface-muted: var(--st-surface-muted);
+    --color-surface-sunken: var(--st-surface-sunken);
+    --color-inverse: var(--st-inverse);
+    --color-on-inverse: var(--st-on-inverse);
+    --color-inverse-hover: var(--st-inverse-hover);
+    --color-fg: var(--st-text);
+    --color-fg-secondary: var(--st-text-secondary);
+    --color-fg-muted: var(--st-text-muted);
+    --color-fg-faint: var(--st-text-faint);
+    --color-line: var(--st-border);
+    --color-line-strong: var(--st-border-strong);
+    --color-glass: var(--st-glass-bg);
+    --color-glass-strong: var(--st-glass-bg-strong);
+    --color-glass-line: var(--st-glass-border);
+    --color-code: var(--st-code-bg);
+
+    /* streams-ui bridge: its views use primary/custom/danger scales. Keep them monochrome. */
+    --color-primary-50: var(--st-gray-50);
+    --color-primary-100: var(--st-gray-100);
+    --color-primary-200: var(--st-gray-200);
+    --color-primary-300: var(--st-gray-300);
+    --color-primary-400: var(--st-gray-400);
+    --color-primary-500: var(--st-gray-700);
+    --color-primary-600: var(--st-gray-900);
+    --color-primary-700: var(--st-gray-950);
+    --color-primary-800: var(--st-gray-950);
+    --color-primary-900: var(--st-gray-1000);
+    --color-primary-950: var(--st-gray-1000);
+    --color-custom-500: var(--st-gray-700);
+    --color-custom-600: var(--st-gray-900);
+    --color-danger-500: #b42318;
+    --color-danger-600: #912018;
+
+    --radius-xs: var(--st-radius-xs);
+    --radius-sm: var(--st-radius-sm);
+    --radius-md: var(--st-radius-md);
+    --radius-lg: var(--st-radius-lg);
+    --radius-xl: var(--st-radius-xl);
+    --radius-2xl: var(--st-radius-2xl);
+
+    --shadow-e1: var(--st-shadow-1);
+    --shadow-e2: var(--st-shadow-2);
+    --shadow-e3: var(--st-shadow-3);
+    --shadow-e4: var(--st-shadow-4);
+
+    --ease-soft: var(--st-ease-out);
+
+    --tracking-display: var(--st-tracking-display);
+
+    --animate-rise: st-rise var(--st-duration-slow) var(--st-ease-out) both;
+    --animate-fade: st-fade var(--st-duration-slow) var(--st-ease-out) both;
+}
+
+/* Legacy variable names from the previous _tokens.scss, kept so older markup still resolves. */
+:root {
+    --color-text: var(--st-text);
+    --color-text-secondary: var(--st-text-secondary);
+    --color-text-muted: var(--st-text-muted);
+    --color-border: var(--st-border);
+    --color-border-strong: var(--st-border-strong);
+    --color-code-bg: var(--st-code-bg);
+    --color-code-text: var(--st-code-text);
+    --color-accent: var(--st-text);
+}

@@ -1,0 +1,311 @@
+/*
+ * Streams design tokens
+ *
+ * Framework-agnostic CSS custom properties shared by streams.dev and
+ * (planned) streams-ui. Every token lives under the `--st-` namespace so it
+ * can sit next to other design systems without collisions. Tailwind reads
+ * these through the `@theme` block in `app.css`; plain CSS can use them
+ * directly.
+ *
+ * Schemes: light is the default. Dark applies when <html> carries
+ * `.dark` or `data-theme="dark"` (set by the theme toggle, which falls back
+ * to `prefers-color-scheme`).
+ */
+
+:root {
+    color-scheme: light;
+
+    /* Neutral scale (monochrome only). */
+    --st-gray-0: #ffffff;
+    --st-gray-25: #fcfcfc;
+    --st-gray-50: #fafafa;
+    --st-gray-100: #f4f4f5;
+    --st-gray-150: #ededee;
+    --st-gray-200: #e4e4e7;
+    --st-gray-300: #d4d4d8;
+    --st-gray-400: #a1a1aa;
+    --st-gray-500: #71717a;
+    --st-gray-600: #52525b;
+    --st-gray-700: #3f3f46;
+    --st-gray-800: #27272a;
+    --st-gray-850: #1d1d20;
+    --st-gray-900: #18181b;
+    --st-gray-925: #121214;
+    --st-gray-950: #0a0a0b;
+    --st-gray-1000: #000000;
+
+    /* Semantic surfaces. */
+    --st-page: var(--st-gray-50);
+    --st-surface: var(--st-gray-0);
+    --st-surface-muted: var(--st-gray-100);
+    --st-surface-sunken: var(--st-gray-150);
+    --st-inverse: var(--st-gray-950);
+    --st-on-inverse: var(--st-gray-0);
+    --st-inverse-hover: var(--st-gray-800);
+
+    /* Semantic text. */
+    --st-text: var(--st-gray-950);
+    --st-text-body: var(--st-gray-700);
+    --st-text-secondary: var(--st-gray-600);
+    --st-text-muted: #60606a;  /* AA (4.6:1+) even over the mesh peaks */
+    --st-text-faint: var(--st-gray-400);
+
+    /* Lines. */
+    --st-border: rgb(10 10 11 / 0.08);
+    --st-border-strong: rgb(10 10 11 / 0.16);
+    --st-focus: #7c3aed;
+
+    /* Code. */
+    --st-code-bg: var(--st-gray-925);
+    --st-code-text: var(--st-gray-200);
+    --st-code-chrome: var(--st-gray-850);
+
+    /*
+     * Glass layers: translucent surface + blur/saturate + a thin outer border,
+     * a 1px inner ring, and a brighter top highlight. `--st-glass-filter` is
+     * the one backdrop-filter every glass surface uses.
+     */
+    --st-glass-bg: rgb(255 255 255 / 0.5);
+    --st-glass-bg-strong: rgb(255 255 255 / 0.7);
+    --st-glass-bg-subtle: rgb(255 255 255 / 0.34);
+    --st-glass-border: rgb(10 10 11 / 0.08);
+    --st-glass-inner: rgb(255 255 255 / 0.55);
+    --st-glass-highlight: rgb(255 255 255 / 0.95);
+    --st-glass-blur: 28px;
+    --st-glass-saturate: 1.8;
+    --st-glass-filter: blur(var(--st-glass-blur)) saturate(var(--st-glass-saturate));
+    --st-glass-ring: inset 0 1px 0 var(--st-glass-highlight), inset 0 0 0 1px var(--st-glass-inner);
+    --st-glass-shadow: var(--st-glass-ring), var(--st-shadow-2);
+    --st-glass-shadow-lg: var(--st-glass-ring), var(--st-shadow-3);
+
+    /* Header: the most opaque glass on the page, with a visible hairline. */
+    --st-header-bg: rgb(255 255 255 / 0.74);
+    --st-header-border: rgb(10 10 11 / 0.1);
+    --st-header-shadow: inset 0 -1px 0 rgb(255 255 255 / 0.6), 0 1px 2px rgb(10 10 11 / 0.04), 0 12px 32px -18px rgb(10 10 11 / 0.22);
+    --st-header-blur: 36px;
+
+    /*
+     * Color accents. The palette stays monochrome; these are for small
+     * accents (focus, active indicators, link hover, callout edges, hero
+     * gradient) and the background mesh only. Accent text colors meet AA.
+     */
+    --st-violet: #7c3aed;
+    --st-cyan: #0e7490;
+    --st-rose: #be185d;
+    --st-amber: #b45309;
+    --st-accent: var(--st-violet);
+    --st-accent-soft: rgb(124 58 237 / 0.14);
+    --st-accent-ink: #6d28d9;  /* accent as text on tinted fills (AA) */
+    --st-accent-gradient: linear-gradient(100deg, #6d28d9 0%, #0e7490 55%, #be185d 100%);
+    --st-accent-line: linear-gradient(90deg, rgb(124 58 237 / 0.55), rgb(6 182 212 / 0.55), rgb(236 72 153 / 0.45), rgb(245 158 11 / 0.4));
+
+    /* Background mesh: soft multi-color blobs behind the glass. */
+    --st-mesh-violet: rgb(139 92 246 / 0.11);
+    --st-mesh-cyan: rgb(34 211 238 / 0.12);
+    --st-mesh-rose: rgb(244 114 182 / 0.1);
+    --st-mesh-amber: rgb(251 191 36 / 0.1);
+
+    /* Code panels: dark smoked glass in both schemes. */
+    --st-code-glass: rgb(14 14 16 / 0.9);
+    --st-code-border: rgb(255 255 255 / 0.08);
+    --st-code-inner: rgb(255 255 255 / 0.06);
+
+    /* Page backdrop: soft grayscale light pools and a faint grain, fixed behind everything so glass has something to blur. */
+    --st-glow-1: rgb(10 10 11 / 0.055);
+    --st-glow-2: rgb(10 10 11 / 0.045);
+    --st-glow-3: rgb(255 255 255 / 0.9);
+    --st-grain-opacity: 0.04;
+
+    /* Elevation: soft, layered, low-contrast. */
+    --st-shadow-0: none;
+    --st-shadow-1: 0 1px 2px rgb(10 10 11 / 0.04), 0 1px 1px rgb(10 10 11 / 0.03);
+    --st-shadow-2: 0 2px 4px rgb(10 10 11 / 0.03), 0 6px 16px -4px rgb(10 10 11 / 0.08);
+    --st-shadow-3: 0 4px 8px rgb(10 10 11 / 0.03), 0 16px 40px -12px rgb(10 10 11 / 0.14);
+    --st-shadow-4: 0 8px 16px rgb(10 10 11 / 0.04), 0 32px 80px -24px rgb(10 10 11 / 0.22);
+
+    /*
+     * Shape, taken from the logo mark (public/img/logo.svg). The mark is an
+     * isometric line drawing: every edge is vertical or at 30 degrees
+     * (dy/dx = 103.4/179.1 = tan 30), strokes are 14.8 units wide on a
+     * 425.2 box (3.5%), and channels are 42.5 units across (49.1 along the
+     * slope). So corners are near-square, and key surfaces cut two opposite
+     * corners at the logo's 30-degree angle, top-right and bottom-left, the
+     * same corners the mark's silhouette slopes away at.
+     *
+     * Radius (px at the 18px root): xs 2 · sm 3 · md 3 · lg 4 · xl 4 · 2xl 5.
+     * Chamfer is the horizontal run of the cut; its rise is run × tan 30.
+     */
+    --st-radius-xs: 0.1111rem;
+    --st-radius-sm: 0.1667rem;
+    --st-radius-md: 0.1667rem;
+    --st-radius-lg: 0.2222rem;
+    --st-radius-xl: 0.2222rem;
+    --st-radius-2xl: 0.2778rem;
+    --st-radius-pill: 9999px;
+    --st-radius-control: var(--st-radius-md);
+    --st-radius-control-lg: var(--st-radius-lg);
+
+    --st-tan30: 0.57735;
+    --st-chamfer-xs: 0.3333rem;   /* 6px: chips, tags, step markers */
+    --st-chamfer-sm: 0.5rem;      /* 9px: buttons, inputs, search fields */
+    --st-chamfer: 0.8889rem;      /* 16px: cards, code windows, panels */
+    --st-chamfer-lg: 1.3333rem;   /* 24px: dialogs, large glass panels */
+
+    /* Drafting lines: page rails, section rules, and the marks where they cross. */
+    --st-frame-max: 90rem;
+    --st-rule: rgb(10 10 11 / 0.09);
+    --st-rule-strong: rgb(10 10 11 / 0.12);
+    --st-rule-mark: rgb(124 58 237 / 0.55);
+    --st-lattice: rgb(10 10 11 / 0.07);
+    --st-lattice-accent: rgb(124 58 237 / 0.09);
+    --st-lattice-mark: rgb(10 10 11 / 0.1);
+
+    /* Motion: subtle only. Collapsed to ~0 under prefers-reduced-motion. */
+    --st-ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+    --st-ease-in: cubic-bezier(0.4, 0, 1, 1);
+    --st-ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+    --st-duration-fast: 150ms;
+    --st-duration-base: 220ms;
+    --st-duration-slow: 420ms;
+    --st-duration-reveal: 640ms;
+    --st-reveal-distance: 10px;
+    --st-reveal-stagger: 70ms;
+    --st-drift-duration: 52s;
+    --st-lift: -1px;
+
+    /*
+     * Typography. The root size sets 1rem, so every rem-based size, spacing
+     * value, and Tailwind utility scales with it (18px instead of 16px).
+     * Breakpoints are unaffected: media queries resolve rem against the
+     * browser default. The steps below are in that new rem.
+     */
+    --st-root-size: 112.5%;
+    --st-text-2xs: 0.75rem;      /* 13.5px labels, kbd */
+    --st-text-xs: 0.8125rem;     /* 14.6px eyebrows, meta */
+    --st-text-sm: 0.875rem;      /* 15.75px UI chrome, nested nav */
+    --st-text-md: 0.9375rem;     /* 16.9px nav, sidebar, cards */
+    --st-text-base: 1rem;        /* 18px UI body */
+    --st-text-prose: 0.9444rem;  /* 17px phone prose, 18px from 640px (below) */
+    --st-text-lg: 1.1875rem;     /* 21.4px lead */
+    --st-text-code: 0.8333rem;   /* 15px code blocks */
+    --st-leading-prose: 1.7;
+    --st-measure: 70ch;
+    --st-h1: clamp(2.25rem, 1.8rem + 1.6vw, 3rem);
+    --st-h2: clamp(1.4375rem, 1.25rem + 0.6vw, 1.6875rem);
+    --st-h3: clamp(1.1875rem, 1.1rem + 0.3vw, 1.3125rem);
+    --st-h4: 1.0625rem;
+    --st-font-sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    --st-font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+    --st-tracking-tight: -0.025em;
+    --st-tracking-display: -0.045em;
+
+    /*
+     * Spacing. Fluid values for page gutters, section rhythm, and grids so a
+     * 390px phone gets room without wasting it and 1440 gets real air.
+     */
+    --st-gutter: clamp(1.3rem, 0.75rem + 2.4vw, 3rem);
+    --st-section-y: clamp(5.5rem, 3rem + 8vw, 10rem);
+    --st-section-y-sm: clamp(3.5rem, 2.25rem + 5vw, 6.5rem);
+    --st-gap-cards: clamp(1.125rem, 0.75rem + 1.4vw, 2rem);
+    --st-card-pad: clamp(1.5rem, 1.2rem + 0.8vw, 2.25rem);
+    --st-stack-sm: 0.75rem;
+    --st-stack-md: 1.5rem;
+    --st-stack-lg: 2.5rem;
+
+    /* Layout. */
+    --st-header-height: 4.5rem;
+    --st-sidebar-width: 15.5rem;
+    --st-toc-width: 12rem;
+    --st-content-width: 90rem;
+}
+
+@media (min-width: 640px) {
+    :root {
+        --st-text-prose: 1rem;  /* 18px */
+    }
+}
+
+:root.dark,
+:root[data-theme="dark"] {
+    color-scheme: dark;
+
+    --st-page: var(--st-gray-950);
+    --st-surface: var(--st-gray-925);
+    --st-surface-muted: var(--st-gray-900);
+    --st-surface-sunken: var(--st-gray-1000);
+    --st-inverse: var(--st-gray-50);
+    --st-on-inverse: var(--st-gray-950);
+    --st-inverse-hover: var(--st-gray-200);
+
+    --st-text: var(--st-gray-50);
+    --st-text-body: #c4c4cb;
+    --st-text-secondary: var(--st-gray-400);
+    --st-text-muted: #9a9aa3;  /* AA over the brightest dark mesh */
+    --st-text-faint: var(--st-gray-600);
+
+    --st-border: rgb(255 255 255 / 0.08);
+    --st-border-strong: rgb(255 255 255 / 0.16);
+    --st-focus: #a78bfa;
+
+    --st-code-bg: var(--st-gray-1000);
+    --st-code-text: var(--st-gray-200);
+    --st-code-chrome: var(--st-gray-900);
+
+    --st-glass-bg: rgb(28 28 31 / 0.46);
+    --st-glass-bg-strong: rgb(22 22 25 / 0.7);
+    --st-glass-bg-subtle: rgb(28 28 31 / 0.3);
+    --st-glass-border: rgb(255 255 255 / 0.09);
+    --st-glass-inner: rgb(255 255 255 / 0.035);
+    --st-glass-highlight: rgb(255 255 255 / 0.1);
+    --st-glass-saturate: 1.5;
+
+    --st-header-bg: rgb(16 16 19 / 0.7);
+    --st-header-border: rgb(255 255 255 / 0.1);
+    --st-header-shadow: inset 0 -1px 0 rgb(255 255 255 / 0.03), 0 1px 2px rgb(0 0 0 / 0.4), 0 14px 36px -18px rgb(0 0 0 / 0.7);
+
+    --st-violet: #a78bfa;
+    --st-cyan: #67e8f9;
+    --st-rose: #f9a8d4;
+    --st-amber: #fcd34d;
+    --st-accent-soft: rgb(167 139 250 / 0.16);
+    --st-accent-ink: #b9a4fb;
+    --st-accent-gradient: linear-gradient(100deg, #c4b5fd 0%, #67e8f9 55%, #f9a8d4 100%);
+    --st-accent-line: linear-gradient(90deg, rgb(167 139 250 / 0.5), rgb(103 232 249 / 0.45), rgb(249 168 212 / 0.4), rgb(252 211 77 / 0.35));
+
+    --st-rule: rgb(255 255 255 / 0.08);
+    --st-rule-strong: rgb(255 255 255 / 0.11);
+    --st-rule-mark: rgb(167 139 250 / 0.6);
+    --st-lattice: rgb(255 255 255 / 0.06);
+    --st-lattice-accent: rgb(167 139 250 / 0.1);
+    --st-lattice-mark: rgb(255 255 255 / 0.1);
+
+    --st-mesh-violet: rgb(139 92 246 / 0.15);
+    --st-mesh-cyan: rgb(34 211 238 / 0.11);
+    --st-mesh-rose: rgb(236 72 153 / 0.11);
+    --st-mesh-amber: rgb(245 158 11 / 0.1);
+
+    --st-code-glass: rgb(0 0 0 / 0.55);
+    --st-code-border: rgb(255 255 255 / 0.09);
+    --st-code-inner: rgb(255 255 255 / 0.05);
+
+    --st-glow-1: rgb(255 255 255 / 0.075);
+    --st-glow-2: rgb(255 255 255 / 0.045);
+    --st-glow-3: rgb(255 255 255 / 0.03);
+    --st-grain-opacity: 0.05;
+
+    --st-shadow-1: 0 1px 2px rgb(0 0 0 / 0.4);
+    --st-shadow-2: 0 2px 4px rgb(0 0 0 / 0.3), 0 8px 20px -6px rgb(0 0 0 / 0.5);
+    --st-shadow-3: 0 4px 8px rgb(0 0 0 / 0.3), 0 20px 48px -12px rgb(0 0 0 / 0.6);
+    --st-shadow-4: 0 8px 16px rgb(0 0 0 / 0.35), 0 36px 90px -24px rgb(0 0 0 / 0.7);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    :root {
+        --st-duration-fast: 0.01ms;
+        --st-duration-base: 0.01ms;
+        --st-duration-slow: 0.01ms;
+        --st-duration-reveal: 0.01ms;
+        --st-reveal-distance: 0px;
+        --st-lift: 0px;
+    }
+}

@@ -1,0 +1,849 @@
+/*
+ * Component classes behind the Blade components in resources/views/components.
+ * Plain CSS on top of the --st-* tokens so other packages (streams-ui) can
+ * reuse the same class contract without this site's Tailwind config.
+ */
+
+@layer components {
+    /* Glass panel ---------------------------------------------------------- */
+
+    .st-glass {
+        background-color: var(--st-glass-bg);
+        border: 1px solid var(--st-glass-border);
+        box-shadow: var(--st-glass-shadow);
+        -webkit-backdrop-filter: var(--st-glass-filter);
+        backdrop-filter: var(--st-glass-filter);
+    }
+
+    .st-glass--strong {
+        background-color: var(--st-glass-bg-strong);
+        box-shadow: var(--st-glass-shadow-lg);
+    }
+
+    .st-glass--flat {
+        box-shadow: var(--st-glass-ring);
+    }
+
+    /* Page container and section rhythm, driven by the spacing tokens. */
+    .st-container {
+        width: 100%;
+        max-width: var(--st-container, 72rem);
+        margin-inline: auto;
+        padding-inline: var(--st-gutter);
+    }
+
+    .st-container--narrow {
+        --st-container: 56rem;
+    }
+
+    .st-section {
+        padding-block: var(--st-section-y);
+    }
+
+    .st-section--tight {
+        padding-block: var(--st-section-y-sm);
+    }
+
+    .st-grid-cards {
+        display: grid;
+        gap: var(--st-gap-cards);
+    }
+
+    /* Accent gradient text (hero headline). Every stop meets AA against the page in its scheme. */
+    .st-gradient-text {
+        background: var(--st-accent-gradient);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        -webkit-box-decoration-break: clone;
+        box-decoration-break: clone;
+    }
+
+    /* One-sentence section subhead. */
+    .st-subhead {
+        margin-top: 1rem;
+        max-width: 38rem;
+        font-size: var(--st-text-lg);
+        line-height: 1.55;
+        color: var(--st-text-secondary);
+        text-wrap: pretty;
+    }
+
+    /* Ambient backdrop: two soft grayscale glows, no texture. */
+    .st-ambient {
+        position: relative;
+        isolation: isolate;
+        /* The glow is drawn 5% wider than the section. Clip x so that bleed does not widen the page. */
+        overflow-x: clip;
+    }
+
+    .st-ambient::before {
+        content: "";
+        position: absolute;
+        inset: -10% -5% auto;
+        height: 42rem;
+        z-index: -1;
+        pointer-events: none;
+        background:
+            radial-gradient(30rem 20rem at 26% 22%, var(--st-mesh-violet), transparent 70%),
+            radial-gradient(28rem 20rem at 74% 14%, var(--st-mesh-cyan), transparent 70%),
+            radial-gradient(24rem 18rem at 52% 44%, var(--st-mesh-rose), transparent 72%),
+            radial-gradient(38rem 24rem at 22% 18%, var(--st-glow-1), transparent 70%),
+            radial-gradient(34rem 26rem at 80% 8%, var(--st-glow-2), transparent 70%);
+        /* Fade every edge so a clipped or short section never shows the glow's box. */
+        -webkit-mask-image: linear-gradient(to bottom, transparent, #000 18%, #000 70%, transparent), linear-gradient(to right, transparent, #000 12%, #000 88%, transparent);
+        -webkit-mask-composite: source-in;
+        mask-image: linear-gradient(to bottom, transparent, #000 18%, #000 70%, transparent), linear-gradient(to right, transparent, #000 12%, #000 88%, transparent);
+        mask-composite: intersect;
+    }
+
+    /* Button --------------------------------------------------------------- */
+
+    .st-btn {
+        --st-btn-height: 2.625rem;
+        --st-btn-px: 1.25rem;
+        --st-btn-font: var(--st-text-md);
+
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        height: var(--st-btn-height);
+        padding-inline: var(--st-btn-px);
+        border: 1px solid transparent;
+        border-radius: var(--st-btn-radius, var(--st-radius-control));
+        font-size: var(--st-btn-font);
+        font-weight: 600;
+        line-height: 1;
+        letter-spacing: -0.01em;
+        white-space: nowrap;
+        text-decoration: none;
+        cursor: pointer;
+        user-select: none;
+        transition:
+            background-color var(--st-duration-base) var(--st-ease-out),
+            border-color var(--st-duration-base) var(--st-ease-out),
+            color var(--st-duration-base) var(--st-ease-out),
+            box-shadow var(--st-duration-base) var(--st-ease-out),
+            transform var(--st-duration-base) var(--st-ease-out);
+
+        &:hover {
+            transform: translateY(var(--st-lift));
+        }
+
+        &:active {
+            transform: translateY(0) scale(0.985);
+        }
+
+        &:disabled,
+        &[aria-disabled="true"] {
+            opacity: 0.5;
+            pointer-events: none;
+        }
+
+        svg {
+            width: 1em;
+            height: 1em;
+            flex-shrink: 0;
+            transition: transform var(--st-duration-base) var(--st-ease-out);
+        }
+
+        &:hover .st-btn__arrow {
+            transform: translateX(2px);
+        }
+    }
+
+    .st-btn--primary {
+        background-color: var(--st-inverse);
+        color: var(--st-on-inverse);
+        box-shadow: var(--st-shadow-1);
+
+        &:hover {
+            background-color: var(--st-inverse-hover);
+            box-shadow: var(--st-shadow-2), 0 8px 28px -10px var(--st-mesh-violet);
+        }
+    }
+
+    .st-btn--secondary {
+        background-color: var(--st-surface-muted);
+        color: var(--st-text);
+
+        &:hover {
+            background-color: var(--st-surface-sunken);
+            box-shadow: var(--st-shadow-1);
+        }
+    }
+
+    .st-btn--glass {
+        background-color: var(--st-glass-bg);
+        border-color: var(--st-glass-border);
+        color: var(--st-text);
+        box-shadow: var(--st-glass-ring), var(--st-shadow-1);
+        -webkit-backdrop-filter: var(--st-glass-filter);
+        backdrop-filter: var(--st-glass-filter);
+
+        &:hover {
+            background-color: var(--st-glass-bg-strong);
+            border-color: var(--st-border-strong);
+            box-shadow: var(--st-glass-shadow);
+        }
+    }
+
+    .st-btn--ghost {
+        background-color: transparent;
+        color: var(--st-text-secondary);
+
+        &:hover {
+            background-color: var(--st-surface-muted);
+            color: var(--st-text);
+        }
+    }
+
+    .st-btn--link {
+        background-color: transparent;
+        color: var(--st-text);
+        padding-inline: 0.25rem;
+
+        &:hover {
+            color: var(--st-text-muted);
+            transform: none;
+        }
+    }
+
+    .st-btn--sm {
+        --st-btn-height: 2.125rem;
+        --st-btn-px: 0.9375rem;
+        --st-btn-font: var(--st-text-sm);
+    }
+
+    .st-btn--lg {
+        --st-btn-height: 3.125rem;
+        --st-btn-px: 1.625rem;
+        --st-btn-font: var(--st-text-base);
+    }
+
+    .st-btn--xl {
+        --st-btn-radius: var(--st-radius-control-lg);
+        --st-btn-height: 3.75rem;
+        --st-btn-px: 1.75rem;
+        --st-btn-font: clamp(1.125rem, 1rem + 0.6vw, 1.375rem);
+        font-weight: 700;
+        letter-spacing: -0.02em;
+    }
+
+    .st-btn--block {
+        display: flex;
+        width: 100%;
+        height: auto;
+        min-height: var(--st-btn-height);
+        justify-content: flex-start;
+        padding-block: 0.85rem;
+        white-space: normal;
+        text-align: left;
+    }
+
+    .st-btn:has(.st-btn__stack) {
+        height: auto;
+        min-height: var(--st-btn-height);
+        padding-block: 0.35rem;
+    }
+
+    @media (max-width: 639.98px) {
+        .st-header .st-btn__arrow {
+            display: none;
+        }
+    }
+
+    .st-btn--icon {
+        --st-btn-px: 0;
+        width: var(--st-btn-height);
+    }
+
+    /* Card ----------------------------------------------------------------- */
+
+    /* Cards are glass by default; --glass adds the stronger shadow and more blur. */
+    .st-card {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        padding: var(--st-card-pad);
+        border-radius: var(--st-radius-xl);
+        background-color: var(--st-glass-bg);
+        border: 1px solid var(--st-glass-border);
+        box-shadow: var(--st-glass-ring), var(--st-shadow-1);
+        -webkit-backdrop-filter: var(--st-glass-filter);
+        backdrop-filter: var(--st-glass-filter);
+        color: inherit;
+        text-decoration: none;
+        transition:
+            background-color var(--st-duration-base) var(--st-ease-out),
+            border-color var(--st-duration-base) var(--st-ease-out),
+            transform var(--st-duration-base) var(--st-ease-out);
+    }
+
+    /* Hover shadow on its own layer so the lift animates opacity, not box-shadow. */
+    .st-card::after {
+        content: "";
+        position: absolute;
+        inset: -1px;
+        border-radius: inherit;
+        box-shadow: var(--st-shadow-3);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity var(--st-duration-base) var(--st-ease-out);
+    }
+
+    .st-card--glass {
+        box-shadow: var(--st-glass-shadow);
+    }
+
+    a.st-card:hover,
+    a.st-card:focus-visible,
+    .st-card--interactive:hover {
+        background-color: var(--st-glass-bg-strong);
+        border-color: var(--st-border-strong);
+        transform: translateY(calc(var(--st-lift) * 3));
+    }
+
+    a.st-card:hover::after,
+    a.st-card:focus-visible::after,
+    .st-card--interactive:hover::after {
+        opacity: 1;
+    }
+
+    .st-card__eyebrow {
+        font-family: var(--st-font-mono);
+        font-size: var(--st-text-xs);
+        color: var(--st-text-muted);
+    }
+
+    .st-card__title {
+        font-size: 1.0625rem;
+        font-weight: 600;
+        letter-spacing: -0.012em;
+        color: var(--st-text);
+    }
+
+    .st-card__body {
+        margin-top: 0.5rem;
+        font-size: var(--st-text-md);
+        line-height: 1.6;
+        color: var(--st-text-secondary);
+    }
+
+    .st-card__arrow {
+        position: absolute;
+        top: var(--st-card-pad);
+        right: var(--st-card-pad);
+        width: 1rem;
+        height: 1rem;
+        color: var(--st-text-faint);
+        transition:
+            transform var(--st-duration-base) var(--st-ease-out),
+            color var(--st-duration-base) var(--st-ease-out);
+    }
+
+    a.st-card:hover .st-card__arrow {
+        color: var(--st-accent);
+        transform: translate(2px, -2px);
+    }
+
+    /* Pill (tag / badge) --------------------------------------------------- */
+
+    .st-pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.375rem;
+        height: 1.875rem;
+        padding-inline: 0.8125rem;
+        border-radius: var(--st-radius-pill);
+        border: 1px solid var(--st-border);
+        background-color: var(--st-surface);
+        color: var(--st-text-secondary);
+        font-size: var(--st-text-xs);
+        font-weight: 500;
+        line-height: 1;
+        white-space: nowrap;
+        text-decoration: none;
+    }
+
+    /* Long labels wrap on phones instead of running out of their container. */
+    @media (max-width: 639.98px) {
+        .st-pill {
+            max-width: 100%;
+            height: auto;
+            min-height: 1.875rem;
+            padding-block: 0.3125rem;
+            line-height: 1.35;
+            white-space: normal;
+            text-align: center;
+        }
+    }
+
+    a.st-pill {
+        transition:
+            border-color var(--st-duration-base) var(--st-ease-out),
+            color var(--st-duration-base) var(--st-ease-out);
+
+        &:hover {
+            border-color: var(--st-border-strong);
+            color: var(--st-text);
+        }
+    }
+
+    .st-pill--solid {
+        background-color: var(--st-inverse);
+        border-color: transparent;
+        color: var(--st-on-inverse);
+    }
+
+    .st-pill--glass {
+        background-color: var(--st-glass-bg);
+        border-color: var(--st-glass-border);
+        box-shadow: var(--st-glass-ring), var(--st-shadow-1);
+        -webkit-backdrop-filter: var(--st-glass-filter);
+        backdrop-filter: var(--st-glass-filter);
+    }
+
+    .st-pill__dot {
+        width: 0.375rem;
+        height: 0.375rem;
+        border-radius: 9999px;
+        background: currentColor;
+    }
+
+    /* Code block (Mac window) ---------------------------------------------- */
+
+    /* Smoked glass: dark in both schemes, blurred, with an inner ring and top highlight. */
+    .st-code {
+        overflow: hidden;
+        border-radius: var(--st-radius-xl);
+        background-color: var(--st-code-glass);
+        color: var(--st-code-text);
+        border: 1px solid var(--st-code-border);
+        box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.1), inset 0 0 0 1px var(--st-code-inner), var(--st-shadow-4);
+        -webkit-backdrop-filter: var(--st-glass-filter);
+        backdrop-filter: var(--st-glass-filter);
+    }
+
+    .st-code__chrome {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        height: 3rem;
+        padding-inline: 1.125rem;
+        background-color: rgb(255 255 255 / 0.04);
+        border-bottom: 1px solid var(--st-code-border);
+    }
+
+    .st-code__lights {
+        display: flex;
+        gap: 0.4375rem;
+
+        span {
+            width: 0.6875rem;
+            height: 0.6875rem;
+            border-radius: 9999px;
+            background-color: rgb(255 255 255 / 0.18);
+        }
+
+        span:nth-child(2) {
+            background-color: rgb(255 255 255 / 0.12);
+        }
+
+        span:nth-child(3) {
+            background-color: rgb(255 255 255 / 0.08);
+        }
+    }
+
+    .st-code__title {
+        flex: 1;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        font-family: var(--st-font-mono);
+        font-size: var(--st-text-xs);
+        color: rgb(255 255 255 / 0.62);
+    }
+
+    .st-code__tabs {
+        display: flex;
+        gap: 0.25rem;
+        overflow-x: auto;
+
+        button {
+            padding: 0.3125rem 0.6875rem;
+            border-radius: var(--st-radius-sm);
+            font-family: var(--st-font-mono);
+            font-size: var(--st-text-xs);
+            color: rgb(255 255 255 / 0.62);
+            white-space: nowrap;
+            transition:
+                background-color var(--st-duration-base) var(--st-ease-out),
+                color var(--st-duration-base) var(--st-ease-out);
+
+            &:hover {
+                color: rgb(255 255 255 / 0.85);
+            }
+
+            &[aria-selected="true"] {
+                background-color: rgb(255 255 255 / 0.1);
+                color: #fff;
+            }
+        }
+    }
+
+    .st-code__copy {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.375rem;
+        padding: 0.3125rem 0.5rem;
+        border-radius: var(--st-radius-sm);
+        font-size: var(--st-text-xs);
+        color: rgb(255 255 255 / 0.62);
+        transition: color var(--st-duration-base) var(--st-ease-out), background-color var(--st-duration-base) var(--st-ease-out);
+
+        &:hover {
+            color: #fff;
+            background-color: rgb(255 255 255 / 0.08);
+        }
+    }
+
+    .st-code pre[class*="language-"],
+    .st-code pre {
+        margin: 0;
+        border-radius: 0;
+        background-color: transparent;
+        padding: 1.375rem 1.5rem 1.625rem;
+        font-size: var(--st-text-code);
+        line-height: 1.75;
+        overflow-x: auto;
+    }
+
+    /* Callout --------------------------------------------------------------- */
+
+    .st-callout {
+        display: flex;
+        gap: 1rem;
+        margin-block: 2rem;
+        padding: 1.25rem 1.375rem;
+        border-radius: var(--st-radius-lg);
+        border: 1px solid var(--st-glass-border);
+        background-color: var(--st-glass-bg);
+        box-shadow: var(--st-glass-ring), var(--st-shadow-1);
+        -webkit-backdrop-filter: var(--st-glass-filter);
+        backdrop-filter: var(--st-glass-filter);
+        color: var(--st-text-body);
+        font-size: var(--st-text-md);
+        line-height: 1.65;
+
+        > svg {
+            flex-shrink: 0;
+            width: 1.125rem;
+            height: 1.125rem;
+            margin-top: 0.1875rem;
+            color: var(--st-text);
+        }
+
+        p {
+            margin: 0;
+        }
+
+        p + p {
+            margin-top: 0.5rem;
+        }
+    }
+
+    .st-callout__title {
+        display: block;
+        margin-bottom: 0.125rem;
+        font-weight: 600;
+        color: var(--st-text);
+    }
+
+    /* A 3px color edge per type: note violet, tip cyan, warning amber. */
+    .st-callout {
+        box-shadow: inset 3px 0 0 var(--st-callout-edge, var(--st-violet)), var(--st-glass-ring), var(--st-shadow-1);
+
+        > svg {
+            color: var(--st-callout-edge, var(--st-violet));
+        }
+    }
+
+    .st-callout--warning {
+        --st-callout-edge: var(--st-amber);
+        background-color: var(--st-glass-bg-strong);
+        border-color: var(--st-border-strong);
+    }
+
+    .st-callout--tip {
+        --st-callout-edge: var(--st-cyan);
+        background-color: var(--st-glass-bg-subtle);
+    }
+
+    /* Header / nav ---------------------------------------------------------- */
+
+    /* The logo SVG sets an intrinsic width of 15rem. Pin the box so a flex
+       header cannot grow to that and overflow a phone viewport. */
+    .st-logo {
+        width: 2rem;
+        height: 2rem;
+        min-width: 2rem;
+        max-width: 2rem;
+        flex: none;
+    }
+
+    /* Header mark: bigger, and the only brand element in the bar. */
+    .st-logo--header {
+        width: 2.5rem;
+        height: 2.5rem;
+        min-width: 2.5rem;
+        max-width: 2.5rem;
+    }
+
+    @media (min-width: 640px) {
+        .st-logo--header {
+            width: 2.75rem;
+            height: 2.75rem;
+            min-width: 2.75rem;
+            max-width: 2.75rem;
+        }
+    }
+
+    .st-logo--sm {
+        width: 1.5rem;
+        height: 1.5rem;
+        min-width: 1.5rem;
+        max-width: 1.5rem;
+    }
+
+    .st-header {
+        position: sticky;
+        top: 0;
+        z-index: 40;
+        height: var(--st-header-height);
+        overflow-x: clip;
+        background-color: var(--st-header-bg);
+        border-bottom: 1px solid var(--st-header-border);
+        box-shadow: var(--st-header-shadow);
+        -webkit-backdrop-filter: blur(var(--st-header-blur)) saturate(var(--st-glass-saturate));
+        backdrop-filter: blur(var(--st-header-blur)) saturate(var(--st-glass-saturate));
+        view-transition-name: site-header;
+    }
+
+    /* A faint color hairline along the bottom edge. */
+    .st-header::after {
+        content: "";
+        position: absolute;
+        inset: auto 0 -1px;
+        height: 1px;
+        background: var(--st-accent-line);
+        opacity: 0.6;
+        pointer-events: none;
+    }
+
+    .st-nav-link {
+        display: inline-flex;
+        align-items: center;
+        position: relative;
+        height: 2.75rem;
+        padding-inline: 1.125rem;
+        border-radius: var(--st-radius-control);
+        font-size: var(--st-text-base);
+        font-weight: 600;
+        letter-spacing: -0.012em;
+        color: var(--st-text-secondary);
+        text-decoration: none;
+        transition: color var(--st-duration-base) var(--st-ease-out), background-color var(--st-duration-base) var(--st-ease-out);
+
+        &:hover {
+            color: var(--st-text);
+            background-color: var(--st-surface-muted);
+        }
+
+        &[aria-current="page"] {
+            color: var(--st-text);
+        }
+
+        /* Accent bar under the label: grows in on hover/focus, stays on the current section. */
+        &::after {
+            content: "";
+            position: absolute;
+            left: 50%;
+            bottom: 0.3rem;
+            width: 1.25rem;
+            height: 2px;
+            margin-left: -0.625rem;
+            border-radius: 2px;
+            background: var(--st-accent-gradient);
+            opacity: 0;
+            transform: scaleX(0);
+            transition:
+                transform var(--st-duration-base) var(--st-ease-out),
+                opacity var(--st-duration-base) var(--st-ease-out);
+        }
+
+        &:hover::after,
+        &:focus-visible::after {
+            opacity: 0.55;
+            transform: scaleX(0.7);
+        }
+
+        &[aria-current="page"]::after {
+            opacity: 1;
+            transform: scaleX(1);
+        }
+    }
+
+    .st-search-trigger {
+        display: flex;
+        align-items: center;
+        gap: 0.625rem;
+        height: 2.75rem;
+        padding-inline: 1rem 0.5rem;
+        border-radius: var(--st-radius-control);
+        border: 1px solid var(--st-glass-border);
+        background-color: var(--st-glass-bg-subtle);
+        box-shadow: var(--st-glass-ring);
+        color: var(--st-text-muted);
+        font-size: var(--st-text-sm);
+        text-align: left;
+        cursor: pointer;
+        transition: border-color var(--st-duration-base) var(--st-ease-out), background-color var(--st-duration-base) var(--st-ease-out);
+
+        &:hover {
+            border-color: var(--st-border-strong);
+            background-color: var(--st-glass-bg-strong);
+        }
+    }
+
+    .st-kbd {
+        display: inline-flex;
+        align-items: center;
+        height: 1.5rem;
+        padding-inline: 0.5rem;
+        border-radius: var(--st-radius-xs);
+        border: 1px solid var(--st-border);
+        background-color: var(--st-surface);
+        font-family: var(--st-font-mono);
+        font-size: var(--st-text-2xs);
+        color: var(--st-text-muted);
+    }
+
+    /* Stacked "Get Started" label, carried over from the live header. */
+    .st-btn__stack {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        line-height: 1.05;
+
+        small {
+            font-size: 0.625rem;
+            font-weight: 500;
+            letter-spacing: 0.02em;
+            opacity: 0.6;
+        }
+    }
+
+    /* Hero search field (opens the Cmd+K dialog). */
+    .st-search-hero {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        width: 100%;
+        height: 3.5rem;
+        padding-inline: 1.25rem 0.75rem;
+        border-radius: var(--st-radius-control-lg);
+        cursor: text;
+        color: var(--st-text-muted);
+        font-size: var(--st-text-base);
+        text-align: left;
+        transition:
+            border-color var(--st-duration-base) var(--st-ease-out),
+            background-color var(--st-duration-base) var(--st-ease-out),
+            transform var(--st-duration-base) var(--st-ease-out);
+
+        &:hover {
+            border-color: var(--st-border-strong);
+            background-color: var(--st-glass-bg-strong);
+            transform: translateY(var(--st-lift));
+        }
+    }
+
+    /* Section eyebrow label. */
+    .st-eyebrow {
+        font-size: var(--st-text-xs);
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--st-text-muted);
+    }
+}
+
+/*
+ * Scroll reveal (resources/js/reveal.js). Only elements that start below the
+ * fold get the pending state, so nothing visible on load ever blinks. Once
+ * revealed, the classes are removed and normal hover transitions return.
+ */
+@layer components {
+    .st-reveal-pending {
+        opacity: 0;
+        transform: translate3d(0, var(--st-reveal-distance), 0);
+    }
+
+    .st-reveal-in {
+        transition:
+            opacity var(--st-duration-reveal) var(--st-ease-out),
+            transform var(--st-duration-reveal) var(--st-ease-out) !important;
+        transition-delay: var(--st-reveal-delay, 0ms) !important;
+    }
+}
+
+/*
+ * streams-ui bridge: token styling for forms rendered by the streams-ui
+ * builders (see /ui). A preview of how streams-ui can adopt the shared tokens.
+ */
+@layer components {
+    .ui-form {
+        label span {
+            color: var(--st-text);
+            font-size: var(--st-text-md);
+        }
+
+        input:not([type="checkbox"], [type="radio"]),
+        textarea,
+        select {
+            width: 100%;
+            min-height: 2.75rem;
+            padding: 0.625rem 1rem;
+            border: 1px solid var(--st-border-strong);
+            border-radius: var(--st-radius-md);
+            background-color: var(--st-glass-bg-strong);
+            color: var(--st-text);
+            font-size: var(--st-text-base);
+            box-shadow: var(--st-glass-ring), var(--st-shadow-1);
+            transition: border-color var(--st-duration-base) var(--st-ease-out), box-shadow var(--st-duration-base) var(--st-ease-out);
+
+            &:focus {
+                outline: none;
+                border-color: var(--st-text);
+                box-shadow: 0 0 0 3px var(--st-border);
+            }
+        }
+
+        textarea {
+            min-height: 7rem;
+        }
+    }
+}
+
+/*
+ * streams-ui renders its labels with `text-gray-950`, a utility that beats the
+ * components layer and left the labels unreadable in dark mode. Same-layer,
+ * higher-specificity override.
+ */
+@layer utilities {
+    .ui-form label span {
+        color: var(--st-text);
+    }
+}

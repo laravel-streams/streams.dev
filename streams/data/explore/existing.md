@@ -1,8 +1,11 @@
 ---
 title: What kind of support does your existing project need?
+label: Existing project
+parent: start
+sort_order: 4
 menu:
-    - text: Tell us on Discord
-      href: /discord
+    - text: Tell us on GitHub
+      href: https://github.com/laravel-streams
       target: _blank
     - text: Explore Features
       href: /explore/features

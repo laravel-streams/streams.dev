@@ -1,5 +1,8 @@
 ---
 title: Would you like to explore a new Laravel project or an existing one?
+label: Your project
+parent: idea
+sort_order: 2
 options:
     - text: New Project
       href: /explore/new

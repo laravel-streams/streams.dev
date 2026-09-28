@@ -1,96 +1,79 @@
-import 'alpinejs';
+import './bootstrap';
+import '../css/app.css';
 
-import Prism from './vendor/prism';
+import Alpine from 'alpinejs';
+import Prism from 'prismjs';
+import 'prismjs/components/prism-bash';
+// prism-php tokenizes through markup-templating; without it highlightAll() throws on the first PHP block.
+import 'prismjs/components/prism-markup-templating';
+import 'prismjs/components/prism-php';
+import 'prismjs/components/prism-json';
+import 'prismjs/components/prism-yaml';
+import 'prismjs/components/prism-markup';
+
 import AnchorJS from 'anchor-js';
-import Clipboard from 'clipboard';
 import * as tocbot from 'tocbot';
+import { initDocsSearch } from './docs-search';
+import { initReveal } from './reveal';
+import { initDocsFilter } from './docs-filter';
 
-//import { AppServiceProvider } from './src/AppServiceProvider';
+// Livewire 3 ships its own Alpine. Start ours only on pages that never load it,
+// and only after parse, so a late Livewire script is visible to the check.
+function startAlpine() {
+    if (window.Livewire || window.Alpine) {
+        return;
+    }
 
-//window.AppServiceProvider = AppServiceProvider;
+    window.Alpine = Alpine;
+    Alpine.start();
+}
 
-(function (window, document) {
-    /**
-     * Setup the code examples
-     */
-    let examples = Array.prototype.slice.call(
-        document.querySelectorAll('pre > code')
-    );
-
-    examples.forEach(function (code, index) {
-
-        code.setAttribute('id', 'code-' + (index + 1));
-
-        let copy = document.createElement('button');
-
-        copy.textContent = 'copy';
-        copy.setAttribute('data-clipboard-target', '#code-' + (index + 1));
-        copy.classList.add('copy-to-clipboard');
-
-        code.parentNode.insertBefore(copy, code.nextSibling);
-
-        let clipboard = new Clipboard('.copy-to-clipboard');
-
-        clipboard.on('success', function (event) {
-            event.trigger.classList.add('copied');
-
-            setTimeout(() => event.trigger.classList.remove('copied'), 3000);
-        });
-    });
-
+function highlightCode() {
     Prism.highlightAll();
+}
 
+function initAnchors() {
     const anchors = new AnchorJS();
-
     anchors.options = {
-        placement: 'left',
+        placement: 'right',
+        icon: '#',
     };
+    anchors.add('.documentation-content h2, .documentation-content h3, .documentation-content h4');
+}
 
-    anchors.add('.doc-body h2, .doc-body h3, .doc-body h4');
+function initTocbot() {
+    const tocEl = document.querySelector('.documentation__toc');
+    const contentEl = document.querySelector('.documentation-content');
+
+    if (!tocEl || !contentEl) {
+        return;
+    }
+
+    tocbot.destroy();
 
     tocbot.init({
-
-        // Where to render the table of contents.
-        tocSelector: '.ls-doc__toc',
-        // Where to grab the headings to build the table of contents.
-        contentSelector: '.doc-body',
-        // Which headings to grab inside of the contentSelector element.
-        headingSelector: 'h2,h3,h5',
-        // Headings that match the ignoreSelector will be skipped.
-        ignoreSelector: '.toc-ignore',
-        // For headings inside relative or absolute positioned containers within content.
+        tocSelector: '.documentation__toc',
+        contentSelector: '.documentation-content',
+        headingSelector: 'h2,h3',
         hasInnerContainers: false,
-        // Main class to add to links.
         linkClass: 'toc-link',
-        // The sections that are hidden will open
-        // and close as you scroll to headings within them.
-        collapseDepth: 5,
-        // Smooth scrolling enabled.
+        collapseDepth: 3,
         scrollSmooth: true,
-        // Smooth scroll duration.
         scrollSmoothDuration: 0,
-        // Callback for scroll end.
-        // Can also be used to account for scroll height discrepancies from the use of css scroll-padding-top
-        headingsOffset: 1,
-        // Timeout between events firing to make sure it's
-        // not too rapid (for performance reasons).
+        headingsOffset: (document.querySelector('.st-header')?.offsetHeight ?? 72) + 24,
         throttleTimeout: 50,
-        // Element to add the positionFixedClass to.
-        positionFixedSelector: null,
-        // Fixed position class to add to make sidebar fixed after scrolling
-        // down past the fixedSidebarOffset.
-        positionFixedClass: 'is-position-fixed',
-        // fixedSidebarOffset can be any number but by default is set
-        // to auto which sets the fixedSidebarOffset to the sidebar
-        // element's offsetTop from the top of the document on init.
-        fixedSidebarOffset: 'auto',
-        // includeHtml can be set to true to include the HTML markup from the
-        // heading node instead of just including the textContent.
-        includeHtml: false,
-        // If there is a fixed article scroll container, set to calculate titles' offset
-        scrollContainer: null,
-        // prevent ToC DOM rendering if it's already rendered by an external system
-        skipRendering: false,
     });
+}
 
-})(window, document);
+// Run each step on its own so one failure (a Prism grammar, say) cannot skip search or the TOC.
+function safely(step) {
+    try {
+        step();
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    [startAlpine, highlightCode, initAnchors, initTocbot, initDocsSearch, initDocsFilter, initReveal].forEach(safely);
+});

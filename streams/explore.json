@@ -1,23 +1,57 @@
 {
     "name": "Explore",
-    "description": "Explore the feature, functions, and operating principles of Laravel Streams.",
-    "routes.view": {
-        "uri": "/explore/{id}"
+    "handle": "explore",
+    "description": "A choose-your-path walk through Streams. Each node is one markdown file; front matter drives the choices.",
+    "config": {
+        "source": {
+            "format": "md"
+        }
     },
-    "translatable": true,
-    "config.source.format": "md",
+    "routes": [
+        {
+            "handle": "view",
+            "uri": "explore/{id}",
+            "view": "explore",
+            "constraints": [
+                {
+                    "id": "[a-z0-9-]+"
+                }
+            ]
+        }
+    ],
     "fields": [
         {
             "handle": "id",
-            "type": "slug"
+            "type": "slug",
+            "required": true,
+            "unique": true
+        },
+        {
+            "handle": "sort_order",
+            "type": "integer",
+            "required": true,
+            "config": {
+                "default": "increment"
+            }
         },
         {
             "handle": "title",
-            "type": "string"
+            "type": "string",
+            "required": true
         },
         {
-            "handle": "body",
-            "type": "string"
+            "handle": "label",
+            "type": "string",
+            "input": {
+                "placeholder": "Short name for breadcrumbs and <title>"
+            }
+        },
+        {
+            "handle": "description",
+            "type": "string",
+            "input": {
+                "type": "textarea"
+            }
         },
         {
             "handle": "parent",
@@ -25,6 +59,10 @@
             "config": {
                 "related": "explore"
             }
+        },
+        {
+            "handle": "menu",
+            "type": "array"
         },
         {
             "handle": "options",
@@ -35,8 +73,11 @@
             "type": "array"
         },
         {
-            "handle": "menu",
-            "type": "array"
+            "handle": "body",
+            "type": "string",
+            "input": {
+                "type": "editor"
+            }
         }
     ],
     "ui": {
@@ -45,60 +86,10 @@
                 {
                     "sort_order": 3,
                     "text": "Explore",
-                    "url": "\/admin\/explore",
+                    "url": "/admin/explore",
                     "component": "anchor"
                 }
             ]
-        },
-        "components": [
-            {
-                "component": "table",
-                "handle": "default",
-                "selectable": true,
-                "filters": [
-                    {
-                        "handle": "title",
-                        "type": "string",
-                        "placeholder": "Title"
-                    }
-                ],
-                "columns": [
-                    {
-                        "value": "id",
-                        "header": {
-                            "text": "ID"
-                        }
-                    },
-                    {
-                        "value": "title",
-                        "header": {
-                            "text": "Title"
-                        }
-                    }
-                ],
-                "buttons": [
-                    {
-                        "button": "button.edit"
-                    },
-                    {
-                        "tag": "a",
-                        "handle": "view",
-                        "text": "View",
-                        "component": "button",
-                        "url": "/explore/{entry.id}",
-                        "attributes": {
-                            "target": "_blank"
-                        }
-                    }
-                ],
-                "actions": [
-                    {
-                        "handle": "delete",
-                        "text": "Delete",
-                        "type": "delete"
-                    }
-                ]
-            }
-        ]
+        }
     }
 }

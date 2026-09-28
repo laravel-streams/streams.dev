@@ -1,41 +1,43 @@
 {
+    "name": "Pages",
     "handle": "pages",
+    "description": "Basic pages for the website.",
     "config": {
         "source": {
-            "format": "md"
+            "format": "html"
         }
     },
-    "template": "page",
-    "rules": {
-        "id": "required",
-        "title": "required"
-    },
+    "routes": [
+        {
+            "handle": "view",
+            "uri": "{uri}",
+            "parse": true,
+            "view": "{layout}"
+        }
+    ],
     "fields": [
         {
             "handle": "id",
-            "type": "slug"
+            "type": "slug",
+            "required": true,
+            "unique": true
         },
         {
             "handle": "title",
-            "type": "string"
+            "type": "string",
+            "required": true
         },
         {
-            "handle": "path",
-            "type": "string"
-        },
-        {
-            "handle": "enabled",
-            "type": "boolean"
-        },
-        {
-            "handle": "sort",
-            "type": "integer"
+            "handle": "uri",
+            "type": "string",
+            "required": true,
+            "unique": true
         },
         {
             "handle": "body",
             "type": "string",
             "input": {
-                "type": "markdown"
+                "type": "editor"
             }
         }
     ],
@@ -43,10 +45,10 @@
         "admin": {
             "navigation": [
                 {
-                    "sort_order": 1,
+                    "component": "anchor",
                     "text": "Pages",
-                    "url": "\/admin\/pages",
-                    "component": "anchor"
+                    "url": "/admin/pages",
+                    "sort_order": 1
                 }
             ]
         },
@@ -54,14 +56,6 @@
             {
                 "component": "table",
                 "handle": "default",
-                "selectable": true,
-                "filters": [
-                    {
-                        "handle": "title",
-                        "type": "string",
-                        "placeholder": "Title"
-                    }
-                ],
                 "columns": [
                     {
                         "value": "title",
@@ -74,34 +68,14 @@
                         "header": {
                             "text": "Path"
                         }
-                    },
-                    {
-                        "value": "enabled",
-                        "header": {
-                            "text": "Enabled"
-                        }
                     }
                 ],
                 "buttons": [
                     {
-                        "button": "button.edit"
-                    },
-                    {
                         "tag": "a",
-                        "handle": "view",
-                        "text": "View",
-                        "component": "button",
-                        "url": "{entry.path}",
-                        "attributes": {
-                            "target": "_blank"
-                        }
-                    }
-                ],
-                "actions": [
-                    {
-                        "handle": "delete",
-                        "text": "Delete",
-                        "type": "delete"
+                        "handle": "edit",
+                        "text": "Edit",
+                        "url": "/{request.segments.0}/{request.segments.1}/{entry.id}/edit"
                     }
                 ]
             }

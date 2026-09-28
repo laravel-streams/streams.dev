@@ -1,66 +1,88 @@
-@extends('layouts/explore')
+@php
+    use App\Support\ExploreTree;
 
-@section('content')
-<style>
-    main .body-text p:not(first-of-type) {
-        margin-top: 2rem;
-    }
-</style>
-<div class="flex flex-wrap min-h-screen">
-    <main class="xs:w-full w-2/3 mx-auto p-10">
-        
-        <h1 class="text-4xl sm:text-6xl lg:text-7xl leading-none font-extrabold tracking-tight text-gray-900 mt-10 sm:mt-14 sm:mb-10">
-            {{ $entry->title }}
-        </h1>
+    $crumbs = ExploreTree::breadcrumbs($entry);
+    $menu = ExploreTree::choices($entry, 'menu');
+    $options = ExploreTree::choices($entry, 'options');
+    $links = ExploreTree::choices($entry, 'links');
+    $isRoot = count($crumbs) === 1;
+    $variants = ['primary' => 'primary', 'secondary' => 'secondary', 'link' => 'link'];
+@endphp
 
-        <div class="text-2xl leading-10 mt-14 body-text">
-            {!! Str::markdown(View::parse($entry->body, compact('entry'))) !!}
+@extends('layouts.shell')
+
+@section('title', $isRoot ? 'Explore' : ExploreTree::label($entry).' · Explore')
+
+@push('head')
+    <link rel="alternate" type="text/markdown" href="{{ url('explore/'.$entry->id.'.md') }}" title="{{ $entry->title }} (Markdown)">
+    <link rel="alternate" type="application/json" href="{{ url('explore/'.$entry->id.'.json') }}" title="{{ $entry->title }} (JSON)">
+    <script type="speculationrules">{"prerender":[{"where":{"href_matches":"/explore/*"},"eagerness":"moderate"}]}</script>
+@endpush
+
+@section('main')
+<div class="st-ambient">
+    <div class="explore-stage mx-auto max-w-5xl px-[var(--st-gutter)] pt-12 pb-32 sm:pt-16">
+
+        @unless ($isRoot)
+        <nav aria-label="Explore path">
+            <ol class="explore-crumbs">
+                @foreach ($crumbs as $crumb)
+                <li class="flex items-center gap-1">
+                    @if ($loop->last)
+                        <span aria-current="page">{{ $crumb['label'] }}</span>
+                    @else
+                        <a href="{{ $crumb['url'] }}">{{ $crumb['label'] }}</a>
+                        <svg class="h-3.5 w-3.5 text-fg-faint" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    @endif
+                </li>
+                @endforeach
+            </ol>
+        </nav>
+        @else
+        <x-pill variant="glass" dot>Explore · {{ ExploreTree::all()->count() }} stops, about two minutes</x-pill>
+        @endunless
+
+        <h1 class="explore-title mt-10 max-w-4xl animate-rise sm:mt-14">{{ $entry->title }}</h1>
+
+        @if (trim((string) $entry->body) !== '')
+        <div class="explore-body mt-10 max-w-3xl animate-rise [animation-delay:60ms] sm:mt-12">
+            {!! \App\Support\DocumentationMarkdown::toHtml($entry->body) !!}
         </div>
-
-        @if ($entry->menu)
-        <div class="mt-16">
-            @foreach ((array) $entry->menu as $item)
-            @switch(Arr::get($item, 'type', 'btn'))
-                @case('link')
-                    <a href="{{ $item['href'] }}" target="{{ Arr::get($item, 'target', '_self') }}" class="px-6 py-3 block font-bold text-2xl text-black hover:text-gray-400 transition duration-200 ease-in-out">{{ $item['text'] }}</a>
-                    @break
-                @case('secondary')
-                    <a href="{{ $item['href'] }}" target="{{ Arr::get($item, 'target', '_self') }}" class="px-6 py-3 mb-4 block rounded-3xl font-bold text-2xl bg-gray-200 hover:bg-gray-300 text-black outline-none focus:outline-none hover:shadow-md transition duration-200 ease-in-out">{{ $item['text'] }}</a>
-                    @break
-                @default
-                    <a href="{{ $item['href'] }}" target="{{ Arr::get($item, 'target', '_self') }}" class="px-6 py-3 mb-4 block rounded-3xl font-bold text-2xl bg-black hover:bg-gray-800 text-white outline-none focus:outline-none hover:shadow-md transition duration-200 ease-in-out">{{ $item['text'] }}</a>
-            @endswitch
-            @endforeach
-        </div>    
         @endif
 
-        @if ($entry->options)
-        <div class="mt-16 space-x-4">
-            @foreach ((array) $entry->options as $link)
-            @switch(Arr::get($link, 'type', 'btn'))
-                @case('link')
-                    <a href="{{ $link['href'] }}" target="{{ Arr::get($link, 'target', '_self') }}" class="px-3 py-3 font-bold text-2xl text-black hover:text-gray-400 transition duration-200 ease-in-out">{{ $link['text'] }}</a>
-                    @break
-                @case('secondary')
-                    <a href="{{ $link['href'] }}" target="{{ Arr::get($link, 'target', '_self') }}" class="px-6 py-3 rounded-3xl font-bold text-2xl bg-gray-200 hover:bg-gray-300 text-black outline-none focus:outline-none hover:shadow-md transition duration-200 ease-in-out">{{ $link['text'] }}</a>                    
-                    @break
-                @default
-                    <a href="{{ $link['href'] }}" target="{{ Arr::get($link, 'target', '_self') }}" class="px-6 py-3 rounded-3xl font-bold text-2xl bg-black hover:bg-gray-800 text-white outline-none focus:outline-none hover:shadow-md transition duration-200 ease-in-out">{{ $link['text'] }}</a>                    
-            @endswitch
+        @if ($menu)
+        <div class="explore-choices mt-14 grid max-w-2xl gap-3.5">
+            @foreach ($menu as $item)
+            <x-button :href="$item['href']" :variant="$variants[$item['type']]" size="xl" :block="$item['type'] !== 'link'" :target="$item['target']" :arrow="$item['type'] === 'primary'" class="{{ $item['type'] === 'link' ? 'justify-start' : '' }}">{{ $item['text'] }}</x-button>
             @endforeach
         </div>
         @endif
 
-        @if ($entry->links)
-        <div class="mt-12 text-center text-sm">
-            <strong class="text-gray-600">More resources:</strong> 
-            @foreach ((array) $entry->links as $item)
-            <a href="{{ $item['href'] }}" target="{{ Arr::get($item, 'target', '_self') }}" class="font-regular hover:underline text-gray-600 hover:text-gray-800 transition duration-200 ease-in-out">{{ $item['text'] }}</a>{{ $loop->last ? '' : ', ' }}
+        @if ($options)
+        <div class="explore-choices mt-14 flex flex-wrap items-center gap-3">
+            @foreach ($options as $item)
+            <x-button :href="$item['href']" :variant="$variants[$item['type']]" size="xl" :target="$item['target']" :arrow="$item['type'] === 'primary'">{{ $item['text'] }}</x-button>
             @endforeach
-        </div>    
+        </div>
         @endif
 
-    </main>
+        @if ($links)
+        <div class="mt-16 flex flex-wrap items-center gap-2 animate-fade [animation-delay:200ms]">
+            <span class="mr-1 text-md text-fg-muted">More resources</span>
+            @foreach ($links as $item)
+            <x-pill :href="$item['href']" :target="$item['target']">{{ $item['text'] }}</x-pill>
+            @endforeach
+        </div>
+        @endif
+
+        <p class="mt-24 flex flex-wrap items-center gap-2 text-sm text-fg-muted">
+            <span>For agents:</span>
+            <a class="underline decoration-line-strong underline-offset-2 hover:text-fg" href="{{ url('explore/'.$entry->id.'.md') }}">this node as Markdown</a>
+            <span aria-hidden="true">·</span>
+            <a class="underline decoration-line-strong underline-offset-2 hover:text-fg" href="{{ url('explore/'.$entry->id.'.json') }}">JSON</a>
+            <span aria-hidden="true">·</span>
+            <a class="underline decoration-line-strong underline-offset-2 hover:text-fg" href="{{ url('explore.json') }}">the whole tree</a>
+        </p>
+    </div>
 </div>
-
 @endsection

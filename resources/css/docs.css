@@ -1,0 +1,816 @@
+/* Documentation layout, sidebar, rendered markdown, hub, and search dialog. */
+
+@layer components {
+    .docs-title {
+        font-size: var(--st-h1);
+        line-height: 1.08;
+        font-weight: 700;
+        letter-spacing: var(--st-tracking-tight);
+        color: var(--st-text);
+    }
+
+    .docs-lead {
+        margin-top: 1rem;
+        max-width: var(--st-measure);
+        font-size: var(--st-text-lg);
+        line-height: 1.55;
+        color: var(--st-text-secondary);
+        text-wrap: pretty;
+    }
+
+    /* Sidebar ---------------------------------------------------------------- */
+
+    .docs-sidebar-panel {
+        position: fixed;
+        top: var(--st-header-height);
+        bottom: 0;
+        left: 0;
+        z-index: 40;
+        width: min(var(--st-sidebar-width) + 1rem, calc(100vw - 3rem));
+        border-right: 1px solid var(--st-glass-border);
+        border-radius: 0 var(--st-radius-xl) var(--st-radius-xl) 0;
+        transform: translateX(-105%);
+        transition: transform var(--st-duration-base) var(--st-ease-out);
+    }
+
+    .docs-sidebar-panel.is-open {
+        transform: translateX(0);
+    }
+
+    /* Desktop: a floating, rounded glass panel that sticks under the header. */
+    @media (min-width: 1024px) {
+        .docs-sidebar-panel,
+        .docs-sidebar-panel.is-open {
+            position: sticky;
+            top: calc(var(--st-header-height) + 1.25rem);
+            bottom: auto;
+            z-index: auto;
+            width: var(--st-sidebar-width);
+            height: calc(100vh - var(--st-header-height) - 2.5rem);
+            margin-top: 1.25rem;
+            flex-shrink: 0;
+            transform: none;
+            border: 1px solid var(--st-glass-border);
+            border-radius: var(--st-radius-xl);
+            background-color: var(--st-glass-bg);
+            overflow: hidden;
+        }
+    }
+
+    .docs-sidebar-panel .docs-sidebar {
+        height: 100%;
+    }
+
+    .docs-sidebar {
+        height: calc(100vh - var(--st-header-height));
+        overflow-y: auto;
+        padding: 1.25rem 0.875rem 2.5rem;
+        overscroll-behavior: contain;
+        font-size: var(--st-text-md);
+        scrollbar-width: thin;
+        scrollbar-color: var(--st-border-strong) transparent;
+    }
+
+    .docs-nav-label {
+        display: block;
+        padding: 0 0.75rem;
+        margin-top: 1.5rem;
+        margin-bottom: 0.5rem;
+        font-size: var(--st-text-2xs);
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--st-text-muted);
+    }
+
+    .docs-nav-link {
+        position: relative;
+        display: block;
+        padding: 0.4375rem 0.75rem;
+        border-radius: var(--st-radius-control);
+        color: var(--st-text-secondary);
+        text-decoration: none;
+        line-height: 1.4;
+        transition:
+            color var(--st-duration-fast) var(--st-ease-out),
+            background-color var(--st-duration-fast) var(--st-ease-out);
+
+        &:hover {
+            color: var(--st-text);
+            background-color: var(--st-glass-bg-strong);
+        }
+
+        &.is-active {
+            position: relative;
+            font-weight: 600;
+            color: var(--st-text);
+            background-color: var(--st-glass-bg-strong);
+            box-shadow: var(--st-glass-ring), 0 0 0 1px var(--st-border), var(--st-shadow-1);
+        }
+
+        /* Accent indicator: hints on hover, grows in once on the active item. */
+        &::before {
+            content: "";
+            position: absolute;
+            top: 0.5rem;
+            bottom: 0.5rem;
+            left: 0.3125rem;
+            width: 3px;
+            border-radius: 3px;
+            background: linear-gradient(180deg, var(--st-violet), var(--st-cyan));
+            opacity: 0;
+            transform: scaleY(0);
+            transition:
+                transform var(--st-duration-base) var(--st-ease-out),
+                opacity var(--st-duration-base) var(--st-ease-out);
+        }
+
+        &:hover::before,
+        &:focus-visible::before {
+            opacity: 0.45;
+            transform: scaleY(0.5);
+        }
+
+        &.is-active::before {
+            opacity: 1;
+            transform: scaleY(1);
+            animation: st-bar-in 360ms var(--st-ease-out) 80ms both;
+        }
+    }
+
+    /* Nested page links: one step down the scale. */
+    .docs-nav-link--sub {
+        font-size: var(--st-text-sm);
+        padding-block: 0.375rem;
+    }
+
+    .docs-nav-nested {
+        margin-left: 0.75rem;
+        padding-left: 0.5rem;
+        border-left: 1px solid var(--st-border);
+    }
+
+    /* Inline filter at the top of the sidebar (resources/js/docs-filter.js). */
+    .docs-filter {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        height: 2.5rem;
+        padding-inline: 0.75rem 0.3125rem;
+        margin-bottom: 0.5rem;
+        border: 1px solid var(--st-glass-border);
+        border-radius: var(--st-radius-control);
+        background-color: var(--st-glass-bg-strong);
+        box-shadow: var(--st-glass-ring);
+        color: var(--st-text-muted);
+        transition:
+            border-color var(--st-duration-base) var(--st-ease-out),
+            --st-edge var(--st-duration-base) var(--st-ease-out);
+
+        &:hover {
+            border-color: var(--st-border-strong);
+            --st-edge: var(--st-border-strong);
+        }
+
+        /* Focus shows on the field: a 2px ring that follows the chamfer. */
+        &:focus-within {
+            border-color: var(--st-focus);
+            box-shadow: inset 0 0 0 1px var(--st-focus);
+            --st-edge: var(--st-focus);
+            --_sw: 2px;
+            color: var(--st-text-secondary);
+        }
+    }
+
+    .docs-filter__icon {
+        flex: none;
+        width: 1rem;
+        height: 1rem;
+    }
+
+    .docs-filter__input {
+        flex: 1;
+        min-width: 0;
+        height: 100%;
+        border: 0;
+        background: transparent;
+        color: var(--st-text);
+        font-size: var(--st-text-sm);
+
+        &::placeholder {
+            color: var(--st-text-muted);
+        }
+
+        &:focus,
+        &:focus-visible {
+            outline: none;
+            box-shadow: none;
+        }
+
+        &::-webkit-search-cancel-button {
+            -webkit-appearance: none;
+            appearance: none;
+        }
+    }
+
+    .docs-filter__kbd {
+        flex: none;
+        display: inline-flex;
+        align-items: center;
+        height: 1.625rem;
+        padding-inline: 0.4375rem;
+        border: 1px solid var(--st-border);
+        border-radius: var(--st-radius-xs);
+        background-color: var(--st-surface);
+        font-size: var(--st-text-2xs);
+        color: var(--st-text-muted);
+        cursor: pointer;
+        transition: color var(--st-duration-fast) var(--st-ease-out), border-color var(--st-duration-fast) var(--st-ease-out);
+
+        &:hover {
+            color: var(--st-text);
+            border-color: var(--st-border-strong);
+        }
+
+        &:focus-visible {
+            outline-offset: -2px;
+        }
+    }
+
+    .docs-filter__meta {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 0.5rem;
+        padding: 0 0.75rem 0.375rem;
+        font-size: var(--st-text-xs);
+        color: var(--st-text-muted);
+    }
+
+    .docs-filter__next {
+        flex: none;
+        font-size: var(--st-text-xs);
+        font-weight: 500;
+        color: var(--st-text-secondary);
+        cursor: pointer;
+
+        &:hover {
+            color: var(--st-accent);
+        }
+    }
+
+    .docs-filter__empty {
+        margin: 0.25rem 0 1rem;
+        padding: 0.875rem 0.875rem 0.75rem;
+        border: 1px dashed var(--st-border-strong);
+        border-radius: var(--st-radius-sm);
+        font-size: var(--st-text-sm);
+        line-height: 1.45;
+        color: var(--st-text-muted);
+
+        strong {
+            color: var(--st-text);
+            font-weight: 600;
+        }
+    }
+
+    .docs-filter__empty-action {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.375rem;
+        margin-top: 0.5rem;
+        font-weight: 600;
+        color: var(--st-accent);
+        cursor: pointer;
+
+        kbd {
+            font-size: var(--st-text-2xs);
+            font-weight: 500;
+            color: var(--st-text-muted);
+        }
+
+        &:hover {
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+    }
+
+    /* Collapsed package lists are in the markup for the filter, hidden by default. */
+    .docs-nav-collapsed {
+        display: none;
+    }
+
+    /* Filtering: hide non-matches, open every container that holds a match. */
+    .docs-sidebar.is-filtering {
+        .is-filter-hidden {
+            display: none !important;
+        }
+
+        .is-filter-open {
+            display: block !important;
+        }
+    }
+
+    /* The matched text, in the accent color. */
+    .docs-filter-mark {
+        padding: 0 0.0625rem;
+        border-radius: 2px;
+        background-color: var(--st-accent-soft);
+        color: var(--st-accent-ink);
+        font-weight: 650;
+    }
+
+    /* Keyboard position in the filtered list. */
+    .docs-nav-link.is-filter-active {
+        color: var(--st-text);
+        background-color: var(--st-glass-bg-strong);
+        box-shadow: inset 0 0 0 1px var(--st-border-strong);
+
+        &::before {
+            opacity: 1;
+            transform: scaleY(0.7);
+        }
+    }
+
+    /* "On this page": matching entries are marked and lifted to full text
+       color; the rest keep their normal (AA) muted color rather than fading. */
+    .documentation__toc .toc-link.is-filter-hit {
+        color: var(--st-text);
+    }
+
+    .docs-edit {
+        margin-top: 4rem;
+        padding-top: 1.75rem;
+        border-top: 1px solid var(--st-border);
+    }
+
+    /* Docs hub (docs.html) --------------------------------------------------- */
+
+    .docs-hub-content {
+        max-width: 52rem;
+    }
+
+    .docs-hub-hero {
+        margin-bottom: 3rem;
+
+        h1 {
+            font-size: var(--st-h1);
+            font-weight: 700;
+            letter-spacing: var(--st-tracking-tight);
+            line-height: 1.1;
+        }
+
+        p {
+            margin-top: 0.875rem;
+            font-size: var(--st-text-lg);
+            color: var(--st-text-secondary);
+        }
+    }
+
+    .docs-search-input-hero {
+        width: 100%;
+        height: 3.5rem;
+        margin-top: 1.75rem;
+        padding-inline: 1.375rem;
+        font-size: var(--st-text-base);
+        border: 1px solid var(--st-glass-border);
+        border-radius: var(--st-radius-control-lg);
+        background-color: var(--st-glass-bg-strong);
+        box-shadow: var(--st-glass-shadow);
+        -webkit-backdrop-filter: var(--st-glass-filter);
+        backdrop-filter: var(--st-glass-filter);
+        color: var(--st-text);
+        cursor: text;
+        transition: box-shadow var(--st-duration-base) var(--st-ease-out);
+
+        &::placeholder {
+            color: var(--st-text-muted);
+        }
+
+        &:hover,
+        &:focus {
+            outline: none;
+            border-color: var(--st-border-strong);
+            box-shadow: var(--st-glass-shadow-lg);
+        }
+    }
+
+    .docs-pill-grid {
+        display: grid;
+        gap: var(--st-gap-cards);
+        grid-template-columns: repeat(auto-fill, minmax(min(100%, 12rem), 1fr));
+    }
+
+    .docs-pill {
+        display: block;
+        padding: 1.125rem 1.25rem;
+        border: 1px solid var(--st-glass-border);
+        border-radius: var(--st-radius-lg);
+        background-color: var(--st-glass-bg);
+        box-shadow: var(--st-glass-ring), var(--st-shadow-1);
+        -webkit-backdrop-filter: var(--st-glass-filter);
+        backdrop-filter: var(--st-glass-filter);
+        position: relative;
+        text-decoration: none !important;
+        transition:
+            background-color var(--st-duration-base) var(--st-ease-out),
+            border-color var(--st-duration-base) var(--st-ease-out),
+            transform var(--st-duration-base) var(--st-ease-out);
+
+        &::after {
+            content: "";
+            position: absolute;
+            inset: -1px;
+            border-radius: inherit;
+            box-shadow: var(--st-shadow-2);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity var(--st-duration-base) var(--st-ease-out);
+        }
+
+        &:hover,
+        &:focus-visible {
+            background-color: var(--st-glass-bg-strong);
+            border-color: var(--st-border-strong);
+            transform: translateY(calc(var(--st-lift) * 2));
+        }
+
+        &:hover::after,
+        &:focus-visible::after {
+            opacity: 1;
+        }
+
+        strong {
+            display: block;
+            font-size: var(--st-text-base);
+            font-weight: 600;
+            color: var(--st-text);
+        }
+
+        span {
+            display: block;
+            margin-top: 0.3125rem;
+            font-size: var(--st-text-sm);
+            color: var(--st-text-muted);
+        }
+    }
+
+    /* Two columns on phones: roomy, but not one tall card per screen. */
+    @media (max-width: 639.98px) {
+        .docs-pill-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .docs-pill {
+            padding: 1rem 1.0625rem;
+        }
+    }
+
+    .docs-section-title {
+        margin: 3.5rem 0 1.25rem;
+        font-size: var(--st-text-xs);
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--st-text-muted);
+    }
+
+    /* Cmd+K search dialog --------------------------------------------------- */
+
+    .docs-search[hidden] {
+        display: none;
+    }
+
+    /* Open: overlay fades in 220ms; panel fades and scales 0.98 -> 1 over 220ms (ease-out).
+       Close (.is-closing, set by docs-search.js): both reverse in 160ms (ease-in), then [hidden]. */
+    .docs-search-overlay {
+        background-color: rgb(10 10 11 / 0.22);
+        -webkit-backdrop-filter: blur(10px) saturate(1.2);
+        backdrop-filter: blur(10px) saturate(1.2);
+        animation: st-fade var(--st-duration-base) var(--st-ease-out) both;
+    }
+
+    .docs-search-panel {
+        border-radius: var(--st-radius-2xl);
+        transform-origin: 50% 0;
+        animation: st-dialog-in var(--st-duration-base) var(--st-ease-out) both;
+    }
+
+    .docs-search.is-closing .docs-search-overlay {
+        animation: st-fade-out 160ms var(--st-ease-in) both;
+    }
+
+    .docs-search.is-closing .docs-search-panel {
+        animation: st-dialog-out 160ms var(--st-ease-in) both;
+    }
+
+    .docs-search-result {
+        display: block;
+        width: 100%;
+        border: none;
+        border-radius: var(--st-radius-md);
+        background-color: transparent;
+        cursor: pointer;
+        font: inherit;
+        text-align: left;
+        padding: 0.75rem 1rem;
+        transition: background-color var(--st-duration-fast) var(--st-ease-out);
+
+        &:hover,
+        &.is-active {
+            background-color: var(--st-glass-bg-strong);
+            box-shadow: var(--st-glass-ring), 0 0 0 1px var(--st-border);
+        }
+    }
+}
+
+@keyframes st-dialog-in {
+    from {
+        opacity: 0;
+        transform: scale(0.98);
+    }
+}
+
+@keyframes st-dialog-out {
+    to {
+        opacity: 0;
+        transform: scale(0.98);
+    }
+}
+
+@keyframes st-bar-in {
+    from {
+        opacity: 0;
+        transform: scaleY(0);
+    }
+}
+
+/*
+ * Rendered markdown.
+ *
+ * The typography plugin emits `.prose` into the utilities layer, which beats
+ * anything in `components`. These rules sit in `utilities` too, after the
+ * plugin, with equal or higher specificity, so the tokens here win (colors in
+ * dark mode, sizes, rhythm, and no backticks around inline code).
+ */
+@layer utilities {
+    .prose.documentation-content {
+        --tw-prose-body: var(--st-text-body);
+        --tw-prose-headings: var(--st-text);
+        --tw-prose-lead: var(--st-text-secondary);
+        --tw-prose-links: var(--st-text);
+        --tw-prose-bold: var(--st-text);
+        --tw-prose-counters: var(--st-text-muted);
+        --tw-prose-bullets: var(--st-text-faint);
+        --tw-prose-hr: var(--st-border);
+        --tw-prose-quotes: var(--st-text);
+        --tw-prose-quote-borders: var(--st-border-strong);
+        --tw-prose-captions: var(--st-text-muted);
+        --tw-prose-code: var(--st-text);
+        --tw-prose-pre-code: var(--st-code-text);
+        --tw-prose-pre-bg: var(--st-code-glass);
+        --tw-prose-th-borders: var(--st-border-strong);
+        --tw-prose-td-borders: var(--st-border);
+
+        max-width: var(--st-measure);
+        font-size: var(--st-text-prose);
+        line-height: var(--st-leading-prose);
+        color: var(--st-text-body);
+    }
+
+    .documentation-content {
+        :where(p, ul, ol, blockquote, table, figure, .st-callout) {
+            margin-top: 1.25em;
+            margin-bottom: 1.25em;
+        }
+
+        :where(ul, ol) {
+            padding-left: 1.5em;
+        }
+
+        :where(li) {
+            margin-top: 0.5em;
+            margin-bottom: 0.5em;
+            padding-left: 0.25em;
+        }
+
+        :where(li > p) {
+            margin-top: 0.5em;
+            margin-bottom: 0.5em;
+        }
+
+        h2,
+        h3,
+        h4 {
+            scroll-margin-top: calc(var(--st-header-height) + 1.5rem);
+            font-weight: 650;
+            letter-spacing: -0.018em;
+            color: var(--st-text);
+            text-wrap: balance;
+        }
+
+        h2 {
+            font-size: var(--st-h2);
+            line-height: 1.25;
+            margin-top: 4rem;
+            margin-bottom: 1.125rem;
+            padding-top: 2.75rem;
+            border-top: 1px solid var(--st-border);
+        }
+
+        h3 {
+            font-size: var(--st-h3);
+            line-height: 1.35;
+            margin-top: 3rem;
+            margin-bottom: 0.875rem;
+        }
+
+        h4 {
+            font-size: var(--st-h4);
+            line-height: 1.4;
+            margin-top: 2.25rem;
+            margin-bottom: 0.5rem;
+        }
+
+        h2 + *,
+        h3 + *,
+        h4 + * {
+            margin-top: 0;
+        }
+
+        > :first-child {
+            margin-top: 0;
+        }
+
+        > h2:first-child {
+            border-top: 0;
+            padding-top: 0;
+        }
+
+        a {
+            color: var(--st-text);
+            font-weight: 500;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            text-decoration-thickness: 1px;
+            text-decoration-color: var(--st-border-strong);
+            transition: text-decoration-color var(--st-duration-fast) var(--st-ease-out);
+
+            &:hover {
+                text-decoration-color: var(--st-accent);
+                text-decoration-thickness: 2px;
+            }
+        }
+
+        :not(pre) > code {
+            font-size: 0.875em;
+            font-weight: 500;
+            padding: 0.125em 0.4em;
+            border-radius: var(--st-radius-xs);
+            background-color: var(--st-glass-bg-strong);
+            border: 1px solid var(--st-border);
+            color: var(--st-text);
+            overflow-wrap: anywhere;
+
+            &::before,
+            &::after {
+                content: none;
+            }
+        }
+
+        pre {
+            margin: 2.25rem 0;
+            padding: 1.375rem 1.5rem;
+            border-radius: var(--st-radius-lg);
+            background-color: var(--st-code-glass);
+            border: 1px solid var(--st-code-border);
+            box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.1), inset 0 0 0 1px var(--st-code-inner), var(--st-shadow-2);
+            -webkit-backdrop-filter: var(--st-glass-filter);
+            backdrop-filter: var(--st-glass-filter);
+            font-size: var(--st-text-code);
+            line-height: 1.75;
+            overflow-x: auto;
+        }
+
+        pre code {
+            font-size: inherit;
+        }
+
+        table {
+            font-size: 0.9em;
+            line-height: 1.6;
+        }
+
+        :where(thead th) {
+            color: var(--st-text);
+            padding-bottom: 0.75em;
+        }
+
+        :where(tbody td, thead th) {
+            padding-inline: 0.75em;
+        }
+
+        :where(tbody td) {
+            padding-block: 0.75em;
+        }
+
+        blockquote {
+            font-style: normal;
+            font-weight: 400;
+            padding: 1.125rem 1.375rem;
+            border-radius: var(--st-radius-lg);
+            border: 1px solid var(--st-glass-border);
+            background-color: var(--st-glass-bg);
+            box-shadow: var(--st-glass-ring), var(--st-shadow-1);
+            -webkit-backdrop-filter: var(--st-glass-filter);
+            backdrop-filter: var(--st-glass-filter);
+            color: var(--st-text-body);
+
+            p::before,
+            p::after {
+                content: none;
+            }
+
+            > :first-child {
+                margin-top: 0;
+            }
+
+            > :last-child {
+                margin-bottom: 0;
+            }
+        }
+
+        .st-callout p {
+            margin: 0;
+        }
+
+        .st-callout p + p {
+            margin-top: 0.5rem;
+        }
+
+        hr {
+            margin-block: 3rem;
+        }
+
+        .anchorjs-link {
+            opacity: 0;
+            margin-left: 0.35em;
+            font-weight: 400;
+            text-decoration: none !important;
+            color: var(--st-text-faint) !important;
+            transition: opacity var(--st-duration-fast) var(--st-ease-out);
+        }
+
+        h2:hover .anchorjs-link,
+        h3:hover .anchorjs-link,
+        h4:hover .anchorjs-link,
+        .anchorjs-link:focus {
+            opacity: 1;
+        }
+    }
+}
+
+/* Outside the layer so this beats the typography plugin's unlayered table-layout: auto.
+   A class name with no spaces was laying the table out 2px past a 390px screen. */
+@media (max-width: 480px) {
+    /* The table scrolls inside its own box; the page does not. Code in cells stays unbroken. */
+    .documentation-content table {
+        display: block;
+        width: 100%;
+        max-width: 100%;
+        overflow-x: auto;
+        table-layout: auto;
+        overscroll-behavior-x: contain;
+    }
+
+    .documentation-content :where(td, th) {
+        min-width: 8.5rem;
+        overflow-wrap: normal;
+    }
+
+    .documentation-content td code {
+        white-space: nowrap;
+        overflow-wrap: normal;
+    }
+}
+
+/* In-page matches from the sidebar filter (CSS Custom Highlight API). */
+::highlight(docs-filter) {
+    background-color: rgb(124 58 237 / 0.2);
+    color: inherit;
+}
+
+::highlight(docs-filter-current) {
+    background-color: rgb(124 58 237 / 0.42);
+    color: inherit;
+}
+
+:root.dark ::highlight(docs-filter),
+:root[data-theme="dark"] ::highlight(docs-filter) {
+    background-color: rgb(167 139 250 / 0.28);
+}
+
+:root.dark ::highlight(docs-filter-current),
+:root[data-theme="dark"] ::highlight(docs-filter-current) {
+    background-color: rgb(167 139 250 / 0.38);
+}

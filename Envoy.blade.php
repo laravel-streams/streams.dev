@@ -70,6 +70,10 @@ refresh
 @task('composer')
 echo "Installing composer dependencies."
 cd {{ $path }}
+# --ignore-platform-reqs stays for now: the current host runs PHP 8.2.4
+# without ext-intl or ext-zip. composer.json pins config.platform.php to
+# 8.2.4, so the lock only holds versions that run there. Drop the flag once
+# the site moves to a host that meets every platform requirement.
 {{ $composer }} install --no-interaction --quiet --no-dev --prefer-dist --optimize-autoloader --ignore-platform-reqs
 @endtask
 

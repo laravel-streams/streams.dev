@@ -1,0 +1,211 @@
+@layer base {
+    html {
+        font-size: var(--st-root-size);
+        font-family: var(--st-font-sans);
+        background: var(--st-page);
+        color: var(--st-text);
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        text-rendering: optimizeLegibility;
+        scroll-padding-top: calc(var(--st-header-height) + 1.5rem);
+    }
+
+    body {
+        position: relative;
+        min-height: 100vh;
+        min-width: 0;
+        overflow-x: clip;
+        background: transparent;
+        color: var(--st-text);
+        font-size: var(--st-text-base);
+        line-height: 1.6;
+    }
+
+    /*
+     * Page backdrop behind all content: soft grayscale light pools spread
+     * down the whole document, plus a faint grain. It gives the glass
+     * surfaces something to blur. Absolute (not fixed) so it scrolls with the
+     * page, costs no repaint on scroll, and shows up in full-page captures.
+     */
+    body::before,
+    body::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: -1;
+        pointer-events: none;
+    }
+
+    body::before {
+        background:
+            radial-gradient(64rem 38rem at 6% 0%, var(--st-glow-1), transparent 66%),
+            radial-gradient(52rem 34rem at 96% 3%, var(--st-glow-2), transparent 62%),
+            radial-gradient(46rem 34rem at 88% 32%, var(--st-glow-1), transparent 64%),
+            radial-gradient(50rem 36rem at 6% 52%, var(--st-glow-2), transparent 64%),
+            radial-gradient(48rem 34rem at 92% 74%, var(--st-glow-2), transparent 64%),
+            radial-gradient(56rem 40rem at 30% 100%, var(--st-glow-1), transparent 66%);
+    }
+
+    body::after {
+        opacity: var(--st-grain-opacity);
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.5 0 0 0 0 0.5 0 0 0 0 0.5 0 0 0 1 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+        background-size: 180px 180px;
+    }
+}
+
+/*
+ * Color mesh: six soft blobs spread down the document, each drifting on its
+ * own slow loop (40-58s, alternate, ease-in-out). Transform only, one small
+ * composited layer each; the wrapper clips them so nothing adds scroll
+ * width or height. Static under prefers-reduced-motion.
+ */
+@layer base {
+    .st-mesh {
+        position: absolute;
+        inset: 0;
+        z-index: -1;
+        overflow: hidden;
+        pointer-events: none;
+        contain: layout paint;
+    }
+
+    .st-mesh__blob {
+        position: absolute;
+        width: 40rem;
+        height: 30rem;
+        border-radius: 50%;
+        background: radial-gradient(closest-side, var(--st-blob), transparent);
+        will-change: transform;
+        animation: var(--st-blob-drift) var(--st-blob-duration, var(--st-drift-duration)) ease-in-out infinite alternate;
+    }
+
+    .st-mesh__blob:nth-child(1) { --st-blob: var(--st-mesh-violet); --st-blob-drift: st-drift-a; --st-blob-duration: 52s; top: -6rem; left: -8%; }
+    .st-mesh__blob:nth-child(2) { --st-blob: var(--st-mesh-cyan); --st-blob-drift: st-drift-b; --st-blob-duration: 44s; top: 2%; left: 62%; }
+    .st-mesh__blob:nth-child(3) { --st-blob: var(--st-mesh-rose); --st-blob-drift: st-drift-c; --st-blob-duration: 58s; top: 22%; left: 30%; }
+    .st-mesh__blob:nth-child(4) { --st-blob: var(--st-mesh-amber); --st-blob-drift: st-drift-a; --st-blob-duration: 48s; top: 48%; left: 66%; animation-direction: alternate-reverse; }
+    .st-mesh__blob:nth-child(5) { --st-blob: var(--st-mesh-cyan); --st-blob-drift: st-drift-b; --st-blob-duration: 56s; top: 66%; left: -10%; }
+    .st-mesh__blob:nth-child(6) { --st-blob: var(--st-mesh-violet); --st-blob-drift: st-drift-c; --st-blob-duration: 40s; top: 84%; left: 48%; }
+
+    @media (max-width: 639.98px) {
+        .st-mesh__blob {
+            width: 28rem;
+            height: 22rem;
+        }
+    }
+}
+
+@keyframes st-drift-a {
+    from { transform: translate3d(0, 0, 0) scale(1); }
+    to { transform: translate3d(14vw, 7rem, 0) scale(1.18); }
+}
+
+@keyframes st-drift-b {
+    from { transform: translate3d(0, 0, 0) scale(1.05); }
+    to { transform: translate3d(-12vw, 9rem, 0) scale(0.88); }
+}
+
+@keyframes st-drift-c {
+    from { transform: translate3d(0, 0, 0) scale(0.95) rotate(0deg); }
+    to { transform: translate3d(9vw, -8rem, 0) scale(1.2) rotate(12deg); }
+}
+
+@layer base {
+
+    ::selection {
+        background: var(--st-inverse);
+        color: var(--st-on-inverse);
+    }
+
+    /* Focus rings carry the accent color, with a soft halo. */
+    :focus-visible {
+        outline: 2px solid var(--st-focus);
+        outline-offset: 2px;
+        border-radius: var(--st-radius-xs);
+        box-shadow: 0 0 0 6px var(--st-accent-soft);
+    }
+
+    svg {
+        max-width: 100%;
+    }
+
+    [x-cloak] {
+        display: none !important;
+    }
+
+    kbd {
+        font-family: var(--st-font-mono);
+    }
+}
+
+/* Cross-document page transitions (Chrome/Edge 126+, Safari 18.2+); a no-op elsewhere. */
+@view-transition {
+    navigation: auto;
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+    animation-duration: var(--st-duration-base);
+    animation-timing-function: var(--st-ease-out);
+}
+
+@keyframes st-rise {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+@keyframes st-fade {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes st-fade-out {
+    to {
+        opacity: 0;
+    }
+}
+
+/* Theme switch: a plain 240ms crossfade of the whole page (see theme-toggle). */
+:root[data-st-switching]::view-transition-old(*),
+:root[data-st-switching]::view-transition-new(*) {
+    animation-duration: 240ms;
+    animation-timing-function: var(--st-ease-out);
+}
+
+:root[data-st-switching]::view-transition-old(explore-stage) {
+    animation-name: st-fade-out;
+}
+
+:root[data-st-switching]::view-transition-new(explore-stage) {
+    animation-name: st-fade;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    @view-transition {
+        navigation: none;
+    }
+
+    .st-mesh__blob {
+        animation: none !important;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}

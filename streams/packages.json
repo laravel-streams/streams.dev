@@ -1,5 +1,6 @@
 {
-    "$schema": "./schema/streams.schema.json",
+    "name": "Packages",
+    "description": "Packages for Laravel Streams.",
     "config": {
         "source": {
             "type": "self"
@@ -17,86 +18,850 @@
         },
         {
             "handle": "name",
-            "type": "string",
-            "required": true,
-            "unique": true,
-            "rules": [
-                "regex:/^[a-z0-9]([_.-]?[a-z0-9]+)*/[a-z0-9](([_.]?|-{0,2})[a-z0-9]+)*$/"
-            ]
+            "type": "string"
         },
         {
-            "handle": "docs",
-            "type": "url"
-        },
-        {
-            "handle": "categories",
-            "type": "multiselect",
+            "handle": "type",
+            "type": "select",
             "config": {
                 "options": {
-                    "admin": "Admin Panel",
-                    "assets": "Assets",
-                    "dashboard": "Dashboard",
+                    "starter": "Starters",
+                    "example": "Examples",
                     "database": "Database",
-                    "development": "Development",
-                    "ecommerce": "Ecommerce",
-                    "fields": "Fields",
-                    "forms": "Forms",
-                    "integrations": "Integrations",
-                    "localization": "Localization",
-                    "performance": "Performance",
-                    "projects": "Projects & Starters",
-                    "security": "Security",
-                    "seo": "SEO & Accessibility",
-                    "templating": "Templating",
-                    "utilities": "Utilities"
+                    "client": "Clients",
+                    "tools": "Tools"
                 }
             }
         },
         {
-            "handle": "readme",
-            "type": "string",
+            "handle": "enabled",
+            "type": "boolean",
+            "config": {
+                "default": false
+            }
+        },
+        {
+            "handle": "composer",
+            "type": "object",
             "input": {
-                "type": "markdown"
+                "type": "editor",
+                "language": "json"
             }
         }
     ],
-    "data": [
-        {
-            "name": "streams/streams",
-            "description": "A blank TALL-stack Laravel project with Streams.",
-            "docs": "https://streams.dev/docs",
-            "repository": "https://github.com/laravel-streams/streams-core",
-            "categories": ["projects"],
-            "readme": "[https://tallstack.dev/](https://tallstack.dev/)"
+    "ui": {
+        "cp": {
+            "section": {
+                "buttons": [
+                    {
+                        "handle": "create"
+                    }
+                ]
+            }
         },
-        {
-            "name": "streams/core",
-            "description": "The fundamental features and utilities offered by the Streams platform.",
-            "docs": "https://streams.dev/docs/installation",
-            "repository": "https://github.com/laravel-streams/streams-core",
-            "categories": ["utilities"],
-            "readme": "# Streams Platform\n\nA cohesive development system for building, administrating, and interacting with data-driven Laravel applications.\n\n## Testing\n\n```bash\nphp vendor/bin/phpunit tests/\n\nXDEBUG_MODE=coverage php vendor/bin/phpunit tests/ --coverage-html=./coverage\n```"
+        "tables": [
+            {
+                "handle": "default",
+                "filters": [
+                    {
+                        "handle": "name"
+                    },
+                    {
+                        "handle": "type"
+                    }
+                ],
+                "columns": [
+                    {
+                        "handle": "name"
+                    },
+                    {
+                        "handle": "type"
+                    },
+                    {
+                        "handle": "enabled"
+                    }
+                ],
+                "buttons": [
+                    {
+                        "handle": "edit"
+                    }
+                ]
+            }
+        ],
+        "forms": [
+            {
+                "handle": "default",
+                "buttons": [
+                    {
+                        "handle": "cancel",
+                        "class": "-secondary",
+                        "attributes": {
+                            "href": "{cp.section.url}"
+                        }
+                    }
+                ]
+            }
+        ]
+    },
+    "data": {
+        "598b243b-36c9-4e0b-b7a1-47edbb6376e9": {
+            "id": "598b243b-36c9-4e0b-b7a1-47edbb6376e9",
+            "name": "Streams",
+            "type": "starter",
+            "enabled": true,
+            "composer": {
+                "name": "streams/streams",
+                "type": "project",
+                "description": "Streams is an open-source web application platform for Laravel.",
+                "support": {
+                    "docs": "/docs",
+                    "source": "https://github.com/laravel-streams/streams"
+                },
+                "keywords": ["streams", "platform", "laravel"],
+                "license": "MIT",
+                "require": {
+                    "php": "^8.0.2",
+                    "guzzlehttp/guzzle": "^7.2",
+                    "laravel/framework": "^9.19",
+                    "streams/core": "^2.0",
+                    "streams/api": "^1.0",
+                    "streams/ui": "^1.0"
+                },
+                "require-dev": {
+                    "streams/sdk": "^1.0",
+                    "fakerphp/faker": "^1.9.1",
+                    "laravel/tinker": "^2.7",
+                    "laravel/pint": "^1.0",
+                    "laravel/sail": "^1.0.1",
+                    "mockery/mockery": "^1.4.4",
+                    "nunomaduro/collision": "^6.1",
+                    "phpunit/phpunit": "^9.5.10",
+                    "spatie/laravel-web-tinker": "^1.8",
+                    "spatie/laravel-ignition": "^1.0"
+                },
+                "repositories": [
+                    {
+                        "type": "path",
+                        "url": "../streams-testing",
+                        "options": {
+                            "symlink": true
+                        }
+                    },
+                    {
+                        "type": "path",
+                        "url": "../streams-core",
+                        "options": {
+                            "symlink": true
+                        }
+                    },
+                    {
+                        "type": "path",
+                        "url": "../streams-api",
+                        "options": {
+                            "symlink": true
+                        }
+                    },
+                    {
+                        "type": "path",
+                        "url": "../streams-sdk",
+                        "options": {
+                            "symlink": true
+                        }
+                    },
+                    {
+                        "type": "path",
+                        "url": "../streams-ui",
+                        "options": {
+                            "symlink": true
+                        }
+                    }
+                ],
+                "autoload": {
+                    "psr-4": []
+                }
+            }
         },
-        {
-            "name": "streams/api",
-            "description": "A universal and extensible RESTful API for Streams.",
-            "docs": "https://streams.dev/docs/api/introduction",
-            "repository": "https://github.com/laravel-streams/streams-api",
-            "categories": ["development", "integrations", "utilities"]
+        "9b5325a8-d9e9-41e3-83a9-12148c96fb33": {
+            "id": "9b5325a8-d9e9-41e3-83a9-12148c96fb33",
+            "name": "Streams Core",
+            "composer": {
+                "name": "streams/core",
+                "type": "streams-addon",
+                "description": "A domain-driven, code-configured, flat-file application platform for Laravel.",
+                "license": "MIT",
+                "prefer-stable": true,
+                "minimum-stability": "dev",
+                "authors": [
+                    {
+                        "name": "Ryan Thompson",
+                        "email": "ryan@pyrocms.com"
+                    }
+                ],
+                "require": {
+                    "symfony/yaml": "^6.0",
+                    "jenssegers/agent": "^2.6",
+                    "tmarois/filebase": "^1.0",
+                    "laravel/scout": "^8.0|^9.0",
+                    "intervention/image": "^2.7",
+                    "laravel/framework": "^8.0|^9.0",
+                    "goldspecdigital/oooas": "^2.10",
+                    "laravelcollective/html": "^6.3",
+                    "nicmart/string-template": "^0.1"
+                },
+                "require-dev": {
+                    "streams/testing": "^1.0",
+                    "mockery/mockery": "^1.4",
+                    "phpunit/phpunit": "^9.5",
+                    "fakerphp/faker": "^1.9"
+                },
+                "autoload": {
+                    "psr-4": {
+                        "Streams\\Core\\": "src/"
+                    }
+                },
+                "autoload-dev": {
+                    "psr-4": {
+                        "Streams\\Core\\Tests\\": "tests/"
+                    }
+                },
+                "extra": {
+                    "branch-alias": {
+                        "dev-master": "2.x-dev"
+                    },
+                    "laravel": {
+                        "providers": ["Streams\\Core\\StreamsServiceProvider"]
+                    }
+                }
+            },
+            "type": null,
+            "enabled": true
         },
-        {
-            "name": "streams/ui",
-            "description": "Extensible, user-friendly, and performant control panel, components, and services.",
-            "docs": "https://streams.dev/docs/ui/introduction",
-            "repository": "https://github.com/laravel-streams/streams-ui",
-            "categories": ["admin", "dashboard"]
+        "37827860-e930-49df-b7dc-fb881bd66557": {
+            "id": "37827860-e930-49df-b7dc-fb881bd66557",
+            "name": "Streams UI",
+            "composer": {
+                "name": "streams/ui",
+                "type": "streams-addon",
+                "description": "A UI and control panel for Laravel Streams.",
+                "license": "MIT",
+                "prefer-stable": true,
+                "minimum-stability": "dev",
+                "authors": [
+                    {
+                        "name": "Ryan Thompson",
+                        "email": "ryan@pyrocms.com"
+                    }
+                ],
+                "require": {
+                    "streams/core": "^2.0",
+                    "blade-ui-kit/blade-heroicons": "^1.3",
+                    "owenvoke/blade-fontawesome": "^2.0",
+                    "blade-ui-kit/blade-icons": "^1.3",
+                    "livewire/livewire": "^2.10"
+                },
+                "require-dev": {
+                    "streams/testing": "^1.0"
+                },
+                "autoload": {
+                    "psr-4": {
+                        "Streams\\Ui\\": "src/"
+                    }
+                },
+                "autoload-dev": {
+                    "psr-4": {
+                        "Streams\\Ui\\Tests\\": "tests/"
+                    }
+                },
+                "config": {
+                    "bin-dir": "bin"
+                },
+                "extra": {
+                    "branch-alias": {
+                        "dev-master": "1.x-dev"
+                    },
+                    "laravel": {
+                        "providers": ["Streams\\Ui\\UiServiceProvider"]
+                    }
+                }
+            },
+            "type": null,
+            "enabled": true
         },
-        {
-            "name": "streams/sdk",
-            "description": "Dev tooling for Laravel Streams.",
-            "docs": "https://streams.dev/docs/sdk/introduction",
-            "repository": "https://github.com/laravel-streams/streams-sdk",
-            "categories": ["development"]
+        "7a4fa5f0-7d02-4fbe-8825-9af8415155af": {
+            "id": "7a4fa5f0-7d02-4fbe-8825-9af8415155af",
+            "name": "Streams API",
+            "composer": {
+                "name": "streams/api",
+                "description": "A RESTful API for Laravel Streams.",
+                "type": "streams-addon",
+                "license": "MIT",
+                "prefer-stable": true,
+                "minimum-stability": "dev",
+                "authors": [
+                    {
+                        "name": "Ryan Thompson",
+                        "email": "ryan@streams.dev"
+                    }
+                ],
+                "require": {
+                    "streams/core": "^2.0",
+                    "justinrainbow/json-schema": "^5.2"
+                },
+                "require-dev": {
+                    "friendsofphp/php-cs-fixer": "^3.4",
+                    "streams/testing": "^1.0"
+                },
+                "autoload": {
+                    "psr-4": {
+                        "Streams\\Api\\": "src/"
+                    }
+                },
+                "autoload-dev": {
+                    "psr-4": {
+                        "Streams\\Api\\Tests\\": "tests/"
+                    }
+                },
+                "scripts": [],
+                "extra": {
+                    "branch-alias": {
+                        "dev-master": "1.x-dev",
+                        "dev-develop": "1.1.x-dev"
+                    },
+                    "laravel": {
+                        "providers": ["Streams\\Api\\ApiServiceProvider"]
+                    }
+                }
+            },
+            "type": null,
+            "enabled": true
+        },
+        "8b2c4d3e-5a6f-4c7d-8e9f-0a1b2c3d4e5f": {
+            "id": "8b2c4d3e-5a6f-4c7d-8e9f-0a1b2c3d4e5f",
+            "name": "Streams API Client",
+            "type": "client",
+            "enabled": true,
+            "composer": {
+                "name": "@laravel-streams/api-client",
+                "type": "library",
+                "description": "A JavaScript client for interacting with the Laravel Streams API.",
+                "license": "MIT",
+                "support": {
+                    "docs": "https://github.com/laravel-streams/api-client/tree/master/docs",
+                    "source": "https://github.com/laravel-streams/api-client"
+                },
+                "keywords": ["streams", "api", "client", "javascript"],
+                "version": "3.0.0",
+                "authors": [
+                    {
+                        "name": "Robin Radic",
+                        "email": "rradic@gmail.com"
+                    },
+                    {
+                        "name": "Ryan Thompson",
+                        "email": "ryan@streams.dev"
+                    }
+                ],
+                "repository": {
+                    "type": "git",
+                    "url": "https://github.com/laravel-streams/api-client"
+                }
+            }
+        },
+        "75a5fd1f-d9f5-46fe-81a9-fe1f1ccc0129": {
+            "id": "75a5fd1f-d9f5-46fe-81a9-fe1f1ccc0129",
+            "name": "Streams SDK",
+            "composer": {
+                "name": "streams/sdk",
+                "description": "Dev tools for Laravel + Streams.",
+                "type": "streams-addon",
+                "authors": [
+                    {
+                        "name": "Ryan Thompson",
+                        "email": "ryan@pyrocms.com"
+                    }
+                ],
+                "require": {
+                    "streams/core": "^2.0"
+                },
+                "require-dev": {
+                    "streams/testing": "^1.0"
+                },
+                "autoload": {
+                    "psr-4": {
+                        "Streams\\Sdk\\": "src/"
+                    }
+                },
+                "autoload-dev": {
+                    "psr-4": {
+                        "Streams\\Sdk\\Tests\\": "tests/"
+                    }
+                },
+                "extra": {
+                    "branch-alias": {
+                        "dev-master": "1.x-dev"
+                    },
+                    "laravel": {
+                        "providers": ["Streams\\Sdk\\SdkServiceProvider"]
+                    }
+                },
+                "prefer-stable": true,
+                "minimum-stability": "dev"
+            }
+        },
+        "890bd7ad-4f84-4034-9257-d291ed576a4f": {
+            "id": "890bd7ad-4f84-4034-9257-d291ed576a4f",
+            "name": "Streams Testing",
+            "enabled": true,
+            "composer": {
+                "name": "streams/testing",
+                "description": "Testing for Streams",
+                "type": "streams-addon",
+                "license": "MIT",
+                "prefer-stable": true,
+                "minimum-stability": "dev",
+                "authors": [
+                    {
+                        "name": "Ryan Thompson",
+                        "email": "ryan@pyrocms.com"
+                    }
+                ],
+                "require": {
+                    "streams/core": "^2.0",
+                    "orchestra/testbench": "^7.6"
+                },
+                "autoload": {
+                    "psr-4": {
+                        "Streams\\Testing\\": "src/"
+                    }
+                },
+                "autoload-dev": {
+                    "psr-4": {
+                        "Streams\\Testing\\Tests\\": "tests/"
+                    }
+                },
+                "post-autoload-dump": ["@php artisan package:discover --ansi"],
+                "extra": {
+                    "branch-alias": {
+                        "dev-1.0": "1.x-dev"
+                    }
+                }
+            }
+        },
+        "0f91f9fd-8d09-4b2c-8aa3-14c1fd3ada9b": {
+            "id": "0f91f9fd-8d09-4b2c-8aa3-14c1fd3ada9b",
+            "name": "Todos Backend",
+            "type": "example",
+            "composer": {
+                "name": "streams/todos-backend",
+                "type": "project",
+                "description": "An example todos application backend using Streams.",
+                "keywords": ["todos", "streams"],
+                "license": "MIT",
+                "require": {
+                    "php": "^8.0.2",
+                    "guzzlehttp/guzzle": "^7.2",
+                    "laravel/framework": "^9.19",
+                    "laravel/sanctum": "^3.0",
+                    "laravel/tinker": "^2.7",
+                    "streams/core": "^2.0",
+                    "streams/api": "^1.0",
+                    "streams/ui": "^1.0"
+                },
+                "require-dev": {
+                    "streams/sdk": "^1.0",
+                    "streams/testing": "^1.0",
+                    "fakerphp/faker": "^1.9.1",
+                    "laravel/pint": "^1.0",
+                    "laravel/sail": "^1.0.1",
+                    "mockery/mockery": "^1.4.4",
+                    "nunomaduro/collision": "^6.1",
+                    "phpunit/phpunit": "^9.5.10",
+                    "spatie/laravel-ignition": "^1.0",
+                    "spatie/laravel-web-tinker": "^1.7"
+                },
+                "autoload": {
+                    "psr-4": {
+                        "App\\": "app/",
+                        "Database\\Factories\\": "database/factories/",
+                        "Database\\Seeders\\": "database/seeders/"
+                    }
+                },
+                "autoload-dev": {
+                    "psr-4": {
+                        "Tests\\": "tests/"
+                    }
+                },
+                "scripts": {
+                    "post-autoload-dump": [
+                        "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
+                        "@php artisan package:discover --ansi"
+                    ],
+                    "post-update-cmd": [
+                        "@php artisan vendor:publish --tag=laravel-assets --ansi --force"
+                    ],
+                    "post-root-package-install": [
+                        "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+                    ],
+                    "post-create-project-cmd": [
+                        "@php artisan key:generate --ansi"
+                    ]
+                },
+                "extra": {
+                    "laravel": {
+                        "dont-discover": []
+                    }
+                },
+                "config": {
+                    "optimize-autoloader": true,
+                    "preferred-install": "dist",
+                    "sort-packages": true,
+                    "allow-plugins": {
+                        "pestphp/pest-plugin": true
+                    }
+                },
+                "minimum-stability": "dev",
+                "prefer-stable": true
+            }
+        },
+        "a659ec13-6b73-460d-a3a6-512aa0809f43": {
+            "id": "a659ec13-6b73-460d-a3a6-512aa0809f43",
+            "name": "Streams CMS",
+            "type": "starter",
+            "enabled": false,
+            "composer": {
+                "name": "streams/cms",
+                "type": "project",
+                "description": "A CMS starter for Laravel Streams.",
+                "keywords": ["streams", "laravel"],
+                "license": "MIT",
+                "require": {
+                    "php": "^8.0.2",
+                    "guzzlehttp/guzzle": "^7.2",
+                    "laravel/framework": "^9.19",
+                    "streams/core": "^2.0",
+                    "streams/api": "^1.0",
+                    "streams/ui": "^1.0"
+                },
+                "require-dev": {
+                    "streams/sdk": "^1.0",
+                    "fakerphp/faker": "^1.9.1",
+                    "laravel/tinker": "^2.7",
+                    "laravel/pint": "^1.0",
+                    "laravel/sail": "^1.0.1",
+                    "mockery/mockery": "^1.4.4",
+                    "nunomaduro/collision": "^6.1",
+                    "phpunit/phpunit": "^9.5.10",
+                    "spatie/laravel-web-tinker": "^1.8",
+                    "spatie/laravel-ignition": "^1.0"
+                },
+                "autoload": {
+                    "psr-4": {
+                        "App\\": "app/",
+                        "Database\\Factories\\": "database/factories/",
+                        "Database\\Seeders\\": "database/seeders/"
+                    }
+                },
+                "autoload-dev": {
+                    "psr-4": {
+                        "Tests\\": "tests/"
+                    }
+                },
+                "scripts": {
+                    "post-autoload-dump": [
+                        "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
+                        "@php artisan package:discover --ansi"
+                    ],
+                    "post-update-cmd": [
+                        "@php artisan vendor:publish --tag=laravel-assets --ansi --force"
+                    ],
+                    "post-root-package-install": [
+                        "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+                    ],
+                    "post-create-project-cmd": [
+                        "@php artisan key:generate --ansi"
+                    ]
+                },
+                "extra": {
+                    "laravel": {
+                        "dont-discover": []
+                    }
+                },
+                "config": {
+                    "optimize-autoloader": true,
+                    "preferred-install": "dist",
+                    "sort-packages": true,
+                    "allow-plugins": {
+                        "pestphp/pest-plugin": true
+                    }
+                },
+                "minimum-stability": "dev",
+                "prefer-stable": true
+            }
+        },
+        "29cf036f-4b50-4803-ba12-edc4a53b5216": {
+            "id": "29cf036f-4b50-4803-ba12-edc4a53b5216",
+            "name": "Mongo DB",
+            "type": "database",
+            "enabled": true,
+            "composer": {
+                "name": "streams/mongodb",
+                "type": "streams-addon",
+                "description": "Adds MongoDB support to Streams.",
+                "support": {
+                    "docs": "/docs/core/sources-and-adapters",
+                    "source": "https://github.com/laravel-streams/mongodb",
+                    "issues": "https://github.com/laravel-streams/mongodb/issues"
+                },
+                "keywords": ["mongodb", "streams addon", "laravel streams"],
+                "license": "MIT",
+                "require": {
+                    "streams/core": "^2.0",
+                    "mongodb/mongodb": "^1.10"
+                },
+                "require-dev": {
+                    "streams/testing": "^1.0"
+                },
+                "autoload": {
+                    "psr-4": {
+                        "Streams\\MongoDb\\": "src/"
+                    }
+                },
+                "extra": {
+                    "branch-alias": {
+                        "dev-master": "1.x-dev"
+                    },
+                    "laravel": {
+                        "providers": ["Streams\\MongoDb\\MongoDbServiceProvider"]
+                    }
+                },
+                "minimum-stability": "dev",
+                "prefer-stable": true
+            }
+        },
+        "f5d37f25-4b0c-42e3-9b2a-570c29c557bb": {
+            "id": "f5d37f25-4b0c-42e3-9b2a-570c29c557bb",
+            "name": "Subscriptions",
+            "type": "tools",
+            "enabled": false,
+            "composer": {
+                "name": "ryanthompson/subscriptions",
+                "type": "streams-addon",
+                "description": "Versatile subscription management for your Streams project.",
+                "keywords": ["mongodb", "streams", "laravel"],
+                "license": "MIT",
+                "require": {
+                    "php": "^8.0.2",
+                    "guzzlehttp/guzzle": "^7.2",
+                    "laravel/framework": "^9.19",
+                    "streams/core": "^2.0",
+                    "streams/api": "^1.0",
+                    "streams/ui": "^1.0"
+                },
+                "require-dev": {
+                    "streams/sdk": "^1.0",
+                    "fakerphp/faker": "^1.9.1",
+                    "laravel/tinker": "^2.7",
+                    "laravel/pint": "^1.0",
+                    "laravel/sail": "^1.0.1",
+                    "mockery/mockery": "^1.4.4",
+                    "nunomaduro/collision": "^6.1",
+                    "phpunit/phpunit": "^9.5.10",
+                    "spatie/laravel-web-tinker": "^1.8",
+                    "spatie/laravel-ignition": "^1.0"
+                },
+                "autoload": {
+                    "psr-4": {
+                        "App\\": "app/",
+                        "Database\\Factories\\": "database/factories/",
+                        "Database\\Seeders\\": "database/seeders/"
+                    }
+                },
+                "autoload-dev": {
+                    "psr-4": {
+                        "Tests\\": "tests/"
+                    }
+                },
+                "scripts": {
+                    "post-autoload-dump": [
+                        "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
+                        "@php artisan package:discover --ansi"
+                    ],
+                    "post-update-cmd": [
+                        "@php artisan vendor:publish --tag=laravel-assets --ansi --force"
+                    ],
+                    "post-root-package-install": [
+                        "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+                    ],
+                    "post-create-project-cmd": [
+                        "@php artisan key:generate --ansi"
+                    ]
+                },
+                "extra": {
+                    "laravel": {
+                        "dont-discover": []
+                    }
+                },
+                "config": {
+                    "optimize-autoloader": true,
+                    "preferred-install": "dist",
+                    "sort-packages": true,
+                    "allow-plugins": {
+                        "pestphp/pest-plugin": true
+                    }
+                },
+                "minimum-stability": "dev",
+                "prefer-stable": true
+            }
+        },
+        "7928c25d-5293-4c3b-8144-3950c8550fca": {
+            "id": "7928c25d-5293-4c3b-8144-3950c8550fca",
+            "name": "Streams Maker",
+            "type": "tools",
+            "enabled": false,
+            "composer": {
+                "name": "streams/maker",
+                "type": "streams-addon",
+                "description": "Visually create Streams and project code.",
+                "keywords": ["mongodb", "streams", "laravel"],
+                "license": "MIT",
+                "require": {
+                    "php": "^8.0.2",
+                    "guzzlehttp/guzzle": "^7.2",
+                    "laravel/framework": "^9.19",
+                    "streams/core": "^2.0",
+                    "streams/api": "^1.0",
+                    "streams/ui": "^1.0"
+                },
+                "require-dev": {
+                    "streams/sdk": "^1.0",
+                    "fakerphp/faker": "^1.9.1",
+                    "laravel/tinker": "^2.7",
+                    "laravel/pint": "^1.0",
+                    "laravel/sail": "^1.0.1",
+                    "mockery/mockery": "^1.4.4",
+                    "nunomaduro/collision": "^6.1",
+                    "phpunit/phpunit": "^9.5.10",
+                    "spatie/laravel-web-tinker": "^1.8",
+                    "spatie/laravel-ignition": "^1.0"
+                },
+                "autoload": {
+                    "psr-4": {
+                        "App\\": "app/",
+                        "Database\\Factories\\": "database/factories/",
+                        "Database\\Seeders\\": "database/seeders/"
+                    }
+                },
+                "autoload-dev": {
+                    "psr-4": {
+                        "Tests\\": "tests/"
+                    }
+                },
+                "scripts": {
+                    "post-autoload-dump": [
+                        "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
+                        "@php artisan package:discover --ansi"
+                    ],
+                    "post-update-cmd": [
+                        "@php artisan vendor:publish --tag=laravel-assets --ansi --force"
+                    ],
+                    "post-root-package-install": [
+                        "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+                    ],
+                    "post-create-project-cmd": [
+                        "@php artisan key:generate --ansi"
+                    ]
+                },
+                "extra": {
+                    "laravel": {
+                        "dont-discover": []
+                    }
+                },
+                "config": {
+                    "optimize-autoloader": true,
+                    "preferred-install": "dist",
+                    "sort-packages": true,
+                    "allow-plugins": {
+                        "pestphp/pest-plugin": true
+                    }
+                },
+                "minimum-stability": "dev",
+                "prefer-stable": true
+            }
+        },
+        "45372a9a-3f48-4d7a-8f60-c2d987b0661b": {
+            "id": "45372a9a-3f48-4d7a-8f60-c2d987b0661b",
+            "name": "Pyro Bridge",
+            "type": "tools",
+            "enabled": false,
+            "composer": {
+                "name": "pyrocms/bridge",
+                "type": "streams-addon",
+                "description": "Bridge and migrate PyroCMS to Laravel and Streams",
+                "keywords": ["mongodb", "streams", "laravel"],
+                "license": "MIT",
+                "require": {
+                    "php": "^8.0.2",
+                    "guzzlehttp/guzzle": "^7.2",
+                    "laravel/framework": "^9.19",
+                    "streams/core": "^2.0",
+                    "streams/api": "^1.0",
+                    "streams/ui": "^1.0"
+                },
+                "require-dev": {
+                    "streams/sdk": "^1.0",
+                    "fakerphp/faker": "^1.9.1",
+                    "laravel/tinker": "^2.7",
+                    "laravel/pint": "^1.0",
+                    "laravel/sail": "^1.0.1",
+                    "mockery/mockery": "^1.4.4",
+                    "nunomaduro/collision": "^6.1",
+                    "phpunit/phpunit": "^9.5.10",
+                    "spatie/laravel-web-tinker": "^1.8",
+                    "spatie/laravel-ignition": "^1.0"
+                },
+                "autoload": {
+                    "psr-4": {
+                        "App\\": "app/",
+                        "Database\\Factories\\": "database/factories/",
+                        "Database\\Seeders\\": "database/seeders/"
+                    }
+                },
+                "autoload-dev": {
+                    "psr-4": {
+                        "Tests\\": "tests/"
+                    }
+                },
+                "scripts": {
+                    "post-autoload-dump": [
+                        "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
+                        "@php artisan package:discover --ansi"
+                    ],
+                    "post-update-cmd": [
+                        "@php artisan vendor:publish --tag=laravel-assets --ansi --force"
+                    ],
+                    "post-root-package-install": [
+                        "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+                    ],
+                    "post-create-project-cmd": [
+                        "@php artisan key:generate --ansi"
+                    ]
+                },
+                "extra": {
+                    "laravel": {
+                        "dont-discover": []
+                    }
+                },
+                "config": {
+                    "optimize-autoloader": true,
+                    "preferred-install": "dist",
+                    "sort-packages": true,
+                    "allow-plugins": {
+                        "pestphp/pest-plugin": true
+                    }
+                },
+                "minimum-stability": "dev",
+                "prefer-stable": true
+            }
         }
-    ]
+    }
 }

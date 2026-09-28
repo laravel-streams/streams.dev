@@ -1,0 +1,26 @@
+---
+title: UI playground
+description: 'Scratch page for testing Streams UI components.'
+uri: ui
+layout: page
+sort_order: 1
+nav_disabled: true
+---
+
+<section class="st-container max-w-[46rem] pt-[var(--st-section-y-sm)] pb-[var(--st-section-y)]">
+    <p class="st-eyebrow">streams/ui</p>
+    <h1 class="docs-title mt-3">UI sandbox</h1>
+    <p class="docs-lead">A Streams UI form, rendered outside an admin panel. Nothing is saved.</p>
+
+    <x-glass class="st-chamfer st-chamfer--lg mt-12 rounded-2xl p-6 sm:p-10">
+        @livewire('form', [
+            'stream' => 'pages',
+            'buttons' => [
+                [
+                    'type' => 'submit',
+                    'text' => 'Submit',
+                ],
+            ],
+        ])
+    </x-glass>
+</section>

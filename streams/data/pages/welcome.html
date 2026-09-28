@@ -1,0 +1,207 @@
+---
+title: Streams
+description: 'Streams is an agentic-first Laravel package system for data modeling, admin UI, REST APIs, and developer tooling.'
+uri: /
+layout: page
+nav_disabled: true
+---
+@php
+$streamJson = <<<'JSON'
+{
+    "name": "Pages",
+    "config": {
+        "source": { "format": "html" }
+    },
+    "routes": [
+        { "handle": "view", "uri": "{uri}", "view": "{layout}" }
+    ],
+    "fields": [
+        { "handle": "title", "type": "string", "required": true },
+        { "handle": "uri", "type": "string", "unique": true },
+        { "handle": "body", "type": "string" }
+    ]
+}
+JSON;
+
+$entryHtml = <<<'HTML'
+---
+title: Hello
+uri: hello
+layout: page
+---
+<h1>{{ $entry->title }}</h1>
+<p>Every file in streams/data/pages is an entry.</p>
+HTML;
+
+$queryPhp = <<<'PHP'
+use Streams\Core\Support\Facades\Streams;
+
+$pages = Streams::entries('pages')
+    ->where('uri', 'LIKE', 'docs%')
+    ->orderBy('title')
+    ->get();
+
+// Swap the flat files for a database adapter later:
+// the query does not change.
+PHP;
+
+$packages = [
+    ['title' => 'Core', 'eyebrow' => 'streams/core', 'href' => '/docs/core/introduction', 'body' => 'Streams, fields, entries, and queries over any storage.'],
+    ['title' => 'UI', 'eyebrow' => 'streams/ui', 'href' => '/docs/ui/introduction', 'body' => 'Admin panels, forms, and tables on Livewire 3.'],
+    ['title' => 'API', 'eyebrow' => 'streams/api', 'href' => '/docs/api/introduction', 'body' => 'A REST API that describes itself.'],
+    ['title' => 'SDK', 'eyebrow' => 'streams/sdk', 'href' => '/docs/sdk/introduction', 'body' => 'Generators and stubs for people and agents.'],
+    ['title' => 'Testing', 'eyebrow' => 'streams/testing', 'href' => '/docs/testing/introduction', 'body' => 'A shared TestCase and test helpers.'],
+    ['title' => 'Client', 'eyebrow' => '@laravel-streams/api-client', 'href' => '/docs/client/introduction', 'body' => 'A zero-dependency JavaScript client.'],
+];
+
+$starters = Streams::entries('packages')->where('type', 'IN', ['starter', 'example'])->where('enabled', true)->get();
+$addons = Streams::entries('packages')->where('type', 'NOT IN', ['starter', 'example'])->where('enabled', true)->get();
+@endphp
+
+{{-- Hero --}}
+<section class="st-ambient overflow-x-clip">
+    <div class="st-lattice" aria-hidden="true"></div>
+    <div class="st-lattice-mask" aria-hidden="true"><div class="st-lattice__mark"></div></div>
+    <div class="st-container max-w-[64rem] pt-[var(--st-section-y)] pb-[var(--st-section-y-sm)] text-center">
+        <div class="animate-rise">
+            <x-pill variant="glass" dot>Agentic-first Laravel packages</x-pill>
+        </div>
+
+        <h1 class="mt-10 animate-rise text-[2.75rem] font-extrabold leading-[0.98] tracking-display text-balance text-fg [animation-delay:60ms] sm:text-7xl lg:text-[5.25rem]">
+            Laravel, described in <span class="st-gradient-text">configuration.</span>
+        </h1>
+
+        <p class="mx-auto mt-8 max-w-[36rem] animate-rise text-lg leading-relaxed text-fg-secondary text-pretty [animation-delay:120ms] sm:text-xl">
+            Model your app in JSON. Get queries, admin UI, and an API that people and AI agents can build on.
+        </p>
+
+        <div class="mt-12 flex animate-rise flex-wrap items-center justify-center gap-4 [animation-delay:180ms]">
+            <x-button href="/docs/installation" size="lg" arrow>Get Started</x-button>
+            <x-button href="/explore/idea" variant="glass" size="lg">Explore</x-button>
+        </div>
+
+        <div class="mx-auto mt-16 max-w-xl animate-rise [animation-delay:240ms]">
+            <x-glass as="button" type="button" class="st-search-hero" data-docs-search-open aria-label="Search documentation">
+                <svg class="h-5 w-5 shrink-0" viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="9" cy="9" r="5.75" stroke="currentColor" stroke-width="1.5"/><path d="M13.5 13.5L17 17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                <span class="flex-1">Search the docs…</span>
+                <kbd class="st-kbd">⌘K</kbd>
+            </x-glass>
+        </div>
+    </div>
+</section>
+
+<div class="st-rule" aria-hidden="true"></div>
+
+{{-- Code: the Mac-window panel from the live site --}}
+<section class="st-container st-section">
+    <div class="grid items-center gap-16 lg:grid-cols-[1fr_1.25fr] lg:gap-24">
+        <div data-reveal>
+            <p class="st-eyebrow">How it works</p>
+            <h2 class="mt-4 text-3xl font-bold tracking-tight text-balance sm:text-4xl">One file per domain.</h2>
+            <p class="st-subhead">Everything else reads from it.</p>
+            <ol class="mt-12 grid gap-10">
+                <li class="flex gap-5">
+                    <span class="st-step">1</span>
+                    <div>
+                        <p class="text-lg font-semibold">Describe a stream</p>
+                        <p class="mt-1.5 text-base leading-relaxed text-fg-secondary">Fields, routes, and storage in <code class="font-mono text-md text-fg">streams/*.json</code>.</p>
+                    </div>
+                </li>
+                <li class="flex gap-5">
+                    <span class="st-step">2</span>
+                    <div>
+                        <p class="text-lg font-semibold">Add entries</p>
+                        <p class="mt-1.5 text-base leading-relaxed text-fg-secondary">Flat files, JSON, or a database. Swap storage without code changes.</p>
+                    </div>
+                </li>
+                <li class="flex gap-5">
+                    <span class="st-step">3</span>
+                    <div>
+                        <p class="text-lg font-semibold">Query and render</p>
+                        <p class="mt-1.5 text-base leading-relaxed text-fg-secondary">Queries, routes, admin UI, and the API share one definition. This site works this way.</p>
+                    </div>
+                </li>
+            </ol>
+        </div>
+
+        <x-code-block data-reveal :tabs="[
+            ['label' => 'streams/pages.json', 'lang' => 'json', 'code' => $streamJson],
+            ['label' => 'pages/hello.html', 'lang' => 'markup', 'code' => $entryHtml],
+            ['label' => 'query.php', 'lang' => 'php', 'code' => $queryPhp],
+        ]" />
+    </div>
+</section>
+
+<div class="st-rule" aria-hidden="true"></div>
+
+{{-- Packages --}}
+<section class="st-container st-section--tight">
+    <div class="flex flex-wrap items-end justify-between gap-6" data-reveal>
+        <div>
+            <p class="st-eyebrow">Packages</p>
+            <h2 class="mt-4 text-3xl font-bold tracking-tight sm:text-4xl">Composable by design.</h2>
+            <p class="st-subhead">Use one package or all six.</p>
+        </div>
+        <x-button href="/docs" variant="ghost" arrow>All documentation</x-button>
+    </div>
+    <div class="st-grid-cards mt-14 sm:grid-cols-2 lg:grid-cols-3" data-reveal data-reveal-stagger>
+        @foreach ($packages as $package)
+        <x-card :href="$package['href']" :title="$package['title']" :eyebrow="$package['eyebrow']" glass>{{ $package['body'] }}</x-card>
+        @endforeach
+    </div>
+</section>
+
+{{-- Agents --}}
+<section class="st-container st-section--tight">
+    <x-glass class="st-chamfer st-chamfer--lg rounded-2xl p-6 sm:p-12 lg:p-16" data-reveal>
+        <div class="grid gap-12 lg:grid-cols-[1fr_1.4fr] lg:gap-16">
+            <div>
+                <p class="st-eyebrow">For agents, too</p>
+                <h2 class="mt-4 text-3xl font-bold tracking-tight text-balance sm:text-4xl">Conventions agents can follow.</h2>
+                <p class="st-subhead">The structure that keeps a team consistent gives AI agents something concrete to read and extend.</p>
+            </div>
+            <div class="st-grid-cards sm:grid-cols-2">
+                <x-card href="/docs/sdk/ai-prompts" title="Prompt guide" eyebrow="docs">Prompts for generating streams, entries, and UI.</x-card>
+                <x-card href="/explore/agents" title="Agents and MCP" eyebrow="explore">Where Streams is heading as a machine interface.</x-card>
+                <x-card href="/explore.json" title="A tree agents can walk" eyebrow="/explore.json">Every Explore node, as Markdown and JSON.</x-card>
+                <x-card href="/docs/sdk/introduction" title="SDK generators" eyebrow="streams/sdk">Generators and stubs with predictable output.</x-card>
+            </div>
+        </div>
+    </x-glass>
+</section>
+
+<div class="st-rule" aria-hidden="true"></div>
+
+{{-- Starters and addons --}}
+@if ($starters->isNotEmpty() || $addons->isNotEmpty())
+<section class="st-container st-section--tight">
+    <div class="flex flex-wrap items-end justify-between gap-6" data-reveal>
+        <div>
+            <p class="st-eyebrow">Starters and addons</p>
+            <h2 class="mt-4 text-3xl font-bold tracking-tight sm:text-4xl">Open-source building blocks.</h2>
+            <p class="st-subhead">Starters and addons to build on.</p>
+        </div>
+        <x-button href="/addons" variant="ghost" arrow>Browse addons</x-button>
+    </div>
+    <div class="st-grid-cards mt-14 sm:grid-cols-2 lg:grid-cols-4" data-reveal data-reveal-stagger>
+        @foreach ($starters->merge($addons) as $package)
+        <x-card :href="'/addons/'.$package->composer->name" :title="$package->name" :eyebrow="$package->composer->name">{{ $package->composer->description }}</x-card>
+        @endforeach
+    </div>
+</section>
+@endif
+
+<div class="st-rule" aria-hidden="true"></div>
+
+{{-- Explore call to action --}}
+<section class="st-ambient st-container pt-[var(--st-section-y-sm)] pb-[var(--st-section-y)]">
+    <div class="max-w-3xl" data-reveal>
+        <p class="st-eyebrow">Explore</p>
+        <h2 class="explore-title mt-5">Have an idea?</h2>
+        <p class="explore-body mt-8 max-w-2xl">Answer a few questions and see how Streams fits.</p>
+        <div class="mt-12 flex flex-wrap items-center gap-4">
+            <x-button href="/explore/idea" size="xl" arrow>Explore your idea</x-button>
+            <x-button href="/explore/features" variant="link" size="xl">Jump to features</x-button>
+        </div>
+    </div>
+</section>

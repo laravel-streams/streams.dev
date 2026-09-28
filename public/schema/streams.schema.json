@@ -1,171 +1,457 @@
 {
-    "name": "Streams",
-    "description": "Model definitions for the application.",
-    "externalDocs": {
-        "url": "https://streams.dev/docs/core/streams"
-    },
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "https://streams.dev/schema/streams.schema.json",
+    "title": "Streams stream definition",
+    "description": "A stream definition file (streams/{id}.json) for Laravel Streams (streams/core). The file name is the stream ID unless \"id\" is set. Unknown top-level keys are allowed because addons (for example streams/ui) extend definitions.",
     "type": "object",
-    "required": [
-        "id"
-    ],
     "properties": {
-        "id": {
-            "title": "Id",
+        "$schema": {
             "type": "string",
-            "pattern": "/^[a-z0-9]+(?:[-_][a-z0-9]+)*$/"
+            "description": "Optional pointer to this schema for editor validation."
+        },
+        "id": {
+            "$ref": "#/definitions/streamId",
+            "description": "The stream ID. Defaults to the file name without .json. Use snake_case."
+        },
+        "handle": {
+            "$ref": "#/definitions/streamId",
+            "description": "Deprecated alias of \"id\". Prefer \"id\" or rely on the file name."
         },
         "name": {
-            "title": "Name",
             "type": "string",
-            "maxLength": 50
+            "maxLength": 50,
+            "description": "Human readable name. Defaults to the title-cased ID."
         },
         "description": {
-            "title": "Description",
-            "type": "string"
+            "type": "string",
+            "description": "What the stream models."
+        },
+        "docs": {
+            "type": "string",
+            "description": "URL of documentation for this stream."
+        },
+        "extends": {
+            "$ref": "#/definitions/streamId",
+            "description": "ID of a stream to inherit from. Fields and config are merged, with this definition winning."
         },
         "config": {
-            "title": "Config",
+            "$ref": "#/definitions/streamConfig"
+        },
+        "fields": {
+            "description": "The stream's fields. Either a list of field objects (each with a \"handle\") or an object keyed by handle whose values are field objects or a field type string. The whole value, or any single field, can be an \"@path/to/file.json\" import.",
+            "oneOf": [
+                {
+                    "type": "array",
+                    "items": {
+                        "oneOf": [
+                            { "$ref": "#/definitions/import" },
+                            {
+                                "allOf": [
+                                    { "$ref": "#/definitions/field" },
+                                    { "required": ["handle"] }
+                                ]
+                            }
+                        ]
+                    }
+                },
+                {
+                    "type": "object",
+                    "propertyNames": { "$ref": "#/definitions/fieldHandle" },
+                    "additionalProperties": {
+                        "oneOf": [
+                            { "$ref": "#/definitions/fieldType" },
+                            { "$ref": "#/definitions/field" },
+                            { "$ref": "#/definitions/import" }
+                        ]
+                    }
+                },
+                { "$ref": "#/definitions/import" }
+            ]
+        },
+        "rules": {
+            "type": "object",
+            "description": "Extra Laravel validation rules keyed by field handle. Values are a pipe-delimited string or a list of rules.",
+            "additionalProperties": { "$ref": "#/definitions/rules" }
+        },
+        "route": {
+            "type": "string",
+            "description": "Shorthand for a single \"view\" route URI, for example \"posts/{id}\"."
+        },
+        "data": {
+            "description": "Inline entries for a self source (config.source.type \"self\"). An object keyed by entry key, or a list of entry objects. streams/core reads this key from the definition file.",
+            "oneOf": [
+                { "type": "object" },
+                { "type": "array" }
+            ]
+        },
+        "routes": {
+            "description": "Routes served by this stream. A list of route objects, or an object keyed by route handle whose values are a URI string or a route object.",
+            "oneOf": [
+                {
+                    "type": "array",
+                    "items": { "$ref": "#/definitions/route" }
+                },
+                {
+                    "type": "object",
+                    "additionalProperties": {
+                        "oneOf": [
+                            { "type": "string" },
+                            { "$ref": "#/definitions/route" }
+                        ]
+                    }
+                }
+            ]
+        },
+        "ui": {
+            "type": "object",
+            "description": "Configuration consumed by streams/ui (tables, forms, control panel sections)."
+        }
+    },
+    "definitions": {
+        "import": {
+            "type": "string",
+            "pattern": "^@\\S+\\.json$",
+            "description": "An import: \"@\" followed by a JSON file path relative to the application base path (for example \"@streams/fields/seo.json\"). streams/core replaces it with the decoded file when the stream is built."
+        },
+        "streamId": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]*$"
+        },
+        "fieldHandle": {
+            "type": "string",
+            "pattern": "^[A-Za-z_][A-Za-z0-9_]*$"
+        },
+        "className": {
+            "type": "string",
+            "pattern": "^\\\\?[A-Za-z_][A-Za-z0-9_]*(\\\\[A-Za-z_][A-Za-z0-9_]*)+(@[A-Za-z_][A-Za-z0-9_]*)?$",
+            "description": "A fully qualified PHP class name."
+        },
+        "rules": {
+            "oneOf": [
+                { "type": "string" },
+                { "type": "array", "items": { "type": "string" } }
+            ]
+        },
+        "fieldType": {
+            "description": "A registered field type. Core types are listed; apps and addons can register more in config streams.core.field_types.",
+            "anyOf": [
+                {
+                    "enum": [
+                        "number", "integer", "decimal",
+                        "string", "url", "uuid", "hash", "slug", "email", "encrypted",
+                        "boolean",
+                        "datetime", "date", "time",
+                        "enum", "select", "multiselect",
+                        "array", "object",
+                        "image", "file",
+                        "relationship", "polymorphic",
+                        "color"
+                    ]
+                },
+                {
+                    "type": "string",
+                    "pattern": "^[a-z][a-z0-9_]*$"
+                }
+            ]
+        },
+        "field": {
             "type": "object",
             "properties": {
-                "source": {
-                    "title": "Source",
+                "handle": {
+                    "$ref": "#/definitions/fieldHandle",
+                    "description": "The field handle (attribute name). Required in list form; taken from the key in object form."
+                },
+                "type": {
+                    "$ref": "#/definitions/fieldType",
+                    "description": "The field type. Defaults to \"string\"."
+                },
+                "name": { "type": "string" },
+                "description": { "type": "string" },
+                "required": {
+                    "type": "boolean",
+                    "description": "Adds the \"required\" validation rule."
+                },
+                "unique": {
+                    "type": "boolean",
+                    "description": "Adds the \"unique\" validation rule, scoped to this stream."
+                },
+                "rules": {
+                    "$ref": "#/definitions/rules",
+                    "description": "Laravel validation rules."
+                },
+                "protected": {
+                    "type": "boolean",
+                    "description": "Hide this field from serialized output (toArray/JSON)."
+                },
+                "example": {
+                    "description": "An example value, used by docs and generators."
+                },
+                "docs": {
+                    "type": "string",
+                    "description": "URL of documentation for this field."
+                },
+                "input": {
                     "type": "object",
+                    "description": "Form input hint consumed by streams/ui (for example {\"type\": \"editor\"}). streams/core does not read it.",
                     "properties": {
-                        "type": {
-                            "title": "Type",
-                            "description": "The source type for stream data.",
-                            "enum": [
-                                "filebase",
-                                "file",
-                                "database",
-                                "eloquent",
-                                "self"
-                            ],
-                            "type": "string"
+                        "type": { "type": "string" },
+                        "language": { "type": "string" }
+                    }
+                },
+                "config": {
+                    "$ref": "#/definitions/fieldConfig"
+                }
+            },
+            "allOf": [
+                {
+                    "if": {
+                        "properties": { "type": { "enum": ["relationship"] } },
+                        "required": ["type"]
+                    },
+                    "then": {
+                        "required": ["config"],
+                        "properties": {
+                            "config": {
+                                "required": ["related"]
+                            }
                         }
                     }
                 },
-                "schema": {
-                    "title": "Schema",
-                    "description": "The schema generation class to use.",
-                    "default": "Streams\\Core\\Stream\\StreamSchema",
-                    "type": "string"
+                {
+                    "if": {
+                        "properties": { "type": { "enum": ["select", "enum", "multiselect"] } },
+                        "required": ["type"]
+                    },
+                    "then": {
+                        "required": ["config"],
+                        "properties": {
+                            "config": {
+                                "required": ["options"]
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        "fieldConfig": {
+            "type": "object",
+            "description": "Type-specific options. Common keys are listed; field types may read others.",
+            "properties": {
+                "default": {
+                    "description": "Default value applied when the attribute is missing. For uuid fields, true generates a UUID."
                 },
-                "abstract": {
-                    "title": "Abstract",
-                    "description": "The entry abstract class to use.",
-                    "default": "Streams\\Core\\Entry\\Entry",
-                    "type": "string"
+                "options": {
+                    "description": "select/enum/multiselect: allowed values. An object of value => label, or a list of values.",
+                    "oneOf": [
+                        { "type": "object" },
+                        { "type": "array" }
+                    ]
                 },
-                "criteria": {
-                    "title": "Criteria",
-                    "description": "The entry criteria class to use.",
-                    "default": "Streams\\Core\\Criteria\\Criteria",
-                    "type": "string"
+                "related": {
+                    "description": "relationship, polymorphic, or array: the related stream ID, or a list of stream IDs. This is the key streams/core reads (Field::config('related')). A \"related\" key next to \"type\" is ignored.",
+                    "oneOf": [
+                        { "$ref": "#/definitions/streamId" },
+                        {
+                            "type": "array",
+                            "minItems": 1,
+                            "items": { "$ref": "#/definitions/streamId" }
+                        }
+                    ]
                 },
-                "factory": {
-                    "title": "Factory",
-                    "description": "The entry factory class to use.",
-                    "default": "Streams\\Core\\Entry\\EntryFactory",
-                    "type": "string"
+                "multiple": {
+                    "type": "boolean",
+                    "description": "relationship: store a list of related keys."
                 },
-                "repository": {
-                    "title": "Repository",
-                    "description": "The repository class to use.",
-                    "default": "Streams\\Core\\Repository\\Repository",
-                    "type": "string"
+                "key_name": {
+                    "type": "string",
+                    "description": "relationship: key field on the related stream. Defaults to \"id\"."
+                },
+                "stream": {
+                    "description": "array: a stream ID, or an inline stream definition, used to cast items.",
+                    "oneOf": [
+                        { "$ref": "#/definitions/streamId" },
+                        { "type": "object" }
+                    ]
+                },
+                "allowed": {
+                    "type": "array",
+                    "description": "object: allowed value types. The value must match at least one item: an entry of a stream, or an instance of a generic or prototype class.",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "stream": { "$ref": "#/definitions/streamId" },
+                            "generic": { "type": "string", "minLength": 1 },
+                            "prototype": { "type": "string", "minLength": 1 }
+                        },
+                        "additionalProperties": false,
+                        "anyOf": [
+                            { "required": ["stream"] },
+                            { "required": ["generic"] },
+                            { "required": ["prototype"] }
+                        ]
+                    }
+                },
+                "enforce_items": {
+                    "type": "boolean",
+                    "description": "array: when false, items are not validated against config.items. Defaults to true."
+                },
+                "relation": {
+                    "type": "string",
+                    "description": "relationship: the relation name used when eager loading. Defaults to the handle with a trailing _id removed."
+                },
+                "items": {
+                    "description": "array: item definitions (a list or an object of field-like definitions)."
+                },
+                "properties": {
+                    "description": "object: property definitions (a list or an object of field-like definitions)."
+                },
+                "wrapper": {
+                    "type": "string",
+                    "description": "array/object: a class (or \"array\") used to wrap the value."
+                },
+                "format": {
+                    "type": "string",
+                    "description": "date/datetime/time: PHP date format used for storage."
+                },
+                "timezone": {
+                    "type": "string",
+                    "description": "date/datetime/time: timezone. Defaults to app.timezone."
+                },
+                "precision": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "description": "decimal: number of decimal places."
+                },
+                "separator": {
+                    "type": "string",
+                    "description": "slug: word separator. Defaults to \"-\"."
                 }
             }
         },
-        "routes": {
-            "title": "Routes",
-            "type": "array",
-            "items": {
-                "type": "object",
-                "properties": {
-                    "view": {
-                        "title": "View",
-                        "type": "string"
-                    },
-                    "uses": {
-                        "title": "Uses",
-                        "default": "Streams\\Core\\Http\\Controller\\StreamsController@handle",
-                        "type": "string"
-                    },
-                    "csrf": {
-                        "title": "Csrf",
-                        "type": "boolean"
-                    },
-                    "verb": {
-                        "title": "Verb",
-                        "enum": [
-                            "any",
-                            "get",
-                            "put",
-                            "post",
-                            "patch",
-                            "delete"
-                        ],
-                        "default": "any",
-                        "type": "string"
-                    },
-                    "middleware": {
-                        "title": "Middleware",
-                        "type": "array"
-                    },
-                    "constraints": {
-                        "title": "Constraints",
-                        "type": "array"
+        "streamConfig": {
+            "type": "object",
+            "description": "Stream configuration: data source, key name, and class overrides.",
+            "properties": {
+                "source": { "$ref": "#/definitions/source" },
+                "key_name": {
+                    "type": "string",
+                    "description": "The primary key field handle. Defaults to \"id\"."
+                },
+                "abstract": { "$ref": "#/definitions/className", "description": "Entry class. Defaults to Streams\\Core\\Entry\\Entry." },
+                "criteria": { "$ref": "#/definitions/className", "description": "Criteria (query builder) class." },
+                "repository": { "$ref": "#/definitions/className", "description": "Repository class." },
+                "factory": { "$ref": "#/definitions/className", "description": "Entry factory class." },
+                "schema": { "$ref": "#/definitions/className", "description": "Schema generator class." },
+                "collection": { "$ref": "#/definitions/className", "description": "Collection class returned by queries." },
+                "adapter": { "$ref": "#/definitions/className", "description": "Custom criteria adapter class. Overrides source.type." },
+                "filesystem": { "$ref": "#/definitions/className", "description": "Stream filesystem class." },
+                "cache": {
+                    "type": "object",
+                    "properties": {
+                        "enabled": { "type": "boolean" },
+                        "ttl": { "type": "integer", "minimum": 0 },
+                        "store": { "type": "string" }
                     }
                 }
             }
         },
-        "fields": {
-            "title": "Fields",
-            "type": "array",
-            "items": {
-                "type": "object",
-                "required": [
-                    "handle",
-                    "type"
-                ],
-                "properties": {
-                    "handle": {
-                        "title": "Handle",
-                        "type": "string",
-                        "pattern": "/^[a-z0-9]+(?:[-_][a-z0-9]+)*$/"
-                    },
-                    "type": {
-                        "title": "Type",
-                        "enum": [
-                            "number",
-                            "integer",
-                            "decimal",
-                            "string",
-                            "url",
-                            "uuid",
-                            "hash",
-                            "slug",
-                            "email",
-                            "encrypted",
-                            "markdown",
-                            "boolean",
-                            "datetime",
-                            "date",
-                            "time",
-                            "array",
-                            "select",
-                            "multiselect",
-                            "object",
-                            "image",
-                            "file",
-                            "relationship",
-                            "color"
-                        ],
-                        "default": "string",
-                        "type": "string"
-                    }
+        "source": {
+            "type": "object",
+            "description": "Where entries are stored. Defaults to streams.core.default_source (filebase).",
+            "properties": {
+                "type": {
+                    "description": "Source adapter, or a fully qualified adapter class name.",
+                    "anyOf": [
+                        {
+                            "enum": [
+                                "filebase", "file", "self", "database", "eloquent",
+                                "filesystem", "collection", "elasticsearch", "opensearch"
+                            ]
+                        },
+                        { "$ref": "#/definitions/className" }
+                    ]
+                },
+                "format": {
+                    "description": "filebase: json, yaml, md, html, or tpl. file: json or csv.",
+                    "enum": ["json", "yaml", "md", "html", "tpl", "csv"]
+                },
+                "path": {
+                    "type": "string",
+                    "description": "filebase: directory relative to the app root. Defaults to {streams.core.data_path}/{id}."
+                },
+                "file": {
+                    "type": "string",
+                    "description": "file/self: file path relative to the app root."
+                },
+                "table": {
+                    "type": "string",
+                    "description": "database: table name. Defaults to the stream ID."
+                },
+                "connection": {
+                    "type": "string",
+                    "description": "database/elasticsearch/opensearch: connection name."
+                },
+                "model": {
+                    "$ref": "#/definitions/className",
+                    "description": "eloquent: the Eloquent model class."
+                },
+                "disk": {
+                    "type": "string",
+                    "description": "filesystem: the Laravel disk name."
+                },
+                "index": {
+                    "type": "string",
+                    "description": "elasticsearch/opensearch: index name. Defaults to the stream ID."
+                },
+                "search_fields": {
+                    "type": "array",
+                    "items": { "type": "string" }
+                },
+                "scout_prefix": { "type": "boolean" }
+            },
+            "allOf": [
+                {
+                    "if": { "properties": { "type": { "enum": ["eloquent"] } }, "required": ["type"] },
+                    "then": { "required": ["model"] }
                 }
+            ]
+        },
+        "route": {
+            "type": "object",
+            "properties": {
+                "handle": { "type": "string" },
+                "uri": { "type": "string", "description": "Route URI. May include {entry.field} or {id} placeholders." },
+                "view": { "type": "string", "description": "Blade view to render." },
+                "uses": { "type": "string", "description": "Controller action, for example App\\Http\\Controllers\\Example@view." },
+                "as": { "type": "string", "description": "Route name. Defaults to {stream}.{handle}." },
+                "verb": { "enum": ["any", "get", "put", "post", "patch", "delete", "GET", "PUT", "POST", "PATCH", "DELETE"] },
+                "middleware": {
+                    "oneOf": [
+                        { "type": "string" },
+                        { "type": "array", "items": { "type": "string" } }
+                    ]
+                },
+                "constraints": {
+                    "description": "Parameter name to regular expression. An object of parameter to pattern, or a list of such objects. streams/core passes the value to Laravel's Route::where() (StreamRouter).",
+                    "oneOf": [
+                        {
+                            "type": "object",
+                            "additionalProperties": { "type": "string" }
+                        },
+                        {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "additionalProperties": { "type": "string" }
+                            }
+                        }
+                    ]
+                },
+                "csrf": { "type": "boolean" },
+                "defer": { "type": "boolean", "description": "Register the route after the app boots." },
+                "parse": { "type": "boolean", "description": "Register one route per entry by parsing the URI with entry data." },
+                "stream": { "type": "string" },
+                "entry": {}
             }
         }
     }

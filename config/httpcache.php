@@ -12,7 +12,7 @@ return array(
     | Set the cache to a writable dir, outside the document root.
     |
     */
-    'enabled' => env('HTTPCACHE_ENABLED', true),
+    'enabled' => env('HTTP_CACHE_ENABLED', false),
     'esi' => false,
     'cache_dir' => storage_path('httpcache'),
 
@@ -26,7 +26,7 @@ return array(
      |
      */
     'options' => array(
-
+        'max_age' => 3600,
     ),
 
 );

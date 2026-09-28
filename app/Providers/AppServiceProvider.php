@@ -2,49 +2,36 @@
 
 namespace App\Providers;
 
-use Illuminate\Support\Facades\Route;
+use App\Livewire\StreamForm;
 use Illuminate\Support\ServiceProvider;
+use Livewire\Livewire;
+use Streams\Ui\Builders\Panels\Panel;
 use Streams\Ui\Support\Facades\UI;
 
-/**
- * Class AppServiceProvider
- *
- * @link   http://pyrocms.com/
- * @author PyroCMS, Inc. <support@pyrocms.com>
- * @author Ryan Thompson <ryan@pyrocms.com>
- */
 class AppServiceProvider extends ServiceProvider
 {
-
-    /**
-     * Additional service providers.
-     *
-     * @var array
-     */
-    protected $providers = [];
-
     /**
      * Register any application services.
      */
-    public function register()
+    public function register(): void
     {
-
-        /**
-         * Register additional service
-         * providers if they exist.
-         */
-        foreach ($this->providers as $provider) {
-            if (class_exists($provider)) {
-                $this->app->register($provider);
-            }
-        }
+        //
     }
 
     /**
      * Bootstrap any application services.
      */
-    public function boot()
+    public function boot(): void
     {
-        UI::component('login', \App\Components\LoginForm::class);
+        // streams-ui 1.0 no longer registers a standalone `form` component; /ui uses this one.
+        Livewire::component('form', StreamForm::class);
+
+        UI::panel(
+            Panel::make('admin')
+                ->default()
+                ->path('admin')
+                ->brandName('Streams')
+                ->middleware(['web'])
+        );
     }
 }

@@ -1,18 +1,34 @@
 ---
-__created_at: 1607656296
-__updated_at: 1607656296
 title: Configuration
-category: getting_started
-stage: review
-enabled: true
-sort: 2
+nav_title: Configuration
+description: Laravel config, environment variables, and the streams directory.
+section: get-started
+category: getting-started
+package: core
+order: 40
+tags: [core, configuration]
+status: ready
 ---
 
 ## Introduction
 
-Streams uses Laravel config files and environment variables for application-level settings.
+Streams uses Laravel config files and environment variables alongside stream definitions in `streams/`.
 
-### Configuration Files
+### Streams directory
+
+Your team typically commits:
+
+```files
+├── streams/
+│   ├── users.json
+│   └── pages.json
+├── streams/data/
+│   └── … entry files …
+```
+
+Stream JSON describes domain models; `streams/data/` holds entries when using filebase storage.
+
+### Configuration files
 
 Published configuration files reside in `config/streams/`.
 
@@ -25,16 +41,16 @@ Published configuration files reside in `config/streams/`.
 
 ### Publishing Configuration
 
-Use the following command to publish configuration files.
+Core, UI, and API all register a `config` tag, so this publishes every installed package's config file:
 
 ```bash
 php artisan vendor:publish --tag=config
 ```
 
-To publish configuration for a specific package use the following:
+To publish configuration for a specific package, name its provider:
 
 ```bash
-php artisan vendor:publish --provider=Streams\\Core\\StreamsServiceProvider --tag=config
+php artisan vendor:publish --provider="Streams\Core\StreamsServiceProvider" --tag=config
 ```
 
 The above commands will copy configuration files from their package location to the directory mentioned above so that you can modify them directly and commit them to your version control system.

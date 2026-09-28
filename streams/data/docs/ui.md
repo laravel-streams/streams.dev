@@ -1,33 +1,49 @@
 ---
-title: User Interface
-category: core_concepts
-intro: Incredibly flexible and entirely configurable UI features.
-stage: drafting
-enabled: false
-sort: 20
+title: UI
+nav_title: UI
+description: Control panels and interface generation for Streams.
+section: guides
+category: advanced
+package: ui
+order: 20
+tags: [ui]
+status: ready
 ---
 
-## Introduction
+## When to use Streams UI
 
-Streams UI provides an extensible interface for creating any user interface your project might require.
+Add `streams/ui` when your team needs an admin or product panel—forms, tables, navigation, and pages—built with Livewire and PHP builders on top of Core streams.
 
-### Control Panel
+You keep Laravel auth, policies, and middleware. Resources are PHP classes—not Blade helpers like `UI::form()`.
 
-Streams UI provides an extensible, user-friendly, and performant control panel that gives you control of every detail.
+## Installation
 
-- [Control Panel](ui/cp)
-- [Theming](ui/theming)
+```bash
+composer require streams/core:2.0.x-dev streams/ui:1.0.x-dev
+```
 
-### UI Components
+Register a panel in a service provider:
 
-Streams UI comes with a number of core components.
+```php
+UI::panel(
+    Panel::make('admin')->default()->path('admin')->middleware(['web'])
+);
+```
 
-- [Tables](ui/tables)
-- [Forms](ui/forms)
-- [Buttons](ui/buttons)
+## Typical workflow
 
-### Input Types
+1. Define streams in `streams/` (Core).
+2. Create Resource classes with `form()` and `table()` builders.
+3. Register resources on the panel and visit `/admin`.
 
-Input types separate the concerns of data-modeling from data-management and provides a refreshing layer of flexibility between the two.
+## Learn more
 
-- [Input Types](ui/inputs)
+- [UI introduction](/docs/ui/introduction)
+- [Quick start](/docs/ui/quick-start)
+- [Panels](/docs/ui/panels)
+- [Resources](/docs/ui/resources)
+- [Forms](/docs/ui/forms)
+- [Tables](/docs/ui/tables)
+- [Control panel guide](/docs/control-panel)
+
+See [Use cases](/docs/use-cases) for admin and product panel paths.

@@ -1,52 +1,26 @@
 {
-    "name": "Laravel Streams",
-    "description": "The main project documentation.",
-
-    "template": "doc",
-    "url_prefix": "docs",
-    "path_prefix": "docs",
-
-    "routes": [
-        {
-            "handle": "view",
-            "uri": "docs/{id}",
-            "stream": "docs",
-            "view": "doc"
-        }
-    ],
-
-    "project": "streams",
-    "github_docs": "https://github.com/laravel-streams/streams.dev/blob/master/streams/data/docs",
-
+    "name": "Docs",
+    "handle": "docs",
+    "description": "Basic docs for the project.",
     "config": {
         "source": {
             "format": "md"
         }
     },
-    "rules": {
-        "id": "required"
-    },
+    "routes": [
+        {
+            "handle": "view",
+            "uri": "docs/{id}",
+            "view": "docs",
+            "constraints": [{"id": "[^./]+"}]
+        }
+    ],
     "fields": [
         {
             "handle": "id",
             "type": "slug",
-            "config": {
-                "seperator": "_"
-            },
-            "input": {
-                "type": "input"
-            }
-        },
-        {
-            "handle": "sort",
-            "type": "integer",
-            "rules": ["required", "min:0", "multiple_of:10"],
-            "config": {
-                "default": 10
-            },
-            "input": {
-                "type": "integer"
-            }
+            "required": true,
+            "unique": true
         },
         {
             "handle": "title",
@@ -54,68 +28,98 @@
             "required": true
         },
         {
-            "handle": "body",
+            "handle": "nav_title",
+            "type": "string"
+        },
+        {
+            "handle": "description",
             "type": "string",
+            "required": true,
             "input": {
-                "type": "markdown"
+                "type": "textarea"
+            }
+        },
+        {
+            "handle": "section",
+            "type": "select",
+            "required": true,
+            "config": {
+                "options": {
+                    "get-started": "Get started",
+                    "guides": "Guides",
+                    "concepts": "Concepts",
+                    "reference": "Reference",
+                    "packages": "Packages",
+                    "contributing": "Contributing"
+                }
             }
         },
         {
             "handle": "category",
-            "type": "select",
-            "input": {
-                "type": "select"
+            "type": "relationship",
+            "config": {
+                "related": "docs_categories"
             },
+            "input": {
+                "type": "text",
+                "placeholder": "Uncategorized"
+            }
+        },
+        {
+            "handle": "package",
+            "type": "select",
+            "required": true,
             "config": {
                 "options": {
-                    "introduction": "Introduction",
-                    "getting_started": "Getting Started",
-                    "basics": "The Basics",
-                    "core_concepts": "Core Concepts",
-                    "components": "Components",
-                    "control_panel": "Control Panel",
-                    "streams": "Streams",
-                    "database": "Database",
-                    "templating": "Templating",
-                    "frontend": "Frontend",
-                    "security": "Security",
-                    "laravel": "Laravel",
-                    "developers": "Developers",
-                    "advanced": "Advanced",
-                    "reference": "Reference",
-                    "field_types": "Field Types"
+                    "core": "Core",
+                    "ui": "UI",
+                    "api": "API",
+                    "sdk": "SDK",
+                    "testing": "Testing",
+                    "client": "Client",
+                    "site": "streams.dev",
+                    "all": "All packages"
                 }
             }
         },
         {
-            "handle": "stage",
-            "type": "select",
-            "input": {
-                "type": "select"
-            },
+            "handle": "order",
+            "type": "integer",
+            "required": true,
             "config": {
-                "default": "outlining",
+                "default": "increment"
+            }
+        },
+        {
+            "handle": "tags",
+            "type": "array",
+            "config": {
+                "items": [
+                    {
+                        "type": "string"
+                    }
+                ]
+            }
+        },
+        {
+            "handle": "status",
+            "type": "select",
+            "required": true,
+            "config": {
                 "options": {
-                    "outlining": "Outlining",
-                    "drafting": "Drafting",
-                    "editing": "Editing",
-                    "review": "Review",
-                    "done": "Done"
-                }
+                    "draft": "Draft",
+                    "review": "In review",
+                    "ready": "Ready",
+                    "deprecated": "Deprecated"
+                },
+                "default": "draft"
             }
         },
         {
-            "handle": "enabled",
-            "type": "boolean",
+            "handle": "body",
+            "type": "string",
             "input": {
-                "type": "toggle"
-            }
-        },
-        {
-            "handle": "publish_at",
-            "type": "date",
-            "input": {
-                "type": "date"
+                "type": "editor"
             }
         }
     ],
@@ -123,10 +127,10 @@
         "admin": {
             "navigation": [
                 {
-                    "sort_order": 2,
-                    "text": "Docs",
-                    "url": "\/admin\/docs",
-                    "component": "anchor"
+                    "component": "anchor",
+                    "text": "Documentation",
+                    "url": "/admin/docs",
+                    "sort_order": 10
                 }
             ]
         },
@@ -134,27 +138,12 @@
             {
                 "component": "table",
                 "handle": "default",
-                "selectable": true,
                 "filters": [
                     {
-                        "handle": "title",
-                        "type": "string",
-                        "placeholder": "Title"
+                        "handle": "title"
                     }
                 ],
                 "columns": [
-                    {
-                        "value": "sort",
-                        "header": {
-                            "text": "Sort Order"
-                        }
-                    },
-                    {
-                        "value": "id",
-                        "header": {
-                            "text": "ID"
-                        }
-                    },
                     {
                         "value": "title",
                         "header": {
@@ -166,28 +155,30 @@
                         "header": {
                             "text": "Category"
                         }
+                    },
+                    {
+                        "value": "status",
+                        "header": {
+                            "text": "Status"
+                        }
                     }
                 ],
                 "buttons": [
                     {
-                        "button": "button.edit"
+                        "tag": "a",
+                        "text": "Edit",
+                        "handle": "edit",
+                        "url": "/{request.segments.0}/{request.segments.1}/{entry.id}/edit"
                     },
                     {
                         "tag": "a",
-                        "handle": "view",
                         "text": "View",
-                        "component": "button",
+                        "handle": "view",
                         "url": "/docs/{entry.id}",
                         "attributes": {
-                            "target": "_blank"
+                            "target": "_blank",
+                            "class": ["a-button", "-secondary"]
                         }
-                    }
-                ],
-                "actions": [
-                    {
-                        "handle": "delete",
-                        "text": "Delete",
-                        "type": "delete"
                     }
                 ]
             }

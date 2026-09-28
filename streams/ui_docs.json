@@ -1,0 +1,176 @@
+{
+    "name": "UI Docs",
+    "handle": "ui_docs",
+    "description": "Documentation for the Streams UI package.",
+    "config": {
+        "source": {
+            "format": "md"
+        }
+    },
+    "routes": [
+        {
+            "handle": "view",
+            "uri": "docs/ui/{id}",
+            "view": "docs",
+            "constraints": [{"id": "[^./]+"}]
+        }
+    ],
+    "fields": [
+        {
+            "handle": "id",
+            "type": "slug",
+            "required": true,
+            "unique": true
+        },
+        {
+            "handle": "title",
+            "type": "string",
+            "required": true
+        },
+        {
+            "handle": "nav_title",
+            "type": "string"
+        },
+        {
+            "handle": "description",
+            "type": "string",
+            "required": true,
+            "input": {
+                "type": "textarea"
+            }
+        },
+        {
+            "handle": "section",
+            "type": "select",
+            "required": true,
+            "config": {
+                "options": {
+                    "get-started": "Get started",
+                    "guides": "Guides",
+                    "concepts": "Concepts",
+                    "reference": "Reference",
+                    "packages": "Packages",
+                    "contributing": "Contributing"
+                }
+            }
+        },
+        {
+            "handle": "package",
+            "type": "select",
+            "required": true,
+            "config": {
+                "options": {
+                    "core": "Core",
+                    "ui": "UI",
+                    "api": "API",
+                    "sdk": "SDK",
+                    "testing": "Testing",
+                    "client": "Client",
+                    "site": "streams.dev",
+                    "all": "All packages"
+                }
+            }
+        },
+        {
+            "handle": "order",
+            "type": "integer",
+            "required": true,
+            "config": {
+                "default": "increment"
+            }
+        },
+        {
+            "handle": "tags",
+            "type": "array",
+            "config": {
+                "items": [
+                    {
+                        "type": "string"
+                    }
+                ]
+            }
+        },
+        {
+            "handle": "status",
+            "type": "select",
+            "required": true,
+            "config": {
+                "options": {
+                    "draft": "Draft",
+                    "review": "In review",
+                    "ready": "Ready",
+                    "deprecated": "Deprecated"
+                },
+                "default": "draft"
+            }
+        },
+        {
+            "handle": "body",
+            "type": "string",
+            "input": {
+                "type": "editor"
+            }
+        }
+    ],
+    "ui": {
+        "admin": {
+            "navigation": [
+                {
+                    "component": "anchor",
+                    "text": "UI Documentation",
+                    "url": "/admin/ui_docs",
+                    "sort_order": 11
+                }
+            ]
+        },
+        "components": [
+            {
+                "component": "table",
+                "handle": "default",
+                "filters": [
+                    {
+                        "handle": "title"
+                    }
+                ],
+                "columns": [
+                    {
+                        "value": "title",
+                        "header": {
+                            "text": "Title"
+                        }
+                    },
+                    {
+                        "value": "package",
+                        "header": {
+                            "text": "Package"
+                        }
+                    },
+                    {
+                        "value": "status",
+                        "header": {
+                            "text": "Status"
+                        }
+                    }
+                ],
+                "buttons": [
+                    {
+                        "tag": "a",
+                        "text": "Edit",
+                        "handle": "edit",
+                        "url": "/{request.segments.0}/{request.segments.1}/{entry.id}/edit"
+                    },
+                    {
+                        "tag": "a",
+                        "text": "View",
+                        "handle": "view",
+                        "url": "/docs/ui/{entry.id}",
+                        "attributes": {
+                            "target": "_blank",
+                            "class": ["a-button", "-secondary"]
+                        }
+                    }
+                ]
+            }
+        ]
+    }
+}

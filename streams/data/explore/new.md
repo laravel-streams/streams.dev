@@ -1,21 +1,16 @@
 ---
 title: Creating a new Laravel Streams project.
+label: New project
+parent: start
+sort_order: 3
 options:
     - text: Explore Features
       href: /explore/features
-    # - text: Project Planning
-    #   href: #/explore/planning
-    #   type: secondary
-    # - text: Explore Starters
-    #   href: /explore/starters
-    #   type: link
 links:
     - text: Installation
       href: /docs/installation
-      target: _blank
-    - text: Examples
-      href: /docs/examples
-      target: _blank
+    - text: Use cases
+      href: /docs/use-cases
 ---
 Save time and increase developer effectiveness by leveraging our utilities for your next project.
 

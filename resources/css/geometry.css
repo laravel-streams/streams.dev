@@ -1,0 +1,418 @@
+/*
+ * Geometry from the logo mark.
+ *
+ * The mark (public/img/logo.svg) is an isometric line drawing: every edge is
+ * vertical or runs at 30 degrees. This file turns that into the site's shape
+ * language:
+ *
+ *   1. Chamfers: key surfaces cut their top-right and bottom-left corners at
+ *      30 degrees (rise = run × tan 30), the two corners where the mark's own
+ *      silhouette slopes away. The other corners keep a near-square radius.
+ *      The cut is a clip-path; the border along the cut is drawn with two
+ *      background gradients so it follows the chamfer, and focus rings move
+ *      inside the shape so clipping cannot hide them.
+ *   2. Drafting lines: hairline rails at the frame edges running the full
+ *      page height, full-width rules between sections, and small plus marks
+ *      where they cross.
+ *   3. Lattice: the mark's three line families (vertical, +30, -30) as an
+ *      isometric hairline lattice, masked to fade out, behind the hero and
+ *      the footer.
+ */
+
+/* The chamfer border color. Registered so it can transition with border-color. */
+@property --st-edge {
+    syntax: "<color>";
+    inherits: false;
+    initial-value: transparent;
+}
+
+@layer components {
+    /* 1. Chamfers ------------------------------------------------------------ */
+
+    .st-chamfer,
+    .st-card,
+    .st-code,
+    .st-btn:not(.st-btn--link),
+    .st-pill,
+    .st-step,
+    .st-search-trigger,
+    .st-search-hero,
+    .docs-filter,
+    .docs-pill,
+    .docs-search-input-hero,
+    .docs-search-panel {
+        --_c: var(--st-chamfer);
+        --_h: calc(var(--_c) * var(--st-tan30));
+        --_sw: 1px;
+        --st-edge: var(--st-glass-border);
+        clip-path: polygon(0 0, calc(100% - var(--_c)) 0, 100% var(--_h), 100% 100%, var(--_c) 100%, 0 calc(100% - var(--_h)));
+        background-image:
+            linear-gradient(to bottom left, transparent 50%, var(--st-edge) 50%, var(--st-edge) calc(50% + var(--_sw)), transparent calc(50% + var(--_sw) + 0.75px)),
+            linear-gradient(to top right, transparent 50%, var(--st-edge) 50%, var(--st-edge) calc(50% + var(--_sw)), transparent calc(50% + var(--_sw) + 0.75px));
+        background-size: var(--_c) var(--_h);
+        background-position: right top, left bottom;
+        background-repeat: no-repeat;
+        background-origin: border-box;
+    }
+
+    /* Sizes. */
+    .st-chamfer--lg,
+    .docs-search-panel {
+        --_c: var(--st-chamfer-lg);
+    }
+
+    .st-chamfer--sm,
+    .st-btn:not(.st-btn--link),
+    .st-search-trigger,
+    .docs-filter,
+    .docs-search-input-hero {
+        --_c: var(--st-chamfer-sm);
+    }
+
+    .st-btn.st-btn--xl,
+    .st-search-hero {
+        --_c: calc(var(--st-chamfer-sm) * 1.35);
+    }
+
+    .st-chamfer--xs,
+    .st-pill,
+    .st-step,
+    .st-btn.st-btn--icon {
+        --_c: var(--st-chamfer-xs);
+    }
+
+    /* Edge colors follow each surface's own border (solid and ghost buttons have none). */
+    .st-btn.st-btn--primary,
+    .st-btn.st-btn--secondary,
+    .st-btn.st-btn--ghost,
+    .st-pill.st-pill--solid {
+        --st-edge: transparent;
+    }
+
+    .st-pill {
+        --st-edge: var(--st-border);
+    }
+
+    .st-pill.st-pill--glass {
+        --st-edge: var(--st-glass-border);
+    }
+
+    .st-code {
+        --st-edge: var(--st-code-border);
+    }
+
+    .st-card,
+    .docs-pill,
+    .st-search-trigger,
+    .st-search-hero,
+    .st-btn--glass,
+    a.st-pill {
+        transition:
+            background-color var(--st-duration-base) var(--st-ease-out),
+            border-color var(--st-duration-base) var(--st-ease-out),
+            color var(--st-duration-base) var(--st-ease-out),
+            --st-edge var(--st-duration-base) var(--st-ease-out),
+            transform var(--st-duration-base) var(--st-ease-out);
+    }
+
+    a.st-card:hover,
+    a.st-card:focus-visible,
+    .st-card--interactive:hover,
+    .docs-pill:hover,
+    .st-search-trigger:hover,
+    .st-search-hero:hover,
+    .st-btn--glass:hover,
+    a.st-pill:hover {
+        --st-edge: var(--st-border-strong);
+    }
+
+    /* Clipped surfaces lose outer shadows (clip-path cuts them), so they keep
+       only the inner glass ring. Precise edges instead of soft drop shadows. */
+    .st-card,
+    .st-card--glass,
+    .st-pill--glass,
+    .st-btn--glass,
+    .st-search-hero,
+    .docs-pill {
+        box-shadow: var(--st-glass-ring);
+    }
+
+    .st-btn--primary,
+    .st-btn--primary:hover,
+    .st-btn--secondary:hover {
+        box-shadow: none;
+    }
+
+    /* Focus: an outline outside the box would be clipped, so it sits inside,
+       and the chamfer stroke turns into the same 2px focus color. */
+    .st-chamfer:focus-visible,
+    a.st-card:focus-visible,
+    .st-btn:not(.st-btn--link):focus-visible,
+    a.st-pill:focus-visible,
+    .st-search-trigger:focus-visible,
+    .st-search-hero:focus-visible,
+    .docs-pill:focus-visible {
+        outline: 2px solid var(--st-focus);
+        outline-offset: -2px;
+        box-shadow: none;
+        --st-edge: var(--st-focus);
+        --_sw: 2px;
+    }
+
+    /* Card corner ticks: the two square corners draw in on hover, violet at
+       top-left, cyan at bottom-right. Transform and opacity only. */
+    .st-card::before,
+    .st-card::after {
+        content: "";
+        position: absolute;
+        width: 1rem;
+        height: 1rem;
+        box-shadow: none;
+        pointer-events: none;
+        opacity: 0;
+        transform: scale(0.35);
+        transition:
+            transform var(--st-duration-base) var(--st-ease-out),
+            opacity var(--st-duration-base) var(--st-ease-out);
+    }
+
+    .st-card::before {
+        top: -1px;
+        left: -1px;
+        inset-inline-end: auto;
+        border-top: 2px solid var(--st-violet);
+        border-left: 2px solid var(--st-violet);
+        border-top-left-radius: var(--st-radius-xl);
+        transform-origin: top left;
+    }
+
+    .st-card::after {
+        inset: auto -1px -1px auto;
+        border-bottom: 2px solid var(--st-cyan);
+        border-right: 2px solid var(--st-cyan);
+        border-radius: 0 0 var(--st-radius-xl) 0;
+        transform-origin: bottom right;
+    }
+
+    a.st-card:hover::before,
+    a.st-card:hover::after,
+    a.st-card:focus-visible::before,
+    a.st-card:focus-visible::after,
+    .st-card--interactive:hover::before,
+    .st-card--interactive:hover::after {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    /* Docs hub cards: same lift, no shadow layer. */
+    .docs-pill::after {
+        content: none;
+    }
+
+    /* Step markers (homepage "How it works"): small chamfered chips. */
+    .st-step {
+        display: flex;
+        flex-shrink: 0;
+        align-items: center;
+        justify-content: center;
+        width: 2.25rem;
+        height: 2.25rem;
+        border: 1px solid var(--st-glass-border);
+        border-radius: var(--st-radius-xs);
+        background-color: var(--st-glass-bg-strong);
+        box-shadow: var(--st-glass-ring);
+        -webkit-backdrop-filter: var(--st-glass-filter);
+        backdrop-filter: var(--st-glass-filter);
+        font-family: var(--st-font-mono);
+        font-size: var(--st-text-sm);
+        color: var(--st-text-secondary);
+    }
+
+    /* The desktop sidebar panel is a chamfered card too; the phone drawer stays edge-anchored. */
+    @media (min-width: 1024px) {
+        .docs-sidebar-panel {
+            --_c: var(--st-chamfer);
+            --_h: calc(var(--_c) * var(--st-tan30));
+            --st-edge: var(--st-glass-border);
+            clip-path: polygon(0 0, calc(100% - var(--_c)) 0, 100% var(--_h), 100% 100%, var(--_c) 100%, 0 calc(100% - var(--_h)));
+            background-image:
+                linear-gradient(to bottom left, transparent 50%, var(--st-edge) 50%, var(--st-edge) calc(50% + 1px), transparent calc(50% + 1.75px)),
+                linear-gradient(to top right, transparent 50%, var(--st-edge) 50%, var(--st-edge) calc(50% + 1px), transparent calc(50% + 1.75px));
+            background-size: var(--_c) var(--_h);
+            background-position: right top, left bottom;
+            background-repeat: no-repeat;
+            background-origin: border-box;
+            box-shadow: var(--st-glass-ring);
+        }
+    }
+
+    /* 2. Drafting lines ------------------------------------------------------ */
+
+    /*
+     * Rails sit half a gutter inside the frame (the 90rem header width), so
+     * they frame the header, the docs grid, and every homepage section.
+     * --_x is resolved against each element's own width, which is always the
+     * page width here.
+     */
+    .st-frame,
+    .st-rule,
+    .st-header {
+        --_inset: calc(var(--st-gutter) * 0.5);
+        --_x: max(var(--_inset), calc((100% - var(--st-frame-max)) / 2 + var(--_inset)));
+    }
+
+    .st-frame {
+        position: absolute;
+        inset: 0;
+        z-index: -1;
+        pointer-events: none;
+    }
+
+    .st-frame::before,
+    .st-frame::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 1px;
+        background-color: var(--st-rule);
+    }
+
+    .st-frame::before {
+        left: var(--_x);
+    }
+
+    .st-frame::after {
+        right: var(--_x);
+    }
+
+    /* A full-width hairline between sections, with a plus mark on each rail. */
+    .st-rule {
+        position: relative;
+        height: 1px;
+        background-color: var(--st-rule);
+    }
+
+    .st-rule::before,
+    .st-rule::after,
+    .st-header::before {
+        content: "";
+        position: absolute;
+        width: 11px;
+        height: 11px;
+        pointer-events: none;
+        background:
+            linear-gradient(var(--st-rule-mark), var(--st-rule-mark)) center / 100% 1px no-repeat,
+            linear-gradient(var(--st-rule-mark), var(--st-rule-mark)) center / 1px 100% no-repeat;
+    }
+
+    .st-rule::before {
+        top: -5px;
+        left: calc(var(--_x) - 5px);
+    }
+
+    .st-rule::after {
+        top: -5px;
+        right: calc(var(--_x) - 5px);
+    }
+
+    /* The header's bottom hairline crosses the rails too: marks on both, via one pseudo. */
+    .st-header::before {
+        bottom: -6px;
+        left: calc(var(--_x) - 5px);
+        right: calc(var(--_x) - 5px);
+        width: auto;
+        z-index: 1;
+        background:
+            linear-gradient(var(--st-rule-mark), var(--st-rule-mark)) left center / 11px 1px no-repeat,
+            linear-gradient(var(--st-rule-mark), var(--st-rule-mark)) 5px center / 1px 100% no-repeat,
+            linear-gradient(var(--st-rule-mark), var(--st-rule-mark)) right center / 11px 1px no-repeat,
+            linear-gradient(var(--st-rule-mark), var(--st-rule-mark)) calc(100% - 5px) center / 1px 100% no-repeat;
+    }
+
+    /* 3. Lattice ------------------------------------------------------------- */
+
+    /*
+     * One 90 × 52 tile holds the mark's three line families: vertical lines
+     * 45 apart and two diagonals at atan(52/90) = 30.02 degrees. It is used as
+     * a mask over a tinted fill, so it takes the theme's colors and stays a
+     * crisp 1px line at any pixel density.
+     */
+    .st-lattice {
+        --_tile: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='90' height='52' viewBox='0 0 90 52'%3E%3Cpath d='M0 0L90 52M0 52L90 0M0 0V52M45 0V52M90 0V52' stroke='%23000' stroke-width='1' fill='none'/%3E%3C/svg%3E");
+        position: absolute;
+        inset: 0;
+        z-index: -1;
+        pointer-events: none;
+        background: radial-gradient(60% 70% at 72% 18%, var(--st-lattice-accent), var(--st-lattice) 70%);
+        -webkit-mask-image: var(--_tile), var(--_fade, radial-gradient(56% 62% at 50% 34%, #000 18%, transparent 78%));
+        -webkit-mask-size: 90px 52px, 100% 100%;
+        -webkit-mask-position: 50% 0, 0 0;
+        -webkit-mask-repeat: repeat, no-repeat;
+        -webkit-mask-composite: source-in;
+        mask-image: var(--_tile), var(--_fade, radial-gradient(56% 62% at 50% 34%, #000 18%, transparent 78%));
+        mask-size: 90px 52px, 100% 100%;
+        mask-position: 50% 0, 0 0;
+        mask-repeat: repeat, no-repeat;
+        mask-composite: intersect;
+    }
+
+    /*
+     * The mark itself, drawn as a blueprint on the lattice. The logo is built
+     * on an isometric grid: its stroke centerlines are 57.25 units apart
+     * across and 66.1 along the verticals. At scale 1.572 that is 90 × 104,
+     * exactly two lattice tiles, and centering the box puts the mark's
+     * centerlines on lattice lines, so each lattice line runs down the middle
+     * of a stroke. Top offset: 26n − 185 (n odd) keeps it on the grid.
+     */
+    .st-lattice-mask {
+        position: absolute;
+        inset: 0;
+        z-index: -1;
+        overflow: hidden;
+        pointer-events: none;
+        -webkit-mask-image: radial-gradient(48% 70% at 50% 30%, #000 30%, transparent 85%);
+        mask-image: radial-gradient(48% 70% at 50% 30%, #000 30%, transparent 85%);
+    }
+
+    .st-lattice__mark {
+        position: absolute;
+        top: 49px;
+        left: calc(50% - 334.2px);
+        width: 668.4px;
+        height: 668.4px;
+        background-color: var(--st-lattice-mark);
+        -webkit-mask: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20425.2%20425.2'%3E%3Cpath%20d='M269.8,5.8L90.7,109.2v140.7l49.9,28.8l-49.9,28.8v74.6l64.6,37.3L334.5,316V175.3l-49.9-28.8l49.9-28.8V43.1L269.8,5.8z%20M269.8,22.8l42.5,24.5l-157,90.7l-42.5-24.5L269.8,22.8z%20M105.5,241.4V126.2l42.5,24.5v115.2L105.5,241.4z%20M212.6,254.2L212.6,254.2l42.5,24.5l-99.8,57.6l-42.5-24.6L212.6,254.2z%20M220,241.4v-49.1l42.5,24.5v49.1L220,241.4z%20M148,398.1l-42.5-24.5v-49.1l42.5,24.6V398.1z%20M319.7,307.5l-157,90.6v-49.1v0L277.2,283v-66.1l42.5-24.5V307.5z%20M312.4,179.5l-42.5,24.5h0l-42.5-24.5l42.5-24.5L312.4,179.5z%20M319.7,109.2l-114.5,66.1v66.1l-42.5,24.5V150.7l157-90.7V109.2z'%20fill='none'%20stroke='%23000'%20stroke-width='0.7'%20stroke-linejoin='miter'/%3E%3C/svg%3E") 0 0 / 100% 100% no-repeat;
+        mask: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20425.2%20425.2'%3E%3Cpath%20d='M269.8,5.8L90.7,109.2v140.7l49.9,28.8l-49.9,28.8v74.6l64.6,37.3L334.5,316V175.3l-49.9-28.8l49.9-28.8V43.1L269.8,5.8z%20M269.8,22.8l42.5,24.5l-157,90.7l-42.5-24.5L269.8,22.8z%20M105.5,241.4V126.2l42.5,24.5v115.2L105.5,241.4z%20M212.6,254.2L212.6,254.2l42.5,24.5l-99.8,57.6l-42.5-24.6L212.6,254.2z%20M220,241.4v-49.1l42.5,24.5v49.1L220,241.4z%20M148,398.1l-42.5-24.5v-49.1l42.5,24.6V398.1z%20M319.7,307.5l-157,90.6v-49.1v0L277.2,283v-66.1l42.5-24.5V307.5z%20M312.4,179.5l-42.5,24.5h0l-42.5-24.5l42.5-24.5L312.4,179.5z%20M319.7,109.2l-114.5,66.1v66.1l-42.5,24.5V150.7l157-90.7V109.2z'%20fill='none'%20stroke='%23000'%20stroke-width='0.7'%20stroke-linejoin='miter'/%3E%3C/svg%3E") 0 0 / 100% 100% no-repeat;
+    }
+
+    @media (max-width: 767.98px) {
+        .st-lattice__mark {
+            display: none;
+        }
+    }
+
+    /* Footer variant: a low band that fades up from the bottom edge. */
+    .st-lattice--footer {
+        --_fade: linear-gradient(to top, #000, transparent 85%);
+    }
+}
+
+/* Code blocks in rendered docs (utilities layer, after the prose rules). */
+@layer utilities {
+    .documentation-content pre {
+        --_c: var(--st-chamfer);
+        --_h: calc(var(--_c) * var(--st-tan30));
+        --st-edge: var(--st-code-border);
+        position: relative;
+        clip-path: polygon(0 0, calc(100% - var(--_c)) 0, 100% var(--_h), 100% 100%, var(--_c) 100%, 0 calc(100% - var(--_h)));
+        background-image:
+            linear-gradient(to bottom left, transparent 50%, var(--st-edge) 50%, var(--st-edge) calc(50% + 1px), transparent calc(50% + 1.75px)),
+            linear-gradient(to top right, transparent 50%, var(--st-edge) 50%, var(--st-edge) calc(50% + 1px), transparent calc(50% + 1.75px));
+        background-size: var(--_c) var(--_h);
+        background-position: right top, left bottom;
+        background-repeat: no-repeat;
+        background-origin: border-box;
+        box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.1), inset 0 0 0 1px var(--st-code-inner);
+    }
+}

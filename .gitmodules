@@ -1,0 +1,12 @@
+[submodule "submodules/streams-core"]
+	path = submodules/streams-core
+	url = https://github.com/laravel-streams/streams-core.git
+[submodule "submodules/streams-ui"]
+	path = submodules/streams-ui
+	url = https://github.com/laravel-streams/streams-ui.git
+[submodule "submodules/streams-api"]
+	path = submodules/streams-api
+	url = https://github.com/laravel-streams/streams-api.git
+[submodule "submodules/api-client"]
+	path = submodules/api-client
+	url = https://github.com/laravel-streams/api-client.git

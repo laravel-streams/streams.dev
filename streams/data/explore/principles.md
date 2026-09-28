@@ -1,24 +1,27 @@
 ---
 title: Explore our values and principles to discover how they align with you, your project, and your team.
+label: Principles
+parent: idea
+sort_order: 14
 menu:
     - text: Open Source
-      href: #/explore/open-source
+      href: /explore/open-source
     - text: Utility First
-      href: #/explore/api
+      href: /explore/existing
     - text: Extensibility
-      href: #/explore/extensive
+      href: /docs/core/extending-core
       type: secondary
     - text: Simplicity
-      href: #/explore/features
+      href: /explore/packages
       type: secondary
     - text: Reusable
-      href: #/explore/reusable
+      href: /docs/core/addons
       type: secondary
     - text: RAD Compatible
-      href: /explore/rad
+      href: /explore/new
       type: link
 links:
     - text: Explore Features
       href: /explore/features
-      type: link
 ---
+Every feature is built on a handful of principles. Pick one to see it in practice.

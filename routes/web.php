@@ -1,82 +1,82 @@
 <?php
 
+use Illuminate\Support\Facades\Request;
+use Illuminate\Support\Facades\Route;
+use Streams\Core\Support\Facades\Streams;
+use Streams\Ui\Support\Facades\UI;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
 |--------------------------------------------------------------------------
 |
-| This file is where you may define all of the routes that are handled
-| by your application. Just tell Laravel the URIs it should respond
-| to using a Closure or controller method. Build something great!
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider within a group which
+| contains the "web" middleware group. Now create something great!
 |
 */
 
-use Illuminate\Support\Facades\Route;
-use Streams\Core\Support\Facades\Streams;
+use App\Support\DocsSearchIndex;
+use App\Support\ExploreTree;
+use App\Support\LlmsText;
 
-Route::streams('/', [
-    'entry' => 'homepage',
-    'stream' => 'pages',
-    'middleware' => ['ttl:600']
-]);
+Route::get('/search/docs.json', fn () => response()->json(DocsSearchIndex::all()));
 
-Route::streams('docs', [
-    'entry' => 'docs',
-    'stream' => 'pages',
-    'middleware' => ['ttl:600']
-]);
+Route::get('/schema/streams.schema.json', function () {
+    $path = public_path('schema/streams.schema.json');
+    abort_unless(is_file($path), 404);
 
-Route::view('login', 'login')->name('login');
-Route::post('login/auth', 'App\Components\LoginForm@login');
-
-Route::get('/packages', function () {
-
-    $packages = Streams::packages()->paginate();
-
-    return view('packages', [
-        'packages' => $packages,
-        'title' => 'Packages',
-        'description' => null,
+    return response(file_get_contents($path), 200, [
+        'Content-Type' => 'application/json; charset=UTF-8',
     ]);
 });
 
-Route::get('/packages/category/{category}', function ($category) {
+/*
+ * Machine-readable docs for agents (https://llmstxt.org), built from
+ * DocsSearchIndex on request and cached alongside the search index.
+ */
+$text = ['Content-Type' => 'text/plain; charset=UTF-8'];
+$markdown = ['Content-Type' => 'text/markdown; charset=UTF-8'];
 
-    $packages = Streams::packages()
-        ->where('categories', 'contains', $category)
-        ->paginate();
+Route::get('/llms.txt', fn () => response(LlmsText::index(), 200, $text));
+Route::get('/llms-full.txt', fn () => response(LlmsText::full(), 200, $text));
 
-    return view('packages', [
-        'packages' => $packages,
-        'title' => Streams::make('packages')->fields->categories->options()[$category],
-        'description' => null,
-    ]);
-});
+Route::get('/docs/api/openapi.yaml', fn () => response(
+    // A copy of streams/api's resources/openapi/openapi.yaml; see scripts/sync-openapi.php.
+    file_get_contents(resource_path('openapi/openapi.yaml')),
+    200,
+    ['Content-Type' => 'application/yaml; charset=UTF-8']
+));
 
-Route::get('/packages/{vendor}', function ($vendor) {
+// Raw markdown for every docs page: /docs/{id}.md and /docs/{package}/{id}.md
+Route::get('/docs/{path}.md', function (string $path) use ($markdown) {
+    $segments = explode('/', $path);
+    $id = array_pop($segments);
+    $prefix = '/docs'.($segments ? '/'.implode('/', $segments) : '');
 
-    $packages = Streams::packages()
-        ->where('name', 'like', "$vendor/%")
-        ->paginate();
+    abort_unless($document = DocsSearchIndex::find($prefix, $id), 404);
 
-        return view('packages', [
-            'packages' => $packages,
-            'title' => $vendor,
-            'description' => 'Username and description and such here.',
-        ]);
-});
+    return response(LlmsText::page($document), 200, $markdown);
+})->where('path', '[A-Za-z0-9_-]+(/[A-Za-z0-9_-]+)?');
 
-Route::get('/packages/{vendor}/{package}', function ($vendor, $package) {
+Route::view('api-test', 'api');
+Route::view('ui-test', 'ui');
 
-    $package = Streams::packages()->where('name', "$vendor/$package")->first();
+/*
+| Explore: /explore redirects to the root node; every node is also served as
+| Markdown and JSON so agents can walk the same tree as people.
+|
+| These paths do not overlap the docs markdown routes above, or the explore
+| stream route explore/{id} (that constraint is [a-z0-9-]+, with no dot).
+*/
+Route::redirect('explore', '/explore/'.ExploreTree::ROOT);
 
-    return view('package', [
-        'package' => $package,
-    ]);
-});
+Route::get('explore.json', fn () => response()->json(ExploreTree::toTree(), 200, [], JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT));
 
-Route::redirect('discord', 'https://discord.gg/Sh79MvV');
+Route::get('explore/{id}.{format}', function (string $id, string $format) {
+    $entry = ExploreTree::find($id) ?? abort(404);
 
-Route::streams('{entry.path}', [
-    'stream' => 'pages',
-]);
+    return $format === 'json'
+        ? response()->json(ExploreTree::toArray($entry), 200, [], JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT)
+        : response(ExploreTree::toMarkdown($entry), 200, ['Content-Type' => 'text/markdown; charset=UTF-8']);
+})->where(['id' => '[a-z0-9-]+', 'format' => 'md|json']);

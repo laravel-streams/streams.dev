@@ -1,0 +1,127 @@
+{
+    "name": "Docs Categories",
+    "handle": "docs_categories",
+    "description": "Categories for documentation.",
+    "config": {
+        "source": {
+            "type": "self"
+        }
+    },
+    "fields": [
+        {
+            "handle": "id",
+            "type": "slug",
+            "required": true,
+            "unique": true
+        },
+        {
+            "handle": "order",
+            "type": "integer",
+            "required": true,
+            "config": {
+                "default": "increment"
+            }
+        },
+        {
+            "handle": "name",
+            "type": "string",
+            "required": true
+        },
+        {
+            "handle": "description",
+            "type": "string",
+            "input": {
+                "type": "textarea"
+            }
+        }
+    ],
+    "ui": {
+        "admin": {
+            "navigation": [
+                {
+                    "component": "anchor",
+                    "text": "Categories",
+                    "url": "/admin/docs_categories",
+                    "sort_order": 11
+                }
+            ]
+        },
+        "components": [
+            {
+                "component": "table",
+                "handle": "default",
+                "filters": [
+                    {
+                        "handle": "name"
+                    }
+                ],
+                "columns": [
+                    {
+                        "value": "name",
+                        "header": {
+                            "text": "Name"
+                        }
+                    },
+                    {
+                        "value": "order",
+                        "header": {
+                            "text": "Order"
+                        }
+                    }
+                ],
+                "buttons": [
+                    {
+                        "tag": "a",
+                        "text": "Edit",
+                        "handle": "edit",
+                        "url": "/{request.segments.0}/{request.segments.1}/{entry.id}/edit"
+                    }
+                ]
+            }
+        ]
+    },
+    "data": {
+        "getting-started": {
+            "id": "getting-started",
+            "order": 1,
+            "name": "Get started",
+            "description": "Download, install, and start working with Streams."
+        },
+        "core-concepts": {
+            "id": "core-concepts",
+            "order": 2,
+            "name": "Core Concepts",
+            "description": "Explore the architecture concepts of Streams."
+        },
+        "basics": {
+            "id": "basics",
+            "order": 3,
+            "name": "The Basics",
+            "description": "Common usage, use cases, and services explored."
+        },
+        "frontend": {
+            "id": "frontend",
+            "order": 4,
+            "name": "Frontend",
+            "description": "UI development with Streams."
+        },
+        "advanced": {
+            "id": "advanced",
+            "order": 5,
+            "name": "Advanced",
+            "description": "Take Streams further with advanced features."
+        },
+        "development": {
+            "id": "development",
+            "order": 6,
+            "name": "Developers",
+            "description": "Advanced topics for Streams developers."
+        },
+        "this-project": {
+            "id": "this-project",
+            "order": 99,
+            "name": "Contributing",
+            "description": "How streams.dev is built and run locally, and how to contribute to the docs."
+        }
+    }
+}

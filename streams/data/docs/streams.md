@@ -1,45 +1,305 @@
 ---
 title: Streams
-category: basics
-intro: Streams model configuration.
-stage: drafting
-enabled: true
-sort: 0
+nav_title: Streams
+description: Get started with the stream modeling engine.
+section: concepts
+category: core-concepts
+package: core
+order: 20
+tags: [core, streams]
+status: ready
 ---
 
 ## Introduction
 
-The Streams system leans heavily on domain-driven design (DDD). We call these domain abstractions streams, hence our namesake.
+The Streams platform leans heavily on domain-driven design (DDD). We call these domain abstractions `streams`, hence our namesake.
 
-Data modeling is *the* fundamental function of Streams Core. The rest of the platform builds upon streams' data and structure.
+An example could be configuring a domain model (a stream) for a website's pages, users of an application, or feedback submissions from a form. Streams describe your data structures.
 
-- [Streams Core](core/introduction)
+## Defining Streams
 
-### Domain Information
+Using JSON files, you can define stream configurations in the `streams/` directory. The filenames serve as the stream's `id`.
 
-The Streams system leans heavily on domain-driven design (DDD). We call these domain abstractions `streams`, hence our namesake.
+It is highly encouraged to use the plural form of a noun when naming Streams—for example, contacts and people. Also, naming conventions like `business_contacts` or `neat-people` work well.
 
-**An example could be configuring a domain model (a stream) for a website's pages, users of an application, or feedback submissions from a form.** A stream can define anything anywhere.
+```files
+├── streams/
+│   ├── users.json
+│   ├── pages.json
+│   └── contacts.json
+```
 
-- [Defining Streams](/docs/core/streams#defining-streams)
+### The Basics
 
-#### Data Sources
+To get started, you need only specify the `id`, which is the filename itself, and some `fields` to describe the domain object's structure.
 
-If not configured otherwise, streams will utilize the built-in flat-file database. All databases available to Laravel are supported as well.
+Let's create a little stream to hold information for a simple CRM.
 
-- [Stream Sources](/docs/core/sources)
+In `streams/contacts.json`:
 
-### Domain Entities
+```json
+{
+    "name": "Contacts",
+    "description": "A simple address book.",
+    "config": {
+        "source": {
+            "type": "filebase",
+            "path": "streams/data/contacts",
+            "format": "json"
+        },
+        "abstract": "Streams\\Core\\Entry\\Entry",
+        "criteria": "Streams\\Core\\Criteria\\Criteria",
+        "repository": "Streams\\Core\\Repository\\Repository",
+        "collection": "Illuminate\\Support\\Collection"
+    },
+    "fields": {
+        "name": "string",
+        "email": "email",
+        "company": {
+            "type": "relationship",
+            "config": {
+                "related": "companies"
+            }
+        }
+    }
+}
+```
 
-Domain entities are called `entries` within the Streams platform. A stream also defines entry attributes or fields that dictate the entry's properties, data-casting, and more.
+### Fields
 
-- [Stream Entries](/docs/core/entries)
-- [Entry Fields](/docs/core/fields)
-- [Field Types](/docs/core/fields#field-types)
+- [Fields](/docs/fields)
+- [Field Types](/docs/fields#field-types)
 
-### Managing Entities
+**Fields** are an essential descriptor of the domain object. They describe what properties the domain object will have and how they work. Field **types** control things like accessors, data mutation, and casting.
 
-The Streams platform separates methods to retrieve and store entries from the objects by using a repository pattern. Entries still provide some convenient methods like `save` and `delete`.
+The **field configuration keys** serve as a `handle`, which you can use to reference the field later. So, for example, you may access the above contact fields like this:
+
+```php
+$entry->email;
+$entry->company->email;
+```
+
+### Stream Routes
+
+- [Stream Routes](/docs/routing#stream-routes)
+- [Route Options](/docs/core/routes)
+
+Streams can simplify **routing** by defining associated routes in their definition.
+
+In `streams/contacts.json`:
+
+```json
+{
+    "routes": {
+        "index": "contacts",
+        "view": "contacts/{id}"
+    }
+}
+```
+
+You can also use an array to include other **route options**.
+
+In `streams/contacts.json`:
+
+```json
+{
+    "routes": {
+        "contact": {
+            "csrf": false,
+            "uri": "form/{entry.email}"
+        }
+    }
+}
+```
+
+### Stream Validation
+
+Streams simplifies **validation** by defining validation in their definition.
+
+- [Validation](/docs/core/validation)
+
+In `streams/contacts.json`:
+
+```json
+{
+    "rules": {
+        "name": [
+            "required",
+            "max:100"
+        ],
+        "email": [
+            "required",
+            "email:rfc,dns"
+        ],
+        "company": "required|unique"
+    }
+}
+```
+
+### Security
+
+Specify the [Laravel policy](https://laravel.com/docs/authorization#creating-policies) class to use for the stream. There is no separate security guide.
+
+In `streams/contacts.json`:
+
+```json
+{
+    "policy": "App\\Contacts\\ContactPolicy"
+}
+```
+
+### Caching
+
+Streams provides a touch-free caching system you can define in the configuration.
+
+- [Caching](/docs/core/caching)
+
+In `streams/contacts.json`:
+
+```json
+{
+    "config": {
+        "cache": {
+            "enabled": true,
+            "ttl": 1800,
+            "store": "file"
+        }
+    }
+}
+```
+
+Caching is off unless `config.cache.enabled` is `true`. `ttl` is in seconds (default 3600), and `store` defaults to your default cache store.
+
+### Sources
+
+Sources define the source information for entry data which you can define in the configuration.
+
+- [Sources and adapters](/docs/core/sources-and-adapters)
+
+In `streams/contacts.json`:
+
+```json
+{
+    "source": {
+        "type": "filebase",
+        "format": "md"
+    }
+}
+```
+
+## Stream Entries
+
+Domain entities are called `entries` within the Streams platform. A stream defines entry attributes, or `fields`, that dictate the entry's properties, data-casting, and more.
+
+- [Entries](/docs/core/entries)
+
+### Abstracts
+
+The **abstract** parameter defines the class to use when constructing entry instances.
+
+- [Entries](/docs/core/entries)
+
+In `streams/contacts.json`:
+
+```json
+{
+    "abstract": "App\\Contacts\\Contact"
+}
+```
+
+> When defining Elqouent stream sources, the sources model will be used as the abstract.
+
+### Criteria
+
+The **criteria** parameter defines the class to use when building entry queries.
+
+- [Criteria](/docs/core/criteria)
+
+In `streams/contacts.json`:
+
+```json
+{
+    "criteria": "App\\Contacts\\ContactCriteria"
+}
+```
+
+### Repositories
+
+The **repository** parameter defines the repository class to use for the stream entries.
 
 - [Repositories](/docs/core/repositories)
-- [Querying Entries](/docs/core/querying)
+
+In `streams/contacts.json`:
+
+```json
+{
+    "repository": "App\\Contacts\\ContactRepository"
+}
+```
+
+## Advanced Streams
+
+### JSON References
+
+You can use JSON file references within stream configurations to point to other JSON files using the `@` symbol followed by a relative path to the file. In this way, you can reuse various configuration information or tidy up larger files. **The referenced file's JSON data directly replaces the reference.**
+
+In `streams/contacts.json`:
+
+```json
+{
+    "name": "Contacts",
+    "fields": "@streams/fields/contacts.json"
+}
+```
+
+In `streams/fields/contacts.json`:
+
+```json
+{
+    "name": "string",
+    "email": "email",
+    "company": {
+        "type": "relationship",
+        "stream": "company"
+    }
+}
+```
+
+### Extend a Stream
+
+A stream can `extend` another stream, which works like a recursive **merge**.
+
+In `streams/family.json`:
+
+```json
+{
+    "name": "Family Members",
+    "extend": "contacts",
+    "fields": {
+        "relation": {
+            "type": "select",
+            "config": {
+                "options": {
+                    "mother": "Mother",
+                    "father": "Father",
+                    "brother": "Brother",
+                    "sister": "Sister"
+                }
+            }
+        }
+    }
+}
+```
+
+In the above example, all `contacts` fields are available to you, as well as the new `relation` field.
+
+```php
+$entry->email;      // The email value.
+$entry->relation;   // The relation value.
+```
+
+### Stream Sources
+
+You can configure the flat-file database as well as other sources for storing data including any Laravel database. No code changes required.
+
+For full reference, see [Core — Streams](/docs/core/streams), [Core — Caching](/docs/core/caching), and [Core — Validation](/docs/core/validation).

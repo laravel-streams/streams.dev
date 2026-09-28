@@ -1,41 +1,25 @@
 {
     "private": true,
     "scripts": {
-        "dev": "npm run development",
-        "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress  --config=node_modules/laravel-mix/setup/webpack.config.js",
-        "watch": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --watch --progress  --config=node_modules/laravel-mix/setup/webpack.config.js",
-        "hot": "cross-env NODE_ENV=development node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
-        "prod": "npm run production",
-        "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --progress --config=node_modules/laravel-mix/setup/webpack.config.js"
-    },
-    "dependencies": {
-        "@laravel-streams/api": "^1.0",
-        "@laravel-streams/core": "^1.0",
-        "alpinejs": "^2.8.0",
-        "anchor-js": "^4.3.0",
-        "autoprefixer": "^10.2.4",
-        "axios": "^0.21",
-        "browser-sync": "^2.26.14",
-        "browser-sync-webpack-plugin": "^2.3.0",
-        "clipboard": "^2.0.6",
-        "cross-env": "^7.0",
-        "cypress": "^6.4.0",
-        "foundation-sites": "^6.6.3",
-        "fuse.js": "^6.6.2",
-        "highlight.js": "^10.5.0",
-        "laravel-mix": "^6.0.11",
-        "npm-run-all": "^4.1.5",
-        "postcss": "^8.2.10",
-        "prismjs": "^1.23.0",
-        "resolve-url-loader": "^3.1.2",
-        "rimraf": "^3.0.2",
-        "sass": "^1.32.6",
-        "sass-loader": "^11.0.0",
-        "tailwindcss": "^3.0.0",
-        "tocbot": "^4.12.2",
-        "webpack-bundle-analyzer": "^4.4.0"
+        "dev": "vite",
+        "build": "vite build",
+        "test:js": "node --test tests/js/*.test.mjs"
     },
     "devDependencies": {
-        "@tailwindcss/forms": "^0.5.2"
+        "@tailwindcss/typography": "^0.5.20",
+        "@tailwindcss/vite": "^4.3.3",
+        "axios": "^1.7.9",
+        "concurrently": "^9.2.4",
+        "laravel-vite-plugin": "^2.1.0",
+        "lodash": "^4.17.19",
+        "tailwindcss": "^4.3.3",
+        "vite": "^7.3.6"
+    },
+    "dependencies": {
+        "alpinejs": "^3.10.3",
+        "anchor-js": "^5.0.0",
+        "fuse.js": "^7.4.1",
+        "prismjs": "^1.29.0",
+        "tocbot": "^4.20.1"
     }
 }
