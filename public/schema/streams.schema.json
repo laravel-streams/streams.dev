@@ -406,7 +406,22 @@
                         { "type": "array", "items": { "type": "string" } }
                     ]
                 },
-                "constraints": { "type": "object" },
+                "constraints": {
+                    "description": "Parameter name to regular expression. An object of parameter to pattern, or a list of such objects. streams/core passes the value to Laravel's Route::where() (StreamRouter).",
+                    "oneOf": [
+                        {
+                            "type": "object",
+                            "additionalProperties": { "type": "string" }
+                        },
+                        {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "additionalProperties": { "type": "string" }
+                            }
+                        }
+                    ]
+                },
                 "csrf": { "type": "boolean" },
                 "defer": { "type": "boolean", "description": "Register the route after the app boots." },
                 "parse": { "type": "boolean", "description": "Register one route per entry by parsing the URI with entry data." },
