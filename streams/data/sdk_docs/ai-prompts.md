@@ -101,36 +101,40 @@ php artisan vendor:publish --tag=crm-example
 ## Field Type Recommendations
 
 ### Content Management
-When users need content management, recommend these field types:
+When users need content management, recommend these field types. Field behavior is Core's ([Fields](/docs/core/fields)): length and range limits go in `rules`, long text is a `string` with an `input` hint, and type options go in `config`:
 
 ```json
 {
-    "title": {
-        "type": "string",
-        "required": true,
-        "config": {"max": 255}
-    },
-    "slug": {
-        "type": "slug",
-        "unique": true,
-        "config": {"slugify": "title"}
-    },
-    "content": {
-        "type": "markdown",
-        "required": true,
-        "config": {"height": 400}
-    },
-    "featured_image": {
-        "type": "image",
-        "config": {"path": "images"}
-    },
-    "status": {
-        "type": "select",
-        "config": {
-            "options": {
-                "draft": "Draft",
-                "published": "Published",
-                "archived": "Archived"
+    "fields": {
+        "title": {
+            "type": "string",
+            "required": true,
+            "rules": [
+                "max:255"
+            ]
+        },
+        "slug": {
+            "type": "slug",
+            "unique": true
+        },
+        "content": {
+            "type": "string",
+            "required": true,
+            "input": {
+                "type": "editor"
+            }
+        },
+        "featured_image": {
+            "type": "image"
+        },
+        "status": {
+            "type": "select",
+            "config": {
+                "options": {
+                    "draft": "Draft",
+                    "published": "Published",
+                    "archived": "Archived"
+                }
             }
         }
     }
@@ -142,27 +146,41 @@ For product catalogs, suggest:
 
 ```json
 {
-    "name": {
-        "type": "string",
-        "required": true
-    },
-    "sku": {
-        "type": "string",
-        "unique": true,
-        "required": true
-    },
-    "price": {
-        "type": "decimal",
-        "required": true,
-        "config": {"decimals": 2, "min": 0}
-    },
-    "stock_quantity": {
-        "type": "integer",
-        "config": {"min": 0, "default": 0}
-    },
-    "is_featured": {
-        "type": "boolean",
-        "config": {"default": false}
+    "fields": {
+        "name": {
+            "type": "string",
+            "required": true
+        },
+        "sku": {
+            "type": "string",
+            "unique": true,
+            "required": true
+        },
+        "price": {
+            "type": "decimal",
+            "required": true,
+            "rules": [
+                "min:0"
+            ],
+            "config": {
+                "precision": 2
+            }
+        },
+        "stock_quantity": {
+            "type": "integer",
+            "rules": [
+                "min:0"
+            ],
+            "config": {
+                "default": 0
+            }
+        },
+        "is_featured": {
+            "type": "boolean",
+            "config": {
+                "default": false
+            }
+        }
     }
 }
 ```
@@ -172,32 +190,37 @@ For user-related streams:
 
 ```json
 {
-    "first_name": {
-        "type": "string",
-        "required": true,
-        "config": {"max": 100}
-    },
-    "last_name": {
-        "type": "string",
-        "required": true,
-        "config": {"max": 100}
-    },
-    "email": {
-        "type": "email",
-        "unique": true,
-        "required": true
-    },
-    "avatar": {
-        "type": "image",
-        "config": {"path": "avatars"}
-    },
-    "role": {
-        "type": "select",
-        "config": {
-            "options": {
-                "user": "User",
-                "admin": "Administrator",
-                "moderator": "Moderator"
+    "fields": {
+        "first_name": {
+            "type": "string",
+            "required": true,
+            "rules": [
+                "max:100"
+            ]
+        },
+        "last_name": {
+            "type": "string",
+            "required": true,
+            "rules": [
+                "max:100"
+            ]
+        },
+        "email": {
+            "type": "email",
+            "unique": true,
+            "required": true
+        },
+        "avatar": {
+            "type": "image"
+        },
+        "role": {
+            "type": "select",
+            "config": {
+                "options": {
+                    "user": "User",
+                    "admin": "Administrator",
+                    "moderator": "Moderator"
+                }
             }
         }
     }

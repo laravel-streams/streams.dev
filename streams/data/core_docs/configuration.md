@@ -19,8 +19,21 @@ Core configuration lives in `config/streams/core.php`, published from the packag
 | `applications_id` | — | `applications` | Multi-app configuration stream |
 | `data_path` | `STREAMS_DATA_PATH` | `streams/data` | Filebase entry directory |
 | `default_source` | `STREAMS_SOURCE` | `filebase` | Default adapter when omitted in stream JSON |
-| `auto_alt` | — | `true` | Generate image alt text when missing |
-| `version_images` | — | `true` | Append cache-busting version to image URLs |
+| `sources.filebase.default_format` | `STREAMS_DEFAULT_FORMAT` | `json` | Filebase format when a stream sets none |
+| `auto_alt` | `STREAMS_AUTO_ALT` | `true` | Generate image alt text when missing |
+| `version_images` | `STREAMS_VERSION_IMAGES` | `true` | Append cache-busting version to image URLs |
+
+## OpenSearch connections
+
+The `opensearch` source adapter reads connections from `opensearch`:
+
+| Key | Env | Default |
+|-----|-----|---------|
+| `opensearch.default` | `OPENSEARCH_CONNECTION` | `default` |
+| `opensearch.connections.default.hosts` | `OPENSEARCH_HOST` | `https://localhost:9200` |
+| `opensearch.connections.default.username` | `OPENSEARCH_USERNAME` | none |
+| `opensearch.connections.default.password` | `OPENSEARCH_PASSWORD` | none |
+| `opensearch.connections.default.ssl_verification` | `OPENSEARCH_SSL_VERIFICATION` | `true` |
 
 ## Source formats
 

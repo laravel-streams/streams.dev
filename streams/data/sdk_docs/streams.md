@@ -106,21 +106,6 @@ Streams are the foundation of Laravel Streams - they define the structure and be
 }
 ```
 
-### API Sources
-```json
-{
-    "config": {
-        "source": {
-            "type": "api",
-            "endpoint": "https://api.example.com/products",
-            "headers": {
-                "Authorization": "Bearer {token}"
-            }
-        }
-    }
-}
-```
-
 ## Stream Configuration Options
 
 ### Pagination

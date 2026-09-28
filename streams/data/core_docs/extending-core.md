@@ -52,8 +52,7 @@ Subclass `Streams\Core\Entry\Entry` for domain methods on entries.
 ```json
 {
     "config": {
-        "adapter": "App\\Streams\\Adapters\\ApiAdapter",
-        "source": { "type": "custom" }
+        "adapter": "App\\Streams\\Adapters\\ApiAdapter"
     }
 }
 ```

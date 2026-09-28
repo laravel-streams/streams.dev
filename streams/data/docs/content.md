@@ -90,25 +90,26 @@ Blog or article streams follow the same pattern with different fields — for ex
 
 ## Blocks
 
-Block content is an array field whose items map to structured fragments:
+Block content is an array field. `config.stream` turns each item into an entry of a stream, either a stream ID or an inline definition, so every block gets fields, casting, and decorators:
 
 ```json
 {
     "handle": "content",
     "type": "array",
     "config": {
-        "allowed": [
-            { "stream": "gallery_blocks" },
-            {
-                "structure": [
-                    { "handle": "title", "type": "string" },
-                    { "handle": "body", "type": "string" }
-                ]
-            }
-        ]
+        "stream": {
+            "id": "content_blocks",
+            "fields": [
+                { "handle": "type", "type": "select", "config": { "options": ["text", "gallery"] } },
+                { "handle": "title", "type": "string" },
+                { "handle": "body", "type": "string" }
+            ]
+        }
     }
 }
 ```
+
+An item saved from an existing entry keeps an `@stream` key (for example `{"@stream": "gallery_blocks", "id": "summer"}`) and is restored as that entry when read. To limit what items may be, list types in `config.items` (for example `[{"type": "string"}]`).
 
 Each block type can reference another stream or an inline field structure.
 

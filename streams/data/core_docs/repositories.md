@@ -56,8 +56,10 @@ These methods do **not** exist on Repository:
 Bind a custom class in stream config:
 
 ```json
-"config": {
-    "repository": "App\\Streams\\PostRepository"
+{
+    "config": {
+        "repository": "App\\Streams\\PostRepository"
+    }
 }
 ```
 

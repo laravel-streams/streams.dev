@@ -14,22 +14,26 @@ Paginated list responses add keys to `links` and `meta` via `ApiResponse::addPag
 ## Meta keys
 
 ```json
-"meta": {
-    "total": 150,
-    "per_page": 100,
-    "last_page": 2,
-    "current_page": 1
+{
+    "meta": {
+        "total": 150,
+        "per_page": 100,
+        "last_page": 2,
+        "current_page": 1
+    }
 }
 ```
 
 ## Link keys
 
 ```json
-"links": {
-    "self": "...",
-    "first_page": "...",
-    "next_page": "...",
-    "previous_page": "..."
+{
+    "links": {
+        "self": "...",
+        "first_page": "...",
+        "next_page": "...",
+        "previous_page": "..."
+    }
 }
 ```
 

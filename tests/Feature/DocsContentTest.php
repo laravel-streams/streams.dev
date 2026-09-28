@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use Illuminate\Support\Facades\App;
 use Symfony\Component\Yaml\Yaml;
 use Tests\TestCase;
 
@@ -116,5 +117,58 @@ class DocsContentTest extends TestCase
 
             $this->assertFalse($inFence, "{$page} has an unclosed code fence.");
         }
+    }
+
+    public function test_every_json_block_parses_and_uses_registered_field_types()
+    {
+        $count = 0;
+
+        foreach ($this->pages() as $page => ['body' => $body]) {
+            preg_match_all('/^```json[^\n]*\n(.*?)^```/ms', $body, $blocks);
+
+            foreach ($blocks[1] as $index => $json) {
+                $count++;
+                $where = "{$page} json block ".($index + 1);
+
+                $decoded = json_decode($json, true);
+
+                $this->assertSame(JSON_ERROR_NONE, json_last_error(), "{$where}: ".json_last_error_msg()."\n{$json}");
+
+                foreach ($this->fieldTypes($decoded) as $type) {
+                    $this->assertTrue(App::has("streams.core.field_type.{$type}"), "{$where}: field type [{$type}] is not registered by Core.");
+                }
+            }
+        }
+
+        $this->assertGreaterThan(100, $count);
+    }
+
+    /**
+     * Field types used in any "fields" definition inside a decoded block. A
+     * list of strings is output (streams:list), not a definition, so it is skipped.
+     */
+    protected function fieldTypes(mixed $value): array
+    {
+        if (! is_array($value)) {
+            return [];
+        }
+
+        $types = [];
+
+        foreach ($value as $key => $child) {
+            if ($key === 'fields' && is_array($child)) {
+                foreach ($child as $field) {
+                    $type = is_array($field) ? ($field['type'] ?? null) : (array_is_list($child) ? null : $field);
+
+                    if (is_string($type) && ! str_starts_with($type, '@')) {
+                        $types[] = $type;
+                    }
+                }
+            }
+
+            $types = array_merge($types, $this->fieldTypes($child));
+        }
+
+        return $types;
     }
 }

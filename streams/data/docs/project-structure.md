@@ -85,13 +85,15 @@ Most domain logic lives in the packages under `vendor/streams/`, which Composer 
 `composer.json` points each Streams package at its GitHub repository and pins the branch:
 
 ```json
-"require": {
-    "streams/core": "dev-rc/prep as 2.0.x-dev",
-    "streams/ui": "1.0.x-dev"
-},
-"repositories": [
-    { "type": "vcs", "url": "https://github.com/laravel-streams/streams-core.git", "no-api": true }
-]
+{
+    "require": {
+        "streams/core": "dev-rc/prep as 2.0.x-dev",
+        "streams/ui": "1.0.x-dev"
+    },
+    "repositories": [
+        { "type": "vcs", "url": "https://github.com/laravel-streams/streams-core.git", "no-api": true }
+    ]
+}
 ```
 
 The `as 2.0.x-dev` alias lets packages that require `streams/core ^2.0` accept the branch. For local package work, `php scripts/composer-local.php` writes a gitignored `composer.local.json` with symlinked path repositories; see [Local development](/docs/local-development).

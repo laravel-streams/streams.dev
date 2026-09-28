@@ -35,21 +35,22 @@ To get started, you need only specify the `id`, which is the filename itself, an
 
 Let's create a little stream to hold information for a simple CRM.
 
+In `streams/contacts.json`:
+
 ```json
-// streams/contacts.json
 {
     "name": "Contacts",
     "description": "A simple address book.",
     "config": {
         "source": {
             "type": "filebase",
-            "filename": "streams/data/contacts",
+            "path": "streams/data/contacts",
             "format": "json"
         },
         "abstract": "Streams\\Core\\Entry\\Entry",
         "criteria": "Streams\\Core\\Criteria\\Criteria",
         "repository": "Streams\\Core\\Repository\\Repository",
-        "collection": "Illuminate\\Support\\Collection",
+        "collection": "Illuminate\\Support\\Collection"
     },
     "fields": {
         "name": "string",
@@ -85,8 +86,9 @@ $entry->company->email;
 
 Streams can simplify **routing** by defining associated routes in their definition.
 
+In `streams/contacts.json`:
+
 ```json
-// streams/contacts.json
 {
     "routes": {
         "index": "contacts",
@@ -97,8 +99,9 @@ Streams can simplify **routing** by defining associated routes in their definiti
 
 You can also use an array to include other **route options**.
 
+In `streams/contacts.json`:
+
 ```json
-// streams/contacts.json
 {
     "routes": {
         "contact": {
@@ -115,8 +118,9 @@ Streams simplifies **validation** by defining validation in their definition.
 
 - [Validation](/docs/core/validation)
 
+In `streams/contacts.json`:
+
 ```json
-// streams/contacts.json
 {
     "rules": {
         "name": [
@@ -136,8 +140,9 @@ Streams simplifies **validation** by defining validation in their definition.
 
 Specify the [Laravel policy](https://laravel.com/docs/authorization#creating-policies) class to use for the stream. There is no separate security guide.
 
+In `streams/contacts.json`:
+
 ```json
-// streams/contacts.json
 {
     "policy": "App\\Contacts\\ContactPolicy"
 }
@@ -149,13 +154,21 @@ Streams provides a touch-free caching system you can define in the configuration
 
 - [Caching](/docs/core/caching)
 
+In `streams/contacts.json`:
+
 ```json
-// streams/contacts.json
 {
-    "cache": false,
-    "ttl": 1800 // 30 minutes
+    "config": {
+        "cache": {
+            "enabled": true,
+            "ttl": 1800,
+            "store": "file"
+        }
+    }
 }
 ```
+
+Caching is off unless `config.cache.enabled` is `true`. `ttl` is in seconds (default 3600), and `store` defaults to your default cache store.
 
 ### Sources
 
@@ -163,8 +176,9 @@ Sources define the source information for entry data which you can define in the
 
 - [Sources and adapters](/docs/core/sources-and-adapters)
 
+In `streams/contacts.json`:
+
 ```json
-// streams/contacts.json
 {
     "source": {
         "type": "filebase",
@@ -185,8 +199,9 @@ The **abstract** parameter defines the class to use when constructing entry inst
 
 - [Entries](/docs/core/entries)
 
+In `streams/contacts.json`:
+
 ```json
-// streams/contacts.json
 {
     "abstract": "App\\Contacts\\Contact"
 }
@@ -200,8 +215,9 @@ The **criteria** parameter defines the class to use when building entry queries.
 
 - [Criteria](/docs/core/criteria)
 
+In `streams/contacts.json`:
+
 ```json
-// streams/contacts.json
 {
     "criteria": "App\\Contacts\\ContactCriteria"
 }
@@ -213,8 +229,9 @@ The **repository** parameter defines the repository class to use for the stream 
 
 - [Repositories](/docs/core/repositories)
 
+In `streams/contacts.json`:
+
 ```json
-// streams/contacts.json
 {
     "repository": "App\\Contacts\\ContactRepository"
 }
@@ -226,16 +243,18 @@ The **repository** parameter defines the repository class to use for the stream 
 
 You can use JSON file references within stream configurations to point to other JSON files using the `@` symbol followed by a relative path to the file. In this way, you can reuse various configuration information or tidy up larger files. **The referenced file's JSON data directly replaces the reference.**
 
+In `streams/contacts.json`:
+
 ```json
-// streams/contacts.json
 {
     "name": "Contacts",
     "fields": "@streams/fields/contacts.json"
 }
 ```
 
+In `streams/fields/contacts.json`:
+
 ```json
-// streams/fields/contacts.json
 {
     "name": "string",
     "email": "email",
@@ -250,8 +269,9 @@ You can use JSON file references within stream configurations to point to other 
 
 A stream can `extend` another stream, which works like a recursive **merge**.
 
+In `streams/family.json`:
+
 ```json
-// streams/family.json
 {
     "name": "Family Members",
     "extend": "contacts",

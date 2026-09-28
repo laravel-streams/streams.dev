@@ -53,9 +53,11 @@ A **stream** is a domain model defined in JSON under `streams/`. Core loads defi
 Fields can be a map of handle → type string:
 
 ```json
-"fields": {
-    "title": "string",
-    "published": "boolean"
+{
+    "fields": {
+        "title": "string",
+        "published": "boolean"
+    }
 }
 ```
 
@@ -66,7 +68,9 @@ Or full objects with `handle`, `type`, `required`, `unique`, `protected`, and `r
 Values starting with `@` load JSON from a project path:
 
 ```json
-"fields": "@streams/fields/common.json"
+{
+    "fields": "@streams/fields/common.json"
+}
 ```
 
 Imports resolve with `base_path()` — only JSON files are supported for `@` imports.

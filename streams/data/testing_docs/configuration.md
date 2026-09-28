@@ -155,9 +155,8 @@ Configure Streams-specific settings:
 ```xml
 <php>
     <!-- Streams Settings -->
-    <env name="STREAMS_CACHE" value="false"/>
-    <env name="STREAMS_SOURCE" value="file"/>
-    <env name="STREAMS_PATH" value="./storage/streams"/>
+    <env name="STREAMS_SOURCE" value="filebase"/>
+    <env name="STREAMS_DATA_PATH" value="storage/streams/data"/>
 </php>
 ```
 
