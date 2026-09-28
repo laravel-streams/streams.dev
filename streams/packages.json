@@ -608,7 +608,7 @@
                 "type": "streams-addon",
                 "description": "Adds MongoDB support to Streams.",
                 "support": {
-                    "docs": "/docs/core/adapters",
+                    "docs": "/docs/core/sources-and-adapters",
                     "source": "https://github.com/laravel-streams/mongodb",
                     "issues": "https://github.com/laravel-streams/mongodb/issues"
                 },
