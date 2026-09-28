@@ -406,3 +406,16 @@
         }
     }
 }
+
+/* Outside the layer so this beats the typography plugin's unlayered table-layout: auto.
+   A class name with no spaces was laying the table out 2px past a 390px screen. */
+@media (max-width: 480px) {
+    .documentation-content table {
+        width: 100%;
+        table-layout: fixed;
+    }
+
+    .documentation-content :where(td, th) {
+        overflow-wrap: break-word;
+    }
+}
