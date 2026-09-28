@@ -9,8 +9,6 @@ tags: [sdk, tall, components]
 status: ready
 ---
 
-# TALL Stack Components
-
 This guide covers how the Laravel Streams SDK generates and works with TALL stack components (Tailwind CSS, Alpine.js, Laravel, and Livewire).
 
 ## Overview

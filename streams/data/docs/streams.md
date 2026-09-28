@@ -66,8 +66,8 @@ Let's create a little stream to hold information for a simple CRM.
 
 ### Fields
 
-- [Fields](fields)
-- [Field Types](fields#field-types)
+- [Fields](/docs/fields)
+- [Field Types](/docs/fields#field-types)
 
 **Fields** are an essential descriptor of the domain object. They describe what properties the domain object will have and how they work. Field **types** control things like accessors, data mutation, and casting.
 
@@ -80,7 +80,7 @@ $entry->company->email;
 
 ### Stream Routes
 
-- [Stream Routes](routing#stream-routes)
+- [Stream Routes](/docs/routing#stream-routes)
 - [Route Options](/docs/core/routes)
 
 Streams can simplify **routing** by defining associated routes in their definition.

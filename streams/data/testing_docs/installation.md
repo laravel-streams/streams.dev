@@ -9,8 +9,6 @@ tags: [testing, installation]
 status: ready
 ---
 
-# Installation
-
 This guide will walk you through installing and configuring the Streams Testing package for your project.
 
 ## Requirements
@@ -121,7 +119,7 @@ vendor/bin/phpunit
 
 You should see output indicating your tests passed:
 
-```
+```text
 PHPUnit 10.5.58 by Sebastian Bergmann and contributors.
 
 ..                                                                  2 / 2 (100%)

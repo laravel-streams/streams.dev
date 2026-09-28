@@ -9,8 +9,6 @@ tags: [testing, troubleshooting]
 status: ready
 ---
 
-# Troubleshooting
-
 This guide helps you resolve common issues when using the Streams Testing package.
 
 ## Installation Issues

@@ -9,8 +9,6 @@ tags: [client, streams]
 status: ready
 ---
 
-# Streams
-
 Streams represent collections or resource types in the Laravel Streams API. The `Streams` class provides methods for managing stream resources.
 
 ## Getting Streams
@@ -491,6 +489,6 @@ await client.streams.patch('posts', updates);
 
 ## Next Steps
 
-- [Working with Entries](entries) - CRUD operations on stream entries
-- [Criteria](criteria) - Query builder for filtering and sorting
-- [Examples](examples) - Real-world usage patterns
+- [Working with Entries](/docs/client/entries) - CRUD operations on stream entries
+- [Criteria](/docs/client/criteria) - Query builder for filtering and sorting
+- [Examples](/docs/client/examples) - Real-world usage patterns

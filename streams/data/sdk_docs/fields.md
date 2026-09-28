@@ -9,8 +9,6 @@ tags: [sdk, fields]
 status: ready
 ---
 
-# Field Types Reference
-
 Fields define the properties of your stream entries. Each field type provides specific validation, input handling, and display formatting.
 
 ## String Fields

@@ -9,8 +9,6 @@ tags: [testing, writing, tests]
 status: ready
 ---
 
-# Writing Tests
-
 This guide covers everything you need to know about writing tests for Streams applications, from basic examples to advanced testing patterns.
 
 ## Basic Test Structure

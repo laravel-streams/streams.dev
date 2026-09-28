@@ -46,13 +46,13 @@ Route::streams('uri', [
 
 The first argument is the URI and the second is either:
 
-- The name of the [view](views) to render.
+- The name of the [view](/docs/core/views-and-includes) to render.
 - A callable string.
 - An array of [route options](#route-options).
 
 ### Stream Routes
 
-Defining routes in your [stream configuration](streams#routing) makes it easy to automate naming and URL generation around your domain information and entities.
+Defining routes in your [stream configuration](/docs/streams#routing) makes it easy to automate naming and URL generation around your domain information and entities.
 
 Define stream routes using a `action => options` format, where `options` is again either the URI, controller and method string, or an array of [route options](#route-options).
 
@@ -108,7 +108,7 @@ Unless a view is specified, the associated requests will attempt to resolve a vi
 }
 ```
 
-You can configure automatic view patterns within the `streams/route.php` [configuration file](configuration). The process ignores the views if they do not exist.
+You can configure automatic view patterns within the `streams/route.php` [configuration file](/docs/configuration). The process ignores the views if they do not exist.
 
 ## Route Parameters
 
@@ -176,7 +176,7 @@ A `404` error page will be displayed entry resolution is attempted, but no entry
 
 All Streams platform-specific methods of registering routes support the following route options.
 
-All route options are parsed with [controller data](controllers):
+All route options are parsed with [controller data](/docs/core/routes):
 
 ```php
 Route::streams('address-book/{stream}/{id}', [
@@ -186,7 +186,7 @@ Route::streams('address-book/{stream}/{id}', [
 
 ### View
 
-Use the `view` option to specify a [view](views) to render:
+Use the `view` option to specify a [view](/docs/core/views-and-includes) to render:
 
 ```php
 Route::streams('uri', [

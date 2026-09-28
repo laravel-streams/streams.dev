@@ -13,7 +13,7 @@ Streams UI (`streams/ui`) builds Livewire admin panels on top of Streams Core. Y
 
 ## Architecture
 
-```
+```text
 Panel (UI::panel)
   └── Resources (PHP classes)
         ├── ListEntries  → Table builder

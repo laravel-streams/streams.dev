@@ -9,8 +9,6 @@ tags: [client]
 status: ready
 ---
 
-# Client Configuration
-
 The `Client` class is the main entry point for interacting with the Streams API.
 
 ## Basic Configuration
@@ -237,6 +235,6 @@ export default client;
 
 ## Next Steps
 
-- [Working with Streams](streams)
-- [Working with Entries](entries)
-- [Middleware](middleware)
+- [Working with Streams](/docs/client/streams)
+- [Working with Entries](/docs/client/entries)
+- [Middleware](/docs/client/middleware)

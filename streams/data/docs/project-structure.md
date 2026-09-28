@@ -12,7 +12,7 @@ status: ready
 
 ## Top-level layout
 
-```
+```text
 streams.dev/
 ├── app/                    # Minimal Laravel app code
 ├── streams/                # Stream JSON definitions
@@ -43,7 +43,7 @@ Stream JSON holds fields, routes, source adapters, and optional UI admin config.
 
 Filebase entries live beside stream definitions:
 
-```
+```text
 streams/data/
 ├── docs/              # Hub guides (*.md)
 ├── core_docs/         # Core package docs

@@ -82,4 +82,39 @@ class DocsContentTest extends TestCase
 
         $this->assertSame([], $duplicates, 'Duplicate titles: '.implode(', ', $duplicates));
     }
+
+    public function test_bodies_have_no_h1_fenced_code_has_a_language_and_links_are_root_relative()
+    {
+        foreach ($this->pages() as $page => ['body' => $body]) {
+            $inFence = false;
+
+            foreach (explode("\n", $body) as $number => $line) {
+                $where = "{$page} body line ".($number + 1);
+
+                if (preg_match('/^\s*(```|~~~)(.*)$/', $line, $fence)) {
+                    if (! $inFence) {
+                        $this->assertNotSame('', trim($fence[2]), "{$where}: give the code fence a language (text for plain output).");
+                    }
+
+                    $inFence = ! $inFence;
+
+                    continue;
+                }
+
+                if ($inFence) {
+                    continue;
+                }
+
+                $this->assertDoesNotMatchRegularExpression('/^# /', $line, "{$where}: the layout renders the title as the H1.");
+
+                preg_match_all('/\]\(([^)\s]+)/', $line, $links);
+
+                foreach ($links[1] as $url) {
+                    $this->assertMatchesRegularExpression('~^(https?:|/|#|mailto:)~', $url, "{$where}: use a root-relative link, not [{$url}].");
+                }
+            }
+
+            $this->assertFalse($inFence, "{$page} has an unclosed code fence.");
+        }
+    }
 }

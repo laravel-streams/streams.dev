@@ -18,7 +18,7 @@ Fields are strictly concerned with data. Please see the [UI package](/docs/ui/in
 
 ## Defining Fields
 
-Fields can be defined within the JSON [configuration for your streams](streams#defining-streams). You can get started by simply defining fields by `handle` and their `type` respectively.
+Fields can be defined within the JSON [configuration for your streams](/docs/streams#defining-streams). You can get started by simply defining fields by `handle` and their `type` respectively.
 
 #### Basic Example
 
@@ -60,7 +60,7 @@ To define more information about the field use an array:
 
 ### Field Validation
 
-Define [Laravel validation rules](https://laravel.com/docs/validation#available-validation-rules) for fields and they will be merged the [stream validation rules](streams#stream-validation).
+Define [Laravel validation rules](https://laravel.com/docs/validation#available-validation-rules) for fields and they will be merged the [stream validation rules](/docs/streams#stream-validation).
 
 ```json
 // streams/contacts.json
@@ -88,7 +88,7 @@ Define [Laravel validation rules](https://laravel.com/docs/validation#available-
 
 ## Basic Usage
 
-Values are stored as an [image source](images#image-sources)
+Values are stored as an [image source](/docs/images#image-sources)
 
 ```php
 Image::make($entry->profile_image)->url();

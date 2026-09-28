@@ -9,8 +9,6 @@ tags: [client, entries]
 status: ready
 ---
 
-# Working with Entries
-
 Entries represent the data within your configured Streams. Use the Entries API to interact with stream data.
 
 ## Get Entries
@@ -328,6 +326,6 @@ async function updateProfile(userId, data) {
 
 ## Next Steps
 
-- [Criteria Query Builder](criteria) - Learn advanced querying
-- [Middleware](middleware) - Add custom functionality
-- [Examples](examples) - See more examples
+- [Criteria Query Builder](/docs/client/criteria) - Learn advanced querying
+- [Middleware](/docs/client/middleware) - Add custom functionality
+- [Examples](/docs/client/examples) - See more examples

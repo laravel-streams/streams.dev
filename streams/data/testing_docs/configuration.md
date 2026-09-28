@@ -9,8 +9,6 @@ tags: [testing, configuration]
 status: ready
 ---
 
-# Configuration
-
 Learn how to configure the Streams Testing package to match your project's needs, from basic PHPUnit settings to advanced test environment customization.
 
 ## PHPUnit Configuration
@@ -248,7 +246,7 @@ class FilmTest extends \Tests\CustomTestCase
 
 Organize tests by type:
 
-```
+```text
 tests/
 ├── Feature/           # Integration tests
 │   ├── FilmTest.php
@@ -412,7 +410,7 @@ Enable result caching:
 
 Add to `.gitignore`:
 
-```
+```text
 .phpunit.cache/
 coverage/
 ```

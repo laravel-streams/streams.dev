@@ -9,8 +9,6 @@ tags: [client, middleware]
 status: ready
 ---
 
-# Middleware System
-
 The middleware system allows you to intercept and modify requests and responses. Middleware can transform data, add authentication, handle errors, and more.
 
 ## Built-in Middleware
@@ -560,5 +558,5 @@ class ConfigurableMiddleware extends Middleware {
 
 ## Next Steps
 
-- [Examples](examples) - See middleware in real-world scenarios
-- [Client Configuration](client) - Learn more about client setup
+- [Examples](/docs/client/examples) - See middleware in real-world scenarios
+- [Client Configuration](/docs/client/client) - Learn more about client setup

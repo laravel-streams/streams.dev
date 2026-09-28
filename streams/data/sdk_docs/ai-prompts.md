@@ -9,8 +9,6 @@ tags: [sdk, ai, prompts]
 status: ready
 ---
 
-# AI Assistant Prompts & Patterns
-
 This guide provides AI assistants with specific prompts, patterns, and examples for effectively using the Laravel Streams SDK to help developers build applications.
 
 ## AI Assistant Workflow
@@ -20,7 +18,7 @@ When helping users with Laravel Streams, follow this structured approach:
 ### 1. Requirements Gathering
 Ask clarifying questions to understand the project:
 
-```
+```text
 Before we start building with Laravel Streams, I need to understand your requirements:
 
 1. What type of application are you building? (blog, e-commerce, CRM, etc.)
@@ -34,7 +32,7 @@ Before we start building with Laravel Streams, I need to understand your require
 ### 2. Data Structure Analysis
 Help users design their stream structure:
 
-```
+```text
 Based on your requirements, I recommend these streams:
 
 For a blog application:
@@ -49,7 +47,7 @@ Let me create the stream definitions for you.
 ### 3. Implementation Steps
 Provide a clear roadmap:
 
-```
+```text
 Here's how we'll implement your application:
 
 1. Create stream definitions with proper field types
@@ -224,7 +222,7 @@ For user-related streams:
 ### UI Customization
 When users want to customize the interface:
 
-```
+```text
 I can help you customize the generated components. Here are common customizations:
 
 1. **Styling**: Modify Tailwind CSS classes in the Blade templates
@@ -239,7 +237,7 @@ Which aspect would you like to customize first?
 ### Business Logic
 For adding custom functionality:
 
-```
+```text
 To add custom business logic to your streams:
 
 1. **Custom Methods**: Add methods to your Livewire components
@@ -256,7 +254,7 @@ Let me show you how to implement [specific feature]...
 ### Common Issues
 Help users resolve typical problems:
 
-```
+```text
 Let me help you troubleshoot this issue. Here are the most common problems and solutions:
 
 1. **Missing Stream**: Make sure the stream definition exists in streams/ directory
@@ -271,7 +269,7 @@ Can you share the specific error message you're seeing?
 ### Performance Optimization
 When users need performance improvements:
 
-```
+```text
 Here are performance optimization strategies for your streams:
 
 1. **Eager Loading**: Load related data efficiently
@@ -418,7 +416,7 @@ Optimize generated code:
 ## Sample Conversations
 
 ### Blog Setup Conversation
-```
+```text
 User: I want to create a blog with Laravel Streams.
 
 AI: I'd be happy to help you create a blog with Laravel Streams! Let me ask a few questions to ensure we build exactly what you need:
@@ -432,7 +430,7 @@ Based on your answers, I'll generate the complete blog system for you.
 ```
 
 ### E-commerce Conversation
-```
+```text
 User: I need to build a product catalog.
 
 AI: Great! A product catalog is perfect for Laravel Streams. To build the right solution, I need to understand your requirements:

@@ -9,8 +9,6 @@ tags: [client, criteria]
 status: ready
 ---
 
-# Criteria Query Builder
-
 The Criteria class provides a fluent, PHP Laravel-style interface for building queries.
 
 ## Basic Usage
@@ -349,5 +347,5 @@ const popularPublishedPosts = publishedPosts()
 
 ## Next Steps
 
-- [Working with Entries](entries) - Apply criteria to entry queries
-- [Examples](examples) - See more complex examples
+- [Working with Entries](/docs/client/entries) - Apply criteria to entry queries
+- [Examples](/docs/client/examples) - See more complex examples

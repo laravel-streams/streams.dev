@@ -9,8 +9,6 @@ tags: [testing, test, data]
 status: ready
 ---
 
-# Test Data
-
 The Streams Testing package includes a rich set of sample data based on the Star Wars universe. This data provides realistic examples for testing and learning Streams concepts.
 
 ## Available Streams

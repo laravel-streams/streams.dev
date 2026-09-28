@@ -9,8 +9,6 @@ tags: [client, examples]
 status: ready
 ---
 
-# Examples
-
 Complete examples demonstrating real-world usage patterns.
 
 ## Basic Blog Application
@@ -602,6 +600,6 @@ const post = await safeApiCall(() => getPost(123));
 
 ## Next Steps
 
-- [Client Configuration](client) - Advanced client setup
-- [Criteria](criteria) - Query building techniques
-- [Middleware](middleware) - Custom middleware patterns
+- [Client Configuration](/docs/client/client) - Advanced client setup
+- [Criteria](/docs/client/criteria) - Query building techniques
+- [Middleware](/docs/client/middleware) - Custom middleware patterns

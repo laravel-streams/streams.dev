@@ -9,8 +9,6 @@ tags: [client, installation]
 status: ready
 ---
 
-# Installation
-
 ## Requirements
 
 - Node.js 14.0 or higher
@@ -66,7 +64,7 @@ npm test
 
 After installation, the package includes:
 
-```
+```text
 node_modules/@laravel-streams/api-client/
 ├── dist/
 │   ├── index.js        # CommonJS build
@@ -143,7 +141,7 @@ node test-install.mjs
 
 Expected output:
 
-```
+```text
 ✓ Client imported: function
 ✓ Criteria imported: function
 ✓ Client created successfully
@@ -151,6 +149,6 @@ Expected output:
 
 ## Next Steps
 
-- [Quick Start Guide](quickstart) - Get up and running quickly
-- [Client Configuration](client) - Configure the client for your needs
-- [Working with Entries](entries) - Start interacting with your data
+- [Quick Start Guide](/docs/client/quickstart) - Get up and running quickly
+- [Client Configuration](/docs/client/client) - Configure the client for your needs
+- [Working with Entries](/docs/client/entries) - Start interacting with your data
