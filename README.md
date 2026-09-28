@@ -50,11 +50,11 @@ They install as git clones under `vendor/streams/`, so you can read their histor
 If you keep package checkouts next to this repository, symlink them in without touching `composer.json`:
 
 ```bash
-php scripts/composer-local.php                       # writes composer.local.json (gitignored)
-COMPOSER=composer.local.json composer update "streams/*"
+composer local                       # symlink ../_packages/streams-* and update streams/*
+composer local -- --rc=core,sdk      # link those packages from ../_rc/streams-* instead
 ```
 
-The script looks for `../_rc/streams-<name>`, then `../_packages/streams-<name>`, then `../streams-<name>`, or a path in `STREAMS_<NAME>_PATH` (for example `STREAMS_CORE_PATH=../streams-core`). It puts those checkouts in front of the GitHub repositories as symlinked path repositories and writes its own `composer.local.lock`, so `composer.lock` stays as committed. Run a plain `composer install` to go back to the GitHub packages.
+`composer local` runs `scripts/composer-local.php --update`. The script looks for `../_packages/streams-<name>`, then `../streams-<name>`, or a path in `STREAMS_<NAME>_PATH` (for example `STREAMS_CORE_PATH=../streams-core`). `../_rc/streams-<name>` is used only with `--rc` / `--rc=<names>` or `STREAMS_LOCAL_RC`, and the script warns when a checkout lacks the branch `composer.json` asks for. It puts those checkouts in front of the GitHub repositories as symlinked path repositories and writes its own `composer.local.lock`, so `composer.lock` stays as committed. Run a plain `composer install` to go back to the GitHub packages.
 
 ### Packages
 
