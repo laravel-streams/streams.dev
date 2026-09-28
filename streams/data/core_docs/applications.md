@@ -5,14 +5,21 @@ sort_order: 13
 status: ready
 ---
 
-Applications are entries in the stream identified by `config('streams.core.applications_id')` (default `applications`). They enable multi-tenant or multi-site setups where each application merges its own config, streams, and routes at boot.
+Applications are entries in the stream identified by `config('streams.core.applications_id')` (default `applications`). They enable multi-tenant or multi-site setups where each application merges its own config and streams at boot.
+
+The site-level picture, including what boot does not merge, is the [Tenancy guide](/docs/tenancy).
 
 ## Application entries
 
-Each application entry defines:
+The stream schema declares `handle`, `match`, and `config`. Boot also reads these attributes when the entry JSON contains them:
 
-- URL **match** patterns for request detection
-- Optional locale, config overrides, stream definitions, bindings, routes
+- `match` — URL patterns compared with `Str::is` against `Request::fullUrl()` (include the scheme)
+- `locale`
+- `config` — merged into Laravel config
+- `aliases`, `bindings`, `singletons`
+- `streams` — paths passed to `Streams::load()`, or arrays passed to `Streams::register()`
+
+`Integrator` can merge routes, but `bootApplication()` does not pass a `routes` key. Putting `routes` on the entry has no effect at boot.
 
 Core activates the matching application via `Streams\Core\Support\Facades\Applications`.
 
@@ -34,5 +41,6 @@ Application entries extend `Streams\Core\Application\Application` (subclass of `
 
 ## Related
 
+- [Tenancy guide](/docs/tenancy)
 - [Integrator](/docs/core/integrator)
 - [Routes](/docs/core/routes)

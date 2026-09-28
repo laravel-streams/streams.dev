@@ -13,7 +13,7 @@ status: ready
 ## Installation
 
 ```bash
-composer require streams/testing --dev
+composer require --dev streams/testing:1.0.x-dev
 ```
 
 Extend the package TestCase in your PHPUnit tests and use sample stream data for realistic scenarios.

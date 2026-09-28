@@ -1,42 +1,58 @@
 ---
 title: Introduction
-description: 'REST for streams and entries — disabled by default, manual route registration.'
+description: 'A criteria-scoped REST API for streams and entries. You opt in to routes and own authentication.'
 sort_order: 0
 status: ready
 ---
 
-Streams API (`streams/api`) exposes REST endpoints for stream definitions and entries. The package ships **disabled by default** — you register routes manually in your Laravel application.
+Streams API (`streams/api`) turns your stream definitions into a REST API. It builds JSON responses for stream definitions and entries from the same [criteria](/docs/core/criteria) you use in PHP, so an endpoint returns exactly what `Streams::entries('posts')->where(...)->get()` would.
 
-## What the API provides
+## What it is
 
-- CRUD for stream definitions (`/api/streams`)
-- CRUD for entries (`/api/streams/{stream}/entries`)
-- POST query endpoint for complex criteria
-- Consistent JSON response envelope
+- **Resources and endpoints.** `StreamsResource` (list, show, create, update, patch, delete) and `EntriesResource` (list, show, create, update, patch, delete, query).
+- **Interfaces.** An `ApiInterface` groups resources under a path, domain, and middleware stack. You can register several (for example `v1` and `admin`).
+- **A consistent envelope.** Every response has `data`, `meta`, `links`, and `errors` keys. See [Responses](/docs/api/responses).
+- **Self-describing.** Responses carry a `self` link and `meta` (the query, payload, route parameters, and stream handle), and `GET /api/streams` returns the stream definitions themselves, which is what lets the [JavaScript client](/docs/client/introduction) discover the API.
+- **Optional HTTP caching** through the `ApiCache` middleware (ETags and `Cache-Control`). See [Caching](/docs/api/caching).
+- **Schema commands.** `php artisan api:schema` and `php artisan api:documentation` for OpenAPI output. See [OpenAPI](/docs/api/openapi).
 
-## What it does not provide
+## Why it exists
 
-- Automatic route registration from config alone
-- JSON:API request/response format
-- A `Streams\Api\Builder` class (does not exist)
-- Default authentication (apply middleware on your route group)
+Streams already knows the shape of your data: fields, types, validation rules, and relationships live in `streams/*.json`. Writing CRUD controllers by hand repeats that knowledge and drifts from it. The API reads the stream definition at request time, so adding a field to a stream adds it to the API with no controller changes.
 
-## Enable the API
+## What it does not do
 
-1. `composer require streams/api`
-2. Set `STREAMS_API_ENABLED=true` if you gate features on config
-3. Register routes in `routes/api.php`:
+- **It does not authenticate anyone.** The package has no users, tokens, or policies. Your application owns the middleware. See [Authentication](/docs/api/authentication).
+- **It does not mount routes on its own.** Nothing is routed until you register an interface.
+- **It is not JSON:API.** Request bodies are flat field maps. See [Requests](/docs/api/requests).
+
+## How to use it
+
+```bash
+composer require streams/api:1.0.x-dev
+```
+
+```env
+STREAMS_API_ENABLED=true
+```
 
 ```php
+// app/Providers/AppServiceProvider.php
 use Streams\Api\Support\Facades\API;
 
-Route::middleware(config('streams.api.middleware'))
-    ->prefix(config('streams.api.prefix'))
-    ->group(function () {
-        API::routeStreams();
-        API::routeEntries();
-    });
+public function boot(): void
+{
+    API::routeCrud(); // streams + entries under /api
+}
 ```
+
+`GET /api/streams/posts/entries` now lists entries. Protect it before you deploy: see [Authentication](/docs/api/authentication).
+
+## How to extend it
+
+- Register more interfaces with their own paths and middleware: [Custom interfaces](/docs/api/custom-interfaces).
+- Add endpoints and resources: [Custom endpoints](/docs/api/custom-endpoints).
+- Resolve a tenant per request: [Tenancy](/docs/api/tenancy).
 
 ## Related
 

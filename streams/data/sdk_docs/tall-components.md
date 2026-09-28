@@ -1,5 +1,5 @@
 ---
-sort_order: 3
+sort_order: 4
 title: TALL Components
 description: 'Tailwind, Alpine, Laravel, and Livewire patterns in the SDK.'
 status: ready

@@ -1,5 +1,5 @@
 ---
-sort_order: 2
+sort_order: 3
 title: Fields
 description: 'Field types reference for SDK stream definitions.'
 status: ready

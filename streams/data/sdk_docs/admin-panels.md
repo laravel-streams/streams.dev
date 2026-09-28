@@ -1,5 +1,5 @@
 ---
-sort_order: 4
+sort_order: 5
 title: Admin Panels
 description: 'Scaffold admin panels with the SDK.'
 status: ready
@@ -7,7 +7,9 @@ status: ready
 
 # Admin Panel Generation
 
-The Laravel Streams SDK provides powerful admin panel generation capabilities that create complete administrative interfaces with minimal configuration.
+`streams:admin` writes Blade and Livewire files. It does not register a Streams UI panel. The options that actually work, including the missing `topbar` stub and the unused `--theme` token, are in the [command reference](/docs/sdk/commands). For a configured control panel, use [Streams UI](/docs/ui/introduction) and [Theming](/docs/ui/theming).
+
+The Laravel Streams SDK provides admin panel generation that scaffolds an administrative layout from stubs.
 
 ## Overview
 

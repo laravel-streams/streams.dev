@@ -11,7 +11,8 @@
         {
             "handle": "view",
             "uri": "docs/client/{id}",
-            "view": "docs"
+            "view": "docs",
+            "constraints": [{"id": "[^./]+"}]
         }
     ],
     "fields": [

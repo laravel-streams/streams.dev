@@ -15,7 +15,7 @@ Use it to accelerate greenfield work; it is not required at runtime in productio
 ## Installation
 
 ```bash
-composer require streams/sdk --dev
+composer require --dev streams/sdk:1.0.x-dev
 ```
 
 ## What it covers
@@ -28,5 +28,6 @@ composer require streams/sdk --dev
 ## Learn more
 
 - [SDK introduction](/docs/sdk/introduction)
+- [Command reference](/docs/sdk/commands)
 - [SDK streams](/docs/sdk/streams)
 - [Admin panels](/docs/sdk/admin-panels)

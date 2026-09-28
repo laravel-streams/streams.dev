@@ -10,10 +10,10 @@ Install UI alongside Core in your Laravel application.
 ## Require the package
 
 ```bash
-composer require streams/ui
+composer require streams/core:2.0.x-dev streams/ui:1.0.x-dev
 ```
 
-Ensure `streams/core` is already installed.
+UI requires `streams/core ^2.0` and Livewire `^3.0`. Neither Core 2.0 nor UI 1.0 has a stable tag yet, so require both development branches explicitly (or set `"minimum-stability": "dev"` with `"prefer-stable": true`). See [Versions and support](/docs/versions).
 
 ## Register a panel
 

@@ -18,6 +18,7 @@ status: ready
 | `skip` | `skip=20` | Offset (default `0`) |
 | `per_page` | `per_page=20` | Page size (default **100** in code) |
 | `page` | `page=2` | Page number (default `1`) |
+| `with` | `with=author,tags` or `with[]=author` | Eager-load relationship fields (a trailing `_id` is stripped from the handle) |
 
 ## Example
 

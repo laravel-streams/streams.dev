@@ -1,10 +1,250 @@
 openapi: 3.0.3
 info:
-  title: Streams API (work-in-progress)
-  version: '1.0.0'
+  title: Streams API
+  version: 1.0.x-dev
   description: >-
-    A living OpenAPI stub for Streams API. This file is a starting point and
-    will be expanded as Builder::make(...) docs are finalized. The current JSON
-    response envelope is preserved; changes must be versioned.
-paths: {}
-components: {}
+    Generic reference for the endpoints registered by streams/api's
+    StreamsResource and EntriesResource. Paths are relative to the interface
+    path (default "api"). Entry bodies depend on each stream's fields; run
+    "php artisan api:schema" in your application for a spec with per-stream
+    schemas. The API ships no authentication: security is whatever middleware
+    your application adds (see /docs/api/authentication).
+  license:
+    name: MIT
+externalDocs:
+  description: Streams API documentation
+  url: https://streams.dev/docs/api/introduction
+servers:
+  - url: /api
+    description: Default interface (STREAMS_API_PREFIX=api)
+tags:
+  - name: streams
+    description: Stream definitions (StreamsResource)
+  - name: entries
+    description: Stream entries (EntriesResource)
+paths:
+  /streams:
+    get:
+      tags: [streams]
+      operationId: streams.list
+      summary: List stream definitions.
+      responses:
+        '200': { $ref: '#/components/responses/Envelope' }
+    post:
+      tags: [streams]
+      operationId: streams.create
+      summary: Create a stream definition.
+      requestBody: { $ref: '#/components/requestBodies/Attributes' }
+      responses:
+        '201': { $ref: '#/components/responses/Envelope' }
+        '409': { $ref: '#/components/responses/ValidationError' }
+  /streams/{stream}:
+    parameters:
+      - $ref: '#/components/parameters/stream'
+    get:
+      tags: [streams]
+      operationId: streams.show
+      summary: Show a stream definition.
+      responses:
+        '200': { $ref: '#/components/responses/Envelope' }
+        '404': { $ref: '#/components/responses/NotFound' }
+    put:
+      tags: [streams]
+      operationId: streams.update
+      summary: Replace a stream definition.
+      requestBody: { $ref: '#/components/requestBodies/Attributes' }
+      responses:
+        '200': { $ref: '#/components/responses/Envelope' }
+        '409': { $ref: '#/components/responses/ValidationError' }
+    patch:
+      tags: [streams]
+      operationId: streams.patch
+      summary: Update part of a stream definition.
+      requestBody: { $ref: '#/components/requestBodies/Attributes' }
+      responses:
+        '200': { $ref: '#/components/responses/Envelope' }
+        '409': { $ref: '#/components/responses/ValidationError' }
+    delete:
+      tags: [streams]
+      operationId: streams.delete
+      summary: Delete a stream definition.
+      responses:
+        '204': { description: Deleted. No body. }
+        '404': { $ref: '#/components/responses/NotFound' }
+  /streams/{stream}/entries:
+    parameters:
+      - $ref: '#/components/parameters/stream'
+    get:
+      tags: [entries]
+      operationId: entries.list
+      summary: List entries (paginated).
+      parameters:
+        - name: where
+          in: query
+          style: deepObject
+          explode: true
+          description: 'Filters by field: where[title]=Hello, or where[views][>]=100.'
+          schema: { type: object, additionalProperties: true }
+        - name: constraint
+          in: query
+          style: deepObject
+          explode: true
+          description: 'Operator for a where field: constraint[title]=like.'
+          schema: { type: object, additionalProperties: { type: string } }
+        - name: order_by
+          in: query
+          style: deepObject
+          explode: true
+          description: 'Sort: order_by[created_at]=desc.'
+          schema: { type: object, additionalProperties: { type: string, enum: [asc, desc, ASC, DESC] } }
+        - name: limit
+          in: query
+          schema: { type: integer }
+        - name: skip
+          in: query
+          schema: { type: integer, default: 0 }
+        - name: per_page
+          in: query
+          schema: { type: integer, default: 100 }
+        - name: page
+          in: query
+          schema: { type: integer, default: 1 }
+        - name: with
+          in: query
+          description: 'Eager-load relationships: with=author,tags or with[]=author.'
+          schema:
+            oneOf:
+              - { type: string }
+              - { type: array, items: { type: string } }
+      responses:
+        '200': { $ref: '#/components/responses/Envelope' }
+    post:
+      tags: [entries]
+      operationId: entries.create
+      summary: Create an entry. The body is a flat map of field handles to values.
+      requestBody: { $ref: '#/components/requestBodies/Attributes' }
+      responses:
+        '201': { $ref: '#/components/responses/Envelope' }
+        '409': { $ref: '#/components/responses/ValidationError' }
+  /streams/{stream}/entries/{entry}:
+    parameters:
+      - $ref: '#/components/parameters/stream'
+      - $ref: '#/components/parameters/entry'
+    get:
+      tags: [entries]
+      operationId: entries.show
+      summary: Show an entry.
+      responses:
+        '200': { $ref: '#/components/responses/Envelope' }
+        '404': { $ref: '#/components/responses/NotFound' }
+    put:
+      tags: [entries]
+      operationId: entries.update
+      summary: Replace an entry.
+      requestBody: { $ref: '#/components/requestBodies/Attributes' }
+      responses:
+        '200': { $ref: '#/components/responses/Envelope' }
+        '409': { $ref: '#/components/responses/ValidationError' }
+    patch:
+      tags: [entries]
+      operationId: entries.patch
+      summary: Update part of an entry.
+      requestBody: { $ref: '#/components/requestBodies/Attributes' }
+      responses:
+        '200': { $ref: '#/components/responses/Envelope' }
+        '409': { $ref: '#/components/responses/ValidationError' }
+    delete:
+      tags: [entries]
+      operationId: entries.delete
+      summary: Delete an entry.
+      responses:
+        '204': { description: Deleted. No body. }
+        '404': { $ref: '#/components/responses/NotFound' }
+  /streams/{stream}/query:
+    parameters:
+      - $ref: '#/components/parameters/stream'
+    post:
+      tags: [entries]
+      operationId: entries.query
+      summary: Run criteria methods from a JSON body (paginated).
+      description: >-
+        Calls any criteria method named in the body except delete and
+        truncate, including write methods such as create. Protect it like a
+        write endpoint.
+      parameters:
+        - name: per_page
+          in: query
+          schema: { type: integer, default: 100 }
+        - name: page
+          in: query
+          schema: { type: integer, default: 1 }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                parameters:
+                  type: array
+                  description: 'Criteria calls, e.g. [{"where": ["status", "published"]}, {"limit": [10]}].'
+                  items: { type: object, additionalProperties: { type: array, items: {} } }
+      responses:
+        '200': { $ref: '#/components/responses/Envelope' }
+components:
+  parameters:
+    stream:
+      name: stream
+      in: path
+      required: true
+      description: Stream handle, e.g. posts.
+      schema: { type: string }
+    entry:
+      name: entry
+      in: path
+      required: true
+      description: Entry key (the stream's key_name, default id). May contain slashes.
+      schema: { type: string }
+  requestBodies:
+    Attributes:
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            description: Flat map of field handles to values. Not JSON:API.
+            additionalProperties: true
+  responses:
+    Envelope:
+      description: Standard Streams envelope.
+      content:
+        application/json:
+          schema: { $ref: '#/components/schemas/Envelope' }
+    ValidationError:
+      description: Validation failed. Streams uses 409, not 422.
+      content:
+        application/json:
+          schema: { $ref: '#/components/schemas/Envelope' }
+    NotFound:
+      description: Stream or entry not found.
+      content:
+        application/json:
+          schema: { $ref: '#/components/schemas/Envelope' }
+  schemas:
+    Envelope:
+      type: object
+      properties:
+        data:
+          nullable: true
+          description: An entry object, an array of entries, or a stream definition.
+        meta:
+          type: object
+          description: 'query, payload, parameters, stream, and pagination keys when paginated.'
+          additionalProperties: true
+        links:
+          type: object
+          description: Always includes self; paginated lists add page links.
+          additionalProperties: { type: string }
+        errors:
+          type: array
+          items: { type: string }
