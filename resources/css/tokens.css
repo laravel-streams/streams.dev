@@ -122,14 +122,21 @@
     --st-shadow-3: 0 4px 8px rgb(10 10 11 / 0.03), 0 16px 40px -12px rgb(10 10 11 / 0.14);
     --st-shadow-4: 0 8px 16px rgb(10 10 11 / 0.04), 0 32px 80px -24px rgb(10 10 11 / 0.22);
 
-    /* Radius: rounded and geometric. */
-    --st-radius-xs: 0.375rem;
-    --st-radius-sm: 0.5rem;
-    --st-radius-md: 0.75rem;
-    --st-radius-lg: 1rem;
-    --st-radius-xl: 1.5rem;
-    --st-radius-2xl: 2rem;
+    /*
+     * Radius: soft but crisp. px values at the 18px root.
+     * xs 6 (inline code, kbd) · sm 8 (chips, tabs) · md 11 (controls) ·
+     * lg 14 (callouts, code, small cards) · xl 19 (cards, panels) ·
+     * 2xl 22 (large panels, dialogs). Pills stay for tags only.
+     */
+    --st-radius-xs: 0.3333rem;
+    --st-radius-sm: 0.4444rem;
+    --st-radius-md: 0.6111rem;
+    --st-radius-lg: 0.7778rem;
+    --st-radius-xl: 1.0556rem;
+    --st-radius-2xl: 1.2222rem;
     --st-radius-pill: 9999px;
+    --st-radius-control: var(--st-radius-md);
+    --st-radius-control-lg: var(--st-radius-lg);
 
     /* Motion: subtle only. Collapsed to ~0 under prefers-reduced-motion. */
     --st-ease-out: cubic-bezier(0.22, 1, 0.36, 1);

@@ -86,7 +86,7 @@
     .docs-nav-link {
         display: block;
         padding: 0.4375rem 0.75rem;
-        border-radius: var(--st-radius-md);
+        border-radius: var(--st-radius-control);
         color: var(--st-text-secondary);
         text-decoration: none;
         line-height: 1.4;
@@ -145,7 +145,7 @@
         background: var(--st-glass-bg-strong);
         box-shadow: var(--st-glass-ring);
         border: 1px solid var(--st-glass-border);
-        border-radius: var(--st-radius-pill);
+        border-radius: var(--st-radius-control);
         cursor: pointer;
         text-align: left;
         transition: border-color var(--st-duration-base) var(--st-ease-out);
@@ -196,7 +196,7 @@
         padding-inline: 1.375rem;
         font-size: var(--st-text-base);
         border: 1px solid var(--st-glass-border);
-        border-radius: var(--st-radius-pill);
+        border-radius: var(--st-radius-control-lg);
         background: var(--st-glass-bg-strong);
         box-shadow: var(--st-glass-shadow);
         -webkit-backdrop-filter: var(--st-glass-filter);
