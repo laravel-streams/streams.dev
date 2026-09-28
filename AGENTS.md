@@ -66,9 +66,12 @@ app/Support/              Site helpers
   DocumentationMarkdown   Renders docs markdown
   DocsSearchIndex         /search/docs.json and the docs lookup
   LlmsText                /llms.txt, /llms-full.txt, raw .md routes
+  DocsQuery               Search, page lookup, and nav for the docs MCP server
+app/Mcp/                  Docs MCP server (laravel/mcp): Servers/, Tools/, Resources/
   ExploreTree             /explore, /explore/{id}.md|.json
 app/Providers/AppServiceProvider.php   Registers the UI panel and the /ui form component
 routes/web.php            The few hand-written routes (search index, llms, schema, explore)
+routes/ai.php             MCP servers: /mcp over HTTP and `mcp:start streams-docs` over stdio
 resources/views/          Blade: layouts/ (shell, docs), partials/ (topbar, sidebar, search), components/
 resources/css/            Design system (see below); app.css imports the rest
 resources/js/             app.js, docs-search.js (Cmd+K), docs-filter.js (sidebar filter), reveal.js
@@ -130,7 +133,7 @@ Walk through these in order, opening each file and the matching URL side by side
 2. **A stream definition.** `streams/docs.json`: fields, the `source` (markdown files), and the `routes` block that creates `/docs/{id}` without a controller.
 3. **A docs page.** `/docs/core/introduction` next to `streams/data/core_docs/introduction.md`. Frontmatter becomes fields; the body renders through `app/Support/DocumentationMarkdown.php`.
 4. **Search and filtering.** Press Cmd+K (full search, `resources/js/docs-search.js`, index at `/search/docs.json`). Then type in the sidebar filter (`resources/js/docs-filter.js`): it filters the nav, highlights matches in the page and the "On this page" list, and supports arrow keys, Enter and Esc.
-5. **Docs for agents.** `/llms.txt`, `/llms-full.txt`, any page with `.md` appended, and `/explore` (also as `.json` and `.md`). See `app/Support/LlmsText.php` and `ExploreTree.php`.
+5. **Docs for agents.** `/llms.txt`, `/llms-full.txt`, any page with `.md` appended, and `/explore` (also as `.json` and `.md`). See `app/Support/LlmsText.php` and `ExploreTree.php`. The same docs are served over MCP at `/mcp` (next section).
 6. **The stream schema.** `/schema/streams.schema.json`: the JSON Schema for stream files, from `streams/sdk`. Editors can use it to validate `streams/*.json`.
 7. **The packages.** Open `vendor/streams/core` (start at its README and `src/`), then `vendor/streams/ui` and `vendor/streams/sdk`. Match each to its reference section at `/docs/core`, `/docs/ui`, `/docs/sdk`, and the catalog at `/addons`.
 8. **The design system.** `resources/css/tokens.css`, then `geometry.css` next to `public/img/logo.svg`: the 30-degree cuts and the lattice come from the logo's own angles.
@@ -152,6 +155,20 @@ Walk through these in order, opening each file and the matching URL side by side
 
    Run `php artisan cache:clear`, open `/docs/hello`, and run `php artisan test` (the docs content tests check the frontmatter). Then delete it, or keep going and open a pull request.
 
+## Docs MCP server
+
+`routes/ai.php` registers the read-only **Streams Docs** MCP server (`app/Mcp/Servers/StreamsDocsServer.php`, built on `laravel/mcp`):
+
+- Remote: `POST /mcp` (Streamable HTTP, public, no auth), throttled by the `mcp` limiter in `RouteServiceProvider` (60 requests a minute per client IP, JSON-RPC error with `429` and `Retry-After` when exceeded). It sits outside the `web` group, so there is no session or CSRF.
+- Local: `php artisan mcp:start streams-docs` (stdio).
+- Tools: `search_docs`, `get_page`, `list_pages`, `get_schema`. Resources: `streams-docs://pages/{package}/{page}` and `streams-docs://llms.txt`. They reuse `DocsSearchIndex` and `LlmsText` through `app/Support/DocsQuery.php`; keep new tools read-only unless the maintainer adds auth.
+- Connection instructions for users: `/docs/docs-mcp`. Tests: `tests/Feature/DocsMcpServerTest.php`.
+- Because `laravel/mcp` is installed, the SDK's own app server (`php artisan mcp:start streams`, see `/docs/mcp`) also registers here outside production. It is stdio only and never exposed over HTTP; set `streams.sdk.mcp.enabled` to `false` to turn it off.
+
+Try it: `curl -s http://127.0.0.1:8427/mcp -H 'Content-Type: application/json' -H 'Accept: application/json, text/event-stream' -d '{"jsonrpc":"2.0","id":1,"method":"tools/list"}'`.
+
 ## Deploying
 
 `Envoy.blade.php` holds the deploy tasks (`envoy run deploy`, `envoy run rollback`). Install Envoy with `composer global require laravel/envoy`, then fill the `DEPLOY_*` keys in `.env` (documented in `.env.example`). Composer runs with `--ignore-platform-reqs` there for now because the current host (PHP 8.2.4) lacks ext-intl and ext-zip; the `config.platform.php` pin keeps the lock compatible with it. Only deploy when the maintainer asks.
+
+The `/mcp` rate limit keys on `$request->ip()`. `TrustProxies` trusts every proxy (`$proxies = '*'`), which is correct behind Cloudflare only if the origin accepts traffic from Cloudflare alone; otherwise a client can spoof `X-Forwarded-For`. Firewall the origin to Cloudflare's ranges, or list those ranges in `TrustProxies`.
