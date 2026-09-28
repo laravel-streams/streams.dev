@@ -28,6 +28,8 @@
     .st-ambient {
         position: relative;
         isolation: isolate;
+        /* The glow is drawn 5% wider than the section. Clip x so that bleed does not widen the page. */
+        overflow-x: clip;
     }
 
     .st-ambient::before {
