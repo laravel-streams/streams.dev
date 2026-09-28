@@ -7,6 +7,8 @@ nav_disabled: true
 ---
 @php
 $addon = Streams::packages()->where('composer.name', Request::route('vendor') .'/'.Request::route('name'))->first();
+
+abort_unless($addon, 404);
 @endphp
 
 <section class="container mx-auto pt-4 px-4">
@@ -35,7 +37,7 @@ $addon = Streams::packages()->where('composer.name', Request::route('vendor') .'
                     'rss' => 'RSS',
                     'chat' => 'Chat',
                     'security' => 'Security',
-                ][$type];
+                ][$type] ?? ucfirst($type);
                 @endphp
             </a>
         </li>
