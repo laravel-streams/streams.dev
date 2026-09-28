@@ -113,7 +113,7 @@ The visual design is signed off. **Do not change colours, spacing, sizing, type,
 
 ## Conventions
 
-- Docs voice and frontmatter: `STYLE.md`. Every docs page needs `title` and `description` (they become `<title>` and the meta description). The entry id is the filename without `.md`. Hub pages set `category` (a key in `streams/docs_categories.json`); package pages do not.
+- Docs voice and frontmatter: `STYLE.md`. Every docs page needs the frontmatter keys listed there: `title` (unique across the site; it becomes the H1 and `<title>`), `nav_title` (the short sidebar label), `description` (the meta description), `section`, `package`, `order` (sidebar order, in steps of 10), `tags` and `status` (`draft`, `review`, `ready` or `deprecated`). Hub pages in `streams/data/docs/` also set `category` (a key in `streams/docs_categories.json`); package pages do not. The entry id is the filename without `.md`. Don't repeat the title as a `# H1` in the body. `tests/Feature/DocsContentTest.php` enforces all of this.
 - Document what the code does. Label anything unregistered, commented out, or not shipped. Do not invent Artisan commands, routes, config keys, or release tags.
 - Install lines in the docs use the development constraints that exist today (`streams/core:2.0.x-dev`, other packages `1.0.x-dev`). There is no stable 2.0 tag. Version support is summarized at `/docs/versions`.
 - "SDK" means `streams/sdk` (PHP). "Client" means `@laravel-streams/api-client`.
@@ -134,7 +134,23 @@ Walk through these in order, opening each file and the matching URL side by side
 6. **The stream schema.** `/schema/streams.schema.json`: the JSON Schema for stream files, from `streams/sdk`. Editors can use it to validate `streams/*.json`.
 7. **The packages.** Open `vendor/streams/core` (start at its README and `src/`), then `vendor/streams/ui` and `vendor/streams/sdk`. Match each to its reference section at `/docs/core`, `/docs/ui`, `/docs/sdk`, and the catalog at `/addons`.
 8. **The design system.** `resources/css/tokens.css`, then `geometry.css` next to `public/img/logo.svg`: the 30-degree cuts and the lattice come from the logo's own angles.
-9. **Make a change.** Add `streams/data/docs/hello.md` with `title`, `description` and a `category` from `docs_categories.json`, run `php artisan cache:clear`, and open `/docs/hello`. Then delete it, or keep going and open a pull request.
+9. **Make a change.** Add `streams/data/docs/hello.md` with the full frontmatter from `STYLE.md`, for example:
+
+   ```yaml
+   ---
+   title: Hello
+   nav_title: Hello
+   description: A first page.
+   section: guides
+   category: basics
+   package: all
+   order: 90
+   tags: [example]
+   status: draft
+   ---
+   ```
+
+   Run `php artisan cache:clear`, open `/docs/hello`, and run `php artisan test` (the docs content tests check the frontmatter). Then delete it, or keep going and open a pull request.
 
 ## Deploying
 
