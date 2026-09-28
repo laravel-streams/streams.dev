@@ -58,11 +58,7 @@ category: getting-started   # hub docs only
 
 Document **what works today**. Do not describe APIs that are planned or commented out unless labeled as deferred.
 
-Before marking `status: ready`, trace documented classes and methods to:
-
-- `vendor/streams/core` for Core
-- `vendor/streams/ui` for UI
-- `submodules/streams-api` or your local `streams/api` clone for API
+Before marking `status: ready`, trace documented classes and methods to the package source. In this app, `vendor/streams/core`, `vendor/streams/ui`, and `vendor/streams/sdk` are symlinks into the package checkouts. `streams/api`, `streams/testing`, and the JavaScript client are not installed under `vendor/streams` here; read those checkouts directly. Do not edit files through `vendor/streams/*`. The `submodules/` directory in this repo is empty.
 
 ## Related
 

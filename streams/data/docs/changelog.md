@@ -10,7 +10,7 @@ Streams packages are pre-release and installed from development branches, so thi
 
 ## September 2026
 
-- **Docs:** streams.dev is now the single source of truth for package documentation. Added [Versions and support](/docs/versions), this changelog, the [Upgrade guide](/docs/upgrading), `/llms.txt`, `/llms-full.txt`, and raw markdown for every page (append `.md` to any docs URL).
+- **Docs:** streams.dev is now the single source of truth for package documentation. Added [Versions and support](/docs/versions), this changelog, the [Upgrade guide](/docs/upgrading), `/llms.txt`, `/llms-full.txt`, and raw markdown for every page (append `.md` to any docs URL). Also added [Agents](/docs/agents), [MCP](/docs/mcp) (not shipped), [Workflows](/docs/workflows), [Tenancy](/docs/tenancy), [Theming](/docs/ui/theming), and the [SDK command reference](/docs/sdk/commands).
 - **UI (`1.0`):** HTML attribute support on more components.
 
 ## August 2026

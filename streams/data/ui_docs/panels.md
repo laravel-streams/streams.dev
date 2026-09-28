@@ -43,5 +43,6 @@ Alias `panel` maps to `Streams\Ui\Http\Middleware\SetUpPanel`. It boots the curr
 ## Related
 
 - [Installation](/docs/ui/installation)
+- [Theming](/docs/ui/theming)
 - [Routing](/docs/ui/routing)
 - [Navigation](/docs/ui/navigation)
