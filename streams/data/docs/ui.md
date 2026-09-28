@@ -15,7 +15,7 @@ You keep Laravel auth, policies, and middleware. Resources are PHP classes—not
 ## Installation
 
 ```bash
-composer require streams/ui
+composer require streams/core:2.0.x-dev streams/ui:1.0.x-dev
 ```
 
 Register a panel in a service provider:

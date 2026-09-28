@@ -1,7 +1,7 @@
 {
     "name": "Explore",
     "handle": "explore",
-    "description": "Explore the features and operating principles of Laravel Streams.",
+    "description": "A choose-your-path walk through Streams. Each node is one markdown file; front matter drives the choices.",
     "config": {
         "source": {
             "format": "md"
@@ -11,7 +11,12 @@
         {
             "handle": "view",
             "uri": "explore/{id}",
-            "view": "docs"
+            "view": "explore",
+            "constraints": [
+                {
+                    "id": "[a-z0-9-]+"
+                }
+            ]
         }
     ],
     "fields": [
@@ -35,11 +40,37 @@
             "required": true
         },
         {
+            "handle": "label",
+            "type": "string",
+            "input": {
+                "placeholder": "Short name for breadcrumbs and <title>"
+            }
+        },
+        {
             "handle": "description",
             "type": "string",
             "input": {
                 "type": "textarea"
             }
+        },
+        {
+            "handle": "parent",
+            "type": "relationship",
+            "config": {
+                "related": "explore"
+            }
+        },
+        {
+            "handle": "menu",
+            "type": "array"
+        },
+        {
+            "handle": "options",
+            "type": "array"
+        },
+        {
+            "handle": "links",
+            "type": "array"
         },
         {
             "handle": "body",

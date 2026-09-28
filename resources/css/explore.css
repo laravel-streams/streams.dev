@@ -1,0 +1,104 @@
+/*
+ * Explore flow: huge question headlines, black pill choices, generous space.
+ * Carried over from the live site (Appendix A of DOSSIER.md) and rebuilt on tokens.
+ */
+
+@layer components {
+    .explore-stage {
+        view-transition-name: explore-stage;
+    }
+
+    .explore-title {
+        font-size: clamp(2.5rem, 1.25rem + 5.2vw, 5.25rem);
+        line-height: 0.98;
+        font-weight: 800;
+        letter-spacing: var(--st-tracking-display);
+        color: var(--st-text);
+        text-wrap: balance;
+    }
+
+    .explore-body {
+        font-size: clamp(1.125rem, 1rem + 0.6vw, 1.5rem);
+        line-height: 1.6;
+        color: var(--st-text-secondary);
+        text-wrap: pretty;
+
+        p + p {
+            margin-top: 1.25rem;
+        }
+
+        strong {
+            color: var(--st-text);
+            font-weight: 600;
+        }
+
+        a {
+            color: var(--st-text);
+            text-decoration: underline;
+            text-underline-offset: 4px;
+            text-decoration-thickness: 1px;
+            text-decoration-color: var(--st-border-strong);
+
+            &:hover {
+                text-decoration-color: var(--st-accent);
+            }
+        }
+    }
+
+    .explore-choices > * {
+        animation: st-rise var(--st-duration-slow) var(--st-ease-out) both;
+    }
+
+    .explore-choices > :nth-child(2) { animation-delay: 40ms; }
+    .explore-choices > :nth-child(3) { animation-delay: 80ms; }
+    .explore-choices > :nth-child(4) { animation-delay: 120ms; }
+    .explore-choices > :nth-child(5) { animation-delay: 160ms; }
+    .explore-choices > :nth-child(6) { animation-delay: 200ms; }
+    .explore-choices > :nth-child(n + 7) { animation-delay: 240ms; }
+
+    .explore-crumbs {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 0.25rem;
+        font-size: var(--st-text-sm);
+        color: var(--st-text-muted);
+
+        a {
+            color: var(--st-text-muted);
+            text-decoration: none;
+            transition: color var(--st-duration-fast) var(--st-ease-out);
+
+            &:hover {
+                color: var(--st-text);
+            }
+        }
+
+        [aria-current="page"] {
+            color: var(--st-text);
+            font-weight: 500;
+        }
+    }
+}
+
+::view-transition-old(explore-stage) {
+    animation: st-explore-out var(--st-duration-base) var(--st-ease-out) both;
+}
+
+::view-transition-new(explore-stage) {
+    animation: st-explore-in var(--st-duration-slow) var(--st-ease-out) both;
+}
+
+@keyframes st-explore-out {
+    to {
+        opacity: 0;
+        transform: translateY(-8px);
+    }
+}
+
+@keyframes st-explore-in {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+}

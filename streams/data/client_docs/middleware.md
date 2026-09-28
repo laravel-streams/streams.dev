@@ -20,9 +20,9 @@ Adds Bearer token authentication to requests.
 import { Client, AuthorizationMiddleware } from '@laravel-streams/api-client';
 
 const client = new Client({
-    baseUrl: 'https://api.example.com',
-    middleware: [
-        new AuthorizationMiddleware('your-api-token')
+    baseURL: 'https://api.example.com',
+    middlewares: [
+        new AuthorizationMiddleware({ token: 'your-api-token' })
     ]
 });
 ```
@@ -39,8 +39,8 @@ Converts Criteria objects to query parameters.
 import { Client, CriteriaMiddleware, Criteria } from '@laravel-streams/api-client';
 
 const client = new Client({
-    baseUrl: 'https://api.example.com',
-    middleware: [
+    baseURL: 'https://api.example.com',
+    middlewares: [
         new CriteriaMiddleware()
     ]
 });
@@ -65,8 +65,8 @@ Adds query parameters to requests.
 import { Client, QueryMiddleware } from '@laravel-streams/api-client';
 
 const client = new Client({
-    baseUrl: 'https://api.example.com',
-    middleware: [
+    baseURL: 'https://api.example.com',
+    middlewares: [
         new QueryMiddleware()
     ]
 });
@@ -93,8 +93,8 @@ Transforms request data based on content type.
 import { Client, RequestDataMiddleware } from '@laravel-streams/api-client';
 
 const client = new Client({
-    baseUrl: 'https://api.example.com',
-    middleware: [
+    baseURL: 'https://api.example.com',
+    middlewares: [
         new RequestDataMiddleware()
     ]
 });
@@ -128,8 +128,8 @@ Parses response data based on content type.
 import { Client, ResponseDataMiddleware } from '@laravel-streams/api-client';
 
 const client = new Client({
-    baseUrl: 'https://api.example.com',
-    middleware: [
+    baseURL: 'https://api.example.com',
+    middlewares: [
         new ResponseDataMiddleware()
     ]
 });
@@ -152,8 +152,8 @@ Implements HTTP caching with ETags.
 import { Client, ETagMiddleware } from '@laravel-streams/api-client';
 
 const client = new Client({
-    baseUrl: 'https://api.example.com',
-    middleware: [
+    baseURL: 'https://api.example.com',
+    middlewares: [
         new ETagMiddleware()
     ]
 });
@@ -194,8 +194,8 @@ class LoggingMiddleware extends Middleware {
 
 // Use it
 const client = new Client({
-    baseUrl: 'https://api.example.com',
-    middleware: [
+    baseURL: 'https://api.example.com',
+    middlewares: [
         new LoggingMiddleware()
     ]
 });
@@ -222,8 +222,8 @@ class ApiVersionMiddleware extends Middleware {
 }
 
 const client = new Client({
-    baseUrl: 'https://api.example.com',
-    middleware: [
+    baseURL: 'https://api.example.com',
+    middlewares: [
         new ApiVersionMiddleware('v2')
     ]
 });
@@ -345,8 +345,8 @@ class ApiKeyMiddleware extends Middleware {
 }
 
 const client = new Client({
-    baseUrl: 'https://api.example.com',
-    middleware: [
+    baseURL: 'https://api.example.com',
+    middlewares: [
         new ApiKeyMiddleware('your-api-key-here')
     ]
 });
@@ -378,8 +378,8 @@ class ThrottleMiddleware extends Middleware {
 }
 
 const client = new Client({
-    baseUrl: 'https://api.example.com',
-    middleware: [
+    baseURL: 'https://api.example.com',
+    middlewares: [
         new ThrottleMiddleware(5) // Max 5 requests per second
     ]
 });
@@ -425,8 +425,8 @@ class CacheMiddleware extends Middleware {
 }
 
 const client = new Client({
-    baseUrl: 'https://api.example.com',
-    middleware: [
+    baseURL: 'https://api.example.com',
+    middlewares: [
         new CacheMiddleware(30000) // Cache for 30 seconds
     ]
 });
@@ -472,8 +472,8 @@ Middleware executes in the order it's added:
 
 ```javascript
 const client = new Client({
-    baseUrl: 'https://api.example.com',
-    middleware: [
+    baseURL: 'https://api.example.com',
+    middlewares: [
         new LoggingMiddleware(),      // 1. Logs request
         new AuthMiddleware(),          // 2. Adds auth
         new CriteriaMiddleware(),      // 3. Converts criteria

@@ -335,8 +335,8 @@
             "type": null,
             "enabled": true
         },
-        "8b2c4d3e-5a6f-4g7h-8i9j-0k1l2m3n4o5p": {
-            "id": "8b2c4d3e-5a6f-4g7h-8i9j-0k1l2m3n4o5p",
+        "8b2c4d3e-5a6f-4c7d-8e9f-0a1b2c3d4e5f": {
+            "id": "8b2c4d3e-5a6f-4c7d-8e9f-0a1b2c3d4e5f",
             "name": "Streams API Client",
             "type": "client",
             "enabled": true,
@@ -604,72 +604,34 @@
             "type": "database",
             "enabled": true,
             "composer": {
-                "name": "ryanthompson/mongodb",
+                "name": "streams/mongodb",
                 "type": "streams-addon",
-                "description": "Mongo DB support",
+                "description": "Adds MongoDB support to Streams.",
                 "support": {
-                    "docs": "/docs/#mongodb"
+                    "docs": "/docs/core/sources-and-adapters",
+                    "source": "https://github.com/laravel-streams/mongodb",
+                    "issues": "https://github.com/laravel-streams/mongodb/issues"
                 },
                 "keywords": ["mongodb", "streams addon", "laravel streams"],
                 "license": "MIT",
                 "require": {
-                    "php": "^8.0.2",
-                    "guzzlehttp/guzzle": "^7.2",
-                    "laravel/framework": "^9.19",
                     "streams/core": "^2.0",
-                    "streams/api": "^1.0",
-                    "streams/ui": "^1.0"
+                    "mongodb/mongodb": "^1.10"
                 },
                 "require-dev": {
-                    "streams/sdk": "^1.0",
-                    "fakerphp/faker": "^1.9.1",
-                    "laravel/tinker": "^2.7",
-                    "laravel/pint": "^1.0",
-                    "laravel/sail": "^1.0.1",
-                    "mockery/mockery": "^1.4.4",
-                    "nunomaduro/collision": "^6.1",
-                    "phpunit/phpunit": "^9.5.10",
-                    "spatie/laravel-web-tinker": "^1.8",
-                    "spatie/laravel-ignition": "^1.0"
+                    "streams/testing": "^1.0"
                 },
                 "autoload": {
                     "psr-4": {
-                        "App\\": "app/",
-                        "Database\\Factories\\": "database/factories/",
-                        "Database\\Seeders\\": "database/seeders/"
+                        "Streams\\MongoDb\\": "src/"
                     }
-                },
-                "autoload-dev": {
-                    "psr-4": {
-                        "Tests\\": "tests/"
-                    }
-                },
-                "scripts": {
-                    "post-autoload-dump": [
-                        "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
-                        "@php artisan package:discover --ansi"
-                    ],
-                    "post-update-cmd": [
-                        "@php artisan vendor:publish --tag=laravel-assets --ansi --force"
-                    ],
-                    "post-root-package-install": [
-                        "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
-                    ],
-                    "post-create-project-cmd": [
-                        "@php artisan key:generate --ansi"
-                    ]
                 },
                 "extra": {
+                    "branch-alias": {
+                        "dev-master": "1.x-dev"
+                    },
                     "laravel": {
-                        "dont-discover": []
-                    }
-                },
-                "config": {
-                    "optimize-autoloader": true,
-                    "preferred-install": "dist",
-                    "sort-packages": true,
-                    "allow-plugins": {
-                        "pestphp/pest-plugin": true
+                        "providers": ["Streams\\MongoDb\\MongoDbServiceProvider"]
                     }
                 },
                 "minimum-stability": "dev",

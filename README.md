@@ -39,7 +39,10 @@ See [STYLE.md](STYLE.md) for voice, frontmatter, and content boundaries.
 
 ```bash
 composer install
-php artisan serve
+npm install
+composer dev
 ```
+
+`composer dev` runs `php artisan serve` on http://127.0.0.1:8427 and the Vite dev server (with HMR) on 127.0.0.1:5427 through `concurrently`. Both ports are strict, so a clash fails loudly instead of drifting to another port. Set `APP_URL=http://127.0.0.1:8427` in `.env`. For a production-style build, run `npm run build`.
 
 Browse `/docs` for documentation and `/addons` for the package catalog.

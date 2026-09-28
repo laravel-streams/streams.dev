@@ -21,6 +21,9 @@ export function initDocsSearch() {
     let fuse = null;
     let items = [];
     let activeIndex = -1;
+    let closeTimer = null;
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const isOpen = () => !root.hidden && !root.classList.contains('is-closing');
 
     const loadIndex = async () => {
         if (items.length) {
@@ -41,27 +44,54 @@ export function initDocsSearch() {
         });
     };
 
-    const open = async () => {
-        await loadIndex();
+    // Show the dialog immediately (so the open animation isn't gated on the
+    // network) and fetch the index in the background; re-run any query typed
+    // while it was loading.
+    const open = (query = '') => {
+        loadIndex()
+            .then(() => {
+                if (isOpen() && input.value.trim()) {
+                    search(input.value);
+                }
+            })
+            .catch(() => {});
+        clearTimeout(closeTimer);
+        root.classList.remove('is-closing');
         root.hidden = false;
         root.setAttribute('aria-hidden', 'false');
         document.body.classList.add('overflow-hidden');
-        input.value = '';
+        input.value = typeof query === 'string' ? query : '';
         activeIndex = -1;
         render([]);
+        if (input.value) {
+            search(input.value);
+        }
         requestAnimationFrame(() => input.focus());
     };
 
+    // Close plays the 160ms fade/scale-out (.is-closing) before hiding.
     const close = () => {
-        root.hidden = true;
+        if (!isOpen()) {
+            return;
+        }
+        const finish = () => {
+            root.classList.remove('is-closing');
+            root.hidden = true;
+        };
         root.setAttribute('aria-hidden', 'true');
         document.body.classList.remove('overflow-hidden');
         activeIndex = -1;
+        if (reducedMotion.matches) {
+            finish();
+            return;
+        }
+        root.classList.add('is-closing');
+        closeTimer = setTimeout(finish, 170);
     };
 
     const render = (results) => {
         resultsEl.innerHTML = '';
-        emptyEl?.classList.toggle('hidden', results.length > 0);
+        emptyEl?.classList.toggle('hidden', results.length > 0 || !input.value.trim());
 
         if (!results.length) {
             return;
@@ -78,7 +108,7 @@ export function initDocsSearch() {
 
         Object.keys(grouped).forEach((section) => {
             const heading = document.createElement('li');
-            heading.className = 'px-4 py-1.5 text-xs font-semibold uppercase tracking-wide text-[var(--color-text-muted)]';
+            heading.className = 'px-4 pt-4 pb-2 text-2xs font-semibold uppercase tracking-[0.08em] text-fg-muted';
             heading.textContent = GROUP_LABELS[section] || section;
             resultsEl.appendChild(heading);
 
@@ -87,11 +117,12 @@ export function initDocsSearch() {
                 const li = document.createElement('li');
                 const btn = document.createElement('button');
                 btn.type = 'button';
-                btn.className = 'docs-search-result w-full text-left px-4 py-2.5 hover:bg-[var(--color-page)]' + (globalIndex === activeIndex ? ' bg-[var(--color-page)]' : '');
+                btn.className = 'docs-search-result' + (globalIndex === activeIndex ? ' is-active' : '');
+                btn.setAttribute('role', 'option');
                 btn.dataset.index = String(globalIndex);
                 btn.innerHTML = `
-                    <span class="block font-medium text-[var(--color-text)]">${escapeHtml(result.item.title)}</span>
-                    <span class="block mt-0.5 text-xs text-[var(--color-text-muted)]">${escapeHtml(result.item.description || result.item.excerpt || '')}</span>
+                    <span class="block text-base font-medium text-fg">${escapeHtml(result.item.title)}</span>
+                    <span class="mt-1 block truncate text-sm text-fg-muted">${escapeHtml(result.item.description || result.item.excerpt || '')}</span>
                 `;
                 btn.addEventListener('click', () => navigate(result.item.url));
                 li.appendChild(btn);
@@ -105,7 +136,8 @@ export function initDocsSearch() {
     const highlightActive = () => {
         resultsEl.querySelectorAll('.docs-search-result').forEach((el) => {
             const idx = Number(el.dataset.index);
-            el.classList.toggle('bg-[var(--color-page)]', idx === activeIndex);
+            el.classList.toggle('is-active', idx === activeIndex);
+            el.setAttribute('aria-selected', idx === activeIndex ? 'true' : 'false');
         });
     };
 
@@ -120,6 +152,9 @@ export function initDocsSearch() {
         }
         render(fuse.search(query, { limit: 12 }));
     };
+
+    // The sidebar filter hands its query over when it has no matches.
+    window.StreamsDocsSearch = { open: (query) => open(query) };
 
     document.querySelectorAll('[data-docs-search-open]').forEach((el) => {
         el.addEventListener('click', (e) => {
@@ -175,10 +210,10 @@ export function initDocsSearch() {
     document.addEventListener('keydown', (e) => {
         if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
             e.preventDefault();
-            if (root.hidden) {
-                open();
-            } else {
+            if (isOpen()) {
                 close();
+            } else {
+                open();
             }
         }
     });

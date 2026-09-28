@@ -20,7 +20,7 @@ use Streams\Core\Support\Facades\Images;
 $image = Images::make('img/foo.jpg');
 ```
 
-The facade is aliased for use in [views](views) as well:
+The facade is aliased for use in [views](/docs/core/views-and-includes) as well:
 
 ```blade
 @verbatim{!! Images::make('resources/img/foo.jpg') !!}@endverbatim
@@ -157,7 +157,7 @@ Use the following methods to draw on images.
 
 ### Macros
 
-Macros are a basic method of [extending the Streams platform](extending).
+Macros are a basic method of [extending the Streams platform](/docs/core/extending-core).
 
 #### Defining Macros
 

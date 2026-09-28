@@ -343,6 +343,6 @@ protected function setUp(): void
 
 ## Next Steps
 
-- [Writing Tests](writing-tests.md) - Learn to write effective tests
-- [Assertions](assertions.md) - Available testing assertions
-- [Configuration](configuration.md) - Customize your test environment
+- [Writing Tests](/docs/testing/writing-tests)
+- [Configuration](/docs/testing/configuration)
+- [Troubleshooting](/docs/testing/troubleshooting)

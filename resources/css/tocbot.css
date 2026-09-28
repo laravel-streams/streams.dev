@@ -1,0 +1,59 @@
+.documentation__toc {
+    line-height: 1.4;
+    font-size: var(--st-text-sm);
+    color: var(--st-text-muted);
+
+    &:empty {
+        display: none;
+    }
+
+    &::before {
+        content: "On this page";
+        display: block;
+        margin-bottom: 0.875rem;
+        font-size: var(--st-text-2xs);
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--st-text-muted);
+    }
+
+    .toc-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .toc-list-item {
+        margin-top: 0.125rem;
+    }
+
+    .toc-link {
+        display: block;
+        padding: 0.3125rem 0 0.3125rem 0.875rem;
+        margin-left: -1px;
+        color: var(--st-text-muted);
+        text-decoration: none;
+        border-left: 1px solid var(--st-border);
+        transition: color var(--st-duration-fast) var(--st-ease-out), border-color var(--st-duration-fast) var(--st-ease-out);
+
+        &::before {
+            display: none;
+        }
+
+        &.is-active-link {
+            color: var(--st-text);
+            font-weight: 600;
+            border-left-color: var(--st-accent);
+        }
+
+        &:hover {
+            color: var(--st-text);
+        }
+    }
+
+    .is-collapsible .toc-list {
+        padding-left: 0.75rem;
+        margin-top: 0.25rem;
+    }
+}

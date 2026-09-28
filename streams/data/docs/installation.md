@@ -8,7 +8,7 @@ status: ready
 
 ## Server requirements
 
-Streams requires a standard [Laravel-compatible environment](https://laravel.com/docs/deployment#server-requirements).
+Streams requires a standard [Laravel-compatible environment](https://laravel.com/docs/deployment#server-requirements). Core supports Laravel 10, 11, and 12 (PHP 8.1+); the starter project and the test harness are Laravel 10 today. See [Versions and support](/docs/versions) for each package.
 
 For image handling, install GD or the Imagick PHP extension. See [Images](/docs/images) and [Core images](/docs/core/images).
 
@@ -17,21 +17,21 @@ For image handling, install GD or the Imagick PHP extension. See [Images](/docs/
 The fastest path is the official Streams starter:
 
 ```bash
-composer create-project streams/streams:1.0.x-dev
+composer create-project streams/streams:1.0.x-dev my-app
 
-cd streams
+cd my-app
 
 php artisan serve
 ```
 
-That starter ships Core, UI, and optional packages depending on the template version.
+The starter ([laravel-streams/streams](https://github.com/laravel-streams/streams)) is a Laravel 10 application that requires Core, UI, and API. It has no tagged release yet, so the version is the `1.0` development branch.
 
 ## This repository (streams.dev)
 
 **streams.dev** is not the generic starter — it is the documentation site. Clone it to work on docs or reference patterns:
 
 ```bash
-git clone git@github.com:streams/streams.dev.git
+git clone git@github.com:laravel-streams/streams.dev.git
 cd streams.dev
 composer install
 npm install && npm run dev
@@ -56,12 +56,14 @@ See [This project](/docs/this-project) and [Local development](/docs/local-devel
 Add only the packages you need:
 
 ```bash
-composer require streams/core
-composer require streams/ui
-composer require streams/api
+composer require streams/core:2.0.x-dev
+composer require streams/core:2.0.x-dev streams/ui:1.0.x-dev
+composer require streams/core:2.0.x-dev streams/api:1.0.x-dev
 ```
 
 Core is the only required package. UI and API are optional layers.
+
+Use the explicit `x-dev` constraints. None of these packages has a stable 2.x (Core) or 1.x (UI, API) tag yet, and a bare `composer require streams/core` installs the old **Core 1.10.4**. Alternatively, set `"minimum-stability": "dev"` and `"prefer-stable": true` in your `composer.json`. See [Versions and support](/docs/versions).
 
 ### Publish and configure
 
@@ -100,6 +102,7 @@ composer update
 
 ## Related
 
+- [Versions and support](/docs/versions)
 - [Configuration](/docs/configuration)
 - [Architecture](/docs/architecture)
 - [Use cases](/docs/use-cases)

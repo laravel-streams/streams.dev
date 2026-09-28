@@ -504,6 +504,5 @@ test:
 
 ## Next Steps
 
-- [Advanced Testing](advanced-testing.md) - Complex testing scenarios
-- [CI/CD Integration](ci-cd.md) - Automated testing workflows
-- [Troubleshooting](troubleshooting.md) - Common issues and solutions
+- [Writing Tests](/docs/testing/writing-tests)
+- [Troubleshooting](/docs/testing/troubleshooting)

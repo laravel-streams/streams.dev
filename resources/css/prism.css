@@ -1,0 +1,94 @@
+/*
+ * Monochrome Prism theme. Code panels stay dark in both schemes.
+ * In the base layer so component and prose rules (glass panels, sizes) can
+ * override it; unlayered, it beat them all.
+ */
+
+@layer base {
+
+code[class*="language-"],
+pre[class*="language-"] {
+    color: var(--st-code-text);
+    font-family: var(--st-font-mono);
+    font-size: var(--st-text-code);
+    line-height: 1.75;
+    direction: ltr;
+    text-align: left;
+    white-space: pre;
+    word-spacing: normal;
+    word-break: normal;
+    tab-size: 4;
+    hyphens: none;
+}
+
+pre[class*="language-"] {
+    padding: 1.375rem 1.5rem;
+    margin: 0;
+    overflow: auto;
+    border-radius: var(--st-radius-lg);
+    background: var(--st-code-glass);
+}
+
+:not(pre) > code[class*="language-"] {
+    padding: 0.15em 0.4em;
+    border-radius: var(--st-radius-xs);
+    background: var(--st-surface-muted);
+    border: 1px solid var(--st-border);
+    color: var(--st-text);
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+    color: #8b8b94;
+    font-style: italic;
+}
+
+.token.punctuation {
+    color: #8e8e98;
+}
+
+.token.property,
+.token.tag,
+.token.boolean,
+.token.number,
+.token.constant,
+.token.symbol,
+.token.deleted,
+.token.operator,
+.token.entity,
+.token.url,
+.token.variable,
+.token.regex {
+    color: #d4d4d8;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+    color: #b4b4bc;
+}
+
+.token.atrule,
+.token.attr-value,
+.token.keyword,
+.token.function,
+.token.class-name {
+    color: #fafafa;
+    font-weight: 500;
+}
+
+.token.important,
+.token.bold {
+    font-weight: 600;
+}
+
+.token.italic {
+    font-style: italic;
+}
+
+}

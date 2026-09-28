@@ -1,5 +1,5 @@
 ---
-sort_order: 5
+sort_order: 6
 title: AI Prompts
 description: 'Patterns and prompts for AI-assisted Streams development.'
 status: ready

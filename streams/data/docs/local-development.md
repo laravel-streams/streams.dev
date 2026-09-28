@@ -8,14 +8,14 @@ status: ready
 
 ## Prerequisites
 
-- PHP 8.0.2+ with extensions required by [Laravel 10](https://laravel.com/docs/10.x/deployment#server-requirements)
+- PHP 8.1+ with the extensions required by [Laravel 10](https://laravel.com/docs/10.x/deployment#server-requirements) (this site runs Laravel 10.50)
 - Composer
 - Node.js and npm (for Vite and Tailwind)
 
 ## First-time setup
 
 ```bash
-git clone git@github.com:streams/streams.dev.git
+git clone git@github.com:laravel-streams/streams.dev.git
 cd streams.dev
 
 composer install
@@ -49,7 +49,7 @@ Documentation and pages are flat files — no database required for content chan
 | Site page | `streams/data/pages/{id}.html` | entry `uri` |
 | Stream config | `streams/{handle}.json` | after cache clear if cached |
 
-In local environment, doc pages show an **Edit this page** link that opens the markdown file in your editor.
+In local environment, doc pages show an **Edit this page** link to that file on GitHub (`laravel-streams/streams.dev`, branch `develop`).
 
 ## Admin panel
 

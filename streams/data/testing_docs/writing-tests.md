@@ -504,6 +504,6 @@ vendor/bin/phpunit --filter test_specific_method
 
 ## Next Steps
 
-- [Assertions](assertions.md) - Comprehensive assertion reference
-- [Advanced Testing](advanced-testing.md) - Complex testing scenarios
-- [Configuration](configuration.md) - Customize your test environment
+- [Configuration](/docs/testing/configuration)
+- [Test Data](/docs/testing/test-data)
+- [Troubleshooting](/docs/testing/troubleshooting)
