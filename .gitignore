@@ -15,3 +15,5 @@ yarn-error.log
 /.idea
 /.vscode
 /__pycache__
+/composer.local.json
+/composer.local.lock

@@ -8,12 +8,12 @@
     ],
     "license": "MIT",
     "require": {
-        "php": "^8.0.2",
+        "php": "^8.2",
         "guzzlehttp/guzzle": "^7.2",
         "laravel/framework": "^10.0",
         "predis/predis": "^3.0",
-        "streams/core": "^2.0",
-        "streams/ui": "^1.0"
+        "streams/core": "dev-rc/prep as 2.0.x-dev",
+        "streams/ui": "1.0.x-dev"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.15",
@@ -24,43 +24,23 @@
         "nunomaduro/collision": "^7.0",
         "phpunit/phpunit": "^10.1",
         "spatie/laravel-ignition": "^2.0",
-        "streams/sdk": "^1.0"
+        "streams/sdk": "dev-sdk/rc as 1.0.x-dev"
     },
     "repositories": [
         {
-            "type": "path",
-            "url": "../_packages/streams-testing",
-            "options": {
-                "symlink": true
-            }
+            "type": "vcs",
+            "url": "https://github.com/laravel-streams/streams-core.git",
+            "no-api": true
         },
         {
-            "type": "path",
-            "url": "../_packages/streams-core",
-            "options": {
-                "symlink": true
-            }
+            "type": "vcs",
+            "url": "https://github.com/laravel-streams/streams-ui.git",
+            "no-api": true
         },
         {
-            "type": "path",
-            "url": "../_packages/streams-api",
-            "options": {
-                "symlink": true
-            }
-        },
-        {
-            "type": "path",
-            "url": "../_packages/streams-sdk",
-            "options": {
-                "symlink": true
-            }
-        },
-        {
-            "type": "path",
-            "url": "../_packages/streams-ui",
-            "options": {
-                "symlink": true
-            }
+            "type": "vcs",
+            "url": "https://github.com/laravel-streams/streams-sdk.git",
+            "no-api": true
         }
     ],
     "autoload": {
@@ -109,7 +89,10 @@
         "allow-plugins": {
             "pestphp/pest-plugin": true
         },
-        "process-timeout": 0
+        "process-timeout": 0,
+        "platform": {
+            "php": "8.2.4"
+        }
     },
     "minimum-stability": "dev",
     "prefer-stable": true

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "52b4688fd8da49f7a9dac69909f155d9",
+    "content-hash": "824f9fdf4139f985480e4f78d8c3aa6c",
     "packages": [
         {
             "name": "blade-ui-kit/blade-heroicons",
@@ -3855,11 +3855,17 @@
         },
         {
             "name": "streams/core",
-            "version": "2.0.x-dev",
+            "version": "dev-rc/prep",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laravel-streams/streams-core.git",
+                "reference": "9291456367b85482f83504046a37ec6f7dd59dd9"
+            },
             "dist": {
-                "type": "path",
-                "url": "../_packages/streams-core",
-                "reference": "8fd4c718877aa59dcee01b78a17e7779234c8339"
+                "type": "zip",
+                "url": "https://api.github.com/repos/laravel-streams/streams-core/zipball/9291456367b85482f83504046a37ec6f7dd59dd9",
+                "reference": "9291456367b85482f83504046a37ec6f7dd59dd9",
+                "shasum": ""
             },
             "require": {
                 "ezyang/htmlpurifier": "^4.16",
@@ -3869,8 +3875,9 @@
                 "laravel/framework": "^10|^11|^12",
                 "laravel/scout": "^10|^11",
                 "nicmart/string-template": "^0.1",
+                "php": "^8.2",
                 "spatie/laravel-html": "^3.3",
-                "symfony/yaml": "^6.0",
+                "symfony/yaml": "^6.4|^7.0",
                 "tmarois/filebase": "^1.0"
             },
             "require-dev": {
@@ -3887,9 +3894,6 @@
             },
             "type": "streams-addon",
             "extra": {
-                "branch-alias": {
-                    "dev-master": "2.x-dev"
-                },
                 "laravel": {
                     "providers": [
                         "Streams\\Core\\StreamsServiceProvider"
@@ -3919,18 +3923,27 @@
                 }
             ],
             "description": "A domain-driven, code-configured, flat-file application platform for Laravel.",
-            "transport-options": {
-                "symlink": true,
-                "relative": true
-            }
+            "homepage": "https://streams.dev",
+            "support": {
+                "issues": "https://github.com/laravel-streams/streams-core/issues",
+                "source": "https://github.com/laravel-streams/streams-core",
+                "docs": "https://streams.dev/docs/core/introduction"
+            },
+            "time": "2026-09-28T08:15:09+00:00"
         },
         {
             "name": "streams/ui",
             "version": "1.0.x-dev",
-            "dist": {
-                "type": "path",
-                "url": "../_packages/streams-ui",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laravel-streams/streams-ui.git",
                 "reference": "3a30c8676df7815804a31cf5388b8fee80cdb541"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laravel-streams/streams-ui/zipball/3a30c8676df7815804a31cf5388b8fee80cdb541",
+                "reference": "3a30c8676df7815804a31cf5388b8fee80cdb541",
+                "shasum": ""
             },
             "require": {
                 "blade-ui-kit/blade-heroicons": "^2.0",
@@ -3942,6 +3955,7 @@
                 "laravel/pint": "^1.25",
                 "streams/testing": "^1.0.x-dev"
             },
+            "default-branch": true,
             "type": "streams-addon",
             "extra": {
                 "branch-alias": {
@@ -3973,10 +3987,7 @@
                 }
             ],
             "description": "A RESTful inspired UI for Laravel Streams.",
-            "transport-options": {
-                "symlink": true,
-                "relative": true
-            }
+            "time": "2026-09-10T18:52:36+00:00"
         },
         {
             "name": "symfony/console",
@@ -4078,20 +4089,20 @@
         },
         {
             "name": "symfony/css-selector",
-            "version": "v8.1.6",
+            "version": "v7.4.18",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/css-selector.git",
-                "reference": "08e2905152a39cf3fd1745d83f8c483e258887d9"
+                "reference": "fecf40067fc8d8880ea87b8ac227600b9aadd1d0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/css-selector/zipball/08e2905152a39cf3fd1745d83f8c483e258887d9",
-                "reference": "08e2905152a39cf3fd1745d83f8c483e258887d9",
+                "url": "https://api.github.com/repos/symfony/css-selector/zipball/fecf40067fc8d8880ea87b8ac227600b9aadd1d0",
+                "reference": "fecf40067fc8d8880ea87b8ac227600b9aadd1d0",
                 "shasum": ""
             },
             "require": {
-                "php": ">=8.4.1"
+                "php": ">=8.2"
             },
             "type": "library",
             "autoload": {
@@ -4123,7 +4134,7 @@
             "description": "Converts CSS selectors to XPath expressions",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/css-selector/tree/v8.1.6"
+                "source": "https://github.com/symfony/css-selector/tree/v7.4.18"
             },
             "funding": [
                 {
@@ -4143,7 +4154,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-08-23T10:06:25+00:00"
+            "time": "2026-08-23T10:03:40+00:00"
         },
         {
             "name": "symfony/deprecation-contracts",
@@ -6248,28 +6259,28 @@
         },
         {
             "name": "symfony/yaml",
-            "version": "v6.4.45",
+            "version": "v7.4.18",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/yaml.git",
-                "reference": "a778aba2d7130eba6150cc80cb692988a361ee4b"
+                "reference": "4cef939e55b8a21c5780418de0d98ab00d0736e1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/yaml/zipball/a778aba2d7130eba6150cc80cb692988a361ee4b",
-                "reference": "a778aba2d7130eba6150cc80cb692988a361ee4b",
+                "url": "https://api.github.com/repos/symfony/yaml/zipball/4cef939e55b8a21c5780418de0d98ab00d0736e1",
+                "reference": "4cef939e55b8a21c5780418de0d98ab00d0736e1",
                 "shasum": ""
             },
             "require": {
-                "php": ">=8.1",
+                "php": ">=8.2",
                 "symfony/deprecation-contracts": "^2.5|^3",
                 "symfony/polyfill-ctype": "^1.8"
             },
             "conflict": {
-                "symfony/console": "<5.4"
+                "symfony/console": "<6.4"
             },
             "require-dev": {
-                "symfony/console": "^5.4|^6.0|^7.0"
+                "symfony/console": "^6.4|^7.0|^8.0"
             },
             "bin": [
                 "Resources/bin/yaml-lint"
@@ -6300,7 +6311,7 @@
             "description": "Loads and dumps YAML files",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/yaml/tree/v6.4.45"
+                "source": "https://github.com/symfony/yaml/tree/v7.4.18"
             },
             "funding": [
                 {
@@ -6320,7 +6331,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-08-30T00:27:22+00:00"
+            "time": "2026-08-30T00:47:26+00:00"
         },
         {
             "name": "tijsverkoyen/css-to-inline-styles",
@@ -6871,16 +6882,16 @@
         },
         {
             "name": "laravel/pint",
-            "version": "v1.32.1",
+            "version": "v1.30.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/pint.git",
-                "reference": "006bd7825eb01daf92959d060b89cd9514fe4253"
+                "reference": "a96cb6eee2961905d2fce7207aefb80945bf6b28"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/pint/zipball/006bd7825eb01daf92959d060b89cd9514fe4253",
-                "reference": "006bd7825eb01daf92959d060b89cd9514fe4253",
+                "url": "https://api.github.com/repos/laravel/pint/zipball/a96cb6eee2961905d2fce7207aefb80945bf6b28",
+                "reference": "a96cb6eee2961905d2fce7207aefb80945bf6b28",
                 "shasum": ""
             },
             "require": {
@@ -6888,19 +6899,19 @@
                 "ext-mbstring": "*",
                 "ext-tokenizer": "*",
                 "ext-xml": "*",
-                "php": "^8.3.0"
+                "php": "^8.2.0"
             },
             "require-dev": {
                 "composer/semver": "^3.4.4",
-                "friendsofphp/php-cs-fixer": "^3.95.25",
-                "illuminate/view": "^13.31.0",
-                "larastan/larastan": "^3.11.0",
-                "laravel-zero/framework": "^13.0.0",
+                "friendsofphp/php-cs-fixer": "^3.95.18",
+                "illuminate/view": "^12.65.0",
+                "larastan/larastan": "^3.10.0",
+                "laravel-zero/framework": "^12.1.0",
                 "laravel/agent-detector": "^2.0.2",
-                "laravel/prompts": "^0.3.24",
-                "mockery/mockery": "^1.6.15",
+                "laravel/prompts": "^0.3.22",
+                "mockery/mockery": "^1.6.12",
                 "nunomaduro/termwind": "^2.4.0",
-                "pestphp/pest": "^4.7.8"
+                "pestphp/pest": "^3.8.7"
             },
             "bin": [
                 "builds/pint"
@@ -6937,7 +6948,7 @@
                 "issues": "https://github.com/laravel/pint/issues",
                 "source": "https://github.com/laravel/pint"
             },
-            "time": "2026-09-10T10:47:55+00:00"
+            "time": "2026-08-05T16:47:22+00:00"
         },
         {
             "name": "laravel/sail",
@@ -7296,6 +7307,196 @@
                 }
             ],
             "time": "2025-03-14T22:35:49+00:00"
+        },
+        {
+            "name": "opis/json-schema",
+            "version": "2.6.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/opis/json-schema.git",
+                "reference": "8458763e0dd0b6baa310e04f1829fc73da4e8c8a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/opis/json-schema/zipball/8458763e0dd0b6baa310e04f1829fc73da4e8c8a",
+                "reference": "8458763e0dd0b6baa310e04f1829fc73da4e8c8a",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "opis/string": "^2.1",
+                "opis/uri": "^1.0",
+                "php": "^7.4 || ^8.0"
+            },
+            "require-dev": {
+                "ext-bcmath": "*",
+                "ext-intl": "*",
+                "phpunit/phpunit": "^9.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Opis\\JsonSchema\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "Sorin Sarca",
+                    "email": "sarca_sorin@hotmail.com"
+                },
+                {
+                    "name": "Marius Sarca",
+                    "email": "marius.sarca@gmail.com"
+                }
+            ],
+            "description": "Json Schema Validator for PHP",
+            "homepage": "https://opis.io/json-schema",
+            "keywords": [
+                "json",
+                "json-schema",
+                "schema",
+                "validation",
+                "validator"
+            ],
+            "support": {
+                "issues": "https://github.com/opis/json-schema/issues",
+                "source": "https://github.com/opis/json-schema/tree/2.6.0"
+            },
+            "time": "2025-10-17T12:46:48+00:00"
+        },
+        {
+            "name": "opis/string",
+            "version": "2.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/opis/string.git",
+                "reference": "3e4d2aaff518ac518530b89bb26ed40f4503635e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/opis/string/zipball/3e4d2aaff518ac518530b89bb26ed40f4503635e",
+                "reference": "3e4d2aaff518ac518530b89bb26ed40f4503635e",
+                "shasum": ""
+            },
+            "require": {
+                "ext-iconv": "*",
+                "ext-json": "*",
+                "php": "^7.4 || ^8.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^9.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Opis\\String\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "Marius Sarca",
+                    "email": "marius.sarca@gmail.com"
+                },
+                {
+                    "name": "Sorin Sarca",
+                    "email": "sarca_sorin@hotmail.com"
+                }
+            ],
+            "description": "Multibyte strings as objects",
+            "homepage": "https://opis.io/string",
+            "keywords": [
+                "multi-byte",
+                "opis",
+                "string",
+                "string manipulation",
+                "utf-8"
+            ],
+            "support": {
+                "issues": "https://github.com/opis/string/issues",
+                "source": "https://github.com/opis/string/tree/2.1.0"
+            },
+            "time": "2025-10-17T12:38:41+00:00"
+        },
+        {
+            "name": "opis/uri",
+            "version": "1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/opis/uri.git",
+                "reference": "0f3ca49ab1a5e4a6681c286e0b2cc081b93a7d5a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/opis/uri/zipball/0f3ca49ab1a5e4a6681c286e0b2cc081b93a7d5a",
+                "reference": "0f3ca49ab1a5e4a6681c286e0b2cc081b93a7d5a",
+                "shasum": ""
+            },
+            "require": {
+                "opis/string": "^2.0",
+                "php": "^7.4 || ^8.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^9"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Opis\\Uri\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "Marius Sarca",
+                    "email": "marius.sarca@gmail.com"
+                },
+                {
+                    "name": "Sorin Sarca",
+                    "email": "sarca_sorin@hotmail.com"
+                }
+            ],
+            "description": "Build, parse and validate URIs and URI-templates",
+            "homepage": "https://opis.io",
+            "keywords": [
+                "URI Template",
+                "parse url",
+                "punycode",
+                "uri",
+                "uri components",
+                "url",
+                "validate uri"
+            ],
+            "support": {
+                "issues": "https://github.com/opis/uri/issues",
+                "source": "https://github.com/opis/uri/tree/1.1.0"
+            },
+            "time": "2021-05-22T15:57:08+00:00"
         },
         {
             "name": "phar-io/manifest",
@@ -9242,23 +9443,37 @@
         },
         {
             "name": "streams/sdk",
-            "version": "1.0.x-dev",
+            "version": "dev-sdk/rc",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laravel-streams/streams-sdk.git",
+                "reference": "738960ffce14cbd73231cb480be93970b13c8d00"
+            },
             "dist": {
-                "type": "path",
-                "url": "../_packages/streams-sdk",
-                "reference": "192dc07415737d5d4ba75510487786beeb34bd3c"
+                "type": "zip",
+                "url": "https://api.github.com/repos/laravel-streams/streams-sdk/zipball/738960ffce14cbd73231cb480be93970b13c8d00",
+                "reference": "738960ffce14cbd73231cb480be93970b13c8d00",
+                "shasum": ""
             },
             "require": {
+                "opis/json-schema": "^2.3",
+                "php": "^8.2",
                 "streams/core": "^2.0"
             },
             "require-dev": {
-                "streams/testing": "^1.0"
+                "laravel/framework": "^12.41",
+                "laravel/mcp": "^1.0",
+                "livewire/livewire": "^3.6",
+                "mockery/mockery": "^1.6",
+                "orchestra/testbench-core": "^10.0",
+                "phpunit/phpunit": "^11.5"
+            },
+            "suggest": {
+                "laravel/mcp": "Required to run the Streams MCP server for AI agents (php artisan mcp:start streams). Needs Laravel 11.45+ or 12.41+.",
+                "livewire/livewire": "Required by the components streams:livewire generates (^3.0)."
             },
             "type": "streams-addon",
             "extra": {
-                "branch-alias": {
-                    "dev-master": "1.x-dev"
-                },
                 "laravel": {
                     "providers": [
                         "Streams\\Sdk\\SdkServiceProvider"
@@ -9275,29 +9490,23 @@
                     "Streams\\Sdk\\Tests\\": "tests/"
                 }
             },
+            "license": [
+                "MIT"
+            ],
             "authors": [
                 {
                     "name": "Ryan Thompson",
                     "email": "ryan@pyrocms.com"
                 }
             ],
-            "description": "AI-powered development toolkit for Laravel Streams with TALL stack scaffolding and admin panel generation.",
-            "keywords": [
-                "admin-panel",
-                "ai",
-                "alpine",
-                "crud",
-                "laravel",
-                "livewire",
-                "scaffolding",
-                "streams",
-                "tailwind",
-                "tall-stack"
-            ],
-            "transport-options": {
-                "symlink": true,
-                "relative": true
-            }
+            "description": "Artisan generators, stream definition validation, and a local MCP server for Laravel Streams.",
+            "homepage": "https://streams.dev",
+            "support": {
+                "issues": "https://github.com/laravel-streams/streams-sdk/issues",
+                "source": "https://github.com/laravel-streams/streams-sdk",
+                "docs": "https://streams.dev/docs/sdk/introduction"
+            },
+            "time": "2026-09-28T07:23:17+00:00"
         },
         {
             "name": "theseer/tokenizer",
@@ -9350,14 +9559,34 @@
             "time": "2025-11-17T20:03:58+00:00"
         }
     ],
-    "aliases": [],
+    "aliases": [
+        {
+            "package": "streams/core",
+            "version": "dev-rc/prep",
+            "alias": "2.0.x-dev",
+            "alias_normalized": "2.0.9999999.9999999-dev"
+        },
+        {
+            "package": "streams/sdk",
+            "version": "dev-sdk/rc",
+            "alias": "1.0.x-dev",
+            "alias_normalized": "1.0.9999999.9999999-dev"
+        }
+    ],
     "minimum-stability": "dev",
-    "stability-flags": {},
+    "stability-flags": {
+        "streams/core": 20,
+        "streams/sdk": 20,
+        "streams/ui": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
-        "php": "^8.0.2"
+        "php": "^8.2"
     },
     "platform-dev": {},
+    "platform-overrides": {
+        "php": "8.2.4"
+    },
     "plugin-api-version": "2.6.0"
 }
