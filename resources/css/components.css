@@ -10,18 +10,63 @@
     .st-glass {
         background: var(--st-glass-bg);
         border: 1px solid var(--st-glass-border);
-        box-shadow: inset 0 1px 0 var(--st-glass-highlight), var(--st-shadow-2);
-        -webkit-backdrop-filter: blur(var(--st-glass-blur)) saturate(var(--st-glass-saturate));
-        backdrop-filter: blur(var(--st-glass-blur)) saturate(var(--st-glass-saturate));
+        box-shadow: var(--st-glass-shadow);
+        -webkit-backdrop-filter: var(--st-glass-filter);
+        backdrop-filter: var(--st-glass-filter);
     }
 
     .st-glass--strong {
         background: var(--st-glass-bg-strong);
-        box-shadow: inset 0 1px 0 var(--st-glass-highlight), var(--st-shadow-3);
+        box-shadow: var(--st-glass-shadow-lg);
     }
 
     .st-glass--flat {
-        box-shadow: inset 0 1px 0 var(--st-glass-highlight);
+        box-shadow: var(--st-glass-ring);
+    }
+
+    /* Page container and section rhythm, driven by the spacing tokens. */
+    .st-container {
+        width: 100%;
+        max-width: var(--st-container, 72rem);
+        margin-inline: auto;
+        padding-inline: var(--st-gutter);
+    }
+
+    .st-container--narrow {
+        --st-container: 56rem;
+    }
+
+    .st-section {
+        padding-block: var(--st-section-y);
+    }
+
+    .st-section--tight {
+        padding-block: var(--st-section-y-sm);
+    }
+
+    .st-grid-cards {
+        display: grid;
+        gap: var(--st-gap-cards);
+    }
+
+    /* Accent gradient text (hero headline). Every stop meets AA against the page in its scheme. */
+    .st-gradient-text {
+        background: var(--st-accent-gradient);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        -webkit-box-decoration-break: clone;
+        box-decoration-break: clone;
+    }
+
+    /* One-sentence section subhead. */
+    .st-subhead {
+        margin-top: 1rem;
+        max-width: 38rem;
+        font-size: var(--st-text-lg);
+        line-height: 1.55;
+        color: var(--st-text-secondary);
+        text-wrap: pretty;
     }
 
     /* Ambient backdrop: two soft grayscale glows, no texture. */
@@ -40,16 +85,24 @@
         z-index: -1;
         pointer-events: none;
         background:
+            radial-gradient(30rem 20rem at 26% 22%, var(--st-mesh-violet), transparent 70%),
+            radial-gradient(28rem 20rem at 74% 14%, var(--st-mesh-cyan), transparent 70%),
+            radial-gradient(24rem 18rem at 52% 44%, var(--st-mesh-rose), transparent 72%),
             radial-gradient(38rem 24rem at 22% 18%, var(--st-glow-1), transparent 70%),
             radial-gradient(34rem 26rem at 80% 8%, var(--st-glow-2), transparent 70%);
+        /* Fade every edge so a clipped or short section never shows the glow's box. */
+        -webkit-mask-image: linear-gradient(to bottom, transparent, #000 18%, #000 70%, transparent), linear-gradient(to right, transparent, #000 12%, #000 88%, transparent);
+        -webkit-mask-composite: source-in;
+        mask-image: linear-gradient(to bottom, transparent, #000 18%, #000 70%, transparent), linear-gradient(to right, transparent, #000 12%, #000 88%, transparent);
+        mask-composite: intersect;
     }
 
     /* Button --------------------------------------------------------------- */
 
     .st-btn {
-        --st-btn-height: 2.5rem;
-        --st-btn-px: 1.125rem;
-        --st-btn-font: 0.9375rem;
+        --st-btn-height: 2.625rem;
+        --st-btn-px: 1.25rem;
+        --st-btn-font: var(--st-text-md);
 
         display: inline-flex;
         align-items: center;
@@ -107,7 +160,7 @@
 
         &:hover {
             background: var(--st-inverse-hover);
-            box-shadow: var(--st-shadow-2);
+            box-shadow: var(--st-shadow-2), 0 8px 28px -10px var(--st-mesh-violet);
         }
     }
 
@@ -125,14 +178,14 @@
         background: var(--st-glass-bg);
         border-color: var(--st-glass-border);
         color: var(--st-text);
-        box-shadow: inset 0 1px 0 var(--st-glass-highlight), var(--st-shadow-1);
-        -webkit-backdrop-filter: blur(var(--st-glass-blur));
-        backdrop-filter: blur(var(--st-glass-blur));
+        box-shadow: var(--st-glass-ring), var(--st-shadow-1);
+        -webkit-backdrop-filter: var(--st-glass-filter);
+        backdrop-filter: var(--st-glass-filter);
 
         &:hover {
             background: var(--st-glass-bg-strong);
             border-color: var(--st-border-strong);
-            box-shadow: inset 0 1px 0 var(--st-glass-highlight), var(--st-shadow-2);
+            box-shadow: var(--st-glass-shadow);
         }
     }
 
@@ -158,15 +211,15 @@
     }
 
     .st-btn--sm {
-        --st-btn-height: 2rem;
-        --st-btn-px: 0.875rem;
-        --st-btn-font: 0.8125rem;
+        --st-btn-height: 2.125rem;
+        --st-btn-px: 0.9375rem;
+        --st-btn-font: var(--st-text-sm);
     }
 
     .st-btn--lg {
-        --st-btn-height: 3rem;
-        --st-btn-px: 1.5rem;
-        --st-btn-font: 1rem;
+        --st-btn-height: 3.125rem;
+        --st-btn-px: 1.625rem;
+        --st-btn-font: var(--st-text-base);
     }
 
     .st-btn--xl {
@@ -207,15 +260,18 @@
 
     /* Card ----------------------------------------------------------------- */
 
+    /* Cards are glass by default; --glass adds the stronger shadow and more blur. */
     .st-card {
         position: relative;
         display: flex;
         flex-direction: column;
-        padding: 1.25rem;
-        border-radius: var(--st-radius-lg);
-        background: var(--st-surface);
-        border: 1px solid var(--st-border);
-        box-shadow: var(--st-shadow-1);
+        padding: var(--st-card-pad);
+        border-radius: var(--st-radius-xl);
+        background: var(--st-glass-bg);
+        border: 1px solid var(--st-glass-border);
+        box-shadow: var(--st-glass-ring), var(--st-shadow-1);
+        -webkit-backdrop-filter: var(--st-glass-filter);
+        backdrop-filter: var(--st-glass-filter);
         color: inherit;
         text-decoration: none;
         transition:
@@ -225,44 +281,41 @@
     }
 
     .st-card--glass {
-        background: var(--st-glass-bg);
-        border-color: var(--st-glass-border);
-        box-shadow: inset 0 1px 0 var(--st-glass-highlight), var(--st-shadow-1);
-        -webkit-backdrop-filter: blur(var(--st-glass-blur)) saturate(var(--st-glass-saturate));
-        backdrop-filter: blur(var(--st-glass-blur)) saturate(var(--st-glass-saturate));
+        box-shadow: var(--st-glass-shadow);
     }
 
     a.st-card:hover,
     .st-card--interactive:hover {
+        background: var(--st-glass-bg-strong);
         border-color: var(--st-border-strong);
-        box-shadow: var(--st-shadow-3);
+        box-shadow: var(--st-glass-shadow-lg);
         transform: translateY(calc(var(--st-lift) * 2));
     }
 
     .st-card__eyebrow {
         font-family: var(--st-font-mono);
-        font-size: 0.75rem;
+        font-size: var(--st-text-xs);
         color: var(--st-text-muted);
     }
 
     .st-card__title {
-        font-size: 1rem;
+        font-size: 1.0625rem;
         font-weight: 600;
-        letter-spacing: -0.01em;
+        letter-spacing: -0.012em;
         color: var(--st-text);
     }
 
     .st-card__body {
-        margin-top: 0.375rem;
-        font-size: 0.875rem;
-        line-height: 1.55;
+        margin-top: 0.5rem;
+        font-size: var(--st-text-md);
+        line-height: 1.6;
         color: var(--st-text-secondary);
     }
 
     .st-card__arrow {
         position: absolute;
-        top: 1.25rem;
-        right: 1.25rem;
+        top: var(--st-card-pad);
+        right: var(--st-card-pad);
         width: 1rem;
         height: 1rem;
         color: var(--st-text-faint);
@@ -272,7 +325,7 @@
     }
 
     a.st-card:hover .st-card__arrow {
-        color: var(--st-text);
+        color: var(--st-accent);
         transform: translate(2px, -2px);
     }
 
@@ -282,17 +335,30 @@
         display: inline-flex;
         align-items: center;
         gap: 0.375rem;
-        height: 1.625rem;
-        padding-inline: 0.625rem;
+        height: 1.875rem;
+        padding-inline: 0.8125rem;
         border-radius: var(--st-radius-pill);
         border: 1px solid var(--st-border);
         background: var(--st-surface);
         color: var(--st-text-secondary);
-        font-size: 0.75rem;
+        font-size: var(--st-text-xs);
         font-weight: 500;
         line-height: 1;
         white-space: nowrap;
         text-decoration: none;
+    }
+
+    /* Long labels wrap on phones instead of running out of their container. */
+    @media (max-width: 639.98px) {
+        .st-pill {
+            max-width: 100%;
+            height: auto;
+            min-height: 1.875rem;
+            padding-block: 0.3125rem;
+            line-height: 1.35;
+            white-space: normal;
+            text-align: center;
+        }
     }
 
     a.st-pill {
@@ -315,8 +381,9 @@
     .st-pill--glass {
         background: var(--st-glass-bg);
         border-color: var(--st-glass-border);
-        -webkit-backdrop-filter: blur(var(--st-glass-blur));
-        backdrop-filter: blur(var(--st-glass-blur));
+        box-shadow: var(--st-glass-ring), var(--st-shadow-1);
+        -webkit-backdrop-filter: var(--st-glass-filter);
+        backdrop-filter: var(--st-glass-filter);
     }
 
     .st-pill__dot {
@@ -328,23 +395,26 @@
 
     /* Code block (Mac window) ---------------------------------------------- */
 
+    /* Smoked glass: dark in both schemes, blurred, with an inner ring and top highlight. */
     .st-code {
         overflow: hidden;
-        border-radius: var(--st-radius-lg);
-        background: var(--st-code-bg);
+        border-radius: var(--st-radius-xl);
+        background: var(--st-code-glass);
         color: var(--st-code-text);
-        border: 1px solid rgb(255 255 255 / 0.06);
-        box-shadow: var(--st-shadow-4);
+        border: 1px solid var(--st-code-border);
+        box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.1), inset 0 0 0 1px var(--st-code-inner), var(--st-shadow-4);
+        -webkit-backdrop-filter: var(--st-glass-filter);
+        backdrop-filter: var(--st-glass-filter);
     }
 
     .st-code__chrome {
         display: flex;
         align-items: center;
         gap: 0.75rem;
-        height: 2.75rem;
-        padding-inline: 1rem;
-        background: var(--st-code-chrome);
-        border-bottom: 1px solid rgb(255 255 255 / 0.06);
+        height: 3rem;
+        padding-inline: 1.125rem;
+        background: rgb(255 255 255 / 0.04);
+        border-bottom: 1px solid var(--st-code-border);
     }
 
     .st-code__lights {
@@ -373,8 +443,8 @@
         text-overflow: ellipsis;
         white-space: nowrap;
         font-family: var(--st-font-mono);
-        font-size: 0.75rem;
-        color: rgb(255 255 255 / 0.5);
+        font-size: var(--st-text-xs);
+        color: rgb(255 255 255 / 0.62);
     }
 
     .st-code__tabs {
@@ -383,11 +453,11 @@
         overflow-x: auto;
 
         button {
-            padding: 0.3125rem 0.625rem;
+            padding: 0.3125rem 0.6875rem;
             border-radius: var(--st-radius-pill);
             font-family: var(--st-font-mono);
-            font-size: 0.75rem;
-            color: rgb(255 255 255 / 0.5);
+            font-size: var(--st-text-xs);
+            color: rgb(255 255 255 / 0.62);
             white-space: nowrap;
             transition:
                 background-color var(--st-duration-base) var(--st-ease-out),
@@ -410,8 +480,8 @@
         gap: 0.375rem;
         padding: 0.3125rem 0.5rem;
         border-radius: var(--st-radius-sm);
-        font-size: 0.75rem;
-        color: rgb(255 255 255 / 0.5);
+        font-size: var(--st-text-xs);
+        color: rgb(255 255 255 / 0.62);
         transition: color var(--st-duration-base) var(--st-ease-out), background-color var(--st-duration-base) var(--st-ease-out);
 
         &:hover {
@@ -425,9 +495,9 @@
         margin: 0;
         border-radius: 0;
         background: transparent;
-        padding: 1.25rem 1.375rem 1.5rem;
-        font-size: 0.8125rem;
-        line-height: 1.7;
+        padding: 1.375rem 1.5rem 1.625rem;
+        font-size: var(--st-text-code);
+        line-height: 1.75;
         overflow-x: auto;
     }
 
@@ -435,15 +505,18 @@
 
     .st-callout {
         display: flex;
-        gap: 0.875rem;
-        margin-block: 1.5rem;
-        padding: 1rem 1.125rem;
-        border-radius: var(--st-radius-md);
-        border: 1px solid var(--st-border);
-        background: var(--st-surface-muted);
-        color: var(--st-text-secondary);
-        font-size: 0.9375rem;
-        line-height: 1.6;
+        gap: 1rem;
+        margin-block: 2rem;
+        padding: 1.25rem 1.375rem;
+        border-radius: var(--st-radius-lg);
+        border: 1px solid var(--st-glass-border);
+        background: var(--st-glass-bg);
+        box-shadow: var(--st-glass-ring), var(--st-shadow-1);
+        -webkit-backdrop-filter: var(--st-glass-filter);
+        backdrop-filter: var(--st-glass-filter);
+        color: var(--st-text-body);
+        font-size: var(--st-text-md);
+        line-height: 1.65;
 
         > svg {
             flex-shrink: 0;
@@ -469,15 +542,24 @@
         color: var(--st-text);
     }
 
+    /* A 3px color edge per type: note violet, tip cyan, warning amber. */
+    .st-callout {
+        box-shadow: inset 3px 0 0 var(--st-callout-edge, var(--st-violet)), var(--st-glass-ring), var(--st-shadow-1);
+
+        > svg {
+            color: var(--st-callout-edge, var(--st-violet));
+        }
+    }
+
     .st-callout--warning {
-        background: var(--st-surface);
+        --st-callout-edge: var(--st-amber);
+        background: var(--st-glass-bg-strong);
         border-color: var(--st-border-strong);
-        box-shadow: inset 3px 0 0 var(--st-text);
     }
 
     .st-callout--tip {
-        background: var(--st-glass-bg);
-        border-color: var(--st-glass-border);
+        --st-callout-edge: var(--st-cyan);
+        background: var(--st-glass-bg-subtle);
     }
 
     /* Header / nav ---------------------------------------------------------- */
@@ -490,6 +572,23 @@
         min-width: 2rem;
         max-width: 2rem;
         flex: none;
+    }
+
+    /* Header mark: bigger, and the only brand element in the bar. */
+    .st-logo--header {
+        width: 2.5rem;
+        height: 2.5rem;
+        min-width: 2.5rem;
+        max-width: 2.5rem;
+    }
+
+    @media (min-width: 640px) {
+        .st-logo--header {
+            width: 2.75rem;
+            height: 2.75rem;
+            min-width: 2.75rem;
+            max-width: 2.75rem;
+        }
     }
 
     .st-logo--sm {
@@ -505,21 +604,35 @@
         z-index: 40;
         height: var(--st-header-height);
         overflow-x: clip;
-        background: var(--st-glass-bg);
-        border-bottom: 1px solid var(--st-glass-border);
-        -webkit-backdrop-filter: blur(var(--st-glass-blur)) saturate(var(--st-glass-saturate));
-        backdrop-filter: blur(var(--st-glass-blur)) saturate(var(--st-glass-saturate));
+        background: var(--st-header-bg);
+        border-bottom: 1px solid var(--st-header-border);
+        box-shadow: var(--st-header-shadow);
+        -webkit-backdrop-filter: blur(var(--st-header-blur)) saturate(var(--st-glass-saturate));
+        backdrop-filter: blur(var(--st-header-blur)) saturate(var(--st-glass-saturate));
         view-transition-name: site-header;
+    }
+
+    /* A faint color hairline along the bottom edge. */
+    .st-header::after {
+        content: "";
+        position: absolute;
+        inset: auto 0 -1px;
+        height: 1px;
+        background: var(--st-accent-line);
+        opacity: 0.6;
+        pointer-events: none;
     }
 
     .st-nav-link {
         display: inline-flex;
         align-items: center;
-        height: 2rem;
-        padding-inline: 0.625rem;
+        position: relative;
+        height: 2.75rem;
+        padding-inline: 1.125rem;
         border-radius: var(--st-radius-pill);
-        font-size: 0.875rem;
-        font-weight: 500;
+        font-size: var(--st-text-base);
+        font-weight: 600;
+        letter-spacing: -0.012em;
         color: var(--st-text-secondary);
         text-decoration: none;
         transition: color var(--st-duration-base) var(--st-ease-out), background-color var(--st-duration-base) var(--st-ease-out);
@@ -532,39 +645,53 @@
         &[aria-current="page"] {
             color: var(--st-text);
         }
+
+        /* Active section: a short accent bar under the label. */
+        &[aria-current="page"]::after {
+            content: "";
+            position: absolute;
+            left: 50%;
+            bottom: 0.3rem;
+            width: 1.25rem;
+            height: 2px;
+            border-radius: 2px;
+            background: var(--st-accent-gradient);
+            transform: translateX(-50%);
+        }
     }
 
     .st-search-trigger {
         display: flex;
         align-items: center;
-        gap: 0.5rem;
-        height: 2.25rem;
-        padding-inline: 0.75rem 0.375rem;
+        gap: 0.625rem;
+        height: 2.75rem;
+        padding-inline: 1rem 0.5rem;
         border-radius: var(--st-radius-pill);
-        border: 1px solid var(--st-border);
-        background: var(--st-surface-muted);
+        border: 1px solid var(--st-glass-border);
+        background: var(--st-glass-bg-subtle);
+        box-shadow: var(--st-glass-ring);
         color: var(--st-text-muted);
-        font-size: 0.875rem;
+        font-size: var(--st-text-sm);
         text-align: left;
         cursor: pointer;
         transition: border-color var(--st-duration-base) var(--st-ease-out), background-color var(--st-duration-base) var(--st-ease-out);
 
         &:hover {
             border-color: var(--st-border-strong);
-            background: var(--st-surface);
+            background: var(--st-glass-bg-strong);
         }
     }
 
     .st-kbd {
         display: inline-flex;
         align-items: center;
-        height: 1.375rem;
-        padding-inline: 0.4375rem;
+        height: 1.5rem;
+        padding-inline: 0.5rem;
         border-radius: var(--st-radius-pill);
         border: 1px solid var(--st-border);
         background: var(--st-surface);
         font-family: var(--st-font-mono);
-        font-size: 0.6875rem;
+        font-size: var(--st-text-2xs);
         color: var(--st-text-muted);
     }
 
@@ -589,24 +716,24 @@
         align-items: center;
         gap: 0.75rem;
         width: 100%;
-        height: 3.25rem;
-        padding-inline: 1.125rem 0.625rem;
+        height: 3.5rem;
+        padding-inline: 1.25rem 0.75rem;
         border-radius: var(--st-radius-pill);
         cursor: text;
         color: var(--st-text-muted);
-        font-size: 1rem;
+        font-size: var(--st-text-base);
         text-align: left;
         transition: box-shadow var(--st-duration-base) var(--st-ease-out), border-color var(--st-duration-base) var(--st-ease-out);
 
         &:hover {
             border-color: var(--st-border-strong);
-            box-shadow: inset 0 1px 0 var(--st-glass-highlight), var(--st-shadow-3);
+            box-shadow: var(--st-glass-shadow-lg);
         }
     }
 
     /* Section eyebrow label. */
     .st-eyebrow {
-        font-size: 0.75rem;
+        font-size: var(--st-text-xs);
         font-weight: 600;
         letter-spacing: 0.08em;
         text-transform: uppercase;
@@ -622,21 +749,21 @@
     .ui-form {
         label span {
             color: var(--st-text);
-            font-size: 0.875rem;
+            font-size: var(--st-text-md);
         }
 
         input:not([type="checkbox"], [type="radio"]),
         textarea,
         select {
             width: 100%;
-            min-height: 2.5rem;
-            padding: 0.5rem 0.875rem;
+            min-height: 2.75rem;
+            padding: 0.625rem 1rem;
             border: 1px solid var(--st-border-strong);
             border-radius: var(--st-radius-md);
-            background: var(--st-surface);
+            background: var(--st-glass-bg-strong);
             color: var(--st-text);
-            font-size: 0.9375rem;
-            box-shadow: var(--st-shadow-1);
+            font-size: var(--st-text-base);
+            box-shadow: var(--st-glass-ring), var(--st-shadow-1);
             transition: border-color var(--st-duration-base) var(--st-ease-out), box-shadow var(--st-duration-base) var(--st-ease-out);
 
             &:focus {
@@ -649,5 +776,16 @@
         textarea {
             min-height: 7rem;
         }
+    }
+}
+
+/*
+ * streams-ui renders its labels with `text-gray-950`, a utility that beats the
+ * components layer and left the labels unreadable in dark mode. Same-layer,
+ * higher-specificity override.
+ */
+@layer utilities {
+    .ui-form label span {
+        color: var(--st-text);
     }
 }

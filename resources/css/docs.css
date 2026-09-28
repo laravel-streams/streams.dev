@@ -2,18 +2,20 @@
 
 @layer components {
     .docs-title {
-        font-size: clamp(1.875rem, 1.5rem + 1.2vw, 2.5rem);
-        line-height: 1.1;
+        font-size: var(--st-h1);
+        line-height: 1.08;
         font-weight: 700;
         letter-spacing: var(--st-tracking-tight);
         color: var(--st-text);
     }
 
     .docs-lead {
-        margin-top: 0.875rem;
-        font-size: 1.125rem;
+        margin-top: 1rem;
+        max-width: var(--st-measure);
+        font-size: var(--st-text-lg);
         line-height: 1.55;
         color: var(--st-text-secondary);
+        text-wrap: pretty;
     }
 
     /* Sidebar ---------------------------------------------------------------- */
@@ -24,9 +26,9 @@
         bottom: 0;
         left: 0;
         z-index: 40;
-        width: min(var(--st-sidebar-width), calc(100vw - 3rem));
-        border-right: 1px solid var(--st-border);
-        background: var(--st-glass-bg-strong);
+        width: min(var(--st-sidebar-width) + 1rem, calc(100vw - 3rem));
+        border-right: 1px solid var(--st-glass-border);
+        border-radius: 0 var(--st-radius-xl) var(--st-radius-xl) 0;
         transform: translateX(-105%);
         transition: transform var(--st-duration-base) var(--st-ease-out);
     }
@@ -35,22 +37,23 @@
         transform: translateX(0);
     }
 
+    /* Desktop: a floating, rounded glass panel that sticks under the header. */
     @media (min-width: 1024px) {
         .docs-sidebar-panel,
         .docs-sidebar-panel.is-open {
             position: sticky;
-            top: var(--st-header-height);
+            top: calc(var(--st-header-height) + 1.25rem);
             bottom: auto;
             z-index: auto;
             width: var(--st-sidebar-width);
-            height: calc(100vh - var(--st-header-height));
+            height: calc(100vh - var(--st-header-height) - 2.5rem);
+            margin-top: 1.25rem;
             flex-shrink: 0;
             transform: none;
-            border-right: 0;
-            background: transparent;
-            box-shadow: none;
-            -webkit-backdrop-filter: none;
-            backdrop-filter: none;
+            border: 1px solid var(--st-glass-border);
+            border-radius: var(--st-radius-xl);
+            background: var(--st-glass-bg);
+            overflow: hidden;
         }
     }
 
@@ -61,15 +64,19 @@
     .docs-sidebar {
         height: calc(100vh - var(--st-header-height));
         overflow-y: auto;
-        padding: 1.25rem 0.75rem 2.5rem;
+        padding: 1.25rem 0.875rem 2.5rem;
         overscroll-behavior: contain;
+        font-size: var(--st-text-md);
+        scrollbar-width: thin;
+        scrollbar-color: var(--st-border-strong) transparent;
     }
 
     .docs-nav-label {
         display: block;
-        padding: 0 0.625rem;
-        margin-bottom: 0.375rem;
-        font-size: 0.6875rem;
+        padding: 0 0.75rem;
+        margin-top: 1.5rem;
+        margin-bottom: 0.5rem;
+        font-size: var(--st-text-2xs);
         font-weight: 600;
         letter-spacing: 0.08em;
         text-transform: uppercase;
@@ -78,8 +85,8 @@
 
     .docs-nav-link {
         display: block;
-        padding: 0.3125rem 0.625rem;
-        border-radius: var(--st-radius-sm);
+        padding: 0.4375rem 0.75rem;
+        border-radius: var(--st-radius-md);
         color: var(--st-text-secondary);
         text-decoration: none;
         line-height: 1.4;
@@ -89,20 +96,39 @@
 
         &:hover {
             color: var(--st-text);
-            background: var(--st-surface-muted);
+            background: var(--st-glass-bg-strong);
         }
 
         &.is-active {
+            position: relative;
             font-weight: 600;
             color: var(--st-text);
-            background: var(--st-surface-muted);
-            box-shadow: inset 0 0 0 1px var(--st-border);
+            background: var(--st-glass-bg-strong);
+            box-shadow: var(--st-glass-ring), 0 0 0 1px var(--st-border), var(--st-shadow-1);
+        }
+
+        /* Accent indicator on the active item. */
+        &.is-active::before {
+            content: "";
+            position: absolute;
+            top: 0.5rem;
+            bottom: 0.5rem;
+            left: 0.3125rem;
+            width: 3px;
+            border-radius: 3px;
+            background: linear-gradient(180deg, var(--st-violet), var(--st-cyan));
         }
     }
 
+    /* Nested page links: one step down the scale. */
+    .docs-nav-link--sub {
+        font-size: var(--st-text-sm);
+        padding-block: 0.375rem;
+    }
+
     .docs-nav-nested {
-        margin-left: 0.625rem;
-        padding-left: 0.625rem;
+        margin-left: 0.75rem;
+        padding-left: 0.5rem;
         border-left: 1px solid var(--st-border);
     }
 
@@ -111,13 +137,14 @@
         align-items: center;
         gap: 0.5rem;
         width: 100%;
-        height: 2.25rem;
-        padding-inline: 0.75rem 0.375rem;
-        margin-bottom: 1.25rem;
-        font-size: 0.875rem;
+        height: 2.5rem;
+        padding-inline: 0.875rem 0.4375rem;
+        margin-bottom: 0.5rem;
+        font-size: var(--st-text-sm);
         color: var(--st-text-muted);
-        background: var(--st-surface-muted);
-        border: 1px solid var(--st-border);
+        background: var(--st-glass-bg-strong);
+        box-shadow: var(--st-glass-ring);
+        border: 1px solid var(--st-glass-border);
         border-radius: var(--st-radius-pill);
         cursor: pointer;
         text-align: left;
@@ -133,10 +160,175 @@
         }
     }
 
-    /* Rendered markdown ------------------------------------------------------ */
+    .docs-edit {
+        margin-top: 4rem;
+        padding-top: 1.75rem;
+        border-top: 1px solid var(--st-border);
+    }
 
-    .documentation-content {
-        --tw-prose-body: var(--st-text-secondary);
+    /* Docs hub (docs.html) --------------------------------------------------- */
+
+    .docs-hub-content {
+        max-width: 52rem;
+    }
+
+    .docs-hub-hero {
+        margin-bottom: 3rem;
+
+        h1 {
+            font-size: var(--st-h1);
+            font-weight: 700;
+            letter-spacing: var(--st-tracking-tight);
+            line-height: 1.1;
+        }
+
+        p {
+            margin-top: 0.875rem;
+            font-size: var(--st-text-lg);
+            color: var(--st-text-secondary);
+        }
+    }
+
+    .docs-search-input-hero {
+        width: 100%;
+        height: 3.5rem;
+        margin-top: 1.75rem;
+        padding-inline: 1.375rem;
+        font-size: var(--st-text-base);
+        border: 1px solid var(--st-glass-border);
+        border-radius: var(--st-radius-pill);
+        background: var(--st-glass-bg-strong);
+        box-shadow: var(--st-glass-shadow);
+        -webkit-backdrop-filter: var(--st-glass-filter);
+        backdrop-filter: var(--st-glass-filter);
+        color: var(--st-text);
+        cursor: text;
+        transition: box-shadow var(--st-duration-base) var(--st-ease-out);
+
+        &::placeholder {
+            color: var(--st-text-muted);
+        }
+
+        &:hover,
+        &:focus {
+            outline: none;
+            border-color: var(--st-border-strong);
+            box-shadow: var(--st-glass-shadow-lg);
+        }
+    }
+
+    .docs-pill-grid {
+        display: grid;
+        gap: var(--st-gap-cards);
+        grid-template-columns: repeat(auto-fill, minmax(min(100%, 12rem), 1fr));
+    }
+
+    .docs-pill {
+        display: block;
+        padding: 1.125rem 1.25rem;
+        border: 1px solid var(--st-glass-border);
+        border-radius: var(--st-radius-lg);
+        background: var(--st-glass-bg);
+        box-shadow: var(--st-glass-ring), var(--st-shadow-1);
+        -webkit-backdrop-filter: var(--st-glass-filter);
+        backdrop-filter: var(--st-glass-filter);
+        text-decoration: none !important;
+        transition:
+            border-color var(--st-duration-base) var(--st-ease-out),
+            box-shadow var(--st-duration-base) var(--st-ease-out),
+            transform var(--st-duration-base) var(--st-ease-out);
+
+        &:hover {
+            background: var(--st-glass-bg-strong);
+            border-color: var(--st-border-strong);
+            box-shadow: var(--st-glass-shadow);
+            transform: translateY(var(--st-lift));
+        }
+
+        strong {
+            display: block;
+            font-size: var(--st-text-base);
+            font-weight: 600;
+            color: var(--st-text);
+        }
+
+        span {
+            display: block;
+            margin-top: 0.3125rem;
+            font-size: var(--st-text-sm);
+            color: var(--st-text-muted);
+        }
+    }
+
+    /* Two columns on phones: roomy, but not one tall card per screen. */
+    @media (max-width: 639.98px) {
+        .docs-pill-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .docs-pill {
+            padding: 1rem 1.0625rem;
+        }
+    }
+
+    .docs-section-title {
+        margin: 3.5rem 0 1.25rem;
+        font-size: var(--st-text-xs);
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--st-text-muted);
+    }
+
+    /* Cmd+K search dialog --------------------------------------------------- */
+
+    .docs-search[hidden] {
+        display: none;
+    }
+
+    .docs-search-overlay {
+        background: rgb(10 10 11 / 0.22);
+        -webkit-backdrop-filter: blur(10px) saturate(1.2);
+        backdrop-filter: blur(10px) saturate(1.2);
+        animation: st-fade var(--st-duration-base) var(--st-ease-out) both;
+    }
+
+    .docs-search-panel {
+        border-radius: var(--st-radius-2xl);
+        animation: st-rise var(--st-duration-base) var(--st-ease-out) both;
+    }
+
+    .docs-search-result {
+        display: block;
+        width: 100%;
+        border: none;
+        border-radius: var(--st-radius-md);
+        background: transparent;
+        cursor: pointer;
+        font: inherit;
+        text-align: left;
+        padding: 0.75rem 1rem;
+        transition: background-color var(--st-duration-fast) var(--st-ease-out);
+
+        &:hover,
+        &.is-active {
+            background: var(--st-glass-bg-strong);
+            box-shadow: var(--st-glass-ring), 0 0 0 1px var(--st-border);
+        }
+    }
+}
+
+/*
+ * Rendered markdown.
+ *
+ * The typography plugin emits `.prose` into the utilities layer, which beats
+ * anything in `components`. These rules sit in `utilities` too, after the
+ * plugin, with equal or higher specificity, so the tokens here win (colors in
+ * dark mode, sizes, rhythm, and no backticks around inline code).
+ */
+@layer utilities {
+    .prose.documentation-content {
+        --tw-prose-body: var(--st-text-body);
         --tw-prose-headings: var(--st-text);
         --tw-prose-lead: var(--st-text-secondary);
         --tw-prose-links: var(--st-text);
@@ -149,34 +341,74 @@
         --tw-prose-captions: var(--st-text-muted);
         --tw-prose-code: var(--st-text);
         --tw-prose-pre-code: var(--st-code-text);
-        --tw-prose-pre-bg: var(--st-code-bg);
+        --tw-prose-pre-bg: var(--st-code-glass);
         --tw-prose-th-borders: var(--st-border-strong);
         --tw-prose-td-borders: var(--st-border);
 
-        max-width: none;
-        font-size: 1rem;
-        line-height: 1.75;
+        max-width: var(--st-measure);
+        font-size: var(--st-text-prose);
+        line-height: var(--st-leading-prose);
+        color: var(--st-text-body);
+    }
+
+    .documentation-content {
+        :where(p, ul, ol, blockquote, table, figure, .st-callout) {
+            margin-top: 1.25em;
+            margin-bottom: 1.25em;
+        }
+
+        :where(ul, ol) {
+            padding-left: 1.5em;
+        }
+
+        :where(li) {
+            margin-top: 0.5em;
+            margin-bottom: 0.5em;
+            padding-left: 0.25em;
+        }
+
+        :where(li > p) {
+            margin-top: 0.5em;
+            margin-bottom: 0.5em;
+        }
 
         h2,
         h3,
         h4 {
-            scroll-margin-top: calc(var(--st-header-height) + 1rem);
-            font-weight: 600;
-            letter-spacing: -0.015em;
+            scroll-margin-top: calc(var(--st-header-height) + 1.5rem);
+            font-weight: 650;
+            letter-spacing: -0.018em;
             color: var(--st-text);
+            text-wrap: balance;
         }
 
         h2 {
-            font-size: 1.375rem;
-            margin-top: 2.75rem;
-            margin-bottom: 0.75rem;
-            padding-top: 1.75rem;
+            font-size: var(--st-h2);
+            line-height: 1.25;
+            margin-top: 4rem;
+            margin-bottom: 1.125rem;
+            padding-top: 2.75rem;
             border-top: 1px solid var(--st-border);
         }
 
         h3 {
-            font-size: 1.125rem;
-            margin-top: 2rem;
+            font-size: var(--st-h3);
+            line-height: 1.35;
+            margin-top: 3rem;
+            margin-bottom: 0.875rem;
+        }
+
+        h4 {
+            font-size: var(--st-h4);
+            line-height: 1.4;
+            margin-top: 2.25rem;
+            margin-bottom: 0.5rem;
+        }
+
+        h2 + *,
+        h3 + *,
+        h4 + * {
+            margin-top: 0;
         }
 
         > :first-child {
@@ -198,18 +430,20 @@
             transition: text-decoration-color var(--st-duration-fast) var(--st-ease-out);
 
             &:hover {
-                text-decoration-color: var(--st-text);
+                text-decoration-color: var(--st-accent);
+                text-decoration-thickness: 2px;
             }
         }
 
         :not(pre) > code {
-            font-size: 0.85em;
+            font-size: 0.875em;
             font-weight: 500;
-            padding: 0.15em 0.4em;
+            padding: 0.125em 0.4em;
             border-radius: var(--st-radius-xs);
-            background: var(--st-surface-muted);
+            background: var(--st-glass-bg-strong);
             border: 1px solid var(--st-border);
             color: var(--st-text);
+            overflow-wrap: anywhere;
 
             &::before,
             &::after {
@@ -218,35 +452,77 @@
         }
 
         pre {
-            margin: 1.5rem 0;
-            border-radius: var(--st-radius-md);
-            border: 1px solid rgb(255 255 255 / 0.06);
-            box-shadow: var(--st-shadow-2);
+            margin: 2.25rem 0;
+            padding: 1.375rem 1.5rem;
+            border-radius: var(--st-radius-lg);
+            background: var(--st-code-glass);
+            border: 1px solid var(--st-code-border);
+            box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.1), inset 0 0 0 1px var(--st-code-inner), var(--st-shadow-2);
+            -webkit-backdrop-filter: var(--st-glass-filter);
+            backdrop-filter: var(--st-glass-filter);
+            font-size: var(--st-text-code);
+            line-height: 1.75;
             overflow-x: auto;
         }
 
-        table {
-            font-size: 0.9375rem;
+        pre code {
+            font-size: inherit;
         }
 
-        thead th {
+        table {
+            font-size: 0.9em;
+            line-height: 1.6;
+        }
+
+        :where(thead th) {
             color: var(--st-text);
+            padding-bottom: 0.75em;
+        }
+
+        :where(tbody td, thead th) {
+            padding-inline: 0.75em;
+        }
+
+        :where(tbody td) {
+            padding-block: 0.75em;
         }
 
         blockquote {
             font-style: normal;
             font-weight: 400;
-            padding: 0.875rem 1.125rem;
-            border-left: 0;
-            border-radius: var(--st-radius-md);
-            border: 1px solid var(--st-border);
-            background: var(--st-surface-muted);
-            color: var(--st-text-secondary);
+            padding: 1.125rem 1.375rem;
+            border-radius: var(--st-radius-lg);
+            border: 1px solid var(--st-glass-border);
+            background: var(--st-glass-bg);
+            box-shadow: var(--st-glass-ring), var(--st-shadow-1);
+            -webkit-backdrop-filter: var(--st-glass-filter);
+            backdrop-filter: var(--st-glass-filter);
+            color: var(--st-text-body);
 
             p::before,
             p::after {
                 content: none;
             }
+
+            > :first-child {
+                margin-top: 0;
+            }
+
+            > :last-child {
+                margin-bottom: 0;
+            }
+        }
+
+        .st-callout p {
+            margin: 0;
+        }
+
+        .st-callout p + p {
+            margin-top: 0.5rem;
+        }
+
+        hr {
+            margin-block: 3rem;
         }
 
         .anchorjs-link {
@@ -265,157 +541,28 @@
             opacity: 1;
         }
     }
-
-    .docs-edit {
-        margin-top: 3rem;
-        padding-top: 1.5rem;
-        border-top: 1px solid var(--st-border);
-    }
-
-    /* Docs hub (docs.html) --------------------------------------------------- */
-
-    .docs-hub-content {
-        max-width: 48rem;
-    }
-
-    .docs-hub-hero {
-        margin-bottom: 2.5rem;
-
-        h1 {
-            font-size: 2.25rem;
-            font-weight: 700;
-            letter-spacing: var(--st-tracking-tight);
-            line-height: 1.15;
-        }
-
-        p {
-            margin-top: 0.75rem;
-            font-size: 1.125rem;
-            color: var(--st-text-secondary);
-        }
-    }
-
-    .docs-search-input-hero {
-        width: 100%;
-        height: 3.25rem;
-        margin-top: 1.5rem;
-        padding-inline: 1.125rem;
-        font-size: 1rem;
-        border: 1px solid var(--st-glass-border);
-        border-radius: var(--st-radius-pill);
-        background: var(--st-glass-bg-strong);
-        box-shadow: inset 0 1px 0 var(--st-glass-highlight), var(--st-shadow-2);
-        color: var(--st-text);
-        cursor: text;
-        transition: box-shadow var(--st-duration-base) var(--st-ease-out);
-
-        &::placeholder {
-            color: var(--st-text-muted);
-        }
-
-        &:hover,
-        &:focus {
-            outline: none;
-            border-color: var(--st-border-strong);
-            box-shadow: inset 0 1px 0 var(--st-glass-highlight), var(--st-shadow-3);
-        }
-    }
-
-    .docs-pill-grid {
-        display: grid;
-        gap: 0.75rem;
-        grid-template-columns: repeat(auto-fill, minmax(11rem, 1fr));
-    }
-
-    .docs-pill {
-        display: block;
-        padding: 0.9375rem 1.0625rem;
-        border: 1px solid var(--st-border);
-        border-radius: var(--st-radius-md);
-        background: var(--st-surface);
-        box-shadow: var(--st-shadow-1);
-        text-decoration: none !important;
-        transition:
-            border-color var(--st-duration-base) var(--st-ease-out),
-            box-shadow var(--st-duration-base) var(--st-ease-out),
-            transform var(--st-duration-base) var(--st-ease-out);
-
-        &:hover {
-            border-color: var(--st-border-strong);
-            box-shadow: var(--st-shadow-2);
-            transform: translateY(var(--st-lift));
-        }
-
-        strong {
-            display: block;
-            font-size: 0.9375rem;
-            font-weight: 600;
-            color: var(--st-text);
-        }
-
-        span {
-            display: block;
-            margin-top: 0.25rem;
-            font-size: 0.8125rem;
-            color: var(--st-text-muted);
-        }
-    }
-
-    .docs-section-title {
-        margin: 2.5rem 0 1rem;
-        font-size: 0.75rem;
-        font-weight: 600;
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
-        color: var(--st-text-muted);
-    }
-
-    /* Cmd+K search dialog --------------------------------------------------- */
-
-    .docs-search[hidden] {
-        display: none;
-    }
-
-    .docs-search-overlay {
-        background: rgb(10 10 11 / 0.28);
-        -webkit-backdrop-filter: blur(4px);
-        backdrop-filter: blur(4px);
-        animation: st-fade var(--st-duration-base) var(--st-ease-out) both;
-    }
-
-    .docs-search-panel {
-        border-radius: var(--st-radius-xl);
-        animation: st-rise var(--st-duration-base) var(--st-ease-out) both;
-    }
-
-    .docs-search-result {
-        display: block;
-        width: 100%;
-        border: none;
-        border-radius: var(--st-radius-md);
-        background: transparent;
-        cursor: pointer;
-        font: inherit;
-        text-align: left;
-        padding: 0.625rem 0.875rem;
-        transition: background-color var(--st-duration-fast) var(--st-ease-out);
-
-        &:hover,
-        &.is-active {
-            background: var(--st-surface-muted);
-        }
-    }
 }
 
 /* Outside the layer so this beats the typography plugin's unlayered table-layout: auto.
    A class name with no spaces was laying the table out 2px past a 390px screen. */
 @media (max-width: 480px) {
+    /* The table scrolls inside its own box; the page does not. Code in cells stays unbroken. */
     .documentation-content table {
+        display: block;
         width: 100%;
-        table-layout: fixed;
+        max-width: 100%;
+        overflow-x: auto;
+        table-layout: auto;
+        overscroll-behavior-x: contain;
     }
 
     .documentation-content :where(td, th) {
-        overflow-wrap: break-word;
+        min-width: 8.5rem;
+        overflow-wrap: normal;
+    }
+
+    .documentation-content td code {
+        white-space: nowrap;
+        overflow-wrap: normal;
     }
 }

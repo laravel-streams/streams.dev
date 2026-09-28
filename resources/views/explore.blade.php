@@ -21,7 +21,7 @@
 
 @section('main')
 <div class="st-ambient">
-    <div class="explore-stage mx-auto max-w-5xl px-6 pt-10 pb-28 sm:pt-14">
+    <div class="explore-stage mx-auto max-w-5xl px-[var(--st-gutter)] pt-12 pb-32 sm:pt-16">
 
         @unless ($isRoot)
         <nav aria-label="Explore path">
@@ -51,7 +51,7 @@
         @endif
 
         @if ($menu)
-        <div class="explore-choices mt-14 grid max-w-2xl gap-3">
+        <div class="explore-choices mt-14 grid max-w-2xl gap-3.5">
             @foreach ($menu as $item)
             <x-button :href="$item['href']" :variant="$variants[$item['type']]" size="xl" :block="$item['type'] !== 'link'" :target="$item['target']" :arrow="$item['type'] === 'primary'" class="{{ $item['type'] === 'link' ? 'justify-start' : '' }}">{{ $item['text'] }}</x-button>
             @endforeach
@@ -68,14 +68,14 @@
 
         @if ($links)
         <div class="mt-16 flex flex-wrap items-center gap-2 animate-fade [animation-delay:200ms]">
-            <span class="mr-1 text-sm text-fg-muted">More resources</span>
+            <span class="mr-1 text-md text-fg-muted">More resources</span>
             @foreach ($links as $item)
             <x-pill :href="$item['href']" :target="$item['target']">{{ $item['text'] }}</x-pill>
             @endforeach
         </div>
         @endif
 
-        <p class="mt-24 flex flex-wrap items-center gap-2 text-xs text-fg-faint">
+        <p class="mt-24 flex flex-wrap items-center gap-2 text-sm text-fg-muted">
             <span>For agents:</span>
             <a class="underline decoration-line-strong underline-offset-2 hover:text-fg" href="{{ url('explore/'.$entry->id.'.md') }}">this node as Markdown</a>
             <span aria-hidden="true">·</span>

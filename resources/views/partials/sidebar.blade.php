@@ -20,7 +20,7 @@
     ];
 @endphp
 
-<nav class="docs-sidebar text-sm" x-data="{
+<nav class="docs-sidebar" x-data="{
     guidesOpen: localStorage.getItem('docs-nav-guides-open') === '1',
     newHereOpen: localStorage.getItem('docs-nav-newhere-open') === '1',
     toggleGuides() {
@@ -39,7 +39,7 @@
     </button>
 
     <p class="docs-nav-label">Reference</p>
-    <ul class="mb-4 space-y-0.5">
+    <ul class="mb-5 space-y-1">
         @foreach ($packages as $slug => $package)
         @php
             $packagePages = Streams::exists($package['stream'])
@@ -54,11 +54,11 @@
                 {{ $package['label'] }}
             </a>
             @if ($section === $slug)
-            <ul class="docs-nav-nested mt-1 space-y-0.5 mb-2">
+            <ul class="docs-nav-nested mt-1.5 mb-3 space-y-0.5">
                 @foreach ($packagePages as $page)
                 <li>
                     <a href="/docs/{{ $slug }}/{{ $page->id }}"
-                       class="docs-nav-link text-[0.8125rem] {{ Request::segment(3) == $page->id ? 'is-active' : '' }}">
+                       class="docs-nav-link docs-nav-link--sub {{ Request::segment(3) == $page->id ? 'is-active' : '' }}">
                         {{ $page->title }}
                     </a>
                 </li>
@@ -69,7 +69,7 @@
         @endforeach
     </ul>
 
-    <div class="mb-4">
+    <div class="mb-5">
         <button type="button" class="docs-nav-label w-full text-left flex items-center justify-between cursor-pointer" @click="toggleNewHere()">
             <span>New here?</span>
             <span x-text="newHereOpen ? '−' : '+'" class="font-normal text-[var(--color-text-muted)]"></span>
@@ -102,7 +102,7 @@
                     @foreach (Streams::docs()->where('category', $category->id)->orderBy('sort_order', 'ASC')->get() as $page)
                     <li>
                         <a href="/docs/{{ $page->id }}"
-                           class="docs-nav-link text-[0.8125rem] {{ ! $isPackageSection && Request::segment(2) == $page->id ? 'is-active' : '' }}">
+                           class="docs-nav-link docs-nav-link--sub {{ ! $isPackageSection && Request::segment(2) == $page->id ? 'is-active' : '' }}">
                             {{ $page->title }}
                         </a>
                     </li>

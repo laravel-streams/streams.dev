@@ -40,7 +40,7 @@
             text-decoration-color: var(--st-border-strong);
 
             &:hover {
-                text-decoration-color: var(--st-text);
+                text-decoration-color: var(--st-accent);
             }
         }
     }
@@ -61,7 +61,7 @@
         flex-wrap: wrap;
         align-items: center;
         gap: 0.25rem;
-        font-size: 0.8125rem;
+        font-size: var(--st-text-sm);
         color: var(--st-text-muted);
 
         a {

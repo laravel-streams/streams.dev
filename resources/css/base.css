@@ -1,20 +1,62 @@
 @layer base {
     html {
+        font-size: var(--st-root-size);
         font-family: var(--st-font-sans);
         background: var(--st-page);
         color: var(--st-text);
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
         text-rendering: optimizeLegibility;
-        scroll-padding-top: calc(var(--st-header-height) + 1rem);
+        scroll-padding-top: calc(var(--st-header-height) + 1.5rem);
     }
 
     body {
+        position: relative;
         min-height: 100vh;
         min-width: 0;
         overflow-x: clip;
-        background: var(--st-page);
+        background: transparent;
         color: var(--st-text);
+        font-size: var(--st-text-base);
+        line-height: 1.6;
+    }
+
+    /*
+     * Page backdrop behind all content: soft grayscale light pools spread
+     * down the whole document, plus a faint grain. It gives the glass
+     * surfaces something to blur. Absolute (not fixed) so it scrolls with the
+     * page, costs no repaint on scroll, and shows up in full-page captures.
+     */
+    body::before,
+    body::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: -1;
+        pointer-events: none;
+    }
+
+    body::before {
+        background:
+            radial-gradient(40rem 30rem at 12% 2%, var(--st-mesh-violet), transparent 70%),
+            radial-gradient(38rem 28rem at 88% 8%, var(--st-mesh-cyan), transparent 70%),
+            radial-gradient(36rem 30rem at 55% 22%, var(--st-mesh-rose), transparent 72%),
+            radial-gradient(40rem 32rem at 4% 45%, var(--st-mesh-cyan), transparent 70%),
+            radial-gradient(38rem 30rem at 96% 58%, var(--st-mesh-amber), transparent 70%),
+            radial-gradient(42rem 32rem at 20% 82%, var(--st-mesh-rose), transparent 70%),
+            radial-gradient(44rem 32rem at 82% 100%, var(--st-mesh-violet), transparent 70%),
+            radial-gradient(64rem 38rem at 6% 0%, var(--st-glow-1), transparent 66%),
+            radial-gradient(52rem 34rem at 96% 3%, var(--st-glow-2), transparent 62%),
+            radial-gradient(46rem 34rem at 88% 32%, var(--st-glow-1), transparent 64%),
+            radial-gradient(50rem 36rem at 6% 52%, var(--st-glow-2), transparent 64%),
+            radial-gradient(48rem 34rem at 92% 74%, var(--st-glow-2), transparent 64%),
+            radial-gradient(56rem 40rem at 30% 100%, var(--st-glow-1), transparent 66%);
+    }
+
+    body::after {
+        opacity: var(--st-grain-opacity);
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.5 0 0 0 0 0.5 0 0 0 0 0.5 0 0 0 1 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+        background-size: 180px 180px;
     }
 
     ::selection {
@@ -22,10 +64,12 @@
         color: var(--st-on-inverse);
     }
 
+    /* Focus rings carry the accent color, with a soft halo. */
     :focus-visible {
         outline: 2px solid var(--st-focus);
         outline-offset: 2px;
         border-radius: var(--st-radius-xs);
+        box-shadow: 0 0 0 6px var(--st-accent-soft);
     }
 
     svg {

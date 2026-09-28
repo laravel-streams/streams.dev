@@ -34,6 +34,11 @@
     --font-sans: var(--st-font-sans);
     --font-mono: var(--st-font-mono);
 
+    /* Extra type steps from tokens.css: text-2xs, text-md, text-prose. */
+    --text-2xs: var(--st-text-2xs);
+    --text-md: var(--st-text-md);
+    --text-prose: var(--st-text-prose);
+
     --color-page: var(--st-page);
     --color-surface: var(--st-surface);
     --color-surface-muted: var(--st-surface-muted);

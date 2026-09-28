@@ -1,6 +1,6 @@
 .documentation__toc {
-    line-height: 1.35;
-    font-size: 0.8125rem;
+    line-height: 1.4;
+    font-size: var(--st-text-sm);
     color: var(--st-text-muted);
 
     &:empty {
@@ -10,8 +10,8 @@
     &::before {
         content: "On this page";
         display: block;
-        margin-bottom: 0.625rem;
-        font-size: 0.6875rem;
+        margin-bottom: 0.875rem;
+        font-size: var(--st-text-2xs);
         font-weight: 600;
         letter-spacing: 0.08em;
         text-transform: uppercase;
@@ -25,12 +25,12 @@
     }
 
     .toc-list-item {
-        margin-top: 0.25rem;
+        margin-top: 0.125rem;
     }
 
     .toc-link {
         display: block;
-        padding: 0.2rem 0 0.2rem 0.75rem;
+        padding: 0.3125rem 0 0.3125rem 0.875rem;
         margin-left: -1px;
         color: var(--st-text-muted);
         text-decoration: none;
@@ -44,7 +44,7 @@
         &.is-active-link {
             color: var(--st-text);
             font-weight: 600;
-            border-left-color: var(--st-text);
+            border-left-color: var(--st-accent);
         }
 
         &:hover {

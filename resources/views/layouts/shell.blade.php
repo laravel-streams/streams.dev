@@ -16,7 +16,7 @@
     @stack('head')
 </head>
 
-<body class="flex min-h-screen flex-col bg-page text-fg antialiased {{ $bodyClass ?? '' }}" @isset($bodyData) x-data="{{ $bodyData }}" @endisset>
+<body class="flex min-h-screen flex-col text-fg antialiased {{ $bodyClass ?? '' }}" @isset($bodyData) x-data="{{ $bodyData }}" @endisset>
 
     <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-3 focus:z-50 st-btn st-btn--primary st-btn--sm">Skip to content</a>
 

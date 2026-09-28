@@ -1,11 +1,17 @@
-/* Monochrome Prism theme. Code panels stay dark in both schemes. */
+/*
+ * Monochrome Prism theme. Code panels stay dark in both schemes.
+ * In the base layer so component and prose rules (glass panels, sizes) can
+ * override it; unlayered, it beat them all.
+ */
+
+@layer base {
 
 code[class*="language-"],
 pre[class*="language-"] {
     color: var(--st-code-text);
     font-family: var(--st-font-mono);
-    font-size: 0.8125rem;
-    line-height: 1.7;
+    font-size: var(--st-text-code);
+    line-height: 1.75;
     direction: ltr;
     text-align: left;
     white-space: pre;
@@ -16,11 +22,11 @@ pre[class*="language-"] {
 }
 
 pre[class*="language-"] {
-    padding: 1.125rem 1.25rem;
+    padding: 1.375rem 1.5rem;
     margin: 0;
     overflow: auto;
-    border-radius: var(--st-radius-md);
-    background: var(--st-code-bg);
+    border-radius: var(--st-radius-lg);
+    background: var(--st-code-glass);
 }
 
 :not(pre) > code[class*="language-"] {
@@ -35,7 +41,7 @@ pre[class*="language-"] {
 .token.prolog,
 .token.doctype,
 .token.cdata {
-    color: #6b6b74;
+    color: #8b8b94;
     font-style: italic;
 }
 
@@ -83,4 +89,6 @@ pre[class*="language-"] {
 
 .token.italic {
     font-style: italic;
+}
+
 }

@@ -78,7 +78,7 @@ export function initDocsSearch() {
 
         Object.keys(grouped).forEach((section) => {
             const heading = document.createElement('li');
-            heading.className = 'px-3.5 pt-3 pb-1.5 text-[0.6875rem] font-semibold uppercase tracking-[0.08em] text-fg-muted';
+            heading.className = 'px-4 pt-4 pb-2 text-2xs font-semibold uppercase tracking-[0.08em] text-fg-muted';
             heading.textContent = GROUP_LABELS[section] || section;
             resultsEl.appendChild(heading);
 
@@ -91,8 +91,8 @@ export function initDocsSearch() {
                 btn.setAttribute('role', 'option');
                 btn.dataset.index = String(globalIndex);
                 btn.innerHTML = `
-                    <span class="block text-[0.9375rem] font-medium text-fg">${escapeHtml(result.item.title)}</span>
-                    <span class="mt-0.5 block truncate text-xs text-fg-muted">${escapeHtml(result.item.description || result.item.excerpt || '')}</span>
+                    <span class="block text-base font-medium text-fg">${escapeHtml(result.item.title)}</span>
+                    <span class="mt-1 block truncate text-sm text-fg-muted">${escapeHtml(result.item.description || result.item.excerpt || '')}</span>
                 `;
                 btn.addEventListener('click', () => navigate(result.item.url));
                 li.appendChild(btn);
