@@ -1,11 +1,19 @@
 ---
 title: OpenAPI
-description: 'api:schema and api:documentation Artisan commands.'
-sort_order: 15
+description: 'The generic OpenAPI reference, plus api:schema and api:documentation for your own app.'
+sort_order: 17
 status: ready
 ---
 
-Generate OpenAPI schema and Swagger UI documentation from registered API routes.
+## Reference spec
+
+A generic OpenAPI 3 description of the built-in endpoints is published at [/docs/api/openapi.yaml](/docs/api/openapi.yaml). It covers every route on `StreamsResource` and `EntriesResource`, the query parameters, and the response envelope. Entry bodies are generic there because they depend on your streams.
+
+## Your app's spec
+
+Generate an OpenAPI document with per-stream schemas from your application's stream definitions.
+
+`api:schema` builds a tag, a component schema, and the `/streams/{id}/entries` and `/streams/{id}/entries/{entry}` paths for every stream. It does not include the stream-definition endpoints, the query endpoint, or custom endpoints, and its `info` block (contact, license) is placeholder text you should edit before publishing.
 
 ## Dump schema
 
