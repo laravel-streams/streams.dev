@@ -22,7 +22,7 @@ $packages = $packages->get();
 @if ($packages->isEmpty())
 <p class="text-sm text-fg-muted">No addons in this category.</p>
 @else
-<section class="grid gap-4 sm:grid-cols-2">
+<section class="st-grid-cards sm:grid-cols-2">
     @foreach($packages as $package)
     <x-card :href="'/addons/'.$package->composer->name" :title="$package->name" :eyebrow="$package->composer->name">
         <span class="sr-only">Name: {{ $package->name }}. Package: {{ $package->composer->name }}. </span>

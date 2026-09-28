@@ -12,7 +12,7 @@ $addon = Streams::packages()->where('composer.name', Request::route('vendor') .'
 abort_unless($addon, 404);
 @endphp
 
-<section class="mx-auto max-w-3xl px-6 pt-16 pb-28">
+<section class="mx-auto max-w-3xl px-[var(--st-gutter)] pt-[var(--st-section-y-sm)] pb-[var(--st-section-y)]">
     <p class="st-eyebrow">Addon</p>
     <h1 class="docs-title mt-3">{{ $addon->name }}</h1>
     <p class="mt-3 font-mono text-sm text-fg-muted">{{ $addon->composer->name }}</p>

@@ -7,12 +7,12 @@ sort_order: 1
 nav_disabled: true
 ---
 
-<section class="mx-auto max-w-2xl px-6 pt-16 pb-28">
+<section class="st-container max-w-[46rem] pt-[var(--st-section-y-sm)] pb-[var(--st-section-y)]">
     <p class="st-eyebrow">streams/ui</p>
     <h1 class="docs-title mt-3">UI sandbox</h1>
-    <p class="docs-lead">A stream-driven form rendered with the Streams UI form builder, outside an admin panel. Nothing is saved.</p>
+    <p class="docs-lead">A Streams UI form, rendered outside an admin panel. Nothing is saved.</p>
 
-    <x-glass class="mt-10 rounded-2xl p-6 sm:p-8">
+    <x-glass class="mt-12 rounded-[var(--st-radius-2xl)] p-6 sm:p-10">
         @livewire('form', [
             'stream' => 'pages',
             'buttons' => [
