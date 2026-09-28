@@ -63,4 +63,36 @@ class AgentDocsTest extends TestCase
             $this->get("/docs/{$package}/introduction")->assertOk();
         }
     }
+
+    public function test_agent_platform_pages_are_linked_from_the_index()
+    {
+        foreach ([
+            '/docs/agents',
+            '/docs/mcp',
+            '/docs/workflows',
+            '/docs/tenancy',
+            '/docs/ui/theming',
+            '/docs/sdk/commands',
+        ] as $url) {
+            $this->get($url)->assertOk();
+            $this->get($url.'.md')->assertOk()->assertHeader('Content-Type', 'text/markdown; charset=UTF-8');
+        }
+
+        $index = $this->get('/llms.txt')->assertOk()->getContent();
+
+        $this->assertStringContainsString(']('.url('/docs/mcp.md').')', $index);
+        $this->assertStringContainsString(']('.url('/docs/sdk/commands.md').')', $index);
+        $this->assertStringContainsString('not shipped', strtolower($this->get('/docs/mcp')->getContent()));
+    }
+
+    public function test_sdk_introduction_only_lists_real_commands()
+    {
+        $this->get('/docs/sdk/introduction')
+            ->assertOk()
+            ->assertSee('There is no <code>streams:component</code> or <code>streams:crud</code> command.', false)
+            ->assertDontSee('php artisan streams:component', false)
+            ->assertDontSee('php artisan streams:crud', false)
+            ->assertSee('make:stream', false)
+            ->assertDontSee('01-streams.md', false);
+    }
 }
