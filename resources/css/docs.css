@@ -52,7 +52,7 @@
             transform: none;
             border: 1px solid var(--st-glass-border);
             border-radius: var(--st-radius-xl);
-            background: var(--st-glass-bg);
+            background-color: var(--st-glass-bg);
             overflow: hidden;
         }
     }
@@ -97,14 +97,14 @@
 
         &:hover {
             color: var(--st-text);
-            background: var(--st-glass-bg-strong);
+            background-color: var(--st-glass-bg-strong);
         }
 
         &.is-active {
             position: relative;
             font-weight: 600;
             color: var(--st-text);
-            background: var(--st-glass-bg-strong);
+            background-color: var(--st-glass-bg-strong);
             box-shadow: var(--st-glass-ring), 0 0 0 1px var(--st-border), var(--st-shadow-1);
         }
 
@@ -215,7 +215,7 @@
         font-size: var(--st-text-base);
         border: 1px solid var(--st-glass-border);
         border-radius: var(--st-radius-control-lg);
-        background: var(--st-glass-bg-strong);
+        background-color: var(--st-glass-bg-strong);
         box-shadow: var(--st-glass-shadow);
         -webkit-backdrop-filter: var(--st-glass-filter);
         backdrop-filter: var(--st-glass-filter);
@@ -246,7 +246,7 @@
         padding: 1.125rem 1.25rem;
         border: 1px solid var(--st-glass-border);
         border-radius: var(--st-radius-lg);
-        background: var(--st-glass-bg);
+        background-color: var(--st-glass-bg);
         box-shadow: var(--st-glass-ring), var(--st-shadow-1);
         -webkit-backdrop-filter: var(--st-glass-filter);
         backdrop-filter: var(--st-glass-filter);
@@ -270,7 +270,7 @@
 
         &:hover,
         &:focus-visible {
-            background: var(--st-glass-bg-strong);
+            background-color: var(--st-glass-bg-strong);
             border-color: var(--st-border-strong);
             transform: translateY(calc(var(--st-lift) * 2));
         }
@@ -324,7 +324,7 @@
     /* Open: overlay fades in 220ms; panel fades and scales 0.98 -> 1 over 220ms (ease-out).
        Close (.is-closing, set by docs-search.js): both reverse in 160ms (ease-in), then [hidden]. */
     .docs-search-overlay {
-        background: rgb(10 10 11 / 0.22);
+        background-color: rgb(10 10 11 / 0.22);
         -webkit-backdrop-filter: blur(10px) saturate(1.2);
         backdrop-filter: blur(10px) saturate(1.2);
         animation: st-fade var(--st-duration-base) var(--st-ease-out) both;
@@ -349,7 +349,7 @@
         width: 100%;
         border: none;
         border-radius: var(--st-radius-md);
-        background: transparent;
+        background-color: transparent;
         cursor: pointer;
         font: inherit;
         text-align: left;
@@ -358,7 +358,7 @@
 
         &:hover,
         &.is-active {
-            background: var(--st-glass-bg-strong);
+            background-color: var(--st-glass-bg-strong);
             box-shadow: var(--st-glass-ring), 0 0 0 1px var(--st-border);
         }
     }
@@ -507,7 +507,7 @@
             font-weight: 500;
             padding: 0.125em 0.4em;
             border-radius: var(--st-radius-xs);
-            background: var(--st-glass-bg-strong);
+            background-color: var(--st-glass-bg-strong);
             border: 1px solid var(--st-border);
             color: var(--st-text);
             overflow-wrap: anywhere;
@@ -522,7 +522,7 @@
             margin: 2.25rem 0;
             padding: 1.375rem 1.5rem;
             border-radius: var(--st-radius-lg);
-            background: var(--st-code-glass);
+            background-color: var(--st-code-glass);
             border: 1px solid var(--st-code-border);
             box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.1), inset 0 0 0 1px var(--st-code-inner), var(--st-shadow-2);
             -webkit-backdrop-filter: var(--st-glass-filter);
@@ -560,7 +560,7 @@
             padding: 1.125rem 1.375rem;
             border-radius: var(--st-radius-lg);
             border: 1px solid var(--st-glass-border);
-            background: var(--st-glass-bg);
+            background-color: var(--st-glass-bg);
             box-shadow: var(--st-glass-ring), var(--st-shadow-1);
             -webkit-backdrop-filter: var(--st-glass-filter);
             backdrop-filter: var(--st-glass-filter);

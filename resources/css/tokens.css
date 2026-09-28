@@ -123,22 +123,43 @@
     --st-shadow-4: 0 8px 16px rgb(10 10 11 / 0.04), 0 32px 80px -24px rgb(10 10 11 / 0.22);
 
     /*
-     * Radius: soft but crisp. px values at the 18px root.
-     * xs 6 (inline code, kbd) · sm 8 (chips, tabs) · md 11 (controls) ·
-     * lg 14 (callouts, code, small cards) · xl 19 (cards, panels) ·
-     * 2xl 22 (large panels, dialogs). Pills stay for tags only.
+     * Shape, taken from the logo mark (public/img/logo.svg). The mark is an
+     * isometric line drawing: every edge is vertical or at 30 degrees
+     * (dy/dx = 103.4/179.1 = tan 30), strokes are 14.8 units wide on a
+     * 425.2 box (3.5%), and channels are 42.5 units across (49.1 along the
+     * slope). So corners are near-square, and key surfaces cut two opposite
+     * corners at the logo's 30-degree angle, top-right and bottom-left, the
+     * same corners the mark's silhouette slopes away at.
+     *
+     * Radius (px at the 18px root): xs 2 · sm 3 · md 3 · lg 4 · xl 4 · 2xl 5.
+     * Chamfer is the horizontal run of the cut; its rise is run × tan 30.
      */
-    --st-radius-xs: 0.3333rem;
-    --st-radius-sm: 0.4444rem;
-    --st-radius-md: 0.6111rem;
-    --st-radius-lg: 0.7778rem;
-    --st-radius-xl: 1.0556rem;
-    --st-radius-2xl: 1.2222rem;
+    --st-radius-xs: 0.1111rem;
+    --st-radius-sm: 0.1667rem;
+    --st-radius-md: 0.1667rem;
+    --st-radius-lg: 0.2222rem;
+    --st-radius-xl: 0.2222rem;
+    --st-radius-2xl: 0.2778rem;
     --st-radius-pill: 9999px;
     --st-radius-control: var(--st-radius-md);
     --st-radius-control-lg: var(--st-radius-lg);
 
     /* Motion: subtle only. Collapsed to ~0 under prefers-reduced-motion. */
+    --st-tan30: 0.57735;
+    --st-chamfer-xs: 0.3333rem;   /* 6px: chips, tags, step markers */
+    --st-chamfer-sm: 0.5rem;      /* 9px: buttons, inputs, search fields */
+    --st-chamfer: 0.8889rem;      /* 16px: cards, code windows, panels */
+    --st-chamfer-lg: 1.3333rem;   /* 24px: dialogs, large glass panels */
+
+    /* Drafting lines: page rails, section rules, and the marks where they cross. */
+    --st-frame-max: 90rem;
+    --st-rule: rgb(10 10 11 / 0.09);
+    --st-rule-strong: rgb(10 10 11 / 0.12);
+    --st-rule-mark: rgb(124 58 237 / 0.55);
+    --st-lattice: rgb(10 10 11 / 0.07);
+    --st-lattice-accent: rgb(124 58 237 / 0.09);
+    --st-lattice-mark: rgb(10 10 11 / 0.1);
+
     --st-ease-out: cubic-bezier(0.22, 1, 0.36, 1);
     --st-ease-in: cubic-bezier(0.4, 0, 1, 1);
     --st-ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
@@ -251,6 +272,13 @@
 
     --st-mesh-violet: rgb(139 92 246 / 0.15);
     --st-mesh-cyan: rgb(34 211 238 / 0.11);
+    --st-rule: rgb(255 255 255 / 0.08);
+    --st-rule-strong: rgb(255 255 255 / 0.11);
+    --st-rule-mark: rgb(167 139 250 / 0.6);
+    --st-lattice: rgb(255 255 255 / 0.06);
+    --st-lattice-accent: rgb(167 139 250 / 0.1);
+    --st-lattice-mark: rgb(255 255 255 / 0.1);
+
     --st-mesh-rose: rgb(236 72 153 / 0.11);
     --st-mesh-amber: rgb(245 158 11 / 0.1);
 

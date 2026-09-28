@@ -1,4 +1,5 @@
-<footer {{ $attributes->class(['border-t border-glass-line bg-glass backdrop-blur-xl']) }}>
+<footer {{ $attributes->class(['relative isolate overflow-hidden bg-glass backdrop-blur-xl']) }}>
+    <div class="st-lattice st-lattice--footer" aria-hidden="true"></div>
     <div class="mx-auto flex max-w-[var(--st-content-width)] flex-col gap-7 px-[var(--st-gutter)] py-14 text-md text-fg-muted sm:flex-row sm:items-center sm:justify-between">
         <div class="flex items-center gap-2.5">
             <img src="{{ asset('img/logo.svg') }}" alt="" class="st-logo st-logo--sm opacity-70 dark:invert" width="24" height="24">

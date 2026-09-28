@@ -21,6 +21,9 @@
     {{-- Drifting color mesh behind the glass (styles in base.css). --}}
     <div class="st-mesh" aria-hidden="true"><span class="st-mesh__blob"></span><span class="st-mesh__blob"></span><span class="st-mesh__blob"></span><span class="st-mesh__blob"></span><span class="st-mesh__blob"></span><span class="st-mesh__blob"></span></div>
 
+    {{-- Drafting rails at the frame edges (geometry.css). --}}
+    <div class="st-frame" aria-hidden="true"></div>
+
     <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-3 focus:z-50 st-btn st-btn--primary st-btn--sm">Skip to content</a>
 
     @if ($chrome ?? true)
@@ -34,6 +37,7 @@
     </main>
 
     @if ($chrome ?? true)
+        <div class="st-rule" aria-hidden="true"></div>
         <x-footer />
     @endif
 

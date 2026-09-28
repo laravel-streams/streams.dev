@@ -60,6 +60,8 @@ $addons = Streams::entries('packages')->where('type', 'NOT IN', ['starter', 'exa
 
 {{-- Hero --}}
 <section class="st-ambient overflow-x-clip">
+    <div class="st-lattice" aria-hidden="true"></div>
+    <div class="st-lattice-mask" aria-hidden="true"><div class="st-lattice__mark"></div></div>
     <div class="st-container max-w-[64rem] pt-[var(--st-section-y)] pb-[var(--st-section-y-sm)] text-center">
         <div class="animate-rise">
             <x-pill variant="glass" dot>Agentic-first Laravel packages</x-pill>
@@ -88,6 +90,8 @@ $addons = Streams::entries('packages')->where('type', 'NOT IN', ['starter', 'exa
     </div>
 </section>
 
+<div class="st-rule" aria-hidden="true"></div>
+
 {{-- Code: the Mac-window panel from the live site --}}
 <section class="st-container st-section">
     <div class="grid items-center gap-16 lg:grid-cols-[1fr_1.25fr] lg:gap-24">
@@ -97,21 +101,21 @@ $addons = Streams::entries('packages')->where('type', 'NOT IN', ['starter', 'exa
             <p class="st-subhead">Everything else reads from it.</p>
             <ol class="mt-12 grid gap-10">
                 <li class="flex gap-5">
-                    <span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-glass-line bg-glass-strong font-mono text-sm text-fg-secondary shadow-e1 backdrop-blur-md">1</span>
+                    <span class="st-step">1</span>
                     <div>
                         <p class="text-lg font-semibold">Describe a stream</p>
                         <p class="mt-1.5 text-base leading-relaxed text-fg-secondary">Fields, routes, and storage in <code class="font-mono text-md text-fg">streams/*.json</code>.</p>
                     </div>
                 </li>
                 <li class="flex gap-5">
-                    <span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-glass-line bg-glass-strong font-mono text-sm text-fg-secondary shadow-e1 backdrop-blur-md">2</span>
+                    <span class="st-step">2</span>
                     <div>
                         <p class="text-lg font-semibold">Add entries</p>
                         <p class="mt-1.5 text-base leading-relaxed text-fg-secondary">Flat files, JSON, or a database. Swap storage without code changes.</p>
                     </div>
                 </li>
                 <li class="flex gap-5">
-                    <span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-glass-line bg-glass-strong font-mono text-sm text-fg-secondary shadow-e1 backdrop-blur-md">3</span>
+                    <span class="st-step">3</span>
                     <div>
                         <p class="text-lg font-semibold">Query and render</p>
                         <p class="mt-1.5 text-base leading-relaxed text-fg-secondary">Queries, routes, admin UI, and the API share one definition. This site works this way.</p>
@@ -127,6 +131,8 @@ $addons = Streams::entries('packages')->where('type', 'NOT IN', ['starter', 'exa
         ]" />
     </div>
 </section>
+
+<div class="st-rule" aria-hidden="true"></div>
 
 {{-- Packages --}}
 <section class="st-container st-section--tight">
@@ -147,7 +153,7 @@ $addons = Streams::entries('packages')->where('type', 'NOT IN', ['starter', 'exa
 
 {{-- Agents --}}
 <section class="st-container st-section--tight">
-    <x-glass class="rounded-2xl p-6 sm:p-12 lg:p-16" data-reveal>
+    <x-glass class="st-chamfer st-chamfer--lg rounded-2xl p-6 sm:p-12 lg:p-16" data-reveal>
         <div class="grid gap-12 lg:grid-cols-[1fr_1.4fr] lg:gap-16">
             <div>
                 <p class="st-eyebrow">For agents, too</p>
@@ -163,6 +169,8 @@ $addons = Streams::entries('packages')->where('type', 'NOT IN', ['starter', 'exa
         </div>
     </x-glass>
 </section>
+
+<div class="st-rule" aria-hidden="true"></div>
 
 {{-- Starters and addons --}}
 @if ($starters->isNotEmpty() || $addons->isNotEmpty())
@@ -182,6 +190,8 @@ $addons = Streams::entries('packages')->where('type', 'NOT IN', ['starter', 'exa
     </div>
 </section>
 @endif
+
+<div class="st-rule" aria-hidden="true"></div>
 
 {{-- Explore call to action --}}
 <section class="st-ambient st-container pt-[var(--st-section-y-sm)] pb-[var(--st-section-y)]">
