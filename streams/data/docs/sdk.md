@@ -28,5 +28,6 @@ composer require --dev streams/sdk:1.0.x-dev
 ## Learn more
 
 - [SDK introduction](/docs/sdk/introduction)
+- [Command reference](/docs/sdk/commands)
 - [SDK streams](/docs/sdk/streams)
 - [Admin panels](/docs/sdk/admin-panels)

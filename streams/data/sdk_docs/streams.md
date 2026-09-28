@@ -1,5 +1,5 @@
 ---
-sort_order: 1
+sort_order: 2
 title: Streams
 description: 'Define streams with the SDK scaffolding workflow.'
 status: ready
