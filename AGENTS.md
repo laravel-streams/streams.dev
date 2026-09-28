@@ -24,7 +24,7 @@ The GitHub organization is [`laravel-streams`](https://github.com/laravel-stream
 Requirements: PHP 8.2+ with the usual Laravel extensions, Composer 2, Node.js 20.19+ or 22.12+, and git. No database is needed.
 
 ```bash
-git clone https://github.com/laravel-streams/streams.dev.git --branch next
+git clone https://github.com/laravel-streams/streams.dev.git --branch develop
 cd streams.dev
 composer install          # clones streams/core, streams/ui, streams/sdk from GitHub into vendor/streams/
 cp .env.example .env
@@ -167,8 +167,17 @@ Walk through these in order, opening each file and the matching URL side by side
 
 Try it: `curl -s http://127.0.0.1:8427/mcp -H 'Content-Type: application/json' -H 'Accept: application/json, text/event-stream' -d '{"jsonrpc":"2.0","id":1,"method":"tools/list"}'`.
 
+## Branches
+
+The repository has two long-lived branches:
+
+- `develop`: day-to-day work. Commit here, or branch off it for a larger change and merge back. Clone with `--branch develop`.
+- `master`: what is live on streams.dev, and GitHub's default branch. It only moves by merging `develop` into it.
+
+The flow is: work on `develop` and push it, run the checks above, merge `develop` into `master` (a plain merge, never a force push), push `master`, then deploy. There are no other long-lived branches; the old `next`, `integration/rc` and `production` branches are gone, so don't recreate them. Short-lived feature branches are fine, but delete them once merged.
+
 ## Deploying
 
-`Envoy.blade.php` holds the deploy tasks (`envoy run deploy`, `envoy run rollback`). Install Envoy with `composer global require laravel/envoy`, then fill the `DEPLOY_*` keys in `.env` (documented in `.env.example`). Composer runs with `--ignore-platform-reqs` there for now because the current host (PHP 8.2.4) lacks ext-intl and ext-zip; the `config.platform.php` pin keeps the lock compatible with it. Only deploy when the maintainer asks.
+`Envoy.blade.php` holds the deploy tasks (`envoy run deploy`, `envoy run rollback`). `deploy` fetches `master` on the server and fast-forwards to it (whatever the server had checked out), runs `composer install --no-dev`, clears the framework caches (`artisan optimize:clear`), and pings `DEPLOY_HEALTH_CHECK`. There is no migrate step because the site uses no database. `rollback` resets the server to the previous checkout and repeats the composer, cache and health steps. Install Envoy with `composer global require laravel/envoy`, then fill the `DEPLOY_*` keys in `.env` (documented in `.env.example`). Composer runs with `--ignore-platform-reqs` there for now because the current host (PHP 8.2.4) lacks ext-intl and ext-zip; the `config.platform.php` pin keeps the lock compatible with it. Only deploy when the maintainer asks.
 
 The `/mcp` rate limit keys on `$request->ip()`. `TrustProxies` trusts every proxy (`$proxies = '*'`), which is correct behind Cloudflare only if the origin accepts traffic from Cloudflare alone; otherwise a client can spoof `X-Forwarded-For`. Firewall the origin to Cloudflare's ranges, or list those ranges in `TrustProxies`.
