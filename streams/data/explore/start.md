@@ -1,0 +1,13 @@
+---
+title: Would you like to explore a new Laravel project or an existing one?
+label: Your project
+parent: idea
+sort_order: 2
+options:
+    - text: New Project
+      href: /explore/new
+    - text: Existing Project
+      href: /explore/existing
+      type: secondary
+---
+Laravel Streams is a system of utilities providing an optimized foundation and workflow for **Laravel development**. Core features are organized into **composer packages** and can be used within an existing project or entirely on their own.

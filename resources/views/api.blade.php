@@ -1,18 +1,7 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+@extends('layouts.shell', ['chrome' => false])
 
-<head>
-    @include('partials.head')
-</head>
+@section('title', 'API test')
 
-<body class="antialiased">
-
-    <script>
-        // client.streams.get();
-    </script>
-
-    @vite(['resources/js/app.js'])
-    
-</body>
-
-</html>
+@section('main')
+    {{-- API client sandbox. --}}
+@endsection

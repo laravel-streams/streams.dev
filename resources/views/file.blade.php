@@ -1,16 +1,7 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+@extends('layouts.shell')
 
-<head>
-    @include('partials.head')
-</head>
-
-<body class="antialiased">
-
-    <pre class="mt-8 ml-8">{{ $entry->toJson(128) }}</pre>
-
-    @vite(['resources/js/app.js'])
-    
-</body>
-
-</html>
+@section('main')
+<div class="mx-auto max-w-5xl px-4 py-12 lg:px-6">
+    <x-code-block :title="$entry->path ?? $entry->id" lang="json" :code="$entry->toJson(JSON_PRETTY_PRINT)" />
+</div>
+@endsection

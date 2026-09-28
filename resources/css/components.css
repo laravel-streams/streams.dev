@@ -1,0 +1,651 @@
+/*
+ * Component classes behind the Blade components in resources/views/components.
+ * Plain CSS on top of the --st-* tokens so other packages (streams-ui) can
+ * reuse the same class contract without this site's Tailwind config.
+ */
+
+@layer components {
+    /* Glass panel ---------------------------------------------------------- */
+
+    .st-glass {
+        background: var(--st-glass-bg);
+        border: 1px solid var(--st-glass-border);
+        box-shadow: inset 0 1px 0 var(--st-glass-highlight), var(--st-shadow-2);
+        -webkit-backdrop-filter: blur(var(--st-glass-blur)) saturate(var(--st-glass-saturate));
+        backdrop-filter: blur(var(--st-glass-blur)) saturate(var(--st-glass-saturate));
+    }
+
+    .st-glass--strong {
+        background: var(--st-glass-bg-strong);
+        box-shadow: inset 0 1px 0 var(--st-glass-highlight), var(--st-shadow-3);
+    }
+
+    .st-glass--flat {
+        box-shadow: inset 0 1px 0 var(--st-glass-highlight);
+    }
+
+    /* Ambient backdrop: two soft grayscale glows, no texture. */
+    .st-ambient {
+        position: relative;
+        isolation: isolate;
+    }
+
+    .st-ambient::before {
+        content: "";
+        position: absolute;
+        inset: -10% -5% auto;
+        height: 42rem;
+        z-index: -1;
+        pointer-events: none;
+        background:
+            radial-gradient(38rem 24rem at 22% 18%, var(--st-glow-1), transparent 70%),
+            radial-gradient(34rem 26rem at 80% 8%, var(--st-glow-2), transparent 70%);
+    }
+
+    /* Button --------------------------------------------------------------- */
+
+    .st-btn {
+        --st-btn-height: 2.5rem;
+        --st-btn-px: 1.125rem;
+        --st-btn-font: 0.9375rem;
+
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        height: var(--st-btn-height);
+        padding-inline: var(--st-btn-px);
+        border: 1px solid transparent;
+        border-radius: var(--st-radius-pill);
+        font-size: var(--st-btn-font);
+        font-weight: 600;
+        line-height: 1;
+        letter-spacing: -0.01em;
+        white-space: nowrap;
+        text-decoration: none;
+        cursor: pointer;
+        user-select: none;
+        transition:
+            background-color var(--st-duration-base) var(--st-ease-out),
+            border-color var(--st-duration-base) var(--st-ease-out),
+            color var(--st-duration-base) var(--st-ease-out),
+            box-shadow var(--st-duration-base) var(--st-ease-out),
+            transform var(--st-duration-base) var(--st-ease-out);
+
+        &:hover {
+            transform: translateY(var(--st-lift));
+        }
+
+        &:active {
+            transform: translateY(0) scale(0.985);
+        }
+
+        &:disabled,
+        &[aria-disabled="true"] {
+            opacity: 0.5;
+            pointer-events: none;
+        }
+
+        svg {
+            width: 1em;
+            height: 1em;
+            flex-shrink: 0;
+            transition: transform var(--st-duration-base) var(--st-ease-out);
+        }
+
+        &:hover .st-btn__arrow {
+            transform: translateX(2px);
+        }
+    }
+
+    .st-btn--primary {
+        background: var(--st-inverse);
+        color: var(--st-on-inverse);
+        box-shadow: var(--st-shadow-1);
+
+        &:hover {
+            background: var(--st-inverse-hover);
+            box-shadow: var(--st-shadow-2);
+        }
+    }
+
+    .st-btn--secondary {
+        background: var(--st-surface-muted);
+        color: var(--st-text);
+
+        &:hover {
+            background: var(--st-surface-sunken);
+            box-shadow: var(--st-shadow-1);
+        }
+    }
+
+    .st-btn--glass {
+        background: var(--st-glass-bg);
+        border-color: var(--st-glass-border);
+        color: var(--st-text);
+        box-shadow: inset 0 1px 0 var(--st-glass-highlight), var(--st-shadow-1);
+        -webkit-backdrop-filter: blur(var(--st-glass-blur));
+        backdrop-filter: blur(var(--st-glass-blur));
+
+        &:hover {
+            background: var(--st-glass-bg-strong);
+            border-color: var(--st-border-strong);
+            box-shadow: inset 0 1px 0 var(--st-glass-highlight), var(--st-shadow-2);
+        }
+    }
+
+    .st-btn--ghost {
+        background: transparent;
+        color: var(--st-text-secondary);
+
+        &:hover {
+            background: var(--st-surface-muted);
+            color: var(--st-text);
+        }
+    }
+
+    .st-btn--link {
+        background: transparent;
+        color: var(--st-text);
+        padding-inline: 0.25rem;
+
+        &:hover {
+            color: var(--st-text-muted);
+            transform: none;
+        }
+    }
+
+    .st-btn--sm {
+        --st-btn-height: 2rem;
+        --st-btn-px: 0.875rem;
+        --st-btn-font: 0.8125rem;
+    }
+
+    .st-btn--lg {
+        --st-btn-height: 3rem;
+        --st-btn-px: 1.5rem;
+        --st-btn-font: 1rem;
+    }
+
+    .st-btn--xl {
+        --st-btn-height: 3.75rem;
+        --st-btn-px: 1.75rem;
+        --st-btn-font: clamp(1.125rem, 1rem + 0.6vw, 1.375rem);
+        font-weight: 700;
+        letter-spacing: -0.02em;
+    }
+
+    .st-btn--block {
+        display: flex;
+        width: 100%;
+        height: auto;
+        min-height: var(--st-btn-height);
+        justify-content: flex-start;
+        padding-block: 0.85rem;
+        white-space: normal;
+        text-align: left;
+    }
+
+    .st-btn:has(.st-btn__stack) {
+        height: auto;
+        min-height: var(--st-btn-height);
+        padding-block: 0.35rem;
+    }
+
+    @media (max-width: 639.98px) {
+        .st-header .st-btn__arrow {
+            display: none;
+        }
+    }
+
+    .st-btn--icon {
+        --st-btn-px: 0;
+        width: var(--st-btn-height);
+    }
+
+    /* Card ----------------------------------------------------------------- */
+
+    .st-card {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        padding: 1.25rem;
+        border-radius: var(--st-radius-lg);
+        background: var(--st-surface);
+        border: 1px solid var(--st-border);
+        box-shadow: var(--st-shadow-1);
+        color: inherit;
+        text-decoration: none;
+        transition:
+            border-color var(--st-duration-base) var(--st-ease-out),
+            box-shadow var(--st-duration-base) var(--st-ease-out),
+            transform var(--st-duration-base) var(--st-ease-out);
+    }
+
+    .st-card--glass {
+        background: var(--st-glass-bg);
+        border-color: var(--st-glass-border);
+        box-shadow: inset 0 1px 0 var(--st-glass-highlight), var(--st-shadow-1);
+        -webkit-backdrop-filter: blur(var(--st-glass-blur)) saturate(var(--st-glass-saturate));
+        backdrop-filter: blur(var(--st-glass-blur)) saturate(var(--st-glass-saturate));
+    }
+
+    a.st-card:hover,
+    .st-card--interactive:hover {
+        border-color: var(--st-border-strong);
+        box-shadow: var(--st-shadow-3);
+        transform: translateY(calc(var(--st-lift) * 2));
+    }
+
+    .st-card__eyebrow {
+        font-family: var(--st-font-mono);
+        font-size: 0.75rem;
+        color: var(--st-text-muted);
+    }
+
+    .st-card__title {
+        font-size: 1rem;
+        font-weight: 600;
+        letter-spacing: -0.01em;
+        color: var(--st-text);
+    }
+
+    .st-card__body {
+        margin-top: 0.375rem;
+        font-size: 0.875rem;
+        line-height: 1.55;
+        color: var(--st-text-secondary);
+    }
+
+    .st-card__arrow {
+        position: absolute;
+        top: 1.25rem;
+        right: 1.25rem;
+        width: 1rem;
+        height: 1rem;
+        color: var(--st-text-faint);
+        transition:
+            transform var(--st-duration-base) var(--st-ease-out),
+            color var(--st-duration-base) var(--st-ease-out);
+    }
+
+    a.st-card:hover .st-card__arrow {
+        color: var(--st-text);
+        transform: translate(2px, -2px);
+    }
+
+    /* Pill (tag / badge) --------------------------------------------------- */
+
+    .st-pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.375rem;
+        height: 1.625rem;
+        padding-inline: 0.625rem;
+        border-radius: var(--st-radius-pill);
+        border: 1px solid var(--st-border);
+        background: var(--st-surface);
+        color: var(--st-text-secondary);
+        font-size: 0.75rem;
+        font-weight: 500;
+        line-height: 1;
+        white-space: nowrap;
+        text-decoration: none;
+    }
+
+    a.st-pill {
+        transition:
+            border-color var(--st-duration-base) var(--st-ease-out),
+            color var(--st-duration-base) var(--st-ease-out);
+
+        &:hover {
+            border-color: var(--st-border-strong);
+            color: var(--st-text);
+        }
+    }
+
+    .st-pill--solid {
+        background: var(--st-inverse);
+        border-color: transparent;
+        color: var(--st-on-inverse);
+    }
+
+    .st-pill--glass {
+        background: var(--st-glass-bg);
+        border-color: var(--st-glass-border);
+        -webkit-backdrop-filter: blur(var(--st-glass-blur));
+        backdrop-filter: blur(var(--st-glass-blur));
+    }
+
+    .st-pill__dot {
+        width: 0.375rem;
+        height: 0.375rem;
+        border-radius: 9999px;
+        background: currentColor;
+    }
+
+    /* Code block (Mac window) ---------------------------------------------- */
+
+    .st-code {
+        overflow: hidden;
+        border-radius: var(--st-radius-lg);
+        background: var(--st-code-bg);
+        color: var(--st-code-text);
+        border: 1px solid rgb(255 255 255 / 0.06);
+        box-shadow: var(--st-shadow-4);
+    }
+
+    .st-code__chrome {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        height: 2.75rem;
+        padding-inline: 1rem;
+        background: var(--st-code-chrome);
+        border-bottom: 1px solid rgb(255 255 255 / 0.06);
+    }
+
+    .st-code__lights {
+        display: flex;
+        gap: 0.4375rem;
+
+        span {
+            width: 0.6875rem;
+            height: 0.6875rem;
+            border-radius: 9999px;
+            background: rgb(255 255 255 / 0.18);
+        }
+
+        span:nth-child(2) {
+            background: rgb(255 255 255 / 0.12);
+        }
+
+        span:nth-child(3) {
+            background: rgb(255 255 255 / 0.08);
+        }
+    }
+
+    .st-code__title {
+        flex: 1;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        font-family: var(--st-font-mono);
+        font-size: 0.75rem;
+        color: rgb(255 255 255 / 0.5);
+    }
+
+    .st-code__tabs {
+        display: flex;
+        gap: 0.25rem;
+        overflow-x: auto;
+
+        button {
+            padding: 0.3125rem 0.625rem;
+            border-radius: var(--st-radius-pill);
+            font-family: var(--st-font-mono);
+            font-size: 0.75rem;
+            color: rgb(255 255 255 / 0.5);
+            white-space: nowrap;
+            transition:
+                background-color var(--st-duration-base) var(--st-ease-out),
+                color var(--st-duration-base) var(--st-ease-out);
+
+            &:hover {
+                color: rgb(255 255 255 / 0.85);
+            }
+
+            &[aria-selected="true"] {
+                background: rgb(255 255 255 / 0.1);
+                color: #fff;
+            }
+        }
+    }
+
+    .st-code__copy {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.375rem;
+        padding: 0.3125rem 0.5rem;
+        border-radius: var(--st-radius-sm);
+        font-size: 0.75rem;
+        color: rgb(255 255 255 / 0.5);
+        transition: color var(--st-duration-base) var(--st-ease-out), background-color var(--st-duration-base) var(--st-ease-out);
+
+        &:hover {
+            color: #fff;
+            background: rgb(255 255 255 / 0.08);
+        }
+    }
+
+    .st-code pre[class*="language-"],
+    .st-code pre {
+        margin: 0;
+        border-radius: 0;
+        background: transparent;
+        padding: 1.25rem 1.375rem 1.5rem;
+        font-size: 0.8125rem;
+        line-height: 1.7;
+        overflow-x: auto;
+    }
+
+    /* Callout --------------------------------------------------------------- */
+
+    .st-callout {
+        display: flex;
+        gap: 0.875rem;
+        margin-block: 1.5rem;
+        padding: 1rem 1.125rem;
+        border-radius: var(--st-radius-md);
+        border: 1px solid var(--st-border);
+        background: var(--st-surface-muted);
+        color: var(--st-text-secondary);
+        font-size: 0.9375rem;
+        line-height: 1.6;
+
+        > svg {
+            flex-shrink: 0;
+            width: 1.125rem;
+            height: 1.125rem;
+            margin-top: 0.1875rem;
+            color: var(--st-text);
+        }
+
+        p {
+            margin: 0;
+        }
+
+        p + p {
+            margin-top: 0.5rem;
+        }
+    }
+
+    .st-callout__title {
+        display: block;
+        margin-bottom: 0.125rem;
+        font-weight: 600;
+        color: var(--st-text);
+    }
+
+    .st-callout--warning {
+        background: var(--st-surface);
+        border-color: var(--st-border-strong);
+        box-shadow: inset 3px 0 0 var(--st-text);
+    }
+
+    .st-callout--tip {
+        background: var(--st-glass-bg);
+        border-color: var(--st-glass-border);
+    }
+
+    /* Header / nav ---------------------------------------------------------- */
+
+    /* The logo SVG sets an intrinsic width of 15rem. Pin the box so a flex
+       header cannot grow to that and overflow a phone viewport. */
+    .st-logo {
+        width: 2rem;
+        height: 2rem;
+        min-width: 2rem;
+        max-width: 2rem;
+        flex: none;
+    }
+
+    .st-logo--sm {
+        width: 1.5rem;
+        height: 1.5rem;
+        min-width: 1.5rem;
+        max-width: 1.5rem;
+    }
+
+    .st-header {
+        position: sticky;
+        top: 0;
+        z-index: 40;
+        height: var(--st-header-height);
+        overflow-x: clip;
+        background: var(--st-glass-bg);
+        border-bottom: 1px solid var(--st-glass-border);
+        -webkit-backdrop-filter: blur(var(--st-glass-blur)) saturate(var(--st-glass-saturate));
+        backdrop-filter: blur(var(--st-glass-blur)) saturate(var(--st-glass-saturate));
+        view-transition-name: site-header;
+    }
+
+    .st-nav-link {
+        display: inline-flex;
+        align-items: center;
+        height: 2rem;
+        padding-inline: 0.625rem;
+        border-radius: var(--st-radius-pill);
+        font-size: 0.875rem;
+        font-weight: 500;
+        color: var(--st-text-secondary);
+        text-decoration: none;
+        transition: color var(--st-duration-base) var(--st-ease-out), background-color var(--st-duration-base) var(--st-ease-out);
+
+        &:hover {
+            color: var(--st-text);
+            background: var(--st-surface-muted);
+        }
+
+        &[aria-current="page"] {
+            color: var(--st-text);
+        }
+    }
+
+    .st-search-trigger {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        height: 2.25rem;
+        padding-inline: 0.75rem 0.375rem;
+        border-radius: var(--st-radius-pill);
+        border: 1px solid var(--st-border);
+        background: var(--st-surface-muted);
+        color: var(--st-text-muted);
+        font-size: 0.875rem;
+        text-align: left;
+        cursor: pointer;
+        transition: border-color var(--st-duration-base) var(--st-ease-out), background-color var(--st-duration-base) var(--st-ease-out);
+
+        &:hover {
+            border-color: var(--st-border-strong);
+            background: var(--st-surface);
+        }
+    }
+
+    .st-kbd {
+        display: inline-flex;
+        align-items: center;
+        height: 1.375rem;
+        padding-inline: 0.4375rem;
+        border-radius: var(--st-radius-pill);
+        border: 1px solid var(--st-border);
+        background: var(--st-surface);
+        font-family: var(--st-font-mono);
+        font-size: 0.6875rem;
+        color: var(--st-text-muted);
+    }
+
+    /* Stacked "Get Started" label, carried over from the live header. */
+    .st-btn__stack {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        line-height: 1.05;
+
+        small {
+            font-size: 0.625rem;
+            font-weight: 500;
+            letter-spacing: 0.02em;
+            opacity: 0.6;
+        }
+    }
+
+    /* Hero search field (opens the Cmd+K dialog). */
+    .st-search-hero {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        width: 100%;
+        height: 3.25rem;
+        padding-inline: 1.125rem 0.625rem;
+        border-radius: var(--st-radius-pill);
+        cursor: text;
+        color: var(--st-text-muted);
+        font-size: 1rem;
+        text-align: left;
+        transition: box-shadow var(--st-duration-base) var(--st-ease-out), border-color var(--st-duration-base) var(--st-ease-out);
+
+        &:hover {
+            border-color: var(--st-border-strong);
+            box-shadow: inset 0 1px 0 var(--st-glass-highlight), var(--st-shadow-3);
+        }
+    }
+
+    /* Section eyebrow label. */
+    .st-eyebrow {
+        font-size: 0.75rem;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--st-text-muted);
+    }
+}
+
+/*
+ * streams-ui bridge: token styling for forms rendered by the streams-ui
+ * builders (see /ui). A preview of how streams-ui can adopt the shared tokens.
+ */
+@layer components {
+    .ui-form {
+        label span {
+            color: var(--st-text);
+            font-size: 0.875rem;
+        }
+
+        input:not([type="checkbox"], [type="radio"]),
+        textarea,
+        select {
+            width: 100%;
+            min-height: 2.5rem;
+            padding: 0.5rem 0.875rem;
+            border: 1px solid var(--st-border-strong);
+            border-radius: var(--st-radius-md);
+            background: var(--st-surface);
+            color: var(--st-text);
+            font-size: 0.9375rem;
+            box-shadow: var(--st-shadow-1);
+            transition: border-color var(--st-duration-base) var(--st-ease-out), box-shadow var(--st-duration-base) var(--st-ease-out);
+
+            &:focus {
+                outline: none;
+                border-color: var(--st-text);
+                box-shadow: 0 0 0 3px var(--st-border);
+            }
+        }
+
+        textarea {
+            min-height: 7rem;
+        }
+    }
+}

@@ -2,118 +2,197 @@
 title: Streams
 description: 'Streams is an agentic-first Laravel package system for data modeling, admin UI, REST APIs, and developer tooling.'
 uri: /
-layout: blank
+layout: page
 nav_disabled: true
 ---
+@php
+$streamJson = <<<'JSON'
+{
+    "name": "Pages",
+    "config": {
+        "source": { "format": "html" }
+    },
+    "routes": [
+        { "handle": "view", "uri": "{uri}", "view": "{layout}" }
+    ],
+    "fields": [
+        { "handle": "title", "type": "string", "required": true },
+        { "handle": "uri", "type": "string", "unique": true },
+        { "handle": "body", "type": "string" }
+    ]
+}
+JSON;
 
-@include('partials.topbar')
-@include('partials.docs-search')
+$entryHtml = <<<'HTML'
+---
+title: Hello
+uri: hello
+layout: page
+---
+<h1>{{ $entry->title }}</h1>
+<p>Every file in streams/data/pages is an entry.</p>
+HTML;
 
-<div class="pb-24 bg-[var(--color-page)]">
-    <section class="container mx-auto max-w-3xl px-8 pt-20 pb-12 text-center">
-        <h1 class="text-4xl md:text-5xl font-bold leading-tight tracking-tight text-[var(--color-text)]">
-            Unified Laravel packages.
+$queryPhp = <<<'PHP'
+use Streams\Core\Support\Facades\Streams;
+
+$pages = Streams::entries('pages')
+    ->where('uri', 'LIKE', 'docs%')
+    ->orderBy('title')
+    ->get();
+
+// Swap the flat files for a database adapter later:
+// the query does not change.
+PHP;
+
+$packages = [
+    ['title' => 'Core', 'eyebrow' => 'streams/core', 'href' => '/docs/core/introduction', 'body' => 'Streams, fields, entries, criteria, and repositories over any storage adapter.'],
+    ['title' => 'UI', 'eyebrow' => 'streams/ui', 'href' => '/docs/ui/introduction', 'body' => 'Code-configured admin panels, resources, forms, and tables on Livewire 3.'],
+    ['title' => 'API', 'eyebrow' => 'streams/api', 'href' => '/docs/api/introduction', 'body' => 'A criteria-scoped hypermedia REST API that describes itself.'],
+    ['title' => 'SDK', 'eyebrow' => 'streams/sdk', 'href' => '/docs/sdk/introduction', 'body' => 'Generators, stubs, and the machine interface for agents.'],
+    ['title' => 'Testing', 'eyebrow' => 'streams/testing', 'href' => '/docs/testing/introduction', 'body' => 'A shared TestCase and helpers for package and app tests.'],
+    ['title' => 'Client', 'eyebrow' => '@laravel-streams/api-client', 'href' => '/docs/client/introduction', 'body' => 'A zero-dependency JavaScript client with a fluent criteria builder.'],
+];
+
+$starters = Streams::entries('packages')->where('type', 'IN', ['starter', 'example'])->where('enabled', true)->get();
+$addons = Streams::entries('packages')->where('type', 'NOT IN', ['starter', 'example'])->where('enabled', true)->get();
+@endphp
+
+{{-- Hero --}}
+<section class="st-ambient overflow-x-clip">
+    <div class="mx-auto max-w-4xl px-6 pt-20 pb-16 text-center sm:pt-28">
+        <div class="animate-rise">
+            <x-pill variant="glass" dot>Agentic-first packages for Laravel and the TALL stack</x-pill>
+        </div>
+
+        <h1 class="mt-8 animate-rise text-5xl font-extrabold leading-[0.98] tracking-display text-balance text-fg [animation-delay:60ms] sm:text-7xl">
+            Laravel, described in&nbsp;configuration.
         </h1>
-        <p class="mt-5 text-lg text-[var(--color-text-secondary)] max-w-xl mx-auto">
-            Composable streams, version-controlled config, and familiar workflows for
-            <span class="font-semibold text-[var(--color-text)]">Laravel developers and teams</span>.
+
+        <p class="mx-auto mt-6 max-w-2xl animate-rise text-lg leading-relaxed text-fg-secondary text-pretty [animation-delay:120ms] sm:text-xl">
+            Model your domain as streams in JSON. Query it through one criteria API, render it with Blade and Livewire,
+            and let people and AI agents build on it with predictable, consistent results.
         </p>
-        <input
-            type="search"
-            class="docs-search-input-hero max-w-xl mx-auto"
-            placeholder="Search documentation…"
-            aria-label="Search documentation"
-            data-docs-search-input-hero
-            readonly
-        />
-    </section>
 
-    <section class="container mx-auto max-w-4xl px-8 pb-16">
-        <p class="docs-section-title text-center">Jump to reference</p>
-        <div class="docs-pill-grid">
-            <a href="/docs/core/introduction" class="docs-pill"><strong>Core</strong><span>Data modeling</span></a>
-            <a href="/docs/ui/introduction" class="docs-pill"><strong>UI</strong><span>Admin panels</span></a>
-            <a href="/docs/api/introduction" class="docs-pill"><strong>API</strong><span>REST endpoints</span></a>
-            <a href="/docs/core/criteria" class="docs-pill"><strong>Criteria</strong><span>Queries</span></a>
-            <a href="/docs/core/repositories" class="docs-pill"><strong>Repositories</strong><span>CRUD</span></a>
-            <a href="/docs/sdk/introduction" class="docs-pill"><strong>SDK</strong><span>Generators</span></a>
+        <div class="mt-10 flex animate-rise flex-wrap items-center justify-center gap-3 [animation-delay:180ms]">
+            <x-button href="/docs/installation" size="lg" arrow>Get Started</x-button>
+            <x-button href="/explore/idea" variant="glass" size="lg">Explore</x-button>
         </div>
-    </section>
 
-    <section class="container mx-auto max-w-3xl px-8 pb-20 text-center">
-        <p class="text-sm text-[var(--color-text-muted)] mb-6">New to Streams?</p>
-        <div class="flex flex-wrap justify-center gap-4">
-            <a href="/docs/installation" class="relative inline-block px-6 py-2 group">
-                <span class="absolute inset-0 w-full h-full transition duration-300 ease-out transform translate-x-1 translate-y-1 bg-black group-hover:translate-x-0 group-hover:translate-y-0"></span>
-                <span class="absolute inset-0 w-full h-full bg-white border-2 border-black"></span>
-                <span class="relative text-black">Installation guide</span>
-            </a>
-            <a href="/docs" class="relative inline-block px-6 py-2 group">
-                <span class="absolute inset-0 w-full h-full bg-white border-2 border-black"></span>
-                <span class="relative text-black">All documentation</span>
-            </a>
+        <div class="mx-auto mt-12 max-w-xl animate-rise [animation-delay:240ms]">
+            <x-glass as="button" type="button" class="st-search-hero" data-docs-search-open aria-label="Search documentation">
+                <svg class="h-5 w-5 shrink-0" viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="9" cy="9" r="5.75" stroke="currentColor" stroke-width="1.5"/><path d="M13.5 13.5L17 17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                <span class="flex-1">Search the documentation…</span>
+                <kbd class="st-kbd">⌘K</kbd>
+            </x-glass>
         </div>
-    </section>
+    </div>
+</section>
 
-    <section class="container mx-auto max-w-7xl text-center pt-8 px-8 border-t border-[var(--color-border)]">
-        <div class="text-3xl font-bold leading-snug pt-16">
-            Starter projects and examples
+{{-- Code: the Mac-window panel from the live site --}}
+<section class="mx-auto max-w-6xl px-6 py-16 sm:py-24">
+    <div class="grid items-center gap-12 lg:grid-cols-[1fr_1.25fr] lg:gap-16">
+        <div>
+            <p class="st-eyebrow">How it works</p>
+            <h2 class="mt-3 text-3xl font-bold tracking-tight text-balance sm:text-4xl">One file per domain. Everything else follows.</h2>
+            <ol class="mt-10 grid gap-7">
+                <li class="flex gap-4">
+                    <span class="flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-line bg-surface font-mono text-xs text-fg-secondary shadow-e1">1</span>
+                    <div>
+                        <p class="font-semibold">Describe a stream</p>
+                        <p class="mt-1 text-sm leading-relaxed text-fg-secondary">Fields, routes, and storage live in <code class="font-mono text-[0.8125rem] text-fg">streams/*.json</code>, versioned with your code.</p>
+                    </div>
+                </li>
+                <li class="flex gap-4">
+                    <span class="flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-line bg-surface font-mono text-xs text-fg-secondary shadow-e1">2</span>
+                    <div>
+                        <p class="font-semibold">Add entries</p>
+                        <p class="mt-1 text-sm leading-relaxed text-fg-secondary">Flat files, JSON, or a database. The storage adapter can change without touching application code.</p>
+                    </div>
+                </li>
+                <li class="flex gap-4">
+                    <span class="flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-line bg-surface font-mono text-xs text-fg-secondary shadow-e1">3</span>
+                    <div>
+                        <p class="font-semibold">Query, route, and render</p>
+                        <p class="mt-1 text-sm leading-relaxed text-fg-secondary">Criteria queries, stream routes, admin UI, and a REST API all read the same definition. This site is built exactly this way.</p>
+                    </div>
+                </li>
+            </ol>
         </div>
-        <p class="text-lg mt-3 text-[var(--color-text-secondary)]">
-            Open-source building blocks to get familiar with our packages.
-        </p>
-    </section>
 
-    <section class="container mx-auto max-w-7xl text-center pt-12 px-8 flex flex-wrap justify-center">
-        @foreach(Streams::entries('packages')->where('type', 'IN', ['starter', 'example'])->where('enabled', true)->get() as $package)
-        <div class="w-full sm:w-1/2 lg:w-1/4 flex p-2">
-            <div class="p-4 flex flex-col w-full rounded border border-[var(--color-border)] bg-[var(--color-surface)] hover:border-black transition m-0">
-                <h3 class="text-xl mb-2 font-bold">{{ $package->name }}</h3>
-                <div class="font-mono text-sm mb-2 text-[var(--color-text-muted)]">{{ $package->composer->name }}</div>
-                <p class="text-sm mb-8 flex-grow text-[var(--color-text-secondary)]">
-                    {{ $package->composer->description }}
+        <x-code-block :tabs="[
+            ['label' => 'streams/pages.json', 'lang' => 'json', 'code' => $streamJson],
+            ['label' => 'pages/hello.html', 'lang' => 'markup', 'code' => $entryHtml],
+            ['label' => 'query.php', 'lang' => 'php', 'code' => $queryPhp],
+        ]" />
+    </div>
+</section>
+
+{{-- Packages --}}
+<section class="mx-auto max-w-6xl px-6 py-16">
+    <div class="flex flex-wrap items-end justify-between gap-4">
+        <div>
+            <p class="st-eyebrow">Packages</p>
+            <h2 class="mt-3 text-3xl font-bold tracking-tight">Composable by design.</h2>
+        </div>
+        <x-button href="/docs" variant="ghost" arrow>All documentation</x-button>
+    </div>
+    <div class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        @foreach ($packages as $package)
+        <x-card :href="$package['href']" :title="$package['title']" :eyebrow="$package['eyebrow']" glass>{{ $package['body'] }}</x-card>
+        @endforeach
+    </div>
+</section>
+
+{{-- Agents --}}
+<section class="mx-auto max-w-6xl px-6 py-16">
+    <x-glass class="rounded-2xl p-8 sm:p-12">
+        <div class="grid gap-10 lg:grid-cols-[1fr_1.4fr]">
+            <div>
+                <p class="st-eyebrow">For agents, too</p>
+                <h2 class="mt-3 text-3xl font-bold tracking-tight text-balance">Conventions an agent can follow.</h2>
+                <p class="mt-4 leading-relaxed text-fg-secondary">
+                    Streams writes good design down as configuration. The same structure that keeps a team consistent gives
+                    AI agents something concrete to read, validate, and extend.
                 </p>
-                <div class="pb-2">
-                    <a href="/addons/{{ $package->composer->name }}" class="relative inline-block px-5 py-2 group text-sm">
-                        <span class="absolute inset-0 w-full h-full transition duration-300 ease-out transform translate-x-1 translate-y-1 bg-black group-hover:translate-x-0 group-hover:translate-y-0"></span>
-                        <span class="absolute inset-0 w-full h-full bg-white border-2 border-black"></span>
-                        <span class="relative text-black">Learn more</span>
-                    </a>
-                </div>
+            </div>
+            <div class="grid gap-4 sm:grid-cols-2">
+                <x-card href="/docs/sdk/ai-prompts" title="Prompt guide" eyebrow="docs">Prompts and patterns for generating streams, entries, and UI with AI assistants.</x-card>
+                <x-card href="/explore/agents" title="Agents and MCP" eyebrow="explore">Where Streams is heading as a machine interface for local development.</x-card>
+                <x-card href="/explore.json" title="A tree agents can walk" eyebrow="/explore.json">Every Explore node is also served as Markdown and JSON.</x-card>
+                <x-card href="/docs/sdk/introduction" title="SDK generators" eyebrow="streams/sdk">Artisan generators and stubs that keep output predictable.</x-card>
             </div>
         </div>
-        @endforeach
-    </section>
+    </x-glass>
+</section>
 
-    <section class="container mx-auto max-w-7xl text-center pt-20 px-8">
-        <div class="text-3xl font-bold leading-snug">
-            Explore packages
+{{-- Starters and addons --}}
+@if ($starters->isNotEmpty() || $addons->isNotEmpty())
+<section class="mx-auto max-w-6xl px-6 py-16">
+    <div class="flex flex-wrap items-end justify-between gap-4">
+        <div>
+            <p class="st-eyebrow">Starters and addons</p>
+            <h2 class="mt-3 text-3xl font-bold tracking-tight">Open-source building blocks.</h2>
         </div>
-        <p class="text-lg mt-3 text-[var(--color-text-secondary)]">
-            Simplify development with versatile, composable Laravel packages.
-        </p>
-    </section>
-
-    <section class="container mx-auto max-w-7xl text-center pt-12 px-8 pb-8 flex flex-wrap justify-center">
-        @foreach(Streams::entries('packages')->where('type', 'NOT IN', ['starter', 'example'])->where('enabled', true)->get() as $package)
-        <div class="w-full sm:w-1/2 lg:w-1/4 flex p-2">
-            <div class="p-4 w-full flex flex-col rounded border border-[var(--color-border)] bg-[var(--color-surface)] hover:border-black transition">
-                <h3 class="text-xl mb-2 font-bold">{{ $package->name }}</h3>
-                <div class="font-mono text-sm mb-2 text-[var(--color-text-muted)]">{{ $package->composer->name }}</div>
-                <p class="text-sm mb-8 flex-grow text-[var(--color-text-secondary)]">
-                    {{ $package->composer->description }}
-                </p>
-                <div class="pb-2">
-                    <a href="/addons/{{ $package->composer->name }}" class="relative inline-block px-5 py-2 group text-sm">
-                        <span class="absolute inset-0 w-full h-full transition duration-300 ease-out transform translate-x-1 translate-y-1 bg-black group-hover:translate-x-0 group-hover:translate-y-0"></span>
-                        <span class="absolute inset-0 w-full h-full bg-white border-2 border-black"></span>
-                        <span class="relative text-black">Learn more</span>
-                    </a>
-                </div>
-            </div>
-        </div>
+        <x-button href="/addons" variant="ghost" arrow>Browse addons</x-button>
+    </div>
+    <div class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        @foreach ($starters->merge($addons) as $package)
+        <x-card :href="'/addons/'.$package->composer->name" :title="$package->name" :eyebrow="$package->composer->name">{{ $package->composer->description }}</x-card>
         @endforeach
-    </section>
-</div>
+    </div>
+</section>
+@endif
 
-@vite(['resources/js/app.js'])
+{{-- Explore call to action --}}
+<section class="st-ambient mx-auto max-w-6xl px-6 pt-16 pb-28 sm:pt-24">
+    <div class="max-w-3xl">
+        <p class="st-eyebrow">Explore</p>
+        <h2 class="explore-title mt-4">Have a project or idea in mind?</h2>
+        <p class="explore-body mt-8 max-w-2xl">Walk through a few questions and test it against the features, principles, and roadmap of Streams.</p>
+        <div class="mt-10 flex flex-wrap items-center gap-3">
+            <x-button href="/explore/idea" size="xl" arrow>Explore your idea</x-button>
+            <x-button href="/explore/features" variant="link" size="xl">Jump to features</x-button>
+        </div>
+    </div>
+</section>

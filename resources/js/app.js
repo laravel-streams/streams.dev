@@ -1,12 +1,7 @@
 import './bootstrap';
-import '../scss/app.scss';
+import '../css/app.css';
 
 import Alpine from 'alpinejs';
-
-window.Alpine = Alpine;
-
-Alpine.start();
-
 import Prism from 'prismjs';
 import 'prismjs/components/prism-bash';
 import 'prismjs/components/prism-php';
@@ -17,6 +12,17 @@ import 'prismjs/components/prism-markup';
 import AnchorJS from 'anchor-js';
 import * as tocbot from 'tocbot';
 import { initDocsSearch } from './docs-search';
+
+// Livewire 3 ships its own Alpine. Start ours only on pages that never load it,
+// and only after parse, so a late Livewire script is visible to the check.
+function startAlpine() {
+    if (window.Livewire || window.Alpine) {
+        return;
+    }
+
+    window.Alpine = Alpine;
+    Alpine.start();
+}
 
 function highlightCode() {
     Prism.highlightAll();
@@ -56,6 +62,7 @@ function initTocbot() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+    startAlpine();
     highlightCode();
     initAnchors();
     initTocbot();

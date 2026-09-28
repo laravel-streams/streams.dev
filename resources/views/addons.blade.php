@@ -1,26 +1,11 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+@extends('layouts.shell')
 
-<head>
-    @include('partials.head')
-</head>
+@section('main')
+<div class="mx-auto flex max-w-6xl flex-col gap-8 px-4 pt-12 pb-24 md:flex-row lg:px-6">
+    @include('partials.filters')
 
-<body class="antialiased bg-slate-50">
-
-    @include('partials.topbar')
-    
-    <main class="container mx-auto flex mt-4">
-        
-        @include('partials.filters')
-
-        <div class="flex-grow">
-            {!! View::parse($entry->body) !!}
-        </div>
-
-    </main>
-
-    @vite(['resources/js/app.js'])
-    
-</body>
-
-</html>
+    <div class="min-w-0 flex-1">
+        {!! View::parse($entry->body) !!}
+    </div>
+</div>
+@endsection

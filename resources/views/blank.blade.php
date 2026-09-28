@@ -1,16 +1,5 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+@extends('layouts.shell', ['chrome' => false])
 
-<head>
-    @include('partials.head')
-</head>
-
-<body class="antialiased">
-
+@section('main')
     {!! View::parse($entry->body) !!}
-
-    @vite(['resources/js/app.js'])
-    
-</body>
-
-</html>
+@endsection

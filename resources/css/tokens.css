@@ -1,0 +1,156 @@
+/*
+ * Streams design tokens
+ *
+ * Framework-agnostic CSS custom properties shared by streams.dev and
+ * (planned) streams-ui. Every token lives under the `--st-` namespace so it
+ * can sit next to other design systems without collisions. Tailwind reads
+ * these through the `@theme` block in `app.css`; plain CSS can use them
+ * directly.
+ *
+ * Schemes: light is the default. Dark applies when <html> carries
+ * `.dark` or `data-theme="dark"` (set by the theme toggle, which falls back
+ * to `prefers-color-scheme`).
+ */
+
+:root {
+    color-scheme: light;
+
+    /* Neutral scale (monochrome only). */
+    --st-gray-0: #ffffff;
+    --st-gray-25: #fcfcfc;
+    --st-gray-50: #fafafa;
+    --st-gray-100: #f4f4f5;
+    --st-gray-150: #ededee;
+    --st-gray-200: #e4e4e7;
+    --st-gray-300: #d4d4d8;
+    --st-gray-400: #a1a1aa;
+    --st-gray-500: #71717a;
+    --st-gray-600: #52525b;
+    --st-gray-700: #3f3f46;
+    --st-gray-800: #27272a;
+    --st-gray-850: #1d1d20;
+    --st-gray-900: #18181b;
+    --st-gray-925: #121214;
+    --st-gray-950: #0a0a0b;
+    --st-gray-1000: #000000;
+
+    /* Semantic surfaces. */
+    --st-page: var(--st-gray-50);
+    --st-surface: var(--st-gray-0);
+    --st-surface-muted: var(--st-gray-100);
+    --st-surface-sunken: var(--st-gray-150);
+    --st-inverse: var(--st-gray-950);
+    --st-on-inverse: var(--st-gray-0);
+    --st-inverse-hover: var(--st-gray-800);
+
+    /* Semantic text. */
+    --st-text: var(--st-gray-950);
+    --st-text-secondary: var(--st-gray-600);
+    --st-text-muted: var(--st-gray-500);
+    --st-text-faint: var(--st-gray-400);
+
+    /* Lines. */
+    --st-border: rgb(10 10 11 / 0.08);
+    --st-border-strong: rgb(10 10 11 / 0.16);
+    --st-focus: var(--st-gray-950);
+
+    /* Code. */
+    --st-code-bg: var(--st-gray-925);
+    --st-code-text: var(--st-gray-200);
+    --st-code-chrome: var(--st-gray-850);
+
+    /* Glass layers: translucent surface + blur + thin border + top highlight. */
+    --st-glass-bg: rgb(255 255 255 / 0.62);
+    --st-glass-bg-strong: rgb(255 255 255 / 0.82);
+    --st-glass-border: rgb(10 10 11 / 0.07);
+    --st-glass-highlight: rgb(255 255 255 / 0.9);
+    --st-glass-blur: 18px;
+    --st-glass-saturate: 1.4;
+
+    /* Ambient backdrop glow (used sparingly behind hero areas). */
+    --st-glow-1: rgb(10 10 11 / 0.06);
+    --st-glow-2: rgb(10 10 11 / 0.035);
+
+    /* Elevation: soft, layered, low-contrast. */
+    --st-shadow-0: none;
+    --st-shadow-1: 0 1px 2px rgb(10 10 11 / 0.04), 0 1px 1px rgb(10 10 11 / 0.03);
+    --st-shadow-2: 0 2px 4px rgb(10 10 11 / 0.03), 0 6px 16px -4px rgb(10 10 11 / 0.08);
+    --st-shadow-3: 0 4px 8px rgb(10 10 11 / 0.03), 0 16px 40px -12px rgb(10 10 11 / 0.14);
+    --st-shadow-4: 0 8px 16px rgb(10 10 11 / 0.04), 0 32px 80px -24px rgb(10 10 11 / 0.22);
+
+    /* Radius: rounded and geometric. */
+    --st-radius-xs: 0.375rem;
+    --st-radius-sm: 0.5rem;
+    --st-radius-md: 0.75rem;
+    --st-radius-lg: 1rem;
+    --st-radius-xl: 1.5rem;
+    --st-radius-2xl: 2rem;
+    --st-radius-pill: 9999px;
+
+    /* Motion: subtle only. Collapsed to ~0 under prefers-reduced-motion. */
+    --st-ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+    --st-ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+    --st-duration-fast: 120ms;
+    --st-duration-base: 200ms;
+    --st-duration-slow: 420ms;
+    --st-lift: -1px;
+
+    /* Typography. */
+    --st-font-sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    --st-font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+    --st-tracking-tight: -0.025em;
+    --st-tracking-display: -0.045em;
+
+    /* Layout. */
+    --st-header-height: 4rem;
+    --st-sidebar-width: 15.5rem;
+    --st-toc-width: 12rem;
+}
+
+:root.dark,
+:root[data-theme="dark"] {
+    color-scheme: dark;
+
+    --st-page: var(--st-gray-950);
+    --st-surface: var(--st-gray-925);
+    --st-surface-muted: var(--st-gray-900);
+    --st-surface-sunken: var(--st-gray-1000);
+    --st-inverse: var(--st-gray-50);
+    --st-on-inverse: var(--st-gray-950);
+    --st-inverse-hover: var(--st-gray-200);
+
+    --st-text: var(--st-gray-50);
+    --st-text-secondary: var(--st-gray-400);
+    --st-text-muted: #8b8b94;
+    --st-text-faint: var(--st-gray-600);
+
+    --st-border: rgb(255 255 255 / 0.08);
+    --st-border-strong: rgb(255 255 255 / 0.16);
+    --st-focus: var(--st-gray-50);
+
+    --st-code-bg: var(--st-gray-1000);
+    --st-code-text: var(--st-gray-200);
+    --st-code-chrome: var(--st-gray-900);
+
+    --st-glass-bg: rgb(18 18 20 / 0.58);
+    --st-glass-bg-strong: rgb(18 18 20 / 0.8);
+    --st-glass-border: rgb(255 255 255 / 0.08);
+    --st-glass-highlight: rgb(255 255 255 / 0.06);
+
+    --st-glow-1: rgb(255 255 255 / 0.07);
+    --st-glow-2: rgb(255 255 255 / 0.035);
+
+    --st-shadow-1: 0 1px 2px rgb(0 0 0 / 0.4);
+    --st-shadow-2: 0 2px 4px rgb(0 0 0 / 0.3), 0 8px 20px -6px rgb(0 0 0 / 0.5);
+    --st-shadow-3: 0 4px 8px rgb(0 0 0 / 0.3), 0 20px 48px -12px rgb(0 0 0 / 0.6);
+    --st-shadow-4: 0 8px 16px rgb(0 0 0 / 0.35), 0 36px 90px -24px rgb(0 0 0 / 0.7);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    :root {
+        --st-duration-fast: 0.01ms;
+        --st-duration-base: 0.01ms;
+        --st-duration-slow: 0.01ms;
+        --st-lift: 0px;
+    }
+}
