@@ -150,32 +150,192 @@
         border-left: 1px solid var(--st-border);
     }
 
-    .docs-search-trigger {
+    /* Inline filter at the top of the sidebar (resources/js/docs-filter.js). */
+    .docs-filter {
         display: flex;
         align-items: center;
         gap: 0.5rem;
-        width: 100%;
         height: 2.5rem;
-        padding-inline: 0.875rem 0.4375rem;
+        padding-inline: 0.75rem 0.3125rem;
         margin-bottom: 0.5rem;
-        font-size: var(--st-text-sm);
-        color: var(--st-text-muted);
-        background: var(--st-glass-bg-strong);
-        box-shadow: var(--st-glass-ring);
         border: 1px solid var(--st-glass-border);
         border-radius: var(--st-radius-control);
-        cursor: pointer;
-        text-align: left;
-        transition: border-color var(--st-duration-base) var(--st-ease-out);
+        background-color: var(--st-glass-bg-strong);
+        box-shadow: var(--st-glass-ring);
+        color: var(--st-text-muted);
+        transition:
+            border-color var(--st-duration-base) var(--st-ease-out),
+            --st-edge var(--st-duration-base) var(--st-ease-out);
 
         &:hover {
             border-color: var(--st-border-strong);
-            color: var(--st-text-secondary);
+            --st-edge: var(--st-border-strong);
         }
 
-        kbd {
-            margin-left: auto;
+        /* Focus shows on the field: a 2px ring that follows the chamfer. */
+        &:focus-within {
+            border-color: var(--st-focus);
+            box-shadow: inset 0 0 0 1px var(--st-focus);
+            --st-edge: var(--st-focus);
+            --_sw: 2px;
+            color: var(--st-text-secondary);
         }
+    }
+
+    .docs-filter__icon {
+        flex: none;
+        width: 1rem;
+        height: 1rem;
+    }
+
+    .docs-filter__input {
+        flex: 1;
+        min-width: 0;
+        height: 100%;
+        border: 0;
+        background: transparent;
+        color: var(--st-text);
+        font-size: var(--st-text-sm);
+
+        &::placeholder {
+            color: var(--st-text-muted);
+        }
+
+        &:focus,
+        &:focus-visible {
+            outline: none;
+            box-shadow: none;
+        }
+
+        &::-webkit-search-cancel-button {
+            -webkit-appearance: none;
+            appearance: none;
+        }
+    }
+
+    .docs-filter__kbd {
+        flex: none;
+        display: inline-flex;
+        align-items: center;
+        height: 1.625rem;
+        padding-inline: 0.4375rem;
+        border: 1px solid var(--st-border);
+        border-radius: var(--st-radius-xs);
+        background-color: var(--st-surface);
+        font-size: var(--st-text-2xs);
+        color: var(--st-text-muted);
+        cursor: pointer;
+        transition: color var(--st-duration-fast) var(--st-ease-out), border-color var(--st-duration-fast) var(--st-ease-out);
+
+        &:hover {
+            color: var(--st-text);
+            border-color: var(--st-border-strong);
+        }
+
+        &:focus-visible {
+            outline-offset: -2px;
+        }
+    }
+
+    .docs-filter__meta {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 0.5rem;
+        padding: 0 0.75rem 0.375rem;
+        font-size: var(--st-text-xs);
+        color: var(--st-text-muted);
+    }
+
+    .docs-filter__next {
+        flex: none;
+        font-size: var(--st-text-xs);
+        font-weight: 500;
+        color: var(--st-text-secondary);
+        cursor: pointer;
+
+        &:hover {
+            color: var(--st-accent);
+        }
+    }
+
+    .docs-filter__empty {
+        margin: 0.25rem 0 1rem;
+        padding: 0.875rem 0.875rem 0.75rem;
+        border: 1px dashed var(--st-border-strong);
+        border-radius: var(--st-radius-sm);
+        font-size: var(--st-text-sm);
+        line-height: 1.45;
+        color: var(--st-text-muted);
+
+        strong {
+            color: var(--st-text);
+            font-weight: 600;
+        }
+    }
+
+    .docs-filter__empty-action {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.375rem;
+        margin-top: 0.5rem;
+        font-weight: 600;
+        color: var(--st-accent);
+        cursor: pointer;
+
+        kbd {
+            font-size: var(--st-text-2xs);
+            font-weight: 500;
+            color: var(--st-text-muted);
+        }
+
+        &:hover {
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+    }
+
+    /* Collapsed package lists are in the markup for the filter, hidden by default. */
+    .docs-nav-collapsed {
+        display: none;
+    }
+
+    /* Filtering: hide non-matches, open every container that holds a match. */
+    .docs-sidebar.is-filtering {
+        .is-filter-hidden {
+            display: none !important;
+        }
+
+        .is-filter-open {
+            display: block !important;
+        }
+    }
+
+    /* The matched text, in the accent color. */
+    .docs-filter-mark {
+        padding: 0 0.0625rem;
+        border-radius: 2px;
+        background-color: var(--st-accent-soft);
+        color: var(--st-accent-ink);
+        font-weight: 650;
+    }
+
+    /* Keyboard position in the filtered list. */
+    .docs-nav-link.is-filter-active {
+        color: var(--st-text);
+        background-color: var(--st-glass-bg-strong);
+        box-shadow: inset 0 0 0 1px var(--st-border-strong);
+
+        &::before {
+            opacity: 1;
+            transform: scaleY(0.7);
+        }
+    }
+
+    /* "On this page": matching entries are marked and lifted to full text
+       color; the rest keep their normal (AA) muted color rather than fading. */
+    .documentation__toc .toc-link.is-filter-hit {
+        color: var(--st-text);
     }
 
     .docs-edit {
@@ -632,4 +792,25 @@
         white-space: nowrap;
         overflow-wrap: normal;
     }
+}
+
+/* In-page matches from the sidebar filter (CSS Custom Highlight API). */
+::highlight(docs-filter) {
+    background-color: rgb(124 58 237 / 0.2);
+    color: inherit;
+}
+
+::highlight(docs-filter-current) {
+    background-color: rgb(124 58 237 / 0.42);
+    color: inherit;
+}
+
+:root.dark ::highlight(docs-filter),
+:root[data-theme="dark"] ::highlight(docs-filter) {
+    background-color: rgb(167 139 250 / 0.28);
+}
+
+:root.dark ::highlight(docs-filter-current),
+:root[data-theme="dark"] ::highlight(docs-filter-current) {
+    background-color: rgb(167 139 250 / 0.38);
 }

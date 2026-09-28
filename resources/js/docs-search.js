@@ -47,7 +47,7 @@ export function initDocsSearch() {
     // Show the dialog immediately (so the open animation isn't gated on the
     // network) and fetch the index in the background; re-run any query typed
     // while it was loading.
-    const open = () => {
+    const open = (query = '') => {
         loadIndex()
             .then(() => {
                 if (isOpen() && input.value.trim()) {
@@ -60,9 +60,12 @@ export function initDocsSearch() {
         root.hidden = false;
         root.setAttribute('aria-hidden', 'false');
         document.body.classList.add('overflow-hidden');
-        input.value = '';
+        input.value = typeof query === 'string' ? query : '';
         activeIndex = -1;
         render([]);
+        if (input.value) {
+            search(input.value);
+        }
         requestAnimationFrame(() => input.focus());
     };
 
@@ -149,6 +152,9 @@ export function initDocsSearch() {
         }
         render(fuse.search(query, { limit: 12 }));
     };
+
+    // The sidebar filter hands its query over when it has no matches.
+    window.StreamsDocsSearch = { open: (query) => open(query) };
 
     document.querySelectorAll('[data-docs-search-open]').forEach((el) => {
         el.addEventListener('click', (e) => {

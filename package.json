@@ -2,7 +2,8 @@
     "private": true,
     "scripts": {
         "dev": "vite",
-        "build": "vite build"
+        "build": "vite build",
+        "test:js": "node --test tests/js/*.test.mjs"
     },
     "devDependencies": {
         "@tailwindcss/typography": "^0.5.20",
