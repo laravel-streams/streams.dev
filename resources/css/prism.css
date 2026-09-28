@@ -1,9 +1,11 @@
+/* Monochrome Prism theme. Code panels stay dark in both schemes. */
+
 code[class*="language-"],
 pre[class*="language-"] {
-    color: var(--color-code-text);
-    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-    font-size: 0.875rem;
-    line-height: 1.55;
+    color: var(--st-code-text);
+    font-family: var(--st-font-mono);
+    font-size: 0.8125rem;
+    line-height: 1.7;
     direction: ltr;
     text-align: left;
     white-space: pre;
@@ -14,30 +16,31 @@ pre[class*="language-"] {
 }
 
 pre[class*="language-"] {
-    padding: 1rem 1.125rem;
+    padding: 1.125rem 1.25rem;
     margin: 0;
     overflow: auto;
-    border-radius: 0.5rem;
-    background: var(--color-code-bg);
+    border-radius: var(--st-radius-md);
+    background: var(--st-code-bg);
 }
 
 :not(pre) > code[class*="language-"] {
-    padding: 0.15em 0.35em;
-    border-radius: 0.25rem;
-    background: var(--color-page);
-    border: 1px solid var(--color-border);
-    color: var(--color-text);
+    padding: 0.15em 0.4em;
+    border-radius: var(--st-radius-xs);
+    background: var(--st-surface-muted);
+    border: 1px solid var(--st-border);
+    color: var(--st-text);
 }
 
 .token.comment,
 .token.prolog,
 .token.doctype,
 .token.cdata {
-    color: #737373;
+    color: #6b6b74;
+    font-style: italic;
 }
 
 .token.punctuation {
-    color: #a3a3a3;
+    color: #8e8e98;
 }
 
 .token.property,
@@ -46,8 +49,13 @@ pre[class*="language-"] {
 .token.number,
 .token.constant,
 .token.symbol,
-.token.deleted {
-    color: #d4d4d4;
+.token.deleted,
+.token.operator,
+.token.entity,
+.token.url,
+.token.variable,
+.token.regex {
+    color: #d4d4d8;
 }
 
 .token.selector,
@@ -56,30 +64,16 @@ pre[class*="language-"] {
 .token.char,
 .token.builtin,
 .token.inserted {
-    color: #e5e5e5;
-}
-
-.token.operator,
-.token.entity,
-.token.url,
-.token.variable {
-    color: #d4d4d4;
+    color: #b4b4bc;
 }
 
 .token.atrule,
 .token.attr-value,
-.token.keyword {
-    color: #fafafa;
-}
-
+.token.keyword,
 .token.function,
 .token.class-name {
-    color: #f5f5f5;
-}
-
-.token.regex,
-.token.important {
-    color: #d4d4d4;
+    color: #fafafa;
+    font-weight: 500;
 }
 
 .token.important,

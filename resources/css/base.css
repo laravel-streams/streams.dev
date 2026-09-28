@@ -1,0 +1,90 @@
+@layer base {
+    html {
+        font-family: var(--st-font-sans);
+        background: var(--st-page);
+        color: var(--st-text);
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        text-rendering: optimizeLegibility;
+        scroll-padding-top: calc(var(--st-header-height) + 1rem);
+    }
+
+    body {
+        min-height: 100vh;
+        min-width: 0;
+        overflow-x: clip;
+        background: var(--st-page);
+        color: var(--st-text);
+    }
+
+    ::selection {
+        background: var(--st-inverse);
+        color: var(--st-on-inverse);
+    }
+
+    :focus-visible {
+        outline: 2px solid var(--st-focus);
+        outline-offset: 2px;
+        border-radius: var(--st-radius-xs);
+    }
+
+    svg {
+        max-width: 100%;
+    }
+
+    [x-cloak] {
+        display: none !important;
+    }
+
+    kbd {
+        font-family: var(--st-font-mono);
+    }
+}
+
+/* Cross-document page transitions (Chrome/Edge 126+, Safari 18.2+); a no-op elsewhere. */
+@view-transition {
+    navigation: auto;
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+    animation-duration: var(--st-duration-base);
+    animation-timing-function: var(--st-ease-out);
+}
+
+@keyframes st-rise {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+@keyframes st-fade {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    @view-transition {
+        navigation: none;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
