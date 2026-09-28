@@ -266,6 +266,12 @@
         }
     }
 
+    .docs-edit {
+        margin-top: 3rem;
+        padding-top: 1.5rem;
+        border-top: 1px solid var(--st-border);
+    }
+
     /* Docs hub (docs.html) --------------------------------------------------- */
 
     .docs-hub-content {

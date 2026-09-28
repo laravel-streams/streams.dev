@@ -34,18 +34,6 @@
         <x-footer />
     @endif
 
-    @php
-        $editPath = null;
-        if (App::environment('local') && isset($entry) && is_object($entry) && method_exists($entry, 'stream')) {
-            $editStream = $entry->stream();
-            $editPath = base_path('streams/data/'.$editStream->id.'/'.$entry->id.'.'.data_get($editStream, 'config.source.format', 'md'));
-            $editPath = file_exists($editPath) ? $editPath : null;
-        }
-    @endphp
-    @if ($editPath)
-        <a href="vscode://file{{ $editPath }}" class="st-pill st-pill--glass fixed bottom-4 left-4 z-30 hidden lg:inline-flex">Edit this page</a>
-    @endif
-
     @stack('scripts')
 </body>
 
