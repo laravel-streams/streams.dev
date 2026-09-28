@@ -15,6 +15,14 @@ npm-debug.log
 yarn-error.log
 /.idea
 /.vscode
+/.cursor
 /__pycache__
 /composer.local.json
 /composer.local.lock
+
+# Local briefing files. See AGENTS.md.
+/DOSSIER.md
+/.dossier/
+/TRACK_BRIEF.md
+/TRACK_REPORT.md
+/INTEGRATION_REPORT.md
