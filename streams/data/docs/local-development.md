@@ -8,7 +8,7 @@ status: ready
 
 ## Prerequisites
 
-- PHP 8.2+ with the extensions required by [Laravel 10](https://laravel.com/docs/10.x/deployment#server-requirements) (this site runs Laravel 10.50)
+- PHP 8.2+ with the extensions required by [Laravel 12](https://laravel.com/docs/12.x/deployment#server-requirements) (this site runs Laravel 12)
 - Composer 2
 - Node.js 20.19+ or 22.12+ and npm (for Vite and Tailwind)
 - Git (Composer clones the Streams packages from GitHub)
@@ -27,7 +27,7 @@ npm install
 composer dev
 ```
 
-`composer dev` serves the app on `http://127.0.0.1:8427` and runs the Vite dev server (with hot reload) on port 5427. Both ports are strict: if one is taken the command stops instead of picking another. No database is needed.
+`composer dev` serves the app on `http://127.0.0.1:8427`, tails the application log with `php artisan pail`, and runs the Vite dev server (with hot reload) on port 5427. Both ports are strict: if one is taken the command stops instead of picking another. No database is needed.
 
 Run the tests with `php artisan test` and `npm run test:js`.
 

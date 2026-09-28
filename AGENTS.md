@@ -30,10 +30,10 @@ composer install          # clones streams/core, streams/ui, streams/sdk from Gi
 cp .env.example .env
 php artisan key:generate
 npm install
-composer dev              # app on http://127.0.0.1:8427, Vite + HMR on 127.0.0.1:5427
+composer dev              # app on http://127.0.0.1:8427, log tail (pail), Vite + HMR on 127.0.0.1:5427
 ```
 
-Open http://127.0.0.1:8427. If a port is taken, `composer dev` fails instead of drifting; free the port, or run the two halves by hand with `php artisan serve --port=<free port>` and `npm run dev` (Vite is pinned to 5427 in `vite.config.js`).
+Open http://127.0.0.1:8427. If a port is taken, `composer dev` fails instead of drifting; free the port, or run the processes by hand with `php artisan serve --port=<free port>`, `php artisan pail`, and `npm run dev` (Vite is pinned to 5427 in `vite.config.js`).
 
 Checks that everything works:
 

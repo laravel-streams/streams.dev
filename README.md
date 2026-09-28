@@ -8,7 +8,7 @@ This repository is the **Streams developer platform** and the **canonical docume
 
 Requirements:
 
-- PHP 8.2 or newer (production runs 8.2.4; day-to-day development is on 8.4), with the extensions [Laravel 10 needs](https://laravel.com/docs/10.x/deployment#server-requirements)
+- PHP 8.2 or newer (production runs 8.2.4; day-to-day development is on 8.4), with the extensions [Laravel 12 needs](https://laravel.com/docs/12.x/deployment#server-requirements)
 - Composer 2
 - Node.js 20.19+ or 22.12+ with npm
 - Git (Composer clones the Streams packages from GitHub)
@@ -27,7 +27,7 @@ composer dev
 
 Then open http://127.0.0.1:8427.
 
-`composer dev` runs `php artisan serve` on 127.0.0.1:8427 and the Vite dev server (with HMR) on 127.0.0.1:5427 through `concurrently`. Both ports are strict, so a clash fails loudly instead of drifting to another port. For a production-style build, run `npm run build`; the built assets in `public/build` are committed.
+`composer dev` runs three processes through `concurrently`: `php artisan serve` on 127.0.0.1:8427, `php artisan pail` (a live tail of the application log), and the Vite dev server (with HMR) on 127.0.0.1:5427. Both ports are strict, so a clash fails loudly instead of drifting to another port. For a production-style build, run `npm run build`; the built assets in `public/build` are committed.
 
 Run the tests with `php artisan test` (PHP) and `npm run test:js` (JavaScript).
 
