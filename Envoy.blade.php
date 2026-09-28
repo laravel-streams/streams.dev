@@ -75,9 +75,10 @@ cd {{ $path }}
 {{ $composer }} install --no-interaction --quiet --no-dev --prefer-dist --optimize-autoloader --ignore-platform-reqs
 @endtask
 
-@task('migrate')
-{{ $php }} {{ $path }}/artisan migrate --env={{ $env }} --force --no-interaction
-@endtask
+{{-- No 'migrate' task: streams.dev keeps its content in flat files (streams/data)
+     and uses no database, and the production host has no working database
+     login, so running migrations only made every deploy report a failure.
+     Add a migrate step back if the site ever gains database tables. --}}
 
 @story('deploy')
 {{-- @if ( isset($backup) && $backup )
@@ -85,7 +86,6 @@ cd {{ $path }}
 @endif --}}
 pull
 composer
-migrate
 refresh
 health_check_ping
 @endstory
@@ -93,7 +93,7 @@ health_check_ping
 @story('rollback')
 revert
 composer
-rollback
+refresh
 health_check_ping
 @endstory
 
@@ -103,7 +103,14 @@ health_check_ping
 
 @task('pull')
 cd {{ $path }}
-git pull
+{{-- Always deploy {{ $branch }} (master unless --branch or DEPLOY_DEFAULT_BRANCH says otherwise),
+     whatever the server happens to have checked out, and only by fast-forward. --}}
+git fetch origin {{ $branch }}
+if [ "$(git rev-parse --abbrev-ref HEAD)" != "{{ $branch }}" ]; then
+git checkout {{ $branch }}
+fi
+git merge --ff-only origin/{{ $branch }}
+echo "Deployed branch {{ $branch }} at $(git rev-parse --short HEAD)"
 @endtask
 
 @task('revert')
@@ -113,14 +120,9 @@ git reset --keep HEAD@{1}
 @endtask
 
 @task('refresh')
-#{{ $php }} {{ $path }}/artisan refresh --quiet
-#echo "System refreshed"
-@endtask
-
-@task('rollback')
 cd {{ $path }}
-{{ $php }} {{ $path }}/artisan migrate:rollback --env={{ $env }} --force --no-interaction
-echo "Rolled back."
+{{ $php }} {{ $path }}/artisan optimize:clear --no-interaction
+echo "Caches cleared"
 @endtask
 
 @task('health_check_ping')
