@@ -20,7 +20,7 @@ status: ready
 ## First-time setup
 
 ```bash
-git clone https://github.com/laravel-streams/streams.dev.git --branch next
+git clone https://github.com/laravel-streams/streams.dev.git --branch develop
 cd streams.dev
 
 composer install
@@ -83,6 +83,10 @@ npm run build  # production build
 ```
 
 Styles live in `resources/css/` (`app.css` imports the tokens and components). Tailwind v4 runs through the `@tailwindcss/vite` plugin. The built files in `public/build` are committed, so run `npm run build` after changing CSS or JavaScript.
+
+## Branches and deploys
+
+Work on `develop` (or a short-lived branch off it that you merge back). When `develop` is ready, merge it into `master` and push both. `master` is the live site and GitHub's default branch, and `envoy run deploy` fast-forwards the server to it. The old `next`, `integration/rc` and `production` branches no longer exist.
 
 ## Related
 

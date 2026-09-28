@@ -16,7 +16,7 @@ Requirements:
 No database is needed to run the site. The content lives in flat files.
 
 ```bash
-git clone https://github.com/laravel-streams/streams.dev.git --branch next
+git clone https://github.com/laravel-streams/streams.dev.git --branch develop
 cd streams.dev
 composer install
 cp .env.example .env
@@ -79,6 +79,10 @@ All public docs live as flat files under `streams/data/` and are served by URL:
 | Client | `/docs/client/{slug}` → `streams/data/client_docs/` |
 
 See [STYLE.md](STYLE.md) for voice, frontmatter, and content boundaries.
+
+### Branches and deploys
+
+Work happens on `develop`. When it is ready, merge `develop` into `master` and push both; `master` is what runs on streams.dev and is GitHub's default branch. Deploy with `envoy run deploy` (see [AGENTS.md](AGENTS.md#deploying)), which fast-forwards the server to `master`. There are no other long-lived branches.
 
 ### Contributing to docs
 
