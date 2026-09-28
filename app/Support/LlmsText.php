@@ -23,7 +23,9 @@ class LlmsText
                 '',
                 '> '.static::SUMMARY,
                 '',
-                'Packages: streams/core (data platform), streams/ui (Livewire admin panels and components), streams/api (REST API), streams/sdk (Artisan generators; dev only), streams/testing (test harness), and @laravel-streams/api-client (JavaScript client). Every link below points at raw markdown; drop the .md suffix for the HTML page. '
+                'Packages: streams/core (data platform), streams/ui (Livewire admin panels and components), streams/api (REST API), streams/sdk (dev-only generators, streams:validate, and a local MCP server started with `php artisan mcp:start streams`, which needs laravel/mcp on Laravel 11.45+ or 12.41+), streams/testing (test harness), and @laravel-streams/api-client (JavaScript client). '
+                    .'Stream definition files (streams/*.json) follow the JSON Schema at '.URL::to('/schema/streams.schema.json').'. '
+                    .'Every link below points at raw markdown; drop the .md suffix for the HTML page. '
                     .'The full text of every page is at '.URL::to('/llms-full.txt').'.',
                 '',
             ];
@@ -48,6 +50,7 @@ class LlmsText
             $lines[] = '## Optional';
             $lines[] = '';
             $lines[] = '- [OpenAPI reference]('.URL::to('/docs/api/openapi.yaml').'): Generic OpenAPI 3 spec of the built-in streams/api endpoints';
+            $lines[] = '- [Stream definition schema]('.URL::to('/schema/streams.schema.json').'): JSON Schema (draft-07) for streams/*.json definition files';
             $lines[] = '- [Search index]('.URL::to('/search/docs.json').'): JSON index of every page with title, description, URL, and excerpt';
             $lines[] = '';
 

@@ -1,7 +1,7 @@
 ---
 title: Command reference
 nav_title: Command reference
-description: 'Every Artisan command in streams/sdk: what it writes, its arguments and options, and which commands are not registered yet.'
+description: 'Every Artisan command in streams/sdk: what it writes, its arguments and options, JSON output for agents, and the command classes that are not registered.'
 section: packages
 package: sdk
 order: 20
@@ -9,7 +9,7 @@ tags: [sdk, commands]
 status: ready
 ---
 
-`streams/sdk` adds Artisan generators for streams, entries, addons, schemas, and Livewire scaffolding. Install it as a dev dependency:
+`streams/sdk` adds Artisan commands to generate and check streams, entries, addons, schemas, and Livewire components. Install it as a dev dependency:
 
 ```bash
 composer require --dev streams/sdk:1.0.x-dev
@@ -19,29 +19,34 @@ Commands are registered only when the app runs in the console. Run `php artisan 
 
 ## Available commands
 
-| Command | Writes | Status |
-|---------|--------|--------|
-| [`make:stream`](#makestream) | `streams/{id}.json` | Stable |
-| [`make:entry`](#makeentry) | An entry in the stream's source | Stable |
-| [`make:addon`](#makeaddon) | `addons/{vendor}/{name}/` | Stable |
-| [`streams:schema`](#streamsschema) | `{id}.schema.json` per stream | Stable |
-| [`streams:livewire`](#streamslivewire) | Livewire class and view | New, not yet committed to the `1.0` branch |
-| [`streams:admin`](#streamsadmin) | Admin layout, dashboard, navigation, components, routes | New, not yet committed to the `1.0` branch |
+| Command | What it does |
+|---------|--------------|
+| [`make:stream`](#makestream) | Writes a validated `streams/{id}.json` |
+| [`make:entry`](#makeentry) | Creates or updates an entry in the stream's source |
+| [`make:addon`](#makeaddon) | Scaffolds an addon package in `addons/{vendor}/{name}/` |
+| [`streams:list`](#streamslist) | Lists registered streams, as a table or JSON |
+| [`streams:validate`](#streamsvalidate) | Checks definitions against the JSON Schema and the running app |
+| [`streams:schema`](#streamsschema) | Writes a `{id}.schema.json` entry schema per stream |
+| [`streams:livewire`](#streamslivewire) | Generates Livewire 3 index, form, and show components |
+
+Agents can call the same operations through the [MCP server](/docs/mcp) (`php artisan mcp:start streams`), which needs `laravel/mcp` and Laravel 11.45+ or 12.41+.
 
 ### make:stream
 
 ```bash
-php artisan make:stream {id}
+php artisan make:stream {id} {--name=} {--description=} {--force}
 ```
 
-Writes `streams/{id}.json` from `stubs/stream.stub`. The name is the ID with `-` and `_` turned into spaces and word-cased. The stub sets `config.source.format` to `json` and does not set `source.type`, so the app's default adapter is used. It includes an empty `description` and one `id` field of type `uuid` with `"default": true`. The file references `$schema: https://streams.dev/schema/streams.schema.json`. That schema is not published on this site yet (Track C owns publishing it), so editors cannot validate against it.
+Writes `streams/{id}.json`. The ID must be snake_case (lowercase letters, numbers, and underscores, starting with a letter), and it is also the file name. `--name` defaults to the ID word-cased (`blog_posts` becomes "Blog Posts"). The file sets `config.source.format` to `json` without a `source.type`, so the app's default adapter is used, and it has one `id` field of type `uuid` with `config.default: true`.
+
+The definition is validated (the same checks as [`streams:validate`](#streamsvalidate)) before it is written, then registered. The command refuses to replace an existing file unless you pass `--force`, and it refuses an ID that the app or an addon already registers.
 
 ```bash
-php artisan make:stream blog_posts
-# streams/blog_posts.json  ("name": "Blog Posts")
+php artisan make:stream blog_posts --description="Articles on the blog."
+# Stream created: streams/blog_posts.json
 ```
 
-Overwrites an existing file without asking.
+The file starts with `"$schema": "https://streams.dev/schema/streams.schema.json"`. That URL is served by this site at [/schema/streams.schema.json](/schema/streams.schema.json), so editors that understand `$schema` validate and autocomplete the file.
 
 ### make:entry
 
@@ -53,7 +58,7 @@ Creates an entry in `{stream}`. `input` is query-string formatted (`title=Hello&
 
 ```bash
 php artisan make:entry posts "title=Hello&status=draft"
-php artisan make:entry posts "id=hello&status=published" --update
+php artisan make:entry posts "id=hello&status=live" --update
 ```
 
 Validation errors are printed and nothing is saved. On success the saved entry is printed as JSON.
@@ -61,18 +66,58 @@ Validation errors are printed and nothing is saved. On success the saved entry i
 ### make:addon
 
 ```bash
-php artisan make:addon {vendor/name}
+php artisan make:addon {vendor/name} {--description=} {--force}
 ```
 
-Scaffolds a Composer package under `addons/{vendor}/{name}/` with a `composer.json` and a service provider at `src/{Name}Provider.php`. The name must be a valid Composer package name, and the command asks for a short description.
+Scaffolds a Composer package under `addons/{vendor}/{name}/` with a `composer.json` and a service provider at `src/{Name}Provider.php`. The name must be a valid Composer package name. Without `--description` the command asks for one. It refuses to overwrite an existing addon unless you pass `--force`.
 
 ```bash
-php artisan make:addon acme/reviews
-# addons/acme/reviews/composer.json
-# addons/acme/reviews/src/ReviewsProvider.php
+php artisan make:addon acme/reviews --description="Product reviews."
+# Created: addons/acme/reviews/composer.json
+# Created: addons/acme/reviews/src/ReviewsProvider.php
 ```
 
 Add the directory as a Composer path repository to install it. See [Addons](/docs/addons).
+
+### streams:list
+
+```bash
+php artisan streams:list {--json}
+```
+
+Lists every registered stream, sorted by ID, with its name, source type, field count, and description. `--json` prints an array instead, which is what scripts and agents should read:
+
+```json
+[
+    {
+        "id": "posts",
+        "name": "Posts",
+        "description": "Blog posts.",
+        "source": "filebase",
+        "fields": ["id", "title", "status", "author_id"],
+        "extends": null
+    }
+]
+```
+
+### streams:validate
+
+```bash
+php artisan streams:validate {paths?*} {--json}
+```
+
+Validates stream definitions. With no paths it checks every `streams/*.json`. Each file is checked in three steps, and later steps run only when earlier ones pass:
+
+1. The [stream definition JSON Schema](/schema/streams.schema.json) (the same file `$schema` points at).
+2. The running app: field types must be registered, `extends` must name a registered stream, adapter and model classes must exist, and `related` must sit inside `config`. A related stream that is not registered yet is a warning. So is an `@` import that does not resolve.
+3. A real build with `Streams::build()`.
+
+```bash
+php artisan streams:validate
+php artisan streams:validate streams/posts.json streams/authors.json --json
+```
+
+The table output ends with `N checked, M invalid.`. `--json` prints an object keyed by file, each with `valid`, `errors`, and `warnings`. The exit code is non-zero when any file is invalid, so the command works as a CI or pre-commit check.
 
 ### streams:schema
 
@@ -80,7 +125,7 @@ Add the directory as a Composer path repository to install it. See [Addons](/doc
 php artisan streams:schema {--include=} {--exclude=} {--path=}
 ```
 
-Writes a JSON schema (`{id}.schema.json`) for every registered stream, built from Core's `StreamSchema`: the stream's tag metadata merged with its object schema. `--include` and `--exclude` take comma-separated stream IDs. `--path` is relative to the project root and must already exist; it defaults to the project root.
+Writes a JSON schema (`{id}.schema.json`) for the *entries* of every registered stream, built from Core's `StreamSchema`: the stream's tag metadata merged with its object schema. This is not the definition schema that `$schema` points at. `--include` and `--exclude` take comma-separated stream IDs. `--path` is relative to the project root and must already exist; it defaults to the project root.
 
 ```bash
 mkdir -p storage/schemas
@@ -90,43 +135,43 @@ php artisan streams:schema --include=posts,authors --path=storage/schemas
 ### streams:livewire
 
 ```bash
-php artisan streams:livewire {stream} {--type=index} {--force}
+php artisan streams:livewire {stream} {--type=all} {--force}
 ```
 
-Generates a Livewire component for a stream. `--type` is `index`, `form`, or `show`. It writes `app/Http/Livewire/{Stream}{Type}.php` and `resources/views/livewire/{stream}-{type}.blade.php`, then prints suggested routes. It asks before overwriting unless you pass `--force`.
+Generates Livewire 3 components for a stream. `--type` is `index`, `form`, `show`, or `all` (the default). The components use the stream's repository and criteria, so they work with any source adapter.
 
-The generated class uses the `App\Http\Livewire` namespace, which is Livewire 2's default. Livewire 3 discovers `App\Livewire` by default, so register the component or move it.
+| Type | Class | What it does |
+|------|-------|--------------|
+| `index` | `{Stream}Index` | Paginated, sortable table with a delete action |
+| `form` | `{Stream}Form` | Create and edit form, validated with rules taken from the stream's fields |
+| `show` | `{Stream}Show` | Read-only view of one entry |
 
-### streams:admin
+Classes go in `config('livewire.class_namespace')` (default `App\Livewire`, so `app/Livewire/BlogPostsIndex.php`). Views go in `resources/views/livewire/`, named after the class in kebab case (`blog-posts-index.blade.php`). Protected fields are never rendered, and a generated `integer` or `uuid` key is left out of the form.
 
-```bash
-php artisan streams:admin {stream} {--layout=sidebar} {--theme=light} {--force}
+The command stops without writing anything if any target file exists, unless you pass `--force`. It does not register routes. It prints the routes to add to `routes/web.php`:
+
+```php
+Route::get('/blog-posts', \App\Livewire\BlogPostsIndex::class)->name('blog_posts.index');
+Route::get('/blog-posts/create', \App\Livewire\BlogPostsForm::class)->name('blog_posts.create');
+Route::get('/blog-posts/{entry}/edit', \App\Livewire\BlogPostsForm::class)->name('blog_posts.edit');
+Route::get('/blog-posts/{entry}', \App\Livewire\BlogPostsShow::class)->name('blog_posts.show');
 ```
 
-Generates a standalone Livewire admin for one stream. The stream must already exist or the command exits with an error.
+The components are full-page, so they render inside your Livewire layout (`config('livewire.layout')`). Use [Streams UI](/docs/ui/introduction) instead when you want a configured control panel rather than files you own and edit.
 
-- `resources/views/admin/layouts/app.blade.php`. `--layout` selects `stubs/admin/layouts/{layout}.stub`. The only stub shipped today is `sidebar`. `--layout=topbar` looks for a file that is not in the package, so that option fails.
-- `--theme` (default `light`) is substituted for the literal token `{{ theme }}` in the layout stub. The shipped sidebar stub does not contain that token, so the option is accepted and then discarded.
-- `resources/views/admin/dashboard.blade.php` and `resources/views/admin/partials/navigation.blade.php`
-- index, form, and show components (it calls `streams:livewire` three times), moved to `App\Http\Livewire\Admin`
-- routes under `/admin/{stream}`, which it prints and, if you confirm, appends to `routes/web.php`
+`streams:admin` has been removed. Generate the components with `streams:livewire` and put them behind your own layout and routes.
 
-This is separate from [Streams UI](/docs/ui/introduction) panels. Use UI when you want a configured control panel, and `streams:admin` when you want plain Livewire files to own and edit. Panel colors are documented in [Theming](/docs/ui/theming).
-
-## Not available yet
+## Not registered
 
 These command classes exist in the SDK source but are **not registered**, so `php artisan` won't find them:
 
 | Command | Intended purpose | State |
 |---------|------------------|-------|
-| `streams:list` | Paginated table of streams (`--query`, `--show`, `--per-page`, `--page`) | Implemented, registration commented out |
-| `streams:show` | Show one stream's attributes | Implemented, registration commented out |
-| `entries:list` | Paginated table of a stream's entries | Implemented, registration commented out |
-| `entries:show` | Show one entry | Implemented, registration commented out |
+| `streams:show` | Show one stream's attributes | Implemented, registration commented out. Use the MCP `describe-stream` tool. |
+| `entries:list` | Paginated table of a stream's entries | Implemented, registration commented out. Use the MCP `list-entries` tool. |
+| `entries:show` | Show one entry | Implemented, registration commented out. Use the MCP `read-entry` tool. |
 | `streams:describe` | Write `streams/{id}.json` by inspecting a URL, JSON, database table, or Eloquent model | Implemented, registration commented out |
 | `streams:tap` | Call a "tap" URL with query-string input | Not implemented (empty handler) |
-
-The planned Streams MCP server will expose listing, describing, and schema tools to agents. See [MCP](/docs/mcp).
 
 ## How to extend it
 
@@ -145,5 +190,6 @@ return [
 ## Related
 
 - [SDK introduction](/docs/sdk/introduction)
-- [Admin panels](/docs/sdk/admin-panels)
+- [MCP server](/docs/mcp)
+- [Stream definition schema](/docs/sdk/stream-schema)
 - [Core streams](/docs/core/streams)

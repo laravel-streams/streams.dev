@@ -4,7 +4,7 @@ nav_title: Streams
 description: Define streams with the SDK scaffolding workflow.
 section: packages
 package: sdk
-order: 30
+order: 40
 tags: [sdk, streams]
 status: ready
 ---

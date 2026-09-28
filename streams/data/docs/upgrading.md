@@ -30,6 +30,17 @@ Commit `composer.lock` so your team and CI run the same commits.
 
 ## Breaking changes
 
+### SDK: `streams:admin` removed, `--force` required (September 2026)
+
+The `streams/sdk` release candidate changes its generators:
+
+- `streams:admin` is gone. Generate the index, form, and show components with `php artisan streams:livewire {stream}` and put them behind your own layout and routes. Files it generated before are yours and keep working.
+- `streams:livewire` writes Livewire 3 classes to `config('livewire.class_namespace')` (default `App\Livewire`, not `App\Http\Livewire`) and views to `resources/views/livewire/{stream}-{type}.blade.php`. It generates all three components unless you pass `--type`.
+- `make:stream` and `streams:livewire` stop instead of overwriting existing files. Pass `--force` to overwrite.
+- The SDK requires PHP 8.2. The optional MCP server needs `laravel/mcp`, which needs Laravel 11.45+ or 12.41+.
+
+See the [command reference](/docs/sdk/commands).
+
 ### OpenSearch adapter moved to Core (August 2026)
 
 The OpenSearch adapter was removed from `streams/ui` and added to `streams/core`, next to a new Elasticsearch adapter.

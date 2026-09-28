@@ -4,7 +4,7 @@ nav_title: AI Prompts
 description: Patterns and prompts for AI-assisted Streams development.
 section: packages
 package: sdk
-order: 70
+order: 60
 tags: [sdk, ai, prompts]
 status: ready
 ---
@@ -66,13 +66,8 @@ Let's start with step 1...
 # Create the main blog stream
 php artisan make:stream blog_posts
 
-# Generate complete TALL stack components
-php artisan streams:livewire blog_posts --type=index
-php artisan streams:livewire blog_posts --type=form
-php artisan streams:livewire blog_posts --type=show
-
-# Create admin panel
-php artisan streams:admin blog_posts
+# Generate the index, form, and show Livewire components
+php artisan streams:livewire blog_posts
 
 # Publish blog example for reference
 php artisan vendor:publish --tag=blog-example
@@ -83,12 +78,9 @@ php artisan vendor:publish --tag=blog-example
 # Create product catalog
 php artisan make:stream products
 
-# Generate components with inventory management
+# Generate the index and form components
 php artisan streams:livewire products --type=index
 php artisan streams:livewire products --type=form
-
-# Create admin panel for product management
-php artisan streams:admin products --layout=sidebar
 
 # Publish e-commerce example
 php artisan vendor:publish --tag=ecommerce-example
@@ -99,13 +91,8 @@ php artisan vendor:publish --tag=ecommerce-example
 # Create contact management
 php artisan make:stream contacts
 
-# Generate CRM components
-php artisan streams:livewire contacts --type=index
-php artisan streams:livewire contacts --type=form
-php artisan streams:livewire contacts --type=show
-
-# Create admin interface
-php artisan streams:admin contacts
+# Generate CRM components (index, form, and show)
+php artisan streams:livewire contacts
 
 # Publish CRM example
 php artisan vendor:publish --tag=crm-example
@@ -344,16 +331,11 @@ public function save()
 # 1. Publish blog example
 php artisan vendor:publish --tag=blog-example
 
-# 2. Generate all components
-php artisan streams:livewire blog_posts --type=index
-php artisan streams:livewire blog_posts --type=form
-php artisan streams:livewire blog_posts --type=show
+# 2. Check the definition, then generate index, form, and show components
+php artisan streams:validate streams/blog_posts.json
+php artisan streams:livewire blog_posts
 
-# 3. Create admin panel
-php artisan streams:admin blog_posts
-
-# 4. Add routes to web.php
-# (Generated routes will be displayed)
+# 3. Add the printed routes to routes/web.php
 ```
 
 ### E-commerce Product Catalog
@@ -365,11 +347,8 @@ php artisan vendor:publish --tag=ecommerce-example
 php artisan streams:livewire products --type=index
 php artisan streams:livewire products --type=form
 
-# 3. Create inventory admin
-php artisan streams:admin products --layout=sidebar
-
-# 4. Customize for e-commerce needs
-# (Provide specific customization code)
+# 3. Add the printed routes to routes/web.php, then customize the
+#    generated classes in app/Livewire and views in resources/views/livewire
 ```
 
 ## Best Practices for AI Assistants

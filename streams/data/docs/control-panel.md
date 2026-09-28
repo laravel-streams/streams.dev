@@ -33,5 +33,5 @@ Same UI package; different panel registration and auth.
 ## Learn more
 
 - [UI panels](/docs/ui/panels)
-- [SDK admin panels](/docs/sdk/admin-panels)
+- [SDK Livewire generator](/docs/sdk/commands#streamslivewire)
 - [Use cases](/docs/use-cases)

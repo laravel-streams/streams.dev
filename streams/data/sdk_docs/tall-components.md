@@ -613,25 +613,16 @@ class BlogPostForm extends Component
 
 ## Usage with SDK Commands
 
-Generate TALL components using the SDK:
+`streams:livewire` is the only SDK command that generates components. It writes Livewire 3 classes and Blade views you then own and restyle with the patterns above:
 
 ```bash
-# Generate full TALL stack for a stream
-php artisan streams:tall blog_posts
+# Index, form, and show components for a stream
+php artisan streams:livewire blog_posts
 
-# Generate specific components
+# Or one component at a time
 php artisan streams:livewire blog_posts --type=index
 php artisan streams:livewire blog_posts --type=form
-php artisan streams:blade blog_posts --type=show
-
-# Generate admin interface
-php artisan streams:admin blog_posts --layout=sidebar
+php artisan streams:livewire blog_posts --type=show
 ```
 
-These commands create production-ready components with:
-- Responsive Tailwind CSS styling
-- Interactive Alpine.js behavior
-- Livewire reactivity
-- Proper Laravel integration
-- Accessibility features
-- SEO-friendly markup
+The command prints the routes to add to `routes/web.php`. There is no `streams:tall`, `streams:blade`, or `streams:admin` command. See the [command reference](/docs/sdk/commands#streamslivewire).
