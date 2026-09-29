@@ -95,7 +95,7 @@
                 {{ $package['label'] }}
             </a>
             {{-- Every package's pages are in the markup so the filter can find them; only the current package's list is shown by default. --}}
-            <ul @class(['docs-nav-nested mt-1.5 mb-3 space-y-0.5', 'docs-nav-collapsed' => $section !== $slug])>
+            <ul @class(['docs-nav-nested', 'docs-nav-collapsed' => $section !== $slug])>
                 @php $listed = []; @endphp
                 @foreach ($package['groups'] ?? [] as $group)
                 <li class="docs-nav-group">
@@ -144,7 +144,7 @@
                 <summary class="docs-nav-link cursor-pointer list-none flex items-center justify-between">
                     <span data-filter-label>{{ $category->name }}</span>
                 </summary>
-                <ul class="docs-nav-nested mt-1 space-y-0.5">
+                <ul class="docs-nav-nested">
                     @foreach (Streams::docs()->where('category', $category->id)->orderBy('order', 'ASC')->get() as $page)
                     <li>
                         <a href="/docs/{{ $page->id }}"

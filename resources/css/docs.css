@@ -144,20 +144,57 @@
         padding-block: 0.375rem;
     }
 
+    /* The rail is inset from the list's top and bottom so it meets the first
+       and last row instead of running past them. The top margin is the air
+       between the package row and the first heading. */
     .docs-nav-nested {
-        margin-left: 0.75rem;
-        padding-left: 0.5rem;
-        border-left: 1px solid var(--st-border);
+        position: relative;
+        margin: 0.625rem 0 1rem 0.8125rem;
+        padding: 0.125rem 0 0.25rem 0.625rem;
     }
 
-    /* Group headings inside a package. Same label style, tightened so they sit in the list. */
+    .docs-nav-nested::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0.6rem;
+        bottom: 0.6rem;
+        width: 1px;
+        background: var(--st-border-strong);
+    }
+
+    /* Group headings are a step above page links: accent ink, not the muted section label.
+       The tick meets the rail so the heading reads as a branch, not a floating label. */
     .docs-nav-nested .docs-nav-label {
-        margin-top: 0.875rem;
-        margin-bottom: 0.25rem;
+        display: flex;
+        align-items: center;
+        gap: 0.25rem;
+        margin: 0.875rem 0 0.375rem;
+        padding: 0;
+        color: var(--st-signal-ink);
     }
 
-    .docs-nav-nested > li:first-child > .docs-nav-label {
-        margin-top: 0.25rem;
+    .docs-nav-nested .docs-nav-label::before {
+        content: "";
+        width: 0.625rem;
+        height: 1px;
+        margin-left: -0.625rem;
+        background: var(--st-signal);
+        flex: none;
+    }
+
+    .docs-nav-nested > .docs-nav-group:first-child > .docs-nav-label {
+        margin-top: 0.125rem;
+    }
+
+    /* The package row is the outlined selection. The current page is only the bar. */
+    .docs-nav-nested .docs-nav-link.is-active {
+        background-color: transparent;
+        box-shadow: none;
+    }
+
+    .docs-nav-nested > .docs-nav-group:last-child {
+        margin-bottom: 0;
     }
 
     /* Inline filter at the top of the sidebar (resources/js/docs-filter.js). */

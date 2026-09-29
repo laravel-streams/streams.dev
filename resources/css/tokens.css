@@ -96,6 +96,9 @@
     --st-accent: var(--st-violet);
     --st-accent-soft: rgb(124 58 237 / 0.14);
     --st-accent-ink: #6d28d9;  /* accent as text on tinted fills (AA) */
+    /* Group headings: violet on a light page, Fundamental chartreuse on a dark page. */
+    --st-signal: var(--st-violet);
+    --st-signal-ink: var(--st-accent-ink);
     --st-accent-gradient: linear-gradient(100deg, #6d28d9 0%, #0e7490 55%, #be185d 100%);
     --st-accent-line: linear-gradient(90deg, rgb(124 58 237 / 0.55), rgb(6 182 212 / 0.55), rgb(236 72 153 / 0.45), rgb(245 158 11 / 0.4));
 
@@ -269,6 +272,8 @@
     --st-amber: #fcd34d;
     --st-accent-soft: rgb(167 139 250 / 0.16);
     --st-accent-ink: #b9a4fb;
+    --st-signal: #9bff1f;
+    --st-signal-ink: #9bff1f;
     --st-accent-gradient: linear-gradient(100deg, #c4b5fd 0%, #67e8f9 55%, #f9a8d4 100%);
     --st-accent-line: linear-gradient(90deg, rgb(167 139 250 / 0.5), rgb(103 232 249 / 0.45), rgb(249 168 212 / 0.4), rgb(252 211 77 / 0.35));
 
