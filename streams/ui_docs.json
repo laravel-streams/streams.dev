@@ -4,7 +4,8 @@
     "description": "Documentation for the Streams UI package.",
     "config": {
         "source": {
-            "format": "md"
+            "format": "md",
+            "path": "docs/packages/ui"
         }
     },
     "routes": [

@@ -25,7 +25,7 @@ Streams docs are meant to be read by coding agents as well as people. This site 
 
 HTML pages also emit `<link rel="alternate" type="text/markdown">` pointing at the `.md` URL.
 
-These routes are dynamic. They read the docs streams through `App\Support\DocsSearchIndex` and cache the text for 15 minutes (`docs.llms.index`, `docs.llms.full`, `docs.search.index`). Adding a markdown file under `streams/data/{docs,core_docs,ui_docs,api_docs,sdk_docs,testing_docs,client_docs}/` publishes it on the next cache miss. There is no generate step.
+These routes are dynamic. They read the docs streams through `App\Support\DocsSearchIndex` and cache the text for 15 minutes (`docs.llms.index`, `docs.llms.full`, `docs.search.index`). A hub page is a markdown file under `streams/data/docs/`. A package page is a markdown file under `docs/packages/{name}/`, which the matching stream reads via `source.path`. Adding a file publishes it on the next cache miss. There is no generate step. `php artisan docs:sync` copies `docs/packages/{name}/` to and from that package's repository.
 
 ## What to trust
 

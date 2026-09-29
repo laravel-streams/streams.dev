@@ -42,7 +42,7 @@ Documentation and pages are flat files — no database required for content chan
 | Content | Edit path | Preview URL |
 |---------|-----------|-------------|
 | Hub guide | `streams/data/docs/{id}.md` | `/docs/{id}` |
-| Core doc | `streams/data/core_docs/{id}.md` | `/docs/core/{id}` |
+| Package doc | `docs/packages/{name}/{id}.md` | `/docs/{name}/{id}` |
 | Site page | `streams/data/pages/{id}.html` | entry `uri` |
 | Stream config | `streams/{handle}.json` | after cache clear if cached |
 

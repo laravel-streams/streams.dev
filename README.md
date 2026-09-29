@@ -71,12 +71,9 @@ All public docs live as flat files under `streams/data/` and are served by URL:
 | Section | Path |
 |---------|------|
 | Hub guides | `/docs/{slug}` → `streams/data/docs/` |
-| Core | `/docs/core/{slug}` → `streams/data/core_docs/` |
-| UI | `/docs/ui/{slug}` → `streams/data/ui_docs/` |
-| API | `/docs/api/{slug}` → `streams/data/api_docs/` |
-| SDK | `/docs/sdk/{slug}` → `streams/data/sdk_docs/` |
-| Testing | `/docs/testing/{slug}` → `streams/data/testing_docs/` |
-| Client | `/docs/client/{slug}` → `streams/data/client_docs/` |
+| Package reference | `/docs/{package}/{slug}` → `docs/packages/{package}/` |
+
+Package pages (Core, UI, API, SDK, Testing, Client) are the same kind of folder. `php artisan docs:sync push` copies a folder into that package's repository; `docs:sync pull` copies it back. Headings in the sidebar are `docs/nav.json`.
 
 See [STYLE.md](STYLE.md) for voice, frontmatter, and content boundaries.
 
@@ -86,9 +83,8 @@ Work happens on `develop`. When it is ready, merge `develop` into `master` and p
 
 ### Contributing to docs
 
-1. Edit markdown in the appropriate `streams/data/` directory.
-2. Follow frontmatter conventions in `STYLE.md`.
-3. Hub pages link to section docs; avoid duplicating reference material.
-4. Package repos should link to `https://streams.dev/docs/...` rather than maintaining separate doc trees.
+1. Edit hub guides in `streams/data/docs/`. Edit package reference in `docs/packages/{name}/`, then `php artisan docs:sync push {name}` to copy it into that package's checkout.
+2. Follow frontmatter conventions in `STYLE.md`. Package sidebar headings live in `docs/nav.json`.
+3. Hub pages link to package docs; avoid duplicating reference material.
 
 Browse `/docs` for documentation and `/addons` for the package catalog.

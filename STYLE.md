@@ -1,18 +1,15 @@
 # Streams.dev Style Guide
 
-Documentation and site copy for streams.dev live in this repository. Package repos link here; they do not maintain parallel doc trees.
+Hub guides live in this repository. Package reference is copied into `docs/packages/{name}/` and synced with the package repository that owns it (`php artisan docs:sync`). Installed and not-installed packages use that same folder.
 
 ## Documentation locations
 
 | URL path | Filesystem | Purpose |
 |----------|------------|---------|
 | `/docs/{id}` | `streams/data/docs/{id}.md` | Hub guides, architecture, use cases |
-| `/docs/core/{id}` | `streams/data/core_docs/{id}.md` | Streams Core reference |
-| `/docs/ui/{id}` | `streams/data/ui_docs/{id}.md` | Streams UI reference |
-| `/docs/api/{id}` | `streams/data/api_docs/{id}.md` | Streams API reference |
-| `/docs/sdk/{id}` | `streams/data/sdk_docs/{id}.md` | Streams SDK reference |
-| `/docs/testing/{id}` | `streams/data/testing_docs/{id}.md` | Streams Testing reference |
-| `/docs/client/{id}` | `streams/data/client_docs/{id}.md` | API client reference |
+| `/docs/{package}/{id}` | `docs/packages/{package}/{id}.md` | Package reference (core, ui, api, sdk, testing, client) |
+
+Sidebar headings for a package are pointers in `docs/nav.json`. They are not frontmatter, and `docs:sync` does not copy that file. `order` in frontmatter still sorts search and `/llms.txt`. The sidebar follows the nav map.
 
 ## Frontmatter
 
@@ -26,7 +23,7 @@ description: One sentence, plain text, for indexes and meta.
 section: packages                # get-started | guides | concepts | reference | packages | contributing
 category: getting-started        # hub docs only: a key in streams/docs_categories.json
 package: core                    # core | ui | api | sdk | testing | client | site | all
-order: 20                        # sidebar order within the stream (hub docs: within the category); step by 10
+order: 20                        # hub sidebar and search order; package sidebar is docs/nav.json
 tags: [core, installation]
 status: ready                    # draft | review | ready | deprecated
 ---

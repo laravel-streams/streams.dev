@@ -150,6 +150,16 @@
         border-left: 1px solid var(--st-border);
     }
 
+    /* Group headings inside a package. Same label style, tightened so they sit in the list. */
+    .docs-nav-nested .docs-nav-label {
+        margin-top: 0.875rem;
+        margin-bottom: 0.25rem;
+    }
+
+    .docs-nav-nested > li:first-child > .docs-nav-label {
+        margin-top: 0.25rem;
+    }
+
     /* Inline filter at the top of the sidebar (resources/js/docs-filter.js). */
     .docs-filter {
         display: flex;

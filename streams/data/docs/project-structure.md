@@ -33,9 +33,9 @@ Each `.json` file defines one stream. Examples in this repo:
 | `docs.json` | `docs` | Hub documentation at `/docs/{id}` |
 | `docs_categories.json` | `docs_categories` | Sidebar and index groupings |
 | `packages.json` | `packages` | Add-on catalog (`type: self`) |
-| `core_docs.json` | `core_docs` | Core reference at `/docs/core/{id}` |
-| `ui_docs.json` | `ui_docs` | UI reference at `/docs/ui/{id}` |
-| `api_docs.json` | `api_docs` | API reference at `/docs/api/{id}` |
+| `core_docs.json` | `core_docs` | Points at `docs/packages/core` for `/docs/core/{id}` |
+| `ui_docs.json` | `ui_docs` | Points at `docs/packages/ui` for `/docs/ui/{id}` |
+| `api_docs.json` | `api_docs` | Points at `docs/packages/api` for `/docs/api/{id}` |
 
 Stream JSON holds fields, routes, source adapters, and optional UI admin config. See [Streams](/docs/core/streams) for the full schema.
 
@@ -46,12 +46,16 @@ Filebase entries live beside stream definitions:
 ```text
 streams/data/
 ├── docs/              # Hub guides (*.md)
-├── core_docs/         # Core package docs
-├── ui_docs/           # UI package docs
-├── api_docs/          # API package docs
 ├── pages/             # HTML pages (*.html)
 └── packages/          # Package catalog entries (if used)
+
+docs/packages/         # Package reference, one folder per package
+├── core/
+├── ui/
+└── api/
 ```
+
+`docs/nav.json` is the sidebar headings for those folders. The stream files only point `source.path` at the folder.
 
 Entry filenames become entry IDs (for example `introduction.md` → `/docs/introduction`).
 

@@ -10,7 +10,9 @@
         $editUrl = null;
         if (App::environment('local') && isset($entry) && is_object($entry) && method_exists($entry, 'stream')) {
             $editStream = $entry->stream();
-            $relative = 'streams/data/'.$editStream->id.'/'.$entry->id.'.'.data_get($editStream, 'config.source.format', 'md');
+            $format = data_get($editStream, 'config.source.format', 'md');
+            $sourcePath = trim((string) data_get($editStream, 'config.source.path', ''), '/');
+            $relative = ($sourcePath !== '' ? $sourcePath : 'streams/data/'.$editStream->id).'/'.$entry->id.'.'.$format;
             if (is_file(base_path($relative))) {
                 $editUrl = 'https://github.com/laravel-streams/streams.dev/blob/develop/'.$relative;
             }

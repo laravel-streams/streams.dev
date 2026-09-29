@@ -57,7 +57,7 @@ Common snags:
 streams/                  Stream definitions (JSON). One file per stream.
   pages.json              Site pages: URL -> HTML file in streams/data/pages/
   docs.json               Hub guides        -> streams/data/docs/*.md         (/docs/{id})
-  core_docs.json ...      Package reference -> streams/data/{core,ui,api,sdk,testing,client}_docs/*.md
+  core_docs.json ...      Package reference -> docs/packages/{core,ui,api,sdk,testing,client}/*.md
   docs_categories.json    Hub sidebar groups
   packages.json           Addon catalog (/addons)
   explore.json            The /explore tree
@@ -131,7 +131,7 @@ Walk through these in order, opening each file and the matching URL side by side
 
 1. **The home page.** Open `/` and `streams/data/pages/welcome.html`, then `streams/pages.json`. Point out that the page is an *entry* in the `pages` stream, and that its `uri` and `layout` fields decide where and how it renders.
 2. **A stream definition.** `streams/docs.json`: fields, the `source` (markdown files), and the `routes` block that creates `/docs/{id}` without a controller.
-3. **A docs page.** `/docs/core/introduction` next to `streams/data/core_docs/introduction.md`. Frontmatter becomes fields; the body renders through `app/Support/DocumentationMarkdown.php`.
+3. **A docs page.** `/docs/core/introduction` next to `docs/packages/core/introduction.md`. The `core_docs` stream points its source at that folder. Frontmatter becomes fields; the body renders through `app/Support/DocumentationMarkdown.php`.
 4. **Search and filtering.** Press Cmd+K (full search, `resources/js/docs-search.js`, index at `/search/docs.json`). Then type in the sidebar filter (`resources/js/docs-filter.js`): it filters the nav, highlights matches in the page and the "On this page" list, and supports arrow keys, Enter and Esc.
 5. **Docs for agents.** `/llms.txt`, `/llms-full.txt`, any page with `.md` appended, and `/explore` (also as `.json` and `.md`). See `app/Support/LlmsText.php` and `ExploreTree.php`. The same docs are served over MCP at `/mcp` (next section).
 6. **The stream schema.** `/schema/streams.schema.json`: the JSON Schema for stream files, from `streams/sdk`. Editors can use it to validate `streams/*.json`.

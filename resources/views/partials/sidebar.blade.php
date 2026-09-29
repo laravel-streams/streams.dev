@@ -1,13 +1,6 @@
 @php
     $section = Request::segment(2);
-    $packages = [
-        'core' => ['label' => 'Core', 'stream' => 'core_docs'],
-        'ui' => ['label' => 'UI', 'stream' => 'ui_docs'],
-        'api' => ['label' => 'API', 'stream' => 'api_docs'],
-        'sdk' => ['label' => 'SDK', 'stream' => 'sdk_docs'],
-        'testing' => ['label' => 'Testing', 'stream' => 'testing_docs'],
-        'client' => ['label' => 'Client', 'stream' => 'client_docs'],
-    ];
+    $packages = \App\Support\DocsNav::packages();
     $isPackageSection = array_key_exists($section, $packages);
     $isHubIndex = Request::is('docs') && ! Request::segment(2);
     $hubPage = ! $isPackageSection ? Request::segment(2) : null;
@@ -103,7 +96,29 @@
             </a>
             {{-- Every package's pages are in the markup so the filter can find them; only the current package's list is shown by default. --}}
             <ul @class(['docs-nav-nested mt-1.5 mb-3 space-y-0.5', 'docs-nav-collapsed' => $section !== $slug])>
+                @php $listed = []; @endphp
+                @foreach ($package['groups'] ?? [] as $group)
+                <li class="docs-nav-group">
+                    <p class="docs-nav-label">{{ $group['label'] }}</p>
+                    <ul class="space-y-0.5">
+                        @foreach ($group['pages'] ?? [] as $pageId)
+                        @php
+                            $page = $packagePages->firstWhere('id', $pageId);
+                            $listed[] = $pageId;
+                        @endphp
+                        @continue(! $page)
+                        <li>
+                            <a href="/docs/{{ $slug }}/{{ $page->id }}"
+                               class="docs-nav-link docs-nav-link--sub {{ $section === $slug && Request::segment(3) == $page->id ? 'is-active' : '' }}">
+                                {{ $page->nav_title ?: $page->title }}
+                            </a>
+                        </li>
+                        @endforeach
+                    </ul>
+                </li>
+                @endforeach
                 @foreach ($packagePages as $page)
+                @continue(in_array($page->id, $listed, true))
                 <li>
                     <a href="/docs/{{ $slug }}/{{ $page->id }}"
                        class="docs-nav-link docs-nav-link--sub {{ $section === $slug && Request::segment(3) == $page->id ? 'is-active' : '' }}">
