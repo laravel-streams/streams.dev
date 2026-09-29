@@ -8,6 +8,8 @@ use Symfony\Component\Process\Process;
 /**
  * Where a package's reference docs are copied to and from.
  * Installed and not-installed packages use the same site folder.
+ * The branch is the package's official line. This site may install a
+ * release-candidate checkout for itself; docs are not written there.
  */
 class PackageDocs
 {
@@ -16,8 +18,8 @@ class PackageDocs
      */
     public const PACKAGES = [
         'core' => [
-            'branch' => 'rc/prep',
-            'candidates' => ['../_rc/streams-core', '../_packages/streams-core', '../streams-core'],
+            'branch' => '2.0',
+            'candidates' => ['../_packages/streams-core', '../streams-core', '../_rc/streams-core'],
         ],
         'ui' => [
             'branch' => '1.0',
@@ -28,8 +30,8 @@ class PackageDocs
             'candidates' => ['../_rc/streams-api', '../_packages/streams-api', '../streams-api'],
         ],
         'sdk' => [
-            'branch' => 'sdk/rc',
-            'candidates' => ['../_rc/streams-sdk', '../_packages/streams-sdk', '../streams-sdk'],
+            'branch' => '1.0',
+            'candidates' => ['../_packages/streams-sdk', '../streams-sdk', '../_rc/streams-sdk'],
         ],
         'testing' => [
             'branch' => '1.0',

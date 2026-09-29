@@ -25,7 +25,7 @@ class DocsSyncTest extends TestCase
 
     public function test_push_mirrors_markdown_and_deletes_stale_pages()
     {
-        $root = $this->fixture('rc/prep');
+        $root = $this->fixture('2.0');
 
         $this->artisan('docs:sync', ['direction' => 'push', 'package' => 'core', '--dry-run' => true])
             ->expectsOutputToContain('copy introduction.md')
@@ -44,7 +44,7 @@ class DocsSyncTest extends TestCase
 
     public function test_pull_mirrors_the_package_onto_the_site_folder()
     {
-        $root = $this->fixture('rc/prep');
+        $root = $this->fixture('2.0');
 
         file_put_contents($root.'/repo/docs/introduction.md', "from repo\n");
         unlink($root.'/repo/docs/helpers.md');
@@ -59,7 +59,7 @@ class DocsSyncTest extends TestCase
 
     public function test_page_option_copies_one_file_and_leaves_the_rest()
     {
-        $root = $this->fixture('rc/prep');
+        $root = $this->fixture('2.0');
 
         $this->artisan('docs:sync', [
             'direction' => 'push',
@@ -86,7 +86,7 @@ class DocsSyncTest extends TestCase
 
     public function test_uncommitted_docs_are_left_alone()
     {
-        $root = $this->fixture('rc/prep');
+        $root = $this->fixture('2.0');
         file_put_contents($root.'/repo/docs/introduction.md', "dirty\n");
 
         $this->artisan('docs:sync', ['direction' => 'push', 'package' => 'core'])
@@ -105,7 +105,7 @@ class DocsSyncTest extends TestCase
 
     public function test_hub_guides_are_not_part_of_the_sync()
     {
-        $root = $this->fixture('rc/prep');
+        $root = $this->fixture('2.0');
         $hub = md5_file(base_path('streams/data/docs/introduction.md'));
         $nav = md5_file(base_path('docs/nav.json'));
 
