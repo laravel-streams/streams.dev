@@ -20,7 +20,7 @@ status: ready
 ## First-time setup
 
 ```bash
-git clone https://github.com/laravel-streams/streams.dev.git --branch develop
+git clone https://github.com/laravel-streams/streams.dev.git --branch master
 cd streams.dev
 
 composer install
