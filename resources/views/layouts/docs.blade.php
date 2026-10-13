@@ -39,6 +39,10 @@
                 @elseif (isset($entry))
                     <header class="mb-12 sm:mb-14">
                         <h1 class="docs-title">{{ $entry->title }}</h1>
+                        @if (in_array($entry->status ?? null, ['partial', 'planned'], true))
+                            <x-pill data-docs-status="{{ $entry->status }}">{{ ucfirst($entry->status) }}</x-pill>
+                            <p>{{ $entry->status === 'planned' ? 'This feature is planned and is not implemented yet.' : 'This feature is partially implemented. Check the documented limitations before using it.' }}</p>
+                        @endif
                         @if ($entry->description ?? null)
                             <p class="docs-lead">{{ $entry->description }}</p>
                         @endif

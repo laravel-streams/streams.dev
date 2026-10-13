@@ -1,0 +1,254 @@
+[
+  {
+    "page": "docs/packages/core/applications.md",
+    "package": "core",
+    "type": "providers",
+    "status": "implemented",
+    "proof": [
+      "streams-core@65ea4668d86fefa20d4eaba35536de33bfda9369:src/StreamsServiceProvider.php",
+      "streams-core@65ea4668d86fefa20d4eaba35536de33bfda9369:src/Application/ApplicationManager.php"
+    ],
+    "finding": "URL activation and documented limited boot merge exist; routes are explicitly excluded."
+  },
+  {
+    "page": "docs/packages/core/addons.md",
+    "package": "core",
+    "type": "providers",
+    "status": "partial",
+    "proof": [
+      "streams-core@65ea4668d86fefa20d4eaba35536de33bfda9369:src/StreamsServiceProvider.php",
+      "streams-core@65ea4668d86fefa20d4eaba35536de33bfda9369:src/Addon/AddonManager.php"
+    ],
+    "finding": "Discovery checks Composer type streams-addon, not extra.streams.addon; register takes an array, not the shown two arguments."
+  },
+  {
+    "page": "docs/packages/core/installation.md",
+    "package": "core",
+    "type": "providers",
+    "status": "implemented",
+    "proof": [
+      "streams-core@65ea4668d86fefa20d4eaba35536de33bfda9369:src/StreamsServiceProvider.php",
+      "streams-core@65ea4668d86fefa20d4eaba35536de33bfda9369:composer.json"
+    ],
+    "finding": "Provider publishes config, streams and public assets."
+  },
+  {
+    "page": "docs/packages/core/configuration.md",
+    "package": "core",
+    "type": "variables",
+    "status": "implemented",
+    "proof": [
+      "streams-core@65ea4668d86fefa20d4eaba35536de33bfda9369:resources/config/core.php"
+    ],
+    "finding": "Configuration defaults and field type registration exist."
+  },
+  {
+    "page": "docs/packages/core/streams.md",
+    "package": "core",
+    "type": "features",
+    "status": "implemented",
+    "proof": [
+      "streams-core@65ea4668d86fefa20d4eaba35536de33bfda9369:src/Stream/Stream.php",
+      "streams-core@65ea4668d86fefa20d4eaba35536de33bfda9369:src/Stream/StreamManager.php"
+    ],
+    "finding": "Stream model and manager expose definitions and repository access."
+  },
+  {
+    "page": "docs/packages/core/fields.md",
+    "package": "core",
+    "type": "features",
+    "status": "implemented",
+    "proof": [
+      "streams-core@65ea4668d86fefa20d4eaba35536de33bfda9369:src/Field/Field.php",
+      "streams-core@65ea4668d86fefa20d4eaba35536de33bfda9369:resources/config/core.php"
+    ],
+    "finding": "Field configuration and registered types exist."
+  },
+  {
+    "page": "docs/packages/core/field-decorators.md",
+    "package": "core",
+    "type": "features",
+    "status": "partial",
+    "proof": [
+      "streams-core@65ea4668d86fefa20d4eaba35536de33bfda9369:src/Field/FieldDecorator.php",
+      "streams-core@65ea4668d86fefa20d4eaba35536de33bfda9369:src/Field/Decorator/StringDecorator.php"
+    ],
+    "finding": "Decorators exist, but Entry dispatch uses a field-named method or decoratePrototypeAttribute; the advertised decorate(body) method is absent."
+  },
+  {
+    "page": "docs/packages/core/entries.md",
+    "package": "core",
+    "type": "features",
+    "status": "implemented",
+    "proof": [
+      "streams-core@65ea4668d86fefa20d4eaba35536de33bfda9369:src/Entry/Entry.php",
+      "streams-core@65ea4668d86fefa20d4eaba35536de33bfda9369:src/Entry/EntryFactory.php"
+    ],
+    "finding": "Entry lifecycle, serialization and factory exist."
+  },
+  {
+    "page": "docs/packages/core/repositories.md",
+    "package": "core",
+    "type": "features",
+    "status": "implemented",
+    "proof": [
+      "streams-core@65ea4668d86fefa20d4eaba35536de33bfda9369:src/Repository/Repository.php"
+    ],
+    "finding": "Documented CRUD methods exist; unavailable methods are explicitly labeled."
+  },
+  {
+    "page": "docs/packages/core/criteria.md",
+    "package": "core",
+    "type": "features",
+    "status": "implemented",
+    "proof": [
+      "streams-core@65ea4668d86fefa20d4eaba35536de33bfda9369:src/Criteria/Criteria.php"
+    ],
+    "finding": "Query, pagination, cache, chunk and upsert methods exist."
+  },
+  {
+    "page": "docs/packages/core/sources-and-adapters.md",
+    "package": "core",
+    "type": "source types",
+    "status": "implemented",
+    "proof": [
+      "streams-core@65ea4668d86fefa20d4eaba35536de33bfda9369:src/Repository/Repository.php",
+      "streams-core@65ea4668d86fefa20d4eaba35536de33bfda9369:src/Criteria/Adapter/AbstractSearchIndexAdapter.php"
+    ],
+    "finding": "Repository resolves all nine documented adapter names, including opt-in search dependencies."
+  },
+  {
+    "page": "docs/packages/core/validation.md",
+    "package": "core",
+    "type": "features",
+    "status": "implemented",
+    "proof": [
+      "streams-core@65ea4668d86fefa20d4eaba35536de33bfda9369:src/Validation/StreamsPresenceVerifier.php",
+      "streams-core@65ea4668d86fefa20d4eaba35536de33bfda9369:src/Entry/Entry.php"
+    ],
+    "finding": "Opt-in entry validation and stream presence verifier exist."
+  },
+  {
+    "page": "docs/packages/core/routes.md",
+    "package": "core",
+    "type": "features",
+    "status": "implemented",
+    "proof": [
+      "streams-core@65ea4668d86fefa20d4eaba35536de33bfda9369:src/Stream/StreamRouter.php",
+      "streams-core@65ea4668d86fefa20d4eaba35536de33bfda9369:src/Http/Controller/EntryController.php"
+    ],
+    "finding": "Stream routing, deferred registration and entry controller exist."
+  },
+  {
+    "page": "docs/packages/core/caching.md",
+    "package": "core",
+    "type": "features",
+    "status": "implemented",
+    "proof": [
+      "streams-core@65ea4668d86fefa20d4eaba35536de33bfda9369:src/Stream/StreamCache.php",
+      "streams-core@65ea4668d86fefa20d4eaba35536de33bfda9369:src/Criteria/Criteria.php"
+    ],
+    "finding": "Cache and fresh query paths exist."
+  },
+  {
+    "page": "docs/packages/core/views-and-includes.md",
+    "package": "core",
+    "type": "features",
+    "status": "implemented",
+    "proof": [
+      "streams-core@65ea4668d86fefa20d4eaba35536de33bfda9369:src/View/ViewIncludes.php",
+      "streams-core@65ea4668d86fefa20d4eaba35536de33bfda9369:src/View/ViewTemplate.php"
+    ],
+    "finding": "Include slots and template support exist."
+  },
+  {
+    "page": "docs/packages/core/assets.md",
+    "package": "core",
+    "type": "features",
+    "status": "implemented",
+    "proof": [
+      "streams-core@65ea4668d86fefa20d4eaba35536de33bfda9369:src/Asset/AssetManager.php",
+      "streams-core@65ea4668d86fefa20d4eaba35536de33bfda9369:src/StreamsServiceProvider.php"
+    ],
+    "finding": "Asset registration and Blade directives exist."
+  },
+  {
+    "page": "docs/packages/core/images.md",
+    "package": "core",
+    "type": "features",
+    "status": "partial",
+    "proof": [
+      "streams-core@65ea4668d86fefa20d4eaba35536de33bfda9369:src/Image/ImageManager.php",
+      "streams-core@65ea4668d86fefa20d4eaba35536de33bfda9369:src/Image/Image.php"
+    ],
+    "finding": "Image alterations and responsive output exist, but srcset requires a sources array; the no-argument example is incompatible."
+  },
+  {
+    "page": "docs/packages/core/macros.md",
+    "package": "core",
+    "type": "providers",
+    "status": "implemented",
+    "proof": [
+      "streams-core@65ea4668d86fefa20d4eaba35536de33bfda9369:src/StreamsServiceProvider.php",
+      "streams-core@65ea4668d86fefa20d4eaba35536de33bfda9369:src/Support/Macros"
+    ],
+    "finding": "Provider registers documented macro families."
+  },
+  {
+    "page": "docs/packages/core/callbacks.md",
+    "package": "core",
+    "type": "features",
+    "status": "implemented",
+    "proof": [
+      "streams-core@65ea4668d86fefa20d4eaba35536de33bfda9369:src/Support/Traits/FiresCallbacks.php",
+      "streams-core@65ea4668d86fefa20d4eaba35536de33bfda9369:src/Entry/Entry.php"
+    ],
+    "finding": "Trait dispatch and entry lifecycle callbacks exist."
+  },
+  {
+    "page": "docs/packages/core/integrator.md",
+    "package": "core",
+    "type": "providers",
+    "status": "partial",
+    "proof": [
+      "streams-core@65ea4668d86fefa20d4eaba35536de33bfda9369:src/Support/Integrator.php"
+    ],
+    "finding": "Merge methods exist, but routes requires an array of grouped routes; the closure example is incompatible."
+  },
+  {
+    "page": "docs/packages/core/facades-and-helpers.md",
+    "package": "core",
+    "type": "providers",
+    "status": "implemented",
+    "proof": [
+      "streams-core@65ea4668d86fefa20d4eaba35536de33bfda9369:src/Support/Facades",
+      "streams-core@65ea4668d86fefa20d4eaba35536de33bfda9369:src/helpers.php",
+      "streams-core@65ea4668d86fefa20d4eaba35536de33bfda9369:src/StreamsServiceProvider.php"
+    ],
+    "finding": "All documented facades are bound and global helpers exist; Messages is not advertised by this page."
+  },
+  {
+    "page": "docs/packages/core/extending-core.md",
+    "package": "core",
+    "type": "providers",
+    "status": "implemented",
+    "proof": [
+      "streams-core@65ea4668d86fefa20d4eaba35536de33bfda9369:src/Repository/Repository.php",
+      "streams-core@65ea4668d86fefa20d4eaba35536de33bfda9369:src/Stream/Stream.php",
+      "streams-core@65ea4668d86fefa20d4eaba35536de33bfda9369:src/StreamsServiceProvider.php"
+    ],
+    "finding": "Custom adapter, criteria, repository, entry and field bindings exist."
+  },
+  {
+    "page": "docs/packages/core/introduction.md",
+    "package": "core",
+    "type": "features",
+    "status": "implemented",
+    "proof": [
+      "streams-core@65ea4668d86fefa20d4eaba35536de33bfda9369:src/Stream/StreamManager.php",
+      "streams-core@65ea4668d86fefa20d4eaba35536de33bfda9369:src/Entry/Entry.php",
+      "streams-core@65ea4668d86fefa20d4eaba35536de33bfda9369:src/Repository/Repository.php"
+    ],
+    "finding": "Overview describes executable core primitives and explicitly excludes UI and API."
+  }
+]
