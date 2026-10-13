@@ -14,7 +14,7 @@
             $sourcePath = trim((string) data_get($editStream, 'config.source.path', ''), '/');
             $relative = ($sourcePath !== '' ? $sourcePath : 'streams/data/'.$editStream->id).'/'.$entry->id.'.'.$format;
             if (is_file(base_path($relative))) {
-                $editUrl = 'https://github.com/laravel-streams/streams.dev/blob/develop/'.$relative;
+                $editUrl = 'https://github.com/laravel-streams/streams.dev/blob/master/'.$relative;
             }
         }
     @endphp
