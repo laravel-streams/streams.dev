@@ -29,6 +29,7 @@ class DocsSidebarFilterTest extends TestCase
         // Other packages' pages are present (collapsed) so the filter can find them.
         $this->assertStringContainsString('href="/docs/api/routes"', $html);
         $this->assertStringContainsString('href="/docs/ui/forms"', $html);
+        $this->assertStringContainsString('<p class="docs-nav-label">Builders</p>', $html);
         $this->assertStringContainsString('docs-nav-collapsed', $html);
 
         // Only the current page is marked active, even though every package has an "introduction".

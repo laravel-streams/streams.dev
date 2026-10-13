@@ -86,7 +86,7 @@ For programmatic routes outside the pages stream, use Laravel's `Route` facade o
 |--------|-------------|---------|
 | `pages` | `/`, `/docs`, `/addons` | HTML with Blade |
 | `docs` | `/docs/{id}` | Markdown hub guides |
-| `core_docs` | `/docs/core/{id}` | Markdown package reference |
+| `core_docs` | `/docs/core/{id}` | Markdown in `docs/packages/core` |
 
 The `/docs` **index** is a pages entry (`docs.html`). Individual guide pages use the `docs` stream.
 

@@ -1,0 +1,110 @@
+{
+    "core": {
+        "label": "Core",
+        "stream": "core_docs",
+        "groups": [
+            {
+                "label": "Start",
+                "pages": ["introduction", "installation", "configuration"]
+            },
+            {
+                "label": "Model",
+                "pages": ["streams", "fields", "field-decorators", "entries", "repositories", "criteria", "sources-and-adapters", "validation"]
+            },
+            {
+                "label": "Runtime",
+                "pages": ["routes", "caching", "views-and-includes", "assets", "images"]
+            },
+            {
+                "label": "Extend",
+                "pages": ["applications", "addons", "macros", "callbacks", "integrator", "facades-and-helpers", "extending-core"]
+            }
+        ]
+    },
+    "ui": {
+        "label": "UI",
+        "stream": "ui_docs",
+        "groups": [
+            {
+                "label": "Start",
+                "pages": ["introduction", "installation", "quick-start", "architecture"]
+            },
+            {
+                "label": "Panels",
+                "pages": ["panels", "resources", "pages", "navigation", "routing", "theming"]
+            },
+            {
+                "label": "Builders",
+                "pages": ["forms", "form-layouts", "inputs", "tables", "columns", "filters", "actions", "bulk-actions"]
+            },
+            {
+                "label": "Livewire",
+                "pages": ["livewire"]
+            }
+        ]
+    },
+    "api": {
+        "label": "API",
+        "stream": "api_docs",
+        "groups": [
+            {
+                "label": "Start",
+                "pages": ["introduction", "installation", "configuration"]
+            },
+            {
+                "label": "HTTP",
+                "pages": ["requests", "responses", "query-parameters", "pagination", "errors"]
+            },
+            {
+                "label": "Endpoints",
+                "pages": ["routes", "streams-endpoints", "entry-endpoints", "query-endpoint", "custom-endpoints", "custom-interfaces"]
+            },
+            {
+                "label": "Operations",
+                "pages": ["authentication", "tenancy", "caching", "openapi", "examples", "testing"]
+            }
+        ]
+    },
+    "sdk": {
+        "label": "SDK",
+        "stream": "sdk_docs",
+        "groups": [
+            {
+                "label": "Start",
+                "pages": ["introduction", "stream-schema", "streams"]
+            },
+            {
+                "label": "Tools",
+                "pages": ["commands", "tall-components", "ai-prompts"]
+            }
+        ]
+    },
+    "testing": {
+        "label": "Testing",
+        "stream": "testing_docs",
+        "groups": [
+            {
+                "label": "Start",
+                "pages": ["introduction", "installation", "configuration"]
+            },
+            {
+                "label": "Tests",
+                "pages": ["test-data", "writing-tests", "troubleshooting"]
+            }
+        ]
+    },
+    "client": {
+        "label": "Client",
+        "stream": "client_docs",
+        "groups": [
+            {
+                "label": "Start",
+                "pages": ["introduction", "installation", "quickstart", "client"]
+            },
+            {
+                "label": "Usage",
+                "pages": ["streams", "entries", "criteria", "middleware", "examples"]
+            }
+        ]
+    }
+}

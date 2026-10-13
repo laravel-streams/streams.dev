@@ -2,19 +2,19 @@
 
 namespace Tests\Feature;
 
+use App\Support\DocsNav;
 use Illuminate\Support\Facades\App;
+use Streams\Core\Support\Facades\Streams;
 use Symfony\Component\Yaml\Yaml;
 use Tests\TestCase;
 
 /**
- * Lints every docs page in streams/data/*docs against the frontmatter
- * schema in STYLE.md. Agents copy these pages verbatim, so they must stay
+ * Lints hub guides and package reference against the frontmatter schema
+ * in STYLE.md. Agents copy these pages verbatim, so they must stay
  * machine-readable.
  */
 class DocsContentTest extends TestCase
 {
-    protected const STREAMS = ['docs', 'core_docs', 'ui_docs', 'api_docs', 'sdk_docs', 'testing_docs', 'client_docs'];
-
     protected const SECTIONS = ['get-started', 'guides', 'concepts', 'reference', 'packages', 'contributing'];
 
     protected const PACKAGES = ['core', 'ui', 'api', 'sdk', 'testing', 'client', 'site', 'all'];
@@ -27,20 +27,25 @@ class DocsContentTest extends TestCase
     protected function pages(): array
     {
         $pages = [];
+        $files = glob(base_path('streams/data/docs/*.md')) ?: [];
 
-        foreach (static::STREAMS as $stream) {
-            foreach (glob(base_path("streams/data/{$stream}/*.md")) as $file) {
-                $text = file_get_contents($file);
+        foreach (DocsNav::packages() as $package => $ignored) {
+            $files = array_merge($files, glob(DocsNav::directory($package).'/*.md') ?: []);
+        }
 
-                $this->assertMatchesRegularExpression('/^---\n.*?\n---\n/s', $text, "{$file} has no frontmatter.");
+        foreach ($files as $file) {
+            $text = file_get_contents($file);
 
-                preg_match('/^---\n(.*?)\n---\n/s', $text, $match);
+            $this->assertMatchesRegularExpression('/^---\n.*?\n---\n/s', $text, "{$file} has no frontmatter.");
 
-                $pages[$stream.'/'.basename($file, '.md')] = [
-                    'frontmatter' => Yaml::parse($match[1]),
-                    'body' => substr($text, strlen($match[0])),
-                ];
-            }
+            preg_match('/^---\n(.*?)\n---\n/s', $text, $match);
+
+            $relative = ltrim(str_replace(base_path(), '', $file), '/');
+
+            $pages[substr($relative, 0, -3)] = [
+                'frontmatter' => Yaml::parse($match[1]),
+                'body' => substr($text, strlen($match[0])),
+            ];
         }
 
         $this->assertNotEmpty($pages);
@@ -66,10 +71,11 @@ class DocsContentTest extends TestCase
             $this->assertIsArray($frontmatter['tags'], "{$page} tags");
             $this->assertArrayNotHasKey('sort_order', $frontmatter, "{$page} uses sort_order; use order.");
 
-            if (str_starts_with($page, 'docs/')) {
+            if (str_starts_with($page, 'streams/data/docs/')) {
                 $this->assertContains($frontmatter['category'] ?? null, $categories, "{$page} category");
             } else {
                 $this->assertArrayNotHasKey('category', $frontmatter, "{$page}: package pages have no category.");
+                $this->assertArrayNotHasKey('group', $frontmatter, "{$page}: package headings live in docs/nav.json.");
                 $this->assertSame('packages', $frontmatter['section'], "{$page} section");
             }
         }
@@ -170,5 +176,30 @@ class DocsContentTest extends TestCase
         }
 
         return $types;
+    }
+
+    public function test_package_nav_points_at_package_files()
+    {
+        foreach (DocsNav::packages() as $name => $package) {
+            $this->assertSame(
+                'docs/packages/'.$name,
+                Streams::make($package['stream'])->config('source.path'),
+                "{$name} stream does not point at its package folder."
+            );
+
+            $listed = DocsNav::listed($name);
+
+            $this->assertSame($listed, array_values(array_unique($listed)), "{$name} lists a page more than once.");
+
+            foreach ($listed as $id) {
+                $this->assertFileExists(DocsNav::directory($name).'/'.$id.'.md', "{$name} nav points at missing {$id}.md.");
+            }
+
+            $this->assertEqualsCanonicalizing(
+                DocsNav::files($name),
+                array_merge($listed, DocsNav::unlisted($name)),
+                "{$name} nav does not account for every markdown file."
+            );
+        }
     }
 }

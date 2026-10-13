@@ -12,14 +12,12 @@ status: ready
 
 ## Where docs live
 
-All documentation for streams.dev is in **this repository** under `streams/data/`. Package repos link here; they do not maintain parallel doc trees.
+Hub guides live in this repository under `streams/data/docs/`. Package reference lives in `docs/packages/{name}/` — one folder per package, whether or not this site installs it. `php artisan docs:sync` copies that folder to and from the package repository. Sidebar headings are pointers in `docs/nav.json`, not a second copy of the prose.
 
 | Section | Path | URL |
 |---------|------|-----|
 | Hub guides | `streams/data/docs/` | `/docs/{id}` |
-| Core | `streams/data/core_docs/` | `/docs/core/{id}` |
-| UI | `streams/data/ui_docs/` | `/docs/ui/{id}` |
-| API | `streams/data/api_docs/` | `/docs/api/{id}` |
+| Package reference | `docs/packages/{name}/` | `/docs/{name}/{id}` |
 
 See [STYLE.md](https://github.com/laravel-streams/streams.dev/blob/develop/STYLE.md) for voice, frontmatter, and visual guidelines.
 
@@ -35,7 +33,7 @@ description: One sentence, plain text, for indexes and meta.
 section: packages                # get-started | guides | concepts | reference | packages | contributing
 category: getting-started        # hub docs only: a key in streams/docs_categories.json
 package: core                    # core | ui | api | sdk | testing | client | site | all
-order: 20                        # sidebar order within the stream (hub docs: within the category); step by 10
+order: 20                        # hub sidebar and search order; package sidebar is docs/nav.json
 tags: [core, installation]
 status: ready                    # draft | review | ready | deprecated
 ---

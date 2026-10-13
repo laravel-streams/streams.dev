@@ -61,7 +61,7 @@ class AgentDocsTest extends TestCase
 
     public function test_api_docs_avoid_the_known_pitfalls()
     {
-        $docs = fn (string $page) => file_get_contents(base_path("streams/data/api_docs/{$page}.md"));
+        $docs = fn (string $page) => file_get_contents(base_path("docs/packages/api/{$page}.md"));
 
         $this->assertStringContainsString('calling `routeStreams()` and then `routeEntries()` leaves you with the stream routes only', $docs('routes'));
         $this->assertStringContainsString('ListEntries::applyFilters()', $docs('query-parameters'));
