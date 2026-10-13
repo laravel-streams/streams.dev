@@ -6,7 +6,9 @@ section: packages
 package: testing
 order: 30
 tags: [testing, test, data]
-status: ready
+editorial_status: ready
+status: partial
+tracking_task: pending
 ---
 
 The Streams Testing package includes a rich set of sample data based on the Star Wars universe. This data provides realistic examples for testing and learning Streams concepts.

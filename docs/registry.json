@@ -693,5 +693,135 @@
       "streams-api@22d2351345631480102aa1377e6a6a73d765c7a5:src/Endpoints/Entries/QueryEntries.php"
     ],
     "finding": "Example paths and payloads correspond to registered endpoints."
+  },
+  {
+    "page": "docs/packages/sdk/introduction.md",
+    "package": "sdk",
+    "type": "providers",
+    "status": "implemented",
+    "proof": [
+      "streams-sdk@2aff9ebe3a0a58b4e48cb244af0ee683e17ef7b9:src/SdkServiceProvider.php"
+    ],
+    "finding": "Audited sdk/rc, the branch required by composer.json; commands and local MCP are registered there, unlike the older 1.0 checkout."
+  },
+  {
+    "page": "docs/packages/sdk/commands.md",
+    "package": "sdk",
+    "type": "features",
+    "status": "implemented",
+    "proof": [
+      "streams-sdk@2aff9ebe3a0a58b4e48cb244af0ee683e17ef7b9:src/SdkServiceProvider.php",
+      "streams-sdk@2aff9ebe3a0a58b4e48cb244af0ee683e17ef7b9:src/Console/Commands/StreamsValidate.php",
+      "streams-sdk@2aff9ebe3a0a58b4e48cb244af0ee683e17ef7b9:src/Console/Commands/MakeLivewire.php"
+    ],
+    "finding": "Registered commands and explicitly excluded source-only commands match sdk/rc."
+  },
+  {
+    "page": "docs/packages/sdk/stream-schema.md",
+    "package": "sdk",
+    "type": "features",
+    "status": "implemented",
+    "proof": [
+      "streams-sdk@2aff9ebe3a0a58b4e48cb244af0ee683e17ef7b9:resources/schemas/streams.schema.json",
+      "streams-sdk@2aff9ebe3a0a58b4e48cb244af0ee683e17ef7b9:src/Support/StreamDefinitionValidator.php"
+    ],
+    "finding": "Draft-07 schema and semantic checks exist on sdk/rc."
+  },
+  {
+    "page": "docs/packages/sdk/streams.md",
+    "package": "sdk",
+    "type": "source types",
+    "status": "partial",
+    "proof": [
+      "streams-sdk@2aff9ebe3a0a58b4e48cb244af0ee683e17ef7b9:src/Support/StreamDefinitionValidator.php",
+      "streams-sdk@2aff9ebe3a0a58b4e48cb244af0ee683e17ef7b9:src/Console/Commands/MakeStream.php"
+    ],
+    "finding": "Stream scaffolding exists; page still advertises legacy handle, validation and implicit sort/pagination configuration beyond current validator/runtime scope."
+  },
+  {
+    "page": "docs/packages/sdk/tall-components.md",
+    "package": "sdk",
+    "type": "features",
+    "status": "partial",
+    "proof": [
+      "streams-sdk@2aff9ebe3a0a58b4e48cb244af0ee683e17ef7b9:src/Console/Commands/MakeLivewire.php",
+      "streams-sdk@2aff9ebe3a0a58b4e48cb244af0ee683e17ef7b9:src/Console/Commands/stubs/livewire"
+    ],
+    "finding": "Livewire class/views are generated; controllers, middleware and automatic route installation advertised by this guide are not generated."
+  },
+  {
+    "page": "docs/packages/sdk/ai-prompts.md",
+    "package": "sdk",
+    "type": "features",
+    "status": "implemented",
+    "proof": [
+      "streams-sdk@2aff9ebe3a0a58b4e48cb244af0ee683e17ef7b9:src/Mcp/Prompts/DesignStream.php",
+      "streams-sdk@2aff9ebe3a0a58b4e48cb244af0ee683e17ef7b9:resources/schemas/streams.schema.json"
+    ],
+    "finding": "Manual prompt guidance and registered DesignStream prompt exist; application features in examples are work requested from an assistant."
+  },
+  {
+    "page": "docs/packages/testing/introduction.md",
+    "package": "testing",
+    "type": "features",
+    "status": "implemented",
+    "proof": [
+      "streams-testing@ec5dd5f41b814a2b15b5dc1aa8a9f5911281781c:src/TestCase.php",
+      "streams-testing@ec5dd5f41b814a2b15b5dc1aa8a9f5911281781c:laravel/streams.bak"
+    ],
+    "finding": "Committed TestCase supplies Testbench base path and fixture restoration. Uncommitted runtime refactoring is not treated as shipped."
+  },
+  {
+    "page": "docs/packages/testing/installation.md",
+    "package": "testing",
+    "type": "providers",
+    "status": "implemented",
+    "proof": [
+      "streams-testing@ec5dd5f41b814a2b15b5dc1aa8a9f5911281781c:composer.json",
+      "streams-testing@ec5dd5f41b814a2b15b5dc1aa8a9f5911281781c:src/TestCase.php"
+    ],
+    "finding": "Committed manifest requires Testbench 8.36 and Core 2.0; wider support is explicitly future work."
+  },
+  {
+    "page": "docs/packages/testing/configuration.md",
+    "package": "testing",
+    "type": "variables",
+    "status": "partial",
+    "proof": [
+      "streams-testing@ec5dd5f41b814a2b15b5dc1aa8a9f5911281781c:src/TestCase.php",
+      "streams-testing@ec5dd5f41b814a2b15b5dc1aa8a9f5911281781c:laravel/phpunit.xml"
+    ],
+    "finding": "Harness configuration exists; custom createFilm example calls Stream::create, which is absent from the inspected Core Stream API."
+  },
+  {
+    "page": "docs/packages/testing/test-data.md",
+    "package": "testing",
+    "type": "features",
+    "status": "partial",
+    "proof": [
+      "streams-testing@ec5dd5f41b814a2b15b5dc1aa8a9f5911281781c:src/TestCase.php",
+      "streams-testing@ec5dd5f41b814a2b15b5dc1aa8a9f5911281781c:laravel/streams.bak"
+    ],
+    "finding": "Committed fixtures and restoreStreamsData exist; custom fixture examples use absent Stream::create."
+  },
+  {
+    "page": "docs/packages/testing/writing-tests.md",
+    "package": "testing",
+    "type": "features",
+    "status": "partial",
+    "proof": [
+      "streams-testing@ec5dd5f41b814a2b15b5dc1aa8a9f5911281781c:src/TestCase.php"
+    ],
+    "finding": "Testbench test base exists; several creation/validation examples call absent Stream::create."
+  },
+  {
+    "page": "docs/packages/testing/troubleshooting.md",
+    "package": "testing",
+    "type": "features",
+    "status": "partial",
+    "proof": [
+      "streams-testing@ec5dd5f41b814a2b15b5dc1aa8a9f5911281781c:src/TestCase.php"
+    ],
+    "finding": "Committed restoration exists; clearData/loadFixtures methods and Core criteria timeout are not implemented."
   }
 ]

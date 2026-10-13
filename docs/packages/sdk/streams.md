@@ -6,7 +6,9 @@ section: packages
 package: sdk
 order: 40
 tags: [sdk, streams]
-status: ready
+editorial_status: ready
+status: partial
+tracking_task: pending
 ---
 
 Streams are the foundation of Laravel Streams - they define the structure and behavior of your data entities. Think of them as dynamic Eloquent models that can be configured through JSON.
