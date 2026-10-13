@@ -46,7 +46,7 @@ Documentation and pages are flat files — no database required for content chan
 | Site page | `streams/data/pages/{id}.html` | entry `uri` |
 | Stream config | `streams/{handle}.json` | after cache clear if cached |
 
-In local environment, doc pages show an **Edit this page** link to that file on GitHub (`laravel-streams/streams.dev`, branch `develop`).
+In local environment, doc pages show an **Edit this page** link to that file on GitHub (`laravel-streams/streams.dev`, branch `master`).
 
 ## Admin panel
 
