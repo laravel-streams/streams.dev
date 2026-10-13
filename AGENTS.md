@@ -24,7 +24,7 @@ The GitHub organization is [`laravel-streams`](https://github.com/laravel-stream
 Requirements: PHP 8.2+ with the usual Laravel extensions, Composer 2, Node.js 20.19+ or 22.12+, and git. No database is needed.
 
 ```bash
-git clone https://github.com/laravel-streams/streams.dev.git --branch develop
+git clone https://github.com/laravel-streams/streams.dev.git
 cd streams.dev
 composer install          # clones streams/core, streams/ui, streams/sdk from GitHub into vendor/streams/
 cp .env.example .env
@@ -169,12 +169,9 @@ Try it: `curl -s http://127.0.0.1:8427/mcp -H 'Content-Type: application/json' -
 
 ## Branches
 
-The repository has two long-lived branches:
+`master` is the only long-lived branch: it is GitHub's default branch and what is live on streams.dev.
 
-- `develop`: day-to-day work. Commit here, or branch off it for a larger change and merge back. Clone with `--branch develop`.
-- `master`: what is live on streams.dev, and GitHub's default branch. It only moves by merging `develop` into it.
-
-The flow is: work on `develop` and push it, run the checks above, merge `develop` into `master` (a plain merge, never a force push), push `master`, then deploy. There are no other long-lived branches; the old `next`, `integration/rc` and `production` branches are gone, so don't recreate them. Short-lived feature branches are fine, but delete them once merged.
+The flow is: branch off `master` (for example `feature/...` or `fix/...`), push the branch, run the checks above, open a pull request into `master`, and merge it (never force push `master`). Once merged, deploy `master`. There are no other long-lived branches; the old `develop`, `next`, `integration/rc` and `production` branches are gone, so don't recreate them. Delete feature branches once merged.
 
 ## Deploying
 
