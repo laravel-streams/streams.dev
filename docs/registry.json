@@ -250,5 +250,218 @@
       "streams-core@65ea4668d86fefa20d4eaba35536de33bfda9369:src/Repository/Repository.php"
     ],
     "finding": "Overview describes executable core primitives and explicitly excludes UI and API."
+  },
+  {
+    "page": "docs/packages/ui/introduction.md",
+    "package": "ui",
+    "type": "features",
+    "status": "partial",
+    "proof": [
+      "streams-ui@3a30c8676df7815804a31cf5388b8fee80cdb541:src/UiManager.php",
+      "streams-ui@3a30c8676df7815804a31cf5388b8fee80cdb541:resources/routes/web.php"
+    ],
+    "finding": "Panel/resource primitives exist, but no panel-root route is generated; visiting /admin alone is not guaranteed."
+  },
+  {
+    "page": "docs/packages/ui/installation.md",
+    "package": "ui",
+    "type": "providers",
+    "status": "implemented",
+    "proof": [
+      "streams-ui@3a30c8676df7815804a31cf5388b8fee80cdb541:src/UiServiceProvider.php",
+      "streams-ui@3a30c8676df7815804a31cf5388b8fee80cdb541:composer.json"
+    ],
+    "finding": "Panel facade, publish tags and persistent middleware are registered."
+  },
+  {
+    "page": "docs/packages/ui/quick-start.md",
+    "package": "ui",
+    "type": "features",
+    "status": "partial",
+    "proof": [
+      "streams-ui@3a30c8676df7815804a31cf5388b8fee80cdb541:src/Resources/Concerns/HasRoutes.php",
+      "streams-ui@3a30c8676df7815804a31cf5388b8fee80cdb541:src/Livewire/Pages/Concerns/HasResource.php"
+    ],
+    "finding": "PostResource defaults to post-resource slug, not posts; generic CRUD pages need subclasses bound to the resource."
+  },
+  {
+    "page": "docs/packages/ui/architecture.md",
+    "package": "ui",
+    "type": "features",
+    "status": "implemented",
+    "proof": [
+      "streams-ui@3a30c8676df7815804a31cf5388b8fee80cdb541:src/Http/Middleware/SetUpPanel.php",
+      "streams-ui@3a30c8676df7815804a31cf5388b8fee80cdb541:src/Livewire/Pages/ListEntries.php",
+      "streams-ui@3a30c8676df7815804a31cf5388b8fee80cdb541:src/Resources/Resource.php"
+    ],
+    "finding": "Middleware boots the panel and resource pages delegate to builders."
+  },
+  {
+    "page": "docs/packages/ui/panels.md",
+    "package": "ui",
+    "type": "features",
+    "status": "partial",
+    "proof": [
+      "streams-ui@3a30c8676df7815804a31cf5388b8fee80cdb541:src/Builders/Panels/Concerns/HasRoutes.php",
+      "streams-ui@3a30c8676df7815804a31cf5388b8fee80cdb541:resources/routes/web.php"
+    ],
+    "finding": "Panel options exist, but route registration loops over null domain instead of configured domains."
+  },
+  {
+    "page": "docs/packages/ui/resources.md",
+    "package": "ui",
+    "type": "features",
+    "status": "partial",
+    "proof": [
+      "streams-ui@3a30c8676df7815804a31cf5388b8fee80cdb541:src/Resources/Resource.php",
+      "streams-ui@3a30c8676df7815804a31cf5388b8fee80cdb541:src/Livewire/Pages/Concerns/HasResource.php"
+    ],
+    "finding": "Resource primitives exist; example uses generic page classes without setting their required static resource."
+  },
+  {
+    "page": "docs/packages/ui/pages.md",
+    "package": "ui",
+    "type": "features",
+    "status": "implemented",
+    "proof": [
+      "streams-ui@3a30c8676df7815804a31cf5388b8fee80cdb541:src/Livewire/Pages/PanelPage.php",
+      "streams-ui@3a30c8676df7815804a31cf5388b8fee80cdb541:src/Livewire/Pages/Concerns/HasResource.php"
+    ],
+    "finding": "Page APIs exist and page binding requirement is explicitly documented."
+  },
+  {
+    "page": "docs/packages/ui/navigation.md",
+    "package": "ui",
+    "type": "features",
+    "status": "partial",
+    "proof": [
+      "streams-ui@3a30c8676df7815804a31cf5388b8fee80cdb541:src/Builders/Navigation/NavigationItem.php",
+      "streams-ui@3a30c8676df7815804a31cf5388b8fee80cdb541:src/Builders/Concerns/HasSortOrder.php"
+    ],
+    "finding": "Navigation uses sortOrder; the documented sort method does not exist."
+  },
+  {
+    "page": "docs/packages/ui/routing.md",
+    "package": "ui",
+    "type": "features",
+    "status": "partial",
+    "proof": [
+      "streams-ui@3a30c8676df7815804a31cf5388b8fee80cdb541:resources/routes/web.php",
+      "streams-ui@3a30c8676df7815804a31cf5388b8fee80cdb541:src/Resources/Concerns/HasRoutes.php"
+    ],
+    "finding": "Resource names exist; custom route closure executes outside panel prefix/middleware, and default resource slug includes Resource suffix."
+  },
+  {
+    "page": "docs/packages/ui/forms.md",
+    "package": "ui",
+    "type": "features",
+    "status": "implemented",
+    "proof": [
+      "streams-ui@3a30c8676df7815804a31cf5388b8fee80cdb541:src/Builders/Forms/Form.php",
+      "streams-ui@3a30c8676df7815804a31cf5388b8fee80cdb541:src/Builders/Forms/Concerns/HandlesValidation.php"
+    ],
+    "finding": "Factory/register/resolve and component validation APIs exist."
+  },
+  {
+    "page": "docs/packages/ui/form-layouts.md",
+    "package": "ui",
+    "type": "features",
+    "status": "implemented",
+    "proof": [
+      "streams-ui@3a30c8676df7815804a31cf5388b8fee80cdb541:src/Builders/Forms/Layouts/Field.php",
+      "streams-ui@3a30c8676df7815804a31cf5388b8fee80cdb541:src/Builders/Forms/Layouts/Fieldset.php",
+      "streams-ui@3a30c8676df7815804a31cf5388b8fee80cdb541:src/Builders/Containers/Grid.php"
+    ],
+    "finding": "Field wrappers, fieldsets and container layouts exist."
+  },
+  {
+    "page": "docs/packages/ui/inputs.md",
+    "package": "ui",
+    "type": "features",
+    "status": "implemented",
+    "proof": [
+      "streams-ui@3a30c8676df7815804a31cf5388b8fee80cdb541:src/Builders/Inputs/Input.php",
+      "streams-ui@3a30c8676df7815804a31cf5388b8fee80cdb541:tests/Builders/Inputs"
+    ],
+    "finding": "Listed inputs and validation/length configuration have implementations and tests."
+  },
+  {
+    "page": "docs/packages/ui/tables.md",
+    "package": "ui",
+    "type": "features",
+    "status": "implemented",
+    "proof": [
+      "streams-ui@3a30c8676df7815804a31cf5388b8fee80cdb541:src/Builders/Tables/Table.php"
+    ],
+    "finding": "Factory, query, defaultSort, filters and pagination exist."
+  },
+  {
+    "page": "docs/packages/ui/columns.md",
+    "package": "ui",
+    "type": "features",
+    "status": "implemented",
+    "proof": [
+      "streams-ui@3a30c8676df7815804a31cf5388b8fee80cdb541:src/Builders/Tables/Columns/Column.php",
+      "streams-ui@3a30c8676df7815804a31cf5388b8fee80cdb541:src/Builders/Tables/Columns/Concerns/IsSortable.php"
+    ],
+    "finding": "Listed column classes and sortable/searchable concerns exist."
+  },
+  {
+    "page": "docs/packages/ui/filters.md",
+    "package": "ui",
+    "type": "features",
+    "status": "partial",
+    "proof": [
+      "streams-ui@3a30c8676df7815804a31cf5388b8fee80cdb541:src/Builders/Tables/Filters/CriteriaFilter.php",
+      "streams-ui@3a30c8676df7815804a31cf5388b8fee80cdb541:src/Builders/Tables/Table.php"
+    ],
+    "finding": "Text/select/search/toggle exist, but CriteriaFilter.php declares SelectFilter rather than CriteriaFilter."
+  },
+  {
+    "page": "docs/packages/ui/bulk-actions.md",
+    "package": "ui",
+    "type": "features",
+    "status": "implemented",
+    "proof": [
+      "streams-ui@3a30c8676df7815804a31cf5388b8fee80cdb541:src/Builders/Tables/BulkActions/BulkAction.php",
+      "streams-ui@3a30c8676df7815804a31cf5388b8fee80cdb541:src/Builders/Tables/Concerns/HasBulkActions.php",
+      "streams-ui@3a30c8676df7815804a31cf5388b8fee80cdb541:src/Builders/Actions/DeleteSelectedEntries.php"
+    ],
+    "finding": "Bulk and grouped actions resolve selected records and built-in deletion."
+  },
+  {
+    "page": "docs/packages/ui/actions.md",
+    "package": "ui",
+    "type": "features",
+    "status": "partial",
+    "proof": [
+      "streams-ui@3a30c8676df7815804a31cf5388b8fee80cdb541:src/Builders/Actions/Action.php",
+      "streams-ui@3a30c8676df7815804a31cf5388b8fee80cdb541:src/Builders/Actions/MountableAction.php"
+    ],
+    "finding": "Closure execution belongs to MountableAction; example calls action on base Action, which does not include HasAction."
+  },
+  {
+    "page": "docs/packages/ui/livewire.md",
+    "package": "ui",
+    "type": "providers",
+    "status": "partial",
+    "proof": [
+      "streams-ui@3a30c8676df7815804a31cf5388b8fee80cdb541:src/Livewire/Pages/Page.php",
+      "streams-ui@3a30c8676df7815804a31cf5388b8fee80cdb541:src/UiServiceProvider.php",
+      "streams-ui@3a30c8676df7815804a31cf5388b8fee80cdb541:src/Livewire/Tables/InteractsWithTables.php"
+    ],
+    "finding": "Persistent middleware exists; documented InteractsWithTable and action trait namespace differ from actual InteractsWithTables and Livewire/Actions."
+  },
+  {
+    "page": "docs/packages/ui/theming.md",
+    "package": "ui",
+    "type": "variables",
+    "status": "implemented",
+    "proof": [
+      "streams-ui@3a30c8676df7815804a31cf5388b8fee80cdb541:src/Builders/Panels/Panel.php",
+      "streams-ui@3a30c8676df7815804a31cf5388b8fee80cdb541:src/Colors/ColorManager.php",
+      "streams-ui@3a30c8676df7815804a31cf5388b8fee80cdb541:src/Builders/Panels/Concerns/HasFavicon.php"
+    ],
+    "finding": "Panel boot shares palettes; branding, favicon and layout options exist."
   }
 ]
