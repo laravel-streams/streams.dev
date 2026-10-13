@@ -463,5 +463,235 @@
       "streams-ui@3a30c8676df7815804a31cf5388b8fee80cdb541:src/Builders/Panels/Concerns/HasFavicon.php"
     ],
     "finding": "Panel boot shares palettes; branding, favicon and layout options exist."
+  },
+  {
+    "page": "docs/packages/api/introduction.md",
+    "package": "api",
+    "type": "features",
+    "status": "implemented",
+    "proof": [
+      "streams-api@22d2351345631480102aa1377e6a6a73d765c7a5:src/ApiManager.php",
+      "streams-api@22d2351345631480102aa1377e6a6a73d765c7a5:src/ApiResponse.php",
+      "streams-api@22d2351345631480102aa1377e6a6a73d765c7a5:src/Resources/EntriesResource.php"
+    ],
+    "finding": "Interfaces, CRUD resources and response envelope exist; auth and route opt-in boundaries are documented."
+  },
+  {
+    "page": "docs/packages/api/installation.md",
+    "package": "api",
+    "type": "providers",
+    "status": "implemented",
+    "proof": [
+      "streams-api@22d2351345631480102aa1377e6a6a73d765c7a5:src/ApiServiceProvider.php",
+      "streams-api@22d2351345631480102aa1377e6a6a73d765c7a5:composer.json"
+    ],
+    "finding": "Provider registers facade, gate/interface middleware, config and schema commands."
+  },
+  {
+    "page": "docs/packages/api/configuration.md",
+    "package": "api",
+    "type": "variables",
+    "status": "implemented",
+    "proof": [
+      "streams-api@22d2351345631480102aa1377e6a6a73d765c7a5:resources/config/api.php",
+      "streams-api@22d2351345631480102aa1377e6a6a73d765c7a5:src/ApiManager.php"
+    ],
+    "finding": "Listed keys and middleware ordering match configuration and route registration."
+  },
+  {
+    "page": "docs/packages/api/routes.md",
+    "package": "api",
+    "type": "features",
+    "status": "implemented",
+    "proof": [
+      "streams-api@22d2351345631480102aa1377e6a6a73d765c7a5:src/Resources/StreamsResource.php",
+      "streams-api@22d2351345631480102aa1377e6a6a73d765c7a5:src/Resources/EntriesResource.php",
+      "streams-api@22d2351345631480102aa1377e6a6a73d765c7a5:src/ApiManager.php"
+    ],
+    "finding": "Registered endpoint route maps and one-helper behavior match the guide."
+  },
+  {
+    "page": "docs/packages/api/requests.md",
+    "package": "api",
+    "type": "features",
+    "status": "implemented",
+    "proof": [
+      "streams-api@22d2351345631480102aa1377e6a6a73d765c7a5:src/Endpoints/Entries/CreateEntry.php",
+      "streams-api@22d2351345631480102aa1377e6a6a73d765c7a5:src/Endpoints/Entries/UpdateEntry.php",
+      "streams-api@22d2351345631480102aa1377e6a6a73d765c7a5:src/Endpoints/Entries/PatchEntry.php"
+    ],
+    "finding": "Flat JSON/form creation and JSON PUT/PATCH are implemented."
+  },
+  {
+    "page": "docs/packages/api/responses.md",
+    "package": "api",
+    "type": "features",
+    "status": "implemented",
+    "proof": [
+      "streams-api@22d2351345631480102aa1377e6a6a73d765c7a5:src/ApiResponse.php",
+      "streams-api@22d2351345631480102aa1377e6a6a73d765c7a5:src/Endpoints/Entries/DeleteEntry.php"
+    ],
+    "finding": "Envelope and no-content delete response exist; HTTP status is removed from payload."
+  },
+  {
+    "page": "docs/packages/api/query-parameters.md",
+    "package": "api",
+    "type": "variables",
+    "status": "implemented",
+    "proof": [
+      "streams-api@22d2351345631480102aa1377e6a6a73d765c7a5:src/Endpoints/Entries/ListEntries.php",
+      "streams-api@22d2351345631480102aa1377e6a6a73d765c7a5:src/Endpoints/Entries/Concerns/AppliesEagerLoading.php"
+    ],
+    "finding": "Filter/order/limit input paths and eager-load parsing exist."
+  },
+  {
+    "page": "docs/packages/api/pagination.md",
+    "package": "api",
+    "type": "features",
+    "status": "implemented",
+    "proof": [
+      "streams-api@22d2351345631480102aa1377e6a6a73d765c7a5:src/ApiResponse.php",
+      "streams-api@22d2351345631480102aa1377e6a6a73d765c7a5:src/Endpoints/Entries/ListEntries.php"
+    ],
+    "finding": "Pagination meta/link keys and 100-entry default match source."
+  },
+  {
+    "page": "docs/packages/api/errors.md",
+    "package": "api",
+    "type": "features",
+    "status": "implemented",
+    "proof": [
+      "streams-api@22d2351345631480102aa1377e6a6a73d765c7a5:src/ApiResponse.php",
+      "streams-api@22d2351345631480102aa1377e6a6a73d765c7a5:src/Endpoints/Entries/ShowEntry.php",
+      "streams-api@22d2351345631480102aa1377e6a6a73d765c7a5:src/Endpoints/Entries/CreateEntry.php"
+    ],
+    "finding": "404 missing entry and 409 validation errors populate the envelope."
+  },
+  {
+    "page": "docs/packages/api/streams-endpoints.md",
+    "package": "api",
+    "type": "features",
+    "status": "implemented",
+    "proof": [
+      "streams-api@22d2351345631480102aa1377e6a6a73d765c7a5:src/Resources/StreamsResource.php",
+      "streams-api@22d2351345631480102aa1377e6a6a73d765c7a5:src/Endpoints/Streams/CreateStream.php",
+      "streams-api@22d2351345631480102aa1377e6a6a73d765c7a5:src/Endpoints/Streams/DeleteStream.php"
+    ],
+    "finding": "Meta-stream CRUD endpoints exist."
+  },
+  {
+    "page": "docs/packages/api/entry-endpoints.md",
+    "package": "api",
+    "type": "features",
+    "status": "implemented",
+    "proof": [
+      "streams-api@22d2351345631480102aa1377e6a6a73d765c7a5:src/Resources/EntriesResource.php",
+      "streams-api@22d2351345631480102aa1377e6a6a73d765c7a5:src/Endpoints/Entries/UpdateEntry.php",
+      "streams-api@22d2351345631480102aa1377e6a6a73d765c7a5:src/Endpoints/Entries/PatchEntry.php"
+    ],
+    "finding": "CRUD and create-on-missing PUT/PATCH behavior match source."
+  },
+  {
+    "page": "docs/packages/api/query-endpoint.md",
+    "package": "api",
+    "type": "features",
+    "status": "implemented",
+    "proof": [
+      "streams-api@22d2351345631480102aa1377e6a6a73d765c7a5:src/Endpoints/Entries/QueryEntries.php"
+    ],
+    "finding": "Payload methods are dispatched with only delete/truncate protected, as documented."
+  },
+  {
+    "page": "docs/packages/api/custom-interfaces.md",
+    "package": "api",
+    "type": "providers",
+    "status": "implemented",
+    "proof": [
+      "streams-api@22d2351345631480102aa1377e6a6a73d765c7a5:src/ApiInterface.php",
+      "streams-api@22d2351345631480102aa1377e6a6a73d765c7a5:src/ApiManager.php"
+    ],
+    "finding": "Interface registration, domain iteration, tenant and external custom-route closure match guide."
+  },
+  {
+    "page": "docs/packages/api/custom-endpoints.md",
+    "package": "api",
+    "type": "features",
+    "status": "implemented",
+    "proof": [
+      "streams-api@22d2351345631480102aa1377e6a6a73d765c7a5:src/Builders/Endpoints/ApiEndpoint.php",
+      "streams-api@22d2351345631480102aa1377e6a6a73d765c7a5:src/ApiResource.php",
+      "streams-api@22d2351345631480102aa1377e6a6a73d765c7a5:src/ApiManager.php"
+    ],
+    "finding": "String GET endpoints, endpoint routers and resource route prefixes exist."
+  },
+  {
+    "page": "docs/packages/api/authentication.md",
+    "package": "api",
+    "type": "providers",
+    "status": "implemented",
+    "proof": [
+      "streams-api@22d2351345631480102aa1377e6a6a73d765c7a5:src/Http/Middleware/EnsureApiIsEnabled.php",
+      "streams-api@22d2351345631480102aa1377e6a6a73d765c7a5:src/ApiManager.php"
+    ],
+    "finding": "Gate extension and application middleware hooks exist; built-in authentication is explicitly excluded."
+  },
+  {
+    "page": "docs/packages/api/tenancy.md",
+    "package": "api",
+    "type": "features",
+    "status": "implemented",
+    "proof": [
+      "streams-api@22d2351345631480102aa1377e6a6a73d765c7a5:src/ApiManager.php",
+      "streams-api@22d2351345631480102aa1377e6a6a73d765c7a5:src/Endpoints/Entries/ListEntries.php",
+      "streams-api@22d2351345631480102aa1377e6a6a73d765c7a5:src/Endpoints/Entries/ShowEntry.php"
+    ],
+    "finding": "Tenant value is cached in the container; only documented list/show callback scoping exists."
+  },
+  {
+    "page": "docs/packages/api/caching.md",
+    "package": "api",
+    "type": "features",
+    "status": "implemented",
+    "proof": [
+      "streams-api@22d2351345631480102aa1377e6a6a73d765c7a5:src/Http/Middleware/ApiCache.php",
+      "streams-api@22d2351345631480102aa1377e6a6a73d765c7a5:src/ApiResponse.php"
+    ],
+    "finding": "Opt-in ETag, max-age response caching and conditional last-modified handling exist."
+  },
+  {
+    "page": "docs/packages/api/openapi.md",
+    "package": "api",
+    "type": "features",
+    "status": "partial",
+    "proof": [
+      "streams-api@22d2351345631480102aa1377e6a6a73d765c7a5:src/ApiSchema.php",
+      "streams-api@22d2351345631480102aa1377e6a6a73d765c7a5:src/Commands/DumpApiSchema.php",
+      "streams-api@22d2351345631480102aa1377e6a6a73d765c7a5:src/Commands/CreateApiDocumentation.php"
+    ],
+    "finding": "Schema commands exist, but the documented resources/openapi/openapi.yaml is absent in the inspected package snapshot."
+  },
+  {
+    "page": "docs/packages/api/testing.md",
+    "package": "api",
+    "type": "features",
+    "status": "implemented",
+    "proof": [
+      "streams-api@22d2351345631480102aa1377e6a6a73d765c7a5:tests/ApiTestCase.php",
+      "streams-api@22d2351345631480102aa1377e6a6a73d765c7a5:tests/Http/Controller/Entries/CreateEntryTest.php",
+      "streams-api@22d2351345631480102aa1377e6a6a73d765c7a5:composer.json"
+    ],
+    "finding": "Package HTTP tests exist; consuming-app test-base limitation is explicitly documented."
+  },
+  {
+    "page": "docs/packages/api/examples.md",
+    "package": "api",
+    "type": "features",
+    "status": "implemented",
+    "proof": [
+      "streams-api@22d2351345631480102aa1377e6a6a73d765c7a5:src/Resources/EntriesResource.php",
+      "streams-api@22d2351345631480102aa1377e6a6a73d765c7a5:src/Endpoints/Entries/ListEntries.php",
+      "streams-api@22d2351345631480102aa1377e6a6a73d765c7a5:src/Endpoints/Entries/QueryEntries.php"
+    ],
+    "finding": "Example paths and payloads correspond to registered endpoints."
   }
 ]
