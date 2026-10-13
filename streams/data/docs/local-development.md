@@ -86,7 +86,15 @@ Styles live in `resources/css/` (`app.css` imports the tokens and components). T
 
 ## Branches and deploys
 
-`master` is the only long-lived branch, the live site, and GitHub's default branch. Create a short-lived feature branch off `master`, push it, and open a pull request into `master`. After the pull request is merged, deploy `master` with `envoy run deploy`, which fast-forwards the server to it. Only deploy when the maintainer asks. The old `next`, `integration/rc` and `production` branches no longer exist.
+`master` is the only long-lived branch, the live site, and GitHub's default branch. Create a short-lived feature branch off an up-to-date `master`:
+
+```bash
+git switch master
+git pull --ff-only origin master
+git switch -c feature/your-change
+```
+
+Commit your changes, push the feature branch, and open a pull request into `master`. After the pull request is merged, deploy `master` with `envoy run deploy`, which fast-forwards the server to it. Only deploy when the maintainer asks. The old `next`, `integration/rc` and `production` branches no longer exist.
 
 ## Related
 
