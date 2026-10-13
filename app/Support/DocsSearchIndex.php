@@ -33,6 +33,7 @@ class DocsSearchIndex
                 'package' => $document['package'],
                 'section' => $document['section'],
                 'tags' => $document['tags'],
+                'status' => $document['status'],
                 'excerpt' => static::excerpt($document['body']),
             ], static::documents());
 
@@ -90,6 +91,7 @@ class DocsSearchIndex
                     'label' => $meta['label'],
                     'section' => $meta['section'],
                     'page_section' => (string) ($entry->section ?? ''),
+                    'status' => (string) ($entry->status ?? ''),
                     'body' => (string) ($entry->body ?? ''),
                 ];
             }
@@ -116,6 +118,7 @@ class DocsSearchIndex
                 'title' => (string) ($entry->title ?? $entry->id),
                 'description' => (string) ($entry->description ?? ''),
                 'url' => URL::to($prefix.'/'.$entry->id),
+                'status' => (string) ($entry->status ?? ''),
                 'body' => (string) ($entry->body ?? ''),
             ];
         }

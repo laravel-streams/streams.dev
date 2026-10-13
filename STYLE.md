@@ -43,6 +43,8 @@ Entry `id` is the filename without `.md`. `tests/Feature/DocsContentTest.php` en
 
 `editorial_status` is required: `draft`, `review`, `ready`, or `deprecated`. It preserves the former editorial `status` values. The migration renames the editorial field without auditing feature availability; the status audit belongs to task #159.
 
+Run `php artisan docs:validate-registry` to validate every hub and package page. It exits nonzero and reports the file and field when a registry value is missing or invalid. `php artisan test --filter=DocsRegistryTest` covers the validation rules and rendered badges.
+
 ## Hub vs section content
 
 - **Hub docs** explain workflows, architecture, and when to use a feature. Link to section docs for API reference.

@@ -124,6 +124,16 @@ export function initDocsSearch() {
                     <span class="block text-base font-medium text-fg">${escapeHtml(result.item.title)}</span>
                     <span class="mt-1 block truncate text-sm text-fg-muted">${escapeHtml(result.item.description || result.item.excerpt || '')}</span>
                 `;
+                const statusLabels = { planned: 'Planned', partial: 'Partial', implemented: 'Implemented' };
+                const statusLabel = statusLabels[result.item.status];
+                if (Object.hasOwn(statusLabels, result.item.status)) {
+                    const badge = document.createElement('span');
+                    badge.className = 'st-pill';
+                    badge.dataset.docsStatus = result.item.status;
+                    badge.setAttribute('aria-label', `Feature status: ${statusLabel}`);
+                    badge.textContent = statusLabel;
+                    btn.appendChild(badge);
+                }
                 btn.addEventListener('click', () => navigate(result.item.url));
                 li.appendChild(btn);
                 resultsEl.appendChild(li);

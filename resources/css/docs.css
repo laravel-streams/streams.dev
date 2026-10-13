@@ -494,7 +494,7 @@
             color: var(--st-text);
         }
 
-        span {
+        span:not(.st-pill) {
             display: block;
             margin-top: 0.3125rem;
             font-size: var(--st-text-sm);

@@ -102,6 +102,22 @@
             }
         },
         {
+            "handle": "status",
+            "type": "select",
+            "required": true,
+            "config": {
+                "options": {
+                    "planned": "Planned",
+                    "partial": "Partial",
+                    "implemented": "Implemented"
+                }
+            }
+        },
+        {
+            "handle": "tracking_task",
+            "type": "integer"
+        },
+        {
             "handle": "editorial_status",
             "type": "select",
             "required": true,
