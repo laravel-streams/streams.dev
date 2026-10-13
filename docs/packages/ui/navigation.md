@@ -6,7 +6,7 @@ section: packages
 package: ui
 order: 90
 tags: [ui, navigation]
-status: ready
+editorial_status: ready
 ---
 
 Panel sidebar navigation comes from registered resources, pages, and explicit navigation configuration.

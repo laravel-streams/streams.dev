@@ -25,11 +25,23 @@ category: getting-started        # hub docs only: a key in streams/docs_categori
 package: core                    # core | ui | api | sdk | testing | client | site | all
 order: 20                        # hub sidebar and search order; package sidebar is docs/nav.json
 tags: [core, installation]
-status: ready                    # draft | review | ready | deprecated
+status: planned                  # implemented | partial | planned (feature availability)
+tracking_task: 8537              # numeric Operations task id; optional while planned
+editorial_status: ready          # draft | review | ready | deprecated (prose readiness)
 ---
 ```
 
 Entry `id` is the filename without `.md`. `tests/Feature/DocsContentTest.php` enforces these keys, the enums, unique titles, a language on every code fence, root-relative links, parseable `json` blocks, and no `# H1` in the body (the layout renders `title` as the H1).
+
+### Docs registry
+
+`status` is required and describes the documented feature's availability: `planned` means intended but not implemented, `partial` means some documented behavior is implemented, and `implemented` means the documented behavior is available. Planned and partial pages are published with visible badges; only verified implemented behavior may be labeled Implemented. Editorial readiness is independent of availability and must never imply implementation.
+
+`package` is required and must be one of `core`, `ui`, `api`, `sdk`, `testing`, `client`, `site`, or `all`. Use `site` for streams.dev behavior and `all` for cross-package guidance.
+
+`tracking_task` is a positive integer Operations task id (for example, `8537`), not a URL or task title. It is required for partial and implemented entries and optional while planned. If supplied, it must contain only decimal digits and identify a task; YAML integers and quoted digit strings are accepted.
+
+`editorial_status` is required: `draft`, `review`, `ready`, or `deprecated`. It preserves the former editorial `status` values. The migration renames the editorial field without auditing feature availability; the status audit belongs to task #159.
 
 ## Hub vs section content
 

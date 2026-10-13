@@ -6,7 +6,7 @@ section: packages
 package: client
 order: 30
 tags: [client, quickstart]
-status: ready
+editorial_status: ready
 ---
 
 Get up and running with the Streams API Client in just a few minutes.

@@ -7,7 +7,7 @@ category: basics
 package: core
 order: 30
 tags: [core, routing]
-status: ready
+editorial_status: ready
 ---
 
 ## Introduction

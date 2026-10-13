@@ -6,7 +6,7 @@ section: packages
 package: core
 order: 190
 tags: [core, views, includes]
-status: ready
+editorial_status: ready
 ---
 
 Core extends Laravel views with named include slots and template parsing helpers.

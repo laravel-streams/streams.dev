@@ -6,7 +6,7 @@ section: packages
 package: ui
 order: 70
 tags: [ui, resources]
-status: ready
+editorial_status: ready
 ---
 
 A **resource** connects a Core stream to admin CRUD pages. Subclass `Streams\Ui\Resources\Resource` and implement `getPages()`, `form()`, and `table()`.

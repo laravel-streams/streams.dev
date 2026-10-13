@@ -6,7 +6,7 @@ section: packages
 package: client
 order: 60
 tags: [client, entries]
-status: ready
+editorial_status: ready
 ---
 
 Entries represent the data within your configured Streams. Use the Entries API to interact with stream data.

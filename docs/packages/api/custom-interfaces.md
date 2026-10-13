@@ -6,7 +6,7 @@ section: packages
 package: api
 order: 130
 tags: [api, custom, interfaces]
-status: ready
+editorial_status: ready
 ---
 
 An `ApiInterface` is one mounted API: a path (and optionally a domain), a middleware stack, and the resources and endpoints it serves. `API::routeCrud()` registers a single default interface for you. Register your own when you need versions, a separate admin API, or different auth for different consumers.

@@ -6,7 +6,7 @@ section: packages
 package: api
 order: 100
 tags: [api, streams, endpoints]
-status: ready
+editorial_status: ready
 ---
 
 Stream endpoints manage entries in the meta-stream (`config('streams.core.streams_id')`) that store stream JSON definitions.

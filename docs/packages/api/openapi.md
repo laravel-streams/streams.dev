@@ -6,7 +6,7 @@ section: packages
 package: api
 order: 180
 tags: [api, openapi]
-status: ready
+editorial_status: ready
 ---
 
 ## Reference spec

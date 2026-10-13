@@ -6,7 +6,7 @@ section: packages
 package: core
 order: 130
 tags: [core, routes]
-status: ready
+editorial_status: ready
 ---
 
 Streams can register Laravel routes from JSON and through the `Route::streams()` macro.

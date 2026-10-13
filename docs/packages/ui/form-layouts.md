@@ -6,7 +6,7 @@ section: packages
 package: ui
 order: 110
 tags: [ui, form, layouts]
-status: ready
+editorial_status: ready
 ---
 
 Form layouts organize inputs in the admin UI. All layouts use `::make()` and `->components([...])`.

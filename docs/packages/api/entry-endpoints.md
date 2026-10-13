@@ -6,7 +6,7 @@ section: packages
 package: api
 order: 110
 tags: [api, entry, endpoints]
-status: ready
+editorial_status: ready
 ---
 
 Entry endpoints operate on any stream by handle.

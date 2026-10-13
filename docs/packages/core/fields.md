@@ -6,7 +6,7 @@ section: packages
 package: core
 order: 50
 tags: [core, fields]
-status: ready
+editorial_status: ready
 ---
 
 Fields define entry attributes on a stream. Each field has a **handle**, **type**, and optional validation, defaults, and UI input config.

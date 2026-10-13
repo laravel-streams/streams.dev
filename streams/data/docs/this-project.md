@@ -7,7 +7,7 @@ category: this-project
 package: site
 order: 10
 tags: [site, project]
-status: ready
+editorial_status: ready
 ---
 
 ## What this repository is

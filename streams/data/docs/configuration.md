@@ -7,7 +7,7 @@ category: getting-started
 package: core
 order: 40
 tags: [core, configuration]
-status: ready
+editorial_status: ready
 ---
 
 ## Introduction

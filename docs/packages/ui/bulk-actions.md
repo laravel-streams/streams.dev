@@ -6,7 +6,7 @@ section: packages
 package: ui
 order: 160
 tags: [ui, bulk, actions]
-status: ready
+editorial_status: ready
 ---
 
 Bulk actions operate on selected table rows. Register via `->bulkActions()` or `->groupedBulkActions()` on the table builder.

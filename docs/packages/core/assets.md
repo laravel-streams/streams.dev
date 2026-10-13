@@ -6,7 +6,7 @@ section: packages
 package: core
 order: 170
 tags: [core, assets]
-status: ready
+editorial_status: ready
 ---
 
 Core provides an asset registry for grouping CSS, JS, and inline fragments referenced from Blade views. There is no built-in upload pipeline or CDN integration — register paths and emit tags yourself.

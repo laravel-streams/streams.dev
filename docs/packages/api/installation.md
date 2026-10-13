@@ -6,7 +6,7 @@ section: packages
 package: api
 order: 20
 tags: [api, installation]
-status: ready
+editorial_status: ready
 ---
 
 Install the API alongside [Core](/docs/core/installation).

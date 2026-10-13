@@ -6,7 +6,7 @@ section: packages
 package: sdk
 order: 20
 tags: [sdk, commands]
-status: ready
+editorial_status: ready
 ---
 
 `streams/sdk` adds Artisan commands to generate and check streams, entries, addons, schemas, and Livewire components. Install it as a dev dependency:

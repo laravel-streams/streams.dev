@@ -6,7 +6,7 @@ section: packages
 package: core
 order: 60
 tags: [core, field, decorators]
-status: ready
+editorial_status: ready
 ---
 
 Field decorators transform raw stored values into display-ready output. Call `$entry->decorate()` to apply type-specific decorators registered on field types.

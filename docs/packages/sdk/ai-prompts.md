@@ -6,7 +6,7 @@ section: packages
 package: sdk
 order: 60
 tags: [sdk, ai, prompts]
-status: ready
+editorial_status: ready
 ---
 
 This guide provides AI assistants with specific prompts, patterns, and examples for effectively using the Laravel Streams SDK to help developers build applications.

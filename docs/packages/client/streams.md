@@ -6,7 +6,7 @@ section: packages
 package: client
 order: 50
 tags: [client, streams]
-status: ready
+editorial_status: ready
 ---
 
 Streams represent collections or resource types in the Laravel Streams API. The `Streams` class provides methods for managing stream resources.

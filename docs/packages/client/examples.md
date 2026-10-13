@@ -6,7 +6,7 @@ section: packages
 package: client
 order: 90
 tags: [client, examples]
-status: ready
+editorial_status: ready
 ---
 
 Complete examples demonstrating real-world usage patterns.

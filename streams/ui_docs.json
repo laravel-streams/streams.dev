@@ -92,7 +92,7 @@
             }
         },
         {
-            "handle": "status",
+            "handle": "editorial_status",
             "type": "select",
             "required": true,
             "config": {
@@ -147,9 +147,9 @@
                         }
                     },
                     {
-                        "value": "status",
+                        "value": "editorial_status",
                         "header": {
-                            "text": "Status"
+                            "text": "Editorial status"
                         }
                     }
                 ],

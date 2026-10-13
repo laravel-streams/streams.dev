@@ -7,7 +7,7 @@ category: advanced
 package: core
 order: 60
 tags: [core, localization]
-status: ready
+editorial_status: ready
 ---
 
 ## Overview

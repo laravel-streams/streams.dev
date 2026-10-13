@@ -6,7 +6,7 @@ section: packages
 package: ui
 order: 60
 tags: [ui, routing]
-status: ready
+editorial_status: ready
 ---
 
 Panel routes register automatically when you call `UI::panel()`. Resource pages define paths relative to the resource slug.
