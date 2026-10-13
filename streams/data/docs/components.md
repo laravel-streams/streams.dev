@@ -7,7 +7,7 @@ category: frontend
 package: ui
 order: 30
 tags: [ui, components]
-status: ready
+editorial_status: ready
 ---
 
 ## Overview

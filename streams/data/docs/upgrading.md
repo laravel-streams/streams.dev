@@ -7,7 +7,7 @@ category: getting-started
 package: all
 order: 70
 tags: [upgrading]
-status: ready
+editorial_status: ready
 ---
 
 Streams packages are installed from development branches until stable tags exist (see [Versions and support](/docs/versions)). Upgrading means pulling the latest commit on your branch and handling any breaking changes listed below. The [Changelog](/docs/changelog) has the full list.

@@ -6,7 +6,7 @@ section: packages
 package: core
 order: 140
 tags: [core, applications]
-status: ready
+editorial_status: ready
 ---
 
 Applications are entries in the stream identified by `config('streams.core.applications_id')` (default `applications`). They enable multi-tenant or multi-site setups where each application merges its own config and streams at boot.

@@ -7,7 +7,7 @@ category: getting-started
 package: all
 order: 60
 tags: [changelog]
-status: ready
+editorial_status: ready
 ---
 
 Streams packages are pre-release and installed from development branches, so this log is organized by month and branch rather than by version. Entries come from each repository's commit history. Changes that need action on your side are marked **Breaking** and explained in the [Upgrade guide](/docs/upgrading).

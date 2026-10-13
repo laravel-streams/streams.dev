@@ -6,7 +6,7 @@ section: packages
 package: core
 order: 20
 tags: [core, installation]
-status: ready
+editorial_status: ready
 ---
 
 Install Streams Core in a Laravel 10, 11, or 12 application via Composer. Core declares `php: ^8.2` and `laravel/framework ^10|^11|^12`. This site runs Core on Laravel 12. Core's own test suite still runs on Laravel 10, because the `streams/testing` harness is Laravel 10 only until it is widened. See the [version matrix](/docs/installation#version-matrix).

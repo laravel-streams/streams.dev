@@ -6,7 +6,7 @@ section: packages
 package: api
 order: 140
 tags: [api, custom, endpoints]
-status: ready
+editorial_status: ready
 ---
 
 Custom endpoints live on an [interface](/docs/api/custom-interfaces), so they share its path, middleware, and gate.

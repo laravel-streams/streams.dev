@@ -7,7 +7,7 @@ category: development
 package: sdk
 order: 50
 tags: [sdk, agents]
-status: ready
+editorial_status: ready
 ---
 
 Streams docs are meant to be read by coding agents as well as people. This site is the source of truth. Package repositories do not keep a second copy.

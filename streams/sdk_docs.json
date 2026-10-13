@@ -97,6 +97,22 @@
             "required": true,
             "config": {
                 "options": {
+                    "planned": "Planned",
+                    "partial": "Partial",
+                    "implemented": "Implemented"
+                }
+            }
+        },
+        {
+            "handle": "tracking_task",
+            "type": "integer"
+        },
+        {
+            "handle": "editorial_status",
+            "type": "select",
+            "required": true,
+            "config": {
+                "options": {
                     "draft": "Draft",
                     "review": "In review",
                     "ready": "Ready",
@@ -141,9 +157,9 @@
                         }
                     },
                     {
-                        "value": "status",
+                        "value": "editorial_status",
                         "header": {
-                            "text": "Status"
+                            "text": "Editorial status"
                         }
                     }
                 ],

@@ -6,7 +6,7 @@ section: packages
 package: ui
 order: 20
 tags: [ui, installation]
-status: ready
+editorial_status: ready
 ---
 
 Install UI alongside Core in your Laravel application.

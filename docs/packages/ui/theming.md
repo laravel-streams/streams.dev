@@ -6,7 +6,7 @@ section: packages
 package: ui
 order: 190
 tags: [ui, theming]
-status: ready
+editorial_status: ready
 ---
 
 Streams UI themes a panel by registering color palettes and sharing them as CSS variables. There is no site-wide theme switcher in Core. `streams/data/themes.json` in this docs site is leftover data; nothing in Core or UI reads it.

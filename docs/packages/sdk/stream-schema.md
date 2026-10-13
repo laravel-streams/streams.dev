@@ -6,7 +6,7 @@ section: packages
 package: sdk
 order: 30
 tags: [sdk, schema, validation, json]
-status: ready
+editorial_status: ready
 ---
 
 Stream definitions are the JSON files in `streams/` (for example `streams/posts.json`). `streams/sdk` ships a [JSON Schema](https://json-schema.org) (draft-07) for them in `vendor/streams/sdk/resources/schemas/streams.schema.json`, and this site serves the same file at:

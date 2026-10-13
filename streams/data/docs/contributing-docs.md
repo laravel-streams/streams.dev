@@ -7,7 +7,7 @@ category: this-project
 package: site
 order: 60
 tags: [site, contributing, docs]
-status: ready
+editorial_status: ready
 ---
 
 ## Where docs live

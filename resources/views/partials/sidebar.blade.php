@@ -71,7 +71,8 @@
             <li>
                 <a href="/docs/{{ $page->id }}"
                    class="docs-nav-link docs-nav-link--sub {{ $hubPage == $page->id ? 'is-active' : '' }}">
-                    {{ $page->nav_title ?: $page->title }}
+                    <span data-docs-nav-title>{{ $page->nav_title ?: $page->title }}</span>
+                    <x-docs-status :status="$page->status ?? null" />
                 </a>
             </li>
             @endforeach
@@ -91,8 +92,9 @@
         @continue(! $landing)
         <li data-filter-group>
             <a href="/docs/{{ $slug }}/{{ $landing->id }}"
-               class="docs-nav-link {{ $section === $slug ? 'is-active' : '' }}" data-filter-label>
-                {{ $package['label'] }}
+               class="docs-nav-link {{ $section === $slug ? 'is-active' : '' }}">
+                <span data-docs-nav-title data-filter-label>{{ $package['label'] }}</span>
+                <x-docs-status :status="$landing->status ?? null" />
             </a>
             {{-- Every package's pages are in the markup so the filter can find them; only the current package's list is shown by default. --}}
             <ul @class(['docs-nav-nested', 'docs-nav-collapsed' => $section !== $slug])>
@@ -110,7 +112,8 @@
                         <li>
                             <a href="/docs/{{ $slug }}/{{ $page->id }}"
                                class="docs-nav-link docs-nav-link--sub {{ $section === $slug && Request::segment(3) == $page->id ? 'is-active' : '' }}">
-                                {{ $page->nav_title ?: $page->title }}
+                                <span data-docs-nav-title>{{ $page->nav_title ?: $page->title }}</span>
+                                <x-docs-status :status="$page->status ?? null" />
                             </a>
                         </li>
                         @endforeach
@@ -122,7 +125,8 @@
                 <li>
                     <a href="/docs/{{ $slug }}/{{ $page->id }}"
                        class="docs-nav-link docs-nav-link--sub {{ $section === $slug && Request::segment(3) == $page->id ? 'is-active' : '' }}">
-                        {{ $page->nav_title ?: $page->title }}
+                        <span data-docs-nav-title>{{ $page->nav_title ?: $page->title }}</span>
+                        <x-docs-status :status="$page->status ?? null" />
                     </a>
                 </li>
                 @endforeach
@@ -149,7 +153,8 @@
                     <li>
                         <a href="/docs/{{ $page->id }}"
                            class="docs-nav-link docs-nav-link--sub {{ $hubPage == $page->id ? 'is-active' : '' }}">
-                            {{ $page->nav_title ?: $page->title }}
+                            <span data-docs-nav-title>{{ $page->nav_title ?: $page->title }}</span>
+                            <x-docs-status :status="$page->status ?? null" />
                         </a>
                     </li>
                     @endforeach
@@ -170,7 +175,8 @@
             <li>
                 <a href="/docs/{{ $page->id }}"
                    class="docs-nav-link docs-nav-link--sub {{ $hubPage == $page->id ? 'is-active' : '' }}">
-                    {{ $page->nav_title ?: $page->title }}
+                    <span data-docs-nav-title>{{ $page->nav_title ?: $page->title }}</span>
+                    <x-docs-status :status="$page->status ?? null" />
                 </a>
             </li>
             @endforeach

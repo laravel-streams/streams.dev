@@ -19,7 +19,7 @@ class DocsContentTest extends TestCase
 
     protected const PACKAGES = ['core', 'ui', 'api', 'sdk', 'testing', 'client', 'site', 'all'];
 
-    protected const STATUSES = ['draft', 'review', 'ready', 'deprecated'];
+    protected const EDITORIAL_STATUSES = ['draft', 'review', 'ready', 'deprecated'];
 
     /**
      * @return array<string, array{frontmatter: array, body: string}>
@@ -58,7 +58,7 @@ class DocsContentTest extends TestCase
         $categories = array_keys(json_decode(file_get_contents(base_path('streams/docs_categories.json')), true)['data']);
 
         foreach ($this->pages() as $page => ['frontmatter' => $frontmatter]) {
-            foreach (['title', 'nav_title', 'description', 'section', 'package', 'order', 'tags', 'status'] as $key) {
+            foreach (['title', 'nav_title', 'description', 'section', 'package', 'order', 'tags', 'editorial_status'] as $key) {
                 $this->assertArrayHasKey($key, $frontmatter, "{$page} is missing \"{$key}\".");
             }
 
@@ -66,7 +66,7 @@ class DocsContentTest extends TestCase
             $this->assertNotSame('', trim($frontmatter['description']), "{$page} has an empty description.");
             $this->assertContains($frontmatter['section'], static::SECTIONS, "{$page} section");
             $this->assertContains($frontmatter['package'], static::PACKAGES, "{$page} package");
-            $this->assertContains($frontmatter['status'], static::STATUSES, "{$page} status");
+            $this->assertContains($frontmatter['editorial_status'], static::EDITORIAL_STATUSES, "{$page} status");
             $this->assertIsInt($frontmatter['order'], "{$page} order");
             $this->assertIsArray($frontmatter['tags'], "{$page} tags");
             $this->assertArrayNotHasKey('sort_order', $frontmatter, "{$page} uses sort_order; use order.");

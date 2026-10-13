@@ -7,7 +7,7 @@ category: this-project
 package: site
 order: 40
 tags: [site, package, catalog]
-status: ready
+editorial_status: ready
 ---
 
 ## Overview

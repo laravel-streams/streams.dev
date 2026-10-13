@@ -6,7 +6,7 @@ section: packages
 package: core
 order: 220
 tags: [core, callbacks]
-status: ready
+editorial_status: ready
 ---
 
 Core uses the `FiresCallbacks` trait for lifecycle hooks. These are **not** Laravel `Event::` events — they fire synchronously on the object that defines them.

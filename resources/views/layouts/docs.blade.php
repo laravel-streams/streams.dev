@@ -39,6 +39,7 @@
                 @elseif (isset($entry))
                     <header class="mb-12 sm:mb-14">
                         <h1 class="docs-title">{{ $entry->title }}</h1>
+                        <x-docs-status :status="$entry->status ?? null" />
                         @if ($entry->description ?? null)
                             <p class="docs-lead">{{ $entry->description }}</p>
                         @endif

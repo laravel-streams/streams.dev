@@ -7,7 +7,7 @@ category: core-concepts
 package: core
 order: 20
 tags: [core, streams]
-status: ready
+editorial_status: ready
 ---
 
 ## Introduction

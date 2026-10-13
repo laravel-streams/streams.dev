@@ -89,10 +89,12 @@ export function initDocsFilter() {
     const content = document.querySelector('.documentation-content');
     const supportsHighlights = typeof CSS !== 'undefined' && 'highlights' in CSS && typeof Highlight !== 'undefined';
 
+    const linkTitle = (a) => a.querySelector('[data-docs-nav-title]') ?? a;
+
     // Every link and group label, with its original text cached once.
     const links = [...nav.querySelectorAll('a.docs-nav-link')];
     links.forEach((a, i) => {
-        a.dataset.filterText = a.textContent.trim();
+        a.dataset.filterText = linkTitle(a).textContent.trim();
         a.id ||= `docs-nav-item-${i}`;
     });
     const labels = [...nav.querySelectorAll('[data-filter-label]')].map((el) => {
@@ -139,7 +141,7 @@ export function initDocsFilter() {
         links.forEach((a) => {
             a.classList.remove('is-filter-active');
             if (a.querySelector('mark')) {
-                a.textContent = a.dataset.filterText;
+                linkTitle(a).textContent = a.dataset.filterText;
             }
         });
         labels.forEach((el) => {
@@ -222,7 +224,7 @@ export function initDocsFilter() {
             const ranges = findMatches(a.dataset.filterText, query);
             if (ranges.length) {
                 if (!a.querySelector('mark')) {
-                    markText(a, a.dataset.filterText, ranges);
+                    markText(linkTitle(a), a.dataset.filterText, ranges);
                 }
                 shown.add(a);
             }

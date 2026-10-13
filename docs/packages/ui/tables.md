@@ -6,7 +6,7 @@ section: packages
 package: ui
 order: 130
 tags: [ui, tables]
-status: ready
+editorial_status: ready
 ---
 
 Tables list stream entries in admin resources via `Streams\Ui\Builders\Tables\Table`.

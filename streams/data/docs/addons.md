@@ -7,7 +7,7 @@ category: development
 package: core
 order: 20
 tags: [core, addons]
-status: ready
+editorial_status: ready
 ---
 
 ## Overview

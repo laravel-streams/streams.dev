@@ -6,7 +6,7 @@ section: packages
 package: api
 order: 150
 tags: [api, authentication]
-status: ready
+editorial_status: ready
 ---
 
 Streams API does not authenticate or authorize anyone. It has no users, tokens, or policies. **Your application owns access control**, and the package gives you three places to put it.

@@ -6,7 +6,7 @@ section: packages
 package: testing
 order: 10
 tags: [testing, introduction]
-status: ready
+editorial_status: ready
 ---
 
 The Streams Testing package provides everything you need to test your Streams applications with confidence. Built on top of Orchestra Testbench, it offers a fully configured Laravel testing environment with sample data, automatic cleanup, and testing utilities specifically designed for Streams development.

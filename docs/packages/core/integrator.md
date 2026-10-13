@@ -6,7 +6,7 @@ section: packages
 package: core
 order: 150
 tags: [core, integrator]
-status: ready
+editorial_status: ready
 ---
 
 `Streams\Core\Support\Integrator` merges application (or addon) configuration into Laravel during boot.

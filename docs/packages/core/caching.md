@@ -6,7 +6,7 @@ section: packages
 package: core
 order: 110
 tags: [core, caching]
-status: ready
+editorial_status: ready
 ---
 
 Core caches criteria results per stream when enabled. Cache keys are prefixed with `streams.{handle}.` via `Streams\Core\Stream\StreamCache`.

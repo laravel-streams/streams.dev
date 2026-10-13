@@ -6,7 +6,7 @@ section: packages
 package: core
 order: 100
 tags: [core, sources, adapters]
-status: ready
+editorial_status: ready
 ---
 
 Each stream's `config.source.type` selects a **repository adapter** that reads and writes entries. Core resolves the adapter in `Streams\Core\Repository\Repository`.

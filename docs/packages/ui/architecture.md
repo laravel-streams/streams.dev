@@ -6,7 +6,7 @@ section: packages
 package: ui
 order: 40
 tags: [ui, architecture]
-status: ready
+editorial_status: ready
 ---
 
 Streams UI follows a Filament-inspired architecture: panels contain resources, resources define pages, and pages host Livewire components that resolve form and table builders.

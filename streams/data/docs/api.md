@@ -7,7 +7,7 @@ category: advanced
 package: api
 order: 10
 tags: [api]
-status: ready
+editorial_status: ready
 ---
 
 ## When to add Streams API

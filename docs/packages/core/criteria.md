@@ -6,7 +6,7 @@ section: packages
 package: core
 order: 90
 tags: [core, criteria]
-status: ready
+editorial_status: ready
 ---
 
 `Streams::entries()` returns a `Streams\Core\Criteria\Criteria` instance — a fluent query API executed by the stream's source adapter.

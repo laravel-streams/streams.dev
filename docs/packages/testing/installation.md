@@ -6,7 +6,7 @@ section: packages
 package: testing
 order: 20
 tags: [testing, installation]
-status: ready
+editorial_status: ready
 ---
 
 This guide will walk you through installing and configuring the Streams Testing package for your project.

@@ -6,7 +6,7 @@ section: packages
 package: api
 order: 120
 tags: [api, query, endpoint]
-status: ready
+editorial_status: ready
 ---
 
 The query endpoint runs criteria operations from a JSON body instead of query string parameters.

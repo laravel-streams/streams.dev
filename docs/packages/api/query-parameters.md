@@ -6,7 +6,7 @@ section: packages
 package: api
 order: 70
 tags: [api, query, parameters]
-status: ready
+editorial_status: ready
 ---
 
 `GET /api/streams/{stream}/entries` accepts query parameters implemented in `Streams\Api\Endpoints\Entries\ListEntries::applyFilters()` (the pre-1.0 `GetEntries` controller was replaced by this endpoint class).

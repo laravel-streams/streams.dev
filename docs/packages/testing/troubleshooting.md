@@ -6,7 +6,7 @@ section: packages
 package: testing
 order: 60
 tags: [testing, troubleshooting]
-status: ready
+editorial_status: ready
 ---
 
 This guide helps you resolve common issues when using the Streams Testing package.

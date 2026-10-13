@@ -7,7 +7,7 @@ category: this-project
 package: site
 order: 20
 tags: [site, project, structure]
-status: ready
+editorial_status: ready
 ---
 
 ## Top-level layout

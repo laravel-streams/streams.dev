@@ -7,7 +7,7 @@ category: development
 package: site
 order: 65
 tags: [mcp, agents, docs]
-status: ready
+editorial_status: ready
 ---
 
 streams.dev runs a public, read-only [Model Context Protocol](https://modelcontextprotocol.io) server over this documentation. Point your agent at it and it can search the docs, read whole pages as markdown, and fetch the stream JSON Schema without scraping HTML.

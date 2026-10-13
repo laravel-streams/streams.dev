@@ -6,7 +6,7 @@ section: packages
 package: api
 order: 10
 tags: [api, introduction]
-status: ready
+editorial_status: ready
 ---
 
 Streams API (`streams/api`) turns your stream definitions into a REST API. It builds JSON responses for stream definitions and entries from the same [criteria](/docs/core/criteria) you use in PHP, so an endpoint returns exactly what `Streams::entries('posts')->where(...)->get()` would.

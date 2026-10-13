@@ -6,7 +6,7 @@ section: packages
 package: api
 order: 80
 tags: [api, pagination]
-status: ready
+editorial_status: ready
 ---
 
 Paginated list responses add keys to `links` and `meta` via `ApiResponse::addPaginationMeta()`.

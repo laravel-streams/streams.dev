@@ -6,7 +6,7 @@ section: packages
 package: api
 order: 190
 tags: [api, testing]
-status: ready
+editorial_status: ready
 ---
 
 Test your app's API routes with ordinary Laravel HTTP tests. `streams/api` has no test base class for apps: its `Streams\Api\Tests\ApiTestCase` is in the package's `autoload-dev`, so it isn't autoloaded when you install the package, and it extends the `streams/testing` harness, which is Laravel 10 only for now.
