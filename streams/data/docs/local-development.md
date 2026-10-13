@@ -86,7 +86,7 @@ Styles live in `resources/css/` (`app.css` imports the tokens and components). T
 
 ## Branches and deploys
 
-Work on `develop` (or a short-lived branch off it that you merge back). When `develop` is ready, merge it into `master` and push both. `master` is the live site and GitHub's default branch, and `envoy run deploy` fast-forwards the server to it. The old `next`, `integration/rc` and `production` branches no longer exist.
+`master` is the only long-lived branch, the live site, and GitHub's default branch. Create a short-lived feature branch off `master`, push it, and open a pull request into `master`. After the pull request is merged, deploy `master` with `envoy run deploy`, which fast-forwards the server to it. Only deploy when the maintainer asks. The old `next`, `integration/rc` and `production` branches no longer exist.
 
 ## Related
 
