@@ -1,7 +1,7 @@
 ---
 title: UI Playground
 nav_title: UI Playground
-description: Preview the planned workflow for configuring, sharing, and testing Streams UI examples.
+description: Browse UI component references and learn about planned playground workflows.
 section: guides
 category: frontend
 package: ui
@@ -9,8 +9,6 @@ order: 90
 tags: [ui, playground, json, testing]
 status: draft
 ---
-
-<span class="st-pill">Planned</span>
 
 The [UI Playground](/playground) provides a themed shell and a component catalog linking to the current UI reference. The editor, rendered preview, share links, and test controls described below are not available yet. Each unbuilt workflow carries a **Planned** badge.
 
