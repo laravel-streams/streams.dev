@@ -27,7 +27,7 @@ class PlaygroundTest extends TestCase
             $matches = $xpath->query('//nav[@aria-label="Playground components"]//a[@data-playground-component="'.$component['id'].'"]');
             $this->assertSame(1, $matches->length, $component['id']);
             $this->assertSame($component['label'], trim($matches->item(0)->textContent));
-            $this->assertSame($component['reference'], $matches->item(0)->getAttribute('href'));
+            $this->assertSame(route('playground.component', $component['id']), $matches->item(0)->getAttribute('href'));
             $this->get($component['reference'])->assertOk();
         }
     }

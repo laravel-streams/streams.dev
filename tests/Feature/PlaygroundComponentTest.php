@@ -1,0 +1,93 @@
+<?php
+
+namespace Tests\Feature;
+
+use App\Support\PlaygroundCatalog;
+use App\Support\PlaygroundPreview;
+use DOMDocument;
+use DOMXPath;
+use Illuminate\Log\Events\MessageLogged;
+use Illuminate\Support\Facades\Log;
+use Tests\TestCase;
+
+class PlaygroundComponentTest extends TestCase
+{
+    public function test_every_catalog_component_renders_with_its_defaults(): void
+    {
+        $catalog = json_decode(file_get_contents(resource_path('playground/catalog.json')), true, 512, JSON_THROW_ON_ERROR);
+        $this->assertNotEmpty($catalog['components']);
+
+        foreach ($catalog['components'] as $component) {
+            $response = $this->get('/playground/'.$component['id']);
+            $response->assertOk();
+            $response->assertViewIs('playground.component');
+
+            $html = $response->getContent();
+            $this->assertStringNotContainsString('data-playground-gap', $html, $component['id']);
+            $this->assertStringContainsString('href="'.$component['reference'].'"', $html, $component['id']);
+
+            $preview = $this->preview($html, $component['id']);
+            $this->assertNotNull($preview, $component['id']);
+            $this->assertNotSame('', trim($preview->textContent), $component['id']);
+        }
+    }
+
+    public function test_unknown_component_is_not_found(): void
+    {
+        $this->get('/playground/not-a-component')->assertNotFound();
+    }
+
+    public function test_a_failed_render_is_logged_as_a_gap(): void
+    {
+        $component = PlaygroundCatalog::find('text-input');
+        $this->assertNotNull($component);
+
+        $logged = [];
+        Log::listen(function (MessageLogged $event) use (&$logged): void {
+            $logged[] = $event;
+        });
+
+        $rendered = PlaygroundPreview::render([
+            ...$component,
+            'defaults' => [
+                ...$component['defaults'],
+                'view' => 'playground.previews.missing',
+            ],
+        ]);
+
+        $this->assertNull($rendered['html']);
+        $this->assertSame('text-input', $rendered['gap']);
+        $this->assertTrue(collect($logged)->contains(
+            fn (MessageLogged $event): bool => $event->level === 'warning'
+                && $event->message === 'Playground render gap.'
+                && ($event->context['component'] ?? null) === 'text-input'
+        ));
+
+        $this->view('playground.component', [
+            'components' => PlaygroundCatalog::components(),
+            'component' => $component,
+            'active' => 'text-input',
+            'preview' => $rendered['html'],
+            'gap' => $rendered['gap'],
+        ])->assertSee('data-playground-gap="text-input"', false)
+            ->assertSee('logged as a playground gap', false)
+            ->assertDontSee('data-playground-preview', false);
+    }
+
+    private function preview(string $html, string $id): ?\DOMNode
+    {
+        $document = new DOMDocument;
+        $previous = libxml_use_internal_errors(true);
+
+        try {
+            $document->loadHTML($html);
+        } finally {
+            libxml_clear_errors();
+            libxml_use_internal_errors($previous);
+        }
+
+        $matches = (new DOMXPath($document))->query('//*[@data-playground-preview="'.$id.'"]');
+
+        return $matches->item(0);
+    }
+}

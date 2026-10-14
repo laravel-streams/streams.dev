@@ -10,13 +10,13 @@ tags: [ui, playground, json, testing]
 status: draft
 ---
 
-The [UI Playground](/playground) provides a themed shell and a component catalog linking to the current UI reference. The editor, rendered preview, share links, and test controls described below are not available yet. Each unbuilt workflow carries a **Planned** badge.
+The [UI Playground](/playground) renders each catalog component with the Streams UI package and the defaults shipped in the playground catalog. The editor, share links, and test controls described below are not available yet. Each unbuilt workflow carries a **Planned** badge.
 
 The intended scope is UI examples without a real database. For the UI features you can use today, start with [UI quick start](/docs/ui/quick-start), [Forms](/docs/ui/forms), and [Tables](/docs/ui/tables).
 
 ## Open the Playground
 
-Open [the Playground](/playground), or use the Playground link in the site header or footer to open it in a new tab. The component navigation links to the related UI reference. Interactive examples and configuration editing are planned.
+Open [the Playground](/playground), or use the Playground link in the site header or footer to open it in a new tab. The component navigation opens a live render of that component. JSON editing is planned.
 
 Use the [local development guide](/docs/local-development) to run the documentation site and open `/playground` locally. The shell uses the site's saved light or dark theme.
 
