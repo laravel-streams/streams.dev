@@ -1,0 +1,58 @@
+<form
+    class="ui-form grid gap-y-6" x-data="{ isUploadingFile: false }" x-on:submit="if (isUploadingFile) $event.preventDefault()" x-on:file-upload-started="isUploadingFile = true" x-on:file-upload-finished="isUploadingFile = false">
+
+
+    <div class="flex flex-col space-y-4">
+
+                        <div class="">
+                <div style="--col-span-default: span 1 / span 1;" class="col-[--col-span-default] flex">
+
+    <div
+        class="w-full grid gap-y-2"
+    >
+
+                    <div
+                class="flex items-center justify-between gap-x-3"
+            >
+                                    <label
+    class="inline-flex items-center gap-x-3" for="data.contact.name"
+>
+
+
+    <span class="font-medium leading-6 text-gray-950">
+
+        Name    </span>
+
+
+</label>
+
+                            </div>
+
+                    <div
+                class="grid gap-y-2"
+            >
+                <input
+    class="block w-full rounded-md px-3 py-2 ps-3 pe-3" id="data.contact.name" placeholder="Ada Lovelace" wire:model="data.contact.name"
+/>
+
+
+                            </div>
+            </div>
+</div>
+
+            </div>
+
+
+                    <div class="flex shrink-0 items-center gap-2 flex">
+                                <button
+                style=";" class="relative inline-flex items-center justify-center font-semibold whitespace-nowrap outline-none transition duration-75 focus-visible:z-10 focus-visible:ring-2 focus-visible:ring-custom-500 shadow-sm  bg-custom-500 text-white hover:bg-custom-600   gap-1.5 py-2 px-6" href="/docs/ui/forms" target="_self" wire:loading.attr="disabled" type="button"
+>        <span
+                class="flex items-center "
+    >                    <span>Save</span>
+                </span>
+    </button>
+
+                            </div>
+            </div>
+
+</form>

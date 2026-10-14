@@ -8,7 +8,7 @@ package: all
 order: 30
 tags: [use, cases]
 editorial_status: ready
-status: partial
+status: implemented
 tracking_task: 268
 ---
 
@@ -75,7 +75,9 @@ Skip UI unless you later add an admin. Configure API interfaces, auth, and custo
 
 ## Greenfield starter
 
-**Packages:** full starter via `composer create-project` (Core, UI, API, SDK)
+**Packages:** full starter via `composer create-project` (Core, UI, and API)
+
+That starter requires `streams/core`, `streams/ui`, and `streams/api`. It does not require `streams/sdk`.
 
 Use the starter to learn conventions, then strip packages you do not need.
 

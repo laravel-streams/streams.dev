@@ -338,11 +338,11 @@ class DocsContentTest extends TestCase
 
         // The old registry commits (core 2.0, api 1.0) declare no php constraint.
         // rc/prep and sdk/rc do, which is what this page now says.
-        $core = $this->packageComposer('streams-core', '9291456367b85482f83504046a37ec6f7dd59dd9', 'rc/prep');
-        $api = $this->packageComposer('streams-api', '0d3ba86d22473114553779420d3c1e15bb096f20', 'rc/prep');
-        $sdk = $this->packageComposer('streams-sdk', '2aff9ebe3a0a58b4e48cb244af0ee683e17ef7b9', 'sdk/rc');
-        $testing = $this->packageComposer('streams-testing', 'ec5dd5f41b814a2b15b5dc1aa8a9f5911281781c', '1.0');
-        $starter = $this->packageComposer('streams', '06fde618b8f8f8a12680f9d98314728de34c03dd', '1.0');
+        $core = $this->registryPackageComposer('streams-core', '9291456367b85482f83504046a37ec6f7dd59dd9', 'rc/prep');
+        $api = $this->registryPackageComposer('streams-api', '0d3ba86d22473114553779420d3c1e15bb096f20', 'rc/prep');
+        $sdk = $this->registryPackageComposer('streams-sdk', '2aff9ebe3a0a58b4e48cb244af0ee683e17ef7b9', 'sdk/rc');
+        $testing = $this->registryPackageComposer('streams-testing', 'ec5dd5f41b814a2b15b5dc1aa8a9f5911281781c', '1.0');
+        $starter = $this->registryPackageComposer('streams', '06fde618b8f8f8a12680f9d98314728de34c03dd', '1.0');
 
         $this->assertSame('streams/core', $core['name']);
         $this->assertSame('^8.2', $core['require']['php'] ?? null);
@@ -402,27 +402,152 @@ class DocsContentTest extends TestCase
             ->assertDontSee('This feature is partially implemented.', false);
     }
 
+    public function test_changelog_release_candidates_require_php_82_on_rc_prep(): void
+    {
+        $page = $this->pages()['streams/data/docs/changelog'];
+        $body = $page['body'];
+
+        $this->assertStringContainsString(
+            'On `rc/prep`, Core and API require PHP 8.2 (`php: ^8.2`).',
+            $body
+        );
+        $this->assertStringNotContainsString(
+            '**Core, API (release candidates):** Require PHP 8.2.',
+            $body
+        );
+        $this->assertStringContainsString('The SDK now requires PHP 8.2.', $body);
+        $this->assertStringContainsString('Core supports the Laravel 11 and 12 filesystem contract and Carbon 3.', $body);
+        $this->assertSame('implemented', $page['frontmatter']['status']);
+        $this->assertSame(268, $page['frontmatter']['tracking_task']);
+
+        $core = json_decode(file_get_contents(base_path('vendor/streams/core/composer.json')), true, 512, JSON_THROW_ON_ERROR);
+        $sdk = json_decode(file_get_contents(base_path('vendor/streams/sdk/composer.json')), true, 512, JSON_THROW_ON_ERROR);
+
+        $this->assertSame('^8.2', $core['require']['php'] ?? null);
+        $this->assertSame('^8.2', $sdk['require']['php'] ?? null);
+
+        $registry = json_decode(file_get_contents(base_path('docs/registry.json')), true, 512, JSON_THROW_ON_ERROR);
+        $changelogProof = [];
+        foreach ($registry as $row) {
+            if ($row['page'] === 'streams/data/docs/changelog.md') {
+                $changelogProof = $row['proof'];
+            }
+        }
+        $apiCommit = '0d3ba86d22473114553779420d3c1e15bb096f20';
+        $this->assertContains('streams-api@'.$apiCommit.':composer.json', $changelogProof);
+
+        // streams/api is not installed in this app. Read the rc/prep snapshot the registry cites.
+        $api = $this->registryPackageComposer('streams-api', $apiCommit, 'rc/prep');
+        $this->assertSame('streams/api', $api['name']);
+        $this->assertArrayHasKey('php', $api['require']);
+        $this->assertSame('^8.2', $api['require']['php']);
+
+        $this->assertStringContainsString(
+            'function registerMcpServer(',
+            file_get_contents(base_path('vendor/streams/sdk/src/SdkServiceProvider.php'))
+        );
+
+        $lock = json_decode(file_get_contents(base_path('composer.lock')), true, 512, JSON_THROW_ON_ERROR);
+        $lockedCore = null;
+
+        foreach ($lock['packages'] as $package) {
+            if ($package['name'] === 'streams/core') {
+                $lockedCore = $package;
+            }
+        }
+
+        $this->assertNotNull($lockedCore);
+        $this->assertSame('9291456367b85482f83504046a37ec6f7dd59dd9', $lockedCore['source']['reference']);
+        $this->assertSame('^8.2', $lockedCore['require']['php']);
+
+        $this->get('/docs/changelog.md')
+            ->assertOk()
+            ->assertHeader('Content-Type', 'text/markdown; charset=UTF-8')
+            ->assertSee('On `rc/prep`, Core and API require PHP 8.2 (`php: ^8.2`).', false)
+            ->assertDontSee('**Core, API (release candidates):** Require PHP 8.2.', false);
+
+        $this->get('/docs/changelog')
+            ->assertOk()
+            ->assertDontSee('data-docs-status="partial"', false)
+            ->assertDontSee('data-docs-status="planned"', false)
+            ->assertDontSee('This feature is partially implemented.', false);
+    }
+
+    public function test_use_cases_starter_requires_core_ui_and_api(): void
+    {
+        $page = $this->pages()['streams/data/docs/use-cases'];
+        $body = $page['body'];
+
+        $this->assertStringContainsString(
+            '**Packages:** full starter via `composer create-project` (Core, UI, and API)',
+            $body
+        );
+        $this->assertStringNotContainsString('(Core, UI, API, SDK)', $body);
+        $this->assertStringContainsString('It does not require `streams/sdk`.', $body);
+        $this->assertStringContainsString('**Packages:** `streams/core`, `streams/ui`', $body);
+        $this->assertStringContainsString('**Packages:** `streams/core`, `streams/ui`, `streams/api`', $body);
+        $this->assertStringContainsString('**Packages:** `streams/core`, `streams/api`', $body);
+        $this->assertSame('implemented', $page['frontmatter']['status']);
+        $this->assertSame(268, $page['frontmatter']['tracking_task']);
+
+        $this->get('/docs/use-cases.md')
+            ->assertOk()
+            ->assertHeader('Content-Type', 'text/markdown; charset=UTF-8')
+            ->assertSee('**Packages:** full starter via `composer create-project` (Core, UI, and API)', false)
+            ->assertDontSee('(Core, UI, API, SDK)', false)
+            ->assertSee('It does not require `streams/sdk`.', false);
+
+        $this->get('/docs/use-cases')
+            ->assertOk()
+            ->assertDontSee('data-docs-status="partial"', false)
+            ->assertDontSee('data-docs-status="planned"', false)
+            ->assertDontSee('This feature is partially implemented.', false);
+    }
+
+    public function test_package_nav_points_at_package_files()
+    {
+        foreach (DocsNav::packages() as $name => $package) {
+            $this->assertSame(
+                'docs/packages/'.$name,
+                Streams::make($package['stream'])->config('source.path'),
+                "{$name} stream does not point at its package folder."
+            );
+
+            $listed = DocsNav::listed($name);
+
+            $this->assertSame($listed, array_values(array_unique($listed)), "{$name} lists a page more than once.");
+
+            foreach ($listed as $id) {
+                $this->assertFileExists(DocsNav::directory($name).'/'.$id.'.md', "{$name} nav points at missing {$id}.md.");
+            }
+
+            $this->assertEqualsCanonicalizing(
+                DocsNav::files($name),
+                array_merge($listed, DocsNav::unlisted($name)),
+                "{$name} nav does not account for every markdown file."
+            );
+        }
+    }
+
     /**
      * Composer manifest at a registry proof commit.
      *
-     * Prefers a local checkout. Otherwise reads that commit from GitHub and
-     * checks that the branch still contains it.
+     * Prefers a local checkout (the Core symlink's sibling, then the paths
+     * scripts/composer-local.php searches). Otherwise reads that commit from GitHub.
      *
      * @return array<string, mixed>
      */
-    protected function packageComposer(string $repository, string $commit, string $branch): array
+    protected function registryPackageComposer(string $repository, string $commit, string $branch): array
     {
         foreach ($this->packageCheckouts($repository) as $checkout) {
-            if (! $this->gitSucceeds($checkout, ['cat-file', '-e', $commit.'^{commit}'])) {
+            if (! $this->gitSucceeds($checkout, ['cat-file', '-e', $commit])) {
                 continue;
             }
 
-            $onBranch = $this->gitSucceeds($checkout, ['merge-base', '--is-ancestor', $commit, $branch])
-                || $this->gitSucceeds($checkout, ['merge-base', '--is-ancestor', $commit, 'origin/'.$branch]);
-
-            if (! $onBranch) {
-                continue;
-            }
+            $this->assertTrue(
+                $this->gitSucceeds($checkout, ['merge-base', '--is-ancestor', $commit, $branch]),
+                "{$repository}@{$commit} is not on {$branch}."
+            );
 
             return json_decode(
                 $this->gitOutput($checkout, ['show', $commit.':composer.json']),
@@ -461,23 +586,11 @@ class DocsContentTest extends TestCase
      */
     protected function packageCheckouts(string $repository): array
     {
-        $vendor = match ($repository) {
-            'streams-core' => 'core',
-            'streams-api' => 'api',
-            'streams-sdk' => 'sdk',
-            'streams-ui' => 'ui',
-            'streams-testing' => 'testing',
-            default => null,
-        };
-
-        $candidates = [];
-
-        if ($vendor !== null) {
-            $candidates[] = base_path('vendor/streams/'.$vendor);
-        }
+        $package = str_starts_with($repository, 'streams-') ? substr($repository, strlen('streams-')) : $repository;
+        $env = getenv('STREAMS_'.strtoupper($package).'_PATH') ?: '';
+        $candidates = $env !== '' ? [$env] : [];
 
         $core = realpath(base_path('vendor/streams/core'));
-
         if ($core !== false) {
             $candidates[] = dirname($core).'/'.$repository;
         }
@@ -491,11 +604,9 @@ class DocsContentTest extends TestCase
         }
 
         $found = [];
-
         foreach ($candidates as $candidate) {
             $path = rtrim($candidate, '/');
-
-            if (is_dir($path.'/.git') || is_file($path.'/.git')) {
+            if (is_file($path.'/composer.json')) {
                 $found[] = $path;
             }
         }
@@ -529,7 +640,6 @@ class DocsContentTest extends TestCase
     protected function git(string $checkout, array $arguments): array
     {
         $command = 'git -C '.escapeshellarg($checkout);
-
         foreach ($arguments as $argument) {
             $command .= ' '.escapeshellarg($argument);
         }
@@ -537,30 +647,5 @@ class DocsContentTest extends TestCase
         exec($command.' 2>&1', $output, $code);
 
         return ['code' => $code, 'output' => trim(implode("\n", $output))];
-    }
-
-    public function test_package_nav_points_at_package_files()
-    {
-        foreach (DocsNav::packages() as $name => $package) {
-            $this->assertSame(
-                'docs/packages/'.$name,
-                Streams::make($package['stream'])->config('source.path'),
-                "{$name} stream does not point at its package folder."
-            );
-
-            $listed = DocsNav::listed($name);
-
-            $this->assertSame($listed, array_values(array_unique($listed)), "{$name} lists a page more than once.");
-
-            foreach ($listed as $id) {
-                $this->assertFileExists(DocsNav::directory($name).'/'.$id.'.md', "{$name} nav points at missing {$id}.md.");
-            }
-
-            $this->assertEqualsCanonicalizing(
-                DocsNav::files($name),
-                array_merge($listed, DocsNav::unlisted($name)),
-                "{$name} nav does not account for every markdown file."
-            );
-        }
     }
 }
