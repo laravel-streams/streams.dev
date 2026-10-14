@@ -1,37 +1,500 @@
 {
     "components": [
-        {"id": "form", "label": "Form", "group": "Forms", "reference": "/docs/ui/forms"},
-        {"id": "text-input", "label": "Text input", "group": "Inputs", "reference": "/docs/ui/inputs"},
-        {"id": "textarea-input", "label": "Textarea input", "group": "Inputs", "reference": "/docs/ui/inputs"},
-        {"id": "select-input", "label": "Select input", "group": "Inputs", "reference": "/docs/ui/inputs"},
-        {"id": "checkbox-input", "label": "Checkbox input", "group": "Inputs", "reference": "/docs/ui/inputs"},
-        {"id": "radio-input", "label": "Radio input", "group": "Inputs", "reference": "/docs/ui/inputs"},
-        {"id": "toggle-input", "label": "Toggle input", "group": "Inputs", "reference": "/docs/ui/inputs"},
-        {"id": "date-input", "label": "Date input", "group": "Inputs", "reference": "/docs/ui/inputs"},
-        {"id": "datetime-input", "label": "Datetime input", "group": "Inputs", "reference": "/docs/ui/inputs"},
-        {"id": "time-input", "label": "Time input", "group": "Inputs", "reference": "/docs/ui/inputs"},
-        {"id": "color-input", "label": "Color input", "group": "Inputs", "reference": "/docs/ui/inputs"},
-        {"id": "file-input", "label": "File input", "group": "Inputs", "reference": "/docs/ui/inputs"},
-        {"id": "tags-input", "label": "Tags input", "group": "Inputs", "reference": "/docs/ui/inputs"},
-        {"id": "slug-input", "label": "Slug input", "group": "Inputs", "reference": "/docs/ui/inputs"},
-        {"id": "editor-input", "label": "Editor input", "group": "Inputs", "reference": "/docs/ui/inputs"},
-        {"id": "markdown-input", "label": "Markdown input", "group": "Inputs", "reference": "/docs/ui/inputs"},
-        {"id": "table", "label": "Table", "group": "Tables", "reference": "/docs/ui/tables"},
-        {"id": "text-column", "label": "Text column", "group": "Columns", "reference": "/docs/ui/columns"},
-        {"id": "badge-column", "label": "Badge column", "group": "Columns", "reference": "/docs/ui/columns"},
-        {"id": "icon-column", "label": "Icon column", "group": "Columns", "reference": "/docs/ui/columns"},
-        {"id": "color-column", "label": "Color column", "group": "Columns", "reference": "/docs/ui/columns"},
-        {"id": "select-column", "label": "Select column", "group": "Columns", "reference": "/docs/ui/columns"},
-        {"id": "toggle-column", "label": "Toggle column", "group": "Columns", "reference": "/docs/ui/columns"},
-        {"id": "view-column", "label": "View column", "group": "Columns", "reference": "/docs/ui/columns"},
-        {"id": "image-column", "label": "Image column", "group": "Columns", "reference": "/docs/ui/columns"},
-        {"id": "link-column", "label": "Link column", "group": "Columns", "reference": "/docs/ui/columns"},
-        {"id": "action", "label": "Action", "group": "Actions", "reference": "/docs/ui/actions"},
-        {"id": "action-menu", "label": "Action menu", "group": "Actions", "reference": "/docs/ui/actions"},
-        {"id": "action-card", "label": "Action card", "group": "Actions", "reference": "/docs/ui/actions"},
-        {"id": "container", "label": "Container", "group": "Layout", "reference": "/docs/ui/form-layouts"},
-        {"id": "grid", "label": "Grid", "group": "Layout", "reference": "/docs/ui/form-layouts"},
-        {"id": "section", "label": "Section", "group": "Layout", "reference": "/docs/ui/form-layouts"},
-        {"id": "card", "label": "Card", "group": "Layout", "reference": "/docs/ui/form-layouts"}
+        {
+            "id": "form",
+            "label": "Form",
+            "group": "Forms",
+            "reference": "/docs/ui/forms",
+            "builder": "Streams\\Ui\\Builders\\Forms\\Form",
+            "defaults": {
+                "name": "contact",
+                "heading": "Contact",
+                "components": [
+                    {
+                        "builder": "Streams\\Ui\\Builders\\Inputs\\TextInput",
+                        "defaults": {
+                            "name": "name",
+                            "label": "Name",
+                            "placeholder": "Ada Lovelace"
+                        }
+                    }
+                ],
+                "actions": [
+                    {
+                        "builder": "Streams\\Ui\\Builders\\Actions\\Action",
+                        "defaults": {
+                            "name": "save",
+                            "label": "Save",
+                            "url": "/docs/ui/forms"
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "id": "text-input",
+            "label": "Text input",
+            "group": "Inputs",
+            "reference": "/docs/ui/inputs",
+            "builder": "Streams\\Ui\\Builders\\Inputs\\TextInput",
+            "defaults": {
+                "name": "title",
+                "label": "Title",
+                "placeholder": "Enter a title"
+            }
+        },
+        {
+            "id": "textarea-input",
+            "label": "Textarea input",
+            "group": "Inputs",
+            "reference": "/docs/ui/inputs",
+            "builder": "Streams\\Ui\\Builders\\Inputs\\TextareaInput",
+            "defaults": {
+                "name": "body",
+                "label": "Body",
+                "placeholder": "Write the body",
+                "rows": 4
+            }
+        },
+        {
+            "id": "select-input",
+            "label": "Select input",
+            "group": "Inputs",
+            "reference": "/docs/ui/inputs",
+            "builder": "Streams\\Ui\\Builders\\Inputs\\SelectInput",
+            "defaults": {
+                "name": "status",
+                "label": "Status",
+                "placeholder": "Choose a status",
+                "options": {
+                    "draft": "Draft",
+                    "published": "Published"
+                }
+            }
+        },
+        {
+            "id": "checkbox-input",
+            "label": "Checkbox input",
+            "group": "Inputs",
+            "reference": "/docs/ui/inputs",
+            "builder": "Streams\\Ui\\Builders\\Inputs\\CheckboxInput",
+            "defaults": {
+                "name": "featured",
+                "label": "Featured"
+            }
+        },
+        {
+            "id": "radio-input",
+            "label": "Radio input",
+            "group": "Inputs",
+            "reference": "/docs/ui/inputs",
+            "builder": "Streams\\Ui\\Builders\\Inputs\\RadioInput",
+            "defaults": {
+                "name": "visibility",
+                "label": "Visibility",
+                "options": {
+                    "public": "Public",
+                    "private": "Private"
+                }
+            }
+        },
+        {
+            "id": "toggle-input",
+            "label": "Toggle input",
+            "group": "Inputs",
+            "reference": "/docs/ui/inputs",
+            "builder": "Streams\\Ui\\Builders\\Inputs\\ToggleInput",
+            "defaults": {
+                "name": "enabled",
+                "label": "Enabled"
+            }
+        },
+        {
+            "id": "date-input",
+            "label": "Date input",
+            "group": "Inputs",
+            "reference": "/docs/ui/inputs",
+            "builder": "Streams\\Ui\\Builders\\Inputs\\DateInput",
+            "defaults": {
+                "name": "published_on",
+                "label": "Published on"
+            }
+        },
+        {
+            "id": "datetime-input",
+            "label": "Datetime input",
+            "group": "Inputs",
+            "reference": "/docs/ui/inputs",
+            "builder": "Streams\\Ui\\Builders\\Inputs\\DatetimeInput",
+            "defaults": {
+                "name": "published_at",
+                "label": "Published at"
+            }
+        },
+        {
+            "id": "time-input",
+            "label": "Time input",
+            "group": "Inputs",
+            "reference": "/docs/ui/inputs",
+            "builder": "Streams\\Ui\\Builders\\Inputs\\TimeInput",
+            "defaults": {
+                "name": "starts_at",
+                "label": "Starts at"
+            }
+        },
+        {
+            "id": "color-input",
+            "label": "Color input",
+            "group": "Inputs",
+            "reference": "/docs/ui/inputs",
+            "builder": "Streams\\Ui\\Builders\\Inputs\\ColorInput",
+            "defaults": {
+                "name": "accent",
+                "label": "Accent"
+            }
+        },
+        {
+            "id": "file-input",
+            "label": "File input",
+            "group": "Inputs",
+            "reference": "/docs/ui/inputs",
+            "builder": "Streams\\Ui\\Builders\\Inputs\\FileInput",
+            "defaults": {
+                "name": "attachment",
+                "label": "Attachment",
+                "accept": "image/*"
+            }
+        },
+        {
+            "id": "tags-input",
+            "label": "Tags input",
+            "group": "Inputs",
+            "reference": "/docs/ui/inputs",
+            "builder": "Streams\\Ui\\Builders\\Inputs\\TagsInput",
+            "defaults": {
+                "name": "tags",
+                "label": "Tags",
+                "placeholder": "Add a tag"
+            }
+        },
+        {
+            "id": "slug-input",
+            "label": "Slug input",
+            "group": "Inputs",
+            "reference": "/docs/ui/inputs",
+            "builder": "Streams\\Ui\\Builders\\Inputs\\SlugInput",
+            "defaults": {
+                "name": "slug",
+                "label": "Slug",
+                "placeholder": "post-title",
+                "slugify": "title"
+            }
+        },
+        {
+            "id": "editor-input",
+            "label": "Editor input",
+            "group": "Inputs",
+            "reference": "/docs/ui/inputs",
+            "builder": "Streams\\Ui\\Builders\\Inputs\\EditorInput",
+            "defaults": {
+                "name": "content",
+                "label": "Content"
+            }
+        },
+        {
+            "id": "markdown-input",
+            "label": "Markdown input",
+            "group": "Inputs",
+            "reference": "/docs/ui/inputs",
+            "builder": "Streams\\Ui\\Builders\\Inputs\\MarkdownInput",
+            "defaults": {
+                "name": "notes",
+                "label": "Notes"
+            }
+        },
+        {
+            "id": "table",
+            "label": "Table",
+            "group": "Tables",
+            "reference": "/docs/ui/tables",
+            "builder": "Streams\\Ui\\Builders\\Tables\\Table",
+            "defaults": {
+                "name": "people",
+                "heading": "People",
+                "paginated": false,
+                "columns": [
+                    {
+                        "builder": "Streams\\Ui\\Builders\\Tables\\Columns\\TextColumn",
+                        "defaults": {
+                            "name": "name",
+                            "label": "Name",
+                            "value": "Ada Lovelace"
+                        }
+                    }
+                ],
+                "entries": [
+                    {
+                        "id": "1",
+                        "name": "Ada Lovelace"
+                    }
+                ]
+            }
+        },
+        {
+            "id": "text-column",
+            "label": "Text column",
+            "group": "Columns",
+            "reference": "/docs/ui/columns",
+            "builder": "Streams\\Ui\\Builders\\Tables\\Columns\\TextColumn",
+            "defaults": {
+                "name": "name",
+                "label": "Name",
+                "value": "Ada Lovelace"
+            }
+        },
+        {
+            "id": "badge-column",
+            "label": "Badge column",
+            "group": "Columns",
+            "reference": "/docs/ui/columns",
+            "builder": "Streams\\Ui\\Builders\\Tables\\Columns\\BadgeColumn",
+            "defaults": {
+                "name": "status",
+                "label": "Published",
+                "value": "published",
+                "color": "gray"
+            }
+        },
+        {
+            "id": "icon-column",
+            "label": "Icon column",
+            "group": "Columns",
+            "reference": "/docs/ui/columns",
+            "builder": "Streams\\Ui\\Builders\\Tables\\Columns\\IconColumn",
+            "defaults": {
+                "name": "status",
+                "label": "Status",
+                "value": "published",
+                "icon": "heroicon-o-check-circle",
+                "color": "gray"
+            }
+        },
+        {
+            "id": "color-column",
+            "label": "Color column",
+            "group": "Columns",
+            "reference": "/docs/ui/columns",
+            "builder": "Streams\\Ui\\Builders\\Tables\\Columns\\ColorColumn",
+            "defaults": {
+                "name": "accent",
+                "label": "Accent",
+                "value": "#336699",
+                "color": "gray",
+                "view": "ui::components.table.columns.text-column"
+            }
+        },
+        {
+            "id": "select-column",
+            "label": "Select column",
+            "group": "Columns",
+            "reference": "/docs/ui/columns",
+            "builder": "Streams\\Ui\\Builders\\Tables\\Columns\\SelectColumn",
+            "defaults": {
+                "name": "status",
+                "label": "Status",
+                "value": "Draft",
+                "view": "ui::components.table.columns.text-column"
+            }
+        },
+        {
+            "id": "toggle-column",
+            "label": "Toggle column",
+            "group": "Columns",
+            "reference": "/docs/ui/columns",
+            "builder": "Streams\\Ui\\Builders\\Tables\\Columns\\ToggleColumn",
+            "defaults": {
+                "name": "enabled",
+                "label": "Enabled",
+                "value": "Yes",
+                "view": "ui::components.table.columns.text-column"
+            }
+        },
+        {
+            "id": "view-column",
+            "label": "View column",
+            "group": "Columns",
+            "reference": "/docs/ui/columns",
+            "builder": "Streams\\Ui\\Builders\\Tables\\Columns\\ViewColumn",
+            "defaults": {
+                "name": "summary",
+                "label": "Summary",
+                "value": "Catalog default",
+                "view": "ui::components.table.columns.text-column"
+            }
+        },
+        {
+            "id": "image-column",
+            "label": "Image column",
+            "group": "Columns",
+            "reference": "/docs/ui/columns",
+            "builder": "Streams\\Ui\\Builders\\Tables\\Columns\\ImageColumn",
+            "defaults": {
+                "name": "avatar",
+                "label": "Avatar",
+                "value": "Avatar"
+            }
+        },
+        {
+            "id": "link-column",
+            "label": "Link column",
+            "group": "Columns",
+            "reference": "/docs/ui/columns",
+            "builder": "Streams\\Ui\\Builders\\Tables\\Columns\\LinkColumn",
+            "defaults": {
+                "name": "profile",
+                "label": "Profile",
+                "value": "Ada Lovelace",
+                "url": "/docs/ui/columns"
+            }
+        },
+        {
+            "id": "action",
+            "label": "Action",
+            "group": "Actions",
+            "reference": "/docs/ui/actions",
+            "builder": "Streams\\Ui\\Builders\\Actions\\Action",
+            "defaults": {
+                "name": "edit",
+                "label": "Edit",
+                "url": "/docs/ui/actions"
+            }
+        },
+        {
+            "id": "action-menu",
+            "label": "Action menu",
+            "group": "Actions",
+            "reference": "/docs/ui/actions",
+            "builder": "Streams\\Ui\\Builders\\Actions\\ActionMenu",
+            "defaults": {
+                "name": "row-actions",
+                "label": "Actions",
+                "actions": [
+                    {
+                        "builder": "Streams\\Ui\\Builders\\Actions\\Action",
+                        "defaults": {
+                            "name": "edit",
+                            "label": "Edit",
+                            "url": "/docs/ui/actions"
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "id": "action-card",
+            "label": "Action card",
+            "group": "Actions",
+            "reference": "/docs/ui/actions",
+            "builder": "Streams\\Ui\\Builders\\Actions\\ActionCard",
+            "defaults": {
+                "name": "export-card",
+                "label": "Export",
+                "description": "Download a sample export.",
+                "action": {
+                    "builder": "Streams\\Ui\\Builders\\Actions\\Action",
+                    "defaults": {
+                        "name": "export",
+                        "label": "Export",
+                        "url": "/docs/ui/actions"
+                    }
+                }
+            }
+        },
+        {
+            "id": "container",
+            "label": "Container",
+            "group": "Layout",
+            "reference": "/docs/ui/form-layouts",
+            "builder": "Streams\\Ui\\Builders\\Containers\\Container",
+            "defaults": {
+                "name": "preview-container",
+                "components": [
+                    {
+                        "builder": "Streams\\Ui\\Builders\\Inputs\\TextInput",
+                        "defaults": {
+                            "name": "name",
+                            "label": "Name",
+                            "placeholder": "Ada Lovelace"
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "id": "grid",
+            "label": "Grid",
+            "group": "Layout",
+            "reference": "/docs/ui/form-layouts",
+            "builder": "Streams\\Ui\\Builders\\Containers\\Grid",
+            "defaults": {
+                "name": "preview-grid",
+                "heading": "Details",
+                "columns": 2,
+                "components": [
+                    {
+                        "builder": "Streams\\Ui\\Builders\\Inputs\\TextInput",
+                        "defaults": {
+                            "name": "name",
+                            "label": "Name",
+                            "placeholder": "Ada Lovelace"
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "id": "section",
+            "label": "Section",
+            "group": "Layout",
+            "reference": "/docs/ui/form-layouts",
+            "builder": "Streams\\Ui\\Builders\\Containers\\Section",
+            "defaults": {
+                "name": "preview-section",
+                "heading": "Profile",
+                "description": "Sample section from the catalog.",
+                "components": [
+                    {
+                        "builder": "Streams\\Ui\\Builders\\Inputs\\TextInput",
+                        "defaults": {
+                            "name": "name",
+                            "label": "Name",
+                            "placeholder": "Ada Lovelace"
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "id": "card",
+            "label": "Card",
+            "group": "Layout",
+            "reference": "/docs/ui/form-layouts",
+            "builder": "Streams\\Ui\\Builders\\Containers\\Card",
+            "defaults": {
+                "name": "preview-card",
+                "heading": "Profile",
+                "description": "Sample card from the catalog.",
+                "components": [
+                    {
+                        "builder": "Streams\\Ui\\Builders\\Inputs\\TextInput",
+                        "defaults": {
+                            "name": "name",
+                            "label": "Name",
+                            "placeholder": "Ada Lovelace"
+                        }
+                    }
+                ]
+            }
+        }
     ]
 }

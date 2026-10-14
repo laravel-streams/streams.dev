@@ -11,8 +11,8 @@
         </aside>
         <article class="docs-article min-w-0 flex-1">
             <header class="mb-12">
-                <h1 class="docs-title">UI Playground</h1>
-                <p class="docs-lead">Explore the Laravel Streams UI component catalog.</p>
+                <h1 class="docs-title">@yield('heading', 'UI Playground')</h1>
+                <p class="docs-lead">@yield('lead', 'Explore the Laravel Streams UI component catalog.')</p>
             </header>
             <div class="docs-body">
                 @yield('content')

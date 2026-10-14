@@ -27,7 +27,7 @@ class PlaygroundTest extends TestCase
             $matches = $xpath->query('//nav[@aria-label="Playground components"]//a[@data-playground-component="'.$component['id'].'"]');
             $this->assertSame(1, $matches->length, $component['id']);
             $this->assertSame($component['label'], trim($matches->item(0)->textContent));
-            $this->assertSame($component['reference'], $matches->item(0)->getAttribute('href'));
+            $this->assertSame(route('playground.component', $component['id']), $matches->item(0)->getAttribute('href'));
             $this->get($component['reference'])->assertOk();
         }
     }
@@ -37,7 +37,7 @@ class PlaygroundTest extends TestCase
         $this->get('/playground')
             ->assertOk()
             ->assertViewIs('playground')
-            ->assertSee('<title>UI Playground · Streams</title>', false)
+            ->assertSee('<title>UI Playground · '.config('app.name', 'Streams').'</title>', false)
             ->assertSee('window.StreamsTheme', false)
             ->assertSee('class="st-mesh"', false)
             ->assertSee('class="st-frame"', false)
