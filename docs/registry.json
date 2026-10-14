@@ -1270,14 +1270,14 @@
         "page": "streams/data/docs/changelog.md",
         "package": "all",
         "type": "features",
-        "status": "partial",
+        "status": "implemented",
         "proof": [
-            "streams-core@65ea4668d86fefa20d4eaba35536de33bfda9369:composer.json",
-            "streams-api@22d2351345631480102aa1377e6a6a73d765c7a5:composer.json",
+            "streams-core@9291456367b85482f83504046a37ec6f7dd59dd9:composer.json",
+            "streams-api@0d3ba86d22473114553779420d3c1e15bb096f20:composer.json",
             "streams-sdk@2aff9ebe3a0a58b4e48cb244af0ee683e17ef7b9:composer.json",
             "streams-sdk@2aff9ebe3a0a58b4e48cb244af0ee683e17ef7b9:src/SdkServiceProvider.php"
         ],
-        "finding": "SDK on sdk/rc declares PHP 8.2 and registers MCP. The September note says Core and API require PHP 8.2, but those composer.json files declare no php constraint."
+        "finding": "SDK on sdk/rc declares PHP 8.2 and registers MCP. Core and API on rc/prep declare php ^8.2, matching the September note."
     },
     {
         "page": "streams/data/docs/installation.md",
@@ -1338,14 +1338,14 @@
         "page": "streams/data/docs/use-cases.md",
         "package": "all",
         "type": "features",
-        "status": "partial",
+        "status": "implemented",
         "proof": [
             "streams@06fde618b8f8f8a12680f9d98314728de34c03dd:composer.json",
             "streams-core@65ea4668d86fefa20d4eaba35536de33bfda9369:src/Stream/StreamManager.php",
             "streams-ui@3a30c8676df7815804a31cf5388b8fee80cdb541:composer.json",
             "streams-api@22d2351345631480102aa1377e6a6a73d765c7a5:composer.json"
         ],
-        "finding": "Core, UI, and API paths match those packages. The starter line includes SDK, but streams/streams 1.0 requires only Core, UI, and API."
+        "finding": "Core, UI, and API paths match those packages. The starter line lists Core, UI, and API only, matching streams/streams 1.0."
     },
     {
         "page": "streams/data/docs/users.md",
