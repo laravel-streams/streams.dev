@@ -1,353 +1,87 @@
 ---
 title: Criteria Query Builder
 nav_title: Criteria Query Builder
-description: PHP Laravel-style query building for filtering and sorting
+description: Fluent filters, sorting and pagination for API entry lists.
 section: packages
 package: client
 order: 70
 tags: [client, criteria]
 editorial_status: ready
-status: partial
-tracking_task: pending
+status: implemented
+tracking_task: 265
 ---
 
-The Criteria class provides a fluent, PHP Laravel-style interface for building queries.
+`Criteria` builds the [API query parameters](/docs/api/query-parameters) used by entry lists. Each method returns the builder so calls can be chained.
 
-## Basic Usage
-
-```javascript
-import { Criteria } from '@laravel-streams/api-client';
-
-const criteria = new Criteria()
-    .where('status', 'published')
-    .orderBy('created_at', 'desc')
-    .limit(10);
-
-const response = await client.entries.get('posts', { criteria });
-```
-
-## Creating Criteria
-
-### Static Factory
+## Filtering and ordering
 
 ```javascript
+import { Client, Criteria } from '@laravel-streams/api-client';
+
+const client = new Client({ baseURL: 'https://example.com/api' });
 const criteria = Criteria.make()
-    .where('status', 'active');
-```
-
-### Constructor
-
-```javascript
-const criteria = new Criteria();
-criteria.where('status', 'active');
-```
-
-## Where Clauses
-
-### Basic Where
-
-```javascript
-// Simple equality
-criteria.where('status', 'published');
-// Generates: WHERE status == 'published'
-
-// With operator
-criteria.where('views', '>', 100);
-// Generates: WHERE views > 100
-```
-
-### Available Operators
-
-#### Comparison Operators
-
-```javascript
-criteria.where('views', '>', 100);     // Greater than
-criteria.where('views', '>=', 100);    // Greater than or equal
-criteria.where('views', '<', 100);     // Less than
-criteria.where('views', '<=', 100);    // Less than or equal
-criteria.where('status', '==', 'active'); // Equal
-criteria.where('status', '!=', 'deleted'); // Not equal
-criteria.where('value', '<>', 0);      // Not equal (alternative)
-```
-
-#### Logical Operators
-
-```javascript
-criteria.where('status', 'IN', ['published', 'featured']);
-criteria.where('title', 'LIKE', '%tutorial%');
-criteria.where('content', 'NOT', null);
-criteria.where('tags', 'ALL', ['javascript', 'tutorial']);
-criteria.where('categories', 'ANY', ['tech', 'news']);
-```
-
-### OR Where Clauses
-
-```javascript
-const criteria = new Criteria()
     .where('status', 'published')
-    .orWhere('status', 'featured');
-// WHERE status == 'published' OR status == 'featured'
-```
-
-### Chaining Where Clauses
-
-```javascript
-const criteria = new Criteria()
-    .where('status', 'published')
-    .where('views', '>', 100)
-    .where('category', 'technology')
-    .where('created_at', '>=', '2024-01-01');
-// WHERE status == 'published' 
-//   AND views > 100 
-//   AND category == 'technology'
-//   AND created_at >= '2024-01-01'
-```
-
-## Ordering Results
-
-### Order By
-
-```javascript
-// Descending (default)
-criteria.orderBy('created_at');
-
-// Ascending
-criteria.orderBy('title', 'asc');
-
-// Descending
-criteria.orderBy('views', 'desc');
-```
-
-### Multiple Order By
-
-```javascript
-const criteria = new Criteria()
-    .orderBy('priority', 'desc')  // First by priority
-    .orderBy('created_at', 'desc') // Then by date
-    .orderBy('title', 'asc');      // Then by title
-```
-
-## Limiting Results
-
-### Limit
-
-```javascript
-criteria.limit(10); // Return maximum 10 results
-```
-
-### First
-
-```javascript
-criteria.first(); // Same as limit(1)
-```
-
-### Find by ID
-
-```javascript
-criteria.find(123); 
-// Same as: where('id', 123).limit(1)
-```
-
-## Pagination
-
-```javascript
-// paginate(perPage, page)
-criteria.paginate(25, 1); // 25 per page, page 1
-
-// Default pagination (100 per page, page 1)
-criteria.paginate();
-```
-
-## Complex Queries
-
-### Combining Conditions
-
-```javascript
-const criteria = new Criteria()
-    // Published or featured
-    .where('status', 'published')
-    .orWhere('status', 'featured')
-    // With minimum views
-    .where('views', '>=', 100)
-    // In specific categories
-    .where('category', 'IN', ['tech', 'tutorial'])
-    // Recent posts
-    .where('created_at', '>=', '2024-01-01')
-    // Sort by popularity, then date
-    .orderBy('views', 'desc')
-    .orderBy('created_at', 'desc')
-    // Paginate
-    .paginate(20, 1);
-```
-
-### Search Functionality
-
-```javascript
-function searchPosts(query) {
-    return new Criteria()
-        .where('title', 'LIKE', `%${query}%`)
-        .orWhere('content', 'LIKE', `%${query}%`)
-        .orWhere('tags', 'LIKE', `%${query}%`)
-        .where('status', 'published')
-        .orderBy('relevance', 'desc')
-        .limit(50);
-}
-
-const criteria = searchPosts('javascript');
-const results = await client.entries.get('posts', { criteria });
-```
-
-## Working with Parameters
-
-### Get Parameters
-
-```javascript
-const criteria = new Criteria()
-    .where('status', 'published')
-    .orderBy('created_at', 'desc')
+    .where('price', '>=', 10)
+    .where('price', '<=', 100)
+    .orderBy('price', 'asc')
+    .orderBy('title', 'desc')
     .limit(10);
 
-const params = criteria.getParameters();
-console.log(params);
-// [
-//   { name: 'where', value: ['status', '==', 'published', null] },
-//   { name: 'orderBy', value: ['created_at', 'desc'] },
-//   { name: 'limit', value: 10 }
-// ]
+const response = await client.entries.get('products', { criteria });
+console.log(response.data); // Entries array
 ```
 
-### Set Parameters
+Equality uses `where(field, value)`, or `where(field, '==', value)`. GET filters support `>`, `>=`, `<`, `<=`, `!=`, `<>`, `LIKE`, `IN`, and `BETWEEN`. Use array operands with `IN` and `BETWEEN`.
+
+Distinct fields and distinct operators on the same field are retained. Repeating the same field/operator throws instead of silently replacing a condition. GET filters are AND conditions: `orWhere()` and nested filters cannot be standardized for this endpoint. Use the [query endpoint](/docs/api/query-endpoint) for those operations:
 
 ```javascript
-const criteria = new Criteria();
-criteria.setParameters([
-    { name: 'where', value: ['status', '==', 'published', null] },
-    { name: 'limit', value: 10 }
-]);
+const response = await client.post('/streams/posts/query', {
+    data: {
+        parameters: [
+            { where: ['title', 'like', '%streams%'] },
+            { orWhere: ['content', 'like', '%streams%'] },
+            { orderBy: ['created_at', 'desc'] },
+        ],
+    },
+});
 ```
 
-### Add Parameter
+## Limits and pagination
+
+`limit(10)` caps results; `first()` sets `limit(1)`; `find(id)` adds an ID equality filter and `limit(1)`. These build criteria; the request still returns an entries array. `orderBy(field)` defaults to descending order.
 
 ```javascript
-const criteria = new Criteria();
-criteria.addParameter('where', ['status', '==', 'published', null]);
+const criteria = new Criteria().where('status', 'published').paginate(25, 2);
+const response = await client.entries.get('posts', { criteria });
+console.log(response.meta);
+console.log(response.links);
 ```
 
-### Standardize Parameters
+`paginate()` defaults to 100 entries per page and page 1.
+
+## Inspecting parameters
+
+`getParameters()` returns ordered `{ name, value }` records. `setParameters(records)` replaces them and `addParameter(name, value)` appends one. `standardizeParameters()` converts supported filters into the API shape:
 
 ```javascript
-const criteria = new Criteria()
+const params = new Criteria()
     .where('status', 'published')
-    .limit(10);
-
-const standardized = criteria.standardizeParameters();
-console.log(standardized);
+    .where('price', '>=', 10)
+    .where('price', '<=', 100)
+    .orderBy('title', 'asc')
+    .limit(10)
+    .standardizeParameters();
 // {
-//   where: ['status', '==', 'published', null],
+//   where: { status: 'published', price: { '>=': 10, '<=': 100 } },
+//   order_by: { title: 'asc' },
 //   limit: 10
 // }
 ```
 
-## Real-World Examples
+Default middleware sends `where[status]=published`, `where[price][>=]=10`, `where[price][<=]=100`, and `order_by[title]=asc`. Values are URL encoded. `compile()` retains the legacy base64 JSON representation; HTTP requests use standardized bracket parameters instead.
 
-### Blog Post Filtering
+## Related
 
-```javascript
-// Featured posts from last month
-const criteria = new Criteria()
-    .where('featured', true)
-    .where('published_at', '>=', getLastMonth())
-    .where('status', 'published')
-    .orderBy('published_at', 'desc')
-    .limit(5);
-
-// Posts by category with minimum engagement
-const criteria = new Criteria()
-    .where('category', 'javascript')
-    .where('likes', '>', 50)
-    .where('comments', '>', 10)
-    .orderBy('engagement_score', 'desc')
-    .paginate(20, 1);
-```
-
-### E-commerce Product Filtering
-
-```javascript
-// Products in price range, in stock
-const criteria = new Criteria()
-    .where('price', '>=', 10)
-    .where('price', '<=', 100)
-    .where('stock', '>', 0)
-    .where('category', 'electronics')
-    .orderBy('popularity', 'desc')
-    .paginate(24, 1);
-
-// Sale items
-const criteria = new Criteria()
-    .where('on_sale', true)
-    .where('discount', '>=', 20)
-    .where('stock', '>', 0)
-    .orderBy('discount', 'desc')
-    .orderBy('price', 'asc');
-```
-
-### User Management
-
-```javascript
-// Active users who logged in recently
-const criteria = new Criteria()
-    .where('status', 'active')
-    .where('last_login', '>=', getLastWeek())
-    .where('email_verified', true)
-    .orderBy('last_login', 'desc')
-    .limit(100);
-
-// Premium users expiring soon
-const criteria = new Criteria()
-    .where('subscription', 'premium')
-    .where('expires_at', '<=', getNextMonth())
-    .where('expires_at', '>=', getToday())
-    .orderBy('expires_at', 'asc');
-```
-
-## Builder Pattern
-
-The Criteria class uses the builder pattern, allowing you to chain methods:
-
-```javascript
-const criteria = new Criteria()
-    .where('a', 1)     // Returns this
-    .where('b', 2)     // Returns this
-    .orderBy('c')      // Returns this
-    .limit(10);        // Returns this
-
-// Same as:
-const criteria = new Criteria();
-criteria.where('a', 1);
-criteria.where('b', 2);
-criteria.orderBy('c');
-criteria.limit(10);
-```
-
-## Reusable Criteria
-
-```javascript
-// Create base criteria
-const publishedPosts = () => new Criteria()
-    .where('status', 'published')
-    .where('deleted_at', null);
-
-// Extend it
-const recentPublishedPosts = publishedPosts()
-    .where('created_at', '>=', getLastWeek())
-    .orderBy('created_at', 'desc');
-
-const popularPublishedPosts = publishedPosts()
-    .where('views', '>', 1000)
-    .orderBy('views', 'desc');
-```
-
-## Next Steps
-
-- [Working with Entries](/docs/client/entries) - Apply criteria to entry queries
-- [Examples](/docs/client/examples) - See more complex examples
+- [Entries](/docs/client/entries)
+- [Examples](/docs/client/examples)
