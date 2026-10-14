@@ -6,7 +6,9 @@ section: packages
 package: api
 order: 200
 tags: [api, examples]
-status: ready
+editorial_status: ready
+status: implemented
+tracking_task: null
 ---
 
 Complete curl examples assuming default prefix `api` and local server at `http://127.0.0.1:8000`.

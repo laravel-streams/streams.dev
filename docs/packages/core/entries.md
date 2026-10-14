@@ -6,7 +6,9 @@ section: packages
 package: core
 order: 70
 tags: [core, entries]
-status: ready
+editorial_status: ready
+status: implemented
+tracking_task: null
 ---
 
 An **entry** is a single record in a stream. Entries are instances of `Streams\Core\Entry\Entry` or a custom class set in stream `config.abstract`.

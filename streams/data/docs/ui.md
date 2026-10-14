@@ -7,7 +7,9 @@ category: advanced
 package: ui
 order: 20
 tags: [ui]
-status: ready
+editorial_status: ready
+status: partial
+tracking_task: 258
 ---
 
 ## When to use Streams UI

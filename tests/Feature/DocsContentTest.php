@@ -19,7 +19,7 @@ class DocsContentTest extends TestCase
 
     protected const PACKAGES = ['core', 'ui', 'api', 'sdk', 'testing', 'client', 'site', 'all'];
 
-    protected const STATUSES = ['draft', 'review', 'ready', 'deprecated'];
+    protected const STATUSES = ['implemented', 'partial', 'planned'];
 
     /**
      * @return array<string, array{frontmatter: array, body: string}>
@@ -67,6 +67,13 @@ class DocsContentTest extends TestCase
             $this->assertContains($frontmatter['section'], static::SECTIONS, "{$page} section");
             $this->assertContains($frontmatter['package'], static::PACKAGES, "{$page} package");
             $this->assertContains($frontmatter['status'], static::STATUSES, "{$page} status");
+            if (in_array($frontmatter['status'], ['implemented', 'partial', 'planned'], true)) {
+                $this->assertArrayHasKey('tracking_task', $frontmatter, "{$page} tracking_task");
+                if ($frontmatter['status'] !== 'implemented') {
+                    $tracking = $frontmatter['tracking_task'];
+                    $this->assertTrue($tracking === 'pending' || (is_int($tracking) && $tracking > 0), "{$page} needs a tracking task id or pending placeholder.");
+                }
+            }
             $this->assertIsInt($frontmatter['order'], "{$page} order");
             $this->assertIsArray($frontmatter['tags'], "{$page} tags");
             $this->assertArrayNotHasKey('sort_order', $frontmatter, "{$page} uses sort_order; use order.");
@@ -176,6 +183,140 @@ class DocsContentTest extends TestCase
         }
 
         return $types;
+    }
+
+    public function test_package_catalog_data_is_an_object_keyed_by_id(): void
+    {
+        $page = $this->pages()['streams/data/docs/package-catalog'];
+        $body = $page['body'];
+
+        $this->assertStringContainsString('object keyed by entry id', $body);
+        $this->assertStringNotContainsString('the `data` array', $body);
+        $this->assertSame('implemented', $page['frontmatter']['status']);
+        $this->assertSame(267, $page['frontmatter']['tracking_task']);
+
+        $packages = json_decode(file_get_contents(base_path('streams/packages.json')), true, 512, JSON_THROW_ON_ERROR);
+
+        $this->assertSame('self', $packages['config']['source']['type']);
+        $this->assertIsArray($packages['data']);
+        $this->assertNotEmpty($packages['data']);
+        $this->assertFalse(array_is_list($packages['data']), 'packages.json data is a list; self source stores an object keyed by id.');
+
+        foreach ($packages['data'] as $key => $entry) {
+            $this->assertSame($key, $entry['id']);
+        }
+
+        $this->get('/docs/package-catalog')
+            ->assertOk()
+            ->assertDontSee('data-docs-status="partial"', false)
+            ->assertDontSee('the `data` array', false)
+            ->assertSee('object keyed by entry id', false);
+    }
+
+    public function test_project_structure_composer_json_uses_vcs_repositories(): void
+    {
+        $page = $this->pages()['streams/data/docs/project-structure'];
+        $body = $page['body'];
+
+        $this->assertMatchesRegularExpression('/composer\.json\s+# Core, UI, vcs GitHub repositories/', $body);
+        $this->assertDoesNotMatchRegularExpression('/composer\.json\s+#.*path repos/', $body);
+        $this->assertSame('implemented', $page['frontmatter']['status']);
+        $this->assertSame(267, $page['frontmatter']['tracking_task']);
+        $this->assertStringContainsString('composer.local.json', $body);
+        $this->assertStringContainsString('symlinked path repositories', $body);
+
+        $composer = json_decode(file_get_contents(base_path('composer.json')), true, 512, JSON_THROW_ON_ERROR);
+
+        $this->assertNotEmpty($composer['repositories']);
+
+        foreach ($composer['repositories'] as $repository) {
+            $this->assertSame('vcs', $repository['type']);
+            $this->assertStringContainsString('github.com', $repository['url']);
+        }
+
+        $this->assertStringContainsString('/composer.local.json', file_get_contents(base_path('.gitignore')));
+
+        $script = file_get_contents(base_path('scripts/composer-local.php'));
+        $this->assertStringContainsString("'type' => 'path'", $script);
+        $this->assertStringContainsString("'symlink' => true", $script);
+        $this->assertStringContainsString('composer.local.json', $script);
+
+        $provider = file_get_contents(base_path('app/Providers/AppServiceProvider.php'));
+        $this->assertStringContainsString("Panel::make('admin')", $provider);
+        $this->assertStringContainsString("->path('admin')", $provider);
+
+        $this->get('/docs/project-structure')
+            ->assertOk()
+            ->assertDontSee('data-docs-status="partial"', false)
+            ->assertDontSee('Core, UI, path repos', false)
+            ->assertSee('vcs GitHub repositories', false);
+    }
+
+    public function test_site_pages_homepage_uses_layout_page(): void
+    {
+        $page = $this->pages()['streams/data/docs/site-pages'];
+        $body = $page['body'];
+
+        $this->assertStringContainsString('The homepage (`welcome.html`) uses `uri: /` and `layout: page`.', $body);
+        $this->assertStringNotContainsString('The homepage (`welcome.html`) uses `uri: /` and `layout: blank`.', $body);
+        $this->assertSame('implemented', $page['frontmatter']['status']);
+        $this->assertSame(267, $page['frontmatter']['tracking_task']);
+        $this->assertStringContainsString('`parse: true`', $body);
+        $this->assertStringContainsString('"{uri}"', $body);
+
+        preg_match('/^---\n(.*?)\n---\n/s', file_get_contents(base_path('streams/data/pages/welcome.html')), $welcome);
+        $welcomeFrontmatter = Yaml::parse($welcome[1]);
+
+        $this->assertSame('/', $welcomeFrontmatter['uri']);
+        $this->assertSame('page', $welcomeFrontmatter['layout']);
+
+        $pages = json_decode(file_get_contents(base_path('streams/pages.json')), true, 512, JSON_THROW_ON_ERROR);
+        $route = $pages['routes'][0];
+
+        $this->assertSame('view', $route['handle']);
+        $this->assertSame('{uri}', $route['uri']);
+        $this->assertTrue($route['parse']);
+        $this->assertSame('{layout}', $route['view']);
+
+        $this->get('/docs/site-pages')
+            ->assertOk()
+            ->assertDontSee('data-docs-status="partial"', false)
+            ->assertDontSee('layout: blank', false)
+            ->assertSee('layout: page', false);
+    }
+
+    public function test_local_development_uses_master_and_the_dev_ports(): void
+    {
+        $page = $this->pages()['streams/data/docs/local-development'];
+        $body = $page['body'];
+
+        $this->assertSame('implemented', $page['frontmatter']['status']);
+        $this->assertSame(191, $page['frontmatter']['tracking_task']);
+
+        $this->assertStringContainsString(
+            'git clone https://github.com/laravel-streams/streams.dev.git --branch master',
+            $body
+        );
+        $this->assertStringNotContainsString('--branch develop', $body);
+        $this->assertStringNotContainsString('branch `develop`', $body);
+        $this->assertStringNotContainsString('Work on `develop`', $body);
+        $this->assertStringContainsString('branch `master`', $body);
+        $this->assertStringContainsString('http://127.0.0.1:8427', $body);
+        $this->assertStringContainsString('port 5427', $body);
+        $this->assertStringContainsString('git switch -c feature/your-change', $body);
+        $this->assertStringContainsString('The old `develop`, `next`, `integration/rc` and `production` branches no longer exist.', $body);
+
+        $blade = file_get_contents(base_path('resources/views/docs.blade.php'));
+        $this->assertStringContainsString('https://github.com/laravel-streams/streams.dev/blob/master/', $blade);
+        $this->assertStringNotContainsString('/blob/develop/', $blade);
+
+        $this->get('/docs/local-development')
+            ->assertOk()
+            ->assertDontSee('data-docs-status="partial"', false)
+            ->assertDontSee('--branch develop', false)
+            ->assertSee('--branch master', false)
+            ->assertSee('127.0.0.1:8427', false)
+            ->assertSee('5427', false);
     }
 
     public function test_package_nav_points_at_package_files()

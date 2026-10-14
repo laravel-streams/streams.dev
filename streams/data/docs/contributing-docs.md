@@ -7,7 +7,9 @@ category: this-project
 package: site
 order: 60
 tags: [site, contributing, docs]
-status: ready
+editorial_status: ready
+status: implemented
+tracking_task: null
 ---
 
 ## Where docs live
@@ -35,13 +37,15 @@ category: getting-started        # hub docs only: a key in streams/docs_categori
 package: core                    # core | ui | api | sdk | testing | client | site | all
 order: 20                        # hub sidebar and search order; package sidebar is docs/nav.json
 tags: [core, installation]
-status: ready                    # draft | review | ready | deprecated
+editorial_status: ready          # draft | review | ready | deprecated
+status: implemented              # implemented | partial | planned
+tracking_task: null              # pending, or an id, when status is partial or planned
 ---
 ```
 
 The layout renders `title` as the page H1, so don't start the body with a `#` heading. Give every code fence a language, link to other pages with root-relative URLs (`/docs/core/fields`), and keep `json` blocks valid JSON. `tests/Feature/DocsContentTest.php` checks all of this.
 
-**Status workflow:** `draft` → `review` → `ready` (and `deprecated` for pages kept only for old versions). Mark pages `ready` only after verifying claims against package source code.
+**Status workflow:** editorial readiness stays in `editorial_status`: `draft` → `review` → `ready` (and `deprecated` for pages kept only for old versions). Implementation `status` is separate: `implemented`, `partial`, or `planned`. Partial and planned pages set `tracking_task` to `pending` or a numeric id. Only `implemented` is presented as done. Partial and planned pages show a badge.
 
 ## Hub vs section rules
 

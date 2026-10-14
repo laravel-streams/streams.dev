@@ -116,7 +116,7 @@ The visual design is signed off. **Do not change colours, spacing, sizing, type,
 
 ## Conventions
 
-- Docs voice and frontmatter: `STYLE.md`. Every docs page needs the frontmatter keys listed there: `title` (unique across the site; it becomes the H1 and `<title>`), `nav_title` (the short sidebar label), `description` (the meta description), `section`, `package`, `order` (sidebar order, in steps of 10), `tags` and `status` (`draft`, `review`, `ready` or `deprecated`). Hub pages in `streams/data/docs/` also set `category` (a key in `streams/docs_categories.json`); package pages do not. The entry id is the filename without `.md`. Don't repeat the title as a `# H1` in the body. `tests/Feature/DocsContentTest.php` enforces all of this.
+- Docs voice and frontmatter: `STYLE.md`. Every docs page needs the frontmatter keys listed there: `title` (unique across the site; it becomes the H1 and `<title>`), `nav_title` (the short sidebar label), `description` (the meta description), `section`, `package`, `order` (sidebar order, in steps of 10), `tags`, `status` (`implemented`, `partial`, or `planned`), and `tracking_task` (`null` for implemented; `pending` or an id for partial and planned). Editorial readiness, when you still track it, is `editorial_status` (`draft`, `review`, `ready`, or `deprecated`). Hub pages in `streams/data/docs/` also set `category` (a key in `streams/docs_categories.json`); package pages do not. The entry id is the filename without `.md`. Don't repeat the title as a `# H1` in the body. `tests/Feature/DocsContentTest.php` enforces all of this.
 - Document what the code does. Label anything unregistered, commented out, or not shipped. Do not invent Artisan commands, routes, config keys, or release tags.
 - Install lines in the docs use the development constraints that exist today (`streams/core:2.0.x-dev`, other packages `1.0.x-dev`). There is no stable 2.0 tag. Version support is summarized at `/docs/versions`.
 - "SDK" means `streams/sdk` (PHP). "Client" means `@laravel-streams/api-client`.
@@ -149,7 +149,9 @@ Walk through these in order, opening each file and the matching URL side by side
    package: all
    order: 90
    tags: [example]
-   status: draft
+   editorial_status: draft
+   status: planned
+   tracking_task: pending
    ---
    ```
 
