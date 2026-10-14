@@ -18,13 +18,17 @@ class UiPlaygroundDocsTest extends TestCase
 
         $xpath = $this->xpath($html);
 
-        foreach (['Open the Playground', 'Edit JSON', 'Share links', 'Test an example'] as $heading) {
+        foreach (['Edit JSON', 'Share links', 'Test an example'] as $heading) {
             $badges = $xpath->query(
                 '//article//h2[normalize-space(.)="'.$heading.'"]/following-sibling::*[1]//span[@class="st-pill" and normalize-space(.)="Planned"]'
             );
 
             $this->assertSame(1, $badges->length, $heading.' must carry a visible Planned badge.');
         }
+
+        $links = $xpath->query('//article//a[@href="/playground"]');
+        $this->assertGreaterThan(0, $links->length);
+        $this->assertStringNotContainsString('There is no working Playground URL', $html);
     }
 
     public function test_docs_navigation_links_to_the_playground_guide_under_frontend(): void

@@ -12,17 +12,15 @@ status: draft
 
 <span class="st-pill">Planned</span>
 
-The UI Playground is a planned sandbox for trying Streams UI configuration with sample data. This guide is written ahead of the implementation. The editor, rendered preview, share links, and test controls described below are not available yet. Each unbuilt workflow carries a **Planned** badge.
+The [UI Playground](/playground) provides a themed shell and a component catalog linking to the current UI reference. The editor, rendered preview, share links, and test controls described below are not available yet. Each unbuilt workflow carries a **Planned** badge.
 
 The intended scope is UI examples without a real database. For the UI features you can use today, start with [UI quick start](/docs/ui/quick-start), [Forms](/docs/ui/forms), and [Tables](/docs/ui/tables).
 
 ## Open the Playground
 
-<span class="st-pill">Planned</span>
+Open [the Playground](/playground), or use the Playground link in the site header or footer to open it in a new tab. The component navigation links to the related UI reference. Interactive examples and configuration editing are planned.
 
-A dedicated Playground entry point is planned. There is no working Playground URL to open yet. The existing `/ui-test` route displays a placeholder page, without an editor or interactive preview.
-
-Once the entry point ships, this section will provide its URL and the steps for opening a sample. Until then, use the [local development guide](/docs/local-development) to run the documentation site; it does not enable the planned controls.
+Use the [local development guide](/docs/local-development) to run the documentation site and open `/playground` locally. The shell uses the site's saved light or dark theme.
 
 ## Edit JSON
 
