@@ -70,8 +70,8 @@
         "type": "features",
         "status": "implemented",
         "proof": [
-            "streams-core@2690f4cd6b5b06752d8410679dd6adaeab0f0181:src/Support/Traits/Fluency.php",
-            "streams-core@2690f4cd6b5b06752d8410679dd6adaeab0f0181:src/Field/Decorator/StringDecorator.php"
+            "streams-core@fa8dffbff61570b789893c3d20c86b9a88476813:src/Support/Traits/Fluency.php",
+            "streams-core@fa8dffbff61570b789893c3d20c86b9a88476813:src/Field/Decorator/StringDecorator.php"
         ],
         "finding": "Entry::decorate(string) returns the field decorator. String fields with config.markdown stringify to parsed HTML."
     },
@@ -178,9 +178,10 @@
         "type": "features",
         "status": "implemented",
         "proof": [
-            "streams-core@2690f4cd6b5b06752d8410679dd6adaeab0f0181:src/Image/Image.php"
+            "streams-core@fa8dffbff61570b789893c3d20c86b9a88476813:src/Image/Image.php",
+            "streams-core@fa8dffbff61570b789893c3d20c86b9a88476813:tests/Image/ImageTest.php"
         ],
-        "finding": "srcset() with no arguments uses the current altered image URL."
+        "finding": "srcset() without arguments uses the altered image URL. srcsets() validates descriptors and named alteration candidates before generation and does not add sizes."
     },
     {
         "page": "docs/packages/core/macros.md",
@@ -711,9 +712,11 @@
         "proof": [
             "streams-sdk@2aff9ebe3a0a58b4e48cb244af0ee683e17ef7b9:src/SdkServiceProvider.php",
             "streams-sdk@2aff9ebe3a0a58b4e48cb244af0ee683e17ef7b9:src/Console/Commands/StreamsValidate.php",
-            "streams-sdk@2aff9ebe3a0a58b4e48cb244af0ee683e17ef7b9:src/Console/Commands/MakeLivewire.php"
+            "streams-sdk@2aff9ebe3a0a58b4e48cb244af0ee683e17ef7b9:src/Console/Commands/MakeLivewire.php",
+            "streams-sdk@175e46bb:src/Console/Commands/StreamsTap.php",
+            "streams-sdk@175e46bb:src/SdkServiceProvider.php"
         ],
-        "finding": "Registered commands and explicitly excluded source-only commands match sdk/rc."
+        "finding": "Existing sdk/rc command reference retained; streams:tap availability on local SDK 1.0 is documented with optional input merging and failure on all non-2xx responses. TALL patterns are not additional generators."
     },
     {
         "page": "docs/packages/sdk/stream-schema.md",
@@ -730,23 +733,23 @@
         "page": "docs/packages/sdk/streams.md",
         "package": "sdk",
         "type": "source types",
-        "status": "partial",
+        "status": "implemented",
         "proof": [
-            "streams-sdk@2aff9ebe3a0a58b4e48cb244af0ee683e17ef7b9:src/Support/StreamDefinitionValidator.php",
-            "streams-sdk@2aff9ebe3a0a58b4e48cb244af0ee683e17ef7b9:src/Console/Commands/MakeStream.php"
+            "streams-sdk@82c161cc:src/Support/StreamDefinitionValidator.php",
+            "streams-sdk@82c161cc:src/Console/Commands/StreamsValidate.php"
         ],
-        "finding": "Stream scaffolding exists; page still advertises legacy handle, validation and implicit sort/pagination configuration beyond current validator/runtime scope."
+        "finding": "On local SDK 1.0, source validation covers filebase, database and Eloquent runtime configuration. The page uses id, documents schema defaults and rules, and applies sort/pagination through criteria instead of implicit config."
     },
     {
         "page": "docs/packages/sdk/tall-components.md",
         "package": "sdk",
         "type": "features",
-        "status": "partial",
+        "status": "implemented",
         "proof": [
-            "streams-sdk@2aff9ebe3a0a58b4e48cb244af0ee683e17ef7b9:src/Console/Commands/MakeLivewire.php",
-            "streams-sdk@2aff9ebe3a0a58b4e48cb244af0ee683e17ef7b9:src/Console/Commands/stubs/livewire"
+            "streams-sdk@175e46bb:docs/tall-components.md",
+            "streams-sdk@175e46bb:src/Console/Commands/MakeLivewire.php"
         ],
-        "finding": "Livewire class/views are generated; controllers, middleware and automatic route installation advertised by this guide are not generated."
+        "finding": "The page describes TALL patterns around generated Livewire classes and Blade views, explicitly excluding controller, middleware and route installation generation."
     },
     {
         "page": "docs/packages/sdk/ai-prompts.md",
@@ -785,12 +788,12 @@
         "page": "docs/packages/testing/configuration.md",
         "package": "testing",
         "type": "variables",
-        "status": "partial",
+        "status": "implemented",
         "proof": [
-            "streams-testing@ec5dd5f41b814a2b15b5dc1aa8a9f5911281781c:src/TestCase.php",
-            "streams-testing@ec5dd5f41b814a2b15b5dc1aa8a9f5911281781c:laravel/phpunit.xml"
+            "streams-core@7172c9ca4:src/Stream/Stream.php",
+            "streams-core@7172c9ca4:tests/Stream/StreamTest.php"
         ],
-        "finding": "Harness configuration exists; custom createFilm example calls Stream::create, which is absent from the inspected Core Stream API."
+        "finding": "Core Stream::create delegates to the configured repository and returns the persisted entry; regression tests cover helper defaults, overrides, persistence and custom repository transformations."
     },
     {
         "page": "docs/packages/testing/test-data.md",
@@ -930,21 +933,23 @@
         "type": "features",
         "status": "implemented",
         "proof": [
-            "streams-core@2690f4cd6b5b06752d8410679dd6adaeab0f0181:src/Stream/StreamManager.php",
-            "streams-core@2690f4cd6b5b06752d8410679dd6adaeab0f0181:src/Support/Integrator.php"
+            "streams-core@fa8dffbff61570b789893c3d20c86b9a88476813:src/Stream/StreamManager.php",
+            "streams-core@fa8dffbff61570b789893c3d20c86b9a88476813:src/Stream/StreamPolicy.php",
+            "streams-core@fa8dffbff61570b789893c3d20c86b9a88476813:src/Support/Integrator.php"
         ],
-        "finding": "Stream registration reads config.gates and a top-level gates map through Integrator::gates, and registers a top-level policy string with Gate::policy for config.abstract."
+        "finding": "Stream registration reads config.gates and a top-level gates map through Integrator::gates. A StreamPolicy dispatcher resolves each entry’s stream policy, including when streams share an entry class; class-only checks are denied."
     },
     {
         "page": "docs/packages/sdk/tap.md",
         "package": "sdk",
         "type": "features",
-        "status": "planned",
+        "status": "implemented",
         "proof": [
-            "streams-sdk@2aff9ebe3a0a58b4e48cb244af0ee683e17ef7b9:src/Console/Commands/StreamsTap.php",
-            "streams-sdk@2aff9ebe3a0a58b4e48cb244af0ee683e17ef7b9:src/SdkServiceProvider.php"
+            "streams-sdk@175e46bb:src/Console/Commands/StreamsTap.php",
+            "streams-sdk@175e46bb:src/SdkServiceProvider.php",
+            "streams-sdk@175e46bb:tests/Console/Commands/StreamsTapTest.php"
         ],
-        "finding": "streams:tap declares a tap URL and query-string input, but handle() is empty and SdkServiceProvider does not register the class."
+        "finding": "On local SDK 1.0, streams:tap is registered, merges optional query-string input with input keys winning, prints successful response bodies, and fails on invalid URLs, network errors, or any non-2xx response without following redirects."
     },
     {
         "page": "streams/data/docs/addons.md",
@@ -1041,9 +1046,10 @@
         "type": "features",
         "status": "implemented",
         "proof": [
-            "streams-core@2690f4cd6b5b06752d8410679dd6adaeab0f0181:src/Image/Image.php"
+            "streams-core@fa8dffbff61570b789893c3d20c86b9a88476813:src/Image/Image.php",
+            "streams-core@fa8dffbff61570b789893c3d20c86b9a88476813:tests/Image/ImageTest.php"
         ],
-        "finding": "srcsets() appends descriptor keys such as 1x and 640w and does not set a sizes attribute."
+        "finding": "srcsets() accepts positive width or density descriptors and named alteration arrays, rejects invalid candidates before generation, and does not add sizes."
     },
     {
         "page": "streams/data/docs/localization.md",
@@ -1051,9 +1057,9 @@
         "type": "features",
         "status": "implemented",
         "proof": [
-            "streams-ui@1c9971d553907ec8e8128926a71cf5134c290181:src/UiServiceProvider.php"
+            "streams-ui@28d44328:src/UiServiceProvider.php"
         ],
-        "finding": "UiServiceProvider publishes resources/lang to lang/vendor/ui under the lang tag."
+        "finding": "On local UI 1.0, the lang publish tag copies bundled resources/lang files intact to the configured lang/vendor/ui directory. Reviewed task 271 supersedes the earlier unreviewed proof."
     },
     {
         "page": "streams/data/docs/routing.md",
@@ -1073,9 +1079,10 @@
         "type": "features",
         "status": "implemented",
         "proof": [
-            "streams-core@2690f4cd6b5b06752d8410679dd6adaeab0f0181:src/Stream/StreamManager.php"
+            "streams-core@fa8dffbff61570b789893c3d20c86b9a88476813:src/Stream/StreamManager.php",
+            "streams-core@fa8dffbff61570b789893c3d20c86b9a88476813:src/Stream/StreamPolicy.php"
         ],
-        "finding": "StreamManager::authorize registers the top-level policy string with Gate::policy for the entry class."
+        "finding": "StreamManager::authorize registers StreamPolicy for the entry class. The dispatcher resolves the policy from each entry’s stream; streams can share entry classes and use different policies."
     },
     {
         "page": "streams/data/docs/components.md",

@@ -150,7 +150,7 @@ In `streams/contacts.json`:
 }
 ```
 
-Core registers that class with `Gate::policy()` for the stream's entry class (`config.abstract`, or `Streams\Core\Entry\Entry` when the entry class is omitted) when the stream is registered.
+Core registers a `Streams\Core\Stream\StreamPolicy` dispatcher with `Gate::policy()` for the stream’s entry class (`config.abstract`, or `Streams\Core\Entry\Entry` when omitted). The dispatcher resolves the policy from each entry’s own stream, so streams sharing an entry class can use different policies. Pass an entry instance to authorization checks; class-only checks are denied.
 
 ### Caching
 

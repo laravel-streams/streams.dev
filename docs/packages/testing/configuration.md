@@ -7,7 +7,7 @@ package: testing
 order: 50
 tags: [testing, configuration]
 editorial_status: ready
-status: partial
+status: implemented
 tracking_task: 264
 ---
 
@@ -182,12 +182,15 @@ Adjust PHP behavior:
 
 Create your own base TestCase with custom functionality:
 
+On Core `2.0`, `Stream::create(array $attributes = [])` delegates to the stream’s configured repository and returns the persisted entry. The helper below merges defaults with the supplied overrides before creating a film.
+
 ```php
 <?php
 
 namespace Tests;
 
 use Illuminate\Support\Facades\Log;
+use Streams\Core\Support\Facades\Streams;
 
 class CustomTestCase extends \Streams\Testing\TestCase
 {

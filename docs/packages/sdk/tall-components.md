@@ -7,21 +7,17 @@ package: sdk
 order: 50
 tags: [sdk, tall, components]
 editorial_status: ready
-status: partial
+status: implemented
 tracking_task: 261
 ---
 
-This guide covers how the Laravel Streams SDK generates and works with TALL stack components (Tailwind CSS, Alpine.js, Laravel, and Livewire).
+This guide covers TALL patterns (Tailwind CSS, Alpine.js, Laravel, and Livewire) around the components `streams:livewire` writes.
 
 ## Overview
 
-The SDK automatically generates:
-- **Tailwind CSS**: Utility-first styling with pre-built component classes
-- **Alpine.js**: Lightweight JavaScript framework for interactivity
-- **Laravel**: Backend controllers, routes, and middleware
-- **Livewire**: Full-stack reactive components
+`streams:livewire` writes a Livewire class and a Blade view. It does not generate controllers or middleware, and it does not install routes. It prints the route lines to add to `routes/web.php`. Tailwind CSS and Alpine.js on this page are patterns for those views. They are not files the command writes.
 
-## Generated Components
+## Component patterns
 
 ### Livewire Components
 

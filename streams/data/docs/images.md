@@ -260,6 +260,8 @@ echo Images::make('img/foo.jpg')->data()
 
 #### srcsets()
 
+Candidate keys must be positive integer widths (`640w`) or positive decimal densities (`1.5x`). Each candidate is an array of named image alterations, registered macros, or `quality`, `rename`, and `version` options. An optional `source` must be a non-empty path or URL. Invalid descriptors, candidate shapes, sources, or method names raise `InvalidArgumentException` before any candidate is generated. This method does not add a `sizes` attribute.
+
 ```php
 Images::make('img/foo.jpg')
     ->srcsets([
@@ -279,6 +281,8 @@ Images::make('img/foo.jpg')
 ```
 
 #### srcset()
+
+With no arguments, `srcset()` uses the current image URL, including its alterations.
 
 ```php
 Images::make('img/foo.jpg')

@@ -30,6 +30,7 @@ Commands are registered only when the app runs in the console. Run `php artisan 
 | [`streams:validate`](#streamsvalidate) | Checks definitions against the JSON Schema and the running app |
 | [`streams:schema`](#streamsschema) | Writes a `{id}.schema.json` entry schema per stream |
 | [`streams:livewire`](#streamslivewire) | Generates Livewire 3 index, form, and show components |
+| [`streams:tap`](#streamstap) | Calls an HTTP or HTTPS URL with query-string input |
 
 Agents can call the same operations through the [MCP server](/docs/mcp) (`php artisan mcp:start streams`), which needs `laravel/mcp` and Laravel 11.45+ or 12.41+.
 
@@ -163,6 +164,14 @@ The components are full-page, so they render inside your Livewire layout (`confi
 
 `streams:admin` has been removed. Generate the components with `streams:livewire` and put them behind your own layout and routes.
 
+### streams:tap
+
+```bash
+php artisan streams:tap {tap} {input?}
+```
+
+Available on SDK `1.0`. Makes an HTTP GET request and prints the response body. `tap` must be an HTTP or HTTPS URL. Optional query-string `input` is merged with the URL’s query parameters; input keys win. Invalid URLs, network failures, and any non-2xx response return a failure exit code. Redirects are not followed. See [Tap command](/docs/sdk/tap).
+
 ## Not registered
 
 These command classes exist in the SDK source but are **not registered**, so `php artisan` won't find them:
@@ -173,7 +182,6 @@ These command classes exist in the SDK source but are **not registered**, so `ph
 | `entries:list` | Paginated table of a stream's entries | Implemented, registration commented out. Use the MCP `list-entries` tool. |
 | `entries:show` | Show one entry | Implemented, registration commented out. Use the MCP `read-entry` tool. |
 | `streams:describe` | Write `streams/{id}.json` by inspecting a URL, JSON, database table, or Eloquent model | Implemented, registration commented out |
-| `streams:tap` | Call a "tap" URL with query-string input | Not implemented (empty handler) |
 
 ## How to extend it
 
