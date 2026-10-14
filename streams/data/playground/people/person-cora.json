@@ -1,0 +1,8 @@
+{
+    "id": "person-cora",
+    "name": "Cora Singh",
+    "email": "cora@example.test",
+    "role": "author",
+    "active": false,
+    "joined_at": "2026-02-18"
+}

@@ -1,0 +1,52 @@
+{
+    "id": "posts-form",
+    "label": "Edit post",
+    "description": "Form bound to the welcome post on the seeded posts stream.",
+    "stream": "posts",
+    "entry": "post-welcome",
+    "config": {
+        "stream": "posts",
+        "fields": [
+            {
+                "handle": "title",
+                "label": "Title",
+                "input": "text",
+                "required": true
+            },
+            {
+                "handle": "slug",
+                "label": "Slug",
+                "input": "text",
+                "required": true
+            },
+            {
+                "handle": "author",
+                "label": "Author",
+                "input": "select",
+                "options_from": "people",
+                "option_label": "name"
+            },
+            {
+                "handle": "status",
+                "label": "Status",
+                "input": "select",
+                "options": {
+                    "draft": "Draft",
+                    "published": "Published",
+                    "archived": "Archived"
+                }
+            },
+            {
+                "handle": "body",
+                "label": "Body",
+                "input": "textarea"
+            },
+            {
+                "handle": "published_at",
+                "label": "Published at",
+                "input": "datetime"
+            }
+        ]
+    },
+    "type": "form"
+}
