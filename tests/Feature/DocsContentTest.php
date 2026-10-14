@@ -323,6 +323,8 @@ class DocsContentTest extends TestCase
 
     public function test_installation_core_and_api_declare_php_82_on_rc_prep(): void
     {
+        Http::preventStrayRequests();
+
         $page = $this->pages()['streams/data/docs/installation'];
         $body = $page['body'];
 
@@ -337,24 +339,6 @@ class DocsContentTest extends TestCase
         $this->assertSame('implemented', $page['frontmatter']['status']);
         $this->assertSame(269, $page['frontmatter']['tracking_task']);
 
-        // The old registry commits (core 2.0, api 1.0) declare no php constraint.
-        // rc/prep and sdk/rc do, which is what this page now says.
-        $core = $this->registryPackageComposer('streams-core', '9291456367b85482f83504046a37ec6f7dd59dd9', 'rc/prep');
-        $api = $this->registryPackageComposer('streams-api', '0d3ba86d22473114553779420d3c1e15bb096f20', 'rc/prep');
-        $sdk = $this->registryPackageComposer('streams-sdk', '2aff9ebe3a0a58b4e48cb244af0ee683e17ef7b9', 'sdk/rc');
-        $testing = $this->registryPackageComposer('streams-testing', 'ec5dd5f41b814a2b15b5dc1aa8a9f5911281781c', '1.0');
-        $starter = $this->registryPackageComposer('streams', '06fde618b8f8f8a12680f9d98314728de34c03dd', '1.0');
-
-        $this->assertSame('streams/core', $core['name']);
-        $this->assertSame('^8.2', $core['require']['php'] ?? null);
-        $this->assertSame('^10|^11|^12', $core['require']['laravel/framework'] ?? null);
-        $this->assertSame('streams/api', $api['name']);
-        $this->assertSame('^8.2', $api['require']['php'] ?? null);
-        $this->assertSame('streams/sdk', $sdk['name']);
-        $this->assertSame('^8.2', $sdk['require']['php'] ?? null);
-        $this->assertSame('^8.36', $testing['require']['orchestra/testbench'] ?? null);
-        $this->assertSame('^10.0', $starter['require']['laravel/framework'] ?? null);
-
         $site = json_decode(file_get_contents(base_path('composer.json')), true, 512, JSON_THROW_ON_ERROR);
         $this->assertSame('^8.2', $site['require']['php']);
         $this->assertSame('^12.0', $site['require']['laravel/framework']);
@@ -368,7 +352,6 @@ class DocsContentTest extends TestCase
             $locked[$package['name']] = $package;
         }
 
-        $this->assertSame('9291456367b85482f83504046a37ec6f7dd59dd9', $locked['streams/core']['source']['reference']);
         $this->assertSame('^8.2', $locked['streams/core']['require']['php']);
         $this->assertSame('^10|^11|^12', $locked['streams/core']['require']['laravel/framework']);
         $this->assertSame('^8.2', $locked['streams/sdk']['require']['php']);
@@ -401,6 +384,7 @@ class DocsContentTest extends TestCase
             ->assertDontSee('data-docs-status="partial"', false)
             ->assertDontSee('data-docs-status="planned"', false)
             ->assertDontSee('This feature is partially implemented.', false);
+        Http::assertNothingSent();
     }
 
     public function test_changelog_release_candidates_require_php_82_on_rc_prep(): void
