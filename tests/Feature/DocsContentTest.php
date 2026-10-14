@@ -3,6 +3,7 @@
 namespace Tests\Feature;
 
 use App\Support\DocsNav;
+use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Http;
 use Streams\Core\Support\Facades\Streams;
@@ -320,6 +321,72 @@ class DocsContentTest extends TestCase
             ->assertSee('5427', false);
     }
 
+    public function test_installation_core_and_api_declare_php_82_on_rc_prep(): void
+    {
+        Http::preventStrayRequests();
+
+        $page = $this->pages()['streams/data/docs/installation'];
+        $body = $page['body'];
+
+        $this->assertStringContainsString(
+            'On `rc/prep`, Core and API declare `php: ^8.2`, and the SDK on `sdk/rc` declares `php: ^8.2` too.',
+            $body
+        );
+        $this->assertStringNotContainsString('Core, API, and SDK declare `php: ^8.2`', $body);
+        $this->assertStringContainsString('Declares `^10\|^11\|^12`', $body);
+        $this->assertStringContainsString('Requires `orchestra/testbench ^8.36`', $body);
+        $this->assertStringContainsString('Pins `laravel/framework ^10.0`', $body);
+        $this->assertSame('implemented', $page['frontmatter']['status']);
+        $this->assertSame(269, $page['frontmatter']['tracking_task']);
+
+        $site = json_decode(file_get_contents(base_path('composer.json')), true, 512, JSON_THROW_ON_ERROR);
+        $this->assertSame('^8.2', $site['require']['php']);
+        $this->assertSame('^12.0', $site['require']['laravel/framework']);
+        $this->assertSame('dev-rc/prep as 2.0.x-dev', $site['require']['streams/core']);
+        $this->assertSame('dev-sdk/rc as 1.0.x-dev', $site['require-dev']['streams/sdk']);
+
+        $locked = [];
+        $lock = json_decode(file_get_contents(base_path('composer.lock')), true, 512, JSON_THROW_ON_ERROR);
+
+        foreach (array_merge($lock['packages'], $lock['packages-dev']) as $package) {
+            $locked[$package['name']] = $package;
+        }
+
+        $this->assertSame('^8.2', $locked['streams/core']['require']['php']);
+        $this->assertSame('^10|^11|^12', $locked['streams/core']['require']['laravel/framework']);
+        $this->assertSame('^8.2', $locked['streams/sdk']['require']['php']);
+
+        $row = null;
+        $registry = json_decode(file_get_contents(base_path('docs/registry.json')), true, 512, JSON_THROW_ON_ERROR);
+
+        foreach ($registry as $candidate) {
+            if ($candidate['page'] === 'streams/data/docs/installation.md') {
+                $row = $candidate;
+            }
+        }
+
+        $this->assertNotNull($row);
+        $this->assertSame('implemented', $row['status']);
+        $this->assertContains('streams-core@9291456367b85482f83504046a37ec6f7dd59dd9:composer.json', $row['proof']);
+        $this->assertContains('streams-api@0d3ba86d22473114553779420d3c1e15bb096f20:composer.json', $row['proof']);
+        $this->assertContains('streams-sdk@2aff9ebe3a0a58b4e48cb244af0ee683e17ef7b9:composer.json', $row['proof']);
+        $this->assertContains('streams-testing@ec5dd5f41b814a2b15b5dc1aa8a9f5911281781c:composer.json', $row['proof']);
+        $this->assertContains('streams@06fde618b8f8f8a12680f9d98314728de34c03dd:composer.json', $row['proof']);
+
+        $this->get('/docs/installation.md')
+            ->assertOk()
+            ->assertHeader('Content-Type', 'text/markdown; charset=UTF-8')
+            ->assertSee('On `rc/prep`, Core and API declare `php: ^8.2`, and the SDK on `sdk/rc` declares `php: ^8.2` too.', false)
+            ->assertDontSee('Core, API, and SDK declare `php: ^8.2`', false);
+
+        $this->get('/docs/installation')
+            ->assertOk()
+            ->assertDontSee('data-docs-status="partial"', false)
+            ->assertDontSee('data-docs-status="planned"', false)
+            ->assertDontSee('This feature is partially implemented.', false);
+        Http::assertNothingSent();
+    }
+
     public function test_changelog_release_candidates_require_php_82_on_rc_prep(): void
     {
         $page = $this->pages()['streams/data/docs/changelog'];
@@ -562,10 +629,69 @@ class DocsContentTest extends TestCase
         }
     }
 
+    public function test_registry_checkouts_include_vendor_git_directories_and_worktrees(): void
+    {
+        $originalBase = $this->app->basePath();
+        $root = sys_get_temp_dir().'/streams-registry-'.bin2hex(random_bytes(8));
+        $files = new Filesystem;
+        $originalEnv = getenv('STREAMS_CORE_PATH');
+
+        try {
+            $this->app->setBasePath($root);
+            $files->makeDirectory($root.'/manifest-only', 0755, true);
+            $files->put($root.'/manifest-only/composer.json', '{}');
+            putenv('STREAMS_CORE_PATH='.$root.'/manifest-only');
+
+            foreach (['core', 'api', 'sdk', 'ui', 'testing'] as $package) {
+                $path = $root.'/vendor/streams/'.$package;
+                $files->makeDirectory($path, 0755, true);
+
+                if ($package === 'sdk') {
+                    $files->put($path.'/.git', 'gitdir: /unused-fixture');
+                } else {
+                    $files->makeDirectory($path.'/.git');
+                }
+
+                $this->assertContains($path, $this->packageCheckouts('streams-'.$package));
+            }
+
+            $this->assertNotContains($root.'/manifest-only', $this->packageCheckouts('streams-core'));
+        } finally {
+            $this->app->setBasePath($originalBase);
+            putenv($originalEnv === false ? 'STREAMS_CORE_PATH' : 'STREAMS_CORE_PATH='.$originalEnv);
+            $files->deleteDirectory($root);
+        }
+    }
+
+    public function test_registry_proof_accepts_a_remote_tracking_branch_without_http(): void
+    {
+        Http::preventStrayRequests();
+        $proof = $this->getMockBuilder(self::class)
+            ->disableOriginalConstructor()
+            ->onlyMethods(['packageCheckouts', 'gitSucceeds', 'gitOutput'])
+            ->getMock();
+        $proof->method('packageCheckouts')->willReturn(['/fixture/core']);
+        $proof->method('gitSucceeds')->willReturnCallback(
+            fn (string $checkout, array $arguments): bool => in_array($arguments, [
+                ['cat-file', '-e', 'proof'],
+                ['cat-file', '-e', 'proof^{commit}'],
+                ['merge-base', '--is-ancestor', 'proof', 'origin/rc/prep'],
+            ], true)
+        );
+        $proof->expects($this->once())->method('gitOutput')
+            ->with('/fixture/core', ['show', 'proof:composer.json'])
+            ->willReturn('{"name":"streams/core","require":{"php":"^8.2"}}');
+
+        $composer = $proof->registryPackageComposer('streams-core', 'proof', 'rc/prep');
+
+        $this->assertSame('^8.2', $composer['require']['php']);
+        Http::assertNothingSent();
+    }
+
     /**
      * Composer manifest at a registry proof commit.
      *
-     * Prefers a local checkout (the Core symlink's sibling, then the paths
+     * Prefers a local checkout (installed vendor packages, the Core symlink's sibling, then the paths
      * scripts/composer-local.php searches). Otherwise reads that commit from GitHub.
      *
      * @return array<string, mixed>
@@ -573,14 +699,16 @@ class DocsContentTest extends TestCase
     protected function registryPackageComposer(string $repository, string $commit, string $branch): array
     {
         foreach ($this->packageCheckouts($repository) as $checkout) {
-            if (! $this->gitSucceeds($checkout, ['cat-file', '-e', $commit])) {
+            if (! $this->gitSucceeds($checkout, ['cat-file', '-e', $commit.'^{commit}'])) {
                 continue;
             }
 
-            $this->assertTrue(
-                $this->gitSucceeds($checkout, ['merge-base', '--is-ancestor', $commit, $branch]),
-                "{$repository}@{$commit} is not on {$branch}."
-            );
+            $onBranch = $this->gitSucceeds($checkout, ['merge-base', '--is-ancestor', $commit, $branch])
+                || $this->gitSucceeds($checkout, ['merge-base', '--is-ancestor', $commit, 'origin/'.$branch]);
+
+            if (! $onBranch) {
+                continue;
+            }
 
             return json_decode(
                 $this->gitOutput($checkout, ['show', $commit.':composer.json']),
@@ -623,6 +751,19 @@ class DocsContentTest extends TestCase
         $env = getenv('STREAMS_'.strtoupper($package).'_PATH') ?: '';
         $candidates = $env !== '' ? [$env] : [];
 
+        $vendor = match ($repository) {
+            'streams-core' => 'core',
+            'streams-api' => 'api',
+            'streams-sdk' => 'sdk',
+            'streams-ui' => 'ui',
+            'streams-testing' => 'testing',
+            default => null,
+        };
+
+        if ($vendor !== null) {
+            $candidates[] = base_path('vendor/streams/'.$vendor);
+        }
+
         $core = realpath(base_path('vendor/streams/core'));
         if ($core !== false) {
             $candidates[] = dirname($core).'/'.$repository;
@@ -639,7 +780,7 @@ class DocsContentTest extends TestCase
         $found = [];
         foreach ($candidates as $candidate) {
             $path = rtrim($candidate, '/');
-            if (is_file($path.'/composer.json')) {
+            if (is_dir($path.'/.git') || is_file($path.'/.git')) {
                 $found[] = $path;
             }
         }
