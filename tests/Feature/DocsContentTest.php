@@ -219,6 +219,91 @@ class DocsContentTest extends TestCase
             ->assertSee('5427', false);
     }
 
+    public function test_changelog_release_candidates_require_php_82_on_rc_prep(): void
+    {
+        $page = $this->pages()['streams/data/docs/changelog'];
+        $body = $page['body'];
+
+        $this->assertStringContainsString(
+            'On `rc/prep`, Core and API require PHP 8.2 (`php: ^8.2`).',
+            $body
+        );
+        $this->assertStringNotContainsString(
+            '**Core, API (release candidates):** Require PHP 8.2.',
+            $body
+        );
+        $this->assertStringContainsString('The SDK now requires PHP 8.2.', $body);
+        $this->assertStringContainsString('Core supports the Laravel 11 and 12 filesystem contract and Carbon 3.', $body);
+        $this->assertSame('implemented', $page['frontmatter']['status']);
+        $this->assertSame(268, $page['frontmatter']['tracking_task']);
+
+        $core = json_decode(file_get_contents(base_path('vendor/streams/core/composer.json')), true, 512, JSON_THROW_ON_ERROR);
+        $sdk = json_decode(file_get_contents(base_path('vendor/streams/sdk/composer.json')), true, 512, JSON_THROW_ON_ERROR);
+
+        $this->assertSame('^8.2', $core['require']['php'] ?? null);
+        $this->assertSame('^8.2', $sdk['require']['php'] ?? null);
+        $this->assertStringContainsString(
+            'function registerMcpServer(',
+            file_get_contents(base_path('vendor/streams/sdk/src/SdkServiceProvider.php'))
+        );
+
+        $lock = json_decode(file_get_contents(base_path('composer.lock')), true, 512, JSON_THROW_ON_ERROR);
+        $lockedCore = null;
+
+        foreach ($lock['packages'] as $package) {
+            if ($package['name'] === 'streams/core') {
+                $lockedCore = $package;
+            }
+        }
+
+        $this->assertNotNull($lockedCore);
+        $this->assertSame('9291456367b85482f83504046a37ec6f7dd59dd9', $lockedCore['source']['reference']);
+        $this->assertSame('^8.2', $lockedCore['require']['php']);
+
+        $this->get('/docs/changelog.md')
+            ->assertOk()
+            ->assertHeader('Content-Type', 'text/markdown; charset=UTF-8')
+            ->assertSee('On `rc/prep`, Core and API require PHP 8.2 (`php: ^8.2`).', false)
+            ->assertDontSee('**Core, API (release candidates):** Require PHP 8.2.', false);
+
+        $this->get('/docs/changelog')
+            ->assertOk()
+            ->assertDontSee('data-docs-status="partial"', false)
+            ->assertDontSee('data-docs-status="planned"', false)
+            ->assertDontSee('This feature is partially implemented.', false);
+    }
+
+    public function test_use_cases_starter_requires_core_ui_and_api(): void
+    {
+        $page = $this->pages()['streams/data/docs/use-cases'];
+        $body = $page['body'];
+
+        $this->assertStringContainsString(
+            '**Packages:** full starter via `composer create-project` (Core, UI, and API)',
+            $body
+        );
+        $this->assertStringNotContainsString('(Core, UI, API, SDK)', $body);
+        $this->assertStringContainsString('It does not require `streams/sdk`.', $body);
+        $this->assertStringContainsString('**Packages:** `streams/core`, `streams/ui`', $body);
+        $this->assertStringContainsString('**Packages:** `streams/core`, `streams/ui`, `streams/api`', $body);
+        $this->assertStringContainsString('**Packages:** `streams/core`, `streams/api`', $body);
+        $this->assertSame('implemented', $page['frontmatter']['status']);
+        $this->assertSame(268, $page['frontmatter']['tracking_task']);
+
+        $this->get('/docs/use-cases.md')
+            ->assertOk()
+            ->assertHeader('Content-Type', 'text/markdown; charset=UTF-8')
+            ->assertSee('**Packages:** full starter via `composer create-project` (Core, UI, and API)', false)
+            ->assertDontSee('(Core, UI, API, SDK)', false)
+            ->assertSee('It does not require `streams/sdk`.', false);
+
+        $this->get('/docs/use-cases')
+            ->assertOk()
+            ->assertDontSee('data-docs-status="partial"', false)
+            ->assertDontSee('data-docs-status="planned"', false)
+            ->assertDontSee('This feature is partially implemented.', false);
+    }
+
     public function test_package_nav_points_at_package_files()
     {
         foreach (DocsNav::packages() as $name => $package) {
