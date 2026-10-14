@@ -6,7 +6,9 @@ section: packages
 package: core
 order: 40
 tags: [core, streams]
-status: ready
+editorial_status: ready
+status: implemented
+tracking_task: null
 ---
 
 A **stream** is a domain model defined in JSON under `streams/`. Core loads definitions at boot and exposes them through the `Streams` facade.

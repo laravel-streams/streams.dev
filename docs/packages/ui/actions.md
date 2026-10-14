@@ -6,7 +6,9 @@ section: packages
 package: ui
 order: 170
 tags: [ui, actions]
-status: ready
+editorial_status: ready
+status: partial
+tracking_task: pending
 ---
 
 Actions are buttons that run closures, open modals, or redirect. Base class: `Streams\Ui\Builders\Actions\Action`.

@@ -19,7 +19,7 @@ class DocsContentTest extends TestCase
 
     protected const PACKAGES = ['core', 'ui', 'api', 'sdk', 'testing', 'client', 'site', 'all'];
 
-    protected const STATUSES = ['draft', 'review', 'ready', 'deprecated'];
+    protected const STATUSES = ['implemented', 'partial', 'planned'];
 
     /**
      * @return array<string, array{frontmatter: array, body: string}>
@@ -67,6 +67,13 @@ class DocsContentTest extends TestCase
             $this->assertContains($frontmatter['section'], static::SECTIONS, "{$page} section");
             $this->assertContains($frontmatter['package'], static::PACKAGES, "{$page} package");
             $this->assertContains($frontmatter['status'], static::STATUSES, "{$page} status");
+            if (in_array($frontmatter['status'], ['implemented', 'partial', 'planned'], true)) {
+                $this->assertArrayHasKey('tracking_task', $frontmatter, "{$page} tracking_task");
+                if ($frontmatter['status'] !== 'implemented') {
+                    $tracking = $frontmatter['tracking_task'];
+                    $this->assertTrue($tracking === 'pending' || (is_int($tracking) && $tracking > 0), "{$page} needs a tracking task id or pending placeholder.");
+                }
+            }
             $this->assertIsInt($frontmatter['order'], "{$page} order");
             $this->assertIsArray($frontmatter['tags'], "{$page} tags");
             $this->assertArrayNotHasKey('sort_order', $frontmatter, "{$page} uses sort_order; use order.");

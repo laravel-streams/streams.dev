@@ -6,7 +6,9 @@ section: packages
 package: testing
 order: 40
 tags: [testing, writing, tests]
-status: ready
+editorial_status: ready
+status: partial
+tracking_task: pending
 ---
 
 This guide covers everything you need to know about writing tests for Streams applications, from basic examples to advanced testing patterns.

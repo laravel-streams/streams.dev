@@ -7,7 +7,9 @@ category: development
 package: sdk
 order: 60
 tags: [sdk, mcp, agents, tools]
-status: ready
+editorial_status: ready
+status: implemented
+tracking_task: null
 ---
 
 The SDK includes a local-development [Model Context Protocol](https://modelcontextprotocol.io) server. MCP is the standard way AI agents call tools. With it, an agent working in your app can see the domain model (streams), read and write entries, check the stream definitions it writes, search the Streams docs, and run the SDK generators, all without guessing from source files.
