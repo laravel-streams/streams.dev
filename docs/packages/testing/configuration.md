@@ -6,7 +6,9 @@ section: packages
 package: testing
 order: 50
 tags: [testing, configuration]
-status: ready
+editorial_status: ready
+status: partial
+tracking_task: pending
 ---
 
 Learn how to configure the Streams Testing package to match your project's needs, from basic PHPUnit settings to advanced test environment customization.

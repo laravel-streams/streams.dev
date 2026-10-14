@@ -7,7 +7,9 @@ category: advanced
 package: ui
 order: 30
 tags: [ui, control, panel]
-status: ready
+editorial_status: ready
+status: implemented
+tracking_task: null
 ---
 
 ## Overview

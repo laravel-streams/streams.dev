@@ -6,7 +6,9 @@ section: packages
 package: api
 order: 180
 tags: [api, openapi]
-status: ready
+editorial_status: ready
+status: partial
+tracking_task: pending
 ---
 
 ## Reference spec

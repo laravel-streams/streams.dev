@@ -6,7 +6,9 @@ section: packages
 package: client
 order: 80
 tags: [client, middleware]
-status: ready
+editorial_status: ready
+status: partial
+tracking_task: pending
 ---
 
 The middleware system allows you to intercept and modify requests and responses. Middleware can transform data, add authentication, handle errors, and more.
