@@ -830,10 +830,10 @@
         "type": "features",
         "status": "implemented",
         "proof": [
-            "api-client@1459f4c:src/Client.js",
-            "api-client@1459f4c:src/middleware/CriteriaMiddleware.js",
-            "api-client@1459f4c:src/middleware/ResponseDataMiddleware.js",
-            "api-client@1459f4c:test/RegistryGaps.test.js"
+            "api-client@4a691b3:src/Client.js",
+            "api-client@4a691b3:src/middleware/CriteriaMiddleware.js",
+            "api-client@4a691b3:src/middleware/ResponseDataMiddleware.js",
+            "api-client@4a691b3:test/RegistryGaps.test.js"
         ],
         "finding": "Task 265: default pipeline sends encoded API criteria and unwraps envelopes. Regression introduction defaults send encoded API criteria and unwrap the envelope passes (failed on base)."
     },
@@ -854,8 +854,8 @@
         "type": "features",
         "status": "implemented",
         "proof": [
-            "api-client@1459f4c:src/middleware/ResponseDataMiddleware.js",
-            "api-client@1459f4c:test/RegistryGaps.test.js"
+            "api-client@4a691b3:src/middleware/ResponseDataMiddleware.js",
+            "api-client@4a691b3:test/RegistryGaps.test.js"
         ],
         "finding": "Task 265: quickstart arrays are unwrapped and empty deletes succeed. Regression quickstart lists arrays and accepts empty delete responses passes (failed on base)."
     },
@@ -877,9 +877,9 @@
         "type": "features",
         "status": "implemented",
         "proof": [
-            "api-client@1459f4c:src/Streams.js",
-            "api-client@1459f4c:src/middleware/RequestDataMiddleware.js",
-            "api-client@1459f4c:test/RegistryGaps.test.js"
+            "api-client@4a691b3:src/Streams.js",
+            "api-client@4a691b3:src/middleware/RequestDataMiddleware.js",
+            "api-client@4a691b3:test/RegistryGaps.test.js"
         ],
         "finding": "Task 265: POST assigns JSON data; PATCH and PUT accept stream/data/config and target individual endpoints. Regression streams create patch and put send documented payloads to individual endpoints passes (failed on base)."
     },
@@ -889,9 +889,9 @@
         "type": "features",
         "status": "implemented",
         "proof": [
-            "api-client@1459f4c:src/Entries.js",
-            "api-client@1459f4c:src/middleware/ResponseDataMiddleware.js",
-            "api-client@1459f4c:test/RegistryGaps.test.js"
+            "api-client@4a691b3:src/Entries.js",
+            "api-client@4a691b3:src/middleware/ResponseDataMiddleware.js",
+            "api-client@4a691b3:test/RegistryGaps.test.js"
         ],
         "finding": "Task 265: entry data is unwrapped, validation is parsed HTTP 409, and empty deletes are accepted. Regression entries CRUD exposes data and parsed API 409 validation errors passes (failed on base)."
     },
@@ -901,8 +901,8 @@
         "type": "features",
         "status": "implemented",
         "proof": [
-            "api-client@1459f4c:src/Criteria.js",
-            "api-client@1459f4c:test/RegistryGaps.test.js"
+            "api-client@4a691b3:src/Criteria.js",
+            "api-client@4a691b3:test/RegistryGaps.test.js"
         ],
         "finding": "Task 265: API bracket filters preserve distinct fields and range operators; unsupported GET OR/duplicate conditions fail explicitly. Regression criteria preserves filters and orders in API bracket parameters passes (failed on base)."
     },
@@ -912,9 +912,9 @@
         "type": "features",
         "status": "implemented",
         "proof": [
-            "api-client@1459f4c:src/middleware/ETagMiddleware.js",
-            "api-client@1459f4c:src/middleware/Middleware.js",
-            "api-client@1459f4c:test/RegistryGaps.test.js"
+            "api-client@4a691b3:src/middleware/ETagMiddleware.js",
+            "api-client@4a691b3:src/middleware/Middleware.js",
+            "api-client@4a691b3:test/RegistryGaps.test.js"
         ],
         "finding": "Task 265: opt-in ETag storage, conditional GET, fresh 304 replay, and client/header isolation. Regression middleware stores ETags sends conditional requests and replays 304 data passes (failed on base)."
     },
@@ -924,9 +924,9 @@
         "type": "features",
         "status": "implemented",
         "proof": [
-            "api-client@1459f4c:src/Client.js",
-            "api-client@1459f4c:src/middleware/ResponseDataMiddleware.js",
-            "api-client@1459f4c:test/RegistryGaps.test.js"
+            "api-client@4a691b3:src/Client.js",
+            "api-client@4a691b3:src/middleware/ResponseDataMiddleware.js",
+            "api-client@4a691b3:test/RegistryGaps.test.js"
         ],
         "finding": "Task 265: examples use middlewares, unwrapped data, and parsed HTTP 409 errors. Regression examples middleware hooks operate on unwrapped entries passes (failed on base)."
     },
