@@ -8,7 +8,7 @@ package: all
 order: 50
 tags: [versions]
 editorial_status: ready
-status: partial
+status: implemented
 tracking_task: 270
 ---
 
@@ -18,16 +18,16 @@ Streams is pre-release. Most packages have **no tagged releases yet**, so you in
 
 | Package | Install constraint | Branch | Laravel | PHP | Notes |
 |---------|--------------------|--------|---------|-----|-------|
-| [streams/core](/docs/core/introduction) | `2.0.x-dev` | `2.0` | `^10\|^11\|^12` | `^8.2` | Stable tags exist only for the old 1.x line (latest `v1.10.4`). |
+| [streams/core](/docs/core/introduction) | `2.0.x-dev` | `2.0` | `^10\|^11\|^12` | none on `2.0` | Branch-alias is `dev-master` => `2.x-dev`. On `rc/prep`, Core declares `php: ^8.2` and Laravel `^10\|^11\|^12`, with no branch-alias. This site requires `dev-rc/prep as 2.0.x-dev`. Stable tags exist only for the old 1.x line (latest `v1.10.5`). |
 | [streams/ui](/docs/ui/introduction) | `1.0.x-dev` | `1.0` | via Core | via Core | Requires Livewire `^3.0`. |
-| [streams/api](/docs/api/introduction) | `1.0.x-dev` | `1.0` | via Core | `^8.2` | |
-| [streams/sdk](/docs/sdk/introduction) | `1.0.x-dev` | `1.0` | via Core | `^8.2` | Install as a dev dependency. The optional [MCP server](/docs/mcp) needs `laravel/mcp`, so Laravel 11.45+ or 12.41+. |
+| [streams/api](/docs/api/introduction) | `1.0.x-dev` | `1.0` | via Core | none on `1.0` | On `rc/prep`, API declares `php: ^8.2`. |
+| [streams/sdk](/docs/sdk/introduction) | `1.0.x-dev` | `1.0` | via Core | none on `1.0` | The SDK on `sdk/rc` declares `php: ^8.2`. This site requires `dev-sdk/rc as 1.0.x-dev`. Install as a dev dependency. The optional [MCP server](/docs/mcp) needs `laravel/mcp`, so Laravel 11.45+ or 12.41+. |
 | [streams/testing](/docs/testing/introduction) | `1.0.x-dev` | `1.0` | **10 only, for now** | via Core (8.2+) | Requires `orchestra/testbench ^8.36`, which targets Laravel 10. Being widened to `^8.36\|^9.15\|^10.8` (Laravel 10 to 12). |
 | [streams/mongodb](/docs/core/sources-and-adapters) | `1.0.x-dev` | `1.0` | via Core | via Core | Experimental. Requires `mongodb/mongodb ^1.10`. |
 | [@laravel-streams/api-client](/docs/client/introduction) | `3.0.0` | `master` | n/a | n/a | npm package, zero runtime dependencies. |
-| `streams/streams` (starter) | `1.0.x-dev` | `1.0` | `^10.0` | `^8.0.2` declared (Core needs 8.2+) | Pins Laravel 10; requires Core, UI, and API. |
+| `streams/streams` (starter) | `1.0.x-dev` | `1.0` | `^10.0` | `^8.0.2` declared (`rc/prep` needs 8.2+) | Pins Laravel 10; requires Core, UI, and API. |
 
-"Via Core" means the package declares no framework or PHP constraint of its own and accepts whatever `streams/core ^2.0` accepts. Core, API, and SDK declare PHP `^8.2`, so every package needs PHP 8.2 or newer. The Laravel 10/11/12 [version matrix](/docs/installation#version-matrix) on the installation page shows the same support per Laravel version.
+"Via Core" means the package declares no framework or PHP constraint of its own and accepts whatever `streams/core ^2.0` accepts. Branch `2.0` of Core aliases `dev-master` to `2.x-dev` and does not declare `php`. Branch `1.0` of API and branch `1.0` of the SDK do not declare `php` either. On `rc/prep`, Core and API declare `php: ^8.2`. The SDK on `sdk/rc` declares `php: ^8.2` too. UI and Testing require Core. The Laravel 10/11/12 [version matrix](/docs/installation#version-matrix) on the installation page shows the same support per Laravel version.
 
 ### What is actually tested
 
@@ -38,7 +38,7 @@ Streams is pre-release. Most packages have **no tagged releases yet**, so you in
 
 ## Requiring the packages
 
-Because there are no stable 2.x (Core) or 1.x (everything else) tags, Composer's default `minimum-stability: stable` won't find them. Worse, a bare `composer require streams/core` silently installs **Core 1.10.4**, the previous major version.
+Because there are no stable 2.x (Core) or 1.x (everything else) tags, Composer's default `minimum-stability: stable` won't find them. Worse, a bare `composer require streams/core` silently installs **Core 1.10.5**, the previous major version.
 
 Require the development branches explicitly, and require Core alongside anything that depends on it:
 
