@@ -137,6 +137,8 @@ Filed 2026-10-14. Every planned or partial row above has exactly one task. Segme
 
 Dup check: `task.search` on the target project for the task title and the first page path before each create. #159, #189, and #190 (this backlog) were ignored as the registry tasks themselves. No open duplicate covered a segment. Site providers linked #191 instead of creating a task: it was the same page, marked done on a commit that is not on master, and was reopened to Ready with the status flip still open. API tasks #201 and #214 mention OpenAPI and were left as their own owner-call work, not this page.
 
+Validation on this branch: `php artisan test --filter=DocsContentTest::test_frontmatter_matches_the_schema` did not boot, because Composer autoload requires `vendor/streams/core/src/helpers.php` and that path package is not in this worktree. Symfony YAML parsed all 43 planned or partial pages with the same `tracking_task` rule as that test (integer greater than 0). Result: `checked 43` / `ok`.
+
 | Segment | Project | Task | Pages |
 | --- | --- | --- | --- |
 | core features | 13 | #255 | `docs/packages/core/authorization.md`<br>`docs/packages/core/field-decorators.md`<br>`docs/packages/core/images.md`<br>`streams/data/docs/images.md`<br>`streams/data/docs/localization.md`<br>`streams/data/docs/streams.md` |
