@@ -1200,14 +1200,14 @@
         "page": "streams/data/docs/local-development.md",
         "package": "site",
         "type": "providers",
-        "status": "partial",
+        "status": "implemented",
         "proof": [
             "streams.dev@ab61fe4fac816bce3cc11275279c48522c0e895f:composer.json",
             "streams.dev@ab61fe4fac816bce3cc11275279c48522c0e895f:vite.config.js",
             "streams.dev@ab61fe4fac816bce3cc11275279c48522c0e895f:resources/views/docs.blade.php",
             "streams.dev@ab61fe4fac816bce3cc11275279c48522c0e895f:AGENTS.md"
         ],
-        "finding": "composer dev uses ports 8427 and 5427, but the clone command and the Edit this page sentence still say branch develop. develop was retired and the edit link uses master."
+        "finding": "composer dev serves the app on 127.0.0.1:8427 and Vite on 5427. The clone command and the Edit this page sentence use master, matching the blob/master edit link. develop is retired."
     },
     {
         "page": "streams/data/docs/package-catalog.md",
