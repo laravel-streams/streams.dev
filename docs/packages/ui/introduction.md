@@ -8,7 +8,7 @@ order: 10
 tags: [ui, introduction]
 editorial_status: ready
 status: partial
-tracking_task: pending
+tracking_task: 257
 ---
 
 Streams UI (`streams/ui`) builds Livewire admin panels on top of Streams Core. You register a **panel**, define **resource** classes for each stream, and configure **forms** and **tables** with PHP builders.

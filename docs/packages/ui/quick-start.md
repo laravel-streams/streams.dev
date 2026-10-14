@@ -8,7 +8,7 @@ order: 30
 tags: [ui, quick, start]
 editorial_status: ready
 status: partial
-tracking_task: pending
+tracking_task: 257
 ---
 
 This walkthrough registers an admin panel with one resource backed by a Core stream.

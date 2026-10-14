@@ -8,7 +8,7 @@ order: 150
 tags: [core, integrator]
 editorial_status: ready
 status: partial
-tracking_task: pending
+tracking_task: 256
 ---
 
 `Streams\Core\Support\Integrator` merges application (or addon) configuration into Laravel during boot.

@@ -8,7 +8,7 @@ order: 30
 tags: [client, quickstart]
 editorial_status: ready
 status: partial
-tracking_task: pending
+tracking_task: 265
 ---
 
 Get up and running with the Streams API Client in just a few minutes.

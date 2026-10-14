@@ -8,7 +8,7 @@ order: 60
 tags: [ui, routing]
 editorial_status: ready
 status: partial
-tracking_task: pending
+tracking_task: 257
 ---
 
 Panel routes register automatically when you call `UI::panel()`. Resource pages define paths relative to the resource slug.

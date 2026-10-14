@@ -8,7 +8,7 @@ order: 60
 tags: [core, field, decorators]
 editorial_status: ready
 status: partial
-tracking_task: pending
+tracking_task: 255
 ---
 
 Field decorators transform raw stored values into display-ready output. Call `$entry->decorate()` to apply type-specific decorators registered on field types.

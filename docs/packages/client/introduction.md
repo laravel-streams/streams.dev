@@ -8,7 +8,7 @@ order: 10
 tags: [client, introduction]
 editorial_status: ready
 status: partial
-tracking_task: pending
+tracking_task: 265
 ---
 
 `@laravel-streams/api-client` is a JavaScript client for the [Streams API](/docs/api/introduction). It wraps the API's stream and entry endpoints in a small fluent interface, with a Laravel-style criteria builder and a request/response middleware pipeline.

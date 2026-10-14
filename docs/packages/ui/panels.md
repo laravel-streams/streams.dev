@@ -8,7 +8,7 @@ order: 50
 tags: [ui, panels]
 editorial_status: ready
 status: partial
-tracking_task: pending
+tracking_task: 257
 ---
 
 A **panel** is an admin area with its own path, middleware, navigation, resources, and pages.

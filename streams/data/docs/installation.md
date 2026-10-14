@@ -9,7 +9,7 @@ order: 20
 tags: [installation]
 editorial_status: ready
 status: partial
-tracking_task: pending
+tracking_task: 269
 ---
 
 ## Server requirements
