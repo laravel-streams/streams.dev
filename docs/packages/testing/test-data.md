@@ -6,7 +6,8 @@ section: packages
 package: testing
 order: 30
 tags: [testing, test, data]
-status: ready
+status: implemented
+tracking_task: 263
 ---
 
 The Streams Testing package includes a rich set of sample data based on the Star Wars universe. This data provides realistic examples for testing and learning Streams concepts.
@@ -259,19 +260,18 @@ protected function setUp(): void
     parent::setUp();
     
     // Define a custom stream for testing
-    Streams::build([
+    Streams::register([
         'id' => 'custom_products',
         'name' => 'Products',
-        'source' => [
-            'type' => 'file',
-            'format' => 'json',
+        'config' => [
+            'source' => ['type' => 'file', 'path' => 'streams/data/custom_products.json'],
         ],
         'fields' => [
             'id' => 'integer',
             'name' => 'string',
             'price' => 'decimal',
         ],
-    ])->save();
+    ]);
 }
 ```
 
