@@ -1,7 +1,6 @@
 # Copied from streams/api (laravel-streams/streams-api) resources/openapi/openapi.yaml,
-# branch rc/prep at 0d3ba86d. Don't edit it here: change it in streams/api, then
+# branch ops/run-79-a151 at 32a9ea90. Don't edit it here: change it in streams/api, then
 # re-copy it with `php scripts/sync-openapi.php`. Served at /docs/api/openapi.yaml.
-
 openapi: 3.0.3
 info:
   title: Streams API
