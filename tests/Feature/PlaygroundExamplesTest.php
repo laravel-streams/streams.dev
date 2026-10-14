@@ -66,6 +66,17 @@ class PlaygroundExamplesTest extends TestCase
         $this->assertStringContainsString('Cancel order PG-1001?', $modal);
         $this->assertStringContainsString('<legend>Cancel order PG-1001?</legend>', $prompt);
         $this->assertStringContainsString('role="tab" aria-selected="true"', $tab);
+
+        $resource = PlaygroundExamples::get('resource');
+        $stream = Streams::make($resource['stream']);
+
+        foreach (array_merge($resource['config']['table_columns'], $resource['config']['form_fields']) as $handle) {
+            $this->assertNotNull($stream->fields->get($handle), $handle);
+        }
+
+        $resourceHtml = PlaygroundExamples::render($resource);
+        $this->assertStringContainsString('number, status, total_cents', $resourceHtml);
+        $this->assertStringContainsString('customer, status', $resourceHtml);
     }
 
     public function test_example_labels_and_values_are_escaped(): void

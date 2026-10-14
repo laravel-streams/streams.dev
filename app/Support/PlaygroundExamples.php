@@ -329,8 +329,8 @@ class PlaygroundExamples
                 ];
             }
         } elseif ($type === 'resource') {
-            $items[] = ['label' => 'Table', 'meta' => (string) ($config['table'] ?? '')];
-            $items[] = ['label' => 'Form', 'meta' => (string) ($config['form'] ?? '')];
+            $items[] = ['label' => 'Table columns', 'meta' => self::display($config['table_columns'] ?? [])];
+            $items[] = ['label' => 'Form fields', 'meta' => self::display($config['form_fields'] ?? [])];
             $items[] = ['label' => 'Records', 'meta' => (string) count(self::rows((string) $example['stream']))];
         } elseif ($type === 'repeater') {
             foreach ($config['rows'] ?? [] as $row) {
