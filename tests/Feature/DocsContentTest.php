@@ -21,6 +21,25 @@ class DocsContentTest extends TestCase
 
     protected const STATUSES = ['implemented', 'partial', 'planned'];
 
+    public function test_addon_guide_points_contributors_to_package_reference()
+    {
+        $body = $this->pages()['streams/data/docs/addons']['body'];
+
+        $this->assertStringContainsString('docs/packages/{name}/', $body);
+        $this->assertStringContainsString('streams/data/docs/', $body);
+        $this->assertStringNotContainsString('Edit markdown in `streams/data/`', $body);
+    }
+
+    public function test_core_provider_pages_are_implemented_and_tracked()
+    {
+        $pages = $this->pages();
+
+        foreach (['docs/packages/core/addons', 'docs/packages/core/integrator', 'streams/data/docs/addons'] as $page) {
+            $this->assertSame('implemented', $pages[$page]['frontmatter']['status'], $page);
+            $this->assertSame(256, $pages[$page]['frontmatter']['tracking_task'], $page);
+        }
+    }
+
     /**
      * @return array<string, array{frontmatter: array, body: string}>
      */
