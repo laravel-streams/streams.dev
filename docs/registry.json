@@ -1362,16 +1362,20 @@
         "page": "streams/data/docs/versions.md",
         "package": "all",
         "type": "variables",
-        "status": "partial",
+        "status": "implemented",
         "proof": [
-            "streams-core@65ea4668d86fefa20d4eaba35536de33bfda9369:composer.json",
+            "streams-core@5fd458f43618f9e744f7c43646242491394508fc:composer.json",
+            "streams-core@9291456367b85482f83504046a37ec6f7dd59dd9:composer.json",
             "streams-ui@3a30c8676df7815804a31cf5388b8fee80cdb541:composer.json",
             "streams-api@22d2351345631480102aa1377e6a6a73d765c7a5:composer.json",
+            "streams-api@0d3ba86d22473114553779420d3c1e15bb096f20:composer.json",
+            "streams-sdk@198c74c32e52b7abe0d99e4f74ee13296eee4d63:composer.json",
             "streams-sdk@2aff9ebe3a0a58b4e48cb244af0ee683e17ef7b9:composer.json",
             "streams-testing@ec5dd5f41b814a2b15b5dc1aa8a9f5911281781c:composer.json",
-            "streams@06fde618b8f8f8a12680f9d98314728de34c03dd:composer.json"
+            "streams@06fde618b8f8f8a12680f9d98314728de34c03dd:composer.json",
+            "streams.dev:composer.json"
         ],
-        "finding": "UI Livewire ^3.0, testing testbench ^8.36, starter PHP ^8.0.2 and Laravel ^10, and core's Laravel ^10|^11|^12 match. Core's branch-alias is dev-master 2.x-dev, and core and api do not declare php."
+        "finding": "UI requires Livewire ^3.0. Testing requires testbench ^8.36. The starter declares PHP ^8.0.2 and Laravel ^10.0. Core on 2.0 and rc/prep declares Laravel ^10|^11|^12. Core 2.0 aliases dev-master to 2.x-dev and does not declare php. Core and API on rc/prep declare php ^8.2. SDK 1.0 does not declare php; sdk/rc does. The latest stable Core tag is v1.10.5."
     },
     {
         "page": "streams/data/docs/workflows.md",

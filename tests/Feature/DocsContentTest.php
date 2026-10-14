@@ -489,6 +489,121 @@ class DocsContentTest extends TestCase
             ->assertDontSee('This feature is partially implemented.', false);
     }
 
+    public function test_versions_page_matches_package_constraints(): void
+    {
+        Http::preventStrayRequests();
+
+        $page = $this->pages()['streams/data/docs/versions'];
+        $body = $page['body'];
+
+        $this->assertSame('implemented', $page['frontmatter']['status']);
+        $this->assertSame(270, $page['frontmatter']['tracking_task']);
+
+        $this->assertStringContainsString('Branch-alias is `dev-master` => `2.x-dev`.', $body);
+        $this->assertStringContainsString('none on `2.0`', $body);
+        $this->assertStringContainsString('none on `1.0`', $body);
+        $this->assertStringContainsString('On `rc/prep`, Core and API declare `php: ^8.2`.', $body);
+        $this->assertStringContainsString('The SDK on `sdk/rc` declares `php: ^8.2`.', $body);
+        $this->assertStringContainsString('Requires Livewire `^3.0`.', $body);
+        $this->assertStringContainsString('`orchestra/testbench ^8.36`', $body);
+        $this->assertStringContainsString('`^8.0.2`', $body);
+        $this->assertStringContainsString('`^10.0`', $body);
+        $this->assertStringContainsString('`^10\|^11\|^12`', $body);
+        $this->assertStringContainsString('latest `v1.10.5`', $body);
+        $this->assertStringContainsString('**Core 1.10.5**', $body);
+
+        $this->assertStringNotContainsString('Core, API, and SDK declare PHP `^8.2`', $body);
+        $this->assertStringNotContainsString('1.10.4', $body);
+        $this->assertStringNotContainsString('| `^8.2` | Stable tags exist only', $body);
+        $this->assertStringNotContainsString('| via Core | `^8.2` |', $body);
+
+        $core20 = json_decode(file_get_contents(base_path('tests/fixtures/registry/streams-core-5fd458f43618f9e744f7c43646242491394508fc.json')), true, 512, JSON_THROW_ON_ERROR);
+        $coreRc = json_decode(file_get_contents(base_path('tests/fixtures/registry/streams-core-9291456367b85482f83504046a37ec6f7dd59dd9.json')), true, 512, JSON_THROW_ON_ERROR);
+        $api10 = json_decode(file_get_contents(base_path('tests/fixtures/registry/streams-api-22d2351345631480102aa1377e6a6a73d765c7a5.json')), true, 512, JSON_THROW_ON_ERROR);
+        $apiRc = json_decode(file_get_contents(base_path('tests/fixtures/registry/streams-api-0d3ba86d22473114553779420d3c1e15bb096f20.json')), true, 512, JSON_THROW_ON_ERROR);
+        $ui = json_decode(file_get_contents(base_path('tests/fixtures/registry/streams-ui-3a30c8676df7815804a31cf5388b8fee80cdb541.json')), true, 512, JSON_THROW_ON_ERROR);
+        $sdk10 = json_decode(file_get_contents(base_path('tests/fixtures/registry/streams-sdk-198c74c32e52b7abe0d99e4f74ee13296eee4d63.json')), true, 512, JSON_THROW_ON_ERROR);
+        $sdkRc = json_decode(file_get_contents(base_path('tests/fixtures/registry/streams-sdk-2aff9ebe3a0a58b4e48cb244af0ee683e17ef7b9.json')), true, 512, JSON_THROW_ON_ERROR);
+        $testing = json_decode(file_get_contents(base_path('tests/fixtures/registry/streams-testing-ec5dd5f41b814a2b15b5dc1aa8a9f5911281781c.json')), true, 512, JSON_THROW_ON_ERROR);
+        $starter = json_decode(file_get_contents(base_path('tests/fixtures/registry/streams-06fde618b8f8f8a12680f9d98314728de34c03dd.json')), true, 512, JSON_THROW_ON_ERROR);
+
+        $this->assertSame(['dev-master' => '2.x-dev'], $core20['extra']['branch-alias']);
+        $this->assertArrayNotHasKey('php', $core20['require']);
+        $this->assertSame('^10|^11|^12', $core20['require']['laravel/framework']);
+        $this->assertSame('^8.2', $coreRc['require']['php']);
+        $this->assertSame('^10|^11|^12', $coreRc['require']['laravel/framework']);
+        $this->assertArrayNotHasKey('branch-alias', $coreRc['extra'] ?? []);
+        $this->assertArrayNotHasKey('php', $api10['require']);
+        $this->assertSame('^8.2', $apiRc['require']['php']);
+        $this->assertSame('^3.0', $ui['require']['livewire/livewire']);
+        $this->assertArrayNotHasKey('php', $sdk10['require']);
+        $this->assertSame('^8.2', $sdkRc['require']['php']);
+        $this->assertSame('^8.36', $testing['require']['orchestra/testbench']);
+        $this->assertSame('^8.0.2', $starter['require']['php']);
+        $this->assertSame('^10.0', $starter['require']['laravel/framework']);
+        $this->assertSame('^2.0', $starter['require']['streams/core']);
+        $this->assertSame('^1.0', $starter['require']['streams/ui']);
+        $this->assertSame('^1.0', $starter['require']['streams/api']);
+
+        $site = json_decode(file_get_contents(base_path('composer.json')), true, 512, JSON_THROW_ON_ERROR);
+        $this->assertSame('dev-rc/prep as 2.0.x-dev', $site['require']['streams/core']);
+        $this->assertSame('1.0.x-dev', $site['require']['streams/ui']);
+        $this->assertSame('dev-sdk/rc as 1.0.x-dev', $site['require-dev']['streams/sdk']);
+
+        $locked = [];
+        $lock = json_decode(file_get_contents(base_path('composer.lock')), true, 512, JSON_THROW_ON_ERROR);
+
+        foreach (array_merge($lock['packages'], $lock['packages-dev']) as $package) {
+            $locked[$package['name']] = $package;
+        }
+
+        $this->assertSame('9291456367b85482f83504046a37ec6f7dd59dd9', $locked['streams/core']['source']['reference']);
+        $this->assertSame('^8.2', $locked['streams/core']['require']['php']);
+        $this->assertSame('^10|^11|^12', $locked['streams/core']['require']['laravel/framework']);
+        $this->assertSame('^3.0', $locked['streams/ui']['require']['livewire/livewire']);
+        $this->assertSame('^8.2', $locked['streams/sdk']['require']['php']);
+
+        $row = null;
+        $registry = json_decode(file_get_contents(base_path('docs/registry.json')), true, 512, JSON_THROW_ON_ERROR);
+
+        foreach ($registry as $candidate) {
+            if ($candidate['page'] === 'streams/data/docs/versions.md') {
+                $row = $candidate;
+            }
+        }
+
+        $this->assertNotNull($row);
+        $this->assertSame('implemented', $row['status']);
+        $this->assertContains('streams-core@5fd458f43618f9e744f7c43646242491394508fc:composer.json', $row['proof']);
+        $this->assertContains('streams-core@9291456367b85482f83504046a37ec6f7dd59dd9:composer.json', $row['proof']);
+        $this->assertContains('streams-ui@3a30c8676df7815804a31cf5388b8fee80cdb541:composer.json', $row['proof']);
+        $this->assertContains('streams-api@22d2351345631480102aa1377e6a6a73d765c7a5:composer.json', $row['proof']);
+        $this->assertContains('streams-api@0d3ba86d22473114553779420d3c1e15bb096f20:composer.json', $row['proof']);
+        $this->assertContains('streams-sdk@198c74c32e52b7abe0d99e4f74ee13296eee4d63:composer.json', $row['proof']);
+        $this->assertContains('streams-sdk@2aff9ebe3a0a58b4e48cb244af0ee683e17ef7b9:composer.json', $row['proof']);
+        $this->assertContains('streams-testing@ec5dd5f41b814a2b15b5dc1aa8a9f5911281781c:composer.json', $row['proof']);
+        $this->assertContains('streams@06fde618b8f8f8a12680f9d98314728de34c03dd:composer.json', $row['proof']);
+
+        $this->get('/docs/versions.md')
+            ->assertOk()
+            ->assertHeader('Content-Type', 'text/markdown; charset=UTF-8')
+            ->assertSee('Branch-alias is `dev-master` => `2.x-dev`.', false)
+            ->assertSee('On `rc/prep`, Core and API declare `php: ^8.2`.', false)
+            ->assertDontSee('Core, API, and SDK declare PHP `^8.2`', false)
+            ->assertDontSee('1.10.4', false);
+
+        $this->get('/docs/versions')
+            ->assertOk()
+            ->assertDontSee('data-docs-status="partial"', false)
+            ->assertDontSee('data-docs-status="planned"', false)
+            ->assertDontSee('This feature is partially implemented.', false)
+            ->assertSee('dev-master', false)
+            ->assertSee('2.x-dev', false)
+            ->assertSee('v1.10.5', false)
+            ->assertDontSee('1.10.4', false)
+            ->assertDontSee('Core, API, and SDK declare PHP', false);
+    }
+
     public function test_package_nav_points_at_package_files()
     {
         foreach (DocsNav::packages() as $name => $package) {
