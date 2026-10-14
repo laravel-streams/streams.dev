@@ -7,7 +7,7 @@ package: ui
 order: 30
 tags: [ui, quick, start]
 editorial_status: ready
-status: partial
+status: implemented
 tracking_task: 257
 ---
 

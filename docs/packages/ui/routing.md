@@ -7,7 +7,7 @@ package: ui
 order: 60
 tags: [ui, routing]
 editorial_status: ready
-status: partial
+status: implemented
 tracking_task: 257
 ---
 

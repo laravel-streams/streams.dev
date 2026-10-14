@@ -7,7 +7,7 @@ package: ui
 order: 70
 tags: [ui, resources]
 editorial_status: ready
-status: partial
+status: implemented
 tracking_task: 257
 ---
 
