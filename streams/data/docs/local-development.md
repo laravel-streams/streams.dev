@@ -8,7 +8,7 @@ package: site
 order: 50
 tags: [site, local, development]
 editorial_status: ready
-status: partial
+status: implemented
 tracking_task: 191
 ---
 
@@ -22,7 +22,7 @@ tracking_task: 191
 ## First-time setup
 
 ```bash
-git clone https://github.com/laravel-streams/streams.dev.git --branch develop
+git clone https://github.com/laravel-streams/streams.dev.git --branch master
 cd streams.dev
 
 composer install
@@ -48,7 +48,7 @@ Documentation and pages are flat files — no database required for content chan
 | Site page | `streams/data/pages/{id}.html` | entry `uri` |
 | Stream config | `streams/{handle}.json` | after cache clear if cached |
 
-In local environment, doc pages show an **Edit this page** link to that file on GitHub (`laravel-streams/streams.dev`, branch `develop`).
+In local environment, doc pages show an **Edit this page** link to that file on GitHub (`laravel-streams/streams.dev`, branch `master`).
 
 ## Admin panel
 
@@ -88,7 +88,15 @@ Styles live in `resources/css/` (`app.css` imports the tokens and components). T
 
 ## Branches and deploys
 
-Work on `develop` (or a short-lived branch off it that you merge back). When `develop` is ready, merge it into `master` and push both. `master` is the live site and GitHub's default branch, and `envoy run deploy` fast-forwards the server to it. The old `next`, `integration/rc` and `production` branches no longer exist.
+`master` is the only long-lived branch, the live site, and GitHub's default branch. Create a short-lived feature branch off an up-to-date `master`:
+
+```bash
+git switch master
+git pull --ff-only origin master
+git switch -c feature/your-change
+```
+
+Commit your changes, push the feature branch, and open a pull request into `master`. After the pull request is merged, deploy `master` with `envoy run deploy`, which fast-forwards the server to it. Only deploy when the maintainer asks. The old `develop`, `next`, `integration/rc` and `production` branches no longer exist.
 
 ## Related
 
