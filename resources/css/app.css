@@ -25,6 +25,9 @@
 @source "../../vendor/streams/ui/resources/views/builders/inputs";
 @source "../../vendor/streams/ui/resources/views/components/inputs";
 @source "../../vendor/streams/ui/resources/views/components/field";
+/* Live playground actions, columns, tables, and containers use package markup. */
+@source "../../vendor/streams/ui/resources/views/builders";
+@source "../../vendor/streams/ui/resources/views/components";
 
 /*
  * Map the --st-* tokens onto Tailwind's theme namespaces so utilities such as

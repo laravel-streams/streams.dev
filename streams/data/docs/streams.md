@@ -7,7 +7,9 @@ category: core-concepts
 package: core
 order: 20
 tags: [core, streams]
-status: ready
+editorial_status: ready
+status: implemented
+tracking_task: 255
 ---
 
 ## Introduction
@@ -147,6 +149,8 @@ In `streams/contacts.json`:
     "policy": "App\\Contacts\\ContactPolicy"
 }
 ```
+
+Core registers that class with `Gate::policy()` for the stream's entry class (`config.abstract`, or `Streams\Core\Entry\Entry` when the entry class is omitted) when the stream is registered.
 
 ### Caching
 

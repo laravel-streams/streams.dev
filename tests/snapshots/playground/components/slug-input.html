@@ -1,0 +1,84 @@
+<div style="--col-span-default: span 1 / span 1;" class="col-[--col-span-default] flex">
+
+    <div
+        class="w-full grid gap-y-2"
+    >
+
+                    <div
+                class="flex items-center justify-between gap-x-3"
+            >
+                                    <label
+    class="inline-flex items-center gap-x-3" for="data.slug"
+>
+
+
+    <span class="font-medium leading-6 text-gray-950">
+
+        Slug    </span>
+
+
+</label>
+
+                            </div>
+
+                    <div
+                class="grid gap-y-2"
+            >
+                <div
+        class="w-full"
+        x-data="{
+            value: $wire.entangle('data.slug'),
+            separator: '-',
+            sourcePath: 'data.title',
+            followSource: true,
+            slugify(raw) {
+                const sep = this.separator;
+
+                return String(raw ?? '')
+                    .toLowerCase()
+                    .replace(/ /g, sep)
+                    .replace(new RegExp('[^\\w' + sep.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ']+', 'g'), '')
+                    .replace(new RegExp(sep.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '+', 'g'), sep);
+            },
+            applySlug(raw) {
+                this.value = this.slugify(raw);
+            },
+            onSlugInput() {
+                this.followSource = this.value === '';
+                this.applySlug(this.value);
+            },
+            onSourceInput(raw) {
+                if (! this.followSource) {
+                    return;
+                }
+
+                this.applySlug(raw);
+            },
+        }"
+        x-init="
+            if (value) {
+                followSource = false;
+            }
+
+            if (! sourcePath) {
+                return;
+            }
+
+            const source = document.getElementById(sourcePath);
+
+            if (! source) {
+                return;
+            }
+
+            source.addEventListener('input', (event) => onSourceInput(event.target.value));
+        "
+    >
+        <input
+    class="block w-full rounded-md px-3 py-2 ps-3 pe-3" id="data.slug" placeholder="post-title" type="text" x-model="value" x-on:input="onSlugInput()"
+/>
+    </div>
+
+
+                            </div>
+            </div>
+</div>

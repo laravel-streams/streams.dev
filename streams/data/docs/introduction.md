@@ -7,7 +7,9 @@ category: getting-started
 package: all
 order: 10
 tags: [introduction]
-status: ready
+editorial_status: ready
+status: implemented
+tracking_task: null
 ---
 
 ## What is Streams?

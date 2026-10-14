@@ -1,0 +1,51 @@
+{
+    "name": "streams/api",
+    "description": "A RESTful API for Laravel Streams.",
+    "type": "streams-addon",
+    "license": "MIT",
+    "homepage": "https://streams.dev",
+    "support": {
+        "issues": "https://github.com/laravel-streams/streams-api/issues",
+        "source": "https://github.com/laravel-streams/streams-api",
+        "docs": "https://streams.dev/docs/api/introduction"
+    },
+    "prefer-stable": true,
+    "minimum-stability": "dev",
+    "authors": [
+        {
+            "name": "Ryan Thompson",
+            "email": "ryan@streams.dev"
+        }
+    ],
+    "require": {
+        "php": "^8.2",
+        "streams/core": "^2.0",
+        "justinrainbow/json-schema": "^5.2"
+    },
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^3.4",
+        "streams/testing": "^1.0",
+        "laravel/pint": "^1.25"
+    },
+    "autoload": {
+        "psr-4": {
+            "Streams\\Api\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Streams\\Api\\Tests\\": "tests/"
+        }
+    },
+    "scripts": {},
+    "extra": {
+        "branch-alias": {
+            "dev-develop": "1.1.x-dev"
+        },
+        "laravel": {
+            "providers": [
+                "Streams\\Api\\ApiServiceProvider"
+            ]
+        }
+    }
+}

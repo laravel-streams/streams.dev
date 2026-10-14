@@ -6,7 +6,9 @@ section: packages
 package: core
 order: 160
 tags: [core, addons]
-status: ready
+editorial_status: ready
+status: partial
+tracking_task: 256
 ---
 
 Addons are Composer packages tagged `streams-addon` that register streams, routes, and config through Core's Integrator at boot.

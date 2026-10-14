@@ -7,7 +7,9 @@ category: basics
 package: core
 order: 20
 tags: [core, content]
-status: ready
+editorial_status: ready
+status: implemented
+tracking_task: null
 ---
 
 ## Introduction

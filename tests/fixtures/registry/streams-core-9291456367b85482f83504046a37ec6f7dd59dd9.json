@@ -1,0 +1,65 @@
+{
+    "name": "streams/core",
+    "type": "streams-addon",
+    "description": "A domain-driven, code-configured, flat-file application platform for Laravel.",
+    "license": "MIT",
+    "homepage": "https://streams.dev",
+    "support": {
+        "issues": "https://github.com/laravel-streams/streams-core/issues",
+        "source": "https://github.com/laravel-streams/streams-core",
+        "docs": "https://streams.dev/docs/core/introduction"
+    },
+    "prefer-stable": true,
+    "minimum-stability": "dev",
+    "authors": [
+        {
+            "name": "Ryan Thompson",
+            "email": "ryan@pyrocms.com"
+        }
+    ],
+    "require": {
+        "php": "^8.2",
+        "symfony/yaml": "^6.4|^7.0",
+        "jenssegers/agent": "^2.6",
+        "tmarois/filebase": "^1.0",
+        "laravel/scout": "^10|^11",
+        "intervention/image": "^2.7",
+        "laravel/framework": "^10|^11|^12",
+        "goldspecdigital/oooas": "^2.10",
+        "nicmart/string-template": "^0.1",
+        "spatie/laravel-html": "^3.3",
+        "ezyang/htmlpurifier": "^4.16"
+    },
+    "require-dev": {
+        "streams/testing": "^1.0",
+        "mockery/mockery": "^1.4",
+        "phpunit/phpunit": "^9.5",
+        "fakerphp/faker": "^1.9",
+        "laravel/pint": "^1.25"
+    },
+    "autoload": {
+        "psr-4": {
+            "Streams\\Core\\": "src/"
+        },
+        "files": [
+            "src/helpers.php"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Streams\\Core\\Tests\\": "tests/"
+        }
+    },
+    "suggest": {
+        "elasticsearch/elasticsearch": "Required to use the Elasticsearch source adapter (source.type: elasticsearch).",
+        "elastic/client": "Required to resolve Elasticsearch connections via ClientBuilderInterface.",
+        "opensearch-project/opensearch-php": "Required to use the OpenSearch source adapter (source.type: opensearch)."
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Streams\\Core\\StreamsServiceProvider"
+            ]
+        }
+    }
+}
