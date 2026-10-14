@@ -6,7 +6,9 @@ section: packages
 package: core
 order: 230
 tags: [core, extending]
-status: ready
+editorial_status: ready
+status: implemented
+tracking_task: null
 ---
 
 Extend Core by binding custom classes in stream JSON or Laravel service providers.

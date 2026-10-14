@@ -3,7 +3,8 @@
     "scripts": {
         "dev": "vite",
         "build": "vite build",
-        "test:js": "node --test tests/js/*.test.mjs"
+        "test:js": "node --test tests/js/*.test.mjs",
+        "test:browser": "node tests/browser/playground-config.cjs"
     },
     "devDependencies": {
         "@tailwindcss/typography": "^0.5.20",
@@ -12,6 +13,7 @@
         "concurrently": "^9.2.4",
         "laravel-vite-plugin": "^2.1.0",
         "lodash": "^4.17.19",
+        "playwright": "^1.63.0",
         "tailwindcss": "^4.3.3",
         "vite": "^7.3.6"
     },

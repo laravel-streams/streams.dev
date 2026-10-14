@@ -7,7 +7,9 @@ category: advanced
 package: core
 order: 60
 tags: [core, localization]
-status: ready
+editorial_status: ready
+status: implemented
+tracking_task: 255
 ---
 
 ## Overview
@@ -23,6 +25,8 @@ Publish UI lang files when customizing control panel copy:
 ```bash
 php artisan vendor:publish --provider="Streams\\Ui\\UiServiceProvider" --tag=lang
 ```
+
+That tag publishes `resources/lang` to `lang/vendor/ui`. Published strings override the `ui` language namespace.
 
 ## Learn more
 

@@ -1,0 +1,1409 @@
+[
+    {
+        "page": "docs/packages/core/applications.md",
+        "package": "core",
+        "type": "providers",
+        "status": "implemented",
+        "proof": [
+            "streams-core@65ea4668d86fefa20d4eaba35536de33bfda9369:src/StreamsServiceProvider.php",
+            "streams-core@65ea4668d86fefa20d4eaba35536de33bfda9369:src/Application/ApplicationManager.php"
+        ],
+        "finding": "URL activation and documented limited boot merge exist; routes are explicitly excluded."
+    },
+    {
+        "page": "docs/packages/core/addons.md",
+        "package": "core",
+        "type": "providers",
+        "status": "partial",
+        "proof": [
+            "streams-core@65ea4668d86fefa20d4eaba35536de33bfda9369:src/StreamsServiceProvider.php",
+            "streams-core@65ea4668d86fefa20d4eaba35536de33bfda9369:src/Addon/AddonManager.php"
+        ],
+        "finding": "Discovery checks Composer type streams-addon, not extra.streams.addon; register takes an array, not the shown two arguments."
+    },
+    {
+        "page": "docs/packages/core/installation.md",
+        "package": "core",
+        "type": "providers",
+        "status": "implemented",
+        "proof": [
+            "streams-core@65ea4668d86fefa20d4eaba35536de33bfda9369:src/StreamsServiceProvider.php",
+            "streams-core@65ea4668d86fefa20d4eaba35536de33bfda9369:composer.json"
+        ],
+        "finding": "Provider publishes config, streams and public assets."
+    },
+    {
+        "page": "docs/packages/core/configuration.md",
+        "package": "core",
+        "type": "variables",
+        "status": "implemented",
+        "proof": [
+            "streams-core@65ea4668d86fefa20d4eaba35536de33bfda9369:resources/config/core.php"
+        ],
+        "finding": "Configuration defaults and field type registration exist."
+    },
+    {
+        "page": "docs/packages/core/streams.md",
+        "package": "core",
+        "type": "features",
+        "status": "implemented",
+        "proof": [
+            "streams-core@65ea4668d86fefa20d4eaba35536de33bfda9369:src/Stream/Stream.php",
+            "streams-core@65ea4668d86fefa20d4eaba35536de33bfda9369:src/Stream/StreamManager.php"
+        ],
+        "finding": "Stream model and manager expose definitions and repository access."
+    },
+    {
+        "page": "docs/packages/core/fields.md",
+        "package": "core",
+        "type": "features",
+        "status": "implemented",
+        "proof": [
+            "streams-core@65ea4668d86fefa20d4eaba35536de33bfda9369:src/Field/Field.php",
+            "streams-core@65ea4668d86fefa20d4eaba35536de33bfda9369:resources/config/core.php"
+        ],
+        "finding": "Field configuration and registered types exist."
+    },
+    {
+        "page": "docs/packages/core/field-decorators.md",
+        "package": "core",
+        "type": "features",
+        "status": "implemented",
+        "proof": [
+            "streams-core@2690f4cd6b5b06752d8410679dd6adaeab0f0181:src/Support/Traits/Fluency.php",
+            "streams-core@2690f4cd6b5b06752d8410679dd6adaeab0f0181:src/Field/Decorator/StringDecorator.php"
+        ],
+        "finding": "Entry::decorate(string) returns the field decorator. String fields with config.markdown stringify to parsed HTML."
+    },
+    {
+        "page": "docs/packages/core/entries.md",
+        "package": "core",
+        "type": "features",
+        "status": "implemented",
+        "proof": [
+            "streams-core@65ea4668d86fefa20d4eaba35536de33bfda9369:src/Entry/Entry.php",
+            "streams-core@65ea4668d86fefa20d4eaba35536de33bfda9369:src/Entry/EntryFactory.php"
+        ],
+        "finding": "Entry lifecycle, serialization and factory exist."
+    },
+    {
+        "page": "docs/packages/core/repositories.md",
+        "package": "core",
+        "type": "features",
+        "status": "implemented",
+        "proof": [
+            "streams-core@65ea4668d86fefa20d4eaba35536de33bfda9369:src/Repository/Repository.php"
+        ],
+        "finding": "Documented CRUD methods exist; unavailable methods are explicitly labeled."
+    },
+    {
+        "page": "docs/packages/core/criteria.md",
+        "package": "core",
+        "type": "features",
+        "status": "implemented",
+        "proof": [
+            "streams-core@65ea4668d86fefa20d4eaba35536de33bfda9369:src/Criteria/Criteria.php"
+        ],
+        "finding": "Query, pagination, cache, chunk and upsert methods exist."
+    },
+    {
+        "page": "docs/packages/core/sources-and-adapters.md",
+        "package": "core",
+        "type": "source types",
+        "status": "implemented",
+        "proof": [
+            "streams-core@65ea4668d86fefa20d4eaba35536de33bfda9369:src/Repository/Repository.php",
+            "streams-core@65ea4668d86fefa20d4eaba35536de33bfda9369:src/Criteria/Adapter/AbstractSearchIndexAdapter.php"
+        ],
+        "finding": "Repository resolves all nine documented adapter names, including opt-in search dependencies."
+    },
+    {
+        "page": "docs/packages/core/validation.md",
+        "package": "core",
+        "type": "features",
+        "status": "implemented",
+        "proof": [
+            "streams-core@65ea4668d86fefa20d4eaba35536de33bfda9369:src/Validation/StreamsPresenceVerifier.php",
+            "streams-core@65ea4668d86fefa20d4eaba35536de33bfda9369:src/Entry/Entry.php"
+        ],
+        "finding": "Opt-in entry validation and stream presence verifier exist."
+    },
+    {
+        "page": "docs/packages/core/routes.md",
+        "package": "core",
+        "type": "features",
+        "status": "implemented",
+        "proof": [
+            "streams-core@65ea4668d86fefa20d4eaba35536de33bfda9369:src/Stream/StreamRouter.php",
+            "streams-core@65ea4668d86fefa20d4eaba35536de33bfda9369:src/Http/Controller/EntryController.php"
+        ],
+        "finding": "Stream routing, deferred registration and entry controller exist."
+    },
+    {
+        "page": "docs/packages/core/caching.md",
+        "package": "core",
+        "type": "features",
+        "status": "implemented",
+        "proof": [
+            "streams-core@65ea4668d86fefa20d4eaba35536de33bfda9369:src/Stream/StreamCache.php",
+            "streams-core@65ea4668d86fefa20d4eaba35536de33bfda9369:src/Criteria/Criteria.php"
+        ],
+        "finding": "Cache and fresh query paths exist."
+    },
+    {
+        "page": "docs/packages/core/views-and-includes.md",
+        "package": "core",
+        "type": "features",
+        "status": "implemented",
+        "proof": [
+            "streams-core@65ea4668d86fefa20d4eaba35536de33bfda9369:src/View/ViewIncludes.php",
+            "streams-core@65ea4668d86fefa20d4eaba35536de33bfda9369:src/View/ViewTemplate.php"
+        ],
+        "finding": "Include slots and template support exist."
+    },
+    {
+        "page": "docs/packages/core/assets.md",
+        "package": "core",
+        "type": "features",
+        "status": "implemented",
+        "proof": [
+            "streams-core@65ea4668d86fefa20d4eaba35536de33bfda9369:src/Asset/AssetManager.php",
+            "streams-core@65ea4668d86fefa20d4eaba35536de33bfda9369:src/StreamsServiceProvider.php"
+        ],
+        "finding": "Asset registration and Blade directives exist."
+    },
+    {
+        "page": "docs/packages/core/images.md",
+        "package": "core",
+        "type": "features",
+        "status": "implemented",
+        "proof": [
+            "streams-core@2690f4cd6b5b06752d8410679dd6adaeab0f0181:src/Image/Image.php"
+        ],
+        "finding": "srcset() with no arguments uses the current altered image URL."
+    },
+    {
+        "page": "docs/packages/core/macros.md",
+        "package": "core",
+        "type": "providers",
+        "status": "implemented",
+        "proof": [
+            "streams-core@65ea4668d86fefa20d4eaba35536de33bfda9369:src/StreamsServiceProvider.php",
+            "streams-core@65ea4668d86fefa20d4eaba35536de33bfda9369:src/Support/Macros"
+        ],
+        "finding": "Provider registers documented macro families."
+    },
+    {
+        "page": "docs/packages/core/callbacks.md",
+        "package": "core",
+        "type": "features",
+        "status": "implemented",
+        "proof": [
+            "streams-core@65ea4668d86fefa20d4eaba35536de33bfda9369:src/Support/Traits/FiresCallbacks.php",
+            "streams-core@65ea4668d86fefa20d4eaba35536de33bfda9369:src/Entry/Entry.php"
+        ],
+        "finding": "Trait dispatch and entry lifecycle callbacks exist."
+    },
+    {
+        "page": "docs/packages/core/integrator.md",
+        "package": "core",
+        "type": "providers",
+        "status": "partial",
+        "proof": [
+            "streams-core@65ea4668d86fefa20d4eaba35536de33bfda9369:src/Support/Integrator.php"
+        ],
+        "finding": "Merge methods exist, but routes requires an array of grouped routes; the closure example is incompatible."
+    },
+    {
+        "page": "docs/packages/core/facades-and-helpers.md",
+        "package": "core",
+        "type": "providers",
+        "status": "implemented",
+        "proof": [
+            "streams-core@65ea4668d86fefa20d4eaba35536de33bfda9369:src/Support/Facades",
+            "streams-core@65ea4668d86fefa20d4eaba35536de33bfda9369:src/helpers.php",
+            "streams-core@65ea4668d86fefa20d4eaba35536de33bfda9369:src/StreamsServiceProvider.php"
+        ],
+        "finding": "All documented facades are bound and global helpers exist; Messages is not advertised by this page."
+    },
+    {
+        "page": "docs/packages/core/extending-core.md",
+        "package": "core",
+        "type": "providers",
+        "status": "implemented",
+        "proof": [
+            "streams-core@65ea4668d86fefa20d4eaba35536de33bfda9369:src/Repository/Repository.php",
+            "streams-core@65ea4668d86fefa20d4eaba35536de33bfda9369:src/Stream/Stream.php",
+            "streams-core@65ea4668d86fefa20d4eaba35536de33bfda9369:src/StreamsServiceProvider.php"
+        ],
+        "finding": "Custom adapter, criteria, repository, entry and field bindings exist."
+    },
+    {
+        "page": "docs/packages/core/introduction.md",
+        "package": "core",
+        "type": "features",
+        "status": "implemented",
+        "proof": [
+            "streams-core@65ea4668d86fefa20d4eaba35536de33bfda9369:src/Stream/StreamManager.php",
+            "streams-core@65ea4668d86fefa20d4eaba35536de33bfda9369:src/Entry/Entry.php",
+            "streams-core@65ea4668d86fefa20d4eaba35536de33bfda9369:src/Repository/Repository.php"
+        ],
+        "finding": "Overview describes executable core primitives and explicitly excludes UI and API."
+    },
+    {
+        "page": "docs/packages/ui/introduction.md",
+        "package": "ui",
+        "type": "features",
+        "status": "partial",
+        "proof": [
+            "streams-ui@3a30c8676df7815804a31cf5388b8fee80cdb541:src/UiManager.php",
+            "streams-ui@3a30c8676df7815804a31cf5388b8fee80cdb541:resources/routes/web.php"
+        ],
+        "finding": "Panel/resource primitives exist, but no panel-root route is generated; visiting /admin alone is not guaranteed."
+    },
+    {
+        "page": "docs/packages/ui/installation.md",
+        "package": "ui",
+        "type": "providers",
+        "status": "implemented",
+        "proof": [
+            "streams-ui@3a30c8676df7815804a31cf5388b8fee80cdb541:src/UiServiceProvider.php",
+            "streams-ui@3a30c8676df7815804a31cf5388b8fee80cdb541:composer.json"
+        ],
+        "finding": "Panel facade, publish tags and persistent middleware are registered."
+    },
+    {
+        "page": "docs/packages/ui/quick-start.md",
+        "package": "ui",
+        "type": "features",
+        "status": "partial",
+        "proof": [
+            "streams-ui@3a30c8676df7815804a31cf5388b8fee80cdb541:src/Resources/Concerns/HasRoutes.php",
+            "streams-ui@3a30c8676df7815804a31cf5388b8fee80cdb541:src/Livewire/Pages/Concerns/HasResource.php"
+        ],
+        "finding": "PostResource defaults to post-resource slug, not posts; generic CRUD pages need subclasses bound to the resource."
+    },
+    {
+        "page": "docs/packages/ui/architecture.md",
+        "package": "ui",
+        "type": "features",
+        "status": "implemented",
+        "proof": [
+            "streams-ui@3a30c8676df7815804a31cf5388b8fee80cdb541:src/Http/Middleware/SetUpPanel.php",
+            "streams-ui@3a30c8676df7815804a31cf5388b8fee80cdb541:src/Livewire/Pages/ListEntries.php",
+            "streams-ui@3a30c8676df7815804a31cf5388b8fee80cdb541:src/Resources/Resource.php"
+        ],
+        "finding": "Middleware boots the panel and resource pages delegate to builders."
+    },
+    {
+        "page": "docs/packages/ui/panels.md",
+        "package": "ui",
+        "type": "features",
+        "status": "partial",
+        "proof": [
+            "streams-ui@3a30c8676df7815804a31cf5388b8fee80cdb541:src/Builders/Panels/Concerns/HasRoutes.php",
+            "streams-ui@3a30c8676df7815804a31cf5388b8fee80cdb541:resources/routes/web.php"
+        ],
+        "finding": "Panel options exist, but route registration loops over null domain instead of configured domains."
+    },
+    {
+        "page": "docs/packages/ui/resources.md",
+        "package": "ui",
+        "type": "features",
+        "status": "partial",
+        "proof": [
+            "streams-ui@3a30c8676df7815804a31cf5388b8fee80cdb541:src/Resources/Resource.php",
+            "streams-ui@3a30c8676df7815804a31cf5388b8fee80cdb541:src/Livewire/Pages/Concerns/HasResource.php"
+        ],
+        "finding": "Resource primitives exist; example uses generic page classes without setting their required static resource."
+    },
+    {
+        "page": "docs/packages/ui/pages.md",
+        "package": "ui",
+        "type": "features",
+        "status": "implemented",
+        "proof": [
+            "streams-ui@3a30c8676df7815804a31cf5388b8fee80cdb541:src/Livewire/Pages/PanelPage.php",
+            "streams-ui@3a30c8676df7815804a31cf5388b8fee80cdb541:src/Livewire/Pages/Concerns/HasResource.php"
+        ],
+        "finding": "Page APIs exist and page binding requirement is explicitly documented."
+    },
+    {
+        "page": "docs/packages/ui/navigation.md",
+        "package": "ui",
+        "type": "features",
+        "status": "partial",
+        "proof": [
+            "streams-ui@3a30c8676df7815804a31cf5388b8fee80cdb541:src/Builders/Navigation/NavigationItem.php",
+            "streams-ui@3a30c8676df7815804a31cf5388b8fee80cdb541:src/Builders/Concerns/HasSortOrder.php"
+        ],
+        "finding": "Navigation uses sortOrder; the documented sort method does not exist."
+    },
+    {
+        "page": "docs/packages/ui/routing.md",
+        "package": "ui",
+        "type": "features",
+        "status": "partial",
+        "proof": [
+            "streams-ui@3a30c8676df7815804a31cf5388b8fee80cdb541:resources/routes/web.php",
+            "streams-ui@3a30c8676df7815804a31cf5388b8fee80cdb541:src/Resources/Concerns/HasRoutes.php"
+        ],
+        "finding": "Resource names exist; custom route closure executes outside panel prefix/middleware, and default resource slug includes Resource suffix."
+    },
+    {
+        "page": "docs/packages/ui/forms.md",
+        "package": "ui",
+        "type": "features",
+        "status": "implemented",
+        "proof": [
+            "streams-ui@3a30c8676df7815804a31cf5388b8fee80cdb541:src/Builders/Forms/Form.php",
+            "streams-ui@3a30c8676df7815804a31cf5388b8fee80cdb541:src/Builders/Forms/Concerns/HandlesValidation.php"
+        ],
+        "finding": "Factory/register/resolve and component validation APIs exist."
+    },
+    {
+        "page": "docs/packages/ui/form-layouts.md",
+        "package": "ui",
+        "type": "features",
+        "status": "implemented",
+        "proof": [
+            "streams-ui@3a30c8676df7815804a31cf5388b8fee80cdb541:src/Builders/Forms/Layouts/Field.php",
+            "streams-ui@3a30c8676df7815804a31cf5388b8fee80cdb541:src/Builders/Forms/Layouts/Fieldset.php",
+            "streams-ui@3a30c8676df7815804a31cf5388b8fee80cdb541:src/Builders/Containers/Grid.php"
+        ],
+        "finding": "Field wrappers, fieldsets and container layouts exist."
+    },
+    {
+        "page": "docs/packages/ui/inputs.md",
+        "package": "ui",
+        "type": "features",
+        "status": "implemented",
+        "proof": [
+            "streams-ui@3a30c8676df7815804a31cf5388b8fee80cdb541:src/Builders/Inputs/Input.php",
+            "streams-ui@3a30c8676df7815804a31cf5388b8fee80cdb541:tests/Builders/Inputs"
+        ],
+        "finding": "Listed inputs and validation/length configuration have implementations and tests."
+    },
+    {
+        "page": "docs/packages/ui/tables.md",
+        "package": "ui",
+        "type": "features",
+        "status": "implemented",
+        "proof": [
+            "streams-ui@3a30c8676df7815804a31cf5388b8fee80cdb541:src/Builders/Tables/Table.php"
+        ],
+        "finding": "Factory, query, defaultSort, filters and pagination exist."
+    },
+    {
+        "page": "docs/packages/ui/columns.md",
+        "package": "ui",
+        "type": "features",
+        "status": "implemented",
+        "proof": [
+            "streams-ui@3a30c8676df7815804a31cf5388b8fee80cdb541:src/Builders/Tables/Columns/Column.php",
+            "streams-ui@3a30c8676df7815804a31cf5388b8fee80cdb541:src/Builders/Tables/Columns/Concerns/IsSortable.php"
+        ],
+        "finding": "Listed column classes and sortable/searchable concerns exist."
+    },
+    {
+        "page": "docs/packages/ui/filters.md",
+        "package": "ui",
+        "type": "features",
+        "status": "partial",
+        "proof": [
+            "streams-ui@3a30c8676df7815804a31cf5388b8fee80cdb541:src/Builders/Tables/Filters/CriteriaFilter.php",
+            "streams-ui@3a30c8676df7815804a31cf5388b8fee80cdb541:src/Builders/Tables/Table.php"
+        ],
+        "finding": "Text/select/search/toggle exist, but CriteriaFilter.php declares SelectFilter rather than CriteriaFilter."
+    },
+    {
+        "page": "docs/packages/ui/bulk-actions.md",
+        "package": "ui",
+        "type": "features",
+        "status": "implemented",
+        "proof": [
+            "streams-ui@3a30c8676df7815804a31cf5388b8fee80cdb541:src/Builders/Tables/BulkActions/BulkAction.php",
+            "streams-ui@3a30c8676df7815804a31cf5388b8fee80cdb541:src/Builders/Tables/Concerns/HasBulkActions.php",
+            "streams-ui@3a30c8676df7815804a31cf5388b8fee80cdb541:src/Builders/Actions/DeleteSelectedEntries.php"
+        ],
+        "finding": "Bulk and grouped actions resolve selected records and built-in deletion."
+    },
+    {
+        "page": "docs/packages/ui/actions.md",
+        "package": "ui",
+        "type": "features",
+        "status": "partial",
+        "proof": [
+            "streams-ui@3a30c8676df7815804a31cf5388b8fee80cdb541:src/Builders/Actions/Action.php",
+            "streams-ui@3a30c8676df7815804a31cf5388b8fee80cdb541:src/Builders/Actions/MountableAction.php"
+        ],
+        "finding": "Closure execution belongs to MountableAction; example calls action on base Action, which does not include HasAction."
+    },
+    {
+        "page": "docs/packages/ui/livewire.md",
+        "package": "ui",
+        "type": "providers",
+        "status": "partial",
+        "proof": [
+            "streams-ui@3a30c8676df7815804a31cf5388b8fee80cdb541:src/Livewire/Pages/Page.php",
+            "streams-ui@3a30c8676df7815804a31cf5388b8fee80cdb541:src/UiServiceProvider.php",
+            "streams-ui@3a30c8676df7815804a31cf5388b8fee80cdb541:src/Livewire/Tables/InteractsWithTables.php"
+        ],
+        "finding": "Persistent middleware exists; documented InteractsWithTable and action trait namespace differ from actual InteractsWithTables and Livewire/Actions."
+    },
+    {
+        "page": "docs/packages/ui/theming.md",
+        "package": "ui",
+        "type": "variables",
+        "status": "implemented",
+        "proof": [
+            "streams-ui@3a30c8676df7815804a31cf5388b8fee80cdb541:src/Builders/Panels/Panel.php",
+            "streams-ui@3a30c8676df7815804a31cf5388b8fee80cdb541:src/Colors/ColorManager.php",
+            "streams-ui@3a30c8676df7815804a31cf5388b8fee80cdb541:src/Builders/Panels/Concerns/HasFavicon.php"
+        ],
+        "finding": "Panel boot shares palettes; branding, favicon and layout options exist."
+    },
+    {
+        "page": "docs/packages/api/introduction.md",
+        "package": "api",
+        "type": "features",
+        "status": "implemented",
+        "proof": [
+            "streams-api@22d2351345631480102aa1377e6a6a73d765c7a5:src/ApiManager.php",
+            "streams-api@22d2351345631480102aa1377e6a6a73d765c7a5:src/ApiResponse.php",
+            "streams-api@22d2351345631480102aa1377e6a6a73d765c7a5:src/Resources/EntriesResource.php"
+        ],
+        "finding": "Interfaces, CRUD resources and response envelope exist; auth and route opt-in boundaries are documented."
+    },
+    {
+        "page": "docs/packages/api/installation.md",
+        "package": "api",
+        "type": "providers",
+        "status": "implemented",
+        "proof": [
+            "streams-api@22d2351345631480102aa1377e6a6a73d765c7a5:src/ApiServiceProvider.php",
+            "streams-api@22d2351345631480102aa1377e6a6a73d765c7a5:composer.json"
+        ],
+        "finding": "Provider registers facade, gate/interface middleware, config and schema commands."
+    },
+    {
+        "page": "docs/packages/api/configuration.md",
+        "package": "api",
+        "type": "variables",
+        "status": "implemented",
+        "proof": [
+            "streams-api@22d2351345631480102aa1377e6a6a73d765c7a5:resources/config/api.php",
+            "streams-api@22d2351345631480102aa1377e6a6a73d765c7a5:src/ApiManager.php"
+        ],
+        "finding": "Listed keys and middleware ordering match configuration and route registration."
+    },
+    {
+        "page": "docs/packages/api/routes.md",
+        "package": "api",
+        "type": "features",
+        "status": "implemented",
+        "proof": [
+            "streams-api@22d2351345631480102aa1377e6a6a73d765c7a5:src/Resources/StreamsResource.php",
+            "streams-api@22d2351345631480102aa1377e6a6a73d765c7a5:src/Resources/EntriesResource.php",
+            "streams-api@22d2351345631480102aa1377e6a6a73d765c7a5:src/ApiManager.php"
+        ],
+        "finding": "Registered endpoint route maps and one-helper behavior match the guide."
+    },
+    {
+        "page": "docs/packages/api/requests.md",
+        "package": "api",
+        "type": "features",
+        "status": "implemented",
+        "proof": [
+            "streams-api@22d2351345631480102aa1377e6a6a73d765c7a5:src/Endpoints/Entries/CreateEntry.php",
+            "streams-api@22d2351345631480102aa1377e6a6a73d765c7a5:src/Endpoints/Entries/UpdateEntry.php",
+            "streams-api@22d2351345631480102aa1377e6a6a73d765c7a5:src/Endpoints/Entries/PatchEntry.php"
+        ],
+        "finding": "Flat JSON/form creation and JSON PUT/PATCH are implemented."
+    },
+    {
+        "page": "docs/packages/api/responses.md",
+        "package": "api",
+        "type": "features",
+        "status": "implemented",
+        "proof": [
+            "streams-api@22d2351345631480102aa1377e6a6a73d765c7a5:src/ApiResponse.php",
+            "streams-api@22d2351345631480102aa1377e6a6a73d765c7a5:src/Endpoints/Entries/DeleteEntry.php"
+        ],
+        "finding": "Envelope and no-content delete response exist; HTTP status is removed from payload."
+    },
+    {
+        "page": "docs/packages/api/query-parameters.md",
+        "package": "api",
+        "type": "variables",
+        "status": "implemented",
+        "proof": [
+            "streams-api@22d2351345631480102aa1377e6a6a73d765c7a5:src/Endpoints/Entries/ListEntries.php",
+            "streams-api@22d2351345631480102aa1377e6a6a73d765c7a5:src/Endpoints/Entries/Concerns/AppliesEagerLoading.php"
+        ],
+        "finding": "Filter/order/limit input paths and eager-load parsing exist."
+    },
+    {
+        "page": "docs/packages/api/pagination.md",
+        "package": "api",
+        "type": "features",
+        "status": "implemented",
+        "proof": [
+            "streams-api@22d2351345631480102aa1377e6a6a73d765c7a5:src/ApiResponse.php",
+            "streams-api@22d2351345631480102aa1377e6a6a73d765c7a5:src/Endpoints/Entries/ListEntries.php"
+        ],
+        "finding": "Pagination meta/link keys and 100-entry default match source."
+    },
+    {
+        "page": "docs/packages/api/errors.md",
+        "package": "api",
+        "type": "features",
+        "status": "implemented",
+        "proof": [
+            "streams-api@22d2351345631480102aa1377e6a6a73d765c7a5:src/ApiResponse.php",
+            "streams-api@22d2351345631480102aa1377e6a6a73d765c7a5:src/Endpoints/Entries/ShowEntry.php",
+            "streams-api@22d2351345631480102aa1377e6a6a73d765c7a5:src/Endpoints/Entries/CreateEntry.php"
+        ],
+        "finding": "404 missing entry and 409 validation errors populate the envelope."
+    },
+    {
+        "page": "docs/packages/api/streams-endpoints.md",
+        "package": "api",
+        "type": "features",
+        "status": "implemented",
+        "proof": [
+            "streams-api@22d2351345631480102aa1377e6a6a73d765c7a5:src/Resources/StreamsResource.php",
+            "streams-api@22d2351345631480102aa1377e6a6a73d765c7a5:src/Endpoints/Streams/CreateStream.php",
+            "streams-api@22d2351345631480102aa1377e6a6a73d765c7a5:src/Endpoints/Streams/DeleteStream.php"
+        ],
+        "finding": "Meta-stream CRUD endpoints exist."
+    },
+    {
+        "page": "docs/packages/api/entry-endpoints.md",
+        "package": "api",
+        "type": "features",
+        "status": "implemented",
+        "proof": [
+            "streams-api@22d2351345631480102aa1377e6a6a73d765c7a5:src/Resources/EntriesResource.php",
+            "streams-api@22d2351345631480102aa1377e6a6a73d765c7a5:src/Endpoints/Entries/UpdateEntry.php",
+            "streams-api@22d2351345631480102aa1377e6a6a73d765c7a5:src/Endpoints/Entries/PatchEntry.php"
+        ],
+        "finding": "CRUD and create-on-missing PUT/PATCH behavior match source."
+    },
+    {
+        "page": "docs/packages/api/query-endpoint.md",
+        "package": "api",
+        "type": "features",
+        "status": "implemented",
+        "proof": [
+            "streams-api@22d2351345631480102aa1377e6a6a73d765c7a5:src/Endpoints/Entries/QueryEntries.php"
+        ],
+        "finding": "Payload methods are dispatched with only delete/truncate protected, as documented."
+    },
+    {
+        "page": "docs/packages/api/custom-interfaces.md",
+        "package": "api",
+        "type": "providers",
+        "status": "implemented",
+        "proof": [
+            "streams-api@22d2351345631480102aa1377e6a6a73d765c7a5:src/ApiInterface.php",
+            "streams-api@22d2351345631480102aa1377e6a6a73d765c7a5:src/ApiManager.php"
+        ],
+        "finding": "Interface registration, domain iteration, tenant and external custom-route closure match guide."
+    },
+    {
+        "page": "docs/packages/api/custom-endpoints.md",
+        "package": "api",
+        "type": "features",
+        "status": "implemented",
+        "proof": [
+            "streams-api@22d2351345631480102aa1377e6a6a73d765c7a5:src/Builders/Endpoints/ApiEndpoint.php",
+            "streams-api@22d2351345631480102aa1377e6a6a73d765c7a5:src/ApiResource.php",
+            "streams-api@22d2351345631480102aa1377e6a6a73d765c7a5:src/ApiManager.php"
+        ],
+        "finding": "String GET endpoints, endpoint routers and resource route prefixes exist."
+    },
+    {
+        "page": "docs/packages/api/authentication.md",
+        "package": "api",
+        "type": "providers",
+        "status": "implemented",
+        "proof": [
+            "streams-api@22d2351345631480102aa1377e6a6a73d765c7a5:src/Http/Middleware/EnsureApiIsEnabled.php",
+            "streams-api@22d2351345631480102aa1377e6a6a73d765c7a5:src/ApiManager.php"
+        ],
+        "finding": "Gate extension and application middleware hooks exist; built-in authentication is explicitly excluded."
+    },
+    {
+        "page": "docs/packages/api/tenancy.md",
+        "package": "api",
+        "type": "features",
+        "status": "implemented",
+        "proof": [
+            "streams-api@22d2351345631480102aa1377e6a6a73d765c7a5:src/ApiManager.php",
+            "streams-api@22d2351345631480102aa1377e6a6a73d765c7a5:src/Endpoints/Entries/ListEntries.php",
+            "streams-api@22d2351345631480102aa1377e6a6a73d765c7a5:src/Endpoints/Entries/ShowEntry.php"
+        ],
+        "finding": "Tenant value is cached in the container; only documented list/show callback scoping exists."
+    },
+    {
+        "page": "docs/packages/api/caching.md",
+        "package": "api",
+        "type": "features",
+        "status": "implemented",
+        "proof": [
+            "streams-api@22d2351345631480102aa1377e6a6a73d765c7a5:src/Http/Middleware/ApiCache.php",
+            "streams-api@22d2351345631480102aa1377e6a6a73d765c7a5:src/ApiResponse.php"
+        ],
+        "finding": "Opt-in ETag, max-age response caching and conditional last-modified handling exist."
+    },
+    {
+        "page": "docs/packages/api/openapi.md",
+        "package": "api",
+        "type": "features",
+        "status": "partial",
+        "proof": [
+            "streams-api@22d2351345631480102aa1377e6a6a73d765c7a5:src/ApiSchema.php",
+            "streams-api@22d2351345631480102aa1377e6a6a73d765c7a5:src/Commands/DumpApiSchema.php",
+            "streams-api@22d2351345631480102aa1377e6a6a73d765c7a5:src/Commands/CreateApiDocumentation.php"
+        ],
+        "finding": "Schema commands exist, but the documented resources/openapi/openapi.yaml is absent in the inspected package snapshot."
+    },
+    {
+        "page": "docs/packages/api/testing.md",
+        "package": "api",
+        "type": "features",
+        "status": "implemented",
+        "proof": [
+            "streams-api@22d2351345631480102aa1377e6a6a73d765c7a5:tests/ApiTestCase.php",
+            "streams-api@22d2351345631480102aa1377e6a6a73d765c7a5:tests/Http/Controller/Entries/CreateEntryTest.php",
+            "streams-api@22d2351345631480102aa1377e6a6a73d765c7a5:composer.json"
+        ],
+        "finding": "Package HTTP tests exist; consuming-app test-base limitation is explicitly documented."
+    },
+    {
+        "page": "docs/packages/api/examples.md",
+        "package": "api",
+        "type": "features",
+        "status": "implemented",
+        "proof": [
+            "streams-api@22d2351345631480102aa1377e6a6a73d765c7a5:src/Resources/EntriesResource.php",
+            "streams-api@22d2351345631480102aa1377e6a6a73d765c7a5:src/Endpoints/Entries/ListEntries.php",
+            "streams-api@22d2351345631480102aa1377e6a6a73d765c7a5:src/Endpoints/Entries/QueryEntries.php"
+        ],
+        "finding": "Example paths and payloads correspond to registered endpoints."
+    },
+    {
+        "page": "docs/packages/sdk/introduction.md",
+        "package": "sdk",
+        "type": "providers",
+        "status": "implemented",
+        "proof": [
+            "streams-sdk@2aff9ebe3a0a58b4e48cb244af0ee683e17ef7b9:src/SdkServiceProvider.php"
+        ],
+        "finding": "Audited sdk/rc, the branch required by composer.json; commands and local MCP are registered there, unlike the older 1.0 checkout."
+    },
+    {
+        "page": "docs/packages/sdk/commands.md",
+        "package": "sdk",
+        "type": "features",
+        "status": "implemented",
+        "proof": [
+            "streams-sdk@2aff9ebe3a0a58b4e48cb244af0ee683e17ef7b9:src/SdkServiceProvider.php",
+            "streams-sdk@2aff9ebe3a0a58b4e48cb244af0ee683e17ef7b9:src/Console/Commands/StreamsValidate.php",
+            "streams-sdk@2aff9ebe3a0a58b4e48cb244af0ee683e17ef7b9:src/Console/Commands/MakeLivewire.php"
+        ],
+        "finding": "Registered commands and explicitly excluded source-only commands match sdk/rc."
+    },
+    {
+        "page": "docs/packages/sdk/stream-schema.md",
+        "package": "sdk",
+        "type": "features",
+        "status": "implemented",
+        "proof": [
+            "streams-sdk@2aff9ebe3a0a58b4e48cb244af0ee683e17ef7b9:resources/schemas/streams.schema.json",
+            "streams-sdk@2aff9ebe3a0a58b4e48cb244af0ee683e17ef7b9:src/Support/StreamDefinitionValidator.php"
+        ],
+        "finding": "Draft-07 schema and semantic checks exist on sdk/rc."
+    },
+    {
+        "page": "docs/packages/sdk/streams.md",
+        "package": "sdk",
+        "type": "source types",
+        "status": "partial",
+        "proof": [
+            "streams-sdk@2aff9ebe3a0a58b4e48cb244af0ee683e17ef7b9:src/Support/StreamDefinitionValidator.php",
+            "streams-sdk@2aff9ebe3a0a58b4e48cb244af0ee683e17ef7b9:src/Console/Commands/MakeStream.php"
+        ],
+        "finding": "Stream scaffolding exists; page still advertises legacy handle, validation and implicit sort/pagination configuration beyond current validator/runtime scope."
+    },
+    {
+        "page": "docs/packages/sdk/tall-components.md",
+        "package": "sdk",
+        "type": "features",
+        "status": "partial",
+        "proof": [
+            "streams-sdk@2aff9ebe3a0a58b4e48cb244af0ee683e17ef7b9:src/Console/Commands/MakeLivewire.php",
+            "streams-sdk@2aff9ebe3a0a58b4e48cb244af0ee683e17ef7b9:src/Console/Commands/stubs/livewire"
+        ],
+        "finding": "Livewire class/views are generated; controllers, middleware and automatic route installation advertised by this guide are not generated."
+    },
+    {
+        "page": "docs/packages/sdk/ai-prompts.md",
+        "package": "sdk",
+        "type": "features",
+        "status": "implemented",
+        "proof": [
+            "streams-sdk@2aff9ebe3a0a58b4e48cb244af0ee683e17ef7b9:src/Mcp/Prompts/DesignStream.php",
+            "streams-sdk@2aff9ebe3a0a58b4e48cb244af0ee683e17ef7b9:resources/schemas/streams.schema.json"
+        ],
+        "finding": "Manual prompt guidance and registered DesignStream prompt exist; application features in examples are work requested from an assistant."
+    },
+    {
+        "page": "docs/packages/testing/introduction.md",
+        "package": "testing",
+        "type": "features",
+        "status": "implemented",
+        "proof": [
+            "streams-testing@ec5dd5f41b814a2b15b5dc1aa8a9f5911281781c:src/TestCase.php",
+            "streams-testing@ec5dd5f41b814a2b15b5dc1aa8a9f5911281781c:laravel/streams.bak"
+        ],
+        "finding": "Committed TestCase supplies Testbench base path and fixture restoration. Uncommitted runtime refactoring is not treated as shipped."
+    },
+    {
+        "page": "docs/packages/testing/installation.md",
+        "package": "testing",
+        "type": "providers",
+        "status": "implemented",
+        "proof": [
+            "streams-testing@ec5dd5f41b814a2b15b5dc1aa8a9f5911281781c:composer.json",
+            "streams-testing@ec5dd5f41b814a2b15b5dc1aa8a9f5911281781c:src/TestCase.php"
+        ],
+        "finding": "Committed manifest requires Testbench 8.36 and Core 2.0; wider support is explicitly future work."
+    },
+    {
+        "page": "docs/packages/testing/configuration.md",
+        "package": "testing",
+        "type": "variables",
+        "status": "partial",
+        "proof": [
+            "streams-testing@ec5dd5f41b814a2b15b5dc1aa8a9f5911281781c:src/TestCase.php",
+            "streams-testing@ec5dd5f41b814a2b15b5dc1aa8a9f5911281781c:laravel/phpunit.xml"
+        ],
+        "finding": "Harness configuration exists; custom createFilm example calls Stream::create, which is absent from the inspected Core Stream API."
+    },
+    {
+        "page": "docs/packages/testing/test-data.md",
+        "package": "testing",
+        "type": "features",
+        "status": "partial",
+        "proof": [
+            "streams-testing@ec5dd5f41b814a2b15b5dc1aa8a9f5911281781c:src/TestCase.php",
+            "streams-testing@ec5dd5f41b814a2b15b5dc1aa8a9f5911281781c:laravel/streams.bak"
+        ],
+        "finding": "Committed fixtures and restoreStreamsData exist; custom fixture examples use absent Stream::create."
+    },
+    {
+        "page": "docs/packages/testing/writing-tests.md",
+        "package": "testing",
+        "type": "features",
+        "status": "partial",
+        "proof": [
+            "streams-testing@ec5dd5f41b814a2b15b5dc1aa8a9f5911281781c:src/TestCase.php"
+        ],
+        "finding": "Testbench test base exists; several creation/validation examples call absent Stream::create."
+    },
+    {
+        "page": "docs/packages/testing/troubleshooting.md",
+        "package": "testing",
+        "type": "features",
+        "status": "partial",
+        "proof": [
+            "streams-testing@ec5dd5f41b814a2b15b5dc1aa8a9f5911281781c:src/TestCase.php"
+        ],
+        "finding": "Committed restoration exists; clearData/loadFixtures methods and Core criteria timeout are not implemented."
+    },
+    {
+        "page": "docs/packages/client/introduction.md",
+        "package": "client",
+        "type": "features",
+        "status": "partial",
+        "proof": [
+            "api-client@1c4bfaebf307a278a6cfdb752808f57d5a46b121:src/Client.js",
+            "api-client@1c4bfaebf307a278a6cfdb752808f57d5a46b121:src/middleware/CriteriaMiddleware.js",
+            "api-client@1c4bfaebf307a278a6cfdb752808f57d5a46b121:src/middleware/ResponseDataMiddleware.js"
+        ],
+        "finding": "Resources and pipeline exist, but default middleware does not unwrap the API envelope or translate where/orderBy to the API bracket query shape."
+    },
+    {
+        "page": "docs/packages/client/installation.md",
+        "package": "client",
+        "type": "providers",
+        "status": "implemented",
+        "proof": [
+            "api-client@1c4bfaebf307a278a6cfdb752808f57d5a46b121:package.json",
+            "api-client@1c4bfaebf307a278a6cfdb752808f57d5a46b121:src/index.js"
+        ],
+        "finding": "Package manifest and exported resources support the documented installation/build entry points."
+    },
+    {
+        "page": "docs/packages/client/quickstart.md",
+        "package": "client",
+        "type": "features",
+        "status": "partial",
+        "proof": [
+            "api-client@1c4bfaebf307a278a6cfdb752808f57d5a46b121:src/middleware/ResponseDataMiddleware.js",
+            "api-client@1c4bfaebf307a278a6cfdb752808f57d5a46b121:src/Entries.js"
+        ],
+        "finding": "Entry endpoints exist; examples assume response.data is an entries array rather than the parsed API envelope."
+    },
+    {
+        "page": "docs/packages/client/client.md",
+        "package": "client",
+        "type": "variables",
+        "status": "partial",
+        "proof": [
+            "api-client@1c4bfaebf307a278a6cfdb752808f57d5a46b121:src/Client.js",
+            "api-client@1c4bfaebf307a278a6cfdb752808f57d5a46b121:src/Streams.js",
+            "api-client@1c4bfaebf307a278a6cfdb752808f57d5a46b121:src/middleware/ETagMiddleware.js"
+        ],
+        "finding": "Configuration exists; documented stream patch/put signatures differ and ETag is a placeholder."
+    },
+    {
+        "page": "docs/packages/client/streams.md",
+        "package": "client",
+        "type": "features",
+        "status": "partial",
+        "proof": [
+            "api-client@1c4bfaebf307a278a6cfdb752808f57d5a46b121:src/Streams.js"
+        ],
+        "finding": "Reads/deletes exist; post does not assign payload and patch/put do not accept the documented stream/data arguments."
+    },
+    {
+        "page": "docs/packages/client/entries.md",
+        "package": "client",
+        "type": "features",
+        "status": "partial",
+        "proof": [
+            "api-client@1c4bfaebf307a278a6cfdb752808f57d5a46b121:src/Entries.js",
+            "api-client@1c4bfaebf307a278a6cfdb752808f57d5a46b121:src/middleware/ResponseDataMiddleware.js"
+        ],
+        "finding": "Entry CRUD exists; response examples skip the envelope data layer and list validation failures as 422 rather than API 409."
+    },
+    {
+        "page": "docs/packages/client/criteria.md",
+        "package": "client",
+        "type": "features",
+        "status": "partial",
+        "proof": [
+            "api-client@1c4bfaebf307a278a6cfdb752808f57d5a46b121:src/Criteria.js",
+            "api-client@1c4bfaebf307a278a6cfdb752808f57d5a46b121:src/middleware/CriteriaMiddleware.js"
+        ],
+        "finding": "Builder methods exist; standardizeParameters overwrites repeated conditions and forwards raw where/orderBy names instead of API where[field]/order_by[field]."
+    },
+    {
+        "page": "docs/packages/client/middleware.md",
+        "package": "client",
+        "type": "features",
+        "status": "partial",
+        "proof": [
+            "api-client@1c4bfaebf307a278a6cfdb752808f57d5a46b121:src/middleware/ETagMiddleware.js",
+            "api-client@1c4bfaebf307a278a6cfdb752808f57d5a46b121:src/middleware/Middleware.js"
+        ],
+        "finding": "Middleware pipeline exists; advertised ETag storage/conditional requests/cache replay are empty hooks."
+    },
+    {
+        "page": "docs/packages/client/examples.md",
+        "package": "client",
+        "type": "features",
+        "status": "partial",
+        "proof": [
+            "api-client@1c4bfaebf307a278a6cfdb752808f57d5a46b121:src/Client.js",
+            "api-client@1c4bfaebf307a278a6cfdb752808f57d5a46b121:src/middleware/ResponseDataMiddleware.js",
+            "api-client@1c4bfaebf307a278a6cfdb752808f57d5a46b121:src/Streams.js"
+        ],
+        "finding": "Client primitives exist; examples assume envelope unwrapping, access client.middleware rather than middlewares, and expect 422 validation errors."
+    },
+    {
+        "page": "docs/packages/core/authorization.md",
+        "package": "core",
+        "type": "features",
+        "status": "implemented",
+        "proof": [
+            "streams-core@2690f4cd6b5b06752d8410679dd6adaeab0f0181:src/Stream/StreamManager.php",
+            "streams-core@2690f4cd6b5b06752d8410679dd6adaeab0f0181:src/Support/Integrator.php"
+        ],
+        "finding": "Stream registration reads config.gates and a top-level gates map through Integrator::gates, and registers a top-level policy string with Gate::policy for config.abstract."
+    },
+    {
+        "page": "docs/packages/sdk/tap.md",
+        "package": "sdk",
+        "type": "features",
+        "status": "planned",
+        "proof": [
+            "streams-sdk@2aff9ebe3a0a58b4e48cb244af0ee683e17ef7b9:src/Console/Commands/StreamsTap.php",
+            "streams-sdk@2aff9ebe3a0a58b4e48cb244af0ee683e17ef7b9:src/SdkServiceProvider.php"
+        ],
+        "finding": "streams:tap declares a tap URL and query-string input, but handle() is empty and SdkServiceProvider does not register the class."
+    },
+    {
+        "page": "streams/data/docs/addons.md",
+        "package": "core",
+        "type": "providers",
+        "status": "partial",
+        "proof": [
+            "streams-core@65ea4668d86fefa20d4eaba35536de33bfda9369:src/Addon/AddonManager.php",
+            "streams.dev@ab61fe4fac816bce3cc11275279c48522c0e895f:docs/packages/core/addons.md",
+            "streams.dev@ab61fe4fac816bce3cc11275279c48522c0e895f:app/Console/Commands/SyncDocs.php"
+        ],
+        "finding": "Addon discovery exists, but the page says to edit package markdown under streams/data. Package reference lives in docs/packages/{name}."
+    },
+    {
+        "page": "streams/data/docs/assets.md",
+        "package": "core",
+        "type": "features",
+        "status": "implemented",
+        "proof": [
+            "streams-core@65ea4668d86fefa20d4eaba35536de33bfda9369:src/Asset/AssetManager.php",
+            "streams-core@65ea4668d86fefa20d4eaba35536de33bfda9369:src/Field/Types/ImageFieldType.php"
+        ],
+        "finding": "Overview points at the asset registry and image fields and does not repeat the srcsets mismatch."
+    },
+    {
+        "page": "streams/data/docs/caching.md",
+        "package": "core",
+        "type": "features",
+        "status": "implemented",
+        "proof": [
+            "streams-core@65ea4668d86fefa20d4eaba35536de33bfda9369:src/Stream/Stream.php",
+            "streams-core@65ea4668d86fefa20d4eaba35536de33bfda9369:src/Stream/StreamCache.php"
+        ],
+        "finding": "Stream::cache returns StreamCache, which implements get, put, add, remember, forever, pull, forget, flush, increment, and decrement."
+    },
+    {
+        "page": "streams/data/docs/configuration.md",
+        "package": "core",
+        "type": "variables",
+        "status": "implemented",
+        "proof": [
+            "streams-core@65ea4668d86fefa20d4eaba35536de33bfda9369:resources/config/core.php",
+            "streams.dev@ab61fe4fac816bce3cc11275279c48522c0e895f:streams/docs.json"
+        ],
+        "finding": "The page describes Laravel config and env() plus stream JSON. Core defaults live in resources/config/core.php."
+    },
+    {
+        "page": "streams/data/docs/content.md",
+        "package": "core",
+        "type": "features",
+        "status": "implemented",
+        "proof": [
+            "streams-core@65ea4668d86fefa20d4eaba35536de33bfda9369:src/Field/Types/ArrayFieldType.php",
+            "streams-core@65ea4668d86fefa20d4eaba35536de33bfda9369:src/View/ViewIncludes.php"
+        ],
+        "finding": "Array fields honor config.stream and the @stream key. Includes::include exists."
+    },
+    {
+        "page": "streams/data/docs/databases.md",
+        "package": "core",
+        "type": "source types",
+        "status": "implemented",
+        "proof": [
+            "streams-core@65ea4668d86fefa20d4eaba35536de33bfda9369:src/Criteria/Adapter/EloquentAdapter.php",
+            "streams-core@65ea4668d86fefa20d4eaba35536de33bfda9369:resources/config/core.php"
+        ],
+        "finding": "Eloquent reads source.model. Filebase formats include json, yaml, html, and md."
+    },
+    {
+        "page": "streams/data/docs/fields.md",
+        "package": "core",
+        "type": "features",
+        "status": "implemented",
+        "proof": [
+            "streams-core@65ea4668d86fefa20d4eaba35536de33bfda9369:resources/config/core.php",
+            "streams-core@65ea4668d86fefa20d4eaba35536de33bfda9369:src/Support/Traits/Streams.php"
+        ],
+        "finding": "The 24 documented field-type keys match core.php, and Streams::decorate(string) exists."
+    },
+    {
+        "page": "streams/data/docs/files.md",
+        "package": "core",
+        "type": "features",
+        "status": "implemented",
+        "proof": [
+            "streams-core@65ea4668d86fefa20d4eaba35536de33bfda9369:src/Stream/StreamManager.php",
+            "streams-core@65ea4668d86fefa20d4eaba35536de33bfda9369:src/Stream/StreamFilesystem.php"
+        ],
+        "finding": "StreamManager::filesystem returns StreamFilesystem, which indexes a disk and proxies put."
+    },
+    {
+        "page": "streams/data/docs/images.md",
+        "package": "core",
+        "type": "features",
+        "status": "implemented",
+        "proof": [
+            "streams-core@2690f4cd6b5b06752d8410679dd6adaeab0f0181:src/Image/Image.php"
+        ],
+        "finding": "srcsets() appends descriptor keys such as 1x and 640w and does not set a sizes attribute."
+    },
+    {
+        "page": "streams/data/docs/localization.md",
+        "package": "core",
+        "type": "features",
+        "status": "implemented",
+        "proof": [
+            "streams-ui@1c9971d553907ec8e8128926a71cf5134c290181:src/UiServiceProvider.php"
+        ],
+        "finding": "UiServiceProvider publishes resources/lang to lang/vendor/ui under the lang tag."
+    },
+    {
+        "page": "streams/data/docs/routing.md",
+        "package": "core",
+        "type": "features",
+        "status": "implemented",
+        "proof": [
+            "streams-core@65ea4668d86fefa20d4eaba35536de33bfda9369:src/StreamsServiceProvider.php",
+            "streams-core@65ea4668d86fefa20d4eaba35536de33bfda9369:src/Support/Macros/RouteStreams.php",
+            "streams-core@65ea4668d86fefa20d4eaba35536de33bfda9369:src/Support/Macros/UrlStreams.php"
+        ],
+        "finding": "Route::streams and URL::streams are registered from the service provider."
+    },
+    {
+        "page": "streams/data/docs/streams.md",
+        "package": "core",
+        "type": "features",
+        "status": "implemented",
+        "proof": [
+            "streams-core@2690f4cd6b5b06752d8410679dd6adaeab0f0181:src/Stream/StreamManager.php"
+        ],
+        "finding": "StreamManager::authorize registers the top-level policy string with Gate::policy for the entry class."
+    },
+    {
+        "page": "streams/data/docs/components.md",
+        "package": "ui",
+        "type": "features",
+        "status": "implemented",
+        "proof": [
+            "streams-ui@3a30c8676df7815804a31cf5388b8fee80cdb541:src/Builders/Tables/Table.php",
+            "streams-ui@3a30c8676df7815804a31cf5388b8fee80cdb541:src/Builders/Forms/Form.php",
+            "streams-ui@3a30c8676df7815804a31cf5388b8fee80cdb541:src/Livewire/Pages/PanelPage.php"
+        ],
+        "finding": "The overview points at panels, tables, and forms that exist and does not repeat a broken method name."
+    },
+    {
+        "page": "streams/data/docs/control-panel.md",
+        "package": "ui",
+        "type": "features",
+        "status": "implemented",
+        "proof": [
+            "streams-ui@3a30c8676df7815804a31cf5388b8fee80cdb541:src/Builders/Panels/Panel.php",
+            "streams-ui@3a30c8676df7815804a31cf5388b8fee80cdb541:src/UiManager.php"
+        ],
+        "finding": "Panel::make, path, and middleware exist. The page does not claim multi-domain routing."
+    },
+    {
+        "page": "streams/data/docs/forms.md",
+        "package": "ui",
+        "type": "features",
+        "status": "implemented",
+        "proof": [
+            "streams-ui@3a30c8676df7815804a31cf5388b8fee80cdb541:src/Builders/Forms/Form.php",
+            "streams-core@65ea4668d86fefa20d4eaba35536de33bfda9369:resources/config/core.php"
+        ],
+        "finding": "Form builders render from field types. The page does not advertise a separate multi-step form API."
+    },
+    {
+        "page": "streams/data/docs/ui.md",
+        "package": "ui",
+        "type": "features",
+        "status": "partial",
+        "proof": [
+            "streams-ui@3a30c8676df7815804a31cf5388b8fee80cdb541:src/Builders/Panels/Panel.php",
+            "streams-ui@3a30c8676df7815804a31cf5388b8fee80cdb541:src/Builders/Panels/Concerns/HasRoutes.php",
+            "streams-ui@3a30c8676df7815804a31cf5388b8fee80cdb541:resources/routes/web.php"
+        ],
+        "finding": "Panel path and middleware exist, but the page tells you to visit /admin. Route registration loops a null domain, so a panel root is not guaranteed."
+    },
+    {
+        "page": "streams/data/docs/api.md",
+        "package": "api",
+        "type": "features",
+        "status": "implemented",
+        "proof": [
+            "streams-api@22d2351345631480102aa1377e6a6a73d765c7a5:src/ApiManager.php",
+            "streams-api@22d2351345631480102aa1377e6a6a73d765c7a5:resources/config/api.php",
+            "streams-api@22d2351345631480102aa1377e6a6a73d765c7a5:src/Http/Middleware/EnsureApiIsEnabled.php"
+        ],
+        "finding": "STREAMS_API_ENABLED, API::routeCrud, and API::tenant exist. Built-in authentication is explicitly excluded."
+    },
+    {
+        "page": "streams/data/docs/agents.md",
+        "package": "sdk",
+        "type": "features",
+        "status": "implemented",
+        "proof": [
+            "streams-sdk@2aff9ebe3a0a58b4e48cb244af0ee683e17ef7b9:src/SdkServiceProvider.php",
+            "streams.dev@ab61fe4fac816bce3cc11275279c48522c0e895f:app/Mcp/Servers/StreamsDocsServer.php",
+            "streams.dev@ab61fe4fac816bce3cc11275279c48522c0e895f:resources/openapi/openapi.yaml",
+            "streams.dev@ab61fe4fac816bce3cc11275279c48522c0e895f:routes/web.php"
+        ],
+        "finding": "sdk/rc registers 14 MCP tools. This site serves /mcp, llms.txt, and /docs/api/openapi.yaml."
+    },
+    {
+        "page": "streams/data/docs/mcp.md",
+        "package": "sdk",
+        "type": "features",
+        "status": "implemented",
+        "proof": [
+            "streams-sdk@2aff9ebe3a0a58b4e48cb244af0ee683e17ef7b9:src/SdkServiceProvider.php",
+            "streams-sdk@2aff9ebe3a0a58b4e48cb244af0ee683e17ef7b9:src/Mcp/Tools/ListStreams.php",
+            "streams-sdk@2aff9ebe3a0a58b4e48cb244af0ee683e17ef7b9:src/Mcp/Prompts/DesignStream.php"
+        ],
+        "finding": "registerMcpServer binds the local streams server when laravel/mcp is installed. The documented tool names match the tool classes."
+    },
+    {
+        "page": "streams/data/docs/testing.md",
+        "package": "testing",
+        "type": "features",
+        "status": "implemented",
+        "proof": [
+            "streams-testing@ec5dd5f41b814a2b15b5dc1aa8a9f5911281781c:src/TestCase.php",
+            "streams-testing@ec5dd5f41b814a2b15b5dc1aa8a9f5911281781c:composer.json"
+        ],
+        "finding": "The overview matches the committed TestCase and does not repeat the Stream::create examples."
+    },
+    {
+        "page": "streams/data/docs/contributing-docs.md",
+        "package": "site",
+        "type": "features",
+        "status": "implemented",
+        "proof": [
+            "streams.dev@ab61fe4fac816bce3cc11275279c48522c0e895f:app/Console/Commands/SyncDocs.php",
+            "streams.dev@ab61fe4fac816bce3cc11275279c48522c0e895f:docs/nav.json",
+            "streams.dev@ab61fe4fac816bce3cc11275279c48522c0e895f:STYLE.md"
+        ],
+        "finding": "docs:sync, docs/packages paths, and nav.json pointers exist. The frontmatter example includes implementation status."
+    },
+    {
+        "page": "streams/data/docs/docs-mcp.md",
+        "package": "site",
+        "type": "features",
+        "status": "implemented",
+        "proof": [
+            "streams.dev@ab61fe4fac816bce3cc11275279c48522c0e895f:routes/ai.php",
+            "streams.dev@ab61fe4fac816bce3cc11275279c48522c0e895f:app/Mcp/Servers/StreamsDocsServer.php",
+            "streams.dev@ab61fe4fac816bce3cc11275279c48522c0e895f:app/Providers/RouteServiceProvider.php",
+            "streams.dev@ab61fe4fac816bce3cc11275279c48522c0e895f:tests/Feature/DocsMcpServerTest.php"
+        ],
+        "finding": "POST /mcp and mcp:start streams-docs register the four tools. The mcp limiter is 60 requests per minute."
+    },
+    {
+        "page": "streams/data/docs/local-development.md",
+        "package": "site",
+        "type": "providers",
+        "status": "implemented",
+        "proof": [
+            "streams.dev@ab61fe4fac816bce3cc11275279c48522c0e895f:composer.json",
+            "streams.dev@ab61fe4fac816bce3cc11275279c48522c0e895f:vite.config.js",
+            "streams.dev@ab61fe4fac816bce3cc11275279c48522c0e895f:resources/views/docs.blade.php",
+            "streams.dev@ab61fe4fac816bce3cc11275279c48522c0e895f:AGENTS.md"
+        ],
+        "finding": "composer dev serves the app on 127.0.0.1:8427 and Vite on 5427. The clone command and the Edit this page sentence use master, matching the blob/master edit link. develop is retired."
+    },
+    {
+        "page": "streams/data/docs/package-catalog.md",
+        "package": "site",
+        "type": "features",
+        "status": "implemented",
+        "proof": [
+            "streams.dev@ab61fe4fac816bce3cc11275279c48522c0e895f:streams/packages.json"
+        ],
+        "finding": "The packages stream uses source type self. data is an object keyed by entry id, and the add-entry steps describe that object."
+    },
+    {
+        "page": "streams/data/docs/project-structure.md",
+        "package": "site",
+        "type": "features",
+        "status": "implemented",
+        "proof": [
+            "streams.dev@ab61fe4fac816bce3cc11275279c48522c0e895f:composer.json",
+            "streams.dev@ab61fe4fac816bce3cc11275279c48522c0e895f:scripts/composer-local.php",
+            "streams.dev@ab61fe4fac816bce3cc11275279c48522c0e895f:app/Providers/AppServiceProvider.php"
+        ],
+        "finding": "The tree labels composer.json as vcs GitHub repositories. The committed file uses those vcs repositories. Path symlinks are only in gitignored composer.local.json."
+    },
+    {
+        "page": "streams/data/docs/site-pages.md",
+        "package": "site",
+        "type": "features",
+        "status": "implemented",
+        "proof": [
+            "streams.dev@ab61fe4fac816bce3cc11275279c48522c0e895f:streams/pages.json",
+            "streams.dev@ab61fe4fac816bce3cc11275279c48522c0e895f:streams/data/pages/welcome.html",
+            "streams.dev@ab61fe4fac816bce3cc11275279c48522c0e895f:streams/data/pages/docs.html"
+        ],
+        "finding": "pages.json routes {uri} with parse true. welcome.html uses uri / and layout page, and the page documents that layout."
+    },
+    {
+        "page": "streams/data/docs/this-project.md",
+        "package": "site",
+        "type": "features",
+        "status": "implemented",
+        "proof": [
+            "streams.dev@ab61fe4fac816bce3cc11275279c48522c0e895f:composer.json",
+            "streams.dev@ab61fe4fac816bce3cc11275279c48522c0e895f:app/Providers/AppServiceProvider.php"
+        ],
+        "finding": "The site requires Laravel 12, PHP 8.2, Core, and UI, with SDK as a dev dependency. API is not required. AppServiceProvider registers the admin panel."
+    },
+    {
+        "page": "streams/data/docs/architecture.md",
+        "package": "all",
+        "type": "features",
+        "status": "implemented",
+        "proof": [
+            "streams-core@65ea4668d86fefa20d4eaba35536de33bfda9369:src/StreamsServiceProvider.php",
+            "streams-ui@3a30c8676df7815804a31cf5388b8fee80cdb541:src/UiServiceProvider.php",
+            "streams-api@22d2351345631480102aa1377e6a6a73d765c7a5:src/ApiServiceProvider.php"
+        ],
+        "finding": "The composition diagram matches Core, UI, and API roles. Livewire is a UI dependency."
+    },
+    {
+        "page": "streams/data/docs/changelog.md",
+        "package": "all",
+        "type": "features",
+        "status": "implemented",
+        "proof": [
+            "streams-core@9291456367b85482f83504046a37ec6f7dd59dd9:composer.json",
+            "streams-api@0d3ba86d22473114553779420d3c1e15bb096f20:composer.json",
+            "streams-sdk@2aff9ebe3a0a58b4e48cb244af0ee683e17ef7b9:composer.json",
+            "streams-sdk@2aff9ebe3a0a58b4e48cb244af0ee683e17ef7b9:src/SdkServiceProvider.php"
+        ],
+        "finding": "SDK on sdk/rc declares PHP 8.2 and registers MCP. Core and API on rc/prep declare php ^8.2, matching the September note."
+    },
+    {
+        "page": "streams/data/docs/installation.md",
+        "package": "all",
+        "type": "providers",
+        "status": "implemented",
+        "proof": [
+            "streams-core@9291456367b85482f83504046a37ec6f7dd59dd9:composer.json",
+            "streams-api@0d3ba86d22473114553779420d3c1e15bb096f20:composer.json",
+            "streams-sdk@2aff9ebe3a0a58b4e48cb244af0ee683e17ef7b9:composer.json",
+            "streams-testing@ec5dd5f41b814a2b15b5dc1aa8a9f5911281781c:composer.json",
+            "streams@06fde618b8f8f8a12680f9d98314728de34c03dd:composer.json",
+            "streams.dev@ab61fe4fac816bce3cc11275279c48522c0e895f:composer.json"
+        ],
+        "finding": "Laravel ranges, Testbench ^8.36, and the starter's Laravel 10 pin match. Core and API on rc/prep declare php ^8.2, and the SDK on sdk/rc does too."
+    },
+    {
+        "page": "streams/data/docs/introduction.md",
+        "package": "all",
+        "type": "features",
+        "status": "implemented",
+        "proof": [
+            "streams-core@65ea4668d86fefa20d4eaba35536de33bfda9369:src/Stream/StreamManager.php",
+            "streams-ui@3a30c8676df7815804a31cf5388b8fee80cdb541:src/UiManager.php",
+            "streams-api@22d2351345631480102aa1377e6a6a73d765c7a5:src/ApiManager.php",
+            "streams-sdk@2aff9ebe3a0a58b4e48cb244af0ee683e17ef7b9:src/SdkServiceProvider.php"
+        ],
+        "finding": "The overview names packages that exist and does not claim a single monolith."
+    },
+    {
+        "page": "streams/data/docs/tenancy.md",
+        "package": "all",
+        "type": "features",
+        "status": "implemented",
+        "proof": [
+            "streams-core@65ea4668d86fefa20d4eaba35536de33bfda9369:resources/config/core.php",
+            "streams-core@65ea4668d86fefa20d4eaba35536de33bfda9369:src/Support/Integrator.php",
+            "streams-api@22d2351345631480102aa1377e6a6a73d765c7a5:src/ApiManager.php",
+            "streams-ui@3a30c8676df7815804a31cf5388b8fee80cdb541:src/Builders/Panels/Concerns/HasTenant.php",
+            "streams-ui@3a30c8676df7815804a31cf5388b8fee80cdb541:src/Builders/Panels/Concerns/HasRoutes.php"
+        ],
+        "finding": "applications_id defaults to applications. API tenant is stored, not applied. Panel::tenant exists and the route tenant block is commented out."
+    },
+    {
+        "page": "streams/data/docs/upgrading.md",
+        "package": "all",
+        "type": "features",
+        "status": "implemented",
+        "proof": [
+            "streams-sdk@2aff9ebe3a0a58b4e48cb244af0ee683e17ef7b9:src/Console/Commands/MakeLivewire.php",
+            "streams-sdk@2aff9ebe3a0a58b4e48cb244af0ee683e17ef7b9:src/SdkServiceProvider.php",
+            "streams-core@65ea4668d86fefa20d4eaba35536de33bfda9369:src/Criteria/Criteria.php",
+            "streams-api@22d2351345631480102aa1377e6a6a73d765c7a5:src/ApiManager.php"
+        ],
+        "finding": "streams:admin is not registered. streams:livewire and --force exist. Criteria::with and API::routeCrud exist."
+    },
+    {
+        "page": "streams/data/docs/use-cases.md",
+        "package": "all",
+        "type": "features",
+        "status": "implemented",
+        "proof": [
+            "streams@06fde618b8f8f8a12680f9d98314728de34c03dd:composer.json",
+            "streams-core@65ea4668d86fefa20d4eaba35536de33bfda9369:src/Stream/StreamManager.php",
+            "streams-ui@3a30c8676df7815804a31cf5388b8fee80cdb541:composer.json",
+            "streams-api@22d2351345631480102aa1377e6a6a73d765c7a5:composer.json"
+        ],
+        "finding": "Core, UI, and API paths match those packages. The starter line lists Core, UI, and API only, matching streams/streams 1.0."
+    },
+    {
+        "page": "streams/data/docs/users.md",
+        "package": "all",
+        "type": "features",
+        "status": "implemented",
+        "proof": [
+            "streams-core@65ea4668d86fefa20d4eaba35536de33bfda9369:src/Stream/Stream.php",
+            "streams-api@22d2351345631480102aa1377e6a6a73d765c7a5:src/Http/Middleware/EnsureApiIsEnabled.php"
+        ],
+        "finding": "Core has no user or auth replacement. The page sends authentication to Laravel and to the API gate."
+    },
+    {
+        "page": "streams/data/docs/versions.md",
+        "package": "all",
+        "type": "variables",
+        "status": "implemented",
+        "proof": [
+            "streams-core@5fd458f43618f9e744f7c43646242491394508fc:composer.json",
+            "streams-core@9291456367b85482f83504046a37ec6f7dd59dd9:composer.json",
+            "streams-ui@3a30c8676df7815804a31cf5388b8fee80cdb541:composer.json",
+            "streams-api@22d2351345631480102aa1377e6a6a73d765c7a5:composer.json",
+            "streams-api@0d3ba86d22473114553779420d3c1e15bb096f20:composer.json",
+            "streams-sdk@198c74c32e52b7abe0d99e4f74ee13296eee4d63:composer.json",
+            "streams-sdk@2aff9ebe3a0a58b4e48cb244af0ee683e17ef7b9:composer.json",
+            "streams-testing@ec5dd5f41b814a2b15b5dc1aa8a9f5911281781c:composer.json",
+            "streams@06fde618b8f8f8a12680f9d98314728de34c03dd:composer.json",
+            "streams.dev:composer.json"
+        ],
+        "finding": "UI requires Livewire ^3.0. Testing requires testbench ^8.36. The starter declares PHP ^8.0.2 and Laravel ^10.0. Core on 2.0 and rc/prep declares Laravel ^10|^11|^12. Core 2.0 aliases dev-master to 2.x-dev and does not declare php. Core and API on rc/prep declare php ^8.2. SDK 1.0 does not declare php; sdk/rc does. The latest stable Core tag is v1.10.5."
+    },
+    {
+        "page": "streams/data/docs/workflows.md",
+        "package": "all",
+        "type": "features",
+        "status": "implemented",
+        "proof": [
+            "streams-core@65ea4668d86fefa20d4eaba35536de33bfda9369:src/Support/Workflow.php",
+            "streams-core@65ea4668d86fefa20d4eaba35536de33bfda9369:src/Support/Traits/FiresCallbacks.php",
+            "streams-core@65ea4668d86fefa20d4eaba35536de33bfda9369:README.md"
+        ],
+        "finding": "process, addStep, doFirst, doBefore, doAfter, and passThrough exist. The README still has the pipeline question unchecked."
+    },
+    {
+        "page": "streams/data/docs/ui-playground.md",
+        "package": "ui",
+        "type": "playground",
+        "status": "partial",
+        "proof": [
+            "streams.dev:routes/web.php",
+            "streams.dev:app/Support/PlaygroundPreview.php",
+            "streams.dev:app/Support/PlaygroundSchema.php",
+            "streams.dev:app/Livewire/PlaygroundConfig.php",
+            "streams.dev:public/schema/catalog.schema.json",
+            "streams.dev:resources/playground/catalog.json",
+            "streams.dev:tests/Feature/PlaygroundComponentTest.php",
+            "streams.dev:tests/Feature/PlaygroundConfigTest.php"
+        ],
+        "finding": "Catalog component routes render package builders with in-memory defaults and logged render gaps. The component page edits the streams make node as JSON, validates it against catalog.schema.json, and re-renders without a reload. Share links and browser test controls remain planned; view-less column builders use the package text view and the image column is a package placeholder."
+    }
+]

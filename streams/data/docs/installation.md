@@ -7,7 +7,9 @@ category: getting-started
 package: all
 order: 20
 tags: [installation]
-status: ready
+editorial_status: ready
+status: implemented
+tracking_task: 269
 ---
 
 ## Server requirements
@@ -29,7 +31,7 @@ For image handling, install GD or the Imagick PHP extension. See [Images](/docs/
 | `streams/streams` starter | Yes | No | No | Pins `laravel/framework ^10.0`. |
 | streams.dev (this site) | No | No | Yes | Runs Laravel 12 on PHP `^8.2`, with Core (`rc/prep`), UI, and the SDK as a dev dependency. |
 
-Every PHP package needs **PHP 8.2 or newer**: Core, API, and SDK declare `php: ^8.2`, and UI and Testing require Core. Until `streams/testing` supports Laravel 11 and 12, the package test suites for Core, UI, and API run on Laravel 10 only, so treat 11 and 12 as supported but not yet verified in CI. See [Versions and support](/docs/versions) for install constraints and branches.
+Every PHP package needs **PHP 8.2 or newer**. On `rc/prep`, Core and API declare `php: ^8.2`, and the SDK on `sdk/rc` declares `php: ^8.2` too. UI and Testing require Core. Until `streams/testing` supports Laravel 11 and 12, the package test suites for Core, UI, and API run on Laravel 10 only, so treat 11 and 12 as supported but not yet verified in CI. See [Versions and support](/docs/versions) for install constraints and branches.
 
 ## New projects
 

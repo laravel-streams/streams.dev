@@ -7,7 +7,9 @@ category: getting-started
 package: all
 order: 60
 tags: [changelog]
-status: ready
+editorial_status: ready
+status: implemented
+tracking_task: 268
 ---
 
 Streams packages are pre-release and installed from development branches, so this log is organized by month and branch rather than by version. Entries come from each repository's commit history. Changes that need action on your side are marked **Breaking** and explained in the [Upgrade guide](/docs/upgrading).
@@ -15,7 +17,7 @@ Streams packages are pre-release and installed from development branches, so thi
 ## September 2026
 
 - **SDK (`1.0` release candidate):** Added a local-development [MCP server](/docs/mcp) (`php artisan mcp:start streams`, needs `laravel/mcp` on Laravel 11.45+ or 12.41+) with 14 tools, 2 resources, and the `design-stream` prompt. Added [`streams:validate`](/docs/sdk/commands#streamsvalidate) and [`streams:list --json`](/docs/sdk/commands#streamslist), and the [stream definition schema](/docs/sdk/stream-schema), served at `/schema/streams.schema.json`. `streams:livewire` now generates Livewire 3 components in `App\Livewire`. **Breaking:** `streams:admin` was removed, and `make:stream` and `streams:livewire` refuse to overwrite files without `--force`. The SDK now requires PHP 8.2.
-- **Core, API (release candidates):** Require PHP 8.2. Core supports the Laravel 11 and 12 filesystem contract and Carbon 3.
+- **Core, API (release candidates):** On `rc/prep`, Core and API require PHP 8.2 (`php: ^8.2`). Core supports the Laravel 11 and 12 filesystem contract and Carbon 3.
 - **Docs:** streams.dev is now the single source of truth for package documentation. Added [Versions and support](/docs/versions), this changelog, the [Upgrade guide](/docs/upgrading), `/llms.txt`, `/llms-full.txt`, and raw markdown for every page (append `.md` to any docs URL). Also added [Agents](/docs/agents), [MCP](/docs/mcp) (then planned; it has since shipped in `streams/sdk`), [Workflows](/docs/workflows), [Tenancy](/docs/tenancy), [Theming](/docs/ui/theming), and the [SDK command reference](/docs/sdk/commands).
 - **UI (`1.0`):** HTML attribute support on more components.
 

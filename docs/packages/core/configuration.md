@@ -6,7 +6,9 @@ section: packages
 package: core
 order: 30
 tags: [core, configuration]
-status: ready
+editorial_status: ready
+status: implemented
+tracking_task: null
 ---
 
 Core configuration lives in `config/streams/core.php`, published from the package. Environment variables override defaults for deployment-specific paths and sources.

@@ -1,0 +1,54 @@
+{
+    "name": "streams/sdk",
+    "description": "Artisan generators, stream definition validation, and a local MCP server for Laravel Streams.",
+    "type": "streams-addon",
+    "license": "MIT",
+    "homepage": "https://streams.dev",
+    "support": {
+        "issues": "https://github.com/laravel-streams/streams-sdk/issues",
+        "source": "https://github.com/laravel-streams/streams-sdk",
+        "docs": "https://streams.dev/docs/sdk/introduction"
+    },
+    "authors": [
+        {
+            "name": "Ryan Thompson",
+            "email": "ryan@pyrocms.com"
+        }
+    ],
+    "require": {
+        "php": "^8.2",
+        "streams/core": "^2.0",
+        "opis/json-schema": "^2.3"
+    },
+    "require-dev": {
+        "laravel/framework": "^12.41",
+        "laravel/mcp": "^1.0",
+        "orchestra/testbench-core": "^10.0",
+        "phpunit/phpunit": "^11.5",
+        "mockery/mockery": "^1.6",
+        "livewire/livewire": "^3.6"
+    },
+    "suggest": {
+        "laravel/mcp": "Required to run the Streams MCP server for AI agents (php artisan mcp:start streams). Needs Laravel 11.45+ or 12.41+.",
+        "livewire/livewire": "Required by the components streams:livewire generates (^3.0)."
+    },
+    "autoload": {
+        "psr-4": {
+            "Streams\\Sdk\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Streams\\Sdk\\Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Streams\\Sdk\\SdkServiceProvider"
+            ]
+        }
+    },
+    "prefer-stable": true,
+    "minimum-stability": "dev"
+}
