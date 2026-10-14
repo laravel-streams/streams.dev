@@ -31,7 +31,7 @@ $films = Streams::entries('films')->get();
 
 ```json
 {
-    "episode_id": 1,
+    "episode_id": 4,
     "title": "A New Hope",
     "director": "George Lucas",
     "producer": "Gary Kurtz, Rick McCallum",
@@ -46,8 +46,8 @@ $films = Streams::entries('films')->get();
 - `title` (string) - Film title
 - `director` (string) - Director name
 - `producer` (string) - Producer names
-- `release_date` (datetime) - Release date
-- `opening_crawl` (text) - Opening text
+- `release_date` (date) - Release date
+- `opening_crawl` (string) - Opening text
 - `created` (datetime) - Creation timestamp
 - `edited` (datetime) - Last edit timestamp
 
@@ -264,7 +264,7 @@ protected function setUp(): void
         'id' => 'custom_products',
         'name' => 'Products',
         'config' => [
-            'source' => ['type' => 'file', 'path' => 'streams/data/custom_products.json'],
+            'source' => ['type' => 'file', 'file' => 'streams/data/custom_products.json'],
         ],
         'fields' => [
             'id' => 'integer',

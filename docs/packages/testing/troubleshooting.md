@@ -6,7 +6,8 @@ section: packages
 package: testing
 order: 60
 tags: [testing, troubleshooting]
-status: ready
+status: implemented
+tracking_task: 263
 ---
 
 This guide helps you resolve common issues when using the Streams Testing package.
@@ -168,11 +169,13 @@ php -d memory_limit=512M vendor/bin/phpunit
 2. **Check for infinite loops**:
 
 ```php
-// Add timeouts to potentially long operations
+// Reject queries that exceed a 30-second elapsed-time budget
 $films = Streams::entries('films')
     ->timeout(30)
     ->get();
 ```
+
+`timeout()` throws `Streams\Core\Criteria\Exception\QueryTimedOut` when the budget is exceeded. The budget starts when `get()` or `count()` runs and includes result hydration. Checks are cooperative: a blocking adapter call must return before Core can check elapsed time. Configure native database or HTTP timeouts as well to interrupt blocked I/O; this helper does not stop an infinite loop inside an adapter.
 
 3. **Run with verbose output to identify hanging test**:
 
@@ -417,7 +420,6 @@ protected function getPackageProviders($app)
 {
     return [
         \Streams\Core\StreamsServiceProvider::class,
-        \Streams\Testing\TestServiceProvider::class,
     ];
 }
 ```
@@ -515,6 +517,8 @@ protected function tearDown(): void
 // Load only needed data
 $this->loadFixtures(['films']); // Not all streams
 ```
+
+`clearData()` removes active fixture data while keeping stream definitions and the committed backup. `loadFixtures()` replaces active data with only the named fixtures, including their available JSON, CSV and directory formats. Pass `[]` to load no data. Unknown names throw `InvalidArgumentException` before changing existing data. Neither helper automatically loads related streams; include those names when testing relationships. Parent teardown restores the complete committed fixtures.
 
 3. **Garbage collection**:
 

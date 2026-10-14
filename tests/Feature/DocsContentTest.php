@@ -21,6 +21,17 @@ class DocsContentTest extends TestCase
 
     protected const STATUSES = ['draft', 'review', 'ready', 'deprecated', 'implemented'];
 
+    public function test_testing_registry_gaps_are_implemented_and_tracked()
+    {
+        $pages = $this->pages();
+
+        foreach (['test-data', 'troubleshooting', 'writing-tests'] as $id) {
+            $page = 'docs/packages/testing/'.$id;
+            $this->assertSame('implemented', $pages[$page]['frontmatter']['status'], $page);
+            $this->assertSame(263, $pages[$page]['frontmatter']['tracking_task'], $page);
+        }
+    }
+
     /**
      * @return array<string, array{frontmatter: array, body: string}>
      */
