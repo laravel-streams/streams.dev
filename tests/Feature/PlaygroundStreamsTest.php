@@ -3,9 +3,8 @@
 namespace Tests\Feature;
 
 use Illuminate\Contracts\Console\Kernel;
-use Illuminate\Database\Connectors\ConnectionFactory;
-use Illuminate\Database\DatabaseManager;
 use Mockery;
+use Mockery\MockInterface;
 use Streams\Core\Criteria\Adapter\FilebaseAdapter;
 use Streams\Core\Support\Facades\Streams;
 use Tests\TestCase;
@@ -17,11 +16,16 @@ class PlaygroundStreamsTest extends TestCase
         $app = require __DIR__.'/../../bootstrap/app.php';
 
         // Guard bootstrap as well as queries: even requesting a connection fails.
-        $database = Mockery::mock(DatabaseManager::class, [$app, new ConnectionFactory($app)])->makePartial();
-        $database->shouldReceive('connection')->never();
-        $app->instance('db', $database);
+        $app->extend('db', function ($database) {
+            $guard = Mockery::mock($database);
+            $guard->shouldReceive('connection')->never();
+
+            return $guard;
+        });
 
         $app->make(Kernel::class)->bootstrap();
+
+        $this->assertInstanceOf(MockInterface::class, $app->make('db'));
 
         return $app;
     }
