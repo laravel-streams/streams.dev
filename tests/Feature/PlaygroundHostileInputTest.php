@@ -22,6 +22,7 @@ class PlaygroundHostileInputTest extends TestCase
 
         return [
             'unknown key' => [['builder' => $text, 'defaults' => ['name' => 'title', 'writeFile' => 'owned']]],
+            'class name' => [['builder' => $text, 'defaults' => ['name' => 'title', 'class' => 'owned']]],
             'foreign class' => [['builder' => 'Illuminate\\Filesystem\\Filesystem', 'defaults' => ['name' => 'title']]],
             'unknown UI class' => [['builder' => 'Streams\\Ui\\Builders\\Missing', 'defaults' => ['name' => 'title']]],
             'base builder class' => [['builder' => 'Streams\\Ui\\Builders\\ViewBuilder', 'defaults' => ['name' => 'title']]],
@@ -31,6 +32,12 @@ class PlaygroundHostileInputTest extends TestCase
             'backslash link' => [['builder' => $action, 'defaults' => ['name' => 'edit', 'url' => '/\\evil.example']]],
             'control character link' => [['builder' => $action, 'defaults' => ['name' => 'edit', 'url' => "/\x00evil.example"]]],
             'action callback' => [['builder' => $action, 'defaults' => ['name' => 'delete', 'callback' => 'unlink']]],
+            'missing nested defaults' => [[
+                'builder' => 'Streams\\Ui\\Builders\\Forms\\Form',
+                'defaults' => ['name' => 'contact', 'actions' => [
+                    ['builder' => $action],
+                ]],
+            ]],
             'nested crafted link' => [[
                 'builder' => 'Streams\\Ui\\Builders\\Forms\\Form',
                 'defaults' => ['name' => 'contact', 'actions' => [
@@ -79,7 +86,26 @@ class PlaygroundHostileInputTest extends TestCase
         $before = $this->diskState();
 
         $json = json_encode($node, JSON_THROW_ON_ERROR);
-        $this->assertFalse(PlaygroundSchema::validate($json)['valid']);
+        $validated = PlaygroundSchema::validate($json);
+        $this->assertFalse($validated['valid']);
+        $messages = implode("\n", $validated['errors']);
+
+        if (isset($node['defaults']['writeFile'])) {
+            $this->assertStringContainsString('/defaults/writeFile: Unknown keys are not allowed.', $messages);
+        }
+
+        if (isset($node['defaults']['class'])) {
+            $this->assertStringContainsString('/defaults/class: Class names are not allowed.', $messages);
+        }
+
+        if (isset($node['defaults']['callback'])) {
+            $this->assertStringContainsString('/defaults/callback: Action callbacks are not allowed.', $messages);
+        }
+
+        if (isset($node['defaults']['actions'][0]) && ! isset($node['defaults']['actions'][0]['defaults'])) {
+            $this->assertStringContainsString('/defaults: The example config must include a defaults object.', $messages);
+        }
+
         $editor->set('config', $json)
             ->assertSee('data-playground-errors', false)
             ->assertSet('preview', $preview)

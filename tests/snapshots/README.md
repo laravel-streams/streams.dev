@@ -23,8 +23,9 @@ CSRF tokens, and Livewire instance IDs/serialized runtime state, while retaining
 rendered markup, labels, links, control attributes, and action directives.
 These are HTML snapshots; no browser screenshot comparison is involved.
 
-Hostile-input tests reject unknown properties, foreign/unknown builder classes,
-unsafe links (including nested links), and callback configuration. A direct
+Hostile-input tests reject unknown properties, class names, foreign/unknown builder classes,
+unsafe links (including nested links), callback configuration, and nodes whose nested
+defaults are missing. A direct
 Livewire action call must fail. They compare file hashes and file membership
 across application code, routes, flat-file content, docs, resources, public
 assets, and storage before and after each attempt. Blade's error view is warmed
