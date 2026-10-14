@@ -7,7 +7,9 @@ category: getting-started
 package: all
 order: 30
 tags: [use, cases]
-status: ready
+editorial_status: ready
+status: partial
+tracking_task: pending
 ---
 
 Pick the path closest to what your team is building. Each path lists packages to require and the first stream to define.

@@ -19,8 +19,7 @@ class DocsContentTest extends TestCase
 
     protected const PACKAGES = ['core', 'ui', 'api', 'sdk', 'testing', 'client', 'site', 'all'];
 
-    // Legacy pages remain valid while the package-by-package registry audit runs.
-    protected const STATUSES = ['draft', 'review', 'ready', 'deprecated', 'implemented', 'partial', 'planned'];
+    protected const STATUSES = ['implemented', 'partial', 'planned'];
 
     /**
      * @return array<string, array{frontmatter: array, body: string}>

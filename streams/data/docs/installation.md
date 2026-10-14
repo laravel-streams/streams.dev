@@ -7,7 +7,9 @@ category: getting-started
 package: all
 order: 20
 tags: [installation]
-status: ready
+editorial_status: ready
+status: partial
+tracking_task: pending
 ---
 
 ## Server requirements

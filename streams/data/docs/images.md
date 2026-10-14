@@ -7,7 +7,9 @@ category: frontend
 package: core
 order: 10
 tags: [core, images]
-status: ready
+editorial_status: ready
+status: partial
+tracking_task: pending
 ---
 
 ## Introduction
