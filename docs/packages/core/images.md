@@ -7,7 +7,7 @@ package: core
 order: 180
 tags: [core, images]
 editorial_status: ready
-status: partial
+status: implemented
 tracking_task: 255
 ---
 

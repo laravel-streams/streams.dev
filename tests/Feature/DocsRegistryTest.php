@@ -38,7 +38,7 @@ class DocsRegistryTest extends TestCase
 
     public function test_planned_page_is_published_with_a_visible_status(): void
     {
-        $this->get('/docs/core/authorization')->assertOk()
+        $this->get('/docs/sdk/tap')->assertOk()
             ->assertSee('data-docs-status="planned"', false)
             ->assertSee('not implemented yet');
     }

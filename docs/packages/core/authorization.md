@@ -1,17 +1,47 @@
 ---
 title: 'Core: Authorization gates'
 nav_title: Authorization gates
-description: Stream-config authorization gates are on the Core and API roadmaps and are not implemented in the inspected snapshot.
+description: Register Laravel gates and a policy class from a stream definition.
 section: packages
 package: core
 order: 90
 tags: [core, authorization]
-status: planned
+status: implemented
 tracking_task: 255
 ---
 
-Core's README lists this unfinished item: gates based on Laravel's gate layer, customized by stream config. The API README repeats that line on its roadmap.
+Register Laravel authorization from a stream when that stream is registered. Core reads `config.gates`, a top-level `gates` map, and a top-level `policy` class.
 
-In the inspected Core snapshot, `Integrator` can call `Gate::policy` and `Gate::define` only when an integration map includes `policies`. Nothing reads a `gates` key, or the `policy` string shown on [Streams](/docs/streams), off a stream definition.
+## Stream policy
 
-Laravel policies you register yourself still work. This page does not document a Streams gate API, because that API is not in the snapshot. `tracking_task` is 255.
+Set `policy` to a policy class. Core calls `Gate::policy()` for the stream entry class in `config.abstract`. When `config.abstract` is omitted, the entry class is `Streams\Core\Entry\Entry`.
+
+```json
+{
+    "policy": "App\\Contacts\\ContactPolicy",
+    "config": {
+        "abstract": "App\\Contacts\\Contact"
+    }
+}
+```
+
+Streams that share one entry class share one policy. Give each stream its own `config.abstract` when the policies differ.
+
+## Stream config gates
+
+`config.gates` uses the same map as `Integrator::policies()`. A key that names a class registers a model policy. Any other key registers a gate ability. A top-level `gates` map is used only when `config.gates` is absent. `Integrator::gates()` registers the same map from an integration payload.
+
+```json
+{
+    "config": {
+        "gates": {
+            "contacts.review": "App\\Contacts\\ContactPolicy@review"
+        }
+    }
+}
+```
+
+## Related
+
+- [Streams](/docs/streams)
+- [Integrator](/docs/core/integrator)

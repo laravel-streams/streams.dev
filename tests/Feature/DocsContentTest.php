@@ -285,6 +285,40 @@ class DocsContentTest extends TestCase
             ->assertSee('layout: page', false);
     }
 
+    public function test_local_development_uses_master_and_the_dev_ports(): void
+    {
+        $page = $this->pages()['streams/data/docs/local-development'];
+        $body = $page['body'];
+
+        $this->assertSame('implemented', $page['frontmatter']['status']);
+        $this->assertSame(191, $page['frontmatter']['tracking_task']);
+
+        $this->assertStringContainsString(
+            'git clone https://github.com/laravel-streams/streams.dev.git --branch master',
+            $body
+        );
+        $this->assertStringNotContainsString('--branch develop', $body);
+        $this->assertStringNotContainsString('branch `develop`', $body);
+        $this->assertStringNotContainsString('Work on `develop`', $body);
+        $this->assertStringContainsString('branch `master`', $body);
+        $this->assertStringContainsString('http://127.0.0.1:8427', $body);
+        $this->assertStringContainsString('port 5427', $body);
+        $this->assertStringContainsString('git switch -c feature/your-change', $body);
+        $this->assertStringContainsString('The old `develop`, `next`, `integration/rc` and `production` branches no longer exist.', $body);
+
+        $blade = file_get_contents(base_path('resources/views/docs.blade.php'));
+        $this->assertStringContainsString('https://github.com/laravel-streams/streams.dev/blob/master/', $blade);
+        $this->assertStringNotContainsString('/blob/develop/', $blade);
+
+        $this->get('/docs/local-development')
+            ->assertOk()
+            ->assertDontSee('data-docs-status="partial"', false)
+            ->assertDontSee('--branch develop', false)
+            ->assertSee('--branch master', false)
+            ->assertSee('127.0.0.1:8427', false)
+            ->assertSee('5427', false);
+    }
+
     public function test_package_nav_points_at_package_files()
     {
         foreach (DocsNav::packages() as $name => $package) {

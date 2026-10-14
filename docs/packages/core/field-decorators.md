@@ -7,7 +7,7 @@ package: core
 order: 60
 tags: [core, field, decorators]
 editorial_status: ready
-status: partial
+status: implemented
 tracking_task: 255
 ---
 
@@ -23,7 +23,15 @@ Use decorators in views when you need formatted output (rendered markdown, human
 $html = $entry->decorate('body');
 ```
 
-Each field type may register a decorator that knows how to format its value. String fields with markdown configuration return parsed HTML through the decorator pipeline.
+Each field type may register a decorator that knows how to format its value. String fields with `config.markdown` set to `true` return parsed HTML when the decorator is cast to a string.
+
+```json
+{ "handle": "body", "type": "string", "config": { "markdown": true } }
+```
+
+```php
+echo $entry->decorate('body');
+```
 
 ## Protected fields
 
