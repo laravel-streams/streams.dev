@@ -4,6 +4,7 @@ namespace Tests\Feature;
 
 use App\Support\DocsNav;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Http;
 use Streams\Core\Support\Facades\Streams;
 use Symfony\Component\Yaml\Yaml;
 use Tests\TestCase;
@@ -242,6 +243,23 @@ class DocsContentTest extends TestCase
 
         $this->assertSame('^8.2', $core['require']['php'] ?? null);
         $this->assertSame('^8.2', $sdk['require']['php'] ?? null);
+
+        $registry = json_decode(file_get_contents(base_path('docs/registry.json')), true, 512, JSON_THROW_ON_ERROR);
+        $changelogProof = [];
+        foreach ($registry as $row) {
+            if ($row['page'] === 'streams/data/docs/changelog.md') {
+                $changelogProof = $row['proof'];
+            }
+        }
+        $apiCommit = '0d3ba86d22473114553779420d3c1e15bb096f20';
+        $this->assertContains('streams-api@'.$apiCommit.':composer.json', $changelogProof);
+
+        // streams/api is not installed in this app. Read the rc/prep snapshot the registry cites.
+        $api = $this->registryPackageComposer('streams-api', $apiCommit, 'rc/prep');
+        $this->assertSame('streams/api', $api['name']);
+        $this->assertArrayHasKey('php', $api['require']);
+        $this->assertSame('^8.2', $api['require']['php']);
+
         $this->assertStringContainsString(
             'function registerMcpServer(',
             file_get_contents(base_path('vendor/streams/sdk/src/SdkServiceProvider.php'))
@@ -327,5 +345,125 @@ class DocsContentTest extends TestCase
                 "{$name} nav does not account for every markdown file."
             );
         }
+    }
+
+    /**
+     * Composer manifest at a registry proof commit.
+     *
+     * Prefers a local checkout (the Core symlink's sibling, then the paths
+     * scripts/composer-local.php searches). Otherwise reads that commit from GitHub.
+     *
+     * @return array<string, mixed>
+     */
+    protected function registryPackageComposer(string $repository, string $commit, string $branch): array
+    {
+        foreach ($this->packageCheckouts($repository) as $checkout) {
+            if (! $this->gitSucceeds($checkout, ['cat-file', '-e', $commit])) {
+                continue;
+            }
+
+            $this->assertTrue(
+                $this->gitSucceeds($checkout, ['merge-base', '--is-ancestor', $commit, $branch]),
+                "{$repository}@{$commit} is not on {$branch}."
+            );
+
+            return json_decode(
+                $this->gitOutput($checkout, ['show', $commit.':composer.json']),
+                true,
+                512,
+                JSON_THROW_ON_ERROR
+            );
+        }
+
+        $headers = [
+            'User-Agent' => 'streams.dev-docs-test',
+            'Accept' => 'application/vnd.github+json',
+        ];
+
+        $composer = Http::timeout(20)
+            ->withHeaders($headers)
+            ->get("https://raw.githubusercontent.com/laravel-streams/{$repository}/{$commit}/composer.json")
+            ->throw()
+            ->json();
+
+        $this->assertIsArray($composer, "{$repository}@{$commit} composer.json was not readable.");
+
+        $status = Http::timeout(20)
+            ->withHeaders($headers)
+            ->get('https://api.github.com/repos/laravel-streams/'.$repository.'/compare/'.rawurlencode($branch).'...'.$commit)
+            ->throw()
+            ->json('status');
+
+        $this->assertContains($status, ['identical', 'behind'], "{$repository}@{$commit} is not on {$branch}.");
+
+        return $composer;
+    }
+
+    /**
+     * @return list<string>
+     */
+    protected function packageCheckouts(string $repository): array
+    {
+        $package = str_starts_with($repository, 'streams-') ? substr($repository, strlen('streams-')) : $repository;
+        $env = getenv('STREAMS_'.strtoupper($package).'_PATH') ?: '';
+        $candidates = $env !== '' ? [$env] : [];
+
+        $core = realpath(base_path('vendor/streams/core'));
+        if ($core !== false) {
+            $candidates[] = dirname($core).'/'.$repository;
+        }
+
+        foreach ([
+            base_path('../_rc/'.$repository),
+            base_path('../_packages/'.$repository),
+            base_path('../'.$repository),
+        ] as $candidate) {
+            $candidates[] = $candidate;
+        }
+
+        $found = [];
+        foreach ($candidates as $candidate) {
+            $path = rtrim($candidate, '/');
+            if (is_file($path.'/composer.json')) {
+                $found[] = $path;
+            }
+        }
+
+        return array_values(array_unique($found));
+    }
+
+    /**
+     * @param  list<string>  $arguments
+     */
+    protected function gitSucceeds(string $checkout, array $arguments): bool
+    {
+        return $this->git($checkout, $arguments)['code'] === 0;
+    }
+
+    /**
+     * @param  list<string>  $arguments
+     */
+    protected function gitOutput(string $checkout, array $arguments): string
+    {
+        $result = $this->git($checkout, $arguments);
+        $this->assertSame(0, $result['code'], "git failed in {$checkout}: ".$result['output']);
+
+        return $result['output'];
+    }
+
+    /**
+     * @param  list<string>  $arguments
+     * @return array{code: int, output: string}
+     */
+    protected function git(string $checkout, array $arguments): array
+    {
+        $command = 'git -C '.escapeshellarg($checkout);
+        foreach ($arguments as $argument) {
+            $command .= ' '.escapeshellarg($argument);
+        }
+
+        exec($command.' 2>&1', $output, $code);
+
+        return ['code' => $code, 'output' => trim(implode("\n", $output))];
     }
 }
