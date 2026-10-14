@@ -3,6 +3,7 @@
 namespace Tests\Feature;
 
 use App\Support\DocsNav;
+use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Http;
 use Streams\Core\Support\Facades\Streams;
@@ -529,10 +530,69 @@ class DocsContentTest extends TestCase
         }
     }
 
+    public function test_registry_checkouts_include_vendor_git_directories_and_worktrees(): void
+    {
+        $originalBase = $this->app->basePath();
+        $root = sys_get_temp_dir().'/streams-registry-'.bin2hex(random_bytes(8));
+        $files = new Filesystem;
+        $originalEnv = getenv('STREAMS_CORE_PATH');
+
+        try {
+            $this->app->setBasePath($root);
+            $files->makeDirectory($root.'/manifest-only', 0755, true);
+            $files->put($root.'/manifest-only/composer.json', '{}');
+            putenv('STREAMS_CORE_PATH='.$root.'/manifest-only');
+
+            foreach (['core', 'api', 'sdk', 'ui', 'testing'] as $package) {
+                $path = $root.'/vendor/streams/'.$package;
+                $files->makeDirectory($path, 0755, true);
+
+                if ($package === 'sdk') {
+                    $files->put($path.'/.git', 'gitdir: /unused-fixture');
+                } else {
+                    $files->makeDirectory($path.'/.git');
+                }
+
+                $this->assertContains($path, $this->packageCheckouts('streams-'.$package));
+            }
+
+            $this->assertNotContains($root.'/manifest-only', $this->packageCheckouts('streams-core'));
+        } finally {
+            $this->app->setBasePath($originalBase);
+            putenv($originalEnv === false ? 'STREAMS_CORE_PATH' : 'STREAMS_CORE_PATH='.$originalEnv);
+            $files->deleteDirectory($root);
+        }
+    }
+
+    public function test_registry_proof_accepts_a_remote_tracking_branch_without_http(): void
+    {
+        Http::preventStrayRequests();
+        $proof = $this->getMockBuilder(self::class)
+            ->disableOriginalConstructor()
+            ->onlyMethods(['packageCheckouts', 'gitSucceeds', 'gitOutput'])
+            ->getMock();
+        $proof->method('packageCheckouts')->willReturn(['/fixture/core']);
+        $proof->method('gitSucceeds')->willReturnCallback(
+            fn (string $checkout, array $arguments): bool => in_array($arguments, [
+                ['cat-file', '-e', 'proof'],
+                ['cat-file', '-e', 'proof^{commit}'],
+                ['merge-base', '--is-ancestor', 'proof', 'origin/rc/prep'],
+            ], true)
+        );
+        $proof->expects($this->once())->method('gitOutput')
+            ->with('/fixture/core', ['show', 'proof:composer.json'])
+            ->willReturn('{"name":"streams/core","require":{"php":"^8.2"}}');
+
+        $composer = $proof->registryPackageComposer('streams-core', 'proof', 'rc/prep');
+
+        $this->assertSame('^8.2', $composer['require']['php']);
+        Http::assertNothingSent();
+    }
+
     /**
      * Composer manifest at a registry proof commit.
      *
-     * Prefers a local checkout (the Core symlink's sibling, then the paths
+     * Prefers a local checkout (installed vendor packages, the Core symlink's sibling, then the paths
      * scripts/composer-local.php searches). Otherwise reads that commit from GitHub.
      *
      * @return array<string, mixed>
@@ -540,14 +600,16 @@ class DocsContentTest extends TestCase
     protected function registryPackageComposer(string $repository, string $commit, string $branch): array
     {
         foreach ($this->packageCheckouts($repository) as $checkout) {
-            if (! $this->gitSucceeds($checkout, ['cat-file', '-e', $commit])) {
+            if (! $this->gitSucceeds($checkout, ['cat-file', '-e', $commit.'^{commit}'])) {
                 continue;
             }
 
-            $this->assertTrue(
-                $this->gitSucceeds($checkout, ['merge-base', '--is-ancestor', $commit, $branch]),
-                "{$repository}@{$commit} is not on {$branch}."
-            );
+            $onBranch = $this->gitSucceeds($checkout, ['merge-base', '--is-ancestor', $commit, $branch])
+                || $this->gitSucceeds($checkout, ['merge-base', '--is-ancestor', $commit, 'origin/'.$branch]);
+
+            if (! $onBranch) {
+                continue;
+            }
 
             return json_decode(
                 $this->gitOutput($checkout, ['show', $commit.':composer.json']),
@@ -590,6 +652,19 @@ class DocsContentTest extends TestCase
         $env = getenv('STREAMS_'.strtoupper($package).'_PATH') ?: '';
         $candidates = $env !== '' ? [$env] : [];
 
+        $vendor = match ($repository) {
+            'streams-core' => 'core',
+            'streams-api' => 'api',
+            'streams-sdk' => 'sdk',
+            'streams-ui' => 'ui',
+            'streams-testing' => 'testing',
+            default => null,
+        };
+
+        if ($vendor !== null) {
+            $candidates[] = base_path('vendor/streams/'.$vendor);
+        }
+
         $core = realpath(base_path('vendor/streams/core'));
         if ($core !== false) {
             $candidates[] = dirname($core).'/'.$repository;
@@ -606,7 +681,7 @@ class DocsContentTest extends TestCase
         $found = [];
         foreach ($candidates as $candidate) {
             $path = rtrim($candidate, '/');
-            if (is_file($path.'/composer.json')) {
+            if (is_dir($path.'/.git') || is_file($path.'/.git')) {
                 $found[] = $path;
             }
         }
