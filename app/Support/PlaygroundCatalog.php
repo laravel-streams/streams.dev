@@ -112,8 +112,8 @@ class PlaygroundCatalog
             }
         }
 
-        if (isset($defaults['view']) && $defaults['view'] !== 'ui::components.table.columns.text-column' && ! preg_match('/^playground\.[A-Za-z0-9_.-]+$/D', $defaults['view'])) {
-            throw new UnexpectedValueException('Playground default views must use an approved preview view.');
+        if (isset($defaults['view']) && $defaults['view'] !== 'ui::components.table.columns.text-column') {
+            throw new UnexpectedValueException('Playground default views must use the package text-column view.');
         }
 
         if (array_key_exists('paginated', $defaults) && ! is_bool($defaults['paginated'])) {

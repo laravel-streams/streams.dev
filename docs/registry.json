@@ -1388,5 +1388,18 @@
             "streams-core@65ea4668d86fefa20d4eaba35536de33bfda9369:README.md"
         ],
         "finding": "process, addStep, doFirst, doBefore, doAfter, and passThrough exist. The README still has the pipeline question unchecked."
+    },
+    {
+        "page": "streams/data/docs/ui-playground.md",
+        "package": "ui",
+        "type": "playground",
+        "status": "partial",
+        "proof": [
+            "streams.dev:routes/web.php",
+            "streams.dev:app/Support/PlaygroundPreview.php",
+            "streams.dev:resources/playground/catalog.json",
+            "streams.dev:tests/Feature/PlaygroundComponentTest.php"
+        ],
+        "finding": "Catalog component routes render package builders with in-memory defaults and logged render gaps. JSON editing, share links and browser test controls remain planned; view-less column builders use the package text view and the image column is a package placeholder."
     }
 ]

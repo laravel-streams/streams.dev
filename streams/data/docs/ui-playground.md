@@ -7,7 +7,9 @@ category: frontend
 package: ui
 order: 90
 tags: [ui, playground, json, testing]
-status: draft
+editorial_status: ready
+status: partial
+tracking_task: pending
 ---
 
 The [UI Playground](/playground) renders each catalog component with the Streams UI package and the defaults shipped in the playground catalog. The editor, share links, and test controls described below are not available yet. Each unbuilt workflow carries a **Planned** badge.
@@ -19,6 +21,8 @@ The intended scope is UI examples without a real database. For the UI features y
 Open [the Playground](/playground), or use the Playground link in the site header or footer to open it in a new tab. The component navigation opens a live render of that component. JSON editing is planned.
 
 Use the [local development guide](/docs/local-development) to run the documentation site and open `/playground` locally. The shell uses the site's saved light or dark theme.
+
+Previews use in-memory defaults and the installed package's views. Builders without their own column view use the package's text-column view configured in the catalog; the image column currently renders the package's placeholder. These previews reflect the available package implementation. A component that throws while rendering shows a gap notice and logs the failure for investigation.
 
 ## Edit JSON
 

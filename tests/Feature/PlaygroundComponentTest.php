@@ -17,6 +17,13 @@ class PlaygroundComponentTest extends TestCase
         $catalog = json_decode(file_get_contents(resource_path('playground/catalog.json')), true, 512, JSON_THROW_ON_ERROR);
         $this->assertNotEmpty($catalog['components']);
 
+        $gaps = [];
+        Log::listen(function (MessageLogged $event) use (&$gaps): void {
+            if ($event->message === 'Playground render gap.') {
+                $gaps[] = $event->context;
+            }
+        });
+
         foreach ($catalog['components'] as $component) {
             $response = $this->get('/playground/'.$component['id']);
             $response->assertOk();
@@ -30,6 +37,7 @@ class PlaygroundComponentTest extends TestCase
             $this->assertNotNull($preview, $component['id']);
             $this->assertTrue($preview->hasChildNodes(), $component['id']);
             $this->assertNotSame('', trim($response->viewData('preview')), $component['id']);
+            $this->assertSame([], $gaps, $component['id'].' logged a render exception.');
         }
     }
 
