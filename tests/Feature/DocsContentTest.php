@@ -88,6 +88,19 @@ class DocsContentTest extends TestCase
         }
     }
 
+    public function test_client_registry_gaps_are_implemented_and_tracked_by_task_265(): void
+    {
+        $pages = $this->pages();
+
+        foreach (['criteria', 'entries', 'examples', 'introduction', 'middleware', 'quickstart', 'streams'] as $id) {
+            $page = 'docs/packages/client/'.$id;
+            $frontmatter = $pages[$page]['frontmatter'];
+
+            $this->assertSame('implemented', $frontmatter['status'], $page);
+            $this->assertSame(265, $frontmatter['tracking_task'], $page);
+        }
+    }
+
     public function test_titles_are_unique()
     {
         $titles = array_map(fn ($page) => $page['frontmatter']['title'], $this->pages());

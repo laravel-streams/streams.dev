@@ -424,10 +424,7 @@ async function uploadAvatar(userId, file) {
     formData.append('avatar', file);
     
     const response = await client.post(`/users/${userId}/avatar`, {
-        body: formData,
-        headers: {
-            'Content-Type': 'multipart/form-data'
-        }
+        body: formData
     });
     
     return response.data.avatar_url;
@@ -455,10 +452,7 @@ class MediaLibrary {
         formData.append('metadata', JSON.stringify(metadata));
         
         const response = await this.client.post('/media/upload', {
-            body: formData,
-            headers: {
-                'Content-Type': 'multipart/form-data'
-            }
+            body: formData
         });
         
         return response.data;
