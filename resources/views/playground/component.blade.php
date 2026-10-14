@@ -4,7 +4,7 @@
 @section('description', 'Render the '.$component['label'].' Streams UI component with its catalog defaults.')
 
 @section('heading', $component['label'])
-@section('lead', 'Rendered from the Streams UI package with catalog defaults.')
+@section('lead', 'Edit the example config to re-render this component on the page.')
 
 @section('navigation')
 @include('playground.navigation')
@@ -12,13 +12,18 @@
 
 @section('content')
 <p><a href="{{ $component['reference'] }}">UI reference</a></p>
-@if ($gap)
-<div data-playground-gap="{{ $component['id'] }}" role="alert">
-    <p>{{ $component['label'] }} did not render with its catalog defaults. The failure was logged as a playground gap.</p>
+<livewire:playground-config
+    :component-id="$component['id']"
+    :preview="$preview"
+    :gap="$gap"
+    :key="$component['id']"
+/>
+<div data-playground-stage="{{ $component['id'] }}">
+    @include('livewire.playground-stage', [
+        'componentId' => $component['id'],
+        'label' => $component['label'],
+        'preview' => $preview,
+        'gap' => $gap,
+    ])
 </div>
-@else
-<div data-playground-preview="{{ $component['id'] }}">
-    {!! $preview !!}
-</div>
-@endif
 @endsection
