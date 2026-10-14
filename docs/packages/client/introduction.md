@@ -7,8 +7,8 @@ package: client
 order: 10
 tags: [client, introduction]
 editorial_status: ready
-status: partial
-tracking_task: pending
+status: implemented
+tracking_task: 265
 ---
 
 `@laravel-streams/api-client` is a JavaScript client for the [Streams API](/docs/api/introduction). It wraps the API's stream and entry endpoints in a small fluent interface, with a Laravel-style criteria builder and a request/response middleware pipeline.
@@ -17,7 +17,7 @@ tracking_task: pending
 
 - **Zero runtime dependencies.** It uses the native `fetch` API, and ships ESM (`dist/module.js`) and CommonJS (`dist/index.js`) builds.
 - **Two resources.** `client.streams` for stream definitions and `client.entries` for entry CRUD.
-- **Criteria builder.** `where`, `orWhere`, `orderBy`, `limit`, and `paginate`, compiled into the API's query parameters.
+- **Criteria builder.** `where`, `orderBy`, `limit`, and `paginate`, compiled into API bracket parameters. OR and nested criteria use the API query endpoint; GET standardization rejects them.
 - **Middleware.** Request, response, and error hooks with priorities. The defaults serialize request bodies, compile criteria, append query strings, and unwrap the response envelope.
 
 It is the JavaScript counterpart to the PHP [Streams SDK](/docs/sdk/introduction), but they are different things: the SDK is Artisan tooling for building a Streams app, and the client is a runtime library for consuming a Streams API from a browser or Node.
@@ -50,8 +50,14 @@ const posts = await client.entries.get('posts', {
         .limit(10),
 });
 
+console.log(posts.data); // Entries array, unwrapped from the API envelope
+console.log(posts.meta); // Pagination and request metadata
+console.log(posts.links); // Related resources
+
 await client.entries.patch('posts', 1, { title: 'Updated title' });
 ```
+
+The default response middleware retains the full parsed JSON in `response.envelope` and exposes its `data`, `meta`, `links`, and `errors` fields directly. Generic JSON without an API envelope stays as `response.data`. Empty 204 responses have null data. API validation failures throw a `FetchError` with status 409 and parsed errors on `error.response.errors`.
 
 The server side needs [streams/api](/docs/api/installation) installed and enabled. The API has no built-in authentication; your app decides who can call it (see [API authentication](/docs/api/authentication)).
 
