@@ -68,12 +68,12 @@
         "page": "docs/packages/core/field-decorators.md",
         "package": "core",
         "type": "features",
-        "status": "partial",
+        "status": "implemented",
         "proof": [
-            "streams-core@65ea4668d86fefa20d4eaba35536de33bfda9369:src/Field/FieldDecorator.php",
-            "streams-core@65ea4668d86fefa20d4eaba35536de33bfda9369:src/Field/Decorator/StringDecorator.php"
+            "streams-core@2690f4cd6b5b06752d8410679dd6adaeab0f0181:src/Support/Traits/Fluency.php",
+            "streams-core@2690f4cd6b5b06752d8410679dd6adaeab0f0181:src/Field/Decorator/StringDecorator.php"
         ],
-        "finding": "Decorators exist, but Entry dispatch uses a field-named method or decoratePrototypeAttribute; the advertised decorate(body) method is absent."
+        "finding": "Entry::decorate(string) returns the field decorator. String fields with config.markdown stringify to parsed HTML."
     },
     {
         "page": "docs/packages/core/entries.md",
@@ -176,12 +176,11 @@
         "page": "docs/packages/core/images.md",
         "package": "core",
         "type": "features",
-        "status": "partial",
+        "status": "implemented",
         "proof": [
-            "streams-core@65ea4668d86fefa20d4eaba35536de33bfda9369:src/Image/ImageManager.php",
-            "streams-core@65ea4668d86fefa20d4eaba35536de33bfda9369:src/Image/Image.php"
+            "streams-core@2690f4cd6b5b06752d8410679dd6adaeab0f0181:src/Image/Image.php"
         ],
-        "finding": "Image alterations and responsive output exist, but srcset requires a sources array; the no-argument example is incompatible."
+        "finding": "srcset() with no arguments uses the current altered image URL."
     },
     {
         "page": "docs/packages/core/macros.md",
@@ -929,13 +928,12 @@
         "page": "docs/packages/core/authorization.md",
         "package": "core",
         "type": "features",
-        "status": "planned",
+        "status": "implemented",
         "proof": [
-            "streams-core@65ea4668d86fefa20d4eaba35536de33bfda9369:README.md",
-            "streams-api@22d2351345631480102aa1377e6a6a73d765c7a5:README.md",
-            "streams-core@65ea4668d86fefa20d4eaba35536de33bfda9369:src/Support/Integrator.php"
+            "streams-core@2690f4cd6b5b06752d8410679dd6adaeab0f0181:src/Stream/StreamManager.php",
+            "streams-core@2690f4cd6b5b06752d8410679dd6adaeab0f0181:src/Support/Integrator.php"
         ],
-        "finding": "Both READMEs list stream-config gates. Integrator can register Gate policies only from an integration map. No stream config reader for gates exists in the snapshot."
+        "finding": "Stream registration reads config.gates and a top-level gates map through Integrator::gates, and registers a top-level policy string with Gate::policy for config.abstract."
     },
     {
         "page": "docs/packages/sdk/tap.md",
@@ -1041,22 +1039,21 @@
         "page": "streams/data/docs/images.md",
         "package": "core",
         "type": "features",
-        "status": "partial",
+        "status": "implemented",
         "proof": [
-            "streams-core@65ea4668d86fefa20d4eaba35536de33bfda9369:src/Image/Image.php",
-            "streams-core@65ea4668d86fefa20d4eaba35536de33bfda9369:src/Image/ImageManager.php"
+            "streams-core@2690f4cd6b5b06752d8410679dd6adaeab0f0181:src/Image/Image.php"
         ],
-        "finding": "srcset(array $sources) exists. The srcsets() example calls a method Image does not define."
+        "finding": "srcsets() appends descriptor keys such as 1x and 640w and does not set a sizes attribute."
     },
     {
         "page": "streams/data/docs/localization.md",
         "package": "core",
         "type": "features",
-        "status": "partial",
+        "status": "implemented",
         "proof": [
-            "streams-ui@3a30c8676df7815804a31cf5388b8fee80cdb541:src/UiServiceProvider.php"
+            "streams-ui@1c9971d553907ec8e8128926a71cf5134c290181:src/UiServiceProvider.php"
         ],
-        "finding": "UI loads a lang namespace, but the publish tags are laravel-streams, config, and ui. There is no lang tag for the documented vendor:publish command."
+        "finding": "UiServiceProvider publishes resources/lang to lang/vendor/ui under the lang tag."
     },
     {
         "page": "streams/data/docs/routing.md",
@@ -1074,12 +1071,11 @@
         "page": "streams/data/docs/streams.md",
         "package": "core",
         "type": "features",
-        "status": "partial",
+        "status": "implemented",
         "proof": [
-            "streams-core@65ea4668d86fefa20d4eaba35536de33bfda9369:src/Stream/Stream.php",
-            "streams-core@65ea4668d86fefa20d4eaba35536de33bfda9369:src/Support/Integrator.php"
+            "streams-core@2690f4cd6b5b06752d8410679dd6adaeab0f0181:src/Stream/StreamManager.php"
         ],
-        "finding": "Stream definitions and the model exist, but nothing reads the advertised top-level policy string. Integrator policies are a separate map."
+        "finding": "StreamManager::authorize registers the top-level policy string with Gate::policy for the entry class."
     },
     {
         "page": "streams/data/docs/components.md",
