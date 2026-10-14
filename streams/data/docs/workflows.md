@@ -7,7 +7,9 @@ category: development
 package: all
 order: 70
 tags: [workflows]
-status: ready
+editorial_status: ready
+status: implemented
+tracking_task: null
 ---
 
 `Streams\Core\Support\Workflow` is a small ordered step runner in Core. It is not a job pipeline, a queue workflow, or an agent workflow. The Core README still lists replacing it with Laravel pipelines as an open question, so treat it as a stable class with an undecided future, not as a product surface you should build a framework on.

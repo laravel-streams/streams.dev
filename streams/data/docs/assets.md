@@ -7,7 +7,9 @@ category: frontend
 package: core
 order: 20
 tags: [core, assets]
-status: ready
+editorial_status: ready
+status: implemented
+tracking_task: null
 ---
 
 ## Overview

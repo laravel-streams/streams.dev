@@ -6,7 +6,9 @@ section: packages
 package: sdk
 order: 10
 tags: [sdk, introduction]
-status: ready
+editorial_status: ready
+status: implemented
+tracking_task: null
 ---
 
 `streams/sdk` is a dev dependency. It registers Artisan generators and publishes example stream JSON. It is not part of the runtime your application serves.

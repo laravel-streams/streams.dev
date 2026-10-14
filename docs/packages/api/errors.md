@@ -6,7 +6,9 @@ section: packages
 package: api
 order: 90
 tags: [api, errors]
-status: ready
+editorial_status: ready
+status: implemented
+tracking_task: null
 ---
 
 Error responses populate the `errors` array in the JSON envelope (except 204 delete).

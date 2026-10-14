@@ -6,7 +6,9 @@ section: packages
 package: core
 order: 120
 tags: [core, validation]
-status: ready
+editorial_status: ready
+status: implemented
+tracking_task: null
 ---
 
 Core validation is **opt-in**. Saving an entry does not run validation automatically — call `validate()` when your application requires it.

@@ -6,7 +6,9 @@ section: packages
 package: api
 order: 30
 tags: [api, configuration]
-status: ready
+editorial_status: ready
+status: implemented
+tracking_task: null
 ---
 
 Configuration merges into `streams.api`. Publish `config/streams/api.php` to change it (see [Installation](/docs/api/installation)).

@@ -6,7 +6,9 @@ section: packages
 package: api
 order: 170
 tags: [api, caching]
-status: ready
+editorial_status: ready
+status: implemented
+tracking_task: null
 ---
 
 `Streams\Api\Http\Middleware\ApiCache` adds HTTP caching to API responses: an `ETag`, public `Cache-Control` headers, and `304 Not Modified` for clients that already have the current version. It is **not applied by default**. Add it to the interfaces that should use it.
