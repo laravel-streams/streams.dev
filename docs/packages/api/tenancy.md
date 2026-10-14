@@ -6,7 +6,9 @@ section: packages
 package: api
 order: 160
 tags: [api, tenancy]
-status: ready
+editorial_status: ready
+status: implemented
+tracking_task: null
 ---
 
 The API can resolve **one tenant per request** and hand it to your code. It does not decide what a tenant is or filter data for you: you supply a resolver, then use the tenant to scope queries.

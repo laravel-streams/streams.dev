@@ -6,7 +6,9 @@ section: packages
 package: client
 order: 70
 tags: [client, criteria]
-status: ready
+editorial_status: ready
+status: partial
+tracking_task: 265
 ---
 
 The Criteria class provides a fluent, PHP Laravel-style interface for building queries.

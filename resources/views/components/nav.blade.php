@@ -40,6 +40,8 @@
                 @endforeach
             </ul>
 
+            <a href="{{ route('playground') }}" class="st-nav-link" target="_blank" rel="noopener noreferrer">Playground<span class="sr-only"> (opens in a new tab)</span></a>
+
             <x-button href="/explore/idea" variant="secondary" class="hidden sm:inline-flex" :aria-current="Request::is('explore*') ? 'page' : null">Explore</x-button>
 
             <x-button href="/docs/installation" size="sm" class="sm:[--st-btn-height:2.75rem] sm:[--st-btn-px:1.25rem]" arrow>

@@ -6,7 +6,9 @@ section: packages
 package: ui
 order: 80
 tags: [ui, pages]
-status: ready
+editorial_status: ready
+status: implemented
+tracking_task: null
 ---
 
 **Pages** are Livewire components rendered inside a panel layout.

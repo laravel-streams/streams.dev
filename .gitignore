@@ -19,6 +19,7 @@ yarn-error.log
 /__pycache__
 /composer.local.json
 /composer.local.lock
+/.local-packages
 
 # Local briefing files. See AGENTS.md.
 /DOSSIER.md
