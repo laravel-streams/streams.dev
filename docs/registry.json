@@ -1217,35 +1217,35 @@
         "page": "streams/data/docs/package-catalog.md",
         "package": "site",
         "type": "features",
-        "status": "partial",
+        "status": "implemented",
         "proof": [
             "streams.dev@ab61fe4fac816bce3cc11275279c48522c0e895f:streams/packages.json"
         ],
-        "finding": "The packages stream uses source type self, but data is an object keyed by id, not the array the add-entry steps describe."
+        "finding": "The packages stream uses source type self. data is an object keyed by entry id, and the add-entry steps describe that object."
     },
     {
         "page": "streams/data/docs/project-structure.md",
         "package": "site",
         "type": "features",
-        "status": "partial",
+        "status": "implemented",
         "proof": [
             "streams.dev@ab61fe4fac816bce3cc11275279c48522c0e895f:composer.json",
             "streams.dev@ab61fe4fac816bce3cc11275279c48522c0e895f:scripts/composer-local.php",
             "streams.dev@ab61fe4fac816bce3cc11275279c48522c0e895f:app/Providers/AppServiceProvider.php"
         ],
-        "finding": "The tree labels composer.json as path repos. The committed file uses vcs GitHub repositories. Path symlinks are only in gitignored composer.local.json."
+        "finding": "The tree labels composer.json as vcs GitHub repositories. The committed file uses those vcs repositories. Path symlinks are only in gitignored composer.local.json."
     },
     {
         "page": "streams/data/docs/site-pages.md",
         "package": "site",
         "type": "features",
-        "status": "partial",
+        "status": "implemented",
         "proof": [
             "streams.dev@ab61fe4fac816bce3cc11275279c48522c0e895f:streams/pages.json",
             "streams.dev@ab61fe4fac816bce3cc11275279c48522c0e895f:streams/data/pages/welcome.html",
             "streams.dev@ab61fe4fac816bce3cc11275279c48522c0e895f:streams/data/pages/docs.html"
         ],
-        "finding": "pages.json routes {uri} with parse true, but welcome.html uses layout page, not the documented layout blank."
+        "finding": "pages.json routes {uri} with parse true. welcome.html uses uri / and layout page, and the page documents that layout."
     },
     {
         "page": "streams/data/docs/this-project.md",
