@@ -19,7 +19,8 @@ class DocsContentTest extends TestCase
 
     protected const PACKAGES = ['core', 'ui', 'api', 'sdk', 'testing', 'client', 'site', 'all'];
 
-    protected const STATUSES = ['draft', 'review', 'ready', 'deprecated'];
+    // Legacy pages retain editorial status until their registry segment is migrated.
+    protected const STATUSES = ['draft', 'review', 'ready', 'deprecated', 'implemented', 'partial', 'planned'];
 
     /**
      * @return array<string, array{frontmatter: array, body: string}>
@@ -67,6 +68,15 @@ class DocsContentTest extends TestCase
             $this->assertContains($frontmatter['section'], static::SECTIONS, "{$page} section");
             $this->assertContains($frontmatter['package'], static::PACKAGES, "{$page} package");
             $this->assertContains($frontmatter['status'], static::STATUSES, "{$page} status");
+            if (in_array($frontmatter['status'], ['implemented', 'partial', 'planned'], true)) {
+                $this->assertArrayHasKey('tracking_task', $frontmatter, "{$page} tracking_task");
+                $tracking = $frontmatter['tracking_task'];
+                $this->assertTrue(
+                    (is_int($tracking) && $tracking > 0)
+                    || ($frontmatter['status'] === 'implemented' ? $tracking === null : $tracking === 'pending'),
+                    "{$page} tracking_task"
+                );
+            }
             $this->assertIsInt($frontmatter['order'], "{$page} order");
             $this->assertIsArray($frontmatter['tags'], "{$page} tags");
             $this->assertArrayNotHasKey('sort_order', $frontmatter, "{$page} uses sort_order; use order.");
@@ -88,6 +98,19 @@ class DocsContentTest extends TestCase
         $duplicates = array_keys(array_filter(array_count_values($titles), fn ($count) => $count > 1));
 
         $this->assertSame([], $duplicates, 'Duplicate titles: '.implode(', ', $duplicates));
+    }
+
+    public function test_ui_actions_through_routing_are_implemented_and_tracked()
+    {
+        $pages = $this->pages();
+        $registry = file_get_contents(base_path('docs/REGISTRY.md'));
+
+        foreach (['actions', 'filters', 'introduction', 'navigation', 'panels', 'quick-start', 'resources', 'routing'] as $slug) {
+            $page = 'docs/packages/ui/'.$slug;
+            $this->assertSame('implemented', $pages[$page]['frontmatter']['status'], $page);
+            $this->assertSame(257, $pages[$page]['frontmatter']['tracking_task'], $page);
+            $this->assertStringContainsString('| '.$page.'.md | ui | features | implemented |', $registry, $page);
+        }
     }
 
     public function test_bodies_have_no_h1_fenced_code_has_a_language_and_links_are_root_relative()

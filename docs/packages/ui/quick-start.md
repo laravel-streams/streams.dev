@@ -6,7 +6,9 @@ section: packages
 package: ui
 order: 30
 tags: [ui, quick, start]
-status: ready
+editorial_status: ready
+status: implemented
+tracking_task: 257
 ---
 
 This walkthrough registers an admin panel with one resource backed by a Core stream.

@@ -6,7 +6,9 @@ section: packages
 package: ui
 order: 150
 tags: [ui, filters]
-status: ready
+editorial_status: ready
+status: implemented
+tracking_task: 257
 ---
 
 Filters narrow table results. Register on the table builder via `->filters([...])`.
