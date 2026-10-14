@@ -1,0 +1,44 @@
+{
+    "name": "streams/ui",
+    "type": "streams-addon",
+    "description": "A RESTful inspired UI for Laravel Streams.",
+    "license": "MIT",
+    "prefer-stable": true,
+    "minimum-stability": "dev",
+    "authors": [
+        {
+            "name": "Ryan Thompson",
+            "email": "ryan@pyrocms.com"
+        }
+    ],
+    "require": {
+        "streams/core": "^2.0",
+        "livewire/livewire": "^3.0",
+        "blade-ui-kit/blade-heroicons": "^2.0",
+        "spatie/color": "^1.5"
+    },
+    "require-dev": {
+        "streams/testing": "^1.0.x-dev",
+        "laravel/pint": "^1.25"
+    },
+    "autoload": {
+        "psr-4": {
+            "Streams\\Ui\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Streams\\Ui\\Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.x-dev"
+        },
+        "laravel": {
+            "providers": [
+                "Streams\\Ui\\UiServiceProvider"
+            ]
+        }
+    }
+}
