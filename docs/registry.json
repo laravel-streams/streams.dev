@@ -823,5 +823,106 @@
       "streams-testing@ec5dd5f41b814a2b15b5dc1aa8a9f5911281781c:src/TestCase.php"
     ],
     "finding": "Committed restoration exists; clearData/loadFixtures methods and Core criteria timeout are not implemented."
+  },
+  {
+    "page": "docs/packages/client/introduction.md",
+    "package": "client",
+    "type": "features",
+    "status": "partial",
+    "proof": [
+      "api-client@1c4bfaebf307a278a6cfdb752808f57d5a46b121:src/Client.js",
+      "api-client@1c4bfaebf307a278a6cfdb752808f57d5a46b121:src/middleware/CriteriaMiddleware.js",
+      "api-client@1c4bfaebf307a278a6cfdb752808f57d5a46b121:src/middleware/ResponseDataMiddleware.js"
+    ],
+    "finding": "Resources and pipeline exist, but default middleware does not unwrap the API envelope or translate where/orderBy to the API bracket query shape."
+  },
+  {
+    "page": "docs/packages/client/installation.md",
+    "package": "client",
+    "type": "providers",
+    "status": "implemented",
+    "proof": [
+      "api-client@1c4bfaebf307a278a6cfdb752808f57d5a46b121:package.json",
+      "api-client@1c4bfaebf307a278a6cfdb752808f57d5a46b121:src/index.js"
+    ],
+    "finding": "Package manifest and exported resources support the documented installation/build entry points."
+  },
+  {
+    "page": "docs/packages/client/quickstart.md",
+    "package": "client",
+    "type": "features",
+    "status": "partial",
+    "proof": [
+      "api-client@1c4bfaebf307a278a6cfdb752808f57d5a46b121:src/middleware/ResponseDataMiddleware.js",
+      "api-client@1c4bfaebf307a278a6cfdb752808f57d5a46b121:src/Entries.js"
+    ],
+    "finding": "Entry endpoints exist; examples assume response.data is an entries array rather than the parsed API envelope."
+  },
+  {
+    "page": "docs/packages/client/client.md",
+    "package": "client",
+    "type": "variables",
+    "status": "partial",
+    "proof": [
+      "api-client@1c4bfaebf307a278a6cfdb752808f57d5a46b121:src/Client.js",
+      "api-client@1c4bfaebf307a278a6cfdb752808f57d5a46b121:src/Streams.js",
+      "api-client@1c4bfaebf307a278a6cfdb752808f57d5a46b121:src/middleware/ETagMiddleware.js"
+    ],
+    "finding": "Configuration exists; documented stream patch/put signatures differ and ETag is a placeholder."
+  },
+  {
+    "page": "docs/packages/client/streams.md",
+    "package": "client",
+    "type": "features",
+    "status": "partial",
+    "proof": [
+      "api-client@1c4bfaebf307a278a6cfdb752808f57d5a46b121:src/Streams.js"
+    ],
+    "finding": "Reads/deletes exist; post does not assign payload and patch/put do not accept the documented stream/data arguments."
+  },
+  {
+    "page": "docs/packages/client/entries.md",
+    "package": "client",
+    "type": "features",
+    "status": "partial",
+    "proof": [
+      "api-client@1c4bfaebf307a278a6cfdb752808f57d5a46b121:src/Entries.js",
+      "api-client@1c4bfaebf307a278a6cfdb752808f57d5a46b121:src/middleware/ResponseDataMiddleware.js"
+    ],
+    "finding": "Entry CRUD exists; response examples skip the envelope data layer and list validation failures as 422 rather than API 409."
+  },
+  {
+    "page": "docs/packages/client/criteria.md",
+    "package": "client",
+    "type": "features",
+    "status": "partial",
+    "proof": [
+      "api-client@1c4bfaebf307a278a6cfdb752808f57d5a46b121:src/Criteria.js",
+      "api-client@1c4bfaebf307a278a6cfdb752808f57d5a46b121:src/middleware/CriteriaMiddleware.js"
+    ],
+    "finding": "Builder methods exist; standardizeParameters overwrites repeated conditions and forwards raw where/orderBy names instead of API where[field]/order_by[field]."
+  },
+  {
+    "page": "docs/packages/client/middleware.md",
+    "package": "client",
+    "type": "features",
+    "status": "partial",
+    "proof": [
+      "api-client@1c4bfaebf307a278a6cfdb752808f57d5a46b121:src/middleware/ETagMiddleware.js",
+      "api-client@1c4bfaebf307a278a6cfdb752808f57d5a46b121:src/middleware/Middleware.js"
+    ],
+    "finding": "Middleware pipeline exists; advertised ETag storage/conditional requests/cache replay are empty hooks."
+  },
+  {
+    "page": "docs/packages/client/examples.md",
+    "package": "client",
+    "type": "features",
+    "status": "partial",
+    "proof": [
+      "api-client@1c4bfaebf307a278a6cfdb752808f57d5a46b121:src/Client.js",
+      "api-client@1c4bfaebf307a278a6cfdb752808f57d5a46b121:src/middleware/ResponseDataMiddleware.js",
+      "api-client@1c4bfaebf307a278a6cfdb752808f57d5a46b121:src/Streams.js"
+    ],
+    "finding": "Client primitives exist; examples assume envelope unwrapping, access client.middleware rather than middlewares, and expect 422 validation errors."
   }
 ]
