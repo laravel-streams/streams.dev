@@ -1,0 +1,49 @@
+<div style="--col-span-default: span 1 / span 1;" class="col-[--col-span-default] flex">
+
+    <div
+        class="w-full grid gap-y-2"
+    >
+
+                    <div
+                class="flex items-center justify-between gap-x-3"
+            >
+                                    <label
+    class="inline-flex items-center gap-x-3" for="data.status"
+>
+
+
+    <span class="font-medium leading-6 text-gray-950">
+
+        Status    </span>
+
+
+</label>
+
+                            </div>
+
+                    <div
+                class="grid gap-y-2"
+            >
+                <select
+    class="block w-full rounded-md" id="data.status" wire:model="data.status"
+>
+    <option value="">Choose a status</option>
+
+                                                            <option
+
+                            value="draft"
+                        >
+                                                            Draft
+                                                    </option>
+                                                                                <option
+
+                            value="published"
+                        >
+                                                            Published
+                                                    </option>
+</select>
+
+
+                            </div>
+            </div>
+</div>

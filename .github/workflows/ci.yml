@@ -1,0 +1,37 @@
+name: CI
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+
+permissions:
+  contents: read
+
+jobs:
+  playground:
+    name: Playground render and snapshot tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+          extensions: dom, intl, mbstring, zip
+          coverage: none
+          tools: composer:v2
+      - name: Install dependencies
+        run: composer install --no-interaction --prefer-dist --no-progress
+      - name: Prepare environment
+        run: cp .env.example .env
+      - name: Render catalog components, examples, and hostile inputs
+        run: vendor/bin/phpunit --filter=Playground --log-junit=playground-junit.xml
+      - name: Attach test output
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playground-test-results
+          path: playground-junit.xml
+          if-no-files-found: warn
