@@ -1,20 +1,16 @@
 @setup
 require __DIR__.'/vendor/autoload.php';
 
-//$dotenv = \Dotenv\Dotenv::createImmutable(__DIR__);
-
+// Deployment settings live in this checkout's gitignored .env, not the
+// remote application's .env. Existing process environment values take precedence.
 $dotenv = \Dotenv\Dotenv::create(
     \Illuminate\Support\Env::getRepository(),
     __DIR__,
     '.env'
 );
 
-try {
-    $dotenv->load();
-    $dotenv->required(['DEPLOY_SERVER', 'DEPLOY_REPOSITORY', 'DEPLOY_PATH'])->notEmpty();
-} catch ( Exception $e )  {
-    echo $e->getMessage();
-}
+$dotenv->safeLoad();
+$dotenv->required(['DEPLOY_SERVER', 'DEPLOY_REPOSITORY', 'DEPLOY_PATH'])->notEmpty();
 
 $server = env('DEPLOY_SERVER');
 $repo = env('DEPLOY_REPOSITORY');

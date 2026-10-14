@@ -81,6 +81,12 @@ See [STYLE.md](STYLE.md) for voice, frontmatter, and content boundaries.
 
 Work happens on short-lived feature branches off `master`; open a pull request into `master` and merge it when it is ready. `master` is what runs on streams.dev and is GitHub's default branch. Deploy with `envoy run deploy` (see [AGENTS.md](AGENTS.md#deploying)), which fast-forwards the server to `master`. There are no other long-lived branches.
 
+Keep deployment settings in the deploying checkout's **gitignored `.env`**. This is the permanent home for `DEPLOY_*`; no separate deployment env file is needed. Add the deployment section from `.env.example` to an existing `.env` without replacing the application's settings, then fill in `DEPLOY_SERVER` (SSH target), `DEPLOY_REPOSITORY` (Git URL), and `DEPLOY_PATH` (absolute remote application path). Set `DEPLOY_HEALTH_CHECK` to the site's health URL to verify the deployment. Optional binary and branch overrides are described in `.env.example`.
+
+From that checkout, run `envoy run deploy` after the maintainer authorizes deployment. Envoy loads `.env` relative to `Envoy.blade.php` automatically, so there is no need to export or pass `DEPLOY_*` by hand. It stops before connecting if a required setting is missing or empty. Process environment settings take precedence over the file; remove stale exports if they override your saved settings. `envoy run rollback` reads the same settings and restores the previous remote checkout.
+
+Keep real values local, including webhook URLs; commit only empty placeholders or public defaults in `.env.example`. A new deploying checkout needs its own populated `.env` and SSH access. The production application's `.env` is a separate file and does not configure Envoy on your machine.
+
 ### Contributing to docs
 
 1. Edit hub guides in `streams/data/docs/`. Edit package reference in `docs/packages/{name}/`, then `php artisan docs:sync push {name}` to copy it into that package's checkout.
