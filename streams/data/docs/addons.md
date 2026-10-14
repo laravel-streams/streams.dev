@@ -8,7 +8,7 @@ package: core
 order: 20
 tags: [core, addons]
 editorial_status: ready
-status: partial
+status: implemented
 tracking_task: 256
 ---
 
@@ -38,7 +38,7 @@ Prefer `"preferred-install": { "streams/*": "source" }` when contributing to Str
 
 ## Documentation
 
-All package docs live on this site under `/docs/core`, `/docs/ui`, etc. Edit markdown in `streams/data/` in the streams.dev repository.
+All package docs live on this site under `/docs/core`, `/docs/ui`, etc. Edit package reference markdown in `docs/packages/{name}/` in the streams.dev repository, for example `docs/packages/core/addons.md`. Hub guides live in `streams/data/docs/`. Package repositories keep their reference copies in `docs/`; `php artisan docs:sync` copies those pages into the site's package reference folders.
 
 ## Learn more
 

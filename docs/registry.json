@@ -14,12 +14,13 @@
         "page": "docs/packages/core/addons.md",
         "package": "core",
         "type": "providers",
-        "status": "partial",
+        "status": "implemented",
         "proof": [
-            "streams-core@65ea4668d86fefa20d4eaba35536de33bfda9369:src/StreamsServiceProvider.php",
-            "streams-core@65ea4668d86fefa20d4eaba35536de33bfda9369:src/Addon/AddonManager.php"
+            "streams-core@55ab33a8e:src/Addon/AddonManager.php",
+            "streams-core@55ab33a8e:src/StreamsServiceProvider.php",
+            "streams-core:tests/Addon/AddonManagerTest.php"
         ],
-        "finding": "Discovery checks Composer type streams-addon, not extra.streams.addon; register takes an array, not the shown two arguments."
+        "finding": "Composer type streams-addon and extra.streams.addon discovery are supported, as are attribute-array and name/paths registration. Regression tests: test_discovery_accepts_extra_streams_addon_without_the_composer_type and test_it_registers_an_addon_from_a_name_and_paths (passed)."
     },
     {
         "page": "docs/packages/core/installation.md",
@@ -209,11 +210,12 @@
         "page": "docs/packages/core/integrator.md",
         "package": "core",
         "type": "providers",
-        "status": "partial",
+        "status": "implemented",
         "proof": [
-            "streams-core@65ea4668d86fefa20d4eaba35536de33bfda9369:src/Support/Integrator.php"
+            "streams-core@55ab33a8e:src/Support/Integrator.php",
+            "streams-core:tests/Support/IntegratorTest.php"
         ],
-        "finding": "Merge methods exist, but routes requires an array of grouped routes; the closure example is incompatible."
+        "finding": "Route closures receive the Laravel router; grouped route arrays remain supported. Regression test: test_it_registers_routes_from_a_closure (passed)."
     },
     {
         "page": "docs/packages/core/facades-and-helpers.md",
@@ -952,13 +954,12 @@
         "page": "streams/data/docs/addons.md",
         "package": "core",
         "type": "providers",
-        "status": "partial",
+        "status": "implemented",
         "proof": [
-            "streams-core@65ea4668d86fefa20d4eaba35536de33bfda9369:src/Addon/AddonManager.php",
-            "streams.dev@ab61fe4fac816bce3cc11275279c48522c0e895f:docs/packages/core/addons.md",
-            "streams.dev@ab61fe4fac816bce3cc11275279c48522c0e895f:app/Console/Commands/SyncDocs.php"
+            "streams.dev:streams/data/docs/addons.md",
+            "streams.dev:tests/Feature/DocsContentTest.php"
         ],
-        "finding": "Addon discovery exists, but the page says to edit package markdown under streams/data. Package reference lives in docs/packages/{name}."
+        "finding": "Package reference editing points to docs/packages/{name}/; hub guides remain in streams/data/docs/. Regression test: test_addon_guide_points_contributors_to_package_reference (passed)."
     },
     {
         "page": "streams/data/docs/assets.md",

@@ -24,7 +24,7 @@ class DocsRegistryTest extends TestCase
 
     public function test_partial_page_is_published_with_a_visible_status(): void
     {
-        $this->get('/docs/core/addons')->assertOk()
+        $this->get('/docs/core/images')->assertOk()
             ->assertSee('data-docs-status="partial"', false)
             ->assertSee('partially implemented');
     }
