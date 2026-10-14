@@ -8,7 +8,7 @@ order: 40
 tags: [client]
 editorial_status: ready
 status: partial
-tracking_task: pending
+tracking_task: 266
 ---
 
 The `Client` class is the main entry point for interacting with the Streams API.

@@ -8,7 +8,7 @@ order: 70
 tags: [ui, resources]
 editorial_status: ready
 status: partial
-tracking_task: pending
+tracking_task: 257
 ---
 
 A **resource** connects a Core stream to admin CRUD pages. Subclass `Streams\Ui\Resources\Resource` and implement `getPages()`, `form()`, and `table()`.

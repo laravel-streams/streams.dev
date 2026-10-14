@@ -8,7 +8,7 @@ order: 150
 tags: [ui, filters]
 editorial_status: ready
 status: partial
-tracking_task: pending
+tracking_task: 257
 ---
 
 Filters narrow table results. Register on the table builder via `->filters([...])`.

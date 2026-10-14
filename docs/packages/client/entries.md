@@ -8,7 +8,7 @@ order: 60
 tags: [client, entries]
 editorial_status: ready
 status: partial
-tracking_task: pending
+tracking_task: 265
 ---
 
 Entries represent the data within your configured Streams. Use the Entries API to interact with stream data.

@@ -130,3 +130,31 @@ Planned pages are only for a concrete unimplemented shape: Core and API READMEs 
 | streams/data/docs/workflows.md | all | features | implemented | streams-core@65ea4668d86fefa20d4eaba35536de33bfda9369:src/Support/Workflow.php; streams-core@65ea4668d86fefa20d4eaba35536de33bfda9369:src/Support/Traits/FiresCallbacks.php; streams-core@65ea4668d86fefa20d4eaba35536de33bfda9369:README.md | process, addStep, doFirst, doBefore, doAfter, and passThrough exist. The README still has the pipeline question unchecked. |
 | streams/data/docs/installation.md | all | providers | partial | streams-core@65ea4668d86fefa20d4eaba35536de33bfda9369:composer.json; streams-api@22d2351345631480102aa1377e6a6a73d765c7a5:composer.json; streams-sdk@2aff9ebe3a0a58b4e48cb244af0ee683e17ef7b9:composer.json; streams-testing@ec5dd5f41b814a2b15b5dc1aa8a9f5911281781c:composer.json; streams@06fde618b8f8f8a12680f9d98314728de34c03dd:composer.json; streams.dev@ab61fe4fac816bce3cc11275279c48522c0e895f:composer.json | Laravel ranges, Testbench ^8.36, and the starter's Laravel 10 pin match. The sentence that Core and API declare php ^8.2 does not. SDK on sdk/rc does. |
 | streams/data/docs/versions.md | all | variables | partial | streams-core@65ea4668d86fefa20d4eaba35536de33bfda9369:composer.json; streams-ui@3a30c8676df7815804a31cf5388b8fee80cdb541:composer.json; streams-api@22d2351345631480102aa1377e6a6a73d765c7a5:composer.json; streams-sdk@2aff9ebe3a0a58b4e48cb244af0ee683e17ef7b9:composer.json; streams-testing@ec5dd5f41b814a2b15b5dc1aa8a9f5911281781c:composer.json; streams@06fde618b8f8f8a12680f9d98314728de34c03dd:composer.json | UI Livewire ^3.0, testing testbench ^8.36, starter PHP ^8.0.2 and Laravel ^10, and core's Laravel ^10|^11|^12 match. Core's branch-alias is dev-master 2.x-dev, and core and api do not declare php. |
+
+## Gap backlog
+
+Filed 2026-10-14. Every planned or partial row above has exactly one task. Segment is package, then type. UI features is two tasks because nine pages would be nine to-dos and the cap is eight. Testing is on project 13. Site and all-packages are on project 18. Decision #9 on #68. Seeded by #159.
+
+Dup check: `task.search` on the target project for the task title and the first page path before each create. #159, #189, and #190 (this backlog) were ignored as the registry tasks themselves. No open duplicate covered a segment. Site providers linked #191 instead of creating a task: it was the same page, marked done on a commit that is not on master, and was reopened to Ready with the status flip still open. API tasks #201 and #214 mention OpenAPI and were left as their own owner-call work, not this page.
+
+Validation on this branch: `php artisan test --filter=DocsContentTest::test_frontmatter_matches_the_schema` did not boot, because Composer autoload requires `vendor/streams/core/src/helpers.php` and that path package is not in this worktree. Symfony YAML parsed all 43 planned or partial pages with the same `tracking_task` rule as that test (integer greater than 0). Result: `checked 43` / `ok`.
+
+| Segment | Project | Task | Pages |
+| --- | --- | --- | --- |
+| core features | 13 | #255 | `docs/packages/core/authorization.md`<br>`docs/packages/core/field-decorators.md`<br>`docs/packages/core/images.md`<br>`streams/data/docs/images.md`<br>`streams/data/docs/localization.md`<br>`streams/data/docs/streams.md` |
+| core providers | 13 | #256 | `docs/packages/core/addons.md`<br>`docs/packages/core/integrator.md`<br>`streams/data/docs/addons.md` |
+| ui features (actions through routing) | 14 | #257 | `docs/packages/ui/actions.md`<br>`docs/packages/ui/filters.md`<br>`docs/packages/ui/introduction.md`<br>`docs/packages/ui/navigation.md`<br>`docs/packages/ui/panels.md`<br>`docs/packages/ui/quick-start.md`<br>`docs/packages/ui/resources.md`<br>`docs/packages/ui/routing.md` |
+| UI hub features | 14 | #258 | `streams/data/docs/ui.md` |
+| ui providers | 14 | #259 | `docs/packages/ui/livewire.md` |
+| api features | 15 | #260 | `docs/packages/api/openapi.md` |
+| sdk features | 16 | #261 | `docs/packages/sdk/tall-components.md`<br>`docs/packages/sdk/tap.md` |
+| sdk source types | 16 | #262 | `docs/packages/sdk/streams.md` |
+| testing features | 13 | #263 | `docs/packages/testing/test-data.md`<br>`docs/packages/testing/troubleshooting.md`<br>`docs/packages/testing/writing-tests.md` |
+| testing variables | 13 | #264 | `docs/packages/testing/configuration.md` |
+| client features | 17 | #265 | `docs/packages/client/criteria.md`<br>`docs/packages/client/entries.md`<br>`docs/packages/client/examples.md`<br>`docs/packages/client/introduction.md`<br>`docs/packages/client/middleware.md`<br>`docs/packages/client/quickstart.md`<br>`docs/packages/client/streams.md` |
+| client variables | 17 | #266 | `docs/packages/client/client.md` |
+| site features | 18 | #267 | `streams/data/docs/package-catalog.md`<br>`streams/data/docs/project-structure.md`<br>`streams/data/docs/site-pages.md` |
+| site providers | 18 | #191 | `streams/data/docs/local-development.md` |
+| all-packages features | 18 | #268 | `streams/data/docs/changelog.md`<br>`streams/data/docs/use-cases.md` |
+| all-packages providers | 18 | #269 | `streams/data/docs/installation.md` |
+| all-packages variables | 18 | #270 | `streams/data/docs/versions.md` |

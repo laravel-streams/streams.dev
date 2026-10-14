@@ -8,7 +8,7 @@ order: 180
 tags: [core, images]
 editorial_status: ready
 status: partial
-tracking_task: pending
+tracking_task: 255
 ---
 
 Core image handling wraps Intervention Image with stream-aware URL generation, alterations, and responsive output.

@@ -8,7 +8,7 @@ order: 180
 tags: [ui, livewire]
 editorial_status: ready
 status: partial
-tracking_task: pending
+tracking_task: 259
 ---
 
 Streams UI admin pages are Livewire components. Traits connect page state to form and table builders.
