@@ -30,6 +30,7 @@ final class HtmlSnapshot
     public static function normalize(string $html): string
     {
         $html = str_replace("\r\n", "\n", $html);
+        $html = preg_replace('/[ \t]+$/m', '', $html) ?? $html;
 
         $html = preg_replace('/\s+wire:(?:snapshot|effects|id|initial-data)="[^"]*"/', '', $html) ?? $html;
         $html = preg_replace('/<!--\s*Livewire Component.*?-->/s', '', $html) ?? $html;

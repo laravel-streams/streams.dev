@@ -1,26 +1,26 @@
 <div style="--col-span-default: span 1 / span 1;" class="col-[--col-span-default]">
-    
+
     <div
         class="w-full grid gap-y-2"
     >
-        
+
                     <div
                 class="flex items-center justify-between gap-x-3"
             >
                                     <label
     class="inline-flex items-center gap-x-3" for="data.notes"
 >
-    
+
 
     <span class="font-medium leading-6 text-gray-950">
-        
+
         Notes    </span>
 
-    
+
 </label>
-                
+
                             </div>
-        
+
                     <div
                 class="grid gap-y-2"
             >
@@ -31,24 +31,24 @@
         >
             <div
                 ax-load="visible"
-                
+
                 x-data="markdownEditorFormComponent({
-                            
+
                             placeholder: null,
-                            
-                            
-                            
-                            
+
+
+
+
                         })"
                 x-ignore
                 wire:ignore
-                
+
             >
                 <textarea x-ref="editor" class="hidden"></textarea>
             </div>
         </div>
 
-                
+
                             </div>
             </div>
 </div>

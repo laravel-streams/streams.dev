@@ -18,7 +18,7 @@ UPDATE_SNAPSHOTS=1 php artisan test --filter=PlaygroundComponentSnapshotTest
 ```
 
 Review the resulting HTML diff and rerun without `UPDATE_SNAPSHOTS` before
-committing. CI never enables snapshot updates. Snapshots normalize line endings,
+committing. CI never enables snapshot updates. Snapshots normalize line endings, trailing whitespace,
 CSRF tokens, and Livewire instance IDs/serialized runtime state, while retaining
 rendered markup, labels, links, control attributes, and action directives.
 These are HTML snapshots; no browser screenshot comparison is involved.

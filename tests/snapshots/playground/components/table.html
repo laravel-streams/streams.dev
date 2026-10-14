@@ -2,7 +2,7 @@
 
 function table(tableName = 'default', selectedStatePath = null) {
     return {
-        
+
         isLoading: false,
 
         tableName,
@@ -79,7 +79,7 @@ function table(tableName = 'default', selectedStatePath = null) {
             })
 
             if (typeof Sortable !== 'undefined') {
-                
+
                 const sortable = new Sortable(this.$refs.table.querySelector('table.min-w-full tbody'), {
                     animation: 150,
                     draggable: 'tr',
@@ -88,12 +88,12 @@ function table(tableName = 'default', selectedStatePath = null) {
                     dragClass: 'sortable-drag',
                     ghostClass: 'sortable-ghost',
                     onEnd: (evt) => {
-                        
+
                         let sortedIds = Array.from(evt.target.querySelectorAll('tr'))
                             .map(row => row.getAttribute('data-key'));
-    
+
                         console.log(sortedIds);
-    
+
                         this.$wire.set('sortedIds', sortedIds);
                     }
                 });
@@ -751,7 +751,7 @@ function table(tableName = 'default', selectedStatePath = null) {
 
             return keys.every((key) => this.isEntrySelected(key))
         }
-        
+
     }
 }
 </script>
@@ -762,15 +762,15 @@ function table(tableName = 'default', selectedStatePath = null) {
     data-selected-keys="[]"
     data-select-all-matching="0"
     class="relative"
-    
-    
+
+
     >
 
         <div
     class="divide-y divide-gray-200 bg-white shadow ring-1 ring-black/5"
 >
     <div>
-    
+
     <div
     class="flex items-center gap-3 p-4 sm:px-6" priority="2"
 >
@@ -780,22 +780,22 @@ function table(tableName = 'default', selectedStatePath = null) {
                 >
                     People
                 </h1>
-            
+
                     </div>
-    
+
     </div>
 
 </div>
-        
-        
+
+
         <table class="min-w-full border-separate border-spacing-0 divide-y divide-gray-200">
 
             <thead class="">
     <tr>
 
-        
-        
-                
+
+
+
         <th
             scope="col"
             class="py-2.5 bg-gray-50 text-left font-semibold text-gray-900 border-b border-gray-200 pr-4 sm:pl-6"
@@ -804,8 +804,8 @@ function table(tableName = 'default', selectedStatePath = null) {
             <span
                         class="group flex w-full items-center gap-x-1 "
             >
-            
-            
+
+
             <span
                 class="font-semibold text-gray-950 whitespace-nowrap"
             >
@@ -814,8 +814,8 @@ function table(tableName = 'default', selectedStatePath = null) {
 
                         </span>
         </th>
-        
-        
+
+
     </tr>
 </thead>
 
@@ -823,19 +823,19 @@ function table(tableName = 'default', selectedStatePath = null) {
 
                                                 <tr class="relative h-full transition duration-75 hover:bg-gray-50" data-key="1">
 
-    
+
             <td style="; ; ;" class="whitespace-nowrap py-4 pr-3 pl-4 sm:pl-6">
                 Ada Lovelace
 
             </td>
         </tr>
-                
+
             </tbody>
 
-            
+
         </table>
 </div>
 
-    
-    
+
+
 </div>
