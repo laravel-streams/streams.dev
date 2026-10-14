@@ -3,7 +3,7 @@
     <noscript>Enable JavaScript to try the in-memory playground.</noscript>
 
     <div data-playground-controls hidden>
-        <form class="ui-form grid gap-8" aria-label="Playground sample editor">
+        <form class="ui-form grid gap-8" aria-label="Playground sample editor" autocomplete="off">
             <div class="grid gap-6 sm:grid-cols-2">
                 <label>
                     <span>Stream</span>
