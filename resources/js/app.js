@@ -16,6 +16,7 @@ import * as tocbot from 'tocbot';
 import { initDocsSearch } from './docs-search';
 import { initReveal } from './reveal';
 import { initDocsFilter } from './docs-filter';
+import { initPlayground } from './playground.mjs';
 
 // Livewire 3 ships its own Alpine. Start ours only on pages that never load it,
 // and only after parse, so a late Livewire script is visible to the check.
@@ -75,5 +76,5 @@ function safely(step) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    [startAlpine, highlightCode, initAnchors, initTocbot, initDocsSearch, initDocsFilter, initReveal].forEach(safely);
+    [startAlpine, highlightCode, initAnchors, initTocbot, initDocsSearch, initDocsFilter, initReveal, initPlayground].forEach(safely);
 });

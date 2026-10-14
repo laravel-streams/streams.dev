@@ -8,6 +8,8 @@
 .env.backup
 .phpunit.result.cache
 /.phpunit.cache
+/test-results
+/playwright-report
 Homestead.json
 Homestead.yaml
 auth.json
