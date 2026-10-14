@@ -198,8 +198,7 @@
             "builder": "Streams\\Ui\\Builders\\Inputs\\EditorInput",
             "defaults": {
                 "name": "content",
-                "label": "Content",
-                "view": "playground.previews.editor"
+                "label": "Content"
             }
         },
         {
@@ -263,8 +262,7 @@
                 "name": "status",
                 "label": "Published",
                 "value": "published",
-                "color": "gray",
-                "view": "playground.previews.column"
+                "color": "gray"
             }
         },
         {
@@ -278,8 +276,7 @@
                 "label": "Status",
                 "value": "published",
                 "icon": "heroicon-o-check-circle",
-                "color": "gray",
-                "view": "playground.previews.column"
+                "color": "gray"
             }
         },
         {
@@ -293,7 +290,7 @@
                 "label": "Accent",
                 "value": "#336699",
                 "color": "gray",
-                "view": "playground.previews.column"
+                "view": "ui::components.table.columns.text-column"
             }
         },
         {
@@ -306,7 +303,7 @@
                 "name": "status",
                 "label": "Status",
                 "value": "Draft",
-                "view": "playground.previews.column"
+                "view": "ui::components.table.columns.text-column"
             }
         },
         {
@@ -319,7 +316,7 @@
                 "name": "enabled",
                 "label": "Enabled",
                 "value": "Yes",
-                "view": "playground.previews.column"
+                "view": "ui::components.table.columns.text-column"
             }
         },
         {
@@ -332,7 +329,7 @@
                 "name": "summary",
                 "label": "Summary",
                 "value": "Catalog default",
-                "view": "playground.previews.column"
+                "view": "ui::components.table.columns.text-column"
             }
         },
         {

@@ -37,7 +37,7 @@ class PlaygroundTest extends TestCase
         $this->get('/playground')
             ->assertOk()
             ->assertViewIs('playground')
-            ->assertSee('<title>UI Playground · Streams</title>', false)
+            ->assertSee('<title>UI Playground · '.config('app.name', 'Streams').'</title>', false)
             ->assertSee('window.StreamsTheme', false)
             ->assertSee('class="st-mesh"', false)
             ->assertSee('class="st-frame"', false)

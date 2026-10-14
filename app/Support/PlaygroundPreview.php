@@ -5,7 +5,9 @@ namespace App\Support;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\ViewErrorBag;
+use Livewire\Livewire;
 use Streams\Ui\Builders\Actions\Action;
+use Streams\Ui\Builders\Inputs\EditorInput;
 use Streams\Ui\Builders\Tables\Columns\Column;
 use Streams\Ui\Builders\Tables\Table;
 use Streams\Ui\Builders\ViewBuilder;
@@ -37,7 +39,14 @@ class PlaygroundPreview
 
             $preview = new self;
             $preview->shareErrorBag();
-            $html = $preview->build($component['builder'], $defaults)->toHtml();
+            $builder = $preview->build($component['builder'], $defaults);
+            $html = $builder instanceof EditorInput && ! isset($defaults['view'])
+                ? Livewire::mount(PlaygroundEditor::class, [
+                    'name' => $defaults['name'] ?? 'content',
+                    'id' => $defaults['id'] ?? $builder->getId(),
+                    'value' => $defaults['value'] ?? '',
+                ])
+                : $builder->toHtml();
 
             return ['html' => $html, 'gap' => null];
         } catch (Throwable $exception) {

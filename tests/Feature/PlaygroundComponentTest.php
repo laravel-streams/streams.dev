@@ -28,8 +28,25 @@ class PlaygroundComponentTest extends TestCase
 
             $preview = $this->preview($html, $component['id']);
             $this->assertNotNull($preview, $component['id']);
-            $this->assertNotSame('', trim($preview->textContent), $component['id']);
+            $this->assertTrue($preview->hasChildNodes(), $component['id']);
+            $this->assertNotSame('', trim($response->viewData('preview')), $component['id']);
         }
+    }
+
+    public function test_default_controls_and_native_package_views_are_present(): void
+    {
+        $this->get('/playground/text-input')->assertOk()
+            ->assertSee('placeholder="Enter a title"', false)
+            ->assertSee('wire:model="data.title"', false);
+        $this->get('/playground/select-input')->assertOk()
+            ->assertSee('value="draft"', false)
+            ->assertSee('value="published"', false);
+        $this->get('/playground/table')->assertOk()->assertSee('Ada Lovelace');
+        $this->get('/playground/icon-column')->assertOk()->assertSee('<svg', false);
+        $this->get('/playground/editor-input')->assertOk()
+            ->assertSee('monaco.editor.create', false)
+            ->assertSee('data.content-editor', false)
+            ->assertSee('wire:snapshot', false);
     }
 
     public function test_unknown_component_is_not_found(): void
