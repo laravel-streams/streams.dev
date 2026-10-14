@@ -6,7 +6,9 @@ section: packages
 package: ui
 order: 100
 tags: [ui, forms]
-status: ready
+editorial_status: ready
+status: implemented
+tracking_task: null
 ---
 
 Forms are built with `Streams\Ui\Builders\Forms\Form` — a Livewire-aware view builder.

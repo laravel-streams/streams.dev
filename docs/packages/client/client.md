@@ -6,7 +6,9 @@ section: packages
 package: client
 order: 40
 tags: [client]
-status: ready
+editorial_status: ready
+status: partial
+tracking_task: 266
 ---
 
 The `Client` class is the main entry point for interacting with the Streams API.

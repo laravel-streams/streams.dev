@@ -7,7 +7,9 @@ category: this-project
 package: site
 order: 20
 tags: [site, project, structure]
-status: ready
+editorial_status: ready
+status: implemented
+tracking_task: 267
 ---
 
 ## Top-level layout
@@ -20,7 +22,7 @@ streams.dev/
 ├── resources/views/        # Blade templates
 ├── routes/                 # Laravel routes (mostly defaults)
 ├── config/                 # Laravel + streams config
-└── composer.json           # Core, UI, path repos
+└── composer.json           # Core, UI, vcs GitHub repositories
 ```
 
 ## `streams/` — configuration

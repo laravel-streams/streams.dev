@@ -6,7 +6,9 @@ section: packages
 package: core
 order: 80
 tags: [core, repositories]
-status: ready
+editorial_status: ready
+status: implemented
+tracking_task: null
 ---
 
 Repositories provide direct CRUD access to stream entries through `Streams\Core\Repository\Repository`.

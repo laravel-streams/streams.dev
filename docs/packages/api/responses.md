@@ -6,7 +6,9 @@ section: packages
 package: api
 order: 60
 tags: [api, responses]
-status: ready
+editorial_status: ready
+status: implemented
+tracking_task: null
 ---
 
 Successful API responses use a consistent JSON envelope from `Streams\Api\ApiResponse`.

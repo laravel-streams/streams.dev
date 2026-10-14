@@ -4,6 +4,7 @@ namespace Tests\Feature;
 
 use App\Support\DocsNav;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Http;
 use Streams\Core\Support\Facades\Streams;
 use Symfony\Component\Yaml\Yaml;
 use Tests\TestCase;
@@ -19,7 +20,7 @@ class DocsContentTest extends TestCase
 
     protected const PACKAGES = ['core', 'ui', 'api', 'sdk', 'testing', 'client', 'site', 'all'];
 
-    protected const STATUSES = ['draft', 'review', 'ready', 'deprecated'];
+    protected const STATUSES = ['implemented', 'partial', 'planned'];
 
     /**
      * @return array<string, array{frontmatter: array, body: string}>
@@ -67,6 +68,13 @@ class DocsContentTest extends TestCase
             $this->assertContains($frontmatter['section'], static::SECTIONS, "{$page} section");
             $this->assertContains($frontmatter['package'], static::PACKAGES, "{$page} package");
             $this->assertContains($frontmatter['status'], static::STATUSES, "{$page} status");
+            if (in_array($frontmatter['status'], ['implemented', 'partial', 'planned'], true)) {
+                $this->assertArrayHasKey('tracking_task', $frontmatter, "{$page} tracking_task");
+                if ($frontmatter['status'] !== 'implemented') {
+                    $tracking = $frontmatter['tracking_task'];
+                    $this->assertTrue($tracking === 'pending' || (is_int($tracking) && $tracking > 0), "{$page} needs a tracking task id or pending placeholder.");
+                }
+            }
             $this->assertIsInt($frontmatter['order'], "{$page} order");
             $this->assertIsArray($frontmatter['tags'], "{$page} tags");
             $this->assertArrayNotHasKey('sort_order', $frontmatter, "{$page} uses sort_order; use order.");
@@ -178,6 +186,242 @@ class DocsContentTest extends TestCase
         return $types;
     }
 
+    public function test_package_catalog_data_is_an_object_keyed_by_id(): void
+    {
+        $page = $this->pages()['streams/data/docs/package-catalog'];
+        $body = $page['body'];
+
+        $this->assertStringContainsString('object keyed by entry id', $body);
+        $this->assertStringNotContainsString('the `data` array', $body);
+        $this->assertSame('implemented', $page['frontmatter']['status']);
+        $this->assertSame(267, $page['frontmatter']['tracking_task']);
+
+        $packages = json_decode(file_get_contents(base_path('streams/packages.json')), true, 512, JSON_THROW_ON_ERROR);
+
+        $this->assertSame('self', $packages['config']['source']['type']);
+        $this->assertIsArray($packages['data']);
+        $this->assertNotEmpty($packages['data']);
+        $this->assertFalse(array_is_list($packages['data']), 'packages.json data is a list; self source stores an object keyed by id.');
+
+        foreach ($packages['data'] as $key => $entry) {
+            $this->assertSame($key, $entry['id']);
+        }
+
+        $this->get('/docs/package-catalog')
+            ->assertOk()
+            ->assertDontSee('data-docs-status="partial"', false)
+            ->assertDontSee('the `data` array', false)
+            ->assertSee('object keyed by entry id', false);
+    }
+
+    public function test_project_structure_composer_json_uses_vcs_repositories(): void
+    {
+        $page = $this->pages()['streams/data/docs/project-structure'];
+        $body = $page['body'];
+
+        $this->assertMatchesRegularExpression('/composer\.json\s+# Core, UI, vcs GitHub repositories/', $body);
+        $this->assertDoesNotMatchRegularExpression('/composer\.json\s+#.*path repos/', $body);
+        $this->assertSame('implemented', $page['frontmatter']['status']);
+        $this->assertSame(267, $page['frontmatter']['tracking_task']);
+        $this->assertStringContainsString('composer.local.json', $body);
+        $this->assertStringContainsString('symlinked path repositories', $body);
+
+        $composer = json_decode(file_get_contents(base_path('composer.json')), true, 512, JSON_THROW_ON_ERROR);
+
+        $this->assertNotEmpty($composer['repositories']);
+
+        foreach ($composer['repositories'] as $repository) {
+            $this->assertSame('vcs', $repository['type']);
+            $this->assertStringContainsString('github.com', $repository['url']);
+        }
+
+        $this->assertStringContainsString('/composer.local.json', file_get_contents(base_path('.gitignore')));
+
+        $script = file_get_contents(base_path('scripts/composer-local.php'));
+        $this->assertStringContainsString("'type' => 'path'", $script);
+        $this->assertStringContainsString("'symlink' => true", $script);
+        $this->assertStringContainsString('composer.local.json', $script);
+
+        $provider = file_get_contents(base_path('app/Providers/AppServiceProvider.php'));
+        $this->assertStringContainsString("Panel::make('admin')", $provider);
+        $this->assertStringContainsString("->path('admin')", $provider);
+
+        $this->get('/docs/project-structure')
+            ->assertOk()
+            ->assertDontSee('data-docs-status="partial"', false)
+            ->assertDontSee('Core, UI, path repos', false)
+            ->assertSee('vcs GitHub repositories', false);
+    }
+
+    public function test_site_pages_homepage_uses_layout_page(): void
+    {
+        $page = $this->pages()['streams/data/docs/site-pages'];
+        $body = $page['body'];
+
+        $this->assertStringContainsString('The homepage (`welcome.html`) uses `uri: /` and `layout: page`.', $body);
+        $this->assertStringNotContainsString('The homepage (`welcome.html`) uses `uri: /` and `layout: blank`.', $body);
+        $this->assertSame('implemented', $page['frontmatter']['status']);
+        $this->assertSame(267, $page['frontmatter']['tracking_task']);
+        $this->assertStringContainsString('`parse: true`', $body);
+        $this->assertStringContainsString('"{uri}"', $body);
+
+        preg_match('/^---\n(.*?)\n---\n/s', file_get_contents(base_path('streams/data/pages/welcome.html')), $welcome);
+        $welcomeFrontmatter = Yaml::parse($welcome[1]);
+
+        $this->assertSame('/', $welcomeFrontmatter['uri']);
+        $this->assertSame('page', $welcomeFrontmatter['layout']);
+
+        $pages = json_decode(file_get_contents(base_path('streams/pages.json')), true, 512, JSON_THROW_ON_ERROR);
+        $route = $pages['routes'][0];
+
+        $this->assertSame('view', $route['handle']);
+        $this->assertSame('{uri}', $route['uri']);
+        $this->assertTrue($route['parse']);
+        $this->assertSame('{layout}', $route['view']);
+
+        $this->get('/docs/site-pages')
+            ->assertOk()
+            ->assertDontSee('data-docs-status="partial"', false)
+            ->assertDontSee('layout: blank', false)
+            ->assertSee('layout: page', false);
+    }
+
+    public function test_local_development_uses_master_and_the_dev_ports(): void
+    {
+        $page = $this->pages()['streams/data/docs/local-development'];
+        $body = $page['body'];
+
+        $this->assertSame('implemented', $page['frontmatter']['status']);
+        $this->assertSame(191, $page['frontmatter']['tracking_task']);
+
+        $this->assertStringContainsString(
+            'git clone https://github.com/laravel-streams/streams.dev.git --branch master',
+            $body
+        );
+        $this->assertStringNotContainsString('--branch develop', $body);
+        $this->assertStringNotContainsString('branch `develop`', $body);
+        $this->assertStringNotContainsString('Work on `develop`', $body);
+        $this->assertStringContainsString('branch `master`', $body);
+        $this->assertStringContainsString('http://127.0.0.1:8427', $body);
+        $this->assertStringContainsString('port 5427', $body);
+        $this->assertStringContainsString('git switch -c feature/your-change', $body);
+        $this->assertStringContainsString('The old `develop`, `next`, `integration/rc` and `production` branches no longer exist.', $body);
+
+        $blade = file_get_contents(base_path('resources/views/docs.blade.php'));
+        $this->assertStringContainsString('https://github.com/laravel-streams/streams.dev/blob/master/', $blade);
+        $this->assertStringNotContainsString('/blob/develop/', $blade);
+
+        $this->get('/docs/local-development')
+            ->assertOk()
+            ->assertDontSee('data-docs-status="partial"', false)
+            ->assertDontSee('--branch develop', false)
+            ->assertSee('--branch master', false)
+            ->assertSee('127.0.0.1:8427', false)
+            ->assertSee('5427', false);
+    }
+
+    public function test_changelog_release_candidates_require_php_82_on_rc_prep(): void
+    {
+        $page = $this->pages()['streams/data/docs/changelog'];
+        $body = $page['body'];
+
+        $this->assertStringContainsString(
+            'On `rc/prep`, Core and API require PHP 8.2 (`php: ^8.2`).',
+            $body
+        );
+        $this->assertStringNotContainsString(
+            '**Core, API (release candidates):** Require PHP 8.2.',
+            $body
+        );
+        $this->assertStringContainsString('The SDK now requires PHP 8.2.', $body);
+        $this->assertStringContainsString('Core supports the Laravel 11 and 12 filesystem contract and Carbon 3.', $body);
+        $this->assertSame('implemented', $page['frontmatter']['status']);
+        $this->assertSame(268, $page['frontmatter']['tracking_task']);
+
+        $core = json_decode(file_get_contents(base_path('vendor/streams/core/composer.json')), true, 512, JSON_THROW_ON_ERROR);
+        $sdk = json_decode(file_get_contents(base_path('vendor/streams/sdk/composer.json')), true, 512, JSON_THROW_ON_ERROR);
+
+        $this->assertSame('^8.2', $core['require']['php'] ?? null);
+        $this->assertSame('^8.2', $sdk['require']['php'] ?? null);
+
+        $registry = json_decode(file_get_contents(base_path('docs/registry.json')), true, 512, JSON_THROW_ON_ERROR);
+        $changelogProof = [];
+        foreach ($registry as $row) {
+            if ($row['page'] === 'streams/data/docs/changelog.md') {
+                $changelogProof = $row['proof'];
+            }
+        }
+        $apiCommit = '0d3ba86d22473114553779420d3c1e15bb096f20';
+        $this->assertContains('streams-api@'.$apiCommit.':composer.json', $changelogProof);
+
+        // streams/api is not installed in this app. Read the rc/prep snapshot the registry cites.
+        $api = $this->registryPackageComposer('streams-api', $apiCommit, 'rc/prep');
+        $this->assertSame('streams/api', $api['name']);
+        $this->assertArrayHasKey('php', $api['require']);
+        $this->assertSame('^8.2', $api['require']['php']);
+
+        $this->assertStringContainsString(
+            'function registerMcpServer(',
+            file_get_contents(base_path('vendor/streams/sdk/src/SdkServiceProvider.php'))
+        );
+
+        $lock = json_decode(file_get_contents(base_path('composer.lock')), true, 512, JSON_THROW_ON_ERROR);
+        $lockedCore = null;
+
+        foreach ($lock['packages'] as $package) {
+            if ($package['name'] === 'streams/core') {
+                $lockedCore = $package;
+            }
+        }
+
+        $this->assertNotNull($lockedCore);
+        $this->assertSame('9291456367b85482f83504046a37ec6f7dd59dd9', $lockedCore['source']['reference']);
+        $this->assertSame('^8.2', $lockedCore['require']['php']);
+
+        $this->get('/docs/changelog.md')
+            ->assertOk()
+            ->assertHeader('Content-Type', 'text/markdown; charset=UTF-8')
+            ->assertSee('On `rc/prep`, Core and API require PHP 8.2 (`php: ^8.2`).', false)
+            ->assertDontSee('**Core, API (release candidates):** Require PHP 8.2.', false);
+
+        $this->get('/docs/changelog')
+            ->assertOk()
+            ->assertDontSee('data-docs-status="partial"', false)
+            ->assertDontSee('data-docs-status="planned"', false)
+            ->assertDontSee('This feature is partially implemented.', false);
+    }
+
+    public function test_use_cases_starter_requires_core_ui_and_api(): void
+    {
+        $page = $this->pages()['streams/data/docs/use-cases'];
+        $body = $page['body'];
+
+        $this->assertStringContainsString(
+            '**Packages:** full starter via `composer create-project` (Core, UI, and API)',
+            $body
+        );
+        $this->assertStringNotContainsString('(Core, UI, API, SDK)', $body);
+        $this->assertStringContainsString('It does not require `streams/sdk`.', $body);
+        $this->assertStringContainsString('**Packages:** `streams/core`, `streams/ui`', $body);
+        $this->assertStringContainsString('**Packages:** `streams/core`, `streams/ui`, `streams/api`', $body);
+        $this->assertStringContainsString('**Packages:** `streams/core`, `streams/api`', $body);
+        $this->assertSame('implemented', $page['frontmatter']['status']);
+        $this->assertSame(268, $page['frontmatter']['tracking_task']);
+
+        $this->get('/docs/use-cases.md')
+            ->assertOk()
+            ->assertHeader('Content-Type', 'text/markdown; charset=UTF-8')
+            ->assertSee('**Packages:** full starter via `composer create-project` (Core, UI, and API)', false)
+            ->assertDontSee('(Core, UI, API, SDK)', false)
+            ->assertSee('It does not require `streams/sdk`.', false);
+
+        $this->get('/docs/use-cases')
+            ->assertOk()
+            ->assertDontSee('data-docs-status="partial"', false)
+            ->assertDontSee('data-docs-status="planned"', false)
+            ->assertDontSee('This feature is partially implemented.', false);
+    }
+
     public function test_package_nav_points_at_package_files()
     {
         foreach (DocsNav::packages() as $name => $package) {
@@ -201,5 +445,125 @@ class DocsContentTest extends TestCase
                 "{$name} nav does not account for every markdown file."
             );
         }
+    }
+
+    /**
+     * Composer manifest at a registry proof commit.
+     *
+     * Prefers a local checkout (the Core symlink's sibling, then the paths
+     * scripts/composer-local.php searches). Otherwise reads that commit from GitHub.
+     *
+     * @return array<string, mixed>
+     */
+    protected function registryPackageComposer(string $repository, string $commit, string $branch): array
+    {
+        foreach ($this->packageCheckouts($repository) as $checkout) {
+            if (! $this->gitSucceeds($checkout, ['cat-file', '-e', $commit])) {
+                continue;
+            }
+
+            $this->assertTrue(
+                $this->gitSucceeds($checkout, ['merge-base', '--is-ancestor', $commit, $branch]),
+                "{$repository}@{$commit} is not on {$branch}."
+            );
+
+            return json_decode(
+                $this->gitOutput($checkout, ['show', $commit.':composer.json']),
+                true,
+                512,
+                JSON_THROW_ON_ERROR
+            );
+        }
+
+        $headers = [
+            'User-Agent' => 'streams.dev-docs-test',
+            'Accept' => 'application/vnd.github+json',
+        ];
+
+        $composer = Http::timeout(20)
+            ->withHeaders($headers)
+            ->get("https://raw.githubusercontent.com/laravel-streams/{$repository}/{$commit}/composer.json")
+            ->throw()
+            ->json();
+
+        $this->assertIsArray($composer, "{$repository}@{$commit} composer.json was not readable.");
+
+        $status = Http::timeout(20)
+            ->withHeaders($headers)
+            ->get('https://api.github.com/repos/laravel-streams/'.$repository.'/compare/'.rawurlencode($branch).'...'.$commit)
+            ->throw()
+            ->json('status');
+
+        $this->assertContains($status, ['identical', 'behind'], "{$repository}@{$commit} is not on {$branch}.");
+
+        return $composer;
+    }
+
+    /**
+     * @return list<string>
+     */
+    protected function packageCheckouts(string $repository): array
+    {
+        $package = str_starts_with($repository, 'streams-') ? substr($repository, strlen('streams-')) : $repository;
+        $env = getenv('STREAMS_'.strtoupper($package).'_PATH') ?: '';
+        $candidates = $env !== '' ? [$env] : [];
+
+        $core = realpath(base_path('vendor/streams/core'));
+        if ($core !== false) {
+            $candidates[] = dirname($core).'/'.$repository;
+        }
+
+        foreach ([
+            base_path('../_rc/'.$repository),
+            base_path('../_packages/'.$repository),
+            base_path('../'.$repository),
+        ] as $candidate) {
+            $candidates[] = $candidate;
+        }
+
+        $found = [];
+        foreach ($candidates as $candidate) {
+            $path = rtrim($candidate, '/');
+            if (is_file($path.'/composer.json')) {
+                $found[] = $path;
+            }
+        }
+
+        return array_values(array_unique($found));
+    }
+
+    /**
+     * @param  list<string>  $arguments
+     */
+    protected function gitSucceeds(string $checkout, array $arguments): bool
+    {
+        return $this->git($checkout, $arguments)['code'] === 0;
+    }
+
+    /**
+     * @param  list<string>  $arguments
+     */
+    protected function gitOutput(string $checkout, array $arguments): string
+    {
+        $result = $this->git($checkout, $arguments);
+        $this->assertSame(0, $result['code'], "git failed in {$checkout}: ".$result['output']);
+
+        return $result['output'];
+    }
+
+    /**
+     * @param  list<string>  $arguments
+     * @return array{code: int, output: string}
+     */
+    protected function git(string $checkout, array $arguments): array
+    {
+        $command = 'git -C '.escapeshellarg($checkout);
+        foreach ($arguments as $argument) {
+            $command .= ' '.escapeshellarg($argument);
+        }
+
+        exec($command.' 2>&1', $output, $code);
+
+        return ['code' => $code, 'output' => trim(implode("\n", $output))];
     }
 }
