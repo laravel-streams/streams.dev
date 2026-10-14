@@ -1283,16 +1283,16 @@
         "page": "streams/data/docs/installation.md",
         "package": "all",
         "type": "providers",
-        "status": "partial",
+        "status": "implemented",
         "proof": [
-            "streams-core@65ea4668d86fefa20d4eaba35536de33bfda9369:composer.json",
-            "streams-api@22d2351345631480102aa1377e6a6a73d765c7a5:composer.json",
+            "streams-core@9291456367b85482f83504046a37ec6f7dd59dd9:composer.json",
+            "streams-api@0d3ba86d22473114553779420d3c1e15bb096f20:composer.json",
             "streams-sdk@2aff9ebe3a0a58b4e48cb244af0ee683e17ef7b9:composer.json",
             "streams-testing@ec5dd5f41b814a2b15b5dc1aa8a9f5911281781c:composer.json",
             "streams@06fde618b8f8f8a12680f9d98314728de34c03dd:composer.json",
             "streams.dev@ab61fe4fac816bce3cc11275279c48522c0e895f:composer.json"
         ],
-        "finding": "Laravel ranges, Testbench ^8.36, and the starter's Laravel 10 pin match. The sentence that Core and API declare php ^8.2 does not. SDK on sdk/rc does."
+        "finding": "Laravel ranges, Testbench ^8.36, and the starter's Laravel 10 pin match. Core and API on rc/prep declare php ^8.2, and the SDK on sdk/rc does too."
     },
     {
         "page": "streams/data/docs/introduction.md",

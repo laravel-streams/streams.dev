@@ -4,6 +4,7 @@ namespace Tests\Feature;
 
 use App\Support\DocsNav;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Http;
 use Streams\Core\Support\Facades\Streams;
 use Symfony\Component\Yaml\Yaml;
 use Tests\TestCase;
@@ -317,6 +318,225 @@ class DocsContentTest extends TestCase
             ->assertSee('--branch master', false)
             ->assertSee('127.0.0.1:8427', false)
             ->assertSee('5427', false);
+    }
+
+    public function test_installation_core_and_api_declare_php_82_on_rc_prep(): void
+    {
+        $page = $this->pages()['streams/data/docs/installation'];
+        $body = $page['body'];
+
+        $this->assertStringContainsString(
+            'On `rc/prep`, Core and API declare `php: ^8.2`, and the SDK on `sdk/rc` declares `php: ^8.2` too.',
+            $body
+        );
+        $this->assertStringNotContainsString('Core, API, and SDK declare `php: ^8.2`', $body);
+        $this->assertStringContainsString('Declares `^10\|^11\|^12`', $body);
+        $this->assertStringContainsString('Requires `orchestra/testbench ^8.36`', $body);
+        $this->assertStringContainsString('Pins `laravel/framework ^10.0`', $body);
+        $this->assertSame('implemented', $page['frontmatter']['status']);
+        $this->assertSame(269, $page['frontmatter']['tracking_task']);
+
+        // The old registry commits (core 2.0, api 1.0) declare no php constraint.
+        // rc/prep and sdk/rc do, which is what this page now says.
+        $core = $this->packageComposer('streams-core', '9291456367b85482f83504046a37ec6f7dd59dd9', 'rc/prep');
+        $api = $this->packageComposer('streams-api', '0d3ba86d22473114553779420d3c1e15bb096f20', 'rc/prep');
+        $sdk = $this->packageComposer('streams-sdk', '2aff9ebe3a0a58b4e48cb244af0ee683e17ef7b9', 'sdk/rc');
+        $testing = $this->packageComposer('streams-testing', 'ec5dd5f41b814a2b15b5dc1aa8a9f5911281781c', '1.0');
+        $starter = $this->packageComposer('streams', '06fde618b8f8f8a12680f9d98314728de34c03dd', '1.0');
+
+        $this->assertSame('streams/core', $core['name']);
+        $this->assertSame('^8.2', $core['require']['php'] ?? null);
+        $this->assertSame('^10|^11|^12', $core['require']['laravel/framework'] ?? null);
+        $this->assertSame('streams/api', $api['name']);
+        $this->assertSame('^8.2', $api['require']['php'] ?? null);
+        $this->assertSame('streams/sdk', $sdk['name']);
+        $this->assertSame('^8.2', $sdk['require']['php'] ?? null);
+        $this->assertSame('^8.36', $testing['require']['orchestra/testbench'] ?? null);
+        $this->assertSame('^10.0', $starter['require']['laravel/framework'] ?? null);
+
+        $site = json_decode(file_get_contents(base_path('composer.json')), true, 512, JSON_THROW_ON_ERROR);
+        $this->assertSame('^8.2', $site['require']['php']);
+        $this->assertSame('^12.0', $site['require']['laravel/framework']);
+        $this->assertSame('dev-rc/prep as 2.0.x-dev', $site['require']['streams/core']);
+        $this->assertSame('dev-sdk/rc as 1.0.x-dev', $site['require-dev']['streams/sdk']);
+
+        $locked = [];
+        $lock = json_decode(file_get_contents(base_path('composer.lock')), true, 512, JSON_THROW_ON_ERROR);
+
+        foreach (array_merge($lock['packages'], $lock['packages-dev']) as $package) {
+            $locked[$package['name']] = $package;
+        }
+
+        $this->assertSame('9291456367b85482f83504046a37ec6f7dd59dd9', $locked['streams/core']['source']['reference']);
+        $this->assertSame('^8.2', $locked['streams/core']['require']['php']);
+        $this->assertSame('^10|^11|^12', $locked['streams/core']['require']['laravel/framework']);
+        $this->assertSame('^8.2', $locked['streams/sdk']['require']['php']);
+
+        $row = null;
+        $registry = json_decode(file_get_contents(base_path('docs/registry.json')), true, 512, JSON_THROW_ON_ERROR);
+
+        foreach ($registry as $candidate) {
+            if ($candidate['page'] === 'streams/data/docs/installation.md') {
+                $row = $candidate;
+            }
+        }
+
+        $this->assertNotNull($row);
+        $this->assertSame('implemented', $row['status']);
+        $this->assertContains('streams-core@9291456367b85482f83504046a37ec6f7dd59dd9:composer.json', $row['proof']);
+        $this->assertContains('streams-api@0d3ba86d22473114553779420d3c1e15bb096f20:composer.json', $row['proof']);
+        $this->assertContains('streams-sdk@2aff9ebe3a0a58b4e48cb244af0ee683e17ef7b9:composer.json', $row['proof']);
+        $this->assertContains('streams-testing@ec5dd5f41b814a2b15b5dc1aa8a9f5911281781c:composer.json', $row['proof']);
+        $this->assertContains('streams@06fde618b8f8f8a12680f9d98314728de34c03dd:composer.json', $row['proof']);
+
+        $this->get('/docs/installation.md')
+            ->assertOk()
+            ->assertHeader('Content-Type', 'text/markdown; charset=UTF-8')
+            ->assertSee('On `rc/prep`, Core and API declare `php: ^8.2`, and the SDK on `sdk/rc` declares `php: ^8.2` too.', false)
+            ->assertDontSee('Core, API, and SDK declare `php: ^8.2`', false);
+
+        $this->get('/docs/installation')
+            ->assertOk()
+            ->assertDontSee('data-docs-status="partial"', false)
+            ->assertDontSee('data-docs-status="planned"', false)
+            ->assertDontSee('This feature is partially implemented.', false);
+    }
+
+    /**
+     * Composer manifest at a registry proof commit.
+     *
+     * Prefers a local checkout. Otherwise reads that commit from GitHub and
+     * checks that the branch still contains it.
+     *
+     * @return array<string, mixed>
+     */
+    protected function packageComposer(string $repository, string $commit, string $branch): array
+    {
+        foreach ($this->packageCheckouts($repository) as $checkout) {
+            if (! $this->gitSucceeds($checkout, ['cat-file', '-e', $commit.'^{commit}'])) {
+                continue;
+            }
+
+            $onBranch = $this->gitSucceeds($checkout, ['merge-base', '--is-ancestor', $commit, $branch])
+                || $this->gitSucceeds($checkout, ['merge-base', '--is-ancestor', $commit, 'origin/'.$branch]);
+
+            if (! $onBranch) {
+                continue;
+            }
+
+            return json_decode(
+                $this->gitOutput($checkout, ['show', $commit.':composer.json']),
+                true,
+                512,
+                JSON_THROW_ON_ERROR
+            );
+        }
+
+        $headers = [
+            'User-Agent' => 'streams.dev-docs-test',
+            'Accept' => 'application/vnd.github+json',
+        ];
+
+        $composer = Http::timeout(20)
+            ->withHeaders($headers)
+            ->get("https://raw.githubusercontent.com/laravel-streams/{$repository}/{$commit}/composer.json")
+            ->throw()
+            ->json();
+
+        $this->assertIsArray($composer, "{$repository}@{$commit} composer.json was not readable.");
+
+        $status = Http::timeout(20)
+            ->withHeaders($headers)
+            ->get('https://api.github.com/repos/laravel-streams/'.$repository.'/compare/'.rawurlencode($branch).'...'.$commit)
+            ->throw()
+            ->json('status');
+
+        $this->assertContains($status, ['identical', 'behind'], "{$repository}@{$commit} is not on {$branch}.");
+
+        return $composer;
+    }
+
+    /**
+     * @return list<string>
+     */
+    protected function packageCheckouts(string $repository): array
+    {
+        $vendor = match ($repository) {
+            'streams-core' => 'core',
+            'streams-api' => 'api',
+            'streams-sdk' => 'sdk',
+            'streams-ui' => 'ui',
+            'streams-testing' => 'testing',
+            default => null,
+        };
+
+        $candidates = [];
+
+        if ($vendor !== null) {
+            $candidates[] = base_path('vendor/streams/'.$vendor);
+        }
+
+        $core = realpath(base_path('vendor/streams/core'));
+
+        if ($core !== false) {
+            $candidates[] = dirname($core).'/'.$repository;
+        }
+
+        foreach ([
+            base_path('../_rc/'.$repository),
+            base_path('../_packages/'.$repository),
+            base_path('../'.$repository),
+        ] as $candidate) {
+            $candidates[] = $candidate;
+        }
+
+        $found = [];
+
+        foreach ($candidates as $candidate) {
+            $path = rtrim($candidate, '/');
+
+            if (is_dir($path.'/.git') || is_file($path.'/.git')) {
+                $found[] = $path;
+            }
+        }
+
+        return array_values(array_unique($found));
+    }
+
+    /**
+     * @param  list<string>  $arguments
+     */
+    protected function gitSucceeds(string $checkout, array $arguments): bool
+    {
+        return $this->git($checkout, $arguments)['code'] === 0;
+    }
+
+    /**
+     * @param  list<string>  $arguments
+     */
+    protected function gitOutput(string $checkout, array $arguments): string
+    {
+        $result = $this->git($checkout, $arguments);
+        $this->assertSame(0, $result['code'], "git failed in {$checkout}: ".$result['output']);
+
+        return $result['output'];
+    }
+
+    /**
+     * @param  list<string>  $arguments
+     * @return array{code: int, output: string}
+     */
+    protected function git(string $checkout, array $arguments): array
+    {
+        $command = 'git -C '.escapeshellarg($checkout);
+
+        foreach ($arguments as $argument) {
+            $command .= ' '.escapeshellarg($argument);
+        }
+
+        exec($command.' 2>&1', $output, $code);
+
+        return ['code' => $code, 'output' => trim(implode("\n", $output))];
     }
 
     public function test_package_nav_points_at_package_files()
