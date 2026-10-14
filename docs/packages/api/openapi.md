@@ -7,8 +7,8 @@ package: api
 order: 180
 tags: [api, openapi]
 editorial_status: ready
-status: partial
-tracking_task: pending
+status: implemented
+tracking_task: 260
 ---
 
 ## Reference spec
