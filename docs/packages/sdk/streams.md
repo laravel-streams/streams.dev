@@ -7,7 +7,7 @@ package: sdk
 order: 40
 tags: [sdk, streams]
 editorial_status: ready
-status: partial
+status: implemented
 tracking_task: 262
 ---
 
@@ -19,7 +19,7 @@ Streams are the foundation of Laravel Streams - they define the structure and be
 {
     "$schema": "https://streams.dev/schema/streams.schema.json",
     "name": "Blog Posts",
-    "handle": "blog_posts",
+    "id": "blog_posts",
     "description": "Content management for blog articles",
     "config": {
         "source": {
@@ -57,18 +57,17 @@ Streams are the foundation of Laravel Streams - they define the structure and be
 
 ## Stream Properties
 
-### Required Properties
+### Identity and fields
 
-- **name**: Human-readable name for the stream
-- **handle**: Unique identifier (snake_case recommended)
-- **fields**: Array of field definitions
+No top-level properties are required by the definition schema. Use **id** for the stream identifier (snake_case recommended), or let the JSON filename supply it. The legacy top-level **handle** is deprecated. **fields** defines attributes as a list of field objects or an object keyed by field handle; a field in list form needs its own `handle`.
 
 ### Optional Properties
 
 - **description**: Brief description of the stream's purpose
+- **name**: Human-readable name; defaults to the title-cased ID
 - **config**: Configuration options for data source and behavior
 - **routes**: URL routing definitions
-- **validation**: Stream-level validation rules
+- **rules**: Stream-level validation rules keyed by field handle. The legacy top-level `validation` property is not supported by this workflow.
 
 ## Data Sources
 
@@ -89,6 +88,7 @@ Streams are the foundation of Laravel Streams - they define the structure and be
 {
     "config": {
         "source": {
+            "type": "filebase",
             "format": "json",
             "path": "content/products"
         }
@@ -108,30 +108,24 @@ Streams are the foundation of Laravel Streams - they define the structure and be
 }
 ```
 
+Validate source configuration with `php artisan streams:validate`. Filebase sources use `format` and `path`; database sources use `table`, and Eloquent sources use `model`. The validator checks source configuration against the runtime adapter requirements.
+
 ## Stream Configuration Options
 
 ### Pagination
-```json
-{
-    "config": {
-        "pagination": {
-            "per_page": 20,
-            "page_name": "page"
-        }
-    }
-}
+
+Choose pagination when making the query. A `config.pagination` object does not automatically paginate entries:
+
+```php
+Streams::entries('products')->paginate(20);
 ```
 
 ### Sorting
-```json
-{
-    "config": {
-        "sort": {
-            "field": "created_at",
-            "direction": "desc"
-        }
-    }
-}
+
+Apply sorting to the query. A `config.sort` object does not automatically order entries:
+
+```php
+Streams::entries('products')->orderBy('created_at', 'desc')->get();
 ```
 
 ### Caching
