@@ -1,9 +1,12 @@
 <?php
 
+use App\Support\DocsSearchIndex;
+use App\Support\ExploreTree;
+use App\Support\LlmsText;
+use App\Support\PlaygroundCatalog;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Route;
 use Streams\Core\Support\Facades\Streams;
-use Streams\Ui\Support\Facades\UI;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,10 +18,6 @@ use Streams\Ui\Support\Facades\UI;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-use App\Support\DocsSearchIndex;
-use App\Support\ExploreTree;
-use App\Support\LlmsText;
 
 Route::get('/search/docs.json', fn () => response()->json(DocsSearchIndex::all()));
 
@@ -61,6 +60,9 @@ Route::get('/docs/{path}.md', function (string $path) use ($markdown) {
 
 Route::view('api-test', 'api');
 Route::view('ui-test', 'ui');
+Route::get('playground', fn () => view('playground', [
+    'components' => PlaygroundCatalog::components(),
+]))->name('playground');
 
 /*
 | Explore: /explore redirects to the root node; every node is also served as
