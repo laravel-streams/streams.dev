@@ -7,7 +7,9 @@ category: this-project
 package: site
 order: 30
 tags: [site, pages]
-status: ready
+editorial_status: ready
+status: implemented
+tracking_task: 267
 ---
 
 ## Overview
@@ -70,7 +72,7 @@ sort_order: 1
 | `layout` | Blade layout name (`page`, `blank`, etc.) |
 | `title` | Entry title, available as `$entry->title` in the body |
 
-The homepage (`welcome.html`) uses `uri: /` and `layout: blank`.
+The homepage (`welcome.html`) uses `uri: /` and `layout: page`. `page` extends the site shell, so the nav and footer stay on the page. `blank` turns shell chrome off; this homepage does not use it.
 
 ## How routing works
 

@@ -7,7 +7,9 @@ category: getting-started
 package: all
 order: 50
 tags: [versions]
-status: ready
+editorial_status: ready
+status: partial
+tracking_task: 270
 ---
 
 Streams is pre-release. Most packages have **no tagged releases yet**, so you install them from their development branches. This page lists what each package declares in its `composer.json` (or `package.json`) and what it is tested against today.

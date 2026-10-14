@@ -6,7 +6,9 @@ section: packages
 package: core
 order: 10
 tags: [core, introduction]
-status: ready
+editorial_status: ready
+status: implemented
+tracking_task: null
 ---
 
 Streams Core (`streams/core`) is the foundation package for the Streams ecosystem. It provides JSON-defined domain models, repository access, criteria-based queries, stream routing, assets, and images — all integrated with Laravel.

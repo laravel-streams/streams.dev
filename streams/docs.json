@@ -12,7 +12,11 @@
             "handle": "view",
             "uri": "docs/{id}",
             "view": "docs",
-            "constraints": [{"id": "[^./]+"}]
+            "constraints": [
+                {
+                    "id": "[^./]+"
+                }
+            ]
         }
     ],
     "fields": [
@@ -110,7 +114,10 @@
                     "draft": "Draft",
                     "review": "In review",
                     "ready": "Ready",
-                    "deprecated": "Deprecated"
+                    "deprecated": "Deprecated",
+                    "implemented": "Implemented",
+                    "partial": "Partial",
+                    "planned": "Planned"
                 },
                 "default": "draft"
             }
@@ -121,6 +128,14 @@
             "input": {
                 "type": "editor"
             }
+        },
+        {
+            "handle": "tracking_task",
+            "type": "string"
+        },
+        {
+            "handle": "editorial_status",
+            "type": "string"
         }
     ],
     "ui": {
@@ -177,7 +192,10 @@
                         "url": "/docs/{entry.id}",
                         "attributes": {
                             "target": "_blank",
-                            "class": ["a-button", "-secondary"]
+                            "class": [
+                                "a-button",
+                                "-secondary"
+                            ]
                         }
                     }
                 ]

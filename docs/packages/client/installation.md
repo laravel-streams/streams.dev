@@ -6,7 +6,9 @@ section: packages
 package: client
 order: 20
 tags: [client, installation]
-status: ready
+editorial_status: ready
+status: implemented
+tracking_task: null
 ---
 
 ## Requirements
