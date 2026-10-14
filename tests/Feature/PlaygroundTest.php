@@ -8,6 +8,30 @@ use Tests\TestCase;
 
 class PlaygroundTest extends TestCase
 {
+    public function test_navigation_lists_every_catalog_component_exactly_once(): void
+    {
+        // Read the source independently: an incomplete loader must fail this test.
+        $catalog = json_decode(file_get_contents(resource_path('playground/catalog.json')), true, 512, JSON_THROW_ON_ERROR);
+        $components = $catalog['components'];
+        $this->assertNotEmpty($components);
+
+        $html = $this->get('/playground')->assertOk()->getContent();
+        $document = new DOMDocument;
+        @$document->loadHTML($html);
+        $xpath = new DOMXPath($document);
+        $links = $xpath->query('//nav[@aria-label="Playground components"]//a[@data-playground-component]');
+
+        $this->assertCount(count($components), $links);
+
+        foreach ($components as $component) {
+            $matches = $xpath->query('//nav[@aria-label="Playground components"]//a[@data-playground-component="'.$component['id'].'"]');
+            $this->assertSame(1, $matches->length, $component['id']);
+            $this->assertSame($component['label'], trim($matches->item(0)->textContent));
+            $this->assertSame($component['reference'], $matches->item(0)->getAttribute('href'));
+            $this->get($component['reference'])->assertOk();
+        }
+    }
+
     public function test_playground_uses_the_site_shell_and_theme(): void
     {
         $this->get('/playground')
