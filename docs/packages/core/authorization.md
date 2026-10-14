@@ -14,7 +14,7 @@ Register Laravel authorization from a stream when that stream is registered. Cor
 
 ## Stream policy
 
-Set `policy` to a policy class. Core calls `Gate::policy()` for the stream entry class in `config.abstract`. When `config.abstract` is omitted, the entry class is `Streams\Core\Entry\Entry`.
+Set `policy` to a policy class. Core registers `Streams\Core\Stream\StreamPolicy` with `Gate::policy()` for the stream entry class in `config.abstract`. When `config.abstract` is omitted, the entry class is `Streams\Core\Entry\Entry`.
 
 ```json
 {
@@ -25,7 +25,7 @@ Set `policy` to a policy class. Core calls `Gate::policy()` for the stream entry
 }
 ```
 
-Streams that share one entry class share one policy. Give each stream its own `config.abstract` when the policies differ.
+The dispatcher reads the policy from the entry’s own stream when checking an ability. Streams can share an entry class and still use different policy classes. Checks require an entry instance; class-only checks are denied. Laravel’s policy `before` and guest rules apply.
 
 ## Stream config gates
 

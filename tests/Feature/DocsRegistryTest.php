@@ -60,4 +60,45 @@ class DocsRegistryTest extends TestCase
             $this->assertContains($relative, $registered, $relative);
         }
     }
+
+    public function test_core_feature_reconciliation_matches_task_255_snapshot(): void
+    {
+        $rows = json_decode(file_get_contents(base_path('docs/registry.json')), true, flags: JSON_THROW_ON_ERROR);
+        $rows = array_column($rows, null, 'page');
+        $commit = 'streams-core@fa8dffbff61570b789893c3d20c86b9a88476813:';
+
+        foreach ([
+            'docs/packages/core/authorization.md',
+            'docs/packages/core/field-decorators.md',
+            'docs/packages/core/images.md',
+            'streams/data/docs/images.md',
+            'streams/data/docs/streams.md',
+        ] as $page) {
+            $this->assertSame('implemented', $rows[$page]['status'], $page);
+            foreach ($rows[$page]['proof'] as $proof) {
+                $this->assertStringStartsWith($commit, $proof, $page);
+            }
+
+            preg_match('/^---\n(.*?)\n---\n/s', file_get_contents(base_path($page)), $match);
+            $this->assertSame(255, Yaml::parse($match[1])['tracking_task'], $page);
+        }
+
+        $authorization = file_get_contents(base_path('docs/packages/core/authorization.md'));
+        $this->assertStringContainsString('Streams\\Core\\Stream\\StreamPolicy', $authorization);
+        $this->assertStringContainsString('Streams can share an entry class and still use different policy classes.', $authorization);
+        $this->assertStringContainsString('class-only checks are denied', $authorization);
+        $this->assertStringNotContainsString('Streams that share one entry class share one policy.', $authorization);
+
+        $streams = file_get_contents(base_path('streams/data/docs/streams.md'));
+        $this->assertStringContainsString('StreamPolicy', $streams);
+        $this->assertStringContainsString('class-only checks are denied', $streams);
+
+        foreach (['docs/packages/core/images.md', 'streams/data/docs/images.md'] as $page) {
+            $images = file_get_contents(base_path($page));
+            $this->assertStringContainsString('InvalidArgumentException', $images, $page);
+            $this->assertStringContainsString('before any candidate is generated', $images, $page);
+            $this->assertStringContainsString('does not add a `sizes` attribute', $images, $page);
+            $this->assertStringContainsString('including its alterations', $images, $page);
+        }
+    }
 }

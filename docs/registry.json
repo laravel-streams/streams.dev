@@ -70,8 +70,8 @@
         "type": "features",
         "status": "implemented",
         "proof": [
-            "streams-core@2690f4cd6b5b06752d8410679dd6adaeab0f0181:src/Support/Traits/Fluency.php",
-            "streams-core@2690f4cd6b5b06752d8410679dd6adaeab0f0181:src/Field/Decorator/StringDecorator.php"
+            "streams-core@fa8dffbff61570b789893c3d20c86b9a88476813:src/Support/Traits/Fluency.php",
+            "streams-core@fa8dffbff61570b789893c3d20c86b9a88476813:src/Field/Decorator/StringDecorator.php"
         ],
         "finding": "Entry::decorate(string) returns the field decorator. String fields with config.markdown stringify to parsed HTML."
     },
@@ -178,9 +178,10 @@
         "type": "features",
         "status": "implemented",
         "proof": [
-            "streams-core@2690f4cd6b5b06752d8410679dd6adaeab0f0181:src/Image/Image.php"
+            "streams-core@fa8dffbff61570b789893c3d20c86b9a88476813:src/Image/Image.php",
+            "streams-core@fa8dffbff61570b789893c3d20c86b9a88476813:tests/Image/ImageTest.php"
         ],
-        "finding": "srcset() with no arguments uses the current altered image URL."
+        "finding": "srcset() without arguments uses the altered image URL. srcsets() validates descriptors and named alteration candidates before generation and does not add sizes."
     },
     {
         "page": "docs/packages/core/macros.md",
@@ -930,10 +931,11 @@
         "type": "features",
         "status": "implemented",
         "proof": [
-            "streams-core@2690f4cd6b5b06752d8410679dd6adaeab0f0181:src/Stream/StreamManager.php",
-            "streams-core@2690f4cd6b5b06752d8410679dd6adaeab0f0181:src/Support/Integrator.php"
+            "streams-core@fa8dffbff61570b789893c3d20c86b9a88476813:src/Stream/StreamManager.php",
+            "streams-core@fa8dffbff61570b789893c3d20c86b9a88476813:src/Stream/StreamPolicy.php",
+            "streams-core@fa8dffbff61570b789893c3d20c86b9a88476813:src/Support/Integrator.php"
         ],
-        "finding": "Stream registration reads config.gates and a top-level gates map through Integrator::gates, and registers a top-level policy string with Gate::policy for config.abstract."
+        "finding": "Stream registration reads config.gates and a top-level gates map through Integrator::gates. A StreamPolicy dispatcher resolves each entry’s stream policy, including when streams share an entry class; class-only checks are denied."
     },
     {
         "page": "docs/packages/sdk/tap.md",
@@ -1041,9 +1043,10 @@
         "type": "features",
         "status": "implemented",
         "proof": [
-            "streams-core@2690f4cd6b5b06752d8410679dd6adaeab0f0181:src/Image/Image.php"
+            "streams-core@fa8dffbff61570b789893c3d20c86b9a88476813:src/Image/Image.php",
+            "streams-core@fa8dffbff61570b789893c3d20c86b9a88476813:tests/Image/ImageTest.php"
         ],
-        "finding": "srcsets() appends descriptor keys such as 1x and 640w and does not set a sizes attribute."
+        "finding": "srcsets() accepts positive width or density descriptors and named alteration arrays, rejects invalid candidates before generation, and does not add sizes."
     },
     {
         "page": "streams/data/docs/localization.md",
@@ -1073,9 +1076,10 @@
         "type": "features",
         "status": "implemented",
         "proof": [
-            "streams-core@2690f4cd6b5b06752d8410679dd6adaeab0f0181:src/Stream/StreamManager.php"
+            "streams-core@fa8dffbff61570b789893c3d20c86b9a88476813:src/Stream/StreamManager.php",
+            "streams-core@fa8dffbff61570b789893c3d20c86b9a88476813:src/Stream/StreamPolicy.php"
         ],
-        "finding": "StreamManager::authorize registers the top-level policy string with Gate::policy for the entry class."
+        "finding": "StreamManager::authorize registers StreamPolicy for the entry class. The dispatcher resolves the policy from each entry’s stream; streams can share entry classes and use different policies."
     },
     {
         "page": "streams/data/docs/components.md",
