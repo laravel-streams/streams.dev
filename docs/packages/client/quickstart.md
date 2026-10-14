@@ -7,9 +7,11 @@ package: client
 order: 30
 tags: [client, quickstart]
 editorial_status: ready
-status: partial
-tracking_task: pending
+status: implemented
+tracking_task: 265
 ---
+
+Default middleware parses and unwraps the Streams API envelope: `response.data` is the resource or entries array, `response.meta` contains pagination, and `response.links` contains related URLs. The original envelope remains on `response.envelope`. A successful delete returns HTTP 204 with null data. Validation errors throw a `FetchError` with status 409 and `error.response.errors`.
 
 Get up and running with the Streams API Client in just a few minutes.
 
