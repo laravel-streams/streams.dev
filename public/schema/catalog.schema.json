@@ -1,0 +1,78 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "https://streams.dev/schema/catalog.schema.json",
+    "title": "Playground streams make node",
+    "description": "Example config for one UI Playground component. A node names a Streams UI builder and the defaults applied through Builder::make(). Nested components, actions, columns, and the card action use the same node. Unknown keys are rejected. Option maps and table entry objects carry their own fields.",
+    "allOf": [
+        { "$ref": "#/definitions/node" }
+    ],
+    "definitions": {
+        "node": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["builder", "defaults"],
+            "properties": {
+                "builder": {
+                    "type": "string",
+                    "pattern": "^Streams\\\\Ui\\\\Builders\\\\[A-Za-z\\\\]+$"
+                },
+                "defaults": {
+                    "$ref": "#/definitions/defaults"
+                }
+            }
+        },
+        "defaults": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "name": { "type": "string" },
+                "id": { "type": "string" },
+                "label": { "type": "string" },
+                "placeholder": { "type": "string" },
+                "heading": { "type": "string" },
+                "description": { "type": "string" },
+                "helpText": { "type": "string" },
+                "url": { "type": "string" },
+                "icon": { "type": "string" },
+                "color": { "type": "string" },
+                "value": { "type": "string" },
+                "slugify": { "type": "string" },
+                "accept": { "type": "string" },
+                "view": { "const": "ui::components.table.columns.text-column" },
+                "paginated": { "type": "boolean" },
+                "rows": { "type": "integer" },
+                "columns": {
+                    "oneOf": [
+                        { "type": "integer" },
+                        {
+                            "type": "array",
+                            "items": { "$ref": "#/definitions/node" }
+                        }
+                    ]
+                },
+                "options": {
+                    "type": "object",
+                    "additionalProperties": { "type": "string" }
+                },
+                "components": {
+                    "type": "array",
+                    "items": { "$ref": "#/definitions/node" }
+                },
+                "actions": {
+                    "type": "array",
+                    "items": { "$ref": "#/definitions/node" }
+                },
+                "action": { "$ref": "#/definitions/node" },
+                "entries": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": ["string", "number", "boolean", "null"]
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

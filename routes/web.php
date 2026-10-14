@@ -31,6 +31,15 @@ Route::get('/schema/streams.schema.json', function () {
     ]);
 });
 
+Route::get('/schema/catalog.schema.json', function () {
+    $path = public_path('schema/catalog.schema.json');
+    abort_unless(is_file($path), 404);
+
+    return response(file_get_contents($path), 200, [
+        'Content-Type' => 'application/json; charset=UTF-8',
+    ]);
+});
+
 /*
  * Machine-readable docs for agents (https://llmstxt.org), built from
  * DocsSearchIndex on request and cached alongside the search index.

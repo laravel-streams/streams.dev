@@ -1393,9 +1393,13 @@
         "proof": [
             "streams.dev:routes/web.php",
             "streams.dev:app/Support/PlaygroundPreview.php",
+            "streams.dev:app/Support/PlaygroundSchema.php",
+            "streams.dev:app/Livewire/PlaygroundConfig.php",
+            "streams.dev:public/schema/catalog.schema.json",
             "streams.dev:resources/playground/catalog.json",
-            "streams.dev:tests/Feature/PlaygroundComponentTest.php"
+            "streams.dev:tests/Feature/PlaygroundComponentTest.php",
+            "streams.dev:tests/Feature/PlaygroundConfigTest.php"
         ],
-        "finding": "Catalog component routes render package builders with in-memory defaults and logged render gaps. JSON editing, share links and browser test controls remain planned; view-less column builders use the package text view and the image column is a package placeholder."
+        "finding": "Catalog component routes render package builders with in-memory defaults and logged render gaps. The component page edits the streams make node as JSON, validates it against catalog.schema.json, and re-renders without a reload. Share links and browser test controls remain planned; view-less column builders use the package text view and the image column is a package placeholder."
     }
 ]
