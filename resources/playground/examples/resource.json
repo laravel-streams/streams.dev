@@ -1,0 +1,12 @@
+{
+    "id": "orders-resource",
+    "label": "Orders",
+    "description": "Resource identifying the seeded orders stream, list columns, and editable fields.",
+    "stream": "orders",
+    "config": {
+        "stream": "orders",
+        "table_columns": ["number", "status", "total_cents"],
+        "form_fields": ["customer", "status"]
+    },
+    "type": "resource"
+}

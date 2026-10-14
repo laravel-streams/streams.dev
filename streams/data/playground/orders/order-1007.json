@@ -1,0 +1,9 @@
+{
+    "id": "order-1007",
+    "number": "PG-1007",
+    "customer": "person-diego",
+    "status": "pending",
+    "total_cents": 9900,
+    "currency": "USD",
+    "placed_at": "2026-05-16 12:00:00"
+}

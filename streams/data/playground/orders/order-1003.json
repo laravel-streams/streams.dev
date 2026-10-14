@@ -1,0 +1,9 @@
+{
+    "id": "order-1003",
+    "number": "PG-1003",
+    "customer": "person-finn",
+    "status": "pending",
+    "total_cents": 2500,
+    "currency": "USD",
+    "placed_at": "2026-05-12 12:00:00"
+}

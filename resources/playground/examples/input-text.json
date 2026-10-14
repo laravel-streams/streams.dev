@@ -1,0 +1,13 @@
+{
+    "id": "people-name",
+    "label": "Name",
+    "description": "Name from Ada Rivera on the people stream.",
+    "stream": "people",
+    "entry": "person-ada",
+    "config": {
+        "handle": "name",
+        "label": "Name",
+        "required": true
+    },
+    "type": "input-text"
+}

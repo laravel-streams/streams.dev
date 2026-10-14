@@ -1,0 +1,11 @@
+{
+    "id": "orders-cancel-prompt",
+    "label": "Cancel order",
+    "description": "Confirm prompt for order PG-1001. The preview does not change the order.",
+    "stream": "orders",
+    "config": {
+        "type": "confirm",
+        "message": "Cancel order PG-1001?"
+    },
+    "type": "prompt"
+}

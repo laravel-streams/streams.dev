@@ -1,0 +1,14 @@
+{
+    "id": "order-1001-decimal-total",
+    "label": "Total",
+    "description": "Decimal preview of order PG-1001's 4900 cents. The orders stream stores cents as an integer.",
+    "stream": "orders",
+    "entry": "order-1001",
+    "config": {
+        "handle": "total",
+        "label": "Total",
+        "value": "49.00",
+        "step": "0.01"
+    },
+    "type": "input-decimal"
+}
