@@ -6,7 +6,8 @@ section: packages
 package: testing
 order: 40
 tags: [testing, writing, tests]
-status: ready
+status: implemented
+tracking_task: 263
 ---
 
 This guide covers everything you need to know about writing tests for Streams applications, from basic examples to advanced testing patterns.
@@ -90,7 +91,8 @@ public function test_updates_film_director()
         ->where('title', 'A New Hope')
         ->first();
     
-    $film->update(['director' => 'Updated Director']);
+    $film->fill(['director' => 'Updated Director']);
+    $film->save();
     
     $updated = Streams::entries('films')
         ->where('title', 'A New Hope')
@@ -199,9 +201,9 @@ public function test_films_has_required_fields()
     $stream = Streams::make('films');
     $fields = $stream->fields;
     
-    $this->assertArrayHasKey('title', $fields);
-    $this->assertArrayHasKey('director', $fields);
-    $this->assertArrayHasKey('release_date', $fields);
+    $this->assertTrue($fields->has('title'));
+    $this->assertTrue($fields->has('director'));
+    $this->assertTrue($fields->has('release_date'));
 }
 ```
 
@@ -214,7 +216,7 @@ public function test_field_types()
     
     $this->assertEquals('integer', $stream->fields['episode_id']->type);
     $this->assertEquals('string', $stream->fields['title']->type);
-    $this->assertEquals('datetime', $stream->fields['release_date']->type);
+    $this->assertEquals('date', $stream->fields['release_date']->type);
 }
 ```
 
@@ -432,10 +434,12 @@ public function test_updates_film_release_date()
     $newDate = '2025-12-25';
     
     // Act
-    $film->update(['release_date' => $newDate]);
+    $film->fill(['release_date' => $newDate]);
+    $film->save();
     
     // Assert
-    $this->assertEquals($newDate, $film->fresh()->release_date);
+    $fresh = Streams::entries('films')->find($film->id);
+    $this->assertEquals($newDate, $fresh->release_date->format('Y-m-d'));
 }
 ```
 

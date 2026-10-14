@@ -19,7 +19,18 @@ class DocsContentTest extends TestCase
 
     protected const PACKAGES = ['core', 'ui', 'api', 'sdk', 'testing', 'client', 'site', 'all'];
 
-    protected const STATUSES = ['draft', 'review', 'ready', 'deprecated'];
+    protected const STATUSES = ['draft', 'review', 'ready', 'deprecated', 'implemented'];
+
+    public function test_testing_registry_gaps_are_implemented_and_tracked()
+    {
+        $pages = $this->pages();
+
+        foreach (['test-data', 'troubleshooting', 'writing-tests'] as $id) {
+            $page = 'docs/packages/testing/'.$id;
+            $this->assertSame('implemented', $pages[$page]['frontmatter']['status'], $page);
+            $this->assertSame(263, $pages[$page]['frontmatter']['tracking_task'], $page);
+        }
+    }
 
     /**
      * @return array<string, array{frontmatter: array, body: string}>
@@ -67,6 +78,10 @@ class DocsContentTest extends TestCase
             $this->assertContains($frontmatter['section'], static::SECTIONS, "{$page} section");
             $this->assertContains($frontmatter['package'], static::PACKAGES, "{$page} package");
             $this->assertContains($frontmatter['status'], static::STATUSES, "{$page} status");
+            if ($frontmatter['status'] === 'implemented') {
+                $this->assertIsInt($frontmatter['tracking_task'] ?? null, "{$page} tracking_task");
+                $this->assertGreaterThan(0, $frontmatter['tracking_task'], "{$page} tracking_task");
+            }
             $this->assertIsInt($frontmatter['order'], "{$page} order");
             $this->assertIsArray($frontmatter['tags'], "{$page} tags");
             $this->assertArrayNotHasKey('sort_order', $frontmatter, "{$page} uses sort_order; use order.");

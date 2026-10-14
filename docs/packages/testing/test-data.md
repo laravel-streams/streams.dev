@@ -6,7 +6,8 @@ section: packages
 package: testing
 order: 30
 tags: [testing, test, data]
-status: ready
+status: implemented
+tracking_task: 263
 ---
 
 The Streams Testing package includes a rich set of sample data based on the Star Wars universe. This data provides realistic examples for testing and learning Streams concepts.
@@ -30,7 +31,7 @@ $films = Streams::entries('films')->get();
 
 ```json
 {
-    "episode_id": 1,
+    "episode_id": 4,
     "title": "A New Hope",
     "director": "George Lucas",
     "producer": "Gary Kurtz, Rick McCallum",
@@ -45,8 +46,8 @@ $films = Streams::entries('films')->get();
 - `title` (string) - Film title
 - `director` (string) - Director name
 - `producer` (string) - Producer names
-- `release_date` (datetime) - Release date
-- `opening_crawl` (text) - Opening text
+- `release_date` (date) - Release date
+- `opening_crawl` (string) - Opening text
 - `created` (datetime) - Creation timestamp
 - `edited` (datetime) - Last edit timestamp
 
@@ -259,19 +260,18 @@ protected function setUp(): void
     parent::setUp();
     
     // Define a custom stream for testing
-    Streams::build([
+    Streams::register([
         'id' => 'custom_products',
         'name' => 'Products',
-        'source' => [
-            'type' => 'file',
-            'format' => 'json',
+        'config' => [
+            'source' => ['type' => 'file', 'file' => 'streams/data/custom_products.json'],
         ],
         'fields' => [
             'id' => 'integer',
             'name' => 'string',
             'price' => 'decimal',
         ],
-    ])->save();
+    ]);
 }
 ```
 
