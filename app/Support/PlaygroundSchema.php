@@ -78,7 +78,49 @@ class PlaygroundSchema
             return self::invalid(['/: The example config must be a streams make node.']);
         }
 
+        $builders = array_column(PlaygroundCatalog::components(), 'builder');
+        $errors = self::nodeErrors($node, $builders);
+
+        if ($errors !== []) {
+            return self::invalid($errors);
+        }
+
         return ['valid' => true, 'node' => $node, 'errors' => []];
+    }
+
+    /**
+     * @param  array<string, mixed>  $node
+     * @param  list<string>  $builders
+     * @return list<string>
+     */
+    private static function nodeErrors(array $node, array $builders): array
+    {
+        $errors = [];
+
+        if (! in_array($node['builder'], $builders, true)) {
+            $errors[] = '/builder: Only catalog builder classes are allowed.';
+        }
+
+        $defaults = $node['defaults'];
+        $url = $defaults['url'] ?? null;
+
+        if (is_string($url) && ! preg_match('~^(?:https?://|/(?!/)|\#)[^\x00-\x20\x7f\\\\"<>]*$~iD', $url)) {
+            $errors[] = '/defaults/url: Use an HTTP(S) link, local path, or fragment.';
+        }
+
+        foreach (['components', 'actions', 'columns'] as $key) {
+            if (is_array($defaults[$key] ?? null)) {
+                foreach ($defaults[$key] as $child) {
+                    $errors = [...$errors, ...self::nodeErrors($child, $builders)];
+                }
+            }
+        }
+
+        if (isset($defaults['action'])) {
+            $errors = [...$errors, ...self::nodeErrors($defaults['action'], $builders)];
+        }
+
+        return $errors;
     }
 
     /**

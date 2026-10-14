@@ -31,7 +31,7 @@ final class HtmlSnapshot
     {
         $html = str_replace("\r\n", "\n", $html);
 
-        $html = preg_replace('/\s+wire:(?:snapshot|effects|id|key|initial-data|ignore)="[^"]*"/', '', $html) ?? $html;
+        $html = preg_replace('/\s+wire:(?:snapshot|effects|id|initial-data)="[^"]*"/', '', $html) ?? $html;
         $html = preg_replace('/<!--\s*Livewire Component.*?-->/s', '', $html) ?? $html;
         $html = preg_replace('/name="csrf-token" content="[^"]*"/', 'name="csrf-token" content=""', $html) ?? $html;
         $html = preg_replace('/name="_token" value="[^"]*"/', 'name="_token" value=""', $html) ?? $html;
