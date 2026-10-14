@@ -1,0 +1,116 @@
+<div style="--col-span-default: span 1 / span 1;" class="col-[--col-span-default] flex">
+    
+    <div
+        class="w-full grid gap-y-2"
+    >
+        
+                    <div
+                class="flex items-center justify-between gap-x-3"
+            >
+                                    <label
+    class="inline-flex items-center gap-x-3" for="data.tags"
+>
+    
+
+    <span class="font-medium leading-6 text-gray-950">
+        
+        Tags    </span>
+
+    
+</label>
+                
+                            </div>
+        
+                    <div
+                class="grid gap-y-2"
+            >
+                <div
+        wire:ignore.self
+        x-data="{
+            tags: $wire.entangle('data.tags'),
+            draft: '',
+            splitKeys: JSON.parse('[\u0022,\u0022]'),
+            normalize(value) {
+                return String(value ?? '').trim()
+            },
+            ensureArray() {
+                if (! Array.isArray(this.tags)) {
+                    this.tags = []
+                }
+            },
+            addTag() {
+                if (false) {
+                    return
+                }
+
+                this.ensureArray()
+
+                const tag = this.normalize(this.draft)
+
+                if (tag === '') {
+                    return
+                }
+
+                if (this.tags.some((existing) => String(existing).toLowerCase() === tag.toLowerCase())) {
+                    this.draft = ''
+                    return
+                }
+
+                this.tags = [...this.tags, tag]
+                this.draft = ''
+            },
+            removeTag(index) {
+                if (false) {
+                    return
+                }
+
+                this.ensureArray()
+                this.tags = this.tags.filter((_, i) => i !== index)
+            },
+            onKeydown(event) {
+                if (event.key === 'Enter' || this.splitKeys.includes(event.key)) {
+                    event.preventDefault()
+                    this.addTag()
+                    return
+                }
+
+                if (event.key === 'Backspace' && this.normalize(this.draft) === '' && Array.isArray(this.tags) && this.tags.length) {
+                    event.preventDefault()
+                    this.removeTag(this.tags.length - 1)
+                }
+            },
+        }"
+        class="flex w-full flex-wrap items-center gap-2 border border-gray-500 bg-white px-2 py-1.5 rounded-md"
+    >
+        <template x-for="(tag, index) in (Array.isArray(tags) ? tags : [])" :key="index">
+            <span
+                class="inline-flex max-w-full items-center gap-1 rounded-full bg-black px-2.5 py-1 text-sm font-semibold leading-none text-white"
+            >
+                <span class="truncate" x-text="tag"></span>
+                <button
+                    type="button"
+                    class="inline-flex shrink-0 items-center justify-center rounded-full p-0.5 hover:bg-white/15 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60"
+                    x-on:click="removeTag(index)"
+                                    >
+                    <span class="sr-only">Remove</span>
+                    <svg class="h-3.5 w-3.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" data-slot="icon">
+  <path d="M6.28 5.22a.75.75 0 0 0-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 1 0 1.06 1.06L10 11.06l3.72 3.72a.75.75 0 1 0 1.06-1.06L11.06 10l3.72-3.72a.75.75 0 0 0-1.06-1.06L10 8.94 6.28 5.22Z"/>
+</svg>                </button>
+            </span>
+        </template>
+
+        <input
+            type="text"
+            id="data.tags"
+            x-model="draft"
+            x-on:keydown="onKeydown($event)"
+            x-on:blur="addTag()"
+                                                            placeholder="Add a tag"
+            class="min-w-[8rem] flex-1 border-0 bg-transparent px-1 py-1 text-sm text-gray-950 outline-none ring-0 placeholder:text-gray-400 focus:outline-none focus:ring-0"
+        />
+    </div>
+
+                
+                            </div>
+            </div>
+</div>

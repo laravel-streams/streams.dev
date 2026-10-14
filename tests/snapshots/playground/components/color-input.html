@@ -1,0 +1,43 @@
+<div style="--col-span-default: span 1 / span 1;" class="col-[--col-span-default] flex">
+    
+    <div
+        class="w-full grid gap-y-2"
+    >
+        
+                    <div
+                class="flex items-center justify-between gap-x-3"
+            >
+                                    <label
+    class="inline-flex items-center gap-x-3" for="data.accent"
+>
+    
+
+    <span class="font-medium leading-6 text-gray-950">
+        
+        Accent    </span>
+
+    
+</label>
+                
+                            </div>
+        
+                    <div
+                class="grid gap-y-2"
+            >
+                <div class="flex w-full items-center gap-2">
+        <input
+            type="color"
+                        wire:model="data.accent"
+            aria-label="Accent"
+            class="h-10 w-10 shrink-0 cursor-pointer border-0 bg-transparent p-0 rounded-md [&amp;::-webkit-color-swatch-wrapper]:p-0 [&amp;::-webkit-color-swatch]:rounded-md [&amp;::-webkit-color-swatch]:border-0 [&amp;::-moz-color-swatch]:rounded-md [&amp;::-moz-color-swatch]:border-0 disabled:cursor-not-allowed disabled:opacity-50"
+        />
+
+        <input
+    class="block w-full rounded-md px-3 py-2 ps-3 pe-3" autocomplete="off" id="data.accent" placeholder="#000000" spellcheck="false" type="text" wire:model="data.accent"
+/>
+    </div>
+
+                
+                            </div>
+            </div>
+</div>

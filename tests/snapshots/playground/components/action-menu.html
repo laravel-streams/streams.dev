@@ -1,0 +1,33 @@
+<div
+    x-data="{ open: false }"
+    class="relative inline-block"
+    @keydown.window.escape="open = false"
+    @click.away="open = false"
+>
+    
+    <div @click="open = !open">
+        <button
+                style=";" class="relative inline-flex items-center justify-center font-semibold whitespace-nowrap outline-none transition duration-75 focus-visible:z-10 focus-visible:ring-2 focus-visible:ring-custom-500 shadow-sm  bg-custom-500 text-white hover:bg-custom-600   gap-1.5 py-2 px-6" target="_self" wire:loading.attr="disabled" type="button"
+>        <span
+                class="flex items-center "
+    >                    <span>Actions</span>
+                </span>
+    </button>
+    </div>
+
+    <div x-show="open" 
+         x-transition
+         class="absolute right-0 mt-2 min-w-48 max-w-xs rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 z-50 overflow-hidden">
+        <div class="py-1" role="menu">
+                        
+            
+            
+            
+            <button
+                class="block w-full text-left px-4 py-2 text-nowrap hover:bg-black/5" href="/docs/ui/actions" target="_self" wire:loading.attr="disabled" type="button">
+                                    Edit
+                            </button>
+                    </div>
+    </div>
+
+</div>
