@@ -113,6 +113,20 @@ class DocsContentTest extends TestCase
         }
     }
 
+    public function test_ui_hub_is_implemented_and_tracked()
+    {
+        $page = $this->pages()['streams/data/docs/ui'];
+
+        $this->assertSame('implemented', $page['frontmatter']['status']);
+        $this->assertSame(258, $page['frontmatter']['tracking_task']);
+        $this->assertStringContainsString(
+            '| streams/data/docs/ui.md | ui | features | implemented |',
+            file_get_contents(base_path('docs/REGISTRY.md'))
+        );
+        $this->assertStringContainsString('homeUrl()', $page['body']);
+        $this->assertStringContainsString('returns 404', $page['body']);
+    }
+
     public function test_bodies_have_no_h1_fenced_code_has_a_language_and_links_are_root_relative()
     {
         foreach ($this->pages() as $page => ['body' => $body]) {
