@@ -18,7 +18,9 @@ class PlaygroundExamplesTest extends TestCase
             $files
         );
 
-        $this->assertNotEmpty($types);
+        // The SDK catalog currently contains 39 builders. Guard against deleting
+        // a type and its example together when the installed catalog is absent.
+        $this->assertCount(39, $types);
         $this->assertSame($types, array_values(array_unique($types)));
         $this->assertEqualsCanonicalizing($types, $fileTypes);
 
