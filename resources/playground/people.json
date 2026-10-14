@@ -1,0 +1,17 @@
+{
+    "name": "People",
+    "fields": [
+        {"handle": "name", "label": "Name", "type": "text"},
+        {"handle": "email", "label": "Email", "type": "email"}
+    ],
+    "entries": [
+        {"id": "person-1", "name": "Alex Morgan", "email": "alex@example.test"},
+        {"id": "person-2", "name": "Sam Rivera", "email": "sam@example.test"}
+    ],
+    "actions": [
+        {"handle": "create", "label": "Preview create"},
+        {"handle": "update", "label": "Preview update"},
+        {"handle": "delete", "label": "Preview delete"},
+        {"handle": "invite", "label": "Preview invitation"}
+    ]
+}

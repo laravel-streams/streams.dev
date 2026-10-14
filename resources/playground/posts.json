@@ -1,0 +1,18 @@
+{
+    "name": "Posts",
+    "fields": [
+        {"handle": "title", "label": "Title", "type": "text"},
+        {"handle": "body", "label": "Body", "type": "textarea"},
+        {"handle": "status", "label": "Status", "type": "text"}
+    ],
+    "entries": [
+        {"id": "post-1", "title": "Welcome to Streams", "body": "An example post for the playground.", "status": "draft"},
+        {"id": "post-2", "title": "Building with streams", "body": "Describe your data and explore the UI.", "status": "draft"}
+    ],
+    "actions": [
+        {"handle": "create", "label": "Preview create"},
+        {"handle": "update", "label": "Preview update"},
+        {"handle": "delete", "label": "Preview delete"},
+        {"handle": "publish", "label": "Preview publish"}
+    ]
+}

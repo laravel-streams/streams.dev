@@ -1,0 +1,18 @@
+{
+    "name": "Orders",
+    "fields": [
+        {"handle": "customer", "label": "Customer", "type": "text"},
+        {"handle": "total", "label": "Total (USD)", "type": "number"},
+        {"handle": "status", "label": "Status", "type": "text"}
+    ],
+    "entries": [
+        {"id": "order-1", "customer": "Alex Morgan", "total": 49, "status": "paid"},
+        {"id": "order-2", "customer": "Sam Rivera", "total": 79, "status": "paid"}
+    ],
+    "actions": [
+        {"handle": "create", "label": "Preview create"},
+        {"handle": "update", "label": "Preview update"},
+        {"handle": "delete", "label": "Preview delete"},
+        {"handle": "refund", "label": "Preview refund"}
+    ]
+}
