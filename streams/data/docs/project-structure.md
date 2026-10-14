@@ -8,7 +8,7 @@ package: site
 order: 20
 tags: [site, project, structure]
 editorial_status: ready
-status: partial
+status: implemented
 tracking_task: 267
 ---
 
@@ -22,7 +22,7 @@ streams.dev/
 ├── resources/views/        # Blade templates
 ├── routes/                 # Laravel routes (mostly defaults)
 ├── config/                 # Laravel + streams config
-└── composer.json           # Core, UI, path repos
+└── composer.json           # Core, UI, vcs GitHub repositories
 ```
 
 ## `streams/` — configuration
