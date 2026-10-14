@@ -6,7 +6,9 @@ section: packages
 package: ui
 order: 120
 tags: [ui, inputs]
-status: ready
+editorial_status: ready
+status: implemented
+tracking_task: null
 ---
 
 Inputs define form controls. All extend `Streams\Ui\Builders\Inputs\Input` and use `InputClass::make('field_handle')`.

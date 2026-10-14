@@ -25,7 +25,9 @@ category: getting-started        # hub docs only: a key in streams/docs_categori
 package: core                    # core | ui | api | sdk | testing | client | site | all
 order: 20                        # hub sidebar and search order; package sidebar is docs/nav.json
 tags: [core, installation]
-status: ready                    # draft | review | ready | deprecated
+editorial_status: ready          # draft | review | ready | deprecated
+status: implemented              # implemented | partial | planned
+tracking_task: null              # pending, or an id, when status is partial or planned
 ---
 ```
 

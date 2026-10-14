@@ -19,7 +19,7 @@ class DocsContentTest extends TestCase
 
     protected const PACKAGES = ['core', 'ui', 'api', 'sdk', 'testing', 'client', 'site', 'all'];
 
-    protected const STATUSES = ['draft', 'review', 'ready', 'deprecated'];
+    protected const STATUSES = ['implemented', 'partial', 'planned'];
 
     /**
      * @return array<string, array{frontmatter: array, body: string}>
@@ -67,6 +67,13 @@ class DocsContentTest extends TestCase
             $this->assertContains($frontmatter['section'], static::SECTIONS, "{$page} section");
             $this->assertContains($frontmatter['package'], static::PACKAGES, "{$page} package");
             $this->assertContains($frontmatter['status'], static::STATUSES, "{$page} status");
+            if (in_array($frontmatter['status'], ['implemented', 'partial', 'planned'], true)) {
+                $this->assertArrayHasKey('tracking_task', $frontmatter, "{$page} tracking_task");
+                if ($frontmatter['status'] !== 'implemented') {
+                    $tracking = $frontmatter['tracking_task'];
+                    $this->assertTrue($tracking === 'pending' || (is_int($tracking) && $tracking > 0), "{$page} needs a tracking task id or pending placeholder.");
+                }
+            }
             $this->assertIsInt($frontmatter['order'], "{$page} order");
             $this->assertIsArray($frontmatter['tags'], "{$page} tags");
             $this->assertArrayNotHasKey('sort_order', $frontmatter, "{$page} uses sort_order; use order.");
@@ -176,6 +183,40 @@ class DocsContentTest extends TestCase
         }
 
         return $types;
+    }
+
+    public function test_local_development_uses_master_and_the_dev_ports(): void
+    {
+        $page = $this->pages()['streams/data/docs/local-development'];
+        $body = $page['body'];
+
+        $this->assertSame('implemented', $page['frontmatter']['status']);
+        $this->assertSame(191, $page['frontmatter']['tracking_task']);
+
+        $this->assertStringContainsString(
+            'git clone https://github.com/laravel-streams/streams.dev.git --branch master',
+            $body
+        );
+        $this->assertStringNotContainsString('--branch develop', $body);
+        $this->assertStringNotContainsString('branch `develop`', $body);
+        $this->assertStringNotContainsString('Work on `develop`', $body);
+        $this->assertStringContainsString('branch `master`', $body);
+        $this->assertStringContainsString('http://127.0.0.1:8427', $body);
+        $this->assertStringContainsString('port 5427', $body);
+        $this->assertStringContainsString('git switch -c feature/your-change', $body);
+        $this->assertStringContainsString('The old `develop`, `next`, `integration/rc` and `production` branches no longer exist.', $body);
+
+        $blade = file_get_contents(base_path('resources/views/docs.blade.php'));
+        $this->assertStringContainsString('https://github.com/laravel-streams/streams.dev/blob/master/', $blade);
+        $this->assertStringNotContainsString('/blob/develop/', $blade);
+
+        $this->get('/docs/local-development')
+            ->assertOk()
+            ->assertDontSee('data-docs-status="partial"', false)
+            ->assertDontSee('--branch develop', false)
+            ->assertSee('--branch master', false)
+            ->assertSee('127.0.0.1:8427', false)
+            ->assertSee('5427', false);
     }
 
     public function test_package_nav_points_at_package_files()

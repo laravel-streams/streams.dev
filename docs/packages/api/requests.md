@@ -6,7 +6,9 @@ section: packages
 package: api
 order: 50
 tags: [api, requests]
-status: ready
+editorial_status: ready
+status: implemented
+tracking_task: null
 ---
 
 Create and update endpoints accept **flat JSON** (or form-encoded) field maps. The API does not use JSON:API resource objects or `data.attributes` envelopes for input.

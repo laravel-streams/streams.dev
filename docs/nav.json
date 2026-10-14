@@ -18,6 +18,10 @@
             {
                 "label": "Extend",
                 "pages": ["applications", "addons", "macros", "callbacks", "integrator", "facades-and-helpers", "extending-core"]
+            },
+            {
+                "label": "Planned",
+                "pages": ["authorization"]
             }
         ]
     },
@@ -76,6 +80,10 @@
             {
                 "label": "Tools",
                 "pages": ["commands", "tall-components", "ai-prompts"]
+            },
+            {
+                "label": "Planned",
+                "pages": ["tap"]
             }
         ]
     },

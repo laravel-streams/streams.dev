@@ -6,7 +6,9 @@ section: packages
 package: core
 order: 200
 tags: [core, facades, helpers]
-status: ready
+editorial_status: ready
+status: implemented
+tracking_task: null
 ---
 
 Core registers facades and global helpers for common stream operations.

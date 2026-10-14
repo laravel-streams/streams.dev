@@ -6,7 +6,9 @@ section: packages
 package: api
 order: 40
 tags: [api, routes]
-status: ready
+editorial_status: ready
+status: implemented
+tracking_task: null
 ---
 
 Register routes with `API::routeCrud()` in a service provider's `boot()` method. It registers the default interface with both resources below. Paths below assume the default prefix `api`.

@@ -6,7 +6,9 @@ section: packages
 package: ui
 order: 140
 tags: [ui, columns]
-status: ready
+editorial_status: ready
+status: implemented
+tracking_task: null
 ---
 
 Columns display entry values in resource tables. All extend `Streams\Ui\Builders\Tables\Columns\Column`.
