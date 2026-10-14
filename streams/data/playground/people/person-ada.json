@@ -1,0 +1,8 @@
+{
+    "id": "person-ada",
+    "name": "Ada Rivera",
+    "email": "ada@example.test",
+    "role": "editor",
+    "active": true,
+    "joined_at": "2026-01-12"
+}
