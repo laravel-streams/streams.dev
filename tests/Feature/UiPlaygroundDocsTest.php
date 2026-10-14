@@ -18,13 +18,20 @@ class UiPlaygroundDocsTest extends TestCase
 
         $xpath = $this->xpath($html);
 
-        foreach (['Share links', 'Test an example'] as $heading) {
+        foreach (['Test an example'] as $heading) {
             $badges = $xpath->query(
                 '//article//h2[normalize-space(.)="'.$heading.'"]/following-sibling::*[1]//span[@class="st-pill" and normalize-space(.)="Planned"]'
             );
 
             $this->assertSame(1, $badges->length, $heading.' must carry a visible Planned badge.');
         }
+
+        $shareBadge = $xpath->query(
+            '//article//h2[normalize-space(.)="Share links"]/following-sibling::*[1]//span[@class="st-pill" and normalize-space(.)="Planned"]'
+        );
+        $this->assertSame(0, $shareBadge->length);
+        $this->assertStringContainsString('settings only', $html);
+        $this->assertStringContainsString('class name', $html);
 
         $editorBadge = $xpath->query(
             '//article//h2[normalize-space(.)="Edit JSON"]/following-sibling::*[1]//span[@class="st-pill" and normalize-space(.)="Planned"]'

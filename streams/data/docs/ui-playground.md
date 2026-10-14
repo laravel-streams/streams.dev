@@ -1,7 +1,7 @@
 ---
 title: UI Playground
 nav_title: UI Playground
-description: Browse UI component references and learn about planned playground workflows.
+description: Browse UI component references, edit an example, and share it as a link.
 section: guides
 category: frontend
 package: ui
@@ -12,7 +12,7 @@ status: partial
 tracking_task: pending
 ---
 
-The [UI Playground](/playground) renders each catalog component with the Streams UI package and the defaults shipped in the playground catalog. You can edit a component's example config as JSON and re-render the preview on the page. Share links and test controls are not available yet. Each unbuilt workflow carries a **Planned** badge.
+The [UI Playground](/playground) renders each catalog component with the Streams UI package and the defaults shipped in the playground catalog. You can edit a component's example config as JSON, re-render the preview on the page, and share that example as a link. Test controls are not available yet. Each unbuilt workflow carries a **Planned** badge.
 
 The intended scope is UI examples without a real database. For the UI features you can use today, start with [UI quick start](/docs/ui/quick-start), [Forms](/docs/ui/forms), and [Tables](/docs/ui/tables).
 
@@ -45,11 +45,11 @@ Do not assume that stream JSON is a Playground input. Current [Forms](/docs/ui/f
 
 ## Share links
 
-<span class="st-pill">Planned</span>
+Each example has a share link. The link is `/playground/{component}?state=` followed by a JSON object of settings. Opening the link restores those settings and renders the same preview. After a valid edit, the address bar updates to that link, so the page itself can be copied.
 
-Sharing a configured example by link is planned. Link creation and restoring an example from a shared link are not implemented. No share URL format, persistence guarantee, or expiry behavior is defined here yet.
+The JSON is settings only. It includes catalog default fields such as `label`, `placeholder`, `options`, and sample `entries`. Nested components, actions, and columns are named by their catalog id (`text-input`, for example) and then their settings. A share link does not include PHP code or a builder class name. A link that includes a class name, source code, or a builder class is rejected and does not render.
 
-For now, share the configuration as text alongside the relevant [UI reference](/docs/ui/introduction) page. Use sample data and omit credentials and private records from examples.
+Nothing about the link is stored on the server, and the link does not expire. Use sample data, and leave credentials and private records out of the settings.
 
 ## Test an example
 

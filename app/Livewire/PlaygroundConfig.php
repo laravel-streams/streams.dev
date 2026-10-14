@@ -5,6 +5,8 @@ namespace App\Livewire;
 use App\Support\PlaygroundCatalog;
 use App\Support\PlaygroundPreview;
 use App\Support\PlaygroundSchema;
+use App\Support\PlaygroundState;
+use App\Support\PlaygroundStateRejected;
 use Illuminate\Contracts\View\View;
 use Livewire\Attributes\Locked;
 use Livewire\Component;
@@ -30,7 +32,11 @@ class PlaygroundConfig extends Component
     /** @var list<string> */
     public array $schemaErrors = [];
 
-    public function mount(string $componentId, ?string $preview = null, ?string $gap = null): void
+    public string $shareUrl = '';
+
+    public string $shareError = '';
+
+    public function mount(string $componentId, ?string $preview = null, ?string $gap = null, ?string $config = null): void
     {
         $component = PlaygroundCatalog::find($componentId);
 
@@ -42,7 +48,10 @@ class PlaygroundConfig extends Component
         $this->label = $component['label'];
         $this->preview = $preview;
         $this->gap = $gap;
-        $this->config = PlaygroundSchema::encodeNode($component);
+        $this->config = is_string($config) && $config !== ''
+            ? $config
+            : PlaygroundSchema::encodeNode($component);
+        $this->syncShareLink(false);
     }
 
     public function updatedConfig(): void
@@ -65,9 +74,33 @@ class PlaygroundConfig extends Component
 
         $this->preview = $rendered['html'];
         $this->gap = $rendered['gap'];
+        $this->syncShareLink(true);
         // The preview carries package wire directives. Keep it outside this
         // component's morph, and swap the rendered stage in the browser.
         $this->dispatch('playground-rendered', id: $this->componentId, html: $this->stageHtml());
+    }
+
+    private function syncShareLink(bool $updateAddress): void
+    {
+        $validated = PlaygroundSchema::validate($this->config);
+
+        if (! $validated['valid'] || ! is_array($validated['node'])) {
+            return;
+        }
+
+        try {
+            $this->shareUrl = PlaygroundState::link($this->componentId, $validated['node']);
+            $this->shareError = '';
+        } catch (PlaygroundStateRejected) {
+            $this->shareUrl = '';
+            $this->shareError = 'This example cannot be shared. A link carries settings only, never a class name or code.';
+
+            return;
+        }
+
+        if ($updateAddress) {
+            $this->dispatch('playground-shared', url: $this->shareUrl);
+        }
     }
 
     private function stageHtml(): string

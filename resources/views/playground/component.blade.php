@@ -4,7 +4,7 @@
 @section('description', 'Render the '.$component['label'].' Streams UI component with its catalog defaults.')
 
 @section('heading', $component['label'])
-@section('lead', 'Edit the example config to re-render this component on the page.')
+@section('lead', 'Edit the example config, then share the settings as a link.')
 
 @section('navigation')
 @include('playground.navigation')
@@ -16,6 +16,7 @@
     :component-id="$component['id']"
     :preview="$preview"
     :gap="$gap"
+    :config="$config ?? ''"
     :key="$component['id']"
 />
 <div data-playground-stage="{{ $component['id'] }}">

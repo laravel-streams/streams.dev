@@ -5,6 +5,9 @@ use App\Support\ExploreTree;
 use App\Support\LlmsText;
 use App\Support\PlaygroundCatalog;
 use App\Support\PlaygroundPreview;
+use App\Support\PlaygroundSchema;
+use App\Support\PlaygroundState;
+use App\Support\PlaygroundStateRejected;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Route;
 use Streams\Core\Support\Facades\Streams;
@@ -77,6 +80,16 @@ Route::get('playground', fn () => view('playground', [
 
 Route::get('playground/{component}', function (string $component) {
     $entry = PlaygroundCatalog::find($component) ?? abort(404);
+
+    try {
+        PlaygroundState::assertLink(request()->getRequestUri());
+        $node = PlaygroundState::nodeForRequest($entry, request()->query('state'));
+    } catch (PlaygroundStateRejected) {
+        abort(422);
+    }
+
+    $entry['builder'] = $node['builder'];
+    $entry['defaults'] = $node['defaults'];
     $rendered = PlaygroundPreview::render($entry);
 
     return view('playground.component', [
@@ -85,6 +98,7 @@ Route::get('playground/{component}', function (string $component) {
         'active' => $entry['id'],
         'preview' => $rendered['html'],
         'gap' => $rendered['gap'],
+        'config' => PlaygroundSchema::encodeNode($entry),
     ]);
 })->where('component', '[a-z0-9]+(?:-[a-z0-9]+)*')->name('playground.component');
 

@@ -41,6 +41,14 @@
         </div>
     @endif
 
+    @if ($shareUrl !== '')
+        <p class="playground-config__help" data-playground-share>
+            <a href="{{ $shareUrl }}" data-playground-share-link>Share this example</a>
+        </p>
+    @elseif ($shareError !== '')
+        <p class="playground-config__errors" data-playground-share-error role="alert">{{ $shareError }}</p>
+    @endif
+
     <script>
         if (!window.__playgroundPreviewListener) {
             window.__playgroundPreviewListener = true;
@@ -51,6 +59,21 @@
                 if (stage && typeof detail.html === 'string') {
                     stage.innerHTML = detail.html;
                 }
+            });
+            window.addEventListener('playground-shared', (event) => {
+                const url = event.detail && event.detail.url;
+
+                if (typeof url !== 'string' || url.charAt(0) !== '/') {
+                    return;
+                }
+
+                const link = document.querySelector('[data-playground-share-link]');
+
+                if (link) {
+                    link.setAttribute('href', url);
+                }
+
+                history.replaceState(null, '', url);
             });
         }
     </script>
