@@ -424,6 +424,8 @@ class DocsContentTest extends TestCase
 
     public function test_versions_page_matches_package_constraints(): void
     {
+        Http::preventStrayRequests();
+
         $page = $this->pages()['streams/data/docs/versions'];
         $body = $page['body'];
 
@@ -448,15 +450,15 @@ class DocsContentTest extends TestCase
         $this->assertStringNotContainsString('| `^8.2` | Stable tags exist only', $body);
         $this->assertStringNotContainsString('| via Core | `^8.2` |', $body);
 
-        $core20 = $this->registryPackageComposer('streams-core', '5fd458f43618f9e744f7c43646242491394508fc', '2.0');
-        $coreRc = $this->registryPackageComposer('streams-core', '9291456367b85482f83504046a37ec6f7dd59dd9', 'rc/prep');
-        $api10 = $this->registryPackageComposer('streams-api', '22d2351345631480102aa1377e6a6a73d765c7a5', '1.0');
-        $apiRc = $this->registryPackageComposer('streams-api', '0d3ba86d22473114553779420d3c1e15bb096f20', 'rc/prep');
-        $ui = $this->registryPackageComposer('streams-ui', '3a30c8676df7815804a31cf5388b8fee80cdb541', '1.0');
-        $sdk10 = $this->registryPackageComposer('streams-sdk', '198c74c32e52b7abe0d99e4f74ee13296eee4d63', '1.0');
-        $sdkRc = $this->registryPackageComposer('streams-sdk', '2aff9ebe3a0a58b4e48cb244af0ee683e17ef7b9', 'sdk/rc');
-        $testing = $this->registryPackageComposer('streams-testing', 'ec5dd5f41b814a2b15b5dc1aa8a9f5911281781c', '1.0');
-        $starter = $this->registryPackageComposer('streams', '06fde618b8f8f8a12680f9d98314728de34c03dd', '1.0');
+        $core20 = json_decode(file_get_contents(base_path('tests/fixtures/registry/streams-core-5fd458f43618f9e744f7c43646242491394508fc.json')), true, 512, JSON_THROW_ON_ERROR);
+        $coreRc = json_decode(file_get_contents(base_path('tests/fixtures/registry/streams-core-9291456367b85482f83504046a37ec6f7dd59dd9.json')), true, 512, JSON_THROW_ON_ERROR);
+        $api10 = json_decode(file_get_contents(base_path('tests/fixtures/registry/streams-api-22d2351345631480102aa1377e6a6a73d765c7a5.json')), true, 512, JSON_THROW_ON_ERROR);
+        $apiRc = json_decode(file_get_contents(base_path('tests/fixtures/registry/streams-api-0d3ba86d22473114553779420d3c1e15bb096f20.json')), true, 512, JSON_THROW_ON_ERROR);
+        $ui = json_decode(file_get_contents(base_path('tests/fixtures/registry/streams-ui-3a30c8676df7815804a31cf5388b8fee80cdb541.json')), true, 512, JSON_THROW_ON_ERROR);
+        $sdk10 = json_decode(file_get_contents(base_path('tests/fixtures/registry/streams-sdk-198c74c32e52b7abe0d99e4f74ee13296eee4d63.json')), true, 512, JSON_THROW_ON_ERROR);
+        $sdkRc = json_decode(file_get_contents(base_path('tests/fixtures/registry/streams-sdk-2aff9ebe3a0a58b4e48cb244af0ee683e17ef7b9.json')), true, 512, JSON_THROW_ON_ERROR);
+        $testing = json_decode(file_get_contents(base_path('tests/fixtures/registry/streams-testing-ec5dd5f41b814a2b15b5dc1aa8a9f5911281781c.json')), true, 512, JSON_THROW_ON_ERROR);
+        $starter = json_decode(file_get_contents(base_path('tests/fixtures/registry/streams-06fde618b8f8f8a12680f9d98314728de34c03dd.json')), true, 512, JSON_THROW_ON_ERROR);
 
         $this->assertSame(['dev-master' => '2.x-dev'], $core20['extra']['branch-alias']);
         $this->assertArrayNotHasKey('php', $core20['require']);
@@ -493,14 +495,6 @@ class DocsContentTest extends TestCase
         $this->assertSame('^10|^11|^12', $locked['streams/core']['require']['laravel/framework']);
         $this->assertSame('^3.0', $locked['streams/ui']['require']['livewire/livewire']);
         $this->assertSame('^8.2', $locked['streams/sdk']['require']['php']);
-
-        $latest = Http::timeout(20)
-            ->withHeaders(['User-Agent' => 'streams.dev-docs-test'])
-            ->get('https://repo.packagist.org/p2/streams/core.json')
-            ->throw()
-            ->json('packages.streams/core.0.version');
-
-        $this->assertSame('v1.10.5', $latest);
 
         $row = null;
         $registry = json_decode(file_get_contents(base_path('docs/registry.json')), true, 512, JSON_THROW_ON_ERROR);
