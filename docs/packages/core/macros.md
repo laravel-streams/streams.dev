@@ -6,7 +6,9 @@ section: packages
 package: core
 order: 210
 tags: [core, macros]
-status: ready
+editorial_status: ready
+status: implemented
+tracking_task: null
 ---
 
 Core registers macros on Laravel classes during `StreamsServiceProvider::registerMacros()`.

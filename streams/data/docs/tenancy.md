@@ -7,7 +7,9 @@ category: advanced
 package: all
 order: 70
 tags: [tenancy]
-status: ready
+editorial_status: ready
+status: implemented
+tracking_task: null
 ---
 
 Streams does not ship one tenancy product. Three packages each hold a piece, and none of them filters data unless you do.

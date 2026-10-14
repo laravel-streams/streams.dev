@@ -7,7 +7,9 @@ category: this-project
 package: site
 order: 50
 tags: [site, local, development]
-status: ready
+editorial_status: ready
+status: partial
+tracking_task: 191
 ---
 
 ## Prerequisites
