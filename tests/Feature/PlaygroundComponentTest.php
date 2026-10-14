@@ -74,11 +74,14 @@ class PlaygroundComponentTest extends TestCase
 
         $this->assertNull($rendered['html']);
         $this->assertSame('text-input', $rendered['gap']);
-        $this->assertTrue(collect($logged)->contains(
+        $gaps = collect($logged)->filter(
             fn (MessageLogged $event): bool => $event->level === 'warning'
                 && $event->message === 'Playground render gap.'
                 && ($event->context['component'] ?? null) === 'text-input'
-        ));
+        );
+        $this->assertCount(1, $gaps);
+        $this->assertSame(\InvalidArgumentException::class, $gaps->first()->context['exception']);
+        $this->assertStringContainsString('playground.previews.missing', $gaps->first()->context['message']);
 
         $this->view('playground.component', [
             'components' => PlaygroundCatalog::components(),
@@ -88,7 +91,13 @@ class PlaygroundComponentTest extends TestCase
             'gap' => $rendered['gap'],
         ])->assertSee('data-playground-gap="text-input"', false)
             ->assertSee('logged as a playground gap', false)
+            ->assertDontSee('playground.previews.missing', false)
             ->assertDontSee('data-playground-preview', false);
+
+        // A failed component must not poison subsequent renders.
+        $this->get('/playground/text-input')->assertOk()
+            ->assertSee('data-playground-preview="text-input"', false)
+            ->assertDontSee('data-playground-gap', false);
     }
 
     private function preview(string $html, string $id): ?\DOMNode
