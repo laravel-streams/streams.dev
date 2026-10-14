@@ -16,9 +16,9 @@
         "type": "providers",
         "status": "implemented",
         "proof": [
-            "streams-core@55ab33a8e:src/Addon/AddonManager.php",
-            "streams-core@55ab33a8e:src/StreamsServiceProvider.php",
-            "streams-core:tests/Addon/AddonManagerTest.php"
+            "streams-core@55ab33a8e937f07a7cab8c393549e71ef6ec1c0a:src/Addon/AddonManager.php",
+            "streams-core@55ab33a8e937f07a7cab8c393549e71ef6ec1c0a:src/StreamsServiceProvider.php",
+            "streams-core@92c884198f252c6a5e8e3ef5bd97da6e0942b59e:tests/Addon/AddonManagerTest.php"
         ],
         "finding": "Composer type streams-addon and extra.streams.addon discovery are supported, as are attribute-array and name/paths registration. Regression tests: test_discovery_accepts_extra_streams_addon_without_the_composer_type and test_it_registers_an_addon_from_a_name_and_paths (passed)."
     },
@@ -212,8 +212,8 @@
         "type": "providers",
         "status": "implemented",
         "proof": [
-            "streams-core@55ab33a8e:src/Support/Integrator.php",
-            "streams-core:tests/Support/IntegratorTest.php"
+            "streams-core@55ab33a8e937f07a7cab8c393549e71ef6ec1c0a:src/Support/Integrator.php",
+            "streams-core@92c884198f252c6a5e8e3ef5bd97da6e0942b59e:tests/Support/IntegratorTest.php"
         ],
         "finding": "Route closures receive the Laravel router; grouped route arrays remain supported. Regression test: test_it_registers_routes_from_a_closure (passed)."
     },
@@ -956,8 +956,8 @@
         "type": "providers",
         "status": "implemented",
         "proof": [
-            "streams.dev:streams/data/docs/addons.md",
-            "streams.dev:tests/Feature/DocsContentTest.php"
+            "streams.dev@c7540cd:streams/data/docs/addons.md",
+            "streams.dev@c7540cd:tests/Feature/DocsContentTest.php"
         ],
         "finding": "Package reference editing points to docs/packages/{name}/; hub guides remain in streams/data/docs/. Regression test: test_addon_guide_points_contributors_to_package_reference (passed)."
     },
