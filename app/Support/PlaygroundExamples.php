@@ -80,6 +80,10 @@ class PlaygroundExamples
      */
     public static function get(string $type): array
     {
+        if (! in_array($type, self::builderTypes(), true)) {
+            throw new InvalidArgumentException("Unknown playground builder [{$type}].");
+        }
+
         $path = resource_path('playground/examples/'.$type.'.json');
 
         if (! is_file($path)) {
@@ -131,6 +135,10 @@ class PlaygroundExamples
             throw new InvalidArgumentException("Playground example [{$example['id']}] has type [{$example['type']}], expected [{$type}].");
         }
 
+        if (! in_array($example['type'], self::builderTypes(), true)) {
+            throw new InvalidArgumentException("Unknown playground builder [{$example['type']}].");
+        }
+
         if (! is_array($example['config'] ?? null)) {
             throw new InvalidArgumentException("Playground example [{$example['id']}] is missing config.");
         }
@@ -173,16 +181,32 @@ class PlaygroundExamples
 
         $type = $example['type'];
 
-        if (in_array($type, ['table', 'column'], true)) {
+        if (in_array($type, ['table', 'column', 'livewire-table', 'livewire-page'], true)) {
             return self::presentTable($base, $example);
         }
 
-        if ($type === 'form' || $type === 'field' || str_starts_with($type, 'input-')) {
+        if (in_array($type, ['form', 'field', 'livewire-form'], true) || str_starts_with($type, 'input-')) {
             return self::presentForm($base, $example);
         }
 
         if ($type === 'action') {
             return self::presentAction($base, $example);
+        }
+
+        if (in_array($type, ['modal', 'prompt', 'tab'], true)) {
+            $base['mode'] = $type;
+            $base['message'] = (string) ($example['config']['message'] ?? $example['config']['title'] ?? $example['label']);
+
+            return $base;
+        }
+
+        if ($type === 'livewire-widget') {
+            $base['mode'] = 'widget';
+            $base['value'] = count(array_filter(self::rows((string) $example['stream']),
+                fn (array $record): bool => in_array($record['status'] ?? '', $example['config']['statuses'], true)
+            ));
+
+            return $base;
         }
 
         if (in_array($type, ['list', 'calendar', 'navigation', 'menu', 'panel', 'repeater', 'resource'], true)) {
@@ -243,7 +267,7 @@ class PlaygroundExamples
             ? self::entry((string) $example['stream'], (string) $example['entry'])
             : null;
 
-        $definitions = $example['type'] === 'form'
+        $definitions = in_array($example['type'], ['form', 'livewire-form'], true)
             ? ($example['config']['fields'] ?? [])
             : [array_merge($example['config'], ['input' => $example['config']['input'] ?? $example['type']])];
 

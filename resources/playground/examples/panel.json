@@ -1,0 +1,24 @@
+{
+    "id": "playground-panel",
+    "label": "Playground",
+    "description": "Administration panel for the seeded people, posts, and orders streams.",
+    "config": {
+        "path": "playground",
+        "brandName": "Playground",
+        "items": [
+            {
+                "label": "People",
+                "meta": "people"
+            },
+            {
+                "label": "Posts",
+                "meta": "posts"
+            },
+            {
+                "label": "Orders",
+                "meta": "orders"
+            }
+        ]
+    },
+    "type": "panel"
+}

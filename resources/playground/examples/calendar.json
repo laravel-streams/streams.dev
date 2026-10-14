@@ -1,0 +1,11 @@
+{
+    "id": "orders-calendar",
+    "label": "Orders",
+    "description": "Calendar of seeded orders by the placed_at field.",
+    "stream": "orders",
+    "config": {
+        "stream": "orders",
+        "date_field": "placed_at"
+    },
+    "type": "calendar"
+}

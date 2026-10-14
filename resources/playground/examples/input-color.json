@@ -1,0 +1,11 @@
+{
+    "id": "playground-accent",
+    "label": "Accent",
+    "description": "Sample panel accent. None of the seeded streams store a color.",
+    "config": {
+        "handle": "accent",
+        "label": "Accent",
+        "value": "#1f6feb"
+    },
+    "type": "input-color"
+}

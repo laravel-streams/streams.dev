@@ -1,0 +1,12 @@
+{
+    "id": "posts-published-at",
+    "label": "Published at",
+    "description": "published_at from the welcome post.",
+    "stream": "posts",
+    "entry": "post-welcome",
+    "config": {
+        "handle": "published_at",
+        "label": "Published at"
+    },
+    "type": "input-datetime"
+}

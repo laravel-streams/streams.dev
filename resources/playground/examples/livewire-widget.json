@@ -1,0 +1,11 @@
+{
+    "id": "open-orders-widget",
+    "label": "Open orders",
+    "description": "Count of pending and paid orders from the seeded orders stream.",
+    "stream": "orders",
+    "config": {
+        "stream": "orders",
+        "statuses": ["pending", "paid"]
+    },
+    "type": "livewire-widget"
+}

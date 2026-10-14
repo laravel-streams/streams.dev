@@ -1,0 +1,15 @@
+{
+    "id": "orders-mark-shipped",
+    "label": "Mark shipped",
+    "description": "Confirmation action for order PG-1001. The preview does not save the order.",
+    "stream": "orders",
+    "entry": "order-1001",
+    "config": {
+        "name": "mark_shipped",
+        "handle": "mark_shipped",
+        "label": "Mark shipped",
+        "confirm": true,
+        "stream": "orders"
+    },
+    "type": "action"
+}

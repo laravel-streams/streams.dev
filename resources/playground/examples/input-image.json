@@ -1,0 +1,12 @@
+{
+    "id": "people-portrait",
+    "label": "Portrait",
+    "description": "Image control shown against the people stream. People do not store a portrait, and this preview does not upload one.",
+    "stream": "people",
+    "config": {
+        "handle": "portrait",
+        "label": "Portrait",
+        "accept": "image/*"
+    },
+    "type": "input-image"
+}

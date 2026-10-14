@@ -1,0 +1,12 @@
+{
+    "id": "orders-resource",
+    "label": "Orders",
+    "description": "Resource identifying the seeded orders stream and its list and edit pages.",
+    "stream": "orders",
+    "config": {
+        "stream": "orders",
+        "table": "livewire-page",
+        "form": "form"
+    },
+    "type": "resource"
+}

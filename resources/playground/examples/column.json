@@ -1,0 +1,12 @@
+{
+    "id": "people-name-column",
+    "label": "Name",
+    "description": "Name column for the people table.",
+    "stream": "people",
+    "config": {
+        "handle": "name",
+        "label": "Name",
+        "sortable": true
+    },
+    "type": "column"
+}

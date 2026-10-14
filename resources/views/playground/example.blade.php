@@ -78,6 +78,24 @@
         @if ($action['confirm'])
             <p>Asks for confirmation before running. This preview does not change {{ $action['entry'] }}.</p>
         @endif
+    @elseif ($mode === 'modal')
+        <section role="dialog" aria-modal="false" aria-label="{{ $label }}">
+            <p>{{ $message }}</p>
+            <button type="button">Keep order</button>
+            <button type="button">Cancel order</button>
+        </section>
+    @elseif ($mode === 'prompt')
+        <fieldset>
+            <legend>{{ $message }}</legend>
+            <button type="button">Yes</button>
+            <button type="button">No</button>
+        </fieldset>
+    @elseif ($mode === 'tab')
+        <div role="tablist" aria-label="Playground streams">
+            <button type="button" role="tab" aria-selected="true">{{ $message }}</button>
+        </div>
+    @elseif ($mode === 'widget')
+        <output aria-label="{{ $label }}">{{ $value }}</output>
     @elseif ($mode === 'items')
         <ul>
             @foreach ($items as $item)
