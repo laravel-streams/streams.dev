@@ -7,9 +7,11 @@ package: client
 order: 60
 tags: [client, entries]
 editorial_status: ready
-status: partial
-tracking_task: pending
+status: implemented
+tracking_task: 265
 ---
+
+Default response middleware unwraps the API envelope: `response.data` is the entries array or single entry, while `response.meta`, `response.links`, and `response.errors` retain the envelope fields. The complete parsed envelope is available as `response.envelope`. Validation failures throw a `FetchError` with status **409** and parsed errors on `error.response.errors`. Successful deletes return **204** with `response.data === null`.
 
 Entries represent the data within your configured Streams. Use the Entries API to interact with stream data.
 
@@ -259,8 +261,8 @@ try {
 } catch (error) {
     if (error.status === 404) {
         console.log('Entry not found');
-    } else if (error.status === 422) {
-        console.log('Validation error:', error.response.data.errors);
+    } else if (error.status === 409) {
+        console.log('Validation error:', error.response.errors);
     } else {
         console.error('Error:', error.message);
     }
@@ -294,7 +296,6 @@ async function publishPost(id) {
 async function searchPosts(query) {
     const criteria = new Criteria()
         .where('title', 'LIKE', `%${query}%`)
-        .orWhere('content', 'LIKE', `%${query}%`)
         .where('status', 'published')
         .orderBy('relevance', 'desc');
     

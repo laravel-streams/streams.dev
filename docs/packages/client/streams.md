@@ -7,9 +7,11 @@ package: client
 order: 50
 tags: [client, streams]
 editorial_status: ready
-status: partial
-tracking_task: pending
+status: implemented
+tracking_task: 265
 ---
+
+Stream writes accept `post(data, config?)`, `patch(stream, data, config?)`, and `put(stream, data, config?)`. POST sends JSON to `/streams`; PATCH and PUT send JSON to `/streams/{stream}`. Config accepts request headers, query parameters, and response type. Default middleware exposes the API envelope resource as `response.data` and retains `meta`, `links`, `errors`, and `envelope`. Empty delete responses have null data. Stream configuration examples below must use fields and source types registered in your server application.
 
 Streams represent collections or resource types in the Laravel Streams API. The `Streams` class provides methods for managing stream resources.
 

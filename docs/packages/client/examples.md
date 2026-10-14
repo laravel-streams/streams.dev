@@ -7,9 +7,11 @@ package: client
 order: 90
 tags: [client, examples]
 editorial_status: ready
-status: partial
-tracking_task: pending
+status: implemented
+tracking_task: 265
 ---
+
+The default middleware unwraps Streams API envelopes into `response.data` and retains `meta`, `links`, `errors`, and the original `envelope`. Use `client.middlewares` or `client.use()` to manage middleware. Streams API validation failures are HTTP **409**. Authentication, uploads, search relevance, and user endpoints below are examples of application-defined routes and fields, not built-in API endpoints. GET criteria combine filters with AND; use the [query endpoint](/docs/api/query-endpoint) for OR searches.
 
 Complete examples demonstrating real-world usage patterns.
 
@@ -144,9 +146,8 @@ await deletePost(123);
 ```javascript
 async function searchPosts(query, filters = {}) {
     const criteria = new Criteria()
-        // Search in title and content
+        // Search in title
         .where('title', 'LIKE', `%${query}%`)
-        .orWhere('content', 'LIKE', `%${query}%`)
         // Always published
         .where('status', 'published');
     
@@ -371,7 +372,7 @@ class AuthService {
         localStorage.setItem('auth_token', this.token);
         
         // Update client with new token
-        this.client.middleware.forEach(middleware => {
+        this.client.middlewares.forEach(middleware => {
             if (middleware instanceof AuthorizationMiddleware) {
                 middleware.token = this.token;
             }
@@ -423,10 +424,7 @@ async function uploadAvatar(userId, file) {
     formData.append('avatar', file);
     
     const response = await client.post(`/users/${userId}/avatar`, {
-        data: formData,
-        headers: {
-            'Content-Type': 'multipart/form-data'
-        }
+        body: formData
     });
     
     return response.data.avatar_url;
@@ -454,10 +452,7 @@ class MediaLibrary {
         formData.append('metadata', JSON.stringify(metadata));
         
         const response = await this.client.post('/media/upload', {
-            data: formData,
-            headers: {
-                'Content-Type': 'multipart/form-data'
-            }
+            body: formData
         });
         
         return response.data;
@@ -580,9 +575,9 @@ async function safeApiCall(operation) {
             // Not found
             console.error('Resource not found');
             throw new Error('The requested resource was not found');
-        } else if (error.status === 422) {
+        } else if (error.status === 409) {
             // Validation error
-            console.error('Validation failed:', error.data);
+            console.error('Validation failed:', error.response.errors);
             throw new Error('Please check your input and try again');
         } else if (error.status >= 500) {
             // Server error

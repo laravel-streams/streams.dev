@@ -1,564 +1,102 @@
 ---
 title: Middleware System
 nav_title: Middleware System
-description: Request/response middleware and custom middleware creation
+description: Request, response and error hooks, including ETag revalidation.
 section: packages
 package: client
 order: 80
 tags: [client, middleware]
 editorial_status: ready
-status: partial
-tracking_task: pending
+status: implemented
+tracking_task: 265
 ---
 
-The middleware system allows you to intercept and modify requests and responses. Middleware can transform data, add authentication, handle errors, and more.
+Middleware intercepts requests, responses, and errors. Extend `Middleware` and implement any of its `request`, `response`, or `error` methods. Return the target object from each hook.
 
-## Built-in Middleware
+## Default pipeline
 
-### AuthorizationMiddleware
+The client installs these defaults:
 
-Adds Bearer token authentication to requests.
+- `CriteriaMiddleware`: converts supported criteria into API `where[field]`, `where[field][operator]`, and `order_by[field]` parameters.
+- `RequestDataMiddleware`: serializes the `data` option as JSON and sets `Content-Type: application/json` unless supplied.
+- `QueryMiddleware`: appends bracket query parameters and encodes values, preserving any existing query string.
+- `ResponseDataMiddleware`: parses the configured response type. JSON API envelopes are exposed as `data`, `meta`, `links`, and `errors`, with the complete parsed object on `envelope`. Generic JSON remains in `data`; empty 204 responses have null data.
 
-```javascript
-import { Client, AuthorizationMiddleware } from '@laravel-streams/api-client';
+Use `body: new FormData()` or `body: new URLSearchParams()` for native form requests. Leave the multipart Content-Type header unset so fetch supplies its boundary. Do not pass form bodies as `data`, which is the JSON option.
 
-const client = new Client({
-    baseURL: 'https://api.example.com',
-    middlewares: [
-        new AuthorizationMiddleware({ token: 'your-api-token' })
-    ]
-});
-```
-
-**What it does:**
-- Adds `Authorization: Bearer {token}` header to all requests
-- Enables authenticated API access
-
-### CriteriaMiddleware
-
-Converts Criteria objects to query parameters.
+## Registering middleware
 
 ```javascript
-import { Client, CriteriaMiddleware, Criteria } from '@laravel-streams/api-client';
+import { Client, AuthorizationMiddleware, ETagMiddleware } from '@laravel-streams/api-client';
 
+const auth = new AuthorizationMiddleware({ token: 'your-api-token' });
 const client = new Client({
-    baseURL: 'https://api.example.com',
-    middlewares: [
-        new CriteriaMiddleware()
-    ]
+    baseURL: 'https://api.example.com/api',
+    middlewares: [auth, new ETagMiddleware()],
 });
 
-// Criteria is automatically converted to query params
-const criteria = new Criteria()
-    .where('status', 'published')
-    .limit(10);
-
-const response = await client.entries.get('posts', { criteria });
+auth.setToken('new-token');
+console.log(client.middlewares);
 ```
 
-**What it does:**
-- Transforms `Criteria` objects into URL query parameters
-- Enables fluent query building with Laravel-style syntax
+`client.use(instance)` adds a middleware. `defaultMiddlewares` can replace the defaults explicitly; setting it to an empty array disables automatic request and response transformations.
 
-### QueryMiddleware
+## ETag caching
 
-Adds query parameters to requests.
+ETag middleware is opt-in. It keeps an in-memory response cache scoped to the client. GET cache keys include the complete URL, response type, credentials mode and request headers, keeping query results and authenticated representations separate.
 
 ```javascript
-import { Client, QueryMiddleware } from '@laravel-streams/api-client';
+const first = await client.entries.find('posts', 1);
+// A successful response with ETag: "v1" is cached.
 
-const client = new Client({
-    baseURL: 'https://api.example.com',
-    middlewares: [
-        new QueryMiddleware()
-    ]
-});
-
-// Add query params via options
-const response = await client.get('/posts', {
-    query: {
-        status: 'published',
-        limit: 10
-    }
-});
-// GET /posts?status=published&limit=10
+const second = await client.entries.find('posts', 1);
+// Sends If-None-Match: "v1".
+// A matching 304 replays the cached response through response parsing.
+console.log(second.data);
+console.log(second.revalidated); // true when a 304 replay occurred
 ```
 
-**What it does:**
-- Converts `query` option to URL query string
-- Handles URL encoding automatically
+A replay has the cached success status, a fresh body and the current request attached; headers from the 304 update its headers. Modifying returned data does not alter cached data. A 304 without a matching cached representation remains an HTTP error. Successful writes clear that client's cache. Responses with `Cache-Control: no-store` or `Vary: *` and requests with `cache: 'no-store'` are not cached. The cache has no persistence, TTL or offline mode.
 
-### RequestDataMiddleware
-
-Transforms request data based on content type.
-
-```javascript
-import { Client, RequestDataMiddleware } from '@laravel-streams/api-client';
-
-const client = new Client({
-    baseURL: 'https://api.example.com',
-    middlewares: [
-        new RequestDataMiddleware()
-    ]
-});
-
-// JSON (default)
-await client.post('/posts', {
-    data: { title: 'Hello', content: 'World' }
-});
-// Content-Type: application/json
-// Body: {"title":"Hello","content":"World"}
-
-// Form data
-await client.post('/upload', {
-    data: { file: fileBlob },
-    headers: { 'Content-Type': 'multipart/form-data' }
-});
-// Content-Type: multipart/form-data
-// Body: FormData object
-```
-
-**What it does:**
-- JSON: Stringifies data and sets `Content-Type: application/json`
-- Form Data: Converts to FormData and sets `Content-Type: multipart/form-data`
-- URL Encoded: Converts to URLSearchParams and sets `Content-Type: application/x-www-form-urlencoded`
-
-### ResponseDataMiddleware
-
-Parses response data based on content type.
-
-```javascript
-import { Client, ResponseDataMiddleware } from '@laravel-streams/api-client';
-
-const client = new Client({
-    baseURL: 'https://api.example.com',
-    middlewares: [
-        new ResponseDataMiddleware()
-    ]
-});
-
-const response = await client.get('/posts');
-// Automatically parses JSON response
-console.log(response.data); // Parsed object
-```
-
-**What it does:**
-- Parses JSON responses automatically
-- Handles text responses
-- Returns raw response for other content types
-
-### ETagMiddleware
-
-Implements HTTP caching with ETags.
-
-```javascript
-import { Client, ETagMiddleware } from '@laravel-streams/api-client';
-
-const client = new Client({
-    baseURL: 'https://api.example.com',
-    middlewares: [
-        new ETagMiddleware()
-    ]
-});
-
-// First request - stores ETag
-const response1 = await client.get('/posts/1');
-// Response includes: ETag: "abc123"
-
-// Second request - sends If-None-Match
-const response2 = await client.get('/posts/1');
-// Request includes: If-None-Match: "abc123"
-// If not modified: 304 status, returns cached data
-```
-
-**What it does:**
-- Stores ETags from responses
-- Adds `If-None-Match` header on subsequent requests
-- Returns cached data for 304 (Not Modified) responses
-- Reduces bandwidth and improves performance
-
-## Creating Custom Middleware
-
-### Basic Middleware
+## Custom hooks and priorities
 
 ```javascript
 import { Middleware } from '@laravel-streams/api-client';
 
 class LoggingMiddleware extends Middleware {
-    async handle(request, next) {
-        console.log('Request:', request.url);
-        
-        const response = await next(request);
-        
-        console.log('Response:', response.status);
+    async request(request, client) {
+        console.log('Request:', request.method, request.url);
+        return request;
+    }
+
+    async response(response, client) {
+        console.log('Response:', response.status, response.data);
         return response;
     }
+
+    async error(error, client) {
+        console.error('Request failed:', error.status, error.response?.errors);
+        return error;
+    }
 }
 
-// Use it
-const client = new Client({
-    baseURL: 'https://api.example.com',
-    middlewares: [
-        new LoggingMiddleware()
-    ]
-});
+client.use(new LoggingMiddleware());
 ```
 
-### Request Transformation
+Hooks run in ascending numeric priority; equal priorities retain registration order. This applies separately to requests, responses, and errors. There is no `handle(request, next)` hook.
+
+The default priority is 50. Criteria requests run at 40; ETag requests run at 90 after query serialization. ETag responses run at 10 before parsing; response data parsing runs at 40 before ordinary custom response hooks.
 
 ```javascript
-class ApiVersionMiddleware extends Middleware {
-    constructor(version = 'v1') {
-        super();
-        this.version = version;
-    }
-    
-    async handle(request, next) {
-        // Add version to URL
-        request.url = `/api/${this.version}${request.url}`;
-        
-        // Add version header
-        request.headers.set('X-API-Version', this.version);
-        
-        return next(request);
-    }
-}
-
-const client = new Client({
-    baseURL: 'https://api.example.com',
-    middlewares: [
-        new ApiVersionMiddleware('v2')
-    ]
-});
-
-await client.get('/posts');
-// GET https://api.example.com/api/v2/posts
-// Headers: X-API-Version: v2
+const logger = new LoggingMiddleware().priority(60, 'response');
+client.use(logger);
+// logger.options.priority.response is 60
 ```
 
-### Response Transformation
+`priority(value)` sets all three hook priorities. HTTP failures are parsed by response hooks before `FetchError` reaches error hooks; returning an error from the error hook preserves rejection.
 
-```javascript
-class DataWrapperMiddleware extends Middleware {
-    async handle(request, next) {
-        const response = await next(request);
-        
-        // Unwrap nested data structure
-        if (response.data && response.data.data) {
-            response.data = response.data.data;
-        }
-        
-        return response;
-    }
-}
-```
+## Related
 
-### Error Handling
-
-```javascript
-class RetryMiddleware extends Middleware {
-    constructor(maxRetries = 3) {
-        super();
-        this.maxRetries = maxRetries;
-    }
-    
-    async handle(request, next) {
-        let lastError;
-        
-        for (let i = 0; i < this.maxRetries; i++) {
-            try {
-                return await next(request);
-            } catch (error) {
-                lastError = error;
-                
-                // Only retry on network errors or 5xx status
-                if (error.status < 500) {
-                    throw error;
-                }
-                
-                // Wait before retry
-                await new Promise(resolve => 
-                    setTimeout(resolve, 1000 * Math.pow(2, i))
-                );
-            }
-        }
-        
-        throw lastError;
-    }
-}
-```
-
-### Request/Response Logging
-
-```javascript
-class DetailedLoggingMiddleware extends Middleware {
-    async handle(request, next) {
-        const startTime = Date.now();
-        
-        console.log('→ Request:', {
-            method: request.method,
-            url: request.url,
-            headers: Object.fromEntries(request.headers.entries()),
-            body: request.body
-        });
-        
-        try {
-            const response = await next(request);
-            const duration = Date.now() - startTime;
-            
-            console.log('← Response:', {
-                status: response.status,
-                statusText: response.statusText,
-                duration: `${duration}ms`,
-                headers: Object.fromEntries(response.headers.entries()),
-                data: response.data
-            });
-            
-            return response;
-        } catch (error) {
-            const duration = Date.now() - startTime;
-            
-            console.error('✗ Error:', {
-                duration: `${duration}ms`,
-                message: error.message,
-                status: error.status
-            });
-            
-            throw error;
-        }
-    }
-}
-```
-
-## Real-World Examples
-
-### API Key Authentication
-
-```javascript
-class ApiKeyMiddleware extends Middleware {
-    constructor(apiKey) {
-        super();
-        this.apiKey = apiKey;
-    }
-    
-    async handle(request, next) {
-        request.headers.set('X-API-Key', this.apiKey);
-        return next(request);
-    }
-}
-
-const client = new Client({
-    baseURL: 'https://api.example.com',
-    middlewares: [
-        new ApiKeyMiddleware('your-api-key-here')
-    ]
-});
-```
-
-### Request Throttling
-
-```javascript
-class ThrottleMiddleware extends Middleware {
-    constructor(requestsPerSecond = 10) {
-        super();
-        this.delay = 1000 / requestsPerSecond;
-        this.lastRequest = 0;
-    }
-    
-    async handle(request, next) {
-        const now = Date.now();
-        const timeSinceLastRequest = now - this.lastRequest;
-        
-        if (timeSinceLastRequest < this.delay) {
-            await new Promise(resolve => 
-                setTimeout(resolve, this.delay - timeSinceLastRequest)
-            );
-        }
-        
-        this.lastRequest = Date.now();
-        return next(request);
-    }
-}
-
-const client = new Client({
-    baseURL: 'https://api.example.com',
-    middlewares: [
-        new ThrottleMiddleware(5) // Max 5 requests per second
-    ]
-});
-```
-
-### Response Caching
-
-```javascript
-class CacheMiddleware extends Middleware {
-    constructor(ttl = 60000) { // 60 seconds default
-        super();
-        this.cache = new Map();
-        this.ttl = ttl;
-    }
-    
-    getCacheKey(request) {
-        return `${request.method}:${request.url}`;
-    }
-    
-    async handle(request, next) {
-        // Only cache GET requests
-        if (request.method !== 'GET') {
-            return next(request);
-        }
-        
-        const cacheKey = this.getCacheKey(request);
-        const cached = this.cache.get(cacheKey);
-        
-        if (cached && Date.now() - cached.timestamp < this.ttl) {
-            console.log('Cache hit:', cacheKey);
-            return cached.response;
-        }
-        
-        const response = await next(request);
-        
-        this.cache.set(cacheKey, {
-            response: response,
-            timestamp: Date.now()
-        });
-        
-        return response;
-    }
-}
-
-const client = new Client({
-    baseURL: 'https://api.example.com',
-    middlewares: [
-        new CacheMiddleware(30000) // Cache for 30 seconds
-    ]
-});
-```
-
-### Request/Response Transformation
-
-```javascript
-class TimestampMiddleware extends Middleware {
-    async handle(request, next) {
-        // Add timestamp to requests
-        if (request.body && typeof request.body === 'object') {
-            request.body.timestamp = Date.now();
-        }
-        
-        const response = await next(request);
-        
-        // Parse date strings in response
-        if (response.data) {
-            this.parseDates(response.data);
-        }
-        
-        return response;
-    }
-    
-    parseDates(obj) {
-        const dateFields = ['created_at', 'updated_at', 'published_at'];
-        
-        for (const key in obj) {
-            if (dateFields.includes(key) && typeof obj[key] === 'string') {
-                obj[key] = new Date(obj[key]);
-            } else if (typeof obj[key] === 'object') {
-                this.parseDates(obj[key]);
-            }
-        }
-    }
-}
-```
-
-## Middleware Execution Order
-
-Middleware executes in the order it's added:
-
-```javascript
-const client = new Client({
-    baseURL: 'https://api.example.com',
-    middlewares: [
-        new LoggingMiddleware(),      // 1. Logs request
-        new AuthMiddleware(),          // 2. Adds auth
-        new CriteriaMiddleware(),      // 3. Converts criteria
-        new RequestDataMiddleware(),   // 4. Transforms request data
-        // --- Request sent ---
-        // --- Response received ---
-        new ResponseDataMiddleware(),  // 5. Parses response data
-        new DataWrapperMiddleware()    // 6. Unwraps data
-    ]
-});
-```
-
-The execution flow:
-1. Request goes through middleware from top to bottom
-2. Response comes back through middleware from bottom to top
-3. Each middleware can modify request before calling `next()`
-4. Each middleware can modify response after calling `next()`
-
-## Best Practices
-
-### Keep Middleware Focused
-
-```javascript
-// Good: Single responsibility
-class AuthMiddleware extends Middleware {
-    async handle(request, next) {
-        request.headers.set('Authorization', `Bearer ${this.token}`);
-        return next(request);
-    }
-}
-
-// Bad: Too many responsibilities
-class MegaMiddleware extends Middleware {
-    async handle(request, next) {
-        // Adds auth, transforms data, logs, caches, retries...
-        // Too much in one middleware!
-    }
-}
-```
-
-### Error Handling
-
-```javascript
-class SafeMiddleware extends Middleware {
-    async handle(request, next) {
-        try {
-            // Your middleware logic
-            return await next(request);
-        } catch (error) {
-            // Handle or re-throw
-            console.error('Middleware error:', error);
-            throw error;
-        }
-    }
-}
-```
-
-### Configuration
-
-```javascript
-class ConfigurableMiddleware extends Middleware {
-    constructor(options = {}) {
-        super();
-        this.options = {
-            enabled: true,
-            timeout: 5000,
-            ...options
-        };
-    }
-    
-    async handle(request, next) {
-        if (!this.options.enabled) {
-            return next(request);
-        }
-        
-        // Use this.options...
-        return next(request);
-    }
-}
-```
-
-## Next Steps
-
-- [Examples](/docs/client/examples) - See middleware in real-world scenarios
-- [Client Configuration](/docs/client/client) - Learn more about client setup
+- [Client introduction](/docs/client/introduction)
+- [Criteria](/docs/client/criteria)
+- [Examples](/docs/client/examples)
