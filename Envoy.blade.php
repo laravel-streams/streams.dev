@@ -17,6 +17,8 @@ $repo = env('DEPLOY_REPOSITORY');
 $path = env('DEPLOY_PATH');
 $slack = env('DEPLOY_SLACK_WEBHOOK');
 $healthUrl = env('DEPLOY_HEALTH_CHECK');
+$webRoot = rtrim(env('DEPLOY_WEB_ROOT') ?: '', '/');
+$appUrl = env('DEPLOY_APP_URL');
 
 $php = env('DEPLOY_PHP_BINARY') ?: 'php';
 $mysql = env('DEPLOY_MYSQL_BINARY') ?: 'mysql';
@@ -36,14 +38,32 @@ $path = rtrim($path, '/');
 
 @task('init')
 if [ ! -d {{ $path }} ]; then
-cd {{ $path }}
-git clone {{ $repo }} --branch={{ $branch }} --depth=1 -q {{ $path }}
+git clone {{ $repo }} --branch={{ $branch }} -q {{ $path }}
 echo "Repository cloned"
-cp {{ $path }}/.env.example {{ $path }}/.env
-{{ $php }} {{ $path }}/artisan key:generate --ansi
 fi
-ln -s {{ $path }}/.env {{ $path }}/.env
-echo "Environment file set up"
+cd {{ $path }}
+if [ ! -f .env ]; then
+cp .env.example .env
+sed -i -e 's/^APP_ENV=.*/APP_ENV=production/' -e 's/^APP_DEBUG=.*/APP_DEBUG=false/' -e 's/^LOG_LEVEL=.*/LOG_LEVEL=error/' .env
+@if ( ! empty($appUrl) )
+sed -i 's#^APP_URL=.*#APP_URL={{ $appUrl }}#' .env
+@endif
+echo "Environment file created from .env.example"
+fi
+{{ $composer }} install --no-interaction --quiet --no-dev --prefer-dist --optimize-autoloader --ignore-platform-reqs
+if ! grep -q '^APP_KEY=.\+' .env; then
+{{ $php }} artisan key:generate --force --ansi
+fi
+@if ( ! empty($webRoot) )
+{{-- Point the host's document root (e.g. Virtualmin's public_html) at public/.
+     A real directory there is moved aside once, never deleted. --}}
+if [ -d {{ $webRoot }} ] && [ ! -L {{ $webRoot }} ]; then
+mv {{ $webRoot }} {{ $webRoot }}.{{ $date }}
+echo "Moved existing {{ $webRoot }} to {{ $webRoot }}.{{ $date }}"
+fi
+ln -sfn {{ $path }}/public {{ $webRoot }}
+echo "{{ $webRoot }} -> {{ $path }}/public"
+@endif
 echo "Deployment initialised. Run 'envoy run deploy' now."
 @endtask
 
