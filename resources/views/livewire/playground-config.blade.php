@@ -14,18 +14,21 @@
             <span class="st-code__title">node.json</span>
         </div>
         <label class="sr-only" for="playground-config-{{ $componentId }}">Example config JSON</label>
-        <textarea
-            id="playground-config-{{ $componentId }}"
-            class="playground-config__input"
-            data-playground-config
-            rows="16"
-            spellcheck="false"
-            autocapitalize="off"
-            autocomplete="off"
-            wire:model.live.debounce.400ms="config"
-            aria-invalid="{{ $schemaErrors ? 'true' : 'false' }}"
-            @if ($schemaErrors) aria-describedby="playground-config-errors-{{ $componentId }}" @endif
-        >{{ $config }}</textarea>
+        <div class="playground-config__editor" data-playground-config-shell>
+            <pre class="language-json playground-config__highlight" aria-hidden="true" wire:ignore><code class="language-json" data-playground-config-highlight>{{ $config }}</code></pre>
+            <textarea
+                id="playground-config-{{ $componentId }}"
+                class="playground-config__input"
+                data-playground-config
+                rows="16"
+                spellcheck="false"
+                autocapitalize="off"
+                autocomplete="off"
+                wire:model.live.debounce.400ms="config"
+                aria-invalid="{{ $schemaErrors ? 'true' : 'false' }}"
+                @if ($schemaErrors) aria-describedby="playground-config-errors-{{ $componentId }}" @endif
+            >{{ $config }}</textarea>
+        </div>
     </div>
 
     <p class="playground-config__status" wire:loading data-playground-rendering>Updating the preview…</p>
@@ -50,6 +53,10 @@
 
                 if (stage && typeof detail.html === 'string') {
                     stage.innerHTML = detail.html;
+
+                    if (window.StreamsHighlightCode) {
+                        window.StreamsHighlightCode(stage);
+                    }
                 }
             });
         }

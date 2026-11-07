@@ -28,9 +28,82 @@ function startAlpine() {
     Alpine.start();
 }
 
-function highlightCode() {
-    Prism.highlightAll();
+function highlightCode(root = document) {
+    if (root === document) {
+        Prism.highlightAll();
+
+        return;
+    }
+
+    root.querySelectorAll('pre code[class*="language-"]').forEach((block) => {
+        Prism.highlightElement(block);
+    });
 }
+
+function syncPlaygroundConfigHighlight(textarea) {
+    const shell = textarea.closest('[data-playground-config-shell]');
+
+    if (!shell) {
+        return;
+    }
+
+    const block = shell.querySelector('[data-playground-config-highlight]');
+
+    if (!block) {
+        return;
+    }
+
+    block.textContent = textarea.value;
+    Prism.highlightElement(block);
+}
+
+function initPlaygroundConfigHighlight(root = document) {
+    root.querySelectorAll('[data-playground-config]').forEach(syncPlaygroundConfigHighlight);
+}
+
+function initPlaygroundConfigEditors(root = document) {
+    root.querySelectorAll('[data-playground-config]').forEach((textarea) => {
+        if (textarea.dataset.playgroundHighlightBound === 'true') {
+            return;
+        }
+
+        textarea.dataset.playgroundHighlightBound = 'true';
+        textarea.addEventListener('input', () => syncPlaygroundConfigHighlight(textarea));
+        textarea.addEventListener('scroll', () => {
+            const shell = textarea.closest('[data-playground-config-shell]');
+            const pre = shell?.querySelector('.playground-config__highlight');
+
+            if (pre) {
+                pre.scrollTop = textarea.scrollTop;
+                pre.scrollLeft = textarea.scrollLeft;
+            }
+        });
+    });
+}
+
+function afterLivewireMorph(el) {
+    highlightCode(el);
+    initPlaygroundConfigHighlight(el);
+    initPlaygroundConfigEditors(el);
+}
+
+function initLivewireHighlight() {
+    document.addEventListener('livewire:init', () => {
+        window.Livewire.hook('morph.updated', ({ el }) => {
+            requestAnimationFrame(() => afterLivewireMorph(el));
+        });
+
+        window.Livewire.hook('commit', ({ succeed }) => {
+            succeed(() => {
+                queueMicrotask(() => {
+                    afterLivewireMorph(document);
+                });
+            });
+        });
+    });
+}
+
+window.StreamsHighlightCode = highlightCode;
 
 function initAnchors() {
     const anchors = new AnchorJS();
@@ -75,5 +148,16 @@ function safely(step) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    [startAlpine, highlightCode, initAnchors, initTocbot, initDocsSearch, initDocsFilter, initReveal].forEach(safely);
+    [
+        startAlpine,
+        highlightCode,
+        initPlaygroundConfigHighlight,
+        initPlaygroundConfigEditors,
+        initLivewireHighlight,
+        initAnchors,
+        initTocbot,
+        initDocsSearch,
+        initDocsFilter,
+        initReveal,
+    ].forEach(safely);
 });

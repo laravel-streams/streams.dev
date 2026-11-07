@@ -26,6 +26,7 @@ const assert=require('node:assert/strict');
   node.defaults.placeholder='Browser verified edit';
   await editor.fill(JSON.stringify(node,null,2));
   await page.waitForFunction(()=>document.querySelector('[data-playground-preview] input')?.placeholder==='Browser verified edit');
+  await page.waitForFunction(()=>document.querySelector('[data-playground-config-highlight] .token'));
   assert.equal(navigations,1);
   assert.equal(await page.evaluate(()=>window.browserTestMarker),'same-document');
   await editor.fill('{');
