@@ -69,6 +69,15 @@ function initPlaygroundConfigEditors(root = document) {
 
         textarea.dataset.playgroundHighlightBound = 'true';
         textarea.addEventListener('input', () => syncPlaygroundConfigHighlight(textarea));
+        textarea.addEventListener('scroll', () => {
+            const shell = textarea.closest('[data-playground-config-shell]');
+            const pre = shell?.querySelector('.playground-config__highlight');
+
+            if (pre) {
+                pre.scrollTop = textarea.scrollTop;
+                pre.scrollLeft = textarea.scrollLeft;
+            }
+        });
     });
 }
 

@@ -565,29 +565,36 @@
     }
 
     .playground-config__editor {
-        position: relative;
+        display: grid;
+    }
+
+    .playground-config__editor .playground-config__highlight,
+    .playground-config__editor .playground-config__input {
+        grid-area: 1 / 1;
+        margin: 0;
+        min-height: 16rem;
     }
 
     .playground-config__highlight {
-        position: absolute;
-        inset: 0;
-        margin: 0;
         pointer-events: none;
-        overflow: hidden;
+        overflow: auto;
         border-radius: 0;
         background: transparent;
+        z-index: 0;
     }
 
-    .playground-config__editor .playground-config__input {
-        position: relative;
+    .st-code .playground-config__editor textarea.playground-config__input {
         z-index: 1;
-        background: transparent;
+        resize: vertical;
+        background-color: transparent;
         color: transparent;
+        -webkit-text-fill-color: transparent;
         caret-color: var(--st-code-text);
     }
 
-    .playground-config__editor .playground-config__input::selection {
+    .st-code .playground-config__editor textarea.playground-config__input::selection {
         color: transparent;
+        -webkit-text-fill-color: transparent;
         background-color: rgb(255 255 255 / 0.16);
     }
 

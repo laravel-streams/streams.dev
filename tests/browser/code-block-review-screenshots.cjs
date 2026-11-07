@@ -4,6 +4,7 @@ const fs = require('node:fs');
 const net = require('node:net');
 const path = require('node:path');
 
+const phase = process.env.SCREENSHOT_PHASE === 'before' ? 'before' : 'after';
 const outDir = path.join(process.cwd(), '.ops', 'task-676-screenshots');
 
 (async () => {
@@ -19,7 +20,7 @@ const outDir = path.join(process.cwd(), '.ops', 'task-676-screenshots');
         stdio: ['ignore', 'ignore', 'pipe'],
     });
     server.stderr.resume();
-    console.log(`Owned preview PID: ${server.pid}; port: ${port}`);
+    console.log(`Owned preview PID: ${server.pid}; port: ${port}; phase: ${phase}`);
 
     let browser;
     try {
@@ -39,28 +40,38 @@ const outDir = path.join(process.cwd(), '.ops', 'task-676-screenshots');
         await page.setViewportSize({width: 1280, height: 900});
 
         await page.goto(`http://127.0.0.1:${port}/docs/ui/form-layouts`);
-        await page.locator('.st-code').first().waitFor();
-        await page.screenshot({path: path.join(outDir, 'docs-form-layouts-light.png'), fullPage: false});
+        const docsPanel = phase === 'before'
+            ? page.locator('.documentation-content pre').first()
+            : page.locator('.st-code').first();
+        await docsPanel.waitFor();
+        await docsPanel.screenshot({path: path.join(outDir, `${phase}-docs-form-layouts-light.png`)});
 
         await page.evaluate(() => window.StreamsTheme?.set('dark'));
         await page.waitForTimeout(150);
-        await page.screenshot({path: path.join(outDir, 'docs-form-layouts-dark.png'), fullPage: false});
+        await docsPanel.screenshot({path: path.join(outDir, `${phase}-docs-form-layouts-dark.png`)});
 
         await page.goto(`http://127.0.0.1:${port}/playground/text-input`);
         await page.waitForFunction(() => Boolean(window.Livewire));
-        await page.locator('.st-code').first().waitFor();
+        const playgroundPanel = page.locator('.st-code').first();
+        await playgroundPanel.waitFor();
         const editor = page.locator('[data-playground-config]');
-        const node = JSON.parse(await editor.inputValue());
-        node.defaults.placeholder = 'Screenshot highlight check';
-        await editor.fill(JSON.stringify(node, null, 2));
-        await page.waitForFunction(() => document.querySelector('[data-playground-config-highlight] .token'));
-        await page.screenshot({path: path.join(outDir, 'playground-json-highlight-dark.png'), fullPage: false});
+
+        if (phase === 'after') {
+            const node = JSON.parse(await editor.inputValue());
+            node.defaults.placeholder = 'Screenshot highlight check';
+            await editor.fill(JSON.stringify(node, null, 2));
+            await page.waitForFunction(() => document.querySelector('[data-playground-config-highlight] .token'));
+        }
 
         await page.evaluate(() => window.StreamsTheme?.set('light'));
         await page.waitForTimeout(150);
-        await page.screenshot({path: path.join(outDir, 'playground-json-highlight-light.png'), fullPage: false});
+        await playgroundPanel.screenshot({path: path.join(outDir, `${phase}-playground-light.png`)});
 
-        console.log(`Screenshots written to ${outDir}`);
+        await page.evaluate(() => window.StreamsTheme?.set('dark'));
+        await page.waitForTimeout(150);
+        await playgroundPanel.screenshot({path: path.join(outDir, `${phase}-playground-dark.png`)});
+
+        console.log(`Screenshots written to ${outDir} (${phase})`);
     } finally {
         if (browser) {
             await browser.close();
