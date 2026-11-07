@@ -72,12 +72,24 @@ function initPlaygroundConfigEditors(root = document) {
     });
 }
 
+function afterLivewireMorph(el) {
+    highlightCode(el);
+    initPlaygroundConfigHighlight(el);
+    initPlaygroundConfigEditors(el);
+}
+
 function initLivewireHighlight() {
     document.addEventListener('livewire:init', () => {
         window.Livewire.hook('morph.updated', ({ el }) => {
-            highlightCode(el);
-            initPlaygroundConfigHighlight(el);
-            initPlaygroundConfigEditors(el);
+            requestAnimationFrame(() => afterLivewireMorph(el));
+        });
+
+        window.Livewire.hook('commit', ({ succeed }) => {
+            succeed(() => {
+                queueMicrotask(() => {
+                    afterLivewireMorph(document);
+                });
+            });
         });
     });
 }

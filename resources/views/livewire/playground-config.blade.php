@@ -15,7 +15,7 @@
         </div>
         <label class="sr-only" for="playground-config-{{ $componentId }}">Example config JSON</label>
         <div class="playground-config__editor" data-playground-config-shell>
-            <pre class="language-json playground-config__highlight" aria-hidden="true"><code class="language-json" data-playground-config-highlight>{{ $config }}</code></pre>
+            <pre class="language-json playground-config__highlight" aria-hidden="true" wire:ignore><code class="language-json" data-playground-config-highlight>{{ $config }}</code></pre>
             <textarea
                 id="playground-config-{{ $componentId }}"
                 class="playground-config__input"

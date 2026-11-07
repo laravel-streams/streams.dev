@@ -33,6 +33,7 @@ class CodeBlockRenderingTest extends TestCase
         $this->get('/playground/text-input')
             ->assertOk()
             ->assertSee('data-playground-config-highlight', false)
+            ->assertSee('wire:ignore', false)
             ->assertSee('language-json', false)
             ->assertSee('st-code', false);
     }
