@@ -725,21 +725,11 @@
             }
         }
 
-        pre {
+        .st-code {
             margin: 2.25rem 0;
-            padding: 1.375rem 1.5rem;
-            border-radius: var(--st-radius-lg);
-            background-color: var(--st-code-glass);
-            border: 1px solid var(--st-code-border);
-            box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.1), inset 0 0 0 1px var(--st-code-inner), var(--st-shadow-2);
-            -webkit-backdrop-filter: var(--st-glass-filter);
-            backdrop-filter: var(--st-glass-filter);
-            font-size: var(--st-text-code);
-            line-height: 1.75;
-            overflow-x: auto;
         }
 
-        pre code {
+        .st-code pre code {
             font-size: inherit;
         }
 

@@ -400,7 +400,7 @@
 
 /* Code blocks in rendered docs (utilities layer, after the prose rules). */
 @layer utilities {
-    .documentation-content pre {
+    .documentation-content .st-code {
         --_c: var(--st-chamfer);
         --_h: calc(var(--_c) * var(--st-tan30));
         --st-edge: var(--st-code-border);

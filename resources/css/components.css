@@ -564,6 +564,33 @@
         outline-offset: -2px;
     }
 
+    .playground-config__editor {
+        position: relative;
+    }
+
+    .playground-config__highlight {
+        position: absolute;
+        inset: 0;
+        margin: 0;
+        pointer-events: none;
+        overflow: hidden;
+        border-radius: 0;
+        background: transparent;
+    }
+
+    .playground-config__editor .playground-config__input {
+        position: relative;
+        z-index: 1;
+        background: transparent;
+        color: transparent;
+        caret-color: var(--st-code-text);
+    }
+
+    .playground-config__editor .playground-config__input::selection {
+        color: transparent;
+        background-color: rgb(255 255 255 / 0.16);
+    }
+
     .playground-config__errors {
         margin: 0;
         padding: 1rem 1.25rem;
