@@ -32,6 +32,16 @@ class PlaygroundTest extends TestCase
         }
     }
 
+    public function test_component_pages_have_no_json_editor(): void
+    {
+        $this->get('/playground/text-input')
+            ->assertOk()
+            ->assertDontSee('node.json', false)
+            ->assertDontSee('<textarea', false)
+            ->assertDontSee('data-playground-config', false)
+            ->assertDontSee('catalog.schema.json', false);
+    }
+
     public function test_playground_uses_the_site_shell_and_theme(): void
     {
         $this->get('/playground')

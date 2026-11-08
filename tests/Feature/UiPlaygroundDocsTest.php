@@ -26,12 +26,8 @@ class UiPlaygroundDocsTest extends TestCase
             $this->assertSame(1, $badges->length, $heading.' must carry a visible Planned badge.');
         }
 
-        $editorBadge = $xpath->query(
-            '//article//h2[normalize-space(.)="Edit JSON"]/following-sibling::*[1]//span[@class="st-pill" and normalize-space(.)="Planned"]'
-        );
-        $this->assertSame(0, $editorBadge->length);
-        $this->assertStringContainsString('/schema/catalog.schema.json', $html);
-        $this->assertStringContainsString('Unknown keys are rejected.', $html);
+        $this->assertStringContainsString('read-only PHP', $html);
+        $this->assertStringNotContainsString('Unknown keys are rejected.', $html);
 
         $links = $xpath->query('//article//a[@href="/playground"]');
         $this->assertGreaterThan(0, $links->length);
