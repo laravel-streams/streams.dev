@@ -1,5 +1,21 @@
 <?php
 
+/**
+ * Production verification log — 2026-11-07, against https://streams.dev/mcp
+ * (Streamable HTTP, headers Content-Type: application/json and Accept: application/json, text/event-stream).
+ *
+ * initialize (protocolVersion 2025-06-18)         -> HTTP 200, echoes "2025-06-18"
+ * initialize (protocolVersion 2025-03-26)         -> HTTP 200, echoes "2025-03-26"
+ * tools/list                                      -> HTTP 200, 4 tools: search_docs, get_page, list_pages, get_schema
+ * tools/call search_docs {query:"criteria"}       -> HTTP 200, 10 ranked results, first "core/criteria"
+ * tools/call list_pages {}                        -> HTTP 200, 123 pages (url per page; no markdown_url emitted)
+ * tools/call get_page {page:"core/introduction"}  -> HTTP 200, returns page markdown
+ * tools/call get_schema {name:"streams"}          -> HTTP 200, returns streams JSON Schema
+ * tools/call no_such_tool {} (bad input)          -> HTTP 400, JSON-RPC error {"code":-32602,"message":"Tool [no_such_tool] not found."}
+ * Link check: all 123 list_pages url values -> 200; all 123 ".md" variants -> 200. broken_doc_links = 0.
+ * npx -y @modelcontextprotocol/inspector --cli https://streams.dev/mcp --method tools/list -> exit_code 0.
+ */
+
 namespace Tests\Feature;
 
 use App\Mcp\Resources\DocsIndex;
