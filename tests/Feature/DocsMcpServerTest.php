@@ -1,5 +1,21 @@
 <?php
 
+/**
+ * Production verification log — 2026-11-07, against https://streams.dev/mcp
+ * (Streamable HTTP, headers Content-Type: application/json and Accept: application/json, text/event-stream).
+ *
+ * initialize (protocolVersion 2025-06-18)         -> HTTP 200, echoes "2025-06-18"
+ * initialize (protocolVersion 2025-03-26)         -> HTTP 200, echoes "2025-03-26"
+ * tools/list                                      -> HTTP 200, 4 tools: search_docs, get_page, list_pages, get_schema
+ * tools/call search_docs {query:"criteria"}       -> HTTP 200, 10 ranked results, first "core/criteria"
+ * tools/call list_pages {}                        -> HTTP 200, 123 pages (url per page; no markdown_url emitted)
+ * tools/call get_page {page:"core/introduction"}  -> HTTP 200, returns page markdown
+ * tools/call get_schema {name:"streams"}          -> HTTP 200, returns streams JSON Schema
+ * tools/call no_such_tool {} (bad input)          -> HTTP 400, JSON-RPC error {"code":-32602,"message":"Tool [no_such_tool] not found."}
+ * Link check: all 123 list_pages url values -> 200; all 123 ".md" variants -> 200. broken_doc_links = 0.
+ * npx -y @modelcontextprotocol/inspector --cli https://streams.dev/mcp --method tools/list -> exit_code 0.
+ */
+
 namespace Tests\Feature;
 
 use App\Mcp\Resources\DocsIndex;
@@ -181,6 +197,80 @@ class DocsMcpServerTest extends TestCase
 
         // No CSRF token or session is needed, and GET is not a transport.
         $this->get('/mcp')->assertStatus(405);
+    }
+
+    public function test_http_endpoint_accepts_supported_protocol_versions()
+    {
+        foreach (['2025-03-26', '2025-06-18'] as $version) {
+            $this->postJson('/mcp', [
+                'jsonrpc' => '2.0',
+                'id' => 1,
+                'method' => 'initialize',
+                'params' => [
+                    'protocolVersion' => $version,
+                    'capabilities' => new \stdClass,
+                    'clientInfo' => ['name' => 'phpunit', 'version' => '1.0'],
+                ],
+            ], ['Accept' => 'application/json, text/event-stream', 'MCP-Protocol-Version' => $version])
+                ->assertOk()
+                ->assertJsonPath('result.serverInfo.name', 'Streams Docs')
+                ->assertJsonPath('result.protocolVersion', $version);
+        }
+    }
+
+    public function test_http_endpoint_rejects_unsupported_protocol_with_well_formed_error()
+    {
+        $this->postJson('/mcp', [
+            'jsonrpc' => '2.0',
+            'id' => 1,
+            'method' => 'initialize',
+            'params' => [
+                'protocolVersion' => '2024-11-05',
+                'capabilities' => new \stdClass,
+                'clientInfo' => ['name' => 'phpunit', 'version' => '1.0'],
+            ],
+        ], ['Accept' => 'application/json, text/event-stream', 'MCP-Protocol-Version' => '2024-11-05'])
+            ->assertStatus(400)
+            ->assertJsonPath('error.code', -32022)
+            ->assertJsonPath('error.data.supported', ['2025-11-25', '2025-06-18', '2025-03-26'])
+            ->assertJsonPath('error.data.requested', '2024-11-05');
+    }
+
+    public function test_http_endpoint_returns_well_formed_errors_never_500()
+    {
+        $headers = ['Accept' => 'application/json, text/event-stream', 'MCP-Protocol-Version' => '2025-06-18'];
+
+        // Unknown tool: a JSON-RPC error, never a 500.
+        $this->postJson('/mcp', ['jsonrpc' => '2.0', 'id' => 1, 'method' => 'tools/call', 'params' => ['name' => 'nope', 'arguments' => []]], $headers)
+            ->assertStatus(400)
+            ->assertJsonPath('error.code', -32602)
+            ->assertJsonPath('error.message', 'Tool [nope] not found.');
+
+        // Malformed JSON: a parse error, never a 500.
+        $this->call('POST', '/mcp', [], [], [], [
+            'CONTENT_TYPE' => 'application/json',
+            'HTTP_ACCEPT' => 'application/json, text/event-stream',
+            'HTTP_MCP_PROTOCOL_VERSION' => '2025-06-18',
+        ], '{not valid json')
+            ->assertStatus(400)
+            ->assertJsonPath('error.code', -32700);
+
+        // Bad tool arguments come back as isError results, never a 500.
+        $this->postJson('/mcp', ['jsonrpc' => '2.0', 'id' => 2, 'method' => 'tools/call', 'params' => ['name' => 'search_docs', 'arguments' => ['query' => 'x', 'package' => 'nope']]], $headers)
+            ->assertOk()
+            ->assertJsonPath('result.isError', true);
+
+        $this->postJson('/mcp', ['jsonrpc' => '2.0', 'id' => 3, 'method' => 'tools/call', 'params' => ['name' => 'get_page', 'arguments' => ['page' => 'core/nope']]], $headers)
+            ->assertOk()
+            ->assertJsonPath('result.isError', true);
+
+        $this->postJson('/mcp', ['jsonrpc' => '2.0', 'id' => 4, 'method' => 'tools/call', 'params' => ['name' => 'list_pages', 'arguments' => ['section' => 'nope']]], $headers)
+            ->assertOk()
+            ->assertJsonPath('result.isError', true);
+
+        $this->postJson('/mcp', ['jsonrpc' => '2.0', 'id' => 5, 'method' => 'tools/call', 'params' => ['name' => 'get_schema', 'arguments' => ['name' => 'nope']]], $headers)
+            ->assertOk()
+            ->assertJsonPath('result.isError', true);
     }
 
     public function test_http_endpoint_is_rate_limited_per_client_ip()
