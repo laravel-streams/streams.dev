@@ -4,7 +4,7 @@
 @section('description', 'Render the '.$component['label'].' Streams UI component with its catalog defaults.')
 
 @section('heading', $component['label'])
-@section('lead', 'Edit the example config to re-render this component on the page.')
+@section('lead', 'Read-only PHP for this component, with a live preview.')
 
 @section('navigation')
 @include('playground.navigation')
@@ -12,12 +12,7 @@
 
 @section('content')
 <p><a href="{{ $component['reference'] }}">UI reference</a></p>
-<livewire:playground-config
-    :component-id="$component['id']"
-    :preview="$preview"
-    :gap="$gap"
-    :key="$component['id']"
-/>
+@include('playground.php-example')
 <div data-playground-stage="{{ $component['id'] }}">
     @include('livewire.playground-stage', [
         'componentId' => $component['id'],

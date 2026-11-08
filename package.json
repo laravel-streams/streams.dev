@@ -3,9 +3,7 @@
     "scripts": {
         "dev": "vite",
         "build": "vite build",
-        "test:js": "node --test tests/js/*.test.mjs",
-        "test:browser": "node tests/browser/playground-config.cjs"
-    },
+        "test:js": "node --test tests/js/*.test.mjs"    },
     "devDependencies": {
         "@tailwindcss/typography": "^0.5.20",
         "@tailwindcss/vite": "^4.3.3",
