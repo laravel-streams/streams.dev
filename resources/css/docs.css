@@ -134,7 +134,16 @@
         &.is-active::before {
             opacity: 1;
             transform: scaleY(1);
+            /* `to` is required: fill-mode `both` with only `from` leaves the bar stuck at scaleY(0). */
             animation: st-bar-in 360ms var(--st-ease-out) 80ms both;
+        }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .docs-nav-link.is-active::before {
+            animation: none;
+            opacity: 1;
+            transform: scaleY(1);
         }
     }
 
@@ -589,6 +598,11 @@
     from {
         opacity: 0;
         transform: scaleY(0);
+    }
+
+    to {
+        opacity: 1;
+        transform: scaleY(1);
     }
 }
 

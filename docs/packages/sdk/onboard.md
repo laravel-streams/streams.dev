@@ -11,10 +11,9 @@ status: implemented
 tracking_task: null
 ---
 
-`streams:onboard` is the create-project step after a Laravel shell has `streams/core` and `streams/sdk`.
+`streams:onboard` is the create-project step after a Laravel shell has `streams/core` and `streams/sdk`. Start from [SALLT](/docs/sallt) for the create-project command; this page covers the recipe and `--apply`.
 
 ```bash
-composer create-project ryanthompson/sallt todos
 cd todos
 php artisan streams:onboard --recipe=todos --apply
 ```

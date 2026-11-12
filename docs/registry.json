@@ -937,7 +937,7 @@
             "streams-core@fa8dffbff61570b789893c3d20c86b9a88476813:src/Stream/StreamPolicy.php",
             "streams-core@fa8dffbff61570b789893c3d20c86b9a88476813:src/Support/Integrator.php"
         ],
-        "finding": "Stream registration reads config.gates and a top-level gates map through Integrator::gates. A StreamPolicy dispatcher resolves each entry’s stream policy, including when streams share an entry class; class-only checks are denied."
+        "finding": "Stream registration reads config.gates and a top-level gates map through Integrator::gates. A StreamPolicy dispatcher resolves each entry\u2019s stream policy, including when streams share an entry class; class-only checks are denied."
     },
     {
         "page": "docs/packages/sdk/tap.md",
@@ -1082,7 +1082,7 @@
             "streams-core@fa8dffbff61570b789893c3d20c86b9a88476813:src/Stream/StreamManager.php",
             "streams-core@fa8dffbff61570b789893c3d20c86b9a88476813:src/Stream/StreamPolicy.php"
         ],
-        "finding": "StreamManager::authorize registers StreamPolicy for the entry class. The dispatcher resolves the policy from each entry’s stream; streams can share entry classes and use different policies."
+        "finding": "StreamManager::authorize registers StreamPolicy for the entry class. The dispatcher resolves the policy from each entry\u2019s stream; streams can share entry classes and use different policies."
     },
     {
         "page": "streams/data/docs/components.md",
@@ -1352,7 +1352,7 @@
             "streams-ui@3a30c8676df7815804a31cf5388b8fee80cdb541:composer.json",
             "streams-api@22d2351345631480102aa1377e6a6a73d765c7a5:composer.json"
         ],
-        "finding": "Core, UI, and API paths match those packages. The starter line lists Core, UI, and API only, matching streams/streams 1.0."
+        "finding": "Core, UI, and API paths match those packages. Greenfield prefers SALLT (Core and SDK). The older streams/streams starter line lists Core, UI, and API only and does not require the SDK."
     },
     {
         "page": "streams/data/docs/users.md",

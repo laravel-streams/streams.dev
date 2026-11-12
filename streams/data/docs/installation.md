@@ -14,7 +14,7 @@ tracking_task: 269
 
 ## Server requirements
 
-Streams requires a standard [Laravel-compatible environment](https://laravel.com/docs/deployment#server-requirements) with **PHP 8.2 or newer**. Core supports Laravel 10, 11, and 12, and this site (streams.dev) runs Laravel 12. The starter project and the `streams/testing` harness are still Laravel 10 only, and the SDK's MCP server needs Laravel 11.45+ or 12.41+. The [version matrix](#version-matrix) below has the details.
+Streams requires a standard [Laravel-compatible environment](https://laravel.com/docs/deployment#server-requirements) with **PHP 8.2 or newer**. Core supports Laravel 10, 11, and 12, and this site (streams.dev) runs Laravel 12. The older `streams/streams` starter and the `streams/testing` harness are still Laravel 10 only; [SALLT](/docs/sallt) targets Laravel 12. The SDK's MCP server needs Laravel 11.45+ or 12.41+. The [version matrix](#version-matrix) below has the details.
 
 For image handling, install GD or the Imagick PHP extension. See [Images](/docs/images) and [Core images](/docs/core/images).
 
@@ -28,14 +28,17 @@ For image handling, install GD or the Imagick PHP extension. See [Images](/docs/
 | `streams/sdk` generators and `streams:validate` | Yes | Yes | Yes | Its own test suite runs on Laravel 12. |
 | `streams/sdk` MCP server | No | 11.45+ | 12.41+ | Needs `laravel/mcp ^1.0`. On Laravel 10 it is skipped; use `streams:list --json` and `streams:validate --json`. |
 | `streams/testing` | Yes | Not yet | Not yet | Requires `orchestra/testbench ^8.36` (Laravel 10 only). Being widened to `^8.36\|^9.15\|^10.8` for Laravel 11 and 12. |
-| `streams/streams` starter | Yes | No | No | Pins `laravel/framework ^10.0`. |
+| [SALLT](/docs/sallt) (`ryanthompson/sallt`) | — | — | Yes | Preferred greenfield create-project. Laravel 12 shell + Core + SDK, then `streams:onboard`. Not on Packagist yet — use the GitHub VCS repository. |
+| `streams/streams` starter | Yes | No | No | Pins `laravel/framework ^10.0`. Older starter that requires Core, UI, and API up front. |
 | streams.dev (this site) | No | No | Yes | Runs Laravel 12 on PHP `^8.2`, with Core (`rc/prep`), UI, and the SDK as a dev dependency. |
 
 Every PHP package needs **PHP 8.2 or newer**. On `rc/prep`, Core and API declare `php: ^8.2`, and the SDK on `sdk/rc` declares `php: ^8.2` too. UI and Testing require Core. Until `streams/testing` supports Laravel 11 and 12, the package test suites for Core, UI, and API run on Laravel 10 only, so treat 11 and 12 as supported but not yet verified in CI. See [Versions and support](/docs/versions) for install constraints and branches.
 
 ## New projects
 
-The fastest path is the official Streams starter:
+Prefer **[SALLT](/docs/sallt)** for a new app (Laravel 12 create-project + `streams:onboard`).
+
+The older starter ([laravel-streams/streams](https://github.com/laravel-streams/streams)) is a Laravel 10 application that requires Core, UI, and API up front. It has no tagged release yet, so the version is the `1.0` development branch:
 
 ```bash
 composer create-project streams/streams:1.0.x-dev my-app
@@ -44,8 +47,6 @@ cd my-app
 
 php artisan serve
 ```
-
-The starter ([laravel-streams/streams](https://github.com/laravel-streams/streams)) is a Laravel 10 application that requires Core, UI, and API. It has no tagged release yet, so the version is the `1.0` development branch.
 
 ## This repository (streams.dev)
 
@@ -122,6 +123,7 @@ composer update
 
 ## Related
 
+- [SALLT](/docs/sallt)
 - [Versions and support](/docs/versions)
 - [Configuration](/docs/configuration)
 - [Architecture](/docs/architecture)

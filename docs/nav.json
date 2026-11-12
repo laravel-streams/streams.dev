@@ -75,7 +75,7 @@
         "groups": [
             {
                 "label": "Start",
-                "pages": ["introduction", "stream-schema", "streams"]
+                "pages": ["introduction", "onboard", "stream-schema", "streams"]
             },
             {
                 "label": "Tools",

@@ -13,13 +13,13 @@ tracking_task: null
 
 `streams/sdk` is a dev dependency. It registers Artisan generators and publishes example stream JSON. It is not part of the runtime your application serves.
 
-Install it with Core already required:
+New apps: start with [SALLT](/docs/sallt) (includes the SDK and [`streams:onboard`](/docs/sdk/onboard)). Existing apps:
 
 ```bash
 composer require --dev streams/sdk:1.0.x-dev
 ```
 
-Commands are registered only when the app is running in the console. The ones `php artisan` can see today are `make:stream`, `make:entry`, `make:addon`, `streams:list`, `streams:validate`, `streams:schema`, and `streams:livewire`. Arguments, options, and the commands that exist in source but are not registered are in the [command reference](/docs/sdk/commands).
+Commands are registered only when the app is running in the console. The ones `php artisan` can see today are `make:stream`, `make:entry`, `make:addon`, `streams:list`, `streams:validate`, `streams:schema`, and `streams:livewire`. SALLT pins an SDK build that also registers `streams:onboard`. Arguments, options, and the commands that exist in source but are not registered are in the [command reference](/docs/sdk/commands).
 
 There is no `streams:component` or `streams:crud` command.
 
@@ -56,9 +56,9 @@ The SDK also publishes the example streams in its `streams/` directory (`blog_po
 
 ## Related
 
+- [SALLT](/docs/sallt)
+- [Onboard](/docs/sdk/onboard)
 - [Command reference](/docs/sdk/commands)
 - [Core streams](/docs/core/streams)
-- [Core fields](/docs/core/fields)
 - [Stream definition schema](/docs/sdk/stream-schema)
 - [MCP server](/docs/mcp)
-- [Agents](/docs/agents)

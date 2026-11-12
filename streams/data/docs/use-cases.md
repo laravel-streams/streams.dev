@@ -75,11 +75,10 @@ Skip UI unless you later add an admin. Configure API interfaces, auth, and custo
 
 ## Greenfield starter
 
-**Packages:** full starter via `composer create-project` (Core, UI, and API)
+**Packages:** [SALLT](/docs/sallt) via `composer create-project` (Core and SDK), then `streams:onboard`
 
-That starter requires `streams/core`, `streams/ui`, and `streams/api`. It does not require `streams/sdk`.
+Prefer [SALLT](/docs/sallt) for new Laravel 12 apps. The older `streams/streams` starter is still a full starter via `composer create-project` (Core, UI, and API). That starter requires `streams/core`, `streams/ui`, and `streams/api`. It does not require `streams/sdk`.
 
-Use the starter to learn conventions, then strip packages you do not need.
-
+- [SALLT](/docs/sallt)
 - [Installation](/docs/installation)
 - [Addons](/docs/addons)

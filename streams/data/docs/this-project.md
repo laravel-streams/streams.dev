@@ -16,7 +16,7 @@ tracking_task: null
 
 **streams.dev** is the public documentation site and reference implementation for the Streams ecosystem. It is a Laravel 12 application (PHP 8.2 or newer) that ships with **streams/core** and **streams/ui** in production, plus **streams/sdk** as a dev dependency.
 
-Unlike the generic `composer create-project streams/streams` starter, this repo is purpose-built to:
+Unlike product starters such as [SALLT](/docs/sallt), this repo is purpose-built to:
 
 - Serve documentation from flat files in `streams/data/`
 - Demonstrate stream-driven pages (`/`, `/docs`, `/addons`) without custom controllers

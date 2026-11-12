@@ -464,7 +464,11 @@ class DocsContentTest extends TestCase
         $body = $page['body'];
 
         $this->assertStringContainsString(
-            '**Packages:** full starter via `composer create-project` (Core, UI, and API)',
+            '**Packages:** [SALLT](/docs/sallt) via `composer create-project` (Core and SDK), then `streams:onboard`',
+            $body
+        );
+        $this->assertStringContainsString(
+            'full starter via `composer create-project` (Core, UI, and API)',
             $body
         );
         $this->assertStringNotContainsString('(Core, UI, API, SDK)', $body);
@@ -478,7 +482,8 @@ class DocsContentTest extends TestCase
         $this->get('/docs/use-cases.md')
             ->assertOk()
             ->assertHeader('Content-Type', 'text/markdown; charset=UTF-8')
-            ->assertSee('**Packages:** full starter via `composer create-project` (Core, UI, and API)', false)
+            ->assertSee('**Packages:** [SALLT](/docs/sallt) via `composer create-project` (Core and SDK), then `streams:onboard`', false)
+            ->assertSee('full starter via `composer create-project` (Core, UI, and API)', false)
             ->assertDontSee('(Core, UI, API, SDK)', false)
             ->assertSee('It does not require `streams/sdk`.', false);
 

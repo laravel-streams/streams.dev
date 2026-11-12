@@ -46,7 +46,8 @@ You can adopt Core alone or compose **Core + UI + API + SDK + Testing** as your 
 
 ## Next steps
 
-- [Installation](/docs/installation) — new or existing Laravel projects
+- [SALLT](/docs/sallt) — new app from scratch
+- [Installation](/docs/installation) — existing Laravel project
 - [Architecture](/docs/architecture) — how the pieces fit together
 - [Use cases](/docs/use-cases) — pick a path for your product type
 - [Configuration](/docs/configuration) — Laravel config and `streams/` layout

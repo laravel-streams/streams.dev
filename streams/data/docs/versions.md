@@ -25,6 +25,7 @@ Streams is pre-release. Most packages have **no tagged releases yet**, so you in
 | [streams/testing](/docs/testing/introduction) | `1.0.x-dev` | `1.0` | **10 only, for now** | via Core (8.2+) | Requires `orchestra/testbench ^8.36`, which targets Laravel 10. Being widened to `^8.36\|^9.15\|^10.8` (Laravel 10 to 12). |
 | [streams/mongodb](/docs/core/sources-and-adapters) | `1.0.x-dev` | `1.0` | via Core | via Core | Experimental. Requires `mongodb/mongodb ^1.10`. |
 | [@laravel-streams/api-client](/docs/client/introduction) | `3.0.0` | `master` | n/a | n/a | npm package, zero runtime dependencies. |
+| [SALLT](/docs/sallt) (`ryanthompson/sallt`) | VCS create-project | GitHub | `^12.0` | `^8.2` | Preferred greenfield starter (Core + SDK + onboard). Not on Packagist yet. |
 | `streams/streams` (starter) | `1.0.x-dev` | `1.0` | `^10.0` | `^8.0.2` declared (`rc/prep` needs 8.2+) | Pins Laravel 10; requires Core, UI, and API. |
 
 "Via Core" means the package declares no framework or PHP constraint of its own and accepts whatever `streams/core ^2.0` accepts. Branch `2.0` of Core aliases `dev-master` to `2.x-dev` and does not declare `php`. Branch `1.0` of API and branch `1.0` of the SDK do not declare `php` either. On `rc/prep`, Core and API declare `php: ^8.2`. The SDK on `sdk/rc` declares `php: ^8.2` too. UI and Testing require Core. The Laravel 10/11/12 [version matrix](/docs/installation#version-matrix) on the installation page shows the same support per Laravel version.
@@ -69,6 +70,7 @@ The plan is to adopt [semantic versioning](https://semver.org) and tag stable re
 
 ## Related
 
+- [SALLT](/docs/sallt)
 - [Installation](/docs/installation)
 - [Upgrade guide](/docs/upgrading)
 - [Changelog](/docs/changelog)
