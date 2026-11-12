@@ -1,0 +1,14 @@
+{
+    "id": "posts-title-field",
+    "label": "Title",
+    "description": "Title field from the welcome post.",
+    "stream": "posts",
+    "entry": "post-welcome",
+    "config": {
+        "handle": "title",
+        "label": "Title",
+        "input": "text",
+        "required": true
+    },
+    "type": "field"
+}

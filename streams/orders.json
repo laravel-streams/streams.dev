@@ -1,0 +1,58 @@
+{
+    "name": "Orders",
+    "handle": "orders",
+    "description": "Fictional orders for UI playground examples.",
+    "config": {
+        "source": {
+            "type": "filebase",
+            "format": "json",
+            "path": "streams/data/playground/orders"
+        }
+    },
+    "fields": [
+        {
+            "handle": "id",
+            "type": "string",
+            "required": true,
+            "unique": true
+        },
+        {
+            "handle": "number",
+            "type": "string",
+            "required": true
+        },
+        {
+            "handle": "customer",
+            "type": "relationship",
+            "config": {
+                "related": "people"
+            }
+        },
+        {
+            "handle": "status",
+            "type": "select",
+            "config": {
+                "options": {
+                    "pending": "Pending",
+                    "paid": "Paid",
+                    "shipped": "Shipped",
+                    "cancelled": "Cancelled"
+                }
+            }
+        },
+        {
+            "handle": "total_cents",
+            "type": "integer",
+            "required": true
+        },
+        {
+            "handle": "currency",
+            "type": "string",
+            "required": true
+        },
+        {
+            "handle": "placed_at",
+            "type": "datetime"
+        }
+    ]
+}

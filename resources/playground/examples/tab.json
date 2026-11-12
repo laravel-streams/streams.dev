@@ -1,0 +1,11 @@
+{
+    "id": "people-tab",
+    "label": "People",
+    "description": "Panel tab for the seeded people stream.",
+    "stream": "people",
+    "config": {
+        "label": "People",
+        "stream": "people"
+    },
+    "type": "tab"
+}

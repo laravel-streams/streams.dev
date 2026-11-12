@@ -1,0 +1,12 @@
+{
+    "id": "people-active",
+    "label": "Active",
+    "description": "Active flag from Ada Rivera.",
+    "stream": "people",
+    "entry": "person-ada",
+    "config": {
+        "handle": "active",
+        "label": "Active"
+    },
+    "type": "input-checkbox"
+}

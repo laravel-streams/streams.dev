@@ -1,0 +1,17 @@
+{
+    "id": "people-role",
+    "label": "Role",
+    "description": "Role from Ada Rivera, using the people stream's role options.",
+    "stream": "people",
+    "entry": "person-ada",
+    "config": {
+        "handle": "role",
+        "label": "Role",
+        "options": {
+            "editor": "Editor",
+            "author": "Author",
+            "customer": "Customer"
+        }
+    },
+    "type": "input-select"
+}

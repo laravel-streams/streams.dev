@@ -1,0 +1,9 @@
+{
+    "id": "order-1002",
+    "number": "PG-1002",
+    "customer": "person-ella",
+    "status": "shipped",
+    "total_cents": 12900,
+    "currency": "USD",
+    "placed_at": "2026-05-11 12:00:00"
+}

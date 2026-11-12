@@ -1,0 +1,18 @@
+{
+    "id": "orders-status-filter",
+    "label": "Status",
+    "description": "Status filter preview using order PG-1001 and the orders status options.",
+    "stream": "orders",
+    "entry": "order-1001",
+    "config": {
+        "handle": "status",
+        "label": "Status",
+        "options": {
+            "pending": "Pending",
+            "paid": "Paid",
+            "shipped": "Shipped",
+            "cancelled": "Cancelled"
+        }
+    },
+    "type": "input-multiselect"
+}

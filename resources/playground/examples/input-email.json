@@ -1,0 +1,13 @@
+{
+    "id": "people-email",
+    "label": "Email",
+    "description": "Email from Ada Rivera on the people stream.",
+    "stream": "people",
+    "entry": "person-ada",
+    "config": {
+        "handle": "email",
+        "label": "Email",
+        "required": true
+    },
+    "type": "input-email"
+}

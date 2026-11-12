@@ -1,0 +1,19 @@
+{
+    "id": "order-adjustments",
+    "label": "Adjustments",
+    "description": "Sample adjustment lines for an order. They are not saved on the orders stream.",
+    "stream": "orders",
+    "config": {
+        "rows": [
+            {
+                "label": "Gift wrap",
+                "meta": "500"
+            },
+            {
+                "label": "Shipping",
+                "meta": "800"
+            }
+        ]
+    },
+    "type": "repeater"
+}

@@ -1,0 +1,19 @@
+{
+    "id": "orders-menu",
+    "label": "Order actions",
+    "description": "Menu of read-only order actions.",
+    "stream": "orders",
+    "config": {
+        "items": [
+            {
+                "label": "Mark shipped",
+                "meta": "orders"
+            },
+            {
+                "label": "Cancel order",
+                "meta": "orders"
+            }
+        ]
+    },
+    "type": "menu"
+}

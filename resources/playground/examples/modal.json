@@ -1,0 +1,11 @@
+{
+    "id": "orders-cancel-modal",
+    "label": "Cancel order",
+    "description": "Confirmation modal for order PG-1001. The preview does not cancel the order.",
+    "stream": "orders",
+    "config": {
+        "title": "Cancel order PG-1001?",
+        "width": "md"
+    },
+    "type": "modal"
+}

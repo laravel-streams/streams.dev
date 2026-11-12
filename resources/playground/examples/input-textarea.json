@@ -1,0 +1,12 @@
+{
+    "id": "posts-body",
+    "label": "Body",
+    "description": "Body from the welcome post.",
+    "stream": "posts",
+    "entry": "post-welcome",
+    "config": {
+        "handle": "body",
+        "label": "Body"
+    },
+    "type": "input-textarea"
+}

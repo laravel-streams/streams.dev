@@ -1,0 +1,13 @@
+{
+    "id": "order-1002-total",
+    "label": "Total (cents)",
+    "description": "total_cents from order PG-1002.",
+    "stream": "orders",
+    "entry": "order-1002",
+    "config": {
+        "handle": "total_cents",
+        "label": "Total (cents)",
+        "required": true
+    },
+    "type": "input-number"
+}

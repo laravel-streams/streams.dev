@@ -1,0 +1,9 @@
+{
+    "id": "order-1004",
+    "number": "PG-1004",
+    "customer": "person-diego",
+    "status": "shipped",
+    "total_cents": 7500,
+    "currency": "USD",
+    "placed_at": "2026-05-13 12:00:00"
+}

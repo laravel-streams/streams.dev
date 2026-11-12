@@ -1,0 +1,12 @@
+{
+    "id": "people-finn-active",
+    "label": "Active",
+    "description": "Active flag from Finn Morgan, who is inactive.",
+    "stream": "people",
+    "entry": "person-finn",
+    "config": {
+        "handle": "active",
+        "label": "Active"
+    },
+    "type": "input-toggle"
+}

@@ -1,0 +1,17 @@
+{
+    "id": "posts-status",
+    "label": "Status",
+    "description": "Status from the welcome post, using the posts stream's status options.",
+    "stream": "posts",
+    "entry": "post-welcome",
+    "config": {
+        "handle": "status",
+        "label": "Status",
+        "options": {
+            "draft": "Draft",
+            "published": "Published",
+            "archived": "Archived"
+        }
+    },
+    "type": "input-radio"
+}

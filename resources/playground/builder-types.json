@@ -1,0 +1,330 @@
+{
+    "source": "streams-sdk resources/catalog/catalog.json ui.builders",
+    "version": 1,
+    "builders": [
+        {
+            "id": "panel",
+            "group": "panel",
+            "label": "Panel",
+            "allowed_parents": []
+        },
+        {
+            "id": "tab",
+            "group": "panel",
+            "label": "Tab",
+            "allowed_parents": [
+                "panel"
+            ]
+        },
+        {
+            "id": "table",
+            "group": "table",
+            "label": "Table",
+            "allowed_parents": [
+                "panel",
+                "page"
+            ]
+        },
+        {
+            "id": "column",
+            "group": "table",
+            "label": "Column",
+            "allowed_parents": [
+                "table"
+            ]
+        },
+        {
+            "id": "form",
+            "group": "form",
+            "label": "Form",
+            "allowed_parents": [
+                "panel",
+                "page",
+                "modal"
+            ]
+        },
+        {
+            "id": "field",
+            "group": "form",
+            "label": "Field",
+            "allowed_parents": [
+                "form"
+            ]
+        },
+        {
+            "id": "action",
+            "group": "action",
+            "label": "Action",
+            "allowed_parents": [
+                "table",
+                "form",
+                "resource"
+            ]
+        },
+        {
+            "id": "modal",
+            "group": "modal",
+            "label": "Modal",
+            "allowed_parents": [
+                "panel",
+                "page",
+                "table",
+                "form"
+            ]
+        },
+        {
+            "id": "navigation",
+            "group": "navigation",
+            "label": "Navigation",
+            "allowed_parents": [
+                "panel"
+            ]
+        },
+        {
+            "id": "menu",
+            "group": "menu",
+            "label": "Menu",
+            "allowed_parents": [
+                "panel",
+                "form",
+                "page"
+            ]
+        },
+        {
+            "id": "list",
+            "group": "list",
+            "label": "List",
+            "allowed_parents": [
+                "panel",
+                "page"
+            ]
+        },
+        {
+            "id": "repeater",
+            "group": "list",
+            "label": "Repeater",
+            "allowed_parents": [
+                "form"
+            ]
+        },
+        {
+            "id": "calendar",
+            "group": "calendar",
+            "label": "Calendar",
+            "allowed_parents": [
+                "panel",
+                "page"
+            ]
+        },
+        {
+            "id": "prompt",
+            "group": "prompt",
+            "label": "Prompt",
+            "allowed_parents": [
+                "panel",
+                "page",
+                "table",
+                "form"
+            ]
+        },
+        {
+            "id": "livewire-page",
+            "group": "livewire",
+            "label": "Livewire Page",
+            "allowed_parents": []
+        },
+        {
+            "id": "livewire-table",
+            "group": "livewire",
+            "label": "Livewire Table",
+            "allowed_parents": [
+                "livewire-page"
+            ]
+        },
+        {
+            "id": "livewire-form",
+            "group": "livewire",
+            "label": "Livewire Form",
+            "allowed_parents": [
+                "livewire-page"
+            ]
+        },
+        {
+            "id": "livewire-widget",
+            "group": "livewire",
+            "label": "Livewire Widget",
+            "allowed_parents": [
+                "livewire-page"
+            ]
+        },
+        {
+            "id": "resource",
+            "group": "resource",
+            "label": "Resource",
+            "allowed_parents": [
+                "panel"
+            ]
+        },
+        {
+            "id": "input-text",
+            "group": "input",
+            "label": "Text Input",
+            "allowed_parents": [
+                "form"
+            ]
+        },
+        {
+            "id": "input-textarea",
+            "group": "input",
+            "label": "Textarea Input",
+            "allowed_parents": [
+                "form",
+                "list"
+            ]
+        },
+        {
+            "id": "input-email",
+            "group": "input",
+            "label": "Email Input",
+            "allowed_parents": [
+                "form"
+            ]
+        },
+        {
+            "id": "input-url",
+            "group": "input",
+            "label": "URL Input",
+            "allowed_parents": [
+                "form"
+            ]
+        },
+        {
+            "id": "input-password",
+            "group": "input",
+            "label": "Password Input",
+            "allowed_parents": [
+                "form"
+            ]
+        },
+        {
+            "id": "input-number",
+            "group": "input",
+            "label": "Number Input",
+            "allowed_parents": [
+                "form"
+            ]
+        },
+        {
+            "id": "input-integer",
+            "group": "input",
+            "label": "Integer Input",
+            "allowed_parents": [
+                "form"
+            ]
+        },
+        {
+            "id": "input-decimal",
+            "group": "input",
+            "label": "Decimal Input",
+            "allowed_parents": [
+                "form"
+            ]
+        },
+        {
+            "id": "input-date",
+            "group": "input",
+            "label": "Date Input",
+            "allowed_parents": [
+                "form"
+            ]
+        },
+        {
+            "id": "input-datetime",
+            "group": "input",
+            "label": "Datetime Input",
+            "allowed_parents": [
+                "form"
+            ]
+        },
+        {
+            "id": "input-time",
+            "group": "input",
+            "label": "Time Input",
+            "allowed_parents": [
+                "form"
+            ]
+        },
+        {
+            "id": "input-select",
+            "group": "input",
+            "label": "Select Input",
+            "allowed_parents": [
+                "form"
+            ]
+        },
+        {
+            "id": "input-multiselect",
+            "group": "input",
+            "label": "Multiselect Input",
+            "allowed_parents": [
+                "form"
+            ]
+        },
+        {
+            "id": "input-checkbox",
+            "group": "input",
+            "label": "Checkbox Input",
+            "allowed_parents": [
+                "form"
+            ]
+        },
+        {
+            "id": "input-radio",
+            "group": "input",
+            "label": "Radio Input",
+            "allowed_parents": [
+                "form"
+            ]
+        },
+        {
+            "id": "input-toggle",
+            "group": "input",
+            "label": "Toggle Input",
+            "allowed_parents": [
+                "form"
+            ]
+        },
+        {
+            "id": "input-range",
+            "group": "input",
+            "label": "Range Input",
+            "allowed_parents": [
+                "form"
+            ]
+        },
+        {
+            "id": "input-color",
+            "group": "input",
+            "label": "Color Input",
+            "allowed_parents": [
+                "form"
+            ]
+        },
+        {
+            "id": "input-file",
+            "group": "input",
+            "label": "File Input",
+            "allowed_parents": [
+                "form"
+            ]
+        },
+        {
+            "id": "input-image",
+            "group": "input",
+            "label": "Image Input",
+            "allowed_parents": [
+                "form"
+            ]
+        }
+    ]
+}
