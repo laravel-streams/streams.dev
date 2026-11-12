@@ -1,0 +1,8 @@
+{
+    "id": "person-ben",
+    "name": "Ben Park",
+    "email": "ben@example.test",
+    "role": "author",
+    "active": true,
+    "joined_at": "2026-02-03"
+}

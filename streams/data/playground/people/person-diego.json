@@ -1,0 +1,8 @@
+{
+    "id": "person-diego",
+    "name": "Diego Chen",
+    "email": "diego@example.test",
+    "role": "customer",
+    "active": true,
+    "joined_at": "2026-03-04"
+}

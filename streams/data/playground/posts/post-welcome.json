@@ -1,0 +1,9 @@
+{
+    "id": "post-welcome",
+    "title": "Welcome to the playground",
+    "slug": "welcome-to-the-playground",
+    "author": "person-ada",
+    "status": "published",
+    "body": "Explore fictional records with Streams tables and forms.",
+    "published_at": "2026-05-01 09:00:00"
+}
