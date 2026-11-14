@@ -19,7 +19,7 @@ New apps: start with [SALLT](/docs/sallt) (includes the SDK and [`streams:onboar
 composer require --dev streams/sdk:1.0.x-dev
 ```
 
-Commands are registered only when the app is running in the console. The ones `php artisan` can see today are `make:stream`, `make:entry`, `make:addon`, `streams:list`, `streams:validate`, `streams:schema`, `streams:make`, `streams:onboard`, `streams:tui`, `streams:capture`, `streams:catalog`, `streams:tap`, `entries:list`, `entries:show`, and `streams:livewire`. Arguments, options, and the commands that exist in source but are not registered are in the [command reference](/docs/sdk/commands).
+Commands are registered only when the app is running in the console. The ones `php artisan` can see today are `streams:list`, `streams:validate`, `streams:schema`, `streams:make`, `streams:onboard`, `streams:tui`, `streams:capture`, `streams:catalog`, `streams:tap`, `entries:list`, `entries:show`, and `streams:livewire`. Arguments, options, and the commands that exist in source but are deliberately not registered — `make:stream`, `make:entry`, `make:addon`, `make:table` — are in the [command reference](/docs/sdk/commands).
 
 There is no `streams:component` or `streams:crud` command.
 

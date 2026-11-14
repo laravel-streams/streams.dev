@@ -65,8 +65,9 @@ Let's start with step 1...
 
 ### Blog System
 ```bash
-# Create the main blog stream
-php artisan make:stream blog_posts
+# Create the definition by writing streams/blog_posts.json (the JSON below),
+# then check it before anything reads it
+php artisan streams:validate streams/blog_posts.json
 
 # Generate the index, form, and show Livewire components
 php artisan streams:livewire blog_posts
@@ -77,8 +78,8 @@ php artisan vendor:publish --tag=blog-example
 
 ### E-commerce System
 ```bash
-# Create product catalog
-php artisan make:stream products
+# Create the definition by writing streams/products.json, then check it
+php artisan streams:validate streams/products.json
 
 # Generate the index and form components
 php artisan streams:livewire products --type=index
@@ -90,8 +91,8 @@ php artisan vendor:publish --tag=ecommerce-example
 
 ### CRM System
 ```bash
-# Create contact management
-php artisan make:stream contacts
+# Create the definition by writing streams/contacts.json, then check it
+php artisan streams:validate streams/contacts.json
 
 # Generate CRM components (index, form, and show)
 php artisan streams:livewire contacts

@@ -97,13 +97,13 @@ args = ["/absolute/path/to/app/artisan", "mcp:start", "streams"]
 | `validate-stream-definition` | Validate a draft definition, `streams/{id}.json`, or every definition. | `streams:validate --json` |
 | `list-entries` | Query entries with `where` constraints, ordering, and pagination. | |
 | `read-entry` | Read an entry by key. | |
-| `create-entry` | Create a validated entry. Fails if the key exists. | `make:entry` |
+| `create-entry` | Create a validated entry. Fails if the key exists. | `MakeEntry` class (not a registered command) |
 | `update-entry` | Update some attributes; the merged entry is validated. | |
 | `delete-entry` | Delete an entry by key. Marked destructive. | |
 | `search-docs` | Keyword search over local Streams docs. | |
 | `read-doc` | Read a doc returned by `search-docs`. | |
-| `make-stream` | Write a validated definition to `streams/{id}.json` and register it. | `make:stream {id} [--force]` |
-| `make-addon` | Scaffold an addon package in `addons/{vendor}/{name}`. | `make:addon` |
+| `make-stream` | Write a validated definition to `streams/{id}.json` and register it. | `MakeStream` class (not a registered command; `streams:make` is the CLI path) |
+| `make-addon` | Scaffold an addon package in `addons/{vendor}/{name}`. | `MakeAddon` class (not a registered command) |
 
 Tools annotate themselves as read-only, idempotent, or destructive, so clients can auto-approve safe calls and ask before writes.
 

@@ -180,6 +180,12 @@ These command classes exist in the SDK source but are **not registered**, so `ph
 |---------|------------------|-------|
 | `streams:show` | Show one stream's attributes | Implemented, registration commented out. Use the MCP `describe-stream` tool. |
 | `streams:describe` | Write `streams/{id}.json` by inspecting a URL, JSON, database table, or Eloquent model | Implemented, registration commented out |
+| `make:stream` | Write `streams/{id}.json` from an id, name, and description | Implemented, not registered. Use `streams:make` (the `stream` kind) or the MCP `make-stream` tool. |
+| `make:entry` | Create an entry, prompting for each field the definition requires | Implemented, not registered. Use the MCP `make-entry` tool or `$stream->create([...])`. |
+| `make:addon` | Scaffold an addon package | Implemented, not registered. Use the MCP `make-addon` tool. |
+| `make:table` | Make a table stream and register it in a panel or site page | Implemented, not registered. Use `streams:make` (the `table` kind). |
+
+This is a tested rule, not an oversight: `streams:make` is the only registered command for making and building, and `php artisan list` shows no `make:*` command from `streams/sdk`. A component kind is a node in the app tree addressed by dot path (`people`, `people.table`, `people.pages.manage`), so a per-kind command would fork the same job across two entry points. The MCP tools reach these classes directly (`new MakeEntryCommand()` with the container injected), which is why they keep working with the commands unregistered.
 
 ## How to extend it
 

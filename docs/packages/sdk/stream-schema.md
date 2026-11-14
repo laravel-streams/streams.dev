@@ -11,13 +11,20 @@ status: implemented
 tracking_task: null
 ---
 
-Stream definitions are the JSON files in `streams/` (for example `streams/posts.json`). `streams/sdk` ships a [JSON Schema](https://json-schema.org) (draft-07) for them in `vendor/streams/sdk/resources/schemas/streams.schema.json`, and this site serves the same file at:
+Stream definitions are the JSON files in `streams/` (for example `streams/posts.json`). `streams/sdk` ships **two** schema files under `vendor/streams/sdk/resources/schemas/`, and they do different jobs:
+
+- `streams.schema.json` — **generated from the code** by `streams:catalog`'s generator and drift-guarded against it, so it can never claim a type the classes do not implement. This is the file below, and the one this site serves.
+- `streams.definition.schema.json` — the **hand-written contract** `streams:validate` checks a file against before the semantic layer runs. It carries what a generated file cannot: field imports, which types are legal, and the per-key documentation editors show.
+
+`streams:schema` is a third thing again: a schema for the *entries* of each of your streams, not for the definitions.
+
+The generated file is served at:
 
 ```text
 https://streams.dev/schema/streams.schema.json
 ```
 
-That URL is the schema's `$id`. It is also the `$schema` that `make:stream` and the `make-stream` MCP tool write into new definitions, so editors that follow `$schema` validate and autocomplete stream files with no setup.
+That URL is its `$id`. It is also the `$schema` that the `make-stream` MCP tool writes into new definitions, so editors that follow `$schema` validate and autocomplete stream files with no setup.
 
 ## What it checks
 
