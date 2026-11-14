@@ -10336,12 +10336,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-streams/streams-sdk.git",
-                "reference": "457571ac88481cf4c53945aae3bd5f9d4317c3cf"
+                "reference": "b24496dd116b097a6d626e6cbd760f373a25abff"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-streams/streams-sdk/zipball/457571ac88481cf4c53945aae3bd5f9d4317c3cf",
-                "reference": "457571ac88481cf4c53945aae3bd5f9d4317c3cf",
+                "url": "https://api.github.com/repos/laravel-streams/streams-sdk/zipball/b24496dd116b097a6d626e6cbd760f373a25abff",
+                "reference": "b24496dd116b097a6d626e6cbd760f373a25abff",
                 "shasum": ""
             },
             "require": {
@@ -10398,7 +10398,7 @@
                 "source": "https://github.com/laravel-streams/streams-sdk",
                 "docs": "https://streams.dev/docs/sdk/introduction"
             },
-            "time": "2026-11-14T13:18:34+00:00"
+            "time": "2026-11-14T17:36:48+00:00"
         },
         {
             "name": "theseer/tokenizer",
