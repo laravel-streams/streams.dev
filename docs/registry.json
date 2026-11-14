@@ -702,7 +702,7 @@
         "proof": [
             "streams-sdk@2aff9ebe3a0a58b4e48cb244af0ee683e17ef7b9:src/SdkServiceProvider.php"
         ],
-        "finding": "Audited sdk/rc, the branch required by composer.json; commands and local MCP are registered there, unlike the older 1.0 checkout."
+        "finding": "Audited branch 1.0, which composer.json requires as 1.0.x-dev; sdk/rc was merged into it, so the commands and the local MCP server are registered there."
     },
     {
         "page": "docs/packages/sdk/commands.md",
@@ -716,7 +716,7 @@
             "streams-sdk@175e46bb:src/Console/Commands/StreamsTap.php",
             "streams-sdk@175e46bb:src/SdkServiceProvider.php"
         ],
-        "finding": "Existing sdk/rc command reference retained; streams:tap availability on local SDK 1.0 is documented with optional input merging and failure on all non-2xx responses. TALL patterns are not additional generators."
+        "finding": "Command reference verified against branch 1.0 after the sdk/rc merge: streams:livewire is registered and generates components, and streams:tap documents optional input merging and failure on all non-2xx responses. TALL patterns are not additional generators."
     },
     {
         "page": "docs/packages/sdk/stream-schema.md",
@@ -727,7 +727,7 @@
             "streams-sdk@2aff9ebe3a0a58b4e48cb244af0ee683e17ef7b9:resources/schemas/streams.schema.json",
             "streams-sdk@2aff9ebe3a0a58b4e48cb244af0ee683e17ef7b9:src/Support/StreamDefinitionValidator.php"
         ],
-        "finding": "Draft-07 schema and semantic checks exist on sdk/rc."
+        "finding": "Draft-07 schema and semantic checks exist on branch 1.0, which is also what StreamDefinitionValidator validates against."
     },
     {
         "page": "docs/packages/sdk/streams.md",
@@ -746,10 +746,9 @@
         "type": "features",
         "status": "implemented",
         "proof": [
-            "streams-sdk@175e46bb:docs/tall-components.md",
-            "streams-sdk@175e46bb:src/Console/Commands/MakeLivewire.php"
+            "streams-sdk@175e46bb:docs/tall-components.md"
         ],
-        "finding": "The page describes TALL patterns around generated Livewire classes and Blade views, explicitly excluding controller, middleware and route installation generation."
+        "finding": "The page describes TALL patterns around generated Livewire classes and Blade views, explicitly excluding controller, middleware and route installation generation. streams:livewire is registered on branch 1.0 and verified against this app: it writes a component class, a Blade view, and prints the route snippet. The MakeLivewire.php proof once cited here did not exist at commit 175e46bb; it arrived with the sdk/rc merge."
     },
     {
         "page": "docs/packages/sdk/ai-prompts.md",
@@ -1153,7 +1152,7 @@
             "streams.dev@ab61fe4fac816bce3cc11275279c48522c0e895f:resources/openapi/openapi.yaml",
             "streams.dev@ab61fe4fac816bce3cc11275279c48522c0e895f:routes/web.php"
         ],
-        "finding": "sdk/rc registers 14 MCP tools. This site serves /mcp, llms.txt, and /docs/api/openapi.yaml."
+        "finding": "Branch 1.0 registers 16 MCP tools, one prompt, and two resources. This site serves /mcp, llms.txt, and /docs/api/openapi.yaml."
     },
     {
         "page": "streams/data/docs/mcp.md",
@@ -1284,7 +1283,7 @@
             "streams-sdk@2aff9ebe3a0a58b4e48cb244af0ee683e17ef7b9:composer.json",
             "streams-sdk@2aff9ebe3a0a58b4e48cb244af0ee683e17ef7b9:src/SdkServiceProvider.php"
         ],
-        "finding": "SDK on sdk/rc declares PHP 8.2 and registers MCP. Core and API on rc/prep declare php ^8.2, matching the September note."
+        "finding": "SDK on branch 1.0 declares php ^8.2 and registers MCP. API on branch 1.0 and Core on branch 2.0 declare php ^8.2, matching the September note. composer.lock still pins Core before that constraint, so three guard tests wait on a lock refresh."
     },
     {
         "page": "streams/data/docs/installation.md",
@@ -1299,7 +1298,7 @@
             "streams@06fde618b8f8f8a12680f9d98314728de34c03dd:composer.json",
             "streams.dev@ab61fe4fac816bce3cc11275279c48522c0e895f:composer.json"
         ],
-        "finding": "Laravel ranges, Testbench ^8.36, and the starter's Laravel 10 pin match. Core and API on rc/prep declare php ^8.2, and the SDK on sdk/rc does too."
+        "finding": "Laravel ranges, Testbench ^8.36, and the starter's Laravel 10 pin match. Core on 2.0, API on 1.0, and the SDK on 1.0 each declare php ^8.2."
     },
     {
         "page": "streams/data/docs/introduction.md",
@@ -1382,7 +1381,7 @@
             "streams@06fde618b8f8f8a12680f9d98314728de34c03dd:composer.json",
             "streams.dev:composer.json"
         ],
-        "finding": "UI requires Livewire ^3.0. Testing requires testbench ^8.36. The starter declares PHP ^8.0.2 and Laravel ^10.0. Core on 2.0 and rc/prep declares Laravel ^10|^11|^12. Core 2.0 aliases dev-master to 2.x-dev and does not declare php. Core and API on rc/prep declare php ^8.2. SDK 1.0 does not declare php; sdk/rc does. The latest stable Core tag is v1.10.5."
+        "finding": "UI requires Livewire ^3.0. Testing requires testbench ^8.36. The starter declares PHP ^8.0.2 and Laravel ^10.0. Core on 2.0 declares Laravel ^10|^11|^12 and aliases dev-master to 2.x-dev. Core on 2.0, API on 1.0, and the SDK on 1.0 declare php ^8.2. The latest stable Core tag is v1.10.5."
     },
     {
         "page": "streams/data/docs/workflows.md",
@@ -1411,5 +1410,41 @@
             "streams.dev:tests/Feature/PlaygroundPhpExampleTest.php"
         ],
         "finding": "Catalog component routes render package builders with in-memory defaults and logged render gaps. The component page shows read-only, copyable PHP builder code generated from the builder classes and catalog defaults. Share links and browser test controls remain planned; view-less column builders use the package text view and the image column is a package placeholder."
+    },
+    {
+        "page": "docs/packages/sdk/onboard.md",
+        "package": "sdk",
+        "type": "commands",
+        "status": "implemented",
+        "proof": [
+            "streams-sdk@7bb8fd9:src/Console/Commands/StreamsOnboard.php",
+            "streams-sdk@7bb8fd9:src/Console/Onboard/SurfaceEmitter.php"
+        ],
+        "finding": "streams:onboard reads streams.onboard.json (or --recipe=todos, a path, or '-' for stdin), discovers the SALLT app, and --apply emits the golden monolith: domain plumbing plus an App surface (API entries route when streams.api.enabled, a Blade+Alpine public page, and a streams/ui panel with manage pages and the env-admin login). Without --apply it writes only the recipe, and it never rewrites existing app files without --force."
+    },
+    {
+        "page": "docs/packages/sdk/mcp.md",
+        "package": "sdk",
+        "type": "features",
+        "status": "implemented",
+        "proof": [
+            "streams-sdk:src/Mcp/StreamsServer.php",
+            "streams-sdk:src/SdkServiceProvider.php",
+            "streams-sdk:config/sdk.php",
+            "streams.dev:tests/Feature/StreamsSdkMcpTest.php"
+        ],
+        "finding": "SdkServiceProvider::registerMcpServer() registers Streams\\Sdk\\Mcp\\StreamsServer when laravel/mcp is installed and the app is not in production (or streams.sdk.mcp.allow_production is true). The server exposes 16 tools, one prompt, and two resources; streams.sdk.mcp.read_only hides the five write tools and streams.sdk.mcp.enabled=false hides the server entirely. The tools are driven in tests through StreamsServer::tool() against the booted app."
+    },
+    {
+        "page": "streams/data/docs/sallt.md",
+        "package": "all",
+        "type": "features",
+        "status": "partial",
+        "proof": [
+            "streams-sdk@7bb8fd9:composer.json",
+            "streams-sdk@7bb8fd9:src/Console/Commands/StreamsOnboard.php",
+            "streams.dev@a3fcbab:routes/web.php"
+        ],
+        "finding": "SALLT is the documented default stack and the recipe surface is real: streams/sdk requires core+api+ui+testing, streams:onboard --apply emits the API, Blade+Alpine page and streams/ui panel monolith, and streams/ui serves the /admin panel at runtime. A JS frontend create-project scaffold is not part of the recipe yet: --surface=js writes the shared recipe shape and @laravel-streams/api-client ships as npm source, so the documented path to a JS app is api-client plus streams/api rather than a generator."
     }
 ]

@@ -40,6 +40,17 @@ Route::get('/schema/catalog.schema.json', function () {
     ]);
 });
 
+// Written into the app by `streams:schema`; the URL is the $schema of every
+// streams.onboard.json, so it has to resolve.
+Route::get('/schema/onboard.schema.json', function () {
+    $path = public_path('schema/onboard.schema.json');
+    abort_unless(is_file($path), 404);
+
+    return response(file_get_contents($path), 200, [
+        'Content-Type' => 'application/json; charset=UTF-8',
+    ]);
+});
+
 /*
  * Machine-readable docs for agents (https://llmstxt.org), built from
  * DocsSearchIndex on request and cached alongside the search index.

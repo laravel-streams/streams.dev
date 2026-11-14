@@ -79,7 +79,7 @@
             },
             {
                 "label": "Tools",
-                "pages": ["commands", "tall-components", "ai-prompts"]
+                "pages": ["commands", "mcp", "tall-components", "ai-prompts"]
             },
             {
                 "label": "Planned",

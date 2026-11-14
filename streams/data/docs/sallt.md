@@ -48,7 +48,7 @@ php artisan streams:validate
 
 `--apply` scaffolds domain plumbing first (model, repository, lang, `streams/{handle}.json`). UI, API, Alpine, and tenancy steps still depend on their generators and on requiring `streams/ui` / `streams/api` when needed. Recipe flags, the `todos` preset, and the golden walkthrough: [SDK: Onboard](/docs/sdk/onboard).
 
-Path 2 (JS / front-end create-project) is not shipped; `php artisan streams:onboard --surface=js` only exercises the shared recipe shape.
+Path 2 (`--surface=js`) writes the same recipe with the front-end hand-offs marked, and `@laravel-streams/api-client` installs from npm. There is no JS create-project yet: a JS app is wired by hand from the recipe, the REST API, and the typed client.
 
 ## Related
 

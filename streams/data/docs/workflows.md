@@ -47,7 +47,7 @@ $workflow->doBefore('notify', 'audit', AuditPost::class);    // before an existi
 $workflow->doAfter('validate', 'stamp', StampPost::class);   // after an existing name
 ```
 
-`doBefore` and `doAfter` look the target up with `array_search` and pass that position to `addStep()`, which type-hints `?int`. A missing target makes `array_search` return `false`, and the call throws `TypeError`. Check that the target name exists.
+`doBefore` and `doAfter` look the target up with `array_search` and pass that position to `addStep()`, which type-hints `?int`. `Workflow.php` does not declare `strict_types`, so a missing target makes `array_search` return `false`, which coerces to `0` or `1` in `addStep()`: the step lands at the front (or just after it) instead of next to the named step. No exception is thrown. Check that the target name exists.
 
 ## Callbacks
 

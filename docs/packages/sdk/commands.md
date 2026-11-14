@@ -179,8 +179,6 @@ These command classes exist in the SDK source but are **not registered**, so `ph
 | Command | Intended purpose | State |
 |---------|------------------|-------|
 | `streams:show` | Show one stream's attributes | Implemented, registration commented out. Use the MCP `describe-stream` tool. |
-| `entries:list` | Paginated table of a stream's entries | Implemented, registration commented out. Use the MCP `list-entries` tool. |
-| `entries:show` | Show one entry | Implemented, registration commented out. Use the MCP `read-entry` tool. |
 | `streams:describe` | Write `streams/{id}.json` by inspecting a URL, JSON, database table, or Eloquent model | Implemented, registration commented out |
 
 ## How to extend it

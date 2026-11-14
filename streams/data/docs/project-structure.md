@@ -93,7 +93,7 @@ Most domain logic lives in the packages under `vendor/streams/`, which Composer 
 ```json
 {
     "require": {
-        "streams/core": "dev-rc/prep as 2.0.x-dev",
+        "streams/core": "2.0.x-dev",
         "streams/ui": "1.0.x-dev"
     },
     "repositories": [

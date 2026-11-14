@@ -1,0 +1,58 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "https://streams.dev/schema/onboard.schema.json",
+    "title": "SALLT onboard recipe",
+    "description": "streams.onboard.json — discovery answers for streams:onboard. Version 1. Unknown keys are rejected.",
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+        "version",
+        "surface",
+        "frontend",
+        "panels",
+        "multi_tenancy",
+        "api",
+        "discover_streams_api",
+        "streams_api_base_url",
+        "sample_domain",
+        "created_at"
+    ],
+    "properties": {
+        "$schema": {
+            "type": "string"
+        },
+        "version": {
+            "type": "integer",
+            "const": 1
+        },
+        "surface": {
+            "type": "string",
+            "enum": ["laravel", "js"]
+        },
+        "frontend": {
+            "type": "boolean"
+        },
+        "panels": {
+            "type": "integer",
+            "minimum": 0
+        },
+        "multi_tenancy": {
+            "type": "boolean"
+        },
+        "api": {
+            "type": "boolean"
+        },
+        "discover_streams_api": {
+            "type": "boolean"
+        },
+        "streams_api_base_url": {
+            "type": ["string", "null"]
+        },
+        "sample_domain": {
+            "type": ["string", "null"]
+        },
+        "created_at": {
+            "type": "string"
+        }
+    }
+}

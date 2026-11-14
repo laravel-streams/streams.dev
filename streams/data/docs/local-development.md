@@ -56,7 +56,7 @@ Streams UI registers a panel at `/admin` from `AppServiceProvider`. Use it to br
 
 ## Local package development
 
-`composer.json` installs `streams/core` (branch `rc/prep`), `streams/ui` (`1.0`) and `streams/sdk` (`sdk/rc`) from their GitHub repositories as git clones in `vendor/streams/`.
+`composer.json` installs `streams/core` (branch `2.0`), `streams/ui` (`1.0`) and `streams/sdk` (`1.0`) from their GitHub repositories as git clones in `vendor/streams/`.
 
 To work on a package and see the change in this site, check it out next to this repository and link it in without editing `composer.json`:
 
@@ -66,7 +66,7 @@ composer local
 
 `composer local` runs `scripts/composer-local.php`, which finds checkouts at `../_packages/streams-<name>` or `../streams-<name>` (or the path in `STREAMS_<NAME>_PATH`), writes a gitignored `composer.local.json` and `composer.local.lock` that symlink them, and then runs `composer update "streams/*"` against that file. `composer.json` and `composer.lock` stay as committed. Edits in the checkout then show up immediately.
 
-The script warns when a checkout does not contain the branch `composer.json` asks for (for example `_packages/streams-core` on `2.0` while the site needs `rc/prep`). To link release-candidate worktrees from `../_rc/streams-<name>` instead, ask for them by name:
+The script warns when a checkout does not contain the branch `composer.json` asks for (for example `_packages/streams-core` on `1.1` while the site needs `2.0`).
 
 ```bash
 composer local -- --rc=core,sdk      # or: STREAMS_LOCAL_RC=core,sdk composer local

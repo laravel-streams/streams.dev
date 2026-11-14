@@ -321,7 +321,7 @@ class DocsContentTest extends TestCase
             ->assertSee('5427', false);
     }
 
-    public function test_installation_core_and_api_declare_php_82_on_rc_prep(): void
+    public function test_installation_working_branches_declare_php_82(): void
     {
         Http::preventStrayRequests();
 
@@ -329,7 +329,7 @@ class DocsContentTest extends TestCase
         $body = $page['body'];
 
         $this->assertStringContainsString(
-            'On `rc/prep`, Core and API declare `php: ^8.2`, and the SDK on `sdk/rc` declares `php: ^8.2` too.',
+            'On its `1.0` branch, API declares `php: ^8.2`, and so does the SDK on its `1.0` branch.',
             $body
         );
         $this->assertStringNotContainsString('Core, API, and SDK declare `php: ^8.2`', $body);
@@ -342,8 +342,8 @@ class DocsContentTest extends TestCase
         $site = json_decode(file_get_contents(base_path('composer.json')), true, 512, JSON_THROW_ON_ERROR);
         $this->assertSame('^8.2', $site['require']['php']);
         $this->assertSame('^12.0', $site['require']['laravel/framework']);
-        $this->assertSame('dev-rc/prep as 2.0.x-dev', $site['require']['streams/core']);
-        $this->assertSame('dev-sdk/rc as 1.0.x-dev', $site['require-dev']['streams/sdk']);
+        $this->assertSame('2.0.x-dev', $site['require']['streams/core']);
+        $this->assertSame('1.0.x-dev', $site['require-dev']['streams/sdk']);
 
         $locked = [];
         $lock = json_decode(file_get_contents(base_path('composer.lock')), true, 512, JSON_THROW_ON_ERROR);
@@ -376,7 +376,7 @@ class DocsContentTest extends TestCase
         $this->get('/docs/installation.md')
             ->assertOk()
             ->assertHeader('Content-Type', 'text/markdown; charset=UTF-8')
-            ->assertSee('On `rc/prep`, Core and API declare `php: ^8.2`, and the SDK on `sdk/rc` declares `php: ^8.2` too.', false)
+            ->assertSee('On its `1.0` branch, API declares `php: ^8.2`, and so does the SDK on its `1.0` branch.', false)
             ->assertDontSee('Core, API, and SDK declare `php: ^8.2`', false);
 
         $this->get('/docs/installation')
@@ -387,13 +387,13 @@ class DocsContentTest extends TestCase
         Http::assertNothingSent();
     }
 
-    public function test_changelog_release_candidates_require_php_82_on_rc_prep(): void
+    public function test_changelog_working_branches_require_php_82(): void
     {
         $page = $this->pages()['streams/data/docs/changelog'];
         $body = $page['body'];
 
         $this->assertStringContainsString(
-            'On `rc/prep`, Core and API require PHP 8.2 (`php: ^8.2`).',
+            'Their `1.0` branches require PHP 8.2 (`php: ^8.2`).',
             $body
         );
         $this->assertStringNotContainsString(
@@ -421,8 +421,9 @@ class DocsContentTest extends TestCase
         $apiCommit = '0d3ba86d22473114553779420d3c1e15bb096f20';
         $this->assertContains('streams-api@'.$apiCommit.':composer.json', $changelogProof);
 
-        // streams/api is not installed in this app. Read the rc/prep snapshot the registry cites.
-        $api = $this->registryPackageComposer('streams-api', $apiCommit, 'rc/prep');
+        // streams/api is not installed in this app. Read the snapshot the registry cites,
+        // from branch 1.0 (rc/prep was merged into it).
+        $api = $this->registryPackageComposer('streams-api', $apiCommit, '1.0');
         $this->assertSame('streams/api', $api['name']);
         $this->assertArrayHasKey('php', $api['require']);
         $this->assertSame('^8.2', $api['require']['php']);
@@ -448,7 +449,7 @@ class DocsContentTest extends TestCase
         $this->get('/docs/changelog.md')
             ->assertOk()
             ->assertHeader('Content-Type', 'text/markdown; charset=UTF-8')
-            ->assertSee('On `rc/prep`, Core and API require PHP 8.2 (`php: ^8.2`).', false)
+            ->assertSee('Their `1.0` branches require PHP 8.2 (`php: ^8.2`).', false)
             ->assertDontSee('**Core, API (release candidates):** Require PHP 8.2.', false);
 
         $this->get('/docs/changelog')
@@ -507,8 +508,8 @@ class DocsContentTest extends TestCase
         $this->assertStringContainsString('Branch-alias is `dev-master` => `2.x-dev`.', $body);
         $this->assertStringContainsString('none on `2.0`', $body);
         $this->assertStringContainsString('none on `1.0`', $body);
-        $this->assertStringContainsString('On `rc/prep`, Core and API declare `php: ^8.2`.', $body);
-        $this->assertStringContainsString('The SDK on `sdk/rc` declares `php: ^8.2`.', $body);
+        $this->assertStringContainsString('On its `1.0` branch, API declares `php: ^8.2`', $body);
+        $this->assertStringContainsString('Branch `1.0` is the working branch and declares `php: ^8.2`.', $body);
         $this->assertStringContainsString('Requires Livewire `^3.0`.', $body);
         $this->assertStringContainsString('`orchestra/testbench ^8.36`', $body);
         $this->assertStringContainsString('`^8.0.2`', $body);
@@ -551,9 +552,9 @@ class DocsContentTest extends TestCase
         $this->assertSame('^1.0', $starter['require']['streams/api']);
 
         $site = json_decode(file_get_contents(base_path('composer.json')), true, 512, JSON_THROW_ON_ERROR);
-        $this->assertSame('dev-rc/prep as 2.0.x-dev', $site['require']['streams/core']);
+        $this->assertSame('2.0.x-dev', $site['require']['streams/core']);
         $this->assertSame('1.0.x-dev', $site['require']['streams/ui']);
-        $this->assertSame('dev-sdk/rc as 1.0.x-dev', $site['require-dev']['streams/sdk']);
+        $this->assertSame('1.0.x-dev', $site['require-dev']['streams/sdk']);
 
         $locked = [];
         $lock = json_decode(file_get_contents(base_path('composer.lock')), true, 512, JSON_THROW_ON_ERROR);
@@ -593,7 +594,7 @@ class DocsContentTest extends TestCase
             ->assertOk()
             ->assertHeader('Content-Type', 'text/markdown; charset=UTF-8')
             ->assertSee('Branch-alias is `dev-master` => `2.x-dev`.', false)
-            ->assertSee('On `rc/prep`, Core and API declare `php: ^8.2`.', false)
+            ->assertSee('On its `1.0` branch, API declares `php: ^8.2`', false)
             ->assertDontSee('Core, API, and SDK declare PHP `^8.2`', false)
             ->assertDontSee('1.10.4', false);
 
@@ -680,14 +681,14 @@ class DocsContentTest extends TestCase
             fn (string $checkout, array $arguments): bool => in_array($arguments, [
                 ['cat-file', '-e', 'proof'],
                 ['cat-file', '-e', 'proof^{commit}'],
-                ['merge-base', '--is-ancestor', 'proof', 'origin/rc/prep'],
+                ['merge-base', '--is-ancestor', 'proof', 'origin/2.0'],
             ], true)
         );
         $proof->expects($this->once())->method('gitOutput')
             ->with('/fixture/core', ['show', 'proof:composer.json'])
             ->willReturn('{"name":"streams/core","require":{"php":"^8.2"}}');
 
-        $composer = $proof->registryPackageComposer('streams-core', 'proof', 'rc/prep');
+        $composer = $proof->registryPackageComposer('streams-core', 'proof', '2.0');
 
         $this->assertSame('^8.2', $composer['require']['php']);
         Http::assertNothingSent();

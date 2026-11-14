@@ -130,7 +130,7 @@ Change the list with `streams.sdk.mcp.docs.paths`. The index is built from local
 Publish the config to change defaults:
 
 ```bash
-php artisan vendor:publish --tag=streams-sdk-config
+php artisan vendor:publish --tag=streams-config
 ```
 
 | Key | Env | Default | Description |

@@ -30,9 +30,9 @@ For image handling, install GD or the Imagick PHP extension. See [Images](/docs/
 | `streams/testing` | Yes | Not yet | Not yet | Requires `orchestra/testbench ^8.36` (Laravel 10 only). Being widened to `^8.36\|^9.15\|^10.8` for Laravel 11 and 12. |
 | [SALLT](/docs/sallt) (`ryanthompson/sallt`) | — | — | Yes | Preferred greenfield create-project. Laravel 12 shell + Core + SDK, then `streams:onboard`. Not on Packagist yet — use the GitHub VCS repository. |
 | `streams/streams` starter | Yes | No | No | Pins `laravel/framework ^10.0`. Older starter that requires Core, UI, and API up front. |
-| streams.dev (this site) | No | No | Yes | Runs Laravel 12 on PHP `^8.2`, with Core (`rc/prep`), UI, and the SDK as a dev dependency. |
+| streams.dev (this site) | No | No | Yes | Runs Laravel 12 on PHP `^8.2`, with Core (branch `2.0`), UI (`1.0`), and the SDK (`1.0`) as a dev dependency. |
 
-Every PHP package needs **PHP 8.2 or newer**. On `rc/prep`, Core and API declare `php: ^8.2`, and the SDK on `sdk/rc` declares `php: ^8.2` too. UI and Testing require Core. Until `streams/testing` supports Laravel 11 and 12, the package test suites for Core, UI, and API run on Laravel 10 only, so treat 11 and 12 as supported but not yet verified in CI. See [Versions and support](/docs/versions) for install constraints and branches.
+Every PHP package needs **PHP 8.2 or newer**. On its `1.0` branch, API declares `php: ^8.2`, and so does the SDK on its `1.0` branch. Core on `2.0` declares `php: ^8.2` and accepts Laravel `^10|^11|^12`. UI and Testing require Core. Until `streams/testing` supports Laravel 11 and 12, the package test suites for Core, UI, and API run on Laravel 10 only, so treat 11 and 12 as supported but not yet verified in CI. See [Versions and support](/docs/versions) for install constraints and branches.
 
 ## New projects
 
