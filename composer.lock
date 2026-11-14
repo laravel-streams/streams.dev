@@ -1436,16 +1436,16 @@
         },
         {
             "name": "jaybizzle/crawler-detect",
-            "version": "v1.4.2",
+            "version": "v1.4.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/JayBizzle/Crawler-Detect.git",
-                "reference": "d4b03a96c1ed0cc9da025018ca4a3e805c56c276"
+                "reference": "1a667c348758a38aa7ab82d596bdc11e2da63002"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/JayBizzle/Crawler-Detect/zipball/d4b03a96c1ed0cc9da025018ca4a3e805c56c276",
-                "reference": "d4b03a96c1ed0cc9da025018ca4a3e805c56c276",
+                "url": "https://api.github.com/repos/JayBizzle/Crawler-Detect/zipball/1a667c348758a38aa7ab82d596bdc11e2da63002",
+                "reference": "1a667c348758a38aa7ab82d596bdc11e2da63002",
                 "shasum": ""
             },
             "require": {
@@ -1482,10 +1482,10 @@
             ],
             "support": {
                 "issues": "https://github.com/JayBizzle/Crawler-Detect/issues",
-                "source": "https://github.com/JayBizzle/Crawler-Detect/tree/v1.4.2"
+                "source": "https://github.com/JayBizzle/Crawler-Detect/tree/v1.4.3"
             },
-            "time": "2026-10-20T18:03:06+00:00",
-            "published-time": "2026-10-20T18:04:09+00:00"
+            "time": "2026-11-13T19:40:21+00:00",
+            "published-time": "2026-11-13T19:46:05+00:00"
         },
         {
             "name": "jenssegers/agent",
@@ -3287,16 +3287,16 @@
         },
         {
             "name": "opis/json-schema",
-            "version": "2.6.0",
+            "version": "2.6.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/opis/json-schema.git",
-                "reference": "8458763e0dd0b6baa310e04f1829fc73da4e8c8a"
+                "reference": "b87b424da3fbeaab09567910fda48dc88d9dcbd8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/opis/json-schema/zipball/8458763e0dd0b6baa310e04f1829fc73da4e8c8a",
-                "reference": "8458763e0dd0b6baa310e04f1829fc73da4e8c8a",
+                "url": "https://api.github.com/repos/opis/json-schema/zipball/b87b424da3fbeaab09567910fda48dc88d9dcbd8",
+                "reference": "b87b424da3fbeaab09567910fda48dc88d9dcbd8",
                 "shasum": ""
             },
             "require": {
@@ -3346,9 +3346,10 @@
             ],
             "support": {
                 "issues": "https://github.com/opis/json-schema/issues",
-                "source": "https://github.com/opis/json-schema/tree/2.6.0"
+                "source": "https://github.com/opis/json-schema/tree/2.6.2"
             },
-            "time": "2025-10-17T12:46:48+00:00"
+            "time": "2026-11-08T08:09:42+00:00",
+            "published-time": "2026-11-11T10:35:41+00:00"
         },
         {
             "name": "opis/string",
@@ -3410,7 +3411,8 @@
                 "issues": "https://github.com/opis/string/issues",
                 "source": "https://github.com/opis/string/tree/2.1.0"
             },
-            "time": "2025-10-17T12:38:41+00:00"
+            "time": "2025-10-17T12:38:41+00:00",
+            "published-time": "2025-10-17T12:40:48+00:00"
         },
         {
             "name": "opis/uri",
@@ -3473,7 +3475,8 @@
                 "issues": "https://github.com/opis/uri/issues",
                 "source": "https://github.com/opis/uri/tree/1.1.0"
             },
-            "time": "2021-05-22T15:57:08+00:00"
+            "time": "2021-05-22T15:57:08+00:00",
+            "published-time": "2021-05-22T16:01:15+00:00"
         },
         {
             "name": "phpoption/phpoption",
@@ -4380,12 +4383,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-streams/streams-core.git",
-                "reference": "d774aabdc97851c93d96a21a25ac1a7d2fdb250e"
+                "reference": "7633ffab359313beca91a5475776e5a098b314bd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-streams/streams-core/zipball/d774aabdc97851c93d96a21a25ac1a7d2fdb250e",
-                "reference": "d774aabdc97851c93d96a21a25ac1a7d2fdb250e",
+                "url": "https://api.github.com/repos/laravel-streams/streams-core/zipball/7633ffab359313beca91a5475776e5a098b314bd",
+                "reference": "7633ffab359313beca91a5475776e5a098b314bd",
                 "shasum": ""
             },
             "require": {
@@ -4396,6 +4399,7 @@
                 "laravel/framework": "^10|^11|^12",
                 "laravel/scout": "^10|^11",
                 "nicmart/string-template": "^0.1",
+                "php": "^8.2",
                 "spatie/laravel-html": "^3.3",
                 "symfony/yaml": "^6.2|^7.0",
                 "tmarois/filebase": "^1.0"
@@ -4415,9 +4419,6 @@
             "default-branch": true,
             "type": "streams-addon",
             "extra": {
-                "branch-alias": {
-                    "dev-master": "2.x-dev"
-                },
                 "laravel": {
                     "providers": [
                         "Streams\\Core\\StreamsServiceProvider"
@@ -4447,7 +4448,13 @@
                 }
             ],
             "description": "A domain-driven, code-configured, flat-file application platform for Laravel.",
-            "time": "2026-11-11T22:27:25+00:00"
+            "homepage": "https://streams.dev",
+            "support": {
+                "issues": "https://github.com/laravel-streams/streams-core/issues",
+                "source": "https://github.com/laravel-streams/streams-core",
+                "docs": "https://streams.dev/docs/core/introduction"
+            },
+            "time": "2026-11-14T16:11:30+00:00"
         },
         {
             "name": "streams/ui",
@@ -10329,30 +10336,36 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-streams/streams-sdk.git",
-                "reference": "7bb8fd90a944de7da4e1d708f6a0c394a55897ad"
+                "reference": "457571ac88481cf4c53945aae3bd5f9d4317c3cf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-streams/streams-sdk/zipball/7bb8fd90a944de7da4e1d708f6a0c394a55897ad",
-                "reference": "7bb8fd90a944de7da4e1d708f6a0c394a55897ad",
+                "url": "https://api.github.com/repos/laravel-streams/streams-sdk/zipball/457571ac88481cf4c53945aae3bd5f9d4317c3cf",
+                "reference": "457571ac88481cf4c53945aae3bd5f9d4317c3cf",
                 "shasum": ""
             },
             "require": {
                 "nikic/php-parser": "^4.14 || ^5.0",
+                "opis/json-schema": "^2.3",
+                "php": "^8.2",
                 "streams/core": "^2.0"
             },
             "require-dev": {
-                "streams/testing": "^1.0"
+                "laravel/framework": "^12.41",
+                "laravel/mcp": "^1.0",
+                "livewire/livewire": "^3.6",
+                "mockery/mockery": "^1.6",
+                "orchestra/testbench-core": "^10.0",
+                "phpunit/phpunit": "^11.5"
             },
             "suggest": {
+                "laravel/mcp": "Required to run the Streams MCP server for AI agents (php artisan mcp:start streams). Needs Laravel 11.45+ or 12.41+.",
+                "livewire/livewire": "Required by the components streams:livewire generates (^3.0).",
                 "spatie/ignition": "Optional: surface streams:make fix solutions in Ignition and Flare error pages."
             },
             "default-branch": true,
             "type": "streams-addon",
             "extra": {
-                "branch-alias": {
-                    "dev-master": "1.x-dev"
-                },
                 "laravel": {
                     "providers": [
                         "Streams\\Sdk\\SdkServiceProvider"
@@ -10369,14 +10382,23 @@
                     "Streams\\Sdk\\Tests\\": "tests/"
                 }
             },
+            "license": [
+                "MIT"
+            ],
             "authors": [
                 {
                     "name": "Ryan Thompson",
                     "email": "ryan@pyrocms.com"
                 }
             ],
-            "description": "Dev tools for Laravel + Streams.",
-            "time": "2026-11-11T22:27:26+00:00"
+            "description": "Artisan generators, stream definition validation, and a local MCP server for Laravel Streams.",
+            "homepage": "https://streams.dev",
+            "support": {
+                "issues": "https://github.com/laravel-streams/streams-sdk/issues",
+                "source": "https://github.com/laravel-streams/streams-sdk",
+                "docs": "https://streams.dev/docs/sdk/introduction"
+            },
+            "time": "2026-11-14T13:18:34+00:00"
         },
         {
             "name": "theseer/tokenizer",

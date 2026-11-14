@@ -443,7 +443,7 @@ class DocsContentTest extends TestCase
         }
 
         $this->assertNotNull($lockedCore);
-        $this->assertSame('9291456367b85482f83504046a37ec6f7dd59dd9', $lockedCore['source']['reference']);
+        $this->assertLockedCoreIsOnBranch($lockedCore, '2.0', 'changelog.md');
         $this->assertSame('^8.2', $lockedCore['require']['php']);
 
         $this->get('/docs/changelog.md')
@@ -563,7 +563,7 @@ class DocsContentTest extends TestCase
             $locked[$package['name']] = $package;
         }
 
-        $this->assertSame('9291456367b85482f83504046a37ec6f7dd59dd9', $locked['streams/core']['source']['reference']);
+        $this->assertLockedCoreIsOnBranch($locked['streams/core'], '2.0', 'versions.md');
         $this->assertSame('^8.2', $locked['streams/core']['require']['php']);
         $this->assertSame('^10|^11|^12', $locked['streams/core']['require']['laravel/framework']);
         $this->assertSame('^3.0', $locked['streams/ui']['require']['livewire/livewire']);
@@ -792,6 +792,27 @@ class DocsContentTest extends TestCase
         }
 
         return array_values(array_unique($found));
+    }
+
+    /**
+     * The lock must pin Core to a commit on the branch the docs name rather
+     * than to a frozen SHA: branch 2.0 keeps moving, and a pinned reference
+     * goes stale the first time it does.
+     */
+    protected function assertLockedCoreIsOnBranch(array $lockedCore, string $branch, string $page): void
+    {
+        $reference = $lockedCore['source']['reference'] ?? null;
+        $this->assertNotNull($reference, $page.' records no source reference for streams/core');
+
+        foreach ($this->packageCheckouts('streams-core') as $checkout) {
+            if ($this->gitSucceeds($checkout, ['merge-base', '--is-ancestor', $reference, 'origin/'.$branch])) {
+                $this->assertTrue(true);
+
+                return;
+            }
+        }
+
+        $this->fail('streams/core '.$reference.' locked for '.$page.' is not on origin/'.$branch);
     }
 
     /**

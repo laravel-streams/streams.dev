@@ -1283,7 +1283,7 @@
             "streams-sdk@2aff9ebe3a0a58b4e48cb244af0ee683e17ef7b9:composer.json",
             "streams-sdk@2aff9ebe3a0a58b4e48cb244af0ee683e17ef7b9:src/SdkServiceProvider.php"
         ],
-        "finding": "SDK on branch 1.0 declares php ^8.2 and registers MCP. API on branch 1.0 and Core on branch 2.0 declare php ^8.2, matching the September note. composer.lock still pins Core before that constraint, so three guard tests wait on a lock refresh."
+        "finding": "SDK on branch 1.0 declares php ^8.2 and registers MCP. API on branch 1.0 and Core on branch 2.0 declare php ^8.2, matching the September note. composer.lock resolves Core to the 2.0 branch tip and is guarded by branch ancestry rather than a pinned SHA."
     },
     {
         "page": "streams/data/docs/installation.md",
