@@ -14,7 +14,7 @@
         "laravel/mcp": "^1.0",
         "opis/json-schema": "^2.4",
         "predis/predis": "^3.0",
-        "streams/core": "dev-rc/prep as 2.0.x-dev",
+        "streams/core": "2.0.x-dev",
         "streams/ui": "1.0.x-dev"
     },
     "require-dev": {
@@ -27,7 +27,7 @@
         "nunomaduro/collision": "^8.6",
         "phpunit/phpunit": "^11.5.3",
         "spatie/laravel-ignition": "^2.0",
-        "streams/sdk": "dev-sdk/rc as 1.0.x-dev"
+        "streams/sdk": "1.0.x-dev"
     },
     "repositories": [
         {
