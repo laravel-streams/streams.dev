@@ -1,0 +1,9 @@
+{
+    "id": "order-1006",
+    "number": "PG-1006",
+    "customer": "person-finn",
+    "status": "paid",
+    "total_cents": 19900,
+    "currency": "USD",
+    "placed_at": "2026-05-15 12:00:00"
+}
