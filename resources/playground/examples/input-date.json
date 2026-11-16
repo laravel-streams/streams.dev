@@ -1,0 +1,12 @@
+{
+    "id": "people-joined-at",
+    "label": "Joined",
+    "description": "joined_at from Ada Rivera.",
+    "stream": "people",
+    "entry": "person-ada",
+    "config": {
+        "handle": "joined_at",
+        "label": "Joined"
+    },
+    "type": "input-date"
+}

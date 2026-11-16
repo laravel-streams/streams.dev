@@ -1,0 +1,15 @@
+{
+    "id": "orders-page",
+    "label": "Orders page",
+    "description": "Read-only orders page preview for a Livewire host.",
+    "stream": "orders",
+    "config": {
+        "stream": "orders",
+        "columns": [
+            {"handle": "number", "label": "Order"},
+            {"handle": "status", "label": "Status"},
+            {"handle": "total_cents", "label": "Total (cents)"}
+        ]
+    },
+    "type": "livewire-page"
+}

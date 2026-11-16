@@ -1,0 +1,14 @@
+{
+    "id": "order-1001-total",
+    "label": "Total (cents)",
+    "description": "Integer total_cents from order PG-1001.",
+    "stream": "orders",
+    "entry": "order-1001",
+    "config": {
+        "handle": "total_cents",
+        "label": "Total (cents)",
+        "required": true,
+        "step": "1"
+    },
+    "type": "input-integer"
+}

@@ -1,0 +1,10 @@
+{
+    "id": "people-list",
+    "label": "People",
+    "description": "List of the seeded people stream.",
+    "stream": "people",
+    "config": {
+        "stream": "people"
+    },
+    "type": "list"
+}

@@ -1,0 +1,12 @@
+{
+    "id": "orders-placed-time",
+    "label": "Placed at",
+    "description": "Time of day from order PG-1001's placed_at value.",
+    "stream": "orders",
+    "entry": "order-1001",
+    "config": {
+        "handle": "placed_at",
+        "label": "Placed at"
+    },
+    "type": "input-time"
+}

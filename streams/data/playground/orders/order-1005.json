@@ -1,0 +1,9 @@
+{
+    "id": "order-1005",
+    "number": "PG-1005",
+    "customer": "person-ella",
+    "status": "cancelled",
+    "total_cents": 4900,
+    "currency": "USD",
+    "placed_at": "2026-05-14 12:00:00"
+}

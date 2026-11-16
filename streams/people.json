@@ -1,0 +1,49 @@
+{
+    "name": "People",
+    "handle": "people",
+    "description": "Fictional people for UI playground examples.",
+    "config": {
+        "source": {
+            "type": "filebase",
+            "format": "json",
+            "path": "streams/data/playground/people"
+        }
+    },
+    "fields": [
+        {
+            "handle": "id",
+            "type": "string",
+            "required": true,
+            "unique": true
+        },
+        {
+            "handle": "name",
+            "type": "string",
+            "required": true
+        },
+        {
+            "handle": "email",
+            "type": "email",
+            "required": true
+        },
+        {
+            "handle": "role",
+            "type": "select",
+            "config": {
+                "options": {
+                    "editor": "Editor",
+                    "author": "Author",
+                    "customer": "Customer"
+                }
+            }
+        },
+        {
+            "handle": "active",
+            "type": "boolean"
+        },
+        {
+            "handle": "joined_at",
+            "type": "date"
+        }
+    ]
+}

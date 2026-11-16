@@ -1,0 +1,11 @@
+{
+    "id": "post-canonical-url",
+    "label": "Canonical URL",
+    "description": "Sample canonical URL for the welcome post. Posts do not store a URL field.",
+    "config": {
+        "handle": "canonical_url",
+        "label": "Canonical URL",
+        "value": "https://example.test/posts/welcome-to-the-playground"
+    },
+    "type": "input-url"
+}

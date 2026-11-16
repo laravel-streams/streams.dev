@@ -1,0 +1,14 @@
+{
+    "id": "people-livewire-table",
+    "label": "People table",
+    "description": "Read-only people table preview for a Livewire host.",
+    "stream": "people",
+    "config": {
+        "stream": "people",
+        "columns": [
+            {"handle": "name", "label": "Name"},
+            {"handle": "email", "label": "Email"}
+        ]
+    },
+    "type": "livewire-table"
+}

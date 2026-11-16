@@ -1,0 +1,15 @@
+{
+    "id": "order-1001-range",
+    "label": "Total (cents)",
+    "description": "Range preview of order PG-1001's total_cents.",
+    "stream": "orders",
+    "entry": "order-1001",
+    "config": {
+        "handle": "total_cents",
+        "label": "Total (cents)",
+        "min": "0",
+        "max": "20000",
+        "step": "100"
+    },
+    "type": "input-range"
+}

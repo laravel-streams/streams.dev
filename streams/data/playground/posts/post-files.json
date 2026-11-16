@@ -1,0 +1,9 @@
+{
+    "id": "post-files",
+    "title": "Content from files",
+    "slug": "content-from-files",
+    "author": "person-ada",
+    "status": "published",
+    "body": "These entries are JSON files, with no database required.",
+    "published_at": "2026-05-08 14:00:00"
+}

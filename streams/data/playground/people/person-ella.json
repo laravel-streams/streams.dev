@@ -1,0 +1,8 @@
+{
+    "id": "person-ella",
+    "name": "Ella Brooks",
+    "email": "ella@example.test",
+    "role": "customer",
+    "active": true,
+    "joined_at": "2026-03-19"
+}

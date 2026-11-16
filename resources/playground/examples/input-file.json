@@ -1,0 +1,11 @@
+{
+    "id": "posts-attachment",
+    "label": "Attachment",
+    "description": "File control shown against the posts stream. Posts do not store a file, and this preview does not upload one.",
+    "stream": "posts",
+    "config": {
+        "handle": "attachment",
+        "label": "Attachment"
+    },
+    "type": "input-file"
+}

@@ -1,0 +1,15 @@
+{
+    "id": "posts-livewire-form",
+    "label": "Post form",
+    "description": "Read-only post form preview for a Livewire host.",
+    "stream": "posts",
+    "entry": "post-welcome",
+    "config": {
+        "stream": "posts",
+        "fields": [
+            {"handle": "title", "label": "Title", "input": "text", "required": true},
+            {"handle": "body", "label": "Body", "input": "textarea"}
+        ]
+    },
+    "type": "livewire-form"
+}

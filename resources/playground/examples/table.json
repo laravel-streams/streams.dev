@@ -1,0 +1,34 @@
+{
+    "id": "people-table",
+    "label": "People",
+    "description": "Table of the seeded people stream.",
+    "stream": "people",
+    "config": {
+        "stream": "people",
+        "columns": [
+            {
+                "handle": "name",
+                "label": "Name",
+                "sortable": true
+            },
+            {
+                "handle": "email",
+                "label": "Email",
+                "sortable": true
+            },
+            {
+                "handle": "role",
+                "label": "Role",
+                "sortable": true
+            },
+            {
+                "handle": "active",
+                "label": "Active",
+                "sortable": false
+            }
+        ],
+        "filters": [],
+        "actions": []
+    },
+    "type": "table"
+}
